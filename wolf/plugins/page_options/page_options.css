@@ -1,0 +1,85 @@
+#body_plugin_page_options table.fieldset {
+	position: relative !important;
+	margin-top: -0.6em !important;
+}
+#body_plugin_page_options .fieldset td {
+	border:none;
+	background: #f3efef !important;
+}
+/*
+#body_plugin_page_options fieldset fieldset {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+*/
+#body_plugin_page_options .fieldset td.label {
+	width: 3.5em;
+}
+#body_plugin_page_options .fieldset td.help {
+	width: 15em;
+}
+#body_plugin_page_options .fieldset td.field.display {
+	width: 1.5em;
+	padding-right: 0;
+}
+#body_plugin_page_options .fieldset td.label.mobile {
+	width: 1em;
+}
+#body_plugin_page_options .fieldset td.field.mobile {
+	width: 3em;
+}
+#body_plugin_page_options .fieldset td.field.icon {
+	width: 40%;
+}
+#body_plugin_page_options .checkbox {
+	width: auto;
+	position: relative;
+	top: 2px;
+}
+#body_plugin_page_options .fieldset input  {
+	width: 98%;
+}
+/*
+#body_plugin_page_options input#print_icon,
+#body_plugin_page_options input#pdf_icon,
+#body_plugin_page_options input#mobile_icon,
+#body_plugin_page_options input#top_of_page_icon  {
+	width: 100%;
+}
+*/
+
+
+#body_plugin_page_options #print_logo_width,
+#body_plugin_page_options #print_logo_height,
+#body_plugin_page_options #pdf_logo_width,
+#body_plugin_page_options #pdf_logo_height,
+#body_plugin_page_options #pdf_qrcode_width,
+#body_plugin_page_options #pdf_qrcode_height {
+	width: 4em;
+}
+
+
+#body_plugin_page_options fieldset td.field.display {
+	width: 4%;
+}
+#body_plugin_page_options fieldset td.field.width {
+	width: 5%;
+}
+#body_plugin_page_options fieldset td.field.height {
+	width: 5%;
+}
+#body_plugin_page_options fieldset td.extra {
+	width: 46%;
+}
+#body_plugin_page_options fieldset #pdf_download {
+	width: 98%;
+}
+
+
+#body_plugin_page_options fieldset#pdfsettings table td.label {
+	width: 9.8em;
+}
+#body_plugin_page_options fieldset table td.field input.color-picker {
+	width: 5.2em !important;
+}

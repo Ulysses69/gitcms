@@ -1,0 +1,5 @@
+a span{display:block}
+a span.goal{border-top:solid 1px #93BFB9;padding-top:8px}
+a span.note:before{content: "Notes: ";display:block;font-weight:bold}
+a span.goal:before{content: "Goals: ";display:block;font-weight:bold}
+a:hover span.goal{filter:alpha(opacity=1);opacity: 100;position:relative;display:block;width:auto;height:auto;overflow:auto;z-index:4;top:0px;left:0px;padding:0;-moz-border-radius:0;-webkit-border-radius:0;background:transparent;border:none;border-top:solid 1px #93BFB9;padding-top:8px;color:#000}

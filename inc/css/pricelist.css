@@ -1,0 +1,29 @@
+﻿body:not(.legacy).pricelist #content ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1em 0;
+	position: relative;
+}
+body:not(.legacy).pricelist #content ul li {
+	padding: 10px 0 0 0;
+	margin: 0;
+	border-bottom: solid 1px #ccc;
+	position: relative;
+	clear: both;
+}
+body:not(.legacy).pricelist #content ul li p {
+	background: #fff;
+	position: relative;
+	margin: 0;
+	padding: 5px 7px 0 0;
+	display: inline;
+	bottom: -4px;
+}
+body:not(.legacy).pricelist #content ul li em {
+	position: absolute;
+	right: 0;
+	bottom: -4px;
+	background: #fff;
+	padding: 6px 0 0 7px;
+	font-style: normal;
+}

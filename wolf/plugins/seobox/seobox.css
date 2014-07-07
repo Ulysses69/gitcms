@@ -1,0 +1,66 @@
+#body_plugin_seobox select {
+	border: solid 1px #CCCCCC;
+	width: 97%;
+	padding: 3px 2px;
+}
+#body_plugin_seobox input.checkbox {
+	width: auto;
+	border: none;
+}
+#body_plugin_seobox textarea#clientaddress {
+	height: 7em;
+}
+#body_plugin_seobox .hours {
+	width: auto;
+}
+#body_plugin_seobox .hours .header {
+	width: 20%;
+	text-align: right;
+}
+#body_plugin_seobox .hours .label.open {
+	width: 3em;
+	text-align: left;
+}
+#body_plugin_seobox .hours .label.close {
+	width: 3em;
+	text-align: left;
+}
+#body_plugin_seobox .hours h4 {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-size: 95%;
+}
+
+#body_plugin_seobox #content .hours {
+	position: relative;
+}
+#body_plugin_seobox .appt label {
+	position: absolute;
+	top: -12px;
+	right: 15px;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	font-size: 90%;
+}
+#body_plugin_seobox #content .field input {
+	width: 95%;
+}
+#body_plugin_seobox #content .field input.checkbox {
+	width: auto;
+}
+#body_plugin_seobox #content td {
+	background: #f3efef;
+}
+#body_plugin_seobox .box ul {
+	margin-top: 10px;
+}
+#body_plugin_seobox td.help {
+	vertical-align: top;
+	padding-top: 12px;
+	padding-bottom: 0;
+}
+#body_plugin_seobox #content fieldset fieldset legend {
+	font-size: 90%;
+}

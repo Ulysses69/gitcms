@@ -1,0 +1,72 @@
+/* Events calendar general styles */
+
+table.events-calendar {
+	border-collapse: collapse;
+	border-style: none;
+}
+
+table.events-calendar th {
+	text-align: center;
+}
+
+table.events-calendar td {
+	vertical-align: top;
+}
+
+table.events-calendar td.date {
+	text-align: right;
+	vertical-align: top;	
+}
+
+
+
+/* Events mini calendar styles */
+
+table.events-calendar.events-mini th {
+	height: 25px;
+}
+
+table.events-calendar.events-mini td {
+	border: 3px solid white;
+	width: 30px;
+}
+
+table.events-calendar.events-mini td.date {
+	background-color: #eee;
+	height: 25px;
+	padding: 0 4px 0 0;
+}
+
+
+
+/* Events large calendar styles */
+
+table.events-calendar.events-large th {
+	width: 90px;
+}
+
+table.events-calendar.events-large td {
+	border: 5px solid white;
+}
+
+table.events-calendar.events-large td.date {
+	background-color: #eee;
+	width: 90px;
+	height: 60px;
+	padding: 0 4px 0 0;
+}
+
+table.events-calendar.events-large ul {
+	margin: 0 !important;
+}
+
+table.events-calendar.events-large li {
+	list-style-type: none !important;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+	padding: 2px 0;
+}
+
+table.events-calendar.events-large li.last {
+	border-bottom: none;
+}

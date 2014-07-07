@@ -1,0 +1,14 @@
+@import 'CodeMirror-2.33/lib/codemirror.css';
+
+.CodeMirror {
+	background: #fff;
+}
+
+.CodeMirror-scroll {
+	border: 1px solid #888;
+}
+
+.CodeMirror,
+.CodeMirror-lines {
+	line-height: 1.4;
+}

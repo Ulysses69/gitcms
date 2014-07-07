@@ -1,0 +1,17 @@
+﻿body, html {
+	background: #000;
+	color: #FFFF00;
+}
+a,
+#navigation li a {
+	background: #000;
+	color: #01FFFF;
+}
+a:hover, a:focus, a:active,
+#navigation li a:hover, #navigation li a:focus, #navigation li a:active {
+	background: #FFFF00;
+	color: #000;
+}
+h1, h2, h3, h4 {
+	color: #FFFF00;
+}

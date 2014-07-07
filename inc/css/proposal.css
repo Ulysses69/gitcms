@@ -1,0 +1,121 @@
+body {font: normal 14px arial, verdana, sans-serif;padding: 10px; color: #666}
+#nav {float: left; width: 30%;}
+#content {float: right;width: 66%; padding: 0; margin: 0}
+#nav ul {font-size:90%; list-style: none; margin: 10px 0 0 0.3em; padding: 1em 0 0 0;color: #666}
+#nav h2 {margin:35px 0 20px 0; color: #000}
+#nav ul ul {color: #666;margin: -12px 0 4px 16px}
+#nav ul ul ul {color: #666}
+#nav ul li {margin: 0 0 0 0;padding: 0 0 0 4px}
+#nav a {text-decoration: none}
+#nav ul a {color: #666;font-weight: normal}
+ul, ol {padding: 0;margin: 0 0 1em 1em;}
+hr { display: none; }
+a,
+#nav ul ul a,
+#nav ul .selected ul a,
+#nav ul .selected ul .current ul a {color: #666;font-weight: normal; text-decoration: none}
+#nav ul ul ul a {color: #666}
+#nav ul .selected a,
+#nav ul .selected ul .selected a,
+#nav ul .selected ul .selected ul .selected a,
+#nav ul .selected ul .selected ul .selected ul .selected a {font-weight: bold}
+#footnotes{ padding-bottom: 10px}
+#footer{font-size:80%}
+#sitelinks{font-size:80%;color:#666}
+/* legend{display:none} */
+fieldset{border:none;padding:0;margin:0;position:relative;overflow:hidden;}
+label{position:relative;float:left;width:49%;padding:0 0 1em 0}
+label span{display:block}
+label input,label textarea,label select{width:90%}
+label input.checkbox{position:absolute;top:-1px;width:auto}
+fieldset fieldset span{margin:0 0 0 30px;width:80%;padding:0 10% 0 0}
+#mailinglist{left:30px;width:40%}
+#mailinglist span{font-size:90%}
+#mailinglist .checkbox{left:-30px}
+/* address{font-style:normal;white-space:pre} */
+address{margin-top: 1em; font-style:normal}
+address span{display:block}
+legend,#googlemap-print{display:none}
+#goalnotes{white-space:pre}
+/* #notes{white-space:pre} */
+#goalnotes, .submitholder{ margin: 0 0 1em 0 }
+#goals h3{ margin: 0 }
+.group { padding: 0; margin: 0; }
+.address, .phone, .email { padding: 0 !important; margin: 0 0 1em 0; }
+
+blockquote { position: relative; display: block; margin: 0 0 2em 1em; font-style: italic }
+blockquote[cite]:after { content: "\2014" " " attr(cite) ""; position: relative; display: block; font-size: 80%; font-weight: bold; font-style: normal }
+
+#seourl, #seotitle, #seodesc, #seokeys, #pageid, #nav, #header, #main, #goals { position: relative; margin: 0 0 0.5em 0; padding: 1em 0 1em 0; }
+strong.section { font-size: 11px; display: block; background: #eee; margin: -1.7em 0 0 0; padding: 0.5em 0.7em; color: #000 }
+#content strong.section { margin-left: -0.7em }
+
+
+fieldset fieldset label {
+	position: relative;
+	margin-left: 2em;
+}
+fieldset .date {
+	display: inline;
+}
+fieldset .date label {
+	float: left;
+	clear: none;
+	width: auto;
+}
+fieldset .date span {
+	float: none;
+	clear: both;
+	display: block;
+}
+fieldset .date label span {
+	position: relative;
+	margin-bottom: -1.3em;
+	z-index: 1;
+}
+fieldset .date label select {
+	position: relative;
+	z-index: 2;
+	background: #fff; /* Stops label text appearing through in Safari */
+	width: auto;
+	margin-right: 0.3em;
+}
+fieldset #further_information {
+	position: relative;
+	clear: both;
+	display: block;
+}
+#pagenotes p {
+	white-space: pre-line;
+}
+ul.setThumbs {
+	float: none;
+	position: relative;
+	padding: 0;
+	margin: 1em 0 0 0;
+	overflow: hidden;
+	clear: both;
+	width: 100%;
+}
+ul.setThumbs li {
+	float: left;
+	display: inline;
+	position: relative;
+	padding: 0;
+	margin: 0 10px 10px 0;
+	overflow: hidden;
+}
+ul.setThumbs li a {
+	float: left;
+	position: relative;
+	overflow: hidden;
+	padding: 3px;
+	margin: 0;
+	border: solid 1px #ccc;
+}
+ul.setThumbs li a img {
+	float: left;
+	position: relative;
+	padding: 0;
+	margin: 0;
+}

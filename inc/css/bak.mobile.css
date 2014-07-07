@@ -1,0 +1,101 @@
+﻿body,#head,.mobile body#home-page #content,.mobile a{padding:0;margin:0;color:#222222}
+body,#head,body#home-page {background:#5d5d5d}
+.mobile h1,.mobile h2,h3,h4,.mobile p,address,table,#searchbox,#content ul,#content ol{margin:0;padding:0 .5em .5em .5em;font-style:normal}
+.mobile h1{padding:.5em}
+#content ul,#content ol{margin:0 1em}
+.mobile #content *{padding-left:0;padding-right:0}
+body,input{font:normal 0.96em arial,verdana,sans-serif}
+.mobile body{background:#dddddd;color:#222222}
+.mobile body#home-page,.mobile body#home-page a,a,.selected li a,.mobile #head a,#logo,#navigation li a,#navigation li.selected li a{color:#fff}
+a{overflow:hidden;padding:5px}
+.mobile a{text-decoration:none}
+.mobile #content li{padding-bottom:.5em}
+.mobile #content li a{margin:15px 0}
+.tracker,#footer h2{position:absolute;left:-90em}
+#logo{font-size:110%;text-align:center;padding:.7em 4em 0 4em;min-height:1.9em}
+#logo img{max-width:160px;height:auto;margin:0 0 5px 0}
+body#home-page #logo img{max-width:none;height:auto;margin:5px 0}
+#menu{list-style:none;overflow:hidden;padding:0;margin:0}
+#menu img{border:none;margin:0 0 -2px 0}
+#menu li,#sidemenu li{padding:5px 0;}
+#menu li{position:absolute}
+.mobile #footer{position:relative;margin:0;text-align:center}
+.mobile #footer a{padding:1em}
+small{font-size:60%}
+small a{text-decoration:none;text-transform:capitalize;margin:0 -5px 0 -2px}
+p small span{display:block;clear:both;padding:0 .25em}
+#goback{top:.5em;left:.5em}
+#gomenu{top:.5em;right:.5em}
+#content{background:#ffffff;padding:0 .5em .5em .5em;margin:0;overflow:hidden}
+#home-page #content{padding:0 .5em}
+#content a{color:#0689f4}
+#navigation{margin:0;padding:0 0 .5em 1.5em}
+.mobile #sidebar,.mobile #sidemenu{text-align:left;margin:1em 0;padding-top:1em;border-top:solid 1px #a4a4a4}
+.mobile #sidebar h2{margin-top:.7em}
+.mobile #sidebar{margin-top:0;margin-bottom:0;padding:0 0 .5em 0;background:#ffffff}
+.mobile #sidebar ul,.mobile #sidemenu ul{margin:.3em 0 1.3em 0}
+.mobile #sidebar ul{margin-left:.2em}
+.mobile #sidebar li,.mobile #sidemenu li{margin:0 0 0.7em -1.2em}
+.mobile #sidemenu{margin-top:0;border-bottom:solid 1px #a4a4a4}
+.mobile #sidemenu li a{margin:0 0 0 -.7em}
+.mobile fieldset{border:none;padding:0;margin:0}
+.mobile #searchbox{padding:.5em;margin:0 0 1em 0}
+.mobile #searchbox legend,.mobile #searchbox label{position:absolute;left:-60em}
+.mobile #searchbox input{float:left;font-size:115% !important;border:none;padding:.3em;margin:0 0 .5em 0;width:73%}
+.mobile #searchbox input.submit{float:right;width:25%;margin:0 0 0 .3em;text-transform:capitalize}
+#home-page #searchbox input.submit{margin-top:-1px;border:solid 1px #222}
+#content input.submit{padding:5px 8px;overflow:hidden;width:auto}
+#menu li{border-bottom:solid 1px #737373}
+#menu li,#head a,.mobile input,.mobile textarea{-webkit-appearance:none;border-radius:.3em;-moz-border-radius:.3em;-webkit-border-radius:.3em}
+#head a,.mobile input.submit{cursor:pointer;color:#ffffff;background:#262728;padding:5px 8px;text-decoration:none;border:1px solid #232323;background:-moz-linear-gradient(top,rgba(38,39,40,0.6) 10%,rgba(38,39,40,0.9) 80%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0.10,rgba(38,39,40,0.6)),color-stop(0.80,rgba(38,39,40,0.9)))}
+.mobile #home-page #navigation {list-style:none;padding:.5em;margin:0}
+.mobile #home-page #navigation a {display:block;padding:.6em .8em;margin:0 0 0.5em 0;text-decoration:none;font-size:110%}
+.mobile #home-page #navigation a:after {content:"\203A";color:#cccccc;float:right;font-family:arial;font-size:160%;margin:-0.25em 0}
+.mobile #content img{max-width:100% !important;height:auto;border:none}
+#content ul,#content ol{margin-bottom:0;margin-left:1.2em;margin-top:0;padding:0 0 1em 0}
+#content ol{margin-left:2em}
+#content ul ul,#content ol ul{list-style:disc;margin:0 0 0 1em;padding:0.5em 0 0 0}
+#content li{padding:.3em}
+#content ul.jpg{list-style:none;padding:0 0 .1em 0;margin:0}
+#content ul.jpg li{padding:0;margin:0 0 .6em 0}
+#sidemenu{margin-top:0;padding-bottom:1em}
+#top > h2{margin-top:.5em}
+body{font-size:100%}
+.open h3,.closed h3{display:inline;padding:0;margin:0 0.3em 0 0;font-size:100%}
+.open:not(.legacy) span,.closed:not(.legacy) span{display:inline-block;position:relative;overflow:hidden;width:.3em;height:1em}
+.open:not(.legacy) span:before,.closed:not(.legacy) span:before{content:" - ";text-align:center}
+#top ul#sidemenu{padding:0 0 1em 2em;margin:0}
+li h2{margin:0 0 -10px 0;padding:0}
+.archived li,li div{margin:0 0 0 0}
+.mobile #top .archived li h2{margin:-.75em 0 -.3em 0}
+.archived:not(.legacy){list-style:none;margin-left:0}
+#excerpts li{margin:0 0 1em 0}
+#excerpts:not(.legacy){float:none;position:relative;clear:both;overflow:hidden}
+.feed,.year{clear:both}
+li[date]{float:none;position:relative;clear:both}
+li[date]:before{content:attr(date) "";position:relative;margin:0 .6em 0 -1.5em;top:.2em;background:#ffffff;font-weight:normal;font-size:80%;float:left}
+li[date]:not(.legacy) div{float:left;position:relative;overflow:hidden;margin:0 0 1em 0}
+li[date] div h2,li[date] div h3{position:relative;padding:0;margin:-0.1em 0 0 0}
+li[date] div h2 a,li[date] div h3 a{position:relative;display:block;top:-2px}
+li[date] div p{padding:0;margin:0}
+#content ol.archived:not(.legacy){margin-left:1.4em}
+thead td,th{font-weight:bold}
+@media screen and (orientation:portrait){
+/* Portrait */
+}
+@media screen and (orientation:landscape){
+/* Landscape */
+}
+@media only screen and (max-device-width: 480px){
+/* iPhone */
+#menu img{width:15px;height:auto}
+}
+@media only screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+/* iPhone 4 */
+body{font-size:91%}
+#menu img{width:15px;height:auto}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
+/* iPad */
+#menu img{width:50%;height:auto}
+}

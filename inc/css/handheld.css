@@ -1,0 +1,39 @@
+﻿body{-webkit-text-size-adjust:none;color:#222;font:normal 150% Arial, Verdana, Helvetica, sans-serif;margin:0;padding:0;text-align:left}
+#content{margin:0.6em;padding:0 0 0.6em;text-align:left}
+#sitelinks{border-top:solid 1px #ccc;margin:-0.6em 0;padding:1em 0 0}
+#navigation{background:#016188;border-bottom:none;left:0;margin:0;overflow:hidden;padding:0;position:relative;text-align:left;top:0;width:100%}
+#navigation a{background:url('../img/mobile/next.gif') no-repeat right center;color:#fff;font-size:110%;font-weight:700;padding:0.4em 1.6em 0.4em 0.5em;text-decoration:none;border-bottom:solid 1px #014F70;border-top:solid 1px #01709E;display:block;}
+#navigation li{display:inline;margin:0}
+#sidemenu{background:#f2f2f2;border-bottom:none;left:0;margin:0;overflow:hidden;padding:0;position:relative;text-align:left;top:0;width:100%}
+#sidemenu a{background:url('../img/mobile/menu.gif') no-repeat right center;color:#666;font-size:110%;font-weight:700;padding:0.4em 1.6em 0.5em 0.6em;text-decoration:none;border-bottom:solid 1px #bebebe;border-top:solid 1px #fff;display:block;float:none}
+#sidemenu li{display:inline;margin:0}
+a{color:#016188}
+small{display:block;margin:0.6em 0}
+ul,ol{margin-bottom:0.6em;margin-left:1em;margin-top:0;padding:0}
+#searchbox{background:#ccc;padding:0.5em 0.3em;}
+#searchbox input{font-size:120%;}
+#searchbox legend{display:none;}
+#searchbox fieldset{display:block;border:none;padding:0;}
+#sidemenu ul, #sidebar h2, #crumbs, h2 {display:none}
+#sidebar ul#sidemenu{margin-left:0;}
+#help{color:blue;}
+#content h2 {display:block;}
+.checkbox{height:1.2em;left:-1.7em;position:absolute;top:0;width:1.2em}
+.submitholder{border-top:solid 1px #bebebe;margin:0.5em 0 0;padding:1em 0}
+fieldset{border:none;padding:0}
+label{margin:0 0 0.4em}
+label input,label textarea,label select{font:normal 0.96em Arial, Verdana, Helvetica, sans-serif;font-size:110%;width:99%}
+label select{width:100%}
+label,label span,#home-page #navigation li{display:block}
+legend,#mailinglist span span{display:none}
+#mailinglist{margin:0.4em 0 0 1.6em;padding:0.2em;position:relative}
+#sidebar ul,#options,ul#links{margin:0 1.5em;}
+#sidebar ul,#options {margin-bottom:2em;}
+#bluehorizons-go{position:absolute;left:0;margin:2em 0 0 0;padding:0.5em 0 0.5em 0.5em;list-style:none;border-top:solid 1px #bebebe;width:98%;}
+#date-go{position:absolute;margin:2em 0 0 3.5em;padding:0.6em 0 0 0;list-style:none;}
+@media (max-device-width:320px){body{font-size:91%}}
+
+/* Works for iPhone */
+/* @media (max-device-width:360px){body{font-size:141%}}
+@media (max-device-width:320px){body{font-size:91%}}
+@media (min-width:321px) and (max-device-width:480px){body{font-size:91%}} */

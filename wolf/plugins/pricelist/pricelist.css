@@ -1,0 +1,249 @@
+#price_form {
+	background-color: #fff;
+	padding: 10px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 0 20px 0;
+	border-bottom: solid 1px #cacaca;
+}
+#body_plugin_pricelist table {
+	position: relative;
+	margin: 0 0 20px 0;
+}
+#body_plugin_pricelist select {
+	padding: 5px;
+}
+#price_form p {
+	margin: 15px 0 10px 0;
+}
+#price_form_table {
+	width: 100%;
+}
+#price_form_table td {
+	padding: 0 10px 10px 0;
+}
+.status {
+	width: 50px !important;
+}
+
+#price_itemlabel, #price_itemdesc, #price_itemprice, #price_itemprice2 {
+	width: 100%;
+}
+
+	#requests .itemlabel, #requests .itemprice {
+		width: 50%;
+		left: 0;
+	}
+	#requests .itemprice {
+		width: 48%;
+		left: 0;
+	}
+
+#body_plugin_pricelist h2 {
+	clear: both;
+}
+
+
+#body_plugin_pricelist .boxed {
+	overflow: hidden;
+	position: relative;
+	border: solid 1px #cccccc;
+	padding: 10px;
+	margin: 0 0 20px 0;
+}
+#body_plugin_pricelist .boxed table {
+	margin-bottom: 0;
+	margin-top: 20px;
+}
+#body_plugin_pricelist .boxed th {
+	font-weight: bold !important;
+}
+#body_plugin_pricelist .boxed td {
+	background: #f3efef;
+}
+#body_plugin_pricelist .boxed h2 {
+	font-size: 110%;
+	margin: 0 0 -8px 0;
+}
+
+
+
+#body_plugin_pricelist #sidebar label span {
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: 1em 0 0.2em 0;
+}
+#body_plugin_pricelist #sidebar label input {
+	width: 85%;
+	padding: 5px;
+}
+#body_plugin_pricelist #sidebar label,
+#body_plugin_pricelist #sidebar label input {
+	font-size: 1em;
+}
+#body_plugin_pricelist #sidebar .buttons {
+	position: relative;
+	padding: 0;
+	margin: 0 0 0.5em 0;
+	overflow: hidden;
+}
+
+
+
+
+#body_plugin_pricelist td.price {
+	width: 5em;
+}
+
+
+
+
+#body_plugin_pricelist .itemlabel a {
+	top: 0;
+}
+#body_plugin_pricelist .action {
+	width: 10px;
+}
+#body_plugin_pricelist .action a {
+	position: relative;
+	top: 0;
+}
+
+
+
+#body_plugin_pricelist #prices .itemlabel {
+	width: auto !important;
+}
+
+
+
+#body_plugin_pricelist #prices .btn {
+	border: 0 !important;
+	cursor: pointer;
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 0 !important;
+	overflow: hidden !important;
+	height: 13px;
+	width: 17px;
+	float: left;
+}
+
+
+
+/*
+#body_plugin_pricelist #prices .btn {
+	border: 0 !important;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	width: 17px !important;
+	float: left;
+	line-height: 0;
+	height: 14px;
+	position: relative;
+	background: red;
+}
+#body_plugin_pricelist #prices .btn img {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+*/
+
+
+
+#body_plugin_pricelist #prices .btn img {
+	float: left;
+	border: 0 !important;
+	margin: -1px 0 0 -2px !important;
+	padding: 0 !important;
+}
+#body_plugin_pricelist #prices .itemprice,
+#body_plugin_pricelist #prices .itemprice2 {
+	width: 4em !important;
+}
+#body_plugin_pricelist #prices td.itemtoken {
+	font-size: 80%;
+	color: #666;
+}
+
+
+
+#body_plugin_pricelist #prices .itemlabel input,
+#body_plugin_pricelist #prices .itemdesc input {
+	width: 98% !important;
+}
+
+
+
+#body_plugin_pricelist #prices .itemprice input,
+#body_plugin_pricelist #prices .itemprice2 input {
+	width: 5em !important;
+}
+
+
+
+#body_plugin_pricelist #prices .itemlabel input,
+#body_plugin_pricelist #prices .itemdesc input,
+#body_plugin_pricelist #prices .itemprice input,
+#body_plugin_pricelist #prices .itemprice2 input,
+#body_plugin_pricelist #prices .itemprice_suff input,
+#body_plugin_pricelist #prices .itemprice_pref input {
+	background: #f3efef;
+	border: 0;
+	padding: 1px;
+	margin: 0;
+	float: left;
+	line-height: 1em;
+	height: 1.1em;
+}
+#body_plugin_pricelist #prices .itemprice_suff,
+#body_plugin_pricelist #prices .itemprice_pref {
+	position: relative !important;
+	overflow: hidden;
+	width: 2em;
+}
+#body_plugin_pricelist #prices .itemprice_suff input,
+#body_plugin_pricelist #prices .itemprice_pref input {
+	width: 4em;
+}
+/*
+#body_plugin_pricelist #prices .itemprice_pref select {
+	padding: 0;
+	position: relative;
+	z-index: 98;
+	margin: 0;
+}
+#body_plugin_pricelist #prices .itemprice_pref:before {
+	content:' ';
+	position: absolute;
+	width: 1.5em;
+	margin-left: 2.5em;
+	height: 1.3em;
+	background: #f3efef;
+	z-index: 99;
+}
+#body_plugin_pricelist #prices tr:hover .itemprice_pref:before {
+	background: #fff;
+}
+#body_plugin_pricelist #prices tr:hover .itemprice_pref:hover:before {
+	display: none
+}
+*/
+#body_plugin_pricelist #prices tr:hover .itemlabel input,
+#body_plugin_pricelist #prices tr:hover .itemdesc input,
+#body_plugin_pricelist #prices tr:hover .itemprice input,
+#body_plugin_pricelist #prices tr:hover .itemprice2 input,
+#body_plugin_pricelist #prices tr:hover .itemprice_pref input,
+#body_plugin_pricelist #prices tr:hover .itemprice_suff input {
+	background: #fff;
+}
+
+
+#body_plugin_pricelist #prices .action {
+	width: 2em !important;
+	line-height: 0;
+}

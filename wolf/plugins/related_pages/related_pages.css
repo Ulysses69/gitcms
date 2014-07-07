@@ -1,0 +1,12 @@
+#Related-pages-container {
+	position: relative;
+	overflow: auto;
+	height: 400px;
+}
+#Related-pages-container li li {
+	border-bottom: none;
+	border-top: solid 1px #ccc;
+}
+#Related-pages-container li li li {
+	color: #666;
+}

@@ -1,0 +1,1 @@
+var fb = new SWFObject("/inc/img/monoslideshow2.swf", "flashmonoslideshow2", "600", "200", "7", "#ffffff");fb.addParam("AllowScriptAccess", "always");fb.addParam("wmode", "transparent");fb.addVariable("showLogo", "false");fb.addVariable("showVersionInfo", "false");fb.addVariable("showRegistration", "false");fb.addVariable("dataFile", "/slideshow.xml");fb.write("banner");

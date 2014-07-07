@@ -1,0 +1,169 @@
+<?php
+
+if (!defined('IN_CMS')) { exit(); }
+
+Plugin::setInfos(array(
+    'id'          			=> 'layout_switch',
+    'title'       			=> __('Layout Switch'),
+    'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
+    'version'     			=> '4.0.0',
+    'license'     			=> 'GPL',
+    'require_wolf_version' 		=> '0.5.5'
+));
+
+Observer::observe('page_found', 'layout_switch_check');
+Behavior::add('LayoutSwitch', '');
+function sanitize_output($page){
+	$search = array(
+        '/\>[^\S ]+/s', // Strip whitespaces after tags, except space
+        '/[^\S ]+\</s', // Strip whitespaces before tags, except space
+        '/(\s)+/s'  // Shorten multiple whitespace sequences
+        );
+	$replace = array(
+        '>',
+        '<',
+        '\\1'
+        );
+	$page = preg_replace($search, $replace, $page);
+	return $page;
+}
+function mobiledevice(){
+	$_SERVER['ALL_HTTP'] = isset($_SERVER['ALL_HTTP']) ? $_SERVER['ALL_HTTP'] : '';
+	$mobile_browser = '0';
+	//if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone)/i', strtolower($_SERVER['HTTP_USER_AGENT'])))
+	if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|ipod|android|xoom)/i', strtolower($_SERVER['HTTP_USER_AGENT'])))
+		$mobile_browser++;
+		//define('BROWSERAGENT', 'mobile');
+
+	if((isset($_SERVER['HTTP_ACCEPT'])) and (strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') !== false))
+        $mobile_browser++;
+        //define('BROWSERAGENT', 'xhtml');
+
+    if(isset($_SERVER['HTTP_X_WAP_PROFILE']))
+        $mobile_browser++;
+        //define('BROWSERAGENT', 'wap');
+
+    if(isset($_SERVER['HTTP_PROFILE']))
+        $mobile_browser++;
+        //define('BROWSERAGENT', 'profile');
+
+		$mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'],0,4));
+		//echo '<!-- ' . $_SERVER['HTTP_USER_AGENT'] . " -->";
+		//echo '<!-- ' . $mobile_ua . " -->\n";
+		$mobile_agents = array(
+		'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+		'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+		'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+		'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+		'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
+		'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+		'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+		'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+		'wapr','webc','winw','winw','xda','xda-');
+
+	if(in_array($mobile_ua,$mobile_agents))
+		$mobile_browser++;
+		define('BROWSERAGENT', 'mobile');
+
+	/*
+	if(isset($_SERVER['ALL_HTTP'])){ if (strpos(strtolower($_SERVER['ALL_HTTP']),'operamini')>0){
+		$mobile_browser++;
+		define('BROWSERAGENT', 'operamini');
+	}}
+	*/
+	if (strpos(strtolower($_SERVER['ALL_HTTP']), 'operamini') !== false)
+		$mobile_browser++;
+		define('BROWSERAGENT', 'operamini');
+
+	if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),' ppc') !== false){
+		//Don't detect Power PC as mobile device. $mobile_browser++;
+		define('BROWSERAGENT', 'ppc');
+	}
+	if(preg_match('/(iphone)/i', strtolower($_SERVER['HTTP_USER_AGENT']))){
+		$mobile_browser++;
+		define('BROWSERAGENT', 'iphone');
+	}
+	if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') !== false)
+		$mobile_browser = 0;
+		define('BROWSERAGENT', 'windows');
+
+	if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone') !== false)
+        $mobile_browser++;
+        define('BROWSERAGENT', 'windows phone');
+
+	if($mobile_browser > 0 && $_SESSION['mobilemode'] != 'set')
+		return TRUE; // If mobile, or mobile detected user wishes to keep using mobile site
+	else
+		return FALSE;
+}
+function layout_switch_check($page) {
+	if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
+		define('MOBILEMODE', TRUE);
+	} else {
+		define('MOBILEMODE', FALSE);
+	}
+	//header('Content-Type: text/html; charset=utf-8');
+	$page->includeSnippet('registerfunctions'); // Include custom functions snippet
+	if(isset($_GET['media']) && $_GET['media'] == 'flash' && $page->content('flash') != ''){
+		$page->layout_id = 13; // Force layout change
+		ob_start();
+		$page->_executeLayout();
+		$page = ob_get_contents();
+		ob_end_clean();
+		echo $page;
+		exit();
+	}
+	if(isset($_GET['media']) && $_GET['media'] == 'proposal'){
+		$page->layout_id = 10; // Force layout change
+		ob_start();
+		$page->_executeLayout();
+		$page = ob_get_contents();
+		ob_end_clean();
+		$page = str_replace('href="'.URL_PUBLIC, 'href="'.URL_PUBLIC.'proposal/', $page);
+		echo $page;
+		exit();
+	}
+	if(isset($_GET['media']) && $_GET['media'] == 'print'){
+		$page->layout_id = 5; // Force layout change
+		ob_start();
+		$page->_executeLayout();
+		$page = ob_get_contents();
+		ob_end_clean();
+		$page = str_replace('href="'.URL_PUBLIC, 'href="'.URL_PUBLIC.'print/', $page);
+		$page = str_replace('print/mobile/','mobile/', $page);
+		echo $page;
+		exit();
+	}
+	if((isset($_GET['media']) && $_GET['media'] == 'contrast')){
+		$page->layout_id = 12; // Force layout change
+		ob_start();
+		$page->_executeLayout();
+		$page = ob_get_contents();
+		ob_end_clean();
+		$page = str_replace('href="'.URL_PUBLIC, 'href="'.URL_PUBLIC.'contrast/', $page);
+		$page = str_replace('contrast/mobile/','mobile/', $page);
+		if(stristr($page,'class="popup') && stristr($page,'shadowbox')){
+				$page = str_replace('class="popup', 'rel="shadowbox', $page);
+		}
+		echo $page;
+		exit();
+	}
+	if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
+		if(mobiledevice() == TRUE && stristr($_SERVER['REQUEST_URI'],'mobile/') === FALSE){ // Force mobile page redirect
+			$_SESSION['mobilemode'] = 'set'; /* Mobile has been detected, or chosen. */
+			header("HTTP/1.1 307 Temporary Redirect");
+			header("location: /mobile".$page->url());
+		}
+		$page->layout_id = 7; // Force layout change
+		ob_start();
+		$page->_executeLayout();
+		$page = strtr(ob_get_contents(), array("\t" => "", "\n" => "", "\r" => "", 'href="'.URL_PUBLIC => 'href="'.URL_PUBLIC.'mobile/', 'action="'.URL_PUBLIC.'search.html' => 'action="'.URL_PUBLIC.'mobile/search.html'));
+		$page = str_replace('="'.URL_PUBLIC.'mobile/public/', '="'.URL_PUBLIC.'public/', $page);
+		if(stristr($page,'class="popup') && stristr($page,'shadowbox')){
+			$page = str_replace('class="popup', 'rel="shadowbox', $page);
+		}
+		ob_end_clean();
+		echo $page;
+		exit();
+	}
+}

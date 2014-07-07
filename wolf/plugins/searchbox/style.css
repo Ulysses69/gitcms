@@ -1,0 +1,41 @@
+#searchquery_form {
+	background-color: #fff;
+	padding: 10px;
+}
+#searchquery_form p {
+	margin: 15px 0 10px 0;
+}
+#searchquery_form_table {
+	width: 100%;
+}
+#searchquery_form_table td {
+	padding: 0 10px 10px 0;
+}
+#searchquery_url, #searchquery_destination {
+	width: 100%;
+	height: 20px;
+}
+.node_heading, .node {
+	height: 32px;
+}
+.node_image {
+	margin-right: 3px;
+}
+.url{
+	position:absolute;
+	top:7px; 		
+}
+.destination { 
+	padding: 0;
+	margin: 0;
+	display: block;
+	position:absolute;
+	left:45%;
+	top:7px; 
+	cursor: pointer; 
+}
+.hits { 
+	position:absolute;
+	right:60px;
+	top:7px; 
+}

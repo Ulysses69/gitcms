@@ -1,0 +1,151 @@
+### CMS-Generated Update March 14, 2014, 3:09 pm ###
+#
+# Setting Frog requirements
+#
+AddType text/x-component .htc
+AddType video/ogg .ogm
+AddType video/ogg .ogv
+AddType video/ogg .ogg
+AddType video/webm .webm
+AddType video/mp4 .mp4
+AddType video/x-m4v .m4v
+AddType audio/webm .weba
+AddDefaultCharset UTF-8
+Options -Indexes +FollowSymLinks
+DirectoryIndex cache/index.html index.html index.php
+<IfModule mod_headers.c>
+Header always set Cache-Control "no-store, no-cache, must-revalidate" env=nocache
+Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^dental-team.html /about/team.html [L,R=301,E=nocache:1]
+RewriteCond %{HTTP_HOST} !.local$ [NC]
+RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
+RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
+RewriteRule ^install/index.php$ install/index.php?rewrite=1 [L,QSA]
+RewriteRule ^install/$ install/index.php?rewrite=1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^admin(.*)$ admin/index.php?$1 [L,QSA]
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{DOCUMENT_ROOT}/cache/mobile/index.html -f
+RewriteRule ^mobile/$ %{DOCUMENT_ROOT}/cache/mobile/index.html [L,QSA]
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{DOCUMENT_ROOT}/cache/index.html -f
+RewriteRule ^$ %{DOCUMENT_ROOT}/cache/index.html [L,QSA]
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{DOCUMENT_ROOT}/cache%{REQUEST_URI} -f
+RewriteCond %{THE_REQUEST} !success.html
+RewriteRule (.*) %{DOCUMENT_ROOT}/cache%{REQUEST_URI} [L,QSA]
+#RewriteRule ^%{REQUEST_URI} /cache/$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^portfolio/category/(.*)$ portfolio.html?sort=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^articles/category/(.*)$ articles.html?sort=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^download/(.*)$ /downloads.php?THISPAGE=download.html&media=pdf&filename=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^private/(.*)$ /private.html?THISPAGE=private.html&userfile=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^mobile/search/(.*)$ mobile.html?THISPAGE=search.html&media=mobile&search=$1 [L,QSA]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule ^mobile/(.*)/process.html$ mobile.html?THISPAGE=$1&media=mobile&return=process [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^mobile/(.*)/success.html$ mobile.html?THISPAGE=$1&media=mobile&return=success [L,QSA]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^standard/search/(.*)$ standard.html?THISPAGE=search.html&media=standard&search=$1 [L,QSA]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule ^standard/(.*)/process.html$ standard.html?THISPAGE=$1&media=standard&return=process [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^standard/(.*)/success.html$ standard.html?THISPAGE=$1&media=standard&return=success [L,QSA]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule ^(.*)/process.html$ contact.html?THISPAGE=$1&return=process [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)/success.html$ contact.html?THISPAGE=$1&return=success [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^search/(.*)$ index.php?THISPAGE=search.html&search=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^proposal.html$ index.php?THISPAGE=$1&media=proposal [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^contrast/search/(.*)$ contrast.html?THISPAGE=search.html&search=$1&media=contrast [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^print/search/(.*)$ print.html?THISPAGE=search.html&search=$1&media=print [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^mobile/(.*)$ mobile.html?THISPAGE=$1&media=mobile [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^standard/(.*)$ standard.html?THISPAGE=$1&media=standard [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^print/(.*)$ print.html?THISPAGE=$1&media=print [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^pdf/(.*)$ pdf.html?THISPAGE=$1&media=pdf [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^proposal/(.*)$ proposal.html?THISPAGE=$1&media=proposal [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^flash/(.*)$ flash.html?THISPAGE=$1&media=flash [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^contrast/(.*)$ contrast.html?THISPAGE=$1&media=contrast [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?THISPAGE=$1 [L,QSA]
+#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
+#RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]
+#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
+#RewriteRule ^admin/(.*)$ /notfound.html? [R,L]
+Redirect 301 /assets/ /public/images/assets/
+Redirect 301 /plugins.xml /public/projects/development/software/frog/plugins.xml
+Redirect 301 /googlemap.zip /public/projects/development/software/frog/plugins/googlemap.zip
+Redirect 301 /savemysql.zip /public/projects/development/software/frog/plugins/savemysql.zip
+</IfModule>

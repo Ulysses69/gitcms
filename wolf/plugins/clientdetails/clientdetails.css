@@ -1,0 +1,82 @@
+/*
+#body_plugin_clientdetails #content-wrapper {
+	width: 98%;
+}
+*/
+#body_plugin_clientdetails td input,
+#body_plugin_clientdetails textarea,
+#body_plugin_clientdetails textarea#clientaddress {
+	border: solid 1px #CCCCCC;
+	width: 98%;
+	padding: 3px 2px;
+}
+#body_plugin_clientdetails textarea#clientaddress {
+	height: 7em;
+}
+#body_plugin_clientdetails .hours {
+	width: auto;
+}
+#body_plugin_clientdetails .hours .header {
+	width: 20%;
+	text-align: right;
+}
+#body_plugin_clientdetails .hours .label.open {
+	display: none;
+	width: 3em;
+	text-align: left;
+	position: absolute;
+	border: none;
+}
+#body_plugin_clientdetails .hours .label.close {
+	display: none;
+	width: 3em;
+	text-align: left;
+	position: absolute;
+	border: none;
+}
+#body_plugin_clientdetails .hours h4 {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-size: 95%;
+}
+#body_plugin_clientdetails #content .hours {
+	position: relative;
+}
+#body_plugin_clientdetails fieldset.hours {
+	float: left;
+	width: 49%;
+}
+#body_plugin_clientdetails fieldset.hours.closed {
+	float: right;
+	width: 45%;
+}
+#body_plugin_clientdetails .appt {
+	width: 0.86em;
+}
+#body_plugin_clientdetails .appt label {
+	position: absolute;
+	top: 15px !important;
+	right: 14px;
+	padding: 0;
+	white-space: nowrap;
+	font-size: 80%;
+	color: #666 !important;
+	font-family: arial;
+}
+#body_plugin_clientdetails #content .checkbox {
+	border: none;
+	width: auto;
+}
+#body_plugin_clientdetails #content table td {
+	background: #f3efef !important;
+}
+#body_plugin_clientdetails #content #current_day_fields {
+	clear: both;
+}
+#body_plugin_clientdetails select {
+	padding: 3px 2px !important;
+}
+#body_plugin_clientdetails select#schema {
+	width: 100%;
+}

@@ -1,0 +1,51 @@
+#tab-control-meta #div-title,
+#tab-control-meta #div-settings,
+#tab-control-meta #robots-container,
+#tab-control-meta #Related-pages-container {
+	margin-bottom: 5%;
+}
+.pages .proposal-container {
+	padding: 0 0 16px 0;
+	border: solid 1px #C7C7C7;
+	background-color: #EEEEEE;
+	display: block;
+	margin: 0;
+	/*
+	position: relative;
+	overflow: hidden;
+	*/
+}
+.pages #proposal-container .notes {
+	border-top: solid 1px #c7c7c7;
+	font-size: 90%;
+}
+.pages #proposal-container .notes h2 {
+	margin: 0;
+	padding: 5px 0;
+}
+.pages .proposal-container li {
+	padding: 15px 22px 0 15px;
+	margin: 0 0 0 0;
+	border: none;
+	background-color: #EEEEEE;
+}
+.proposal-container #page_proposal_goalindex,
+.proposal-container #page_proposal_noteindex {
+	height: 11.4em;
+}
+#body_page_edit .badge {
+	 float: right;
+	 position: relative;
+	 font: bold 80% arial, verdana;
+	 top: -9px;
+	 padding: 2px 4px 1px 4px; 
+	 margin: 0 0 0 3px;
+	 background: #D70000; 
+	 color: #fff;
+	 min-width: 0.8em;
+	 min-height: 0.8em;
+	 text-align: center;
+	 border-radius:30px;
+	 -moz-border-radius:30px;
+	 -webkit-border-radius:30px;
+}

@@ -1,0 +1,321 @@
+@media screen {
+	#top { padding: 6% 4% 4% 4%; }
+	ul, #print-sitelinks { display: none; }
+	ul#nav, #content ul { display: block; }
+}
+@media print {
+	h2, .h2, h3, h4 { page-break-after: avoid; }
+	p {	page-break-inside: avoid; }
+	.entry .info a { display: none; }
+	ul, ul#nav { display: none; }
+	h2, .h2 { display: none !important; }
+	.year h2 { display: block !important; }
+	#content ul { display: block; }
+	#content h2, #content .h2 { display: block !important; }
+	#top:after { content: "Thank you for printing this document. As part of our environmental responsibility we have automatically removed navigation and other superfluous elements."; display: block; border: 1px solid #ccc; font-style: italic; margin: 1em 0 0 0; padding: 0.8em 1em; }
+	/* p a[href^=http]:after { content:" <" attr(href) "> "; color: #666; } */
+}
+body {
+	font-family: Calibri, Arial, Verdana, Helvetica, Georgia, "Times New Roman", Serif;
+	color: #222;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+}
+img {
+	max-width: 100% !important;
+}
+#googlemap img {
+	max-width: none !important;
+}
+#logo img,
+#nav img {
+	display: none;
+}
+ul,
+img,
+tr,
+#googlemap,
+#googlemap-print {
+	page-break-inside: avoid;
+}
+img#googlemap-print {
+	display: block;
+	width: 100%;
+	height: auto;
+	page-break-before: always;
+}
+#googlemap {
+	display: none;
+}
+.gmnoprint {
+	display: none;
+}
+
+#logo,
+#help,
+#crumbs,
+#searchbox,
+#sidebar,
+#links,
+#options,
+.top,
+object,
+#nav {
+	display: none;
+}
+a {
+	color: #222;
+	text-decoration: none;
+	border: none;
+}
+h1 {
+	font-size: 26pt;
+	padding: 0;
+	page-break-before: auto;
+}
+h2,
+.h2 {
+	font-size: 20pt;
+	font-weight: normal;
+}
+#main h3 {
+	font-size: 16pt;
+	margin: 0;
+}
+p,
+h2,
+.h2,
+h3,
+h4 {
+	orphans: 3;
+	widows: 3;
+}
+#content h2,
+#content .h2,
+label,
+label span {
+	display: block;
+}
+ul  {
+	margin: 0 0 1em 0;
+	padding: 0 0 0 1em;
+}
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+address {
+	font-style: normal;
+}
+address span {
+	display: block;
+}
+#nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #F2F2F2;
+	border-bottom: solid 1px #E0E0E0;
+	overflow: hidden;
+	text-align: left;
+}
+#nav:before {
+	content: 'Print preview';
+	position: relative;
+	margin: 15px;
+	top: 14px;
+}
+#nav li {
+	display: inline;
+}
+#nav li#home-go {
+	float: right;
+}
+#nav a {
+	float: right;
+	padding: 4px 8px 5px 8px;
+	margin: 10px 10px 10px 0;
+	color: #222;
+	border: 1px solid #D6D6D6;
+	background: #F5F5F5;
+	font: normal 10pt Calibri, Arial, Verdana, Helvetica, Georgia, "Times New Roman", Serif;
+}
+.checkbox {
+	height:1.2em;
+	left:-1.7em;
+	position:absolute;
+	top:0;
+	width:1.2em;
+}
+.submitholder {
+	border-top:solid 1px #bebebe;
+	margin:0.5em 0 0;
+	padding:1em 0;
+}
+fieldset {
+	border:none;
+	padding:0;
+}
+fieldset fieldset label {
+	margin-left:1.6em;
+}
+fieldset fieldset .checkbox {
+	height:1.2em;
+	width:1.2em;
+	left:-1.7em;
+	position:absolute;
+	margin-top:0;
+}
+label {
+	position: relative;
+	margin:0 0 1em;
+}
+label input,
+label textarea,
+label select {
+	font:normal 0.96em Arial, Verdana, Helvetica, sans-serif;
+	font-size:110%;
+	width:99%;
+	border: solid 1px #ccc;
+	padding: 0.1em 0.3em;
+}
+label textarea {
+	display: block;
+	overflow: visible;
+	page-break-inside: avoid;
+	height: auto;
+}
+label select {
+	width:100%;
+}
+h2,
+legend,
+#submit,
+.note,
+#mailinglist span,
+label span em,
+#sitelinks {
+	display: none;
+}
+.year h2,
+#top h2,
+label,
+label span,
+#home-page #nav li {
+	display: block;
+}
+#mailinglist{
+	margin: 0.4em 0 0 1.6em;
+	padding: 0.2em;
+	position: relative;
+}
+blockquote {
+	position: relative;
+	display: block;
+	margin: 0 0 2em 0;
+	padding: 0 0 0 1em;
+	font-style: italic;
+	border-left: solid 1px #ccc;
+}
+blockquote[data-cite]:after {
+	content: attr(data-cite) "";
+	position: relative;
+	display: block;
+	min-width: 2em;
+}
+
+ul.open,
+ul.closed {
+	list-style: none;
+	margin: -1em 0 1em -0.9em;
+}
+
+ul.open h3,
+ul.closed h3 {
+	margin: 0 0 0.05em 0;
+}
+
+ul.open li,
+ul.closed li {
+	margin: 0 0 0.5em 0;
+}
+
+ul.jpg {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	clear: both;
+	overflow: hidden;
+}
+ul.jpg li {
+	margin: 0 0.5em 0.5em 0;
+	padding: 0;
+	float: left;
+}
+ul.jpg li * {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+li a[href$='.pdf'] span,
+li a[href$='.doc'] span,
+li a[href$='.docx'] span,
+li a[href$='.rtf'] span,
+li a[href$='.txt'] span {
+	border-left: solid 1px #b6b6b6;
+	position: relative;
+	top: -0.3em;
+	left: 0.3em;
+	font-size: 70%;
+	padding: 0 0 0.3em 0.8em;
+}
+.tracker {
+	position: absolute;
+	left: -90em;
+}
+
+
+
+#seourl, #seotitle, #seodesc, #seokeys, #pageid, #header, #main, #goals { position: relative; margin: 1em 0 2em 0; padding: 1em 0 1em 0; }
+#goals strong.section, strong.section { font-size: 11px; display: block; background: #eee; margin: -1.7em 0 0 0; padding: 0.5em 0.7em; color: #000 }
+#content strong.section { margin-left: -0.7em }
+
+
+
+
+ul.setThumbs {
+	float: none;
+	position: relative;
+	padding: 0;
+	margin: 1em 0 0 0;
+	overflow: hidden;
+	clear: both;
+	width: 100%;
+}
+ul.setThumbs li {
+	float: left;
+	display: inline;
+	position: relative;
+	padding: 0;
+	margin: 0 10px 10px 0;
+	overflow: hidden;
+}
+ul.setThumbs li a {
+	float: left;
+	position: relative;
+	overflow: hidden;
+	padding: 3px;
+	margin: 0;
+	border: solid 1px #ccc;
+}
+ul.setThumbs li a img {
+	float: left;
+	position: relative;
+	padding: 0;
+	margin: 0;
+}

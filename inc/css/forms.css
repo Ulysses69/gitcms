@@ -1,0 +1,25 @@
+#content form{margin-bottom:1em;overflow:hidden}
+form{padding:0 0 1em 0}
+.checkbox{height:1.2em;left:-1.7em;position:absolute;top:0;width:1.2em}
+.submitholder{margin:.5em 0 0;padding:1em 0}
+fieldset{border:none;padding:0}
+fieldset fieldset label{margin-left:1.6em}
+label{position:relative;margin:0 0 .4em}
+label input,label textarea,label select{font:normal 110% Arial, Verdana, Helvetica, sans-serif;width:94%;padding:0.3em !important}
+label select{width:100%}
+label,label span,#home-page #navigation li{display:block}
+legend,#mailinglist span span{display:none}
+#mailinglist{margin:.4em 0 0 1.6em;padding:.2em;position:relative}
+.contact-form .note,#mailinglist span{display:none}
+#postedmessage h3,#postedmessage h4 {position: relative;padding: 0.5em 0.5em;margin-left: 1px}
+#postedmessage h4:after{content:':'}
+#postedmessage p{position:relative;border:solid 1px #b5b5b5;padding:2em 0.5em 0.4em 0.5em;margin-bottom:0.5em;margin-top:-2.4em}
+#mandatory{clear:both;overflow:hidden}
+span.required:not(.legacy){float:left}
+em.required{font-style:normal}
+em.required:not(.legacy){float:left;position:relative;width:0.9em;height:1.1em;overflow:hidden;margin-top:-2px;margin-left:0;margin-right:2px;font-style:normal;cursor:help}
+label em.required:not(.legacy){position:absolute;margin-left:0}
+em.required:before{content:"* ";line-height:1.4em;font-size:11px;margin-left:5px}
+@media screen and (min-width: 360px) {
+label input,label textarea,label select{width:96%}
+}

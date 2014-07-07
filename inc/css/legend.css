@@ -1,0 +1,135 @@
+﻿body,
+#search-page ol h2 {
+	font: 0.96em Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+img {
+	border: none;
+}
+
+
+
+
+#banner {
+	/*
+	width: 600px;
+	height: 200px;
+	*/
+}
+
+
+
+
+/* Navigation */
+#help {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style: none;
+}
+#help a {
+	position: relative;
+	white-space: nowrap;
+	display: inine;
+	top: 0;
+}
+#help li {
+	display: inline;
+}
+#help ul {
+	display: inline;
+}
+#help ul a {
+	position: relative;
+	top: -4em;
+}
+#help ul a:focus,
+#help ul a:active {
+	position: absolute;
+	top: 0;
+	left: 5em;
+}
+#help ul a:active:before,
+#help ul a:focus:before {
+	content:"> ";
+	margin-left: 0;
+}
+#content,
+#navigation {
+	behavior:expression((this.runtimeStyle.behavior="none")&&(this.tabIndex="-1"));
+}
+
+
+
+a {
+	color: blue;
+}
+a:focus,
+input.submit:focus {
+	outline: none;
+	color: #fff;
+	text-decoration: none;
+	background: blue;
+}
+
+a:active,
+input.submit:active {
+	color: red;
+	background: transparent;
+}
+
+
+/* Search box */
+#searchbox fieldset { display:inline; width: auto;}
+#searchbox label {
+	position: absolute;
+	left: -100em;
+	top: 0;
+	margin-top: -1.5em;
+}
+
+
+#crumbs:before {
+	content:"You are here: ";
+	margin-left: -40px;
+}
+
+
+/* Form */
+label {
+	position: relative;
+	clear: both;
+	display: block;
+}
+label span {
+	position: relative;
+	clear: both;
+	display: block;
+	padding: 0 1em 0 0;
+}
+label em {
+	position: absolute;
+	max-width: 8em;
+	height: 1.3em;
+	overflow: hidden;
+	font-style: normal;
+}
+label span:first-child em {
+	margin: 0 0 0 0.1em;
+}
+label span:first-child em:before {
+	content: "* " ;
+	margin-left: 2px;
+	margin-right: 10em;
+	font-size: 11px;
+	text-indent: 10em;
+}
+
+
+
+
+#navigation a:hover {
+	cursor: pointer;
+}

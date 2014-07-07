@@ -1,0 +1,24 @@
+body {
+	font-size: 0.8em;
+}
+h1 {
+	font-size: 160%;
+}
+h2 {
+	font-size: 140%;
+}
+h3 {
+	font-size: 120%;
+}
+ul {
+	margin-left: 0;
+	padding-left: 0;
+}
+ol {
+	margin-left: 0;
+	padding-left: 0;
+}
+li {
+	margin-left: 20px;
+	padding-left: 0;
+}

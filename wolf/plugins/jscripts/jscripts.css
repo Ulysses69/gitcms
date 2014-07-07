@@ -1,0 +1,3 @@
+#body_plugin_jscripts table.fieldset td input, #body_plugin_jscripts table.fieldset td select { padding: 2px 4px !important; }
+#body_plugin_jscripts table.fieldset td { text-align: left; background-color: transparent; }
+#body_plugin_jscripts .marquee table.fieldset td label { display: block; }

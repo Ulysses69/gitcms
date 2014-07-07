@@ -1,0 +1,20 @@
+#body_plugin_mobile_check .fieldset td {
+	border:none;
+	background: #f3efef !important;
+}
+#body_plugin_mobile_check .fieldset td #screen_width {
+	width: 3em;
+}
+#body_plugin_mobile_check #linkcustom {
+	width: 100%;
+}
+#body_plugin_mobile_check fieldset table td.field input.color-picker {
+	width: 5.2em !important;
+}
+#body_plugin_mobile_check select {
+	padding: 3px 2px !important;
+}
+#body_plugin_mobile_check input.checkbox {
+	width: auto;
+	border: none;
+}

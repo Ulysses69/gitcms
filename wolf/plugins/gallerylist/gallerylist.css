@@ -1,0 +1,65 @@
+#gallerylist-container {
+	padding: 10px 10px 15px 10px;
+	border: solid 1px #C7C7C7;
+	background: #EEEEEE;
+}
+
+#gallerylist-container td {
+	background: #EEEEEE;
+}
+
+#gallerylist-container td.label {
+	width: 30%;
+}
+
+#gallerylist-container td input {
+	width: 60%;
+}
+#gallerylist-container .notes {
+	margin: 10px;
+	padding: 10px 0 0 0;
+	border-top: solid 1px #c7c7c7;
+}
+#gallerylist-container .notes h2 {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: 90%;
+	font-weight: bold;
+}
+#gallerylist-container .notes p {
+	font-size: 80%;
+}
+
+#gallerylist-container a.redirectcheck {
+	overflow: hidden;
+	margin: 5px 5px 10px 5px;
+	padding: 2px 5px;
+	white-space: nowrap;
+	font-family: "Lucida Grande","Bitstream Vera Sans",Helvetica,Verdana,Arial,sans-serif;
+	font-size: 80%;
+}
+#gallerylist-container input {
+	width: 100%;
+}
+#gallerylist-container select {
+	padding: 3px;
+	width: 102%;
+}
+#gallerylist-container .page-uri td {
+	 position: relative;
+}
+#gallerylist-container .page-uri .badge {
+	 position: relative;
+	 font: bold 80% arial, verdana;
+	 right: 0;
+	 padding: 2px 4px 1px 4px;
+	 margin: -16px -10px 0 0;
+	 background: #666;
+	 color: #fff;
+	 min-width: 0.8em;
+	 min-height: 0.8em;
+	 text-align: center;
+	 border-radius:30px;
+	 -moz-border-radius:30px;
+	 -webkit-border-radius:30px;
+}

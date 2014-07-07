@@ -1,0 +1,19 @@
+#body_plugin_maintenance #content img {
+	width: 20px;
+	height: 20px;
+}
+#body_plugin_maintenance #sidebar .box {
+	padding: 0;
+	border: none;
+}
+#body_plugin_maintenance #sidebar .button {
+	margin: 0 0 1px 0;
+	clear: both;
+	overflow: hidden;
+}
+#body_plugin_maintenance #sidebar #status img {
+	float: left;
+}
+#body_plugin_maintenance input:focus {
+	border-color: #389702;
+}

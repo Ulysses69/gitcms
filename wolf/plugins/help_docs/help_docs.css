@@ -1,0 +1,14 @@
+#body_plugin_help_docs #help-docs {
+	color: #fff;
+}
+#body_plugin_help_docs #content-wrapper {
+	margin-top: 15px;
+}
+#body_plugin_help_docs #content-wrapper code {
+	margin-top: 15px;
+	background: #fff;
+}
+#body_plugin_help_docs #content-wrapper p a {
+	color: #5CB80A;
+	text-decoration: none;
+}

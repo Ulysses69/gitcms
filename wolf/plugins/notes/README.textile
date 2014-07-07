@@ -1,0 +1,64 @@
+h3. Purpose
+
+The sole purpose of this plugin is to take notes within WolfCMS. It's very easy to use. You can write note, edit or delete it, that's it.
+
+h3. Installation
+
+Like any other WolfCMS based plugin you should do the following:
+
+* download plugin into <code>../wolf/plugins/</code> directory
+* unpack it and (re)name it *notes*
+* login to your admin area
+* go to Administration->Plugins and enable it
+
+For all other info see *Documentation* under Notes tab
+
+h3. Changelog
+
+Version 0.1.0
+
+* translation update for Wolfcms 0.7.7+
+
+Version 0.0.9
+
+* added support for in cms text filters (thanks andrewmman)
+* notice for deleted messages
+* visual changes
+* order notes changed from date to id
+* code corrections
+
+Version 0.0.8
+
+* minor code tweaks
+
+Version 0.0.7
+
+* extra code deleted
+
+Version 0.0.6
+
+* dutch translation (thanks Fortron)
+* minor html fixes (thanks Fortron)
+
+Version 0.0.5
+
+* "Edit note" within note
+* image paths corrected (thanks David)
+
+Version 0.0.4
+
+* polish translation (thanks djgprv)
+
+Version 0.0.3
+
+* portugese translation (thanks daniel affonso)
+* sqlite support (thanks daniel affonso)
+
+Version 0.0.2
+
+* updated for Wolf 0.7.3+
+* permissions updated
+
+Version 0.0.1
+
+* initial release for Wolf 0.6.0

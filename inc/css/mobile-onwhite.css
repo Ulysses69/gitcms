@@ -1,0 +1,70 @@
+﻿body,#head{padding:0;margin:0;color:#222222;background:#11597c}
+.mobile h1,.mobile h2,h3,h4,.mobile p,address,table,#searchbox,#content ul,#content ol{margin:0;padding:0 0.5em 0.5em 0.5em;font-style:normal}
+.mobile h1{padding:0.5em}
+#content ul,#content ol{margin:0 1em}
+.mobile #content *{padding-left:0;padding-right:0}
+body,input{font:normal 0.96em arial,verdana,sans-serif}
+.mobile body{background:#dddddd;color:#222222}
+a{overflow:hidden;padding:5px}
+.mobile #content li{padding-bottom:0.5em}
+.mobile #content li a{margin:15px 0}
+#logo{text-align:left;padding:0.5em 0 0 0.5em;min-height:2.4em}
+#menu{list-style:none;overflow:hidden;padding:0;margin:0}
+#menu li,#sidemenu li{padding:5px 0}
+#menu li{position:absolute}
+#footer{margin-top:0.5em;font-size:80%}
+#goback{display:none;top:0.5em;left:0.5em}
+#gomenu{top:0.5em;right:0.5em}
+#content,#navigation{background:#ffffff;padding:0 0.5em;margin:0;overflow:hidden}
+a,.mobile #head a{color:#ffffff}
+#content a{color:#0689f4}
+.mobile a{color:#222222}
+#navigation{margin:0;padding:0 0 0.5em 1.5em}
+.mobile fieldset{border:none;padding:0;margin:0}
+.mobile #searchbox{padding:0.5em}
+.mobile #searchbox legend,.mobile #searchbox label{position:absolute;left:-10em}
+.mobile #searchbox input{border:none;float:left;padding:0.27em;width:70%}
+#searchbox input.submit{text-transform:capitalize;color:#ffffff;float:right;padding:0.2em;width:22%}
+#content input.submit{float:left;padding:5px 8px;overflow:hidden;width:auto}
+#content form{margin-bottom:1em}
+.mobile #searchbox input{padding:0.5em;font-size:120%}
+#navigation a,#head a,.mobile input.submit{color:#ffffff;background:#262728;padding:5px 8px;text-decoration:none;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px}
+#menu a,.mobile input.submit{color:#ffffff;background:#262728;background: -moz-linear-gradient(top,rgba(38,39,40,0.7) 10%,rgba(38,39,40,0.9) 80%);background: -webkit-gradient(linear,left top,left bottom,color-stop(0.10,rgba(38,39,40,0.7)),color-stop(0.80,rgba(38,39,40,0.9)));}
+#home-page #navigation a{color:#ffffff;background:#11597c;background: -moz-linear-gradient(top,#11597c 0%,#11506f);background: -webkit-gradient(linear,left top,left bottom,from(#11597c),to(#11506f));}
+.mobile #searchbox input.submit{padding:5px 8px;font-size:120%}
+html[class=mobile] #home-page #navigation {list-style:none;padding:0.5em;margin:0}
+html[class=mobile] #home-page #navigation a {display:block;padding:0.6em 0.8em;margin:0 0 0.5em 0;text-decoration:none;font-size:110%}
+html[class=mobile] #home-page #navigation a:after {content:"\203A";color:#cccccc;float:right;font-family:arial;font-size:160%;margin:-0.25em 0}
+.mobile #content img{width:100%;height:auto;border:none}
+#content ul,#content ol{margin-bottom:0;margin-left:1.2em;margin-top:0;padding:0 0 1em 0}
+#content li{padding:.3em}
+#content ul.jpg{list-style:none;padding:0 0 .1em 0;margin:0}
+#content ul.jpg li{padding:0;margin:0 0 .6em 0}
+.mobile #searchbox input{font-size:90%;-webkit-appearance:none;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px}
+.mobile #searchbox input.submit{text-align:center;font-size:100%}
+#sidemenu{margin-top:0;padding-bottom:1em}
+#top > h2 {margin-top:0.5em}
+body{font-size:160%}
+#top ul#sidemenu {padding:0 0 1em 2em;margin:0}
+#content ul.open,#content ul.lunch {list-style:none;padding:0;margin:0}
+.open h3,.lunch h3 {display:inline;padding:0;margin:0 0.3em 0 0;font-size:100%}
+.open .today,.lunch .today {background:yellow}
+.open:not(.legacy) span,.lunch:not(.legacy) span{display:inline-block;position:relative;overflow:hidden;width:0.3em;height:1em}
+.open:not(.legacy) span:before,.lunch:not(.legacy) span:before{content:" - ";text-align:center;}
+@media screen and (orientation:portrait){
+/* Portrait */
+}
+@media screen and (orientation:landscape){
+/* Landscape */
+}
+@media only screen and (max-device-width: 480px){
+/* iPhone */
+}
+@media only screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+/* iPhone 4 */
+body{font-size:91%}
+.mobile #searchbox input{width:74%}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
+/* iPad */
+}

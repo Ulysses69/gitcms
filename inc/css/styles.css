@@ -1,0 +1,55 @@
+/*
+#navigation li {
+	width: 6em;
+}
+#navigation a {
+	position: relative;
+	padding: 0 10px 0 0;
+	margin: 0 0 0 0;
+	top: 2px;
+	overflow: hidden;
+}
+#navigation a span {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: url('../img/navigation.gif') no-repeat 0px center;
+	border-bottom: solid 2px #fff;
+}
+.contrast #navigation a span {
+	background-image: url('../img/contrast/navigation.gif');
+}
+
+
+
+#about a span {
+	background-position: 0 center;
+}
+#faq-navigation a span {
+	background-position: -100px center;
+}
+#contact-navigation a span {
+	background-position: -200px center;
+}
+
+
+
+#about-navigation a:focus span,
+#about-navigation a:active span,
+#about-navigation a:hover span,
+#about-navigation.selected a span {
+	background-position: -1000px center;
+}
+#faq-navigation a:focus span,
+#faq-navigation a:active span,
+#faq-navigation a:hover span,
+#faq-navigation.selected a span {
+	background-position: -1100px center;
+}
+#contact-navigation a:focus span,
+#contact-navigation a:active span,
+#contact-navigation a:hover span,
+#contact-navigation.selected a span {
+	background-position: -1200px center;
+}
+*/

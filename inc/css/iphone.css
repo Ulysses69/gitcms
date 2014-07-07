@@ -1,0 +1,9 @@
+﻿body{font-size:90%}
+#searchbox input.submit{width:24%}
+#searchbox input{float:left;width:73%;font-size:90%;padding:.38em}
+@media screen and (max-width: 320px){
+/* Portrait */
+}
+@media screen and (min-width: 321px){
+/* Landscape */
+}

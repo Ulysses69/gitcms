@@ -1,0 +1,54 @@
+#body_plugin_tinymce_styles select {
+	border: solid 1px #CCCCCC;
+	width: 97%;
+	padding: 3px 2px;
+}
+#body_plugin_tinymce_styles input.checkbox {
+	width: auto;
+}
+#body_plugin_tinymce_styles textarea#clientaddress {
+	height: 7em;
+}
+#body_plugin_tinymce_styles .hours {
+	width: auto;
+}
+#body_plugin_tinymce_styles .hours .header {
+	width: 20%;
+	text-align: right;
+}
+#body_plugin_tinymce_styles .hours .label.open {
+	width: 3em;
+	text-align: left;
+}
+#body_plugin_tinymce_styles .hours .label.close {
+	width: 3em;
+	text-align: left;
+}
+#body_plugin_tinymce_styles .hours h4 {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-size: 95%;
+}
+
+#body_plugin_tinymce_styles #content .hours {
+	position: relative;
+}
+#body_plugin_tinymce_styles .appt label {
+	position: absolute;
+	top: -12px;
+	right: 15px;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	font-size: 90%;
+}
+#body_plugin_tinymce_styles #content .field input {
+	width: 95%;
+}
+#body_plugin_tinymce_styles #content .field input.checkbox {
+	width: auto;
+}
+#body_plugin_tinymce_styles td {
+	background: #f3efef !important;
+}

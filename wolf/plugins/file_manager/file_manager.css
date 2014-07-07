@@ -1,0 +1,94 @@
+#body_plugin_file_manager #files-list .index th:first-child {
+	/* border: none; */
+}
+
+#body_plugin_file_manager table.index {
+	border-top: none;
+}
+
+#body_plugin_file_manager #files-list code {
+	font-size: 85%;
+	font-family: Arial, Verdana, "Lucida Grande", "Bitstream Vera Sans", Helvetica, sans-serif;
+	width: 8em;
+}
+#body_plugin_file_manager #files-list th.size {
+	width: 70px;
+}
+#body_plugin_file_manager #files-list th.permissions {
+	width: 120px;
+}
+#body_plugin_file_manager #files-list th.mtime {
+	width: 100px;
+}
+#body_plugin_file_manager #files-list th.modify {
+	width: 50px;
+}
+
+#body_plugin_file_manager #files-path {
+	overflow: hidden;
+	position: relative;
+	margin: 0 0 0.5em 0;
+}
+#body_plugin_file_manager .boxed {
+	overflow: hidden;
+	position: relative;
+	border: solid 1px #cccccc;
+	padding: 10px;
+	margin: 23px 0 20px 0 !important;
+}
+#body_plugin_file_manager .form-area {
+	overflow: hidden;
+	position: relative;
+	padding: 0 6px 0 0;
+	margin: -12px 0 -30px 0;
+}
+#body_plugin_file_manager .form-area textarea {
+	overflow: auto;
+}
+#body_plugin_file_manager #files-list th {
+	border-top: solid 1px #cccccc;
+	/* border-bottom: solid 1px #cccccc; */
+	overflow: hidden;
+	position: relative;
+	padding: 10px 2px;
+	margin: 0;
+	background: #f5f5f5;
+}
+#body_plugin_file_manager #files-list td {
+	overflow: hidden;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#body_plugin_file_manager table {
+	position: relative;
+}
+#body_plugin_file_manager #main #content .boxed table#files-list td {
+	position: relative !important;
+	overflow: hidden !important;
+	padding: 5px 10px 5px 1px;
+}
+#body_plugin_file_manager .boxed table {
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+#body_plugin_file_manager .boxed th {
+	font-weight: bold !important;
+}
+#body_plugin_file_manager .boxed td,
+#body_plugin_file_manager .boxed tbody tr:hover * {
+	font-size: 96%;
+}
+#body_plugin_file_manager .boxed td a {
+	/* text-decoration: none; */
+}

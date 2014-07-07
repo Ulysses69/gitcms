@@ -1,0 +1,137 @@
+#body_plugin_dashboard tr.odd, #body_plugin_dashboard tr.odd > td {
+    background-color: #dfdfdf;
+    border-top: 0px;
+}
+
+#body_plugin_dashboard tr.even, #body_plugin_dashboard tr.even > td {
+    background-color: #fff;
+    border-top: 0px;
+}
+
+#body_plugin_dashboard #content ul {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#body_plugin_dashboard #content {
+    padding-top: 4px;
+}
+
+#body_plugin_dashboard form li {
+	position: relative;
+	background-color: #fff;
+	margin: 0 0 5px 0;
+	padding: 10px 10px 0 10px;
+	border-bottom: solid 1px #CACACA;
+}
+#body_plugin_dashboard .warning,
+#body_plugin_dashboard .warning a {
+	color: red;
+}
+#body_plugin_dashboard .avatar {
+	position: relative;
+	float: left;
+	margin: -5px 10px 0 -6px;
+}
+#body_plugin_dashboard .helper {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 80%;
+}
+#body_plugin_dashboard .counter {
+	position: absolute;
+	font: normal 80% arial, verdana;
+	margin: -2px 0 0 5px;
+	padding: 2px 4px 1px 4px;
+	background: #D70000;
+	color: #fff;
+}
+#body_plugin_dashboard form h2 {
+	margin-left: 6px;
+}
+#body_plugin_dashboard form h3 {
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+#body_plugin_dashboard br {
+	margin: 0;
+	padding: 0;
+}
+#body_plugin_dashboard #site-cancel-page {
+	position: relative;
+	padding: 5px 8px;
+	top: -10px;
+}
+#body_plugin_dashboard #history {
+	padding: 5px 10px;
+	border: solid 1px #ccc;
+}
+#body_plugin_dashboard #history #noactivity {
+	padding: 5px 0;
+	margin: 0;
+}
+
+
+#body_plugin_dashboard #sidebar p,
+#body_plugin_file_manager #sidebar p,
+#body_layout_index #sidebar p,
+#body_user_index #sidebar p,
+#body_user_add #sidebar p,
+#body_user_edit #sidebar p {
+	margin: 0 0 1px 0;
+	border-bottom: solid 1px #bbbbbb;
+}
+
+
+#body_plugin_dashboard #sidebar p:hover {
+	border-bottom: solid 1px #8f8f8f;
+}
+
+
+
+#body_plugin_dashboard #sidebar .box p {
+	margin: 1em 0;
+	border: none;
+}
+
+
+#body_plugin_dashboard #push_page_to_top {
+	position: absolute;
+	top: -2em;
+}
+
+
+
+
+
+
+
+
+/*
+#body_plugin_dashboard .warnings,
+#body_plugin_dashboard .warnings li {
+	background: red;
+}
+#body_plugin_dashboard .warnings li,
+#body_plugin_dashboard .warnings li a {
+	color: #fff;
+	border: none;
+}
+*/
+#body_plugin_dashboard form .warnings {
+	border: solid 1px #ccc;
+	padding: 10px 10px 1.4em 10px;
+}
+#body_plugin_dashboard form .warnings li {
+	margin-bottom: -0.6em;
+	border-top: solid 1px #eae3e3;
+	border-bottom: none;
+}
+/*
+#body_plugin_dashboard .warnings li.warning:before {
+	content:url('img/warning-lg.png');
+	float: left;
+	margin: 0 10px 0 0;
+}
+*/

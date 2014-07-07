@@ -1,0 +1,34 @@
+#body_plugin_copyright .fieldset {
+	position: relative;
+	margin-top: -0.44em;
+}
+#body_plugin_copyright .fieldset td {
+	border:none;
+	background: #f3efef !important;
+}
+#body_plugin_copyright #linkcustom,
+#body_plugin_copyright #cqcname {
+	width: 100%;
+}
+#body_plugin_copyright #linkback {
+	padding: 3px 2px !important;
+	width: 100%;
+}
+
+#body_plugin_copyright td.field.number {
+	width: 11em;
+}
+#body_plugin_copyright td.label.url {
+	width: 10em;
+}
+#body_plugin_copyright td.field {
+	vertical-align: top;
+}
+#body_plugin_copyright td.field.address textarea {
+	height: 7em;
+}
+#body_plugin_copyright td.field.number input,
+#body_plugin_copyright td.field.url input,
+#body_plugin_copyright td textarea {
+	width: 98%;
+}

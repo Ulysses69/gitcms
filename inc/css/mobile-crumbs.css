@@ -1,0 +1,7 @@
+#crumbs{overflow:hidden;clear:both;list-style:none;font-size:80%;margin-left:0;text-align:left;border-bottom:solid 1px #bebebe;padding:0 0 0 0.4em}
+#crumbs li.selected{display:none}
+#crumbs{border-bottom:solid 1px #bebebe;margin-bottom:1.25em}
+#crumbs li{float:left;display:inline}
+#crumbs a{text-decoration:none;float:left;padding:0.3em}
+#crumbs li a:before{content:" > ";font-size:80%;padding-right:0.6em}
+#crumbs li:first-child a:before{content:"";padding:0}
