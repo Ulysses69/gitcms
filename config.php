@@ -2,8 +2,8 @@
 
 // Database settings:
 define('DB_DSN', 'mysql:dbname=db_name;host=localhost;port=3306');
-define('DB_USER', 'db_username');
-define('DB_PASS', 'db_password');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('TABLE_PREFIX', '');
 
 // Produce PHP error messages for debugging?
