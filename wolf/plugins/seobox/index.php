@@ -1097,6 +1097,12 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 		/* Check if tracking type is valid and that a category and action have been set */
 		if(($track == '_trackEvent' || $track == '_trackPageview') && $category != '' && $action != ''){
 
+            
+            /* If page object not returned, set page to home page id, 1 */
+            if(!isset($parent)){
+                $parent = Page::findById(1);
+            }
+
 
 			/* Determine script type (remove for HTML5) */
 			if($parent->layout_id == '17' || $parent->parent->layout_id == '17'){
