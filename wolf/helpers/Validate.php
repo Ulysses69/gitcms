@@ -526,7 +526,11 @@ class Validate {
      * @return  boolean
      */
     public static function digit($str, $utf8 = FALSE) {
-        return ($utf8 === TRUE) ? (bool) preg_match('/^\pN++$/uD', (string) $str) : ctype_digit((string) $str);
+        if(function_exists('ctype_digit')){
+            return ($utf8 === TRUE) ? (bool) preg_match('/^\pN++$/uD', (string) $str) : ctype_digit((string) $str);
+        } else {
+            return ($utf8 === TRUE) ? (bool) preg_match('/^\pN++$/uD', (string) $str) : is_numeric((string) $str);
+        }
     }
 
 
