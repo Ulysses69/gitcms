@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('PAGEOPTIONS_VERSION')) { define('PAGEOPTIONS_VERSION', '1.4.3'); }
+if (!defined('PAGEOPTIONS_VERSION')) { define('PAGEOPTIONS_VERSION', '1.5.0'); }
 if (!defined('PAGEOPTIONS_ROOT')) { define('PAGEOPTIONS_ROOT', URI_PUBLIC.'wolf/plugins/page_options'); }
 Plugin::setInfos(array(
 	'id'					=> 'page_options',
@@ -31,6 +31,21 @@ if(Plugin::isEnabled('page_options')){
 			$updated_enabled = Plugin::getSetting('updated_enabled', 'page_options');
 			if($updated_enabled == 'show'){
 				return '<p class="updated"><small>This page was last updated on the '.displayUpdated($parent,'return').'</small></p>';
+			}
+		}
+	}
+
+	/* Page options - new */
+	if(!function_exists('pagereporterror')){
+		function pagereporterror($parent){
+			$report_enabled = Plugin::getSetting('report_enabled', 'page_options');
+			if($report_enabled == 'show'){
+				//if($parent->id != 16){
+					$ref = $_SERVER["REQUEST_URI"];
+					$addref = ''; if(!stristr($_SERVER["REQUEST_URI"],'?ref=')){ $addref = '?ref='.$ref; }
+					$letusknow = str_replace('?ref=/', '?ref=', Page::urlById(16).URL_SUFFIX.$addref);
+					return '<p class="report"><small>See any errors on this page? <a href="'.$letusknow.'">Let us know</a></small></p>';
+				//}
 			}
 		}
 	}

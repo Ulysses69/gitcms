@@ -19,6 +19,7 @@ class PageOptionsController extends PluginController {
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'page_options';
+		$report_enabled = $_POST['report_enabled'];
 		$updated_enabled = $_POST['updated_enabled'];
 		$print_enabled = $_POST['print_enabled'];
 		$mobile_enabled = $_POST['mobile_enabled'];
@@ -55,7 +56,8 @@ class PageOptionsController extends PluginController {
 		$pdf_orientation = $_POST['pdf_orientation'];
 		$pdf_h1_color = $_POST['pdf_h1_color'];
 		$pdf_hx_color = $_POST['pdf_hx_color'];
-		$settings = array(	'updated_enabled' => $updated_enabled,
+		$settings = array(	'report_enabled' => $report_enabled,
+				  			'updated_enabled' => $updated_enabled,
 				  			'print_enabled' => $print_enabled,
 				  			'mobile_enabled' => $mobile_enabled,
 				  			'pdf_enabled' => $pdf_enabled,

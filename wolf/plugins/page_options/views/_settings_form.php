@@ -1,6 +1,7 @@
 <br />
 
 <?php 
+$report_enabled = Plugin::getSetting('report_enabled', 'page_options');
 $updated_enabled = Plugin::getSetting('updated_enabled', 'page_options');
 $print_enabled = Plugin::getSetting('print_enabled', 'page_options');
 $print_title = Plugin::getSetting('print_title', 'page_options');
@@ -36,7 +37,18 @@ $top_of_page_icon = Plugin::getSetting('top_of_page_icon', 'page_options');
 			<tr>
                 <td class="label"><label for="updated_enabled"><?php echo __('Display'); ?></label></td>
 	            <td class="field display"><input type="checkbox" name="updated_enabled" id="updated_enabled" value="show" class="checkbox"<?php if($updated_enabled == "show"){echo " checked";}?>/></td>
-                <td class="help" colspan="2">Apperance of page updated notice</td>
+                <td class="help" colspan="2">Appearance of page updated notice</td>
+            </tr>
+	        </table>
+	    </fieldset>
+
+	    <fieldset style="padding: 0.5em;">
+	        <legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Error Report'); ?></legend>
+	        <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+                <td class="label"><label for="report_enabled"><?php echo __('Display'); ?></label></td>
+	            <td class="field display"><input type="checkbox" name="report_enabled" id="report_enabled" value="show" class="checkbox"<?php if($report_enabled == "show"){echo " checked";}?>/></td>
+                <td class="help" colspan="2">Appearance of page notice and link</td>
             </tr>
 	        </table>
 	    </fieldset>
