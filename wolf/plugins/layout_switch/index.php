@@ -138,8 +138,11 @@ function layoutMetaTest($content,$get='ob_get_contents'){
 function layoutFormCss($content,$get='ob_get_contents'){
 	$thispage = Page::findByUri(str_replace(URL_SUFFIX,'',$_SERVER['REQUEST_URI']));
 	$page = $content;
-	if(is_object($thispage) && $thispage->behavior_id == 'Form' && function_exists('str_replace_once')){
+	
+	//echo 'hello '.$page->slug; exit;
 
+	//if(is_object($thispage) && $thispage->behavior_id == 'Form' && function_exists('str_replace_once')){
+	if(is_object($page) && $page->behavior_id == 'Form' && function_exists('str_replace_once')){
 		if($get == 'ob_get_contents'){
 			ob_start();
 			$page->_executeLayout();
@@ -353,9 +356,14 @@ function layout_switch_check($page) {
 	
 	
 					//echo 'hello: '.$page->slug; exit;
-					
-					
 					$newpage = '';
+
+
+					// For some reason, forms with string parameters require update
+					if(stristr($page->behavior_id, 'Form')){
+						//echo 'hello'; exit;
+						$newpage = layoutFormCss($page,$newpage);
+					}
 	
 					// This page requires post-rebuilding as it isn't built via funky cache
 					if(Plugin::isEnabled('funky_cache') == false || (Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 0)){
@@ -401,7 +409,6 @@ function layout_switch_check($page) {
 							exit;
 						}
 					}
-	
 					//exit;
 	
 	
