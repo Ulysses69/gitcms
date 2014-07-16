@@ -102,7 +102,7 @@ function buildscripts($page, $insertref, $checkup = false){
 	
 				// Embed script in head or body
 				if($insertref == $insert){
-	
+
 					//echo '<!-- buildscripts: insertref = '.$insertref.' and insert = '.$insert." -->\n";
 	
 					if(stristr($thisscript,'.js')){
@@ -245,7 +245,8 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 				});
 			};
 
-			<?php $shadowbox_script = ob_get_contents(); ob_end_clean();
+			<?php
+			$shadowbox_script = ob_get_contents(); ob_end_clean();
 			$pushed_javascript .= $shadowbox_script;
 		}
 
@@ -589,11 +590,49 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		<?php 
 		$testimonials_script = ob_get_contents(); ob_end_clean();
 		$pushed_javascript .= $testimonials_script;
+
 	}
 	
 
 	// Work with tempalte if contents available
 	if($defaultdata){
+
+
+
+		/* Add screen size functions to jscrpts if required by seobox analytics (tends to use doc size, not device size) */
+		/*
+		if(Plugin::getSetting('clientanalyticsscreenstats', 'seobox') == 'on'){
+		$defaultdata .= "var getwinsize = function(){
+			var f='';
+			// get window size
+			if (typeof(window.innerWidth) == 'number'){
+				f='x:window.innerWidth,y:window.innerHeight';
+			} else if (document.documentElement && document.documentElement.clientWidth){
+				f='x:document.documentElement.clientWidth,y:document.documentElement.clientHeight';
+			} else if (document.body && document.body.clientWidth) {
+				f='x:document.body.clientWidth,y:document.body.clientHeight';
+			} else if (document.width){
+				f='x:document.width,y:document.height';
+			}
+			// get scroll distance
+			if (typeof(document.scrollTop) == 'number'){
+				f+=',yy:document.scrollTop,xx:document.scrollLeft';
+			} else if (typeof(document.body.scrollTop) == 'number'){
+				f+=',yy:document.body.scrollTop,xx:document.body.scrollLeft';
+			} else if (typeof(document.documentElement.scrollTopt) == 'number'){
+				f+=',yy:document.documentElement.scrollTop,xx:document.documentElement.scrollLeft';
+			} else if (typeof(window.pageYOffset) == 'number'){
+				f+=',yy:window.pageYOffset,xx:window.pageXOffset';
+			} else {
+				f+=',yy=0,xx=0';
+			}
+			getwinsize = Function('return{'+f+'}');
+			return (getwinsize());
+		};";
+		}
+		*/
+
+
 
 		// Remove comments
 		$regex = array(
