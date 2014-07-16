@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.5.0'); }
+if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.6.0'); }
 if (!defined('SEOBOX_ROOT')) { define('SEOBOX_ROOT', URI_PUBLIC.'wolf/plugins/seobox'); }
 Plugin::setInfos(array(
 	'id'					=> 'seobox',
@@ -568,12 +568,14 @@ function setanalytics($parent){
 			$script_type = ' type="text/javascript"';
 		}
 
-
 		$seo = Plugin::getSetting('clientanalyticsstatus', 'seobox');
 		//AuthUser::load();
 		//if(!AuthUser::isLoggedIn()){
 
 		if($seo == true){
+			
+			/* NEW Universal Analytics Support */
+			$analyticsVersion = Plugin::getSetting('clientanalyticsversion', 'seobox');
 			
 			//echo 'Test';
 			//exit;
@@ -608,19 +610,27 @@ function setanalytics($parent){
 				if(isset($_GET['404'])){
 					$page404 = str_replace('/search','',$_SERVER["REQUEST_URI"]);
 					$page404 = str_replace('?404=Error','',$page404);
-					if($_GET['404'] != '' && $_GET['404'] != 'Error'){ $page404 = str_replace('?404=','?referrer=',$page404); } else { $page404 = str_replace('?404=','',$page404); }
-					$trackPageviewParams = ",'/404".$page404."'";
+					//if($analyticsVersion == 'universal'){
+					//	$trackPageviewParams = ", '404', 'Visit', '404 Error Page - Visit - Page'";
+					//} else {
+						/* Track 404 pageviews in Google Analytics: Create a new custom report with the following (http://www.thepiepers.net/blog/bryan-pieper/2011/06/google-analytics-track-404-pages/):
+					    Filter: Include Page [regex=^/404.html]
+					    Metrics:
+					        Pageviews
+					        Bounce Rate
+					        Avg Time on Page
+					        Avg Time on Site
+					    Segments: Page
+					    */
+						if($_GET['404'] != '' && $_GET['404'] != 'Error'){
+							$page404 = str_replace('?404=','?referrer=',$page404);
+						} else {
+							$page404 = str_replace('?404=','',$page404);
+						}
+						$trackPageviewParams = ", '/404".$page404."'";
+					//}
 				}
-				/* Track 404 pageviews in Google Analytics: Create a new custom report with the following (http://www.thepiepers.net/blog/bryan-pieper/2011/06/google-analytics-track-404-pages/):
-			    Filter: Include Page [regex=^/404.html]
-			    Metrics:
-			        Pageviews
-			        Bounce Rate
-			        Avg Time on Page
-			        Avg Time on Site
-			    Segments: Page
-			    */
-	
+
 
 				/*
 				Event Actions should be UNIQUE across CATEGORIES, else they will be tracked as the same event
@@ -640,22 +650,35 @@ function setanalytics($parent){
 				} else {
 
 					$analytics .= '<script'.$script_type.'>'.$br;
-					$analytics .= 'var _gaq = _gaq || [];'.$br;
-					$analytics .= '_gaq.push([\'_setAccount\', \''.$gacode.'\']);'.$br;
-	
-					if($subdomain == 'yes'){
-					$analytics .= '_gaq.push([\'_setDomainName\', \''.$_SERVER["SERVER_NAME"].'\']);'.$br;
+					if($analyticsVersion == 'universal'){
+					/* Universal Analytics */
+						$analytics .= "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;".$br;
+						$analytics .= 'i[r]=i[r]||function(){'.$br;
+						$analytics .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'.$br;
+						$analytics .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;'.$br;
+						$analytics .= "m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');".$br;
+						$analytics .= "ga('create', '".$gacode."');".$br;
+						$analytics .= "ga('send', 'pageview'".$trackPageviewParams.");".$br;
+					} else {
+					/* Classic Analytics (default) */
+						$analytics .= 'var _gaq = _gaq || [];'.$br;
+						$analytics .= '_gaq.push([\'_setAccount\', \''.$gacode.'\']);'.$br;
+		
+						if($subdomain == 'yes'){
+						$analytics .= '_gaq.push([\'_setDomainName\', \''.$_SERVER["SERVER_NAME"].'\']);'.$br;
+						}
+		
+						$analytics .= '_gaq.push([\'_trackPageview\''.$trackPageviewParams.']);'.$br;
+						$analytics .= '(function(){'.$br;
+						$analytics .= 'var ga = document.createElement(\'script\');'.$br;
+						$analytics .= 'ga.type = \'text/javascript\';'.$br;
+						$analytics .= 'ga.async = true;'.$br;
+						$analytics .= 'ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'.$br;
+						$analytics .= 'var s = document.getElementsByTagName(\'script\')[0];'.$br;
+						$analytics .= 's.parentNode.insertBefore(ga, s);'.$br;
+						$analytics .= '})();'.$br;
 					}
-	
-					$analytics .= '_gaq.push([\'_trackPageview\''.$trackPageviewParams.']);'.$br;
-					$analytics .= '(function(){'.$br;
-					$analytics .= 'var ga = document.createElement(\'script\');'.$br;
-					$analytics .= 'ga.type = \'text/javascript\';'.$br;
-					$analytics .= 'ga.async = true;'.$br;
-					$analytics .= 'ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'.$br;
-					$analytics .= 'var s = document.getElementsByTagName(\'script\')[0];'.$br;
-					$analytics .= 's.parentNode.insertBefore(ga, s);'.$br;
-					$analytics .= '})();'.$br.'</script>'.$br;
+					$analytics .= '</script>'.$br;
 	
 					//echo $analytics;
 	
@@ -671,7 +694,7 @@ function setanalytics($parent){
 						
 						/* Label (Optional. Recommend using something to further describe the user interaction (e.g. "Clicked").) */
 						$trackLabel = "'Phone Call'";
-		
+
 						/* Value (Optional. If you'd like to assign a numeric value to your user interaction, enter that value here) */
 						$trackValue = "";
 						
@@ -680,8 +703,13 @@ function setanalytics($parent){
 		
 						// $trackEvent = "pageTracker._trackPageview(\'/track/telephone'.URL_SUFFIX.'\');";
 						//$trackEvent = "_gaq.push(['_trackEvent', $trackCategory, $trackAction, $trackLabel, $trackValue, $trackInteraction]);";
-						$trackPhone = "_gaq.push(['_trackEvent', $trackCategory, $trackAction, 'Mobile Call']);";
-						$trackEmail = "_gaq.push(['_trackEvent', $trackCategory, $trackAction, 'Mobile Email']);";
+						if($analyticsVersion == 'universal'){
+							$trackPhone = "ga('send', 'event', $trackCategory, $trackAction, 'Mobile Call');";
+							$trackEmail = "ga('send', 'event', $trackCategory, $trackAction, 'Mobile Email');";
+						} else {
+							$trackPhone = "_gaq.push(['_trackEvent', $trackCategory, $trackAction, 'Mobile Call']);";
+							$trackEmail = "_gaq.push(['_trackEvent', $trackCategory, $trackAction, 'Mobile Email']);";
+						}
 		
 						// 1. Open up the Google Analytics profile you wish to set up the goal in.
 						// 2. Click the gear icon in the upper right corner of the Google Analytics interface.
@@ -859,8 +887,8 @@ function setanalytics($parent){
 							echo '})</script>';
 						}
 						*/
-		
-		
+
+
 		
 						$script = '';
 						/* Under development. Need to check if link tracking works */
@@ -868,7 +896,41 @@ function setanalytics($parent){
 						/* Google Analytics -> Content Optimization -> Content Performance -> Content Drilldown */
 						//if(MOBILEMODE == TRUE){
 							$script .= '<script'.$script_type.'>'."\n";
-		
+
+
+
+
+
+
+							/* TESTING */
+							/* Add screen size functions to jscrpts if required by seobox analytics (tends to use doc size, not device size) */
+							/*
+							$script .= "var docsize = getwinsize(); var orientation = '';";
+							$script .= "if(docsize.y > docsize.x){ orientation = ' (portrait)'; };";
+							$script .= "var stats = docsize.x + ' x ' + docsize.y + orientation;";
+							$script .= "document.write(stats);";
+
+
+							if(DEBUG == true){
+								//if(function_exists('analyticsPush')){
+									//$script .= analyticsPush(false, '_trackEvent', 'Screen Stats', 'Pixels Scrolled', f(n), 1, !0);
+									$script .= "alert('_trackEvent, Screen Stats, Pixel Depth, ' + screenstats + ', 1, !0');";
+								//}
+							} else {
+								if(function_exists('analyticsPush')){
+									//$script .= analyticsPush(false, '_trackEvent', 'Screen Stats', 'Pixels Scrolled', f(n), 1, !0);
+									//$script .= analyticsPush(false, '_trackEvent', 'Screen Stats', 'Pixel Depth', 'screenstats', 1, !0);
+								}
+							}
+							*/
+
+
+
+
+
+
+
+
 							$script .= 'function addLoadEvent(func){'."\n";
 								$script .= 'var oldonload = window.onload;'."\n";
 								$script .= 'if (typeof window.onload != \'function\'){'."\n";
@@ -1012,7 +1074,7 @@ function setanalytics($parent){
 			
 								//echo "    return false;";
 								$script .= "};"."\n";
-			
+
 								//$script .= "assignClickEvent();";
 							$script .= '})'."\n";
 							$script .= '</script>'."\n";
@@ -1039,40 +1101,49 @@ function setanalytics($parent){
 				}
 
 
+
 				
 				/* Use Scroll Depth jQuery plugin here, after Google Analytics is loaded */
-				/* Setup public scrolldepth js */
-				$scrolljspath = '/inc/js/';
-				$scrolljsfile = 'scrolldepth.js';
-				$scrolljsfilepath = $_SERVER{'DOCUMENT_ROOT'}.$scrolljspath.$scrolljsfile;
+				$scrolldepthstatus = false;
+				if($scrolldepthstatus == true){
+					/* Setup public scrolldepth js */
+					$scrolljspath = '/inc/js/';
+					$scrolljsfile = 'scrolldepth.js';
+					$scrolljsfilepath = $_SERVER{'DOCUMENT_ROOT'}.$scrolljspath.$scrolljsfile;
+	
+					/* Check for public scrolldepth js */
+					if (!file_exists($scrolljsfilepath)) {
+						ob_start();
+						include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/seobox/lib/jquery.scrolldepth.min.js";
+						$scrolljstemplate = ob_get_contents();
+					    ob_end_clean();
 
-				/* Check for public scrolldepth js */
-				if (!file_exists($scrolljsfilepath)) {
-					ob_start();
-					include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/seobox/lib/jquery.scrolldepth.min.js";
-					$scrolljstemplate = ob_get_contents();
-				    ob_end_clean();
-
-				    $jssave = @fopen($scrolljsfilepath,'w+');
-				    fwrite($jssave,$scrolljstemplate);
-				    fclose($jssave);
-				}
-
-$setupscroll = '<script src="'.$scrolljspath.$scrolljsfile.'"></script>'."\n";
-$setupscroll .= '<script>
-$(function() {
-  $.scrollDepth();
-});
-</script>';
-
-
-				if(DEBUG != true){
-					function compressspaces($data){
-						return preg_replace("/\s+/", " ", $data);
+					    $jssave = @fopen($scrolljsfilepath,'w+');
+					    fwrite($jssave,$scrolljstemplate);
+					    fclose($jssave);
 					}
-					$setupscroll = compressspaces($setupscroll);
+	
+					$setupscroll = '<script src="'.$scrolljspath.$scrolljsfile.'"></script>'."\n";
+					$setupscroll .= '<script>
+					$(function() {
+					  $.scrollDepth();
+					});
+					</script>';
+
+					if(DEBUG != true){
+						function compressspaces($data){
+							return preg_replace("/\s+/", " ", $data);
+						}
+						$setupscroll = compressspaces($setupscroll);
+					}
+					$analytics .= $setupscroll;
+
 				}
-				$analytics .= $setupscroll;
+
+
+
+
+
 
 
 				echo $analytics;
@@ -1092,10 +1163,14 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 
 	$seo = Plugin::getSetting('clientanalyticsstatus', 'seobox');
 	$clientanalyticslinks = Plugin::getSetting('clientanalyticslinks', 'seobox');
+
+	/* NEW Universal Analytics Support */
+	$analyticsVersion = Plugin::getSetting('clientanalyticsversion', 'seobox');
+
 	if($seo != 'off' && $seo != '' && $clientanalyticslinks == 'on'){
 
 		/* Check if tracking type is valid and that a category and action have been set */
-		if(($track == '_trackEvent' || $track == '_trackPageview') && $category != '' && $action != ''){
+		if(($track == '_trackEvent' || $track == 'event' || $track == '_trackPageview') && $category != '' && $action != ''){
 
             
             /* If page object not returned, set page to home page id, 1 */
@@ -1123,13 +1198,29 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 				$closetag .= "}";
 				$closetag .= "</script>";
 			}
+			
+			/* Convert trackEvent if using universal analytics */
+			if($analyticsVersion == 'universal'){
+				if($track == '_trackEvent'){
+					$track = 'event';
+				}
+			}
 
 			/* Push or debug */
 			if(DEBUG == true){
 				//return $opentag."alert('".$action."');".$closetag;
 				return $opentag."alert('Pathname: ' + \"\\t\" + window.location.pathname + \"\\n\" + 'Event: '  + \"\\t\\t\" + '".$track."' + \"\\n\" + 'Category: '  + \"\\t\" + ".$category." + \"\\n\" + 'Action:		' + ".$action." + \"\\n\" + 'Label: ' + \"\\t\\t\" + ".$label." + \"\\n\" + 'Value: ' + \"\\t\\t\" + ".$value." + \"\\n\" + 'No Bounce: ' + \"\\t\" + ".$noninteraction.");".$closetag."\n";
 			} else {
-				return $opentag."_gaq.push(['".$track."', ".$category.", ".$action.", ".$label.", ".$value.", ".$noninteraction."]);".$closetag."\n";
+				if($analyticsVersion == 'universal'){
+					if($noninteraction == 'true'){
+						$noninteraction = '';
+					} else {
+						$noninteraction = ", {'nonInteraction': 1}";
+					}
+					return $opentag.$setinteraction."ga('send', ".$track.", ".$category.", ".$action.", ".$label.", ".$value.$noninteraction.");".$closetag."\n";
+				} else {
+					return $opentag."_gaq.push(['".$track."', ".$category.", ".$action.", ".$label.", ".$value.", ".$noninteraction."]);".$closetag."\n";
+				}
 			}
 	
 		}

@@ -16,6 +16,8 @@ $noticestatus = Plugin::getSetting('noticestatus', 'seobox');
 $noticedays = Plugin::getSetting('noticedays', 'seobox');
 $noticelivecheck = Plugin::getSetting('noticelivecheck', 'seobox');
 $bots = Plugin::getSetting('bots', 'seobox');
+$clientanalyticsscreenstats = Plugin::getSetting('clientanalyticsscreenstats', 'seobox');
+$clientanalyticsversion = Plugin::getSetting('clientanalyticsversion', 'seobox');
 
 ?>
 
@@ -178,6 +180,29 @@ $bots = Plugin::getSetting('bots', 'seobox');
 				</td>
                 <td class="help"><?php echo __('Yes or No');?></td>
             </tr>
+
+            <tr>
+                <td class="label"><label for="clientanalyticsversion"><?php echo __('Version'); ?></label></td>
+                <td class="field">
+				<select name="clientanalyticsversion" id="clientanalyticsversion">
+				<?php
+				$clientanalyticsversion_array = array(
+				array ('Classic', 'classic'),
+				array ('Universal (NEW)', 'universal'));
+				foreach($clientanalyticsversion_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $clientanalyticsversion){
+						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+                <td class="help"><?php echo __('Analytics method.');?></td>
+            </tr>
+
 			<tr>
                 <td class="label"><label for="clientanalyticslinks"><?php echo __('Events'); ?></label></td>
                 <td class="field">
@@ -191,6 +216,13 @@ $bots = Plugin::getSetting('bots', 'seobox');
 				<input type="checkbox" name="clientanalyticsnoscript" id="clientanalyticsnoscript" value="on" class="checkbox"<?php if($clientanalyticsnoscript == "on"){echo " checked";}?>/>
 				</td>
                 <td class="help"><?php echo __('Additionally track non-javascript');?></td>
+            </tr>
+			<tr>
+                <td class="label"><label for="clientanalyticsscreenstats"><?php echo __('Screen Stats'); ?></label></td>
+                <td class="field">
+				<input type="checkbox" name="clientanalyticsscreenstats" id="clientanalyticsscreenstats" value="on" class="checkbox"<?php if($clientanalyticsscreenstats == "on"){echo " checked";}?>/>
+				</td>
+                <td class="help"><?php echo __('Track screen dimensions and orientation');?></td>
             </tr>
 			<tr>
                 <td class="label"><label for="clientanalytics"><?php echo __('Analytics'); ?></label></td>

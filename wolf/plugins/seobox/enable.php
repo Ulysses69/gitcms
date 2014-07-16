@@ -26,6 +26,9 @@ if(!Plugin::getSetting('noticestatus', 'seobox')) $settings['noticestatus'] = 'o
 if(!Plugin::getSetting('noticedays', 'seobox')) $settings['noticedays'] = '30';
 if(!Plugin::getSetting('noticelivecheck', 'seobox')) $settings['noticelivecheck'] = 'on';
 if(!Plugin::getSetting('bots', 'seobox')) $settings['bots'] = 'disallow';
+if(!Plugin::getSetting('clientanalyticsscreenstats', 'seobox')) $settings['clientanalyticsscreenstats'] = '';
+if(!Plugin::getSetting('clientanalyticsversion', 'seobox')) $settings['clientanalyticsversion'] = 'classic';
+
 
 // Check existing plugin settings
 if (!$version || $version == null) {

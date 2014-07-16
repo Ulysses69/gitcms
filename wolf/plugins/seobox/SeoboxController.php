@@ -36,6 +36,8 @@ class SeoboxController extends PluginController {
 		$noticedays = $_POST['noticedays'];
 		$noticelivecheck = $_POST['noticelivecheck'];
 		$bots = $_POST['bots']; if($bots == '') $bots = 'disallow';
+		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];
+		$clientanalyticsversion = $_POST['clientanalyticsversion'];
 		$settings = array('sitemaplink' => $sitemaplink,
 				  		  'sitemaptitle' => $sitemaptitle,
 						  'sitemapdescription' => $sitemapdescription,
@@ -51,9 +53,15 @@ class SeoboxController extends PluginController {
 	            		  'noticestatus' => $noticestatus,
 	            		  'noticedays' => $noticedays,
 	            		  'noticelivecheck' => $noticelivecheck,
-	            		  'bots' => $bots);
+	            		  'bots' => $bots,
+	            		  'clientanalyticsscreenstats' => $clientanalyticsscreenstats,
+	            		  'clientanalyticsversion' => $clientanalyticsversion);
 
 		if (Plugin::setAllSettings($settings, 'seobox')) {
+
+			// Call jscripts, in case screen stats analytics are required
+			writeJScripts($this);
+
 			Flash::set('success', 'SEO Box - '.__('plugin settings saved.'));
 			redirect(get_url('plugin/seobox'));
 		} else {
