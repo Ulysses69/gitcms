@@ -18,6 +18,10 @@ function techfeedbackForm($emailOut,$nameOut,$subject="Feedback",$heading="",$di
 	/* Required fields */
 	$required = array("Your Name","Your Email","Your Feedback");
 
+	
+	/* Check for passed ref page and pass to subject */
+	$ref = ''; if(isset($_GET['ref'])){ $ref = '?ref='.strip_tags($_GET['ref']); $subject = $subject.' ('.$ref.')'; }
+
 
 	/* Expected data */
 	if(isset($_POST["your_name"])){ $your_name = htmlentities($_POST["your_name"]); } else { $your_name = ''; }
@@ -26,7 +30,7 @@ function techfeedbackForm($emailOut,$nameOut,$subject="Feedback",$heading="",$di
 	if(isset($_POST["your_feedback"])){ $your_feedback = htmlentities($_POST["your_feedback"]); } else { $your_feedback = ''; }
 	if(isset($_POST["tech_support_details"])){ $tech_support_details = htmlentities($_POST["tech_support_details"]); } else { $tech_support_details = ''; }
 	$thankyouname = $your_name;
-	$formanchor = '#reply';
+	$formanchor = $ref.'#reply';
 	defined($formid);
 
 	include('./wolf/plugins/form_core/lib/formSettings.php');
