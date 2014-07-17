@@ -533,7 +533,7 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		?>
 	
 	
-			/* Banner settings */
+			/* TO DO: Banner settings (to add to the end of scripts.js) */
 			/*
 			var container = 'banner';
 			var path = '/public/images/banner/';

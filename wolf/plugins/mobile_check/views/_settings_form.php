@@ -3,6 +3,7 @@
 $enable					= Plugin::getSetting('enable', 'mobile_check');
 $copyright				= Plugin::getSetting('copyright', 'mobile_check');
 $screen_width			= Plugin::getSetting('screen_width', 'mobile_check');
+$website_width			= Plugin::getSetting('website_width', 'mobile_check');
 $logo					= Plugin::getSetting('logo', 'mobile_check');
 $logo_url				= Plugin::getSetting('logo_url', 'mobile_check');
 $desktop_text			= Plugin::getSetting('desktop_text', 'mobile_check');
@@ -94,12 +95,21 @@ onload = function() {
             </tr>
 
 			<tr>
-                <td class="label"><label for="screen_width"><?php echo __('Website Width'); ?></label></td>
+                <td class="label"><label for="screen_width"><?php echo __('Mobile Width'); ?></label></td>
                 <td class="field">
 				<input name="screen_width" id="screen_width" value="<?php echo $screen_width; ?>" />
 				</td>
                 <td class="help"><?php echo __('Pixel width of devices');?></td>
             </tr>
+
+			<tr>
+                <td class="label"><label for="website_width"><?php echo __('Website Width'); ?></label></td>
+                <td class="field">
+				<input name="website_width" id="website_width" value="<?php echo $website_width; ?>" />
+				</td>
+                <td class="help"><?php echo __('Pixel width of website');?></td>
+            </tr>
+
             <tr>
                 <td class="label"><label for="viewport"><?php echo __('Scale Behaviour'); ?></label></td>
                 <td class="field">
@@ -111,7 +121,8 @@ onload = function() {
 				<?php
 				$viewport_array = array(
 				array ('Default', ''),
-				array ('Fit to Website Width', 'width=set-width, initial-scale=1.0, user-scalable=yes'),
+				//array ('Fit to Website Width', 'width=set-width, initial-scale=1.0, user-scalable=yes'),
+				array ('Fit to Website Width', 'width=set-width'),
 				array ('Fit to Device Width', 'width=device-width, initial-scale=1.0, user-scalable=yes'));
 				foreach($viewport_array as $subarray) {
 					list($text, $val) = $subarray;

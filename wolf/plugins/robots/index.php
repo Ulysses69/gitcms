@@ -276,7 +276,10 @@ function robots($page,$returnstatus='echo'){
 		if(Plugin::getSetting('viewport', 'mobile_check') != '' && $mobilecheck == true){
 			$content = Plugin::getSetting('viewport', 'mobile_check');
 			/* See if screen_width set for mobiles */
-			if(stristr($content, 'width=set-width') && Plugin::getSetting('screen_width', 'mobile_check') != ''){
+			if(stristr($content, 'width=set-width') && Plugin::getSetting('website_width', 'mobile_check') != ''){
+				/* Set all devices as per mobile screen_width */
+				$content = str_replace('width=set-width', 'width='.Plugin::getSetting('website_width', 'mobile_check'), $content);
+			} else if(stristr($content, 'width=set-width') && Plugin::getSetting('screen_width', 'mobile_check') != ''){
 				/* Set all devices as per mobile screen_width */
 				$content = str_replace('width=set-width', 'width='.Plugin::getSetting('screen_width', 'mobile_check'), $content);
 			}

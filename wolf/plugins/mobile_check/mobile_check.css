@@ -2,7 +2,8 @@
 	border:none;
 	background: #f3efef !important;
 }
-#body_plugin_mobile_check .fieldset td #screen_width {
+#body_plugin_mobile_check .fieldset td #screen_width,
+#body_plugin_mobile_check .fieldset td #website_width {
 	width: 3em;
 }
 #body_plugin_mobile_check #linkcustom {

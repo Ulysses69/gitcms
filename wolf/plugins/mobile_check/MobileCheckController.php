@@ -25,6 +25,7 @@ class MobileCheckController extends PluginController {
 		if(isset($_POST['enable'])){ $enable = $_POST['enable']; } else { $enable = ''; }
 		if(isset($_POST['copyright'])){ $copyright = $_POST['copyright']; } else { $copyright = ''; }
 		if(isset($_POST['screen_width'])){ $screen_width = $_POST['screen_width']; } else { $screen_width = ''; }
+		if(isset($_POST['website_width'])){ $website_width = $_POST['website_width']; } else { $website_width = ''; }
 		if(isset($_POST['logo'])){ $logo = $_POST['logo']; } else { $logo = ''; }
 		if(isset($_POST['logo_url'])){ $logo_url = $_POST['logo_url']; } else { $logo_url = ''; }
 		if(isset($_POST['desktop_text'])){ $desktop_text = $_POST['desktop_text']; } else { $desktop_text = ''; }
@@ -72,6 +73,7 @@ class MobileCheckController extends PluginController {
 		if($color_button_link == '') $color_button_link = Plugin::getSetting('color_button_link', 'mobile_check');
 		if($logo_maxwidth == '') $logo_maxwidth = Plugin::getSetting('logo_maxwidth', 'mobile_check');
 		if($screen_width == '') $screen_width = Plugin::getSetting('screen_width', 'mobile_check');
+		if($website_width == '') $website_width = Plugin::getSetting('website_width', 'mobile_check');
 		if($cachedcss == '') $cachedcss = Plugin::getSetting('cachedcss', 'mobile_check');
 
 		if($topnavhome == '') $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check');
@@ -297,6 +299,7 @@ class MobileCheckController extends PluginController {
 		$settings = array(	'enable' => $enable,
 				  			'copyright' => $copyright,
 							'screen_width' => $screen_width,
+							'website_width' => $website_width,
 							'logo' => $logo, 
 							'logo_url' => $logo_url,
 							'desktop_text' => $desktop_text,
