@@ -191,6 +191,8 @@
                             $loaded_filters = Filter::$filters;
                             foreach(Plugin::findAll() as $plugin):
                                 $disabled = (isset($plugin->require_wolf_version) and $plugin->require_wolf_version > CMS_VERSION);
+                                if(isset($plugin->website)){ $website = $plugin->website; } else { $website = ''; }
+                                if(isset($plugin->description)){ $description = $plugin->description; } else { $description = ''; }
                         ?>
                         <tr<?php if ($disabled) echo ' class="disabled"'; ?>>
                             <td class="plugin">
@@ -203,7 +205,7 @@
                                 ?>
                                     <span class="from"><?php if (isset($plugin->author)) echo ' '.__('by').' '.$plugin->author; ?></span>
                                 </h4>
-                                <p><?php echo __($plugin->description); ?> <?php if ($disabled) echo '<span class="notes">'.__('This plugin CANNOT be enabled! It requires Wolf version :v.', array(':v' => $plugin->require_wolf_version)).'</span>'; ?></p>
+                                <p><?php echo __($description); ?> <?php if ($disabled) echo '<span class="notes">'.__('This plugin CANNOT be enabled! It requires Wolf version :v.', array(':v' => $plugin->require_wolf_version)).'</span>'; ?></p>
                             </td>
                             <!-- <td class="pluginSettings">
                                 <?php
@@ -213,7 +215,7 @@
                                         echo __('n/a');
                                 ?>
                             </td>
-                            <td class="website"><a href="<?php echo $plugin->website; ?>" target="_blank"><?php echo __('Website') ?></a></td> -->
+                            <td class="website"><a href="<?php echo $website; ?>" target="_blank"><?php echo __('Website') ?></a></td> -->
                             <?php if(CHECK_UPDATES != false){ ?><td class="version"><?php echo $plugin->version; ?></td>
                             <td class="latest"><?php echo Plugin::checkLatest($plugin); ?></td><?php } ?>
                             <td class="enabled"><input type="checkbox" class="checkbox" name="enabled_<?php echo $plugin->id; ?>" value="<?php echo $plugin->id; ?>"<?php if (isset($loaded_plugins[$plugin->id])) echo ' checked="checked"'; if ($disabled) echo ' disabled="disabled"'; ?> onclick="new Ajax.Request('<?php echo get_url('setting'); ?>'+(this.checked ? '/activate_plugin/':'/deactivate_plugin/')+this.value, {method: 'get'});" /></td>

@@ -4,6 +4,7 @@ Cleanup
 \wolf\plugins\layout_switch\lib\Mobile-Detect\examples\*
 \wolf\plugins\tcpdf\lib\examples\*
 \wolf\plugins\tcpdf\lib\fonts\*
+\wolf\plugins\tinymce\error_log
 
 
 Consider removing

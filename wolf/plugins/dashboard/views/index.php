@@ -21,10 +21,9 @@
 		$curl = curl_init($location);
 		curl_setopt($curl,CURLOPT_NOBODY,true);
 		curl_setopt($curl,CURLOPT_HEADER,true);
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($curl,CURLOPT_TIMEOUT_MS,206);
 		curl_exec($curl);
-		//$curl_exec = curl_exec($curl);
-
 		$info = curl_getinfo($curl);
 		curl_close($curl);
 
@@ -37,6 +36,7 @@
 			return true;
 		}
 		return false;
+
 	}
 	$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 

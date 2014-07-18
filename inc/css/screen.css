@@ -61,10 +61,12 @@ h2,
 #content p,
 #content address,
 #content h2,
+#content li h3,
 #content .h2,
 #content li,
 #content th,
-#content td {
+#content td,
+#content label {
 	color: #222;
 }
 .noflash {

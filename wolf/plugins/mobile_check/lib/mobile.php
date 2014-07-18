@@ -19,7 +19,7 @@ h1, h2, .h2, h3, h4, p, .itemaddress, table<?php if($searchbox != 'false'){ ?>, 
 	padding:0 .5em .5em .5em;
 	font-style:normal;
 }
-h1, h2, .h2, h3, h4, p, .itemaddress, table, th, td, #content ul, #content ol, #content li<?php if($searchbox != 'false'){ ?>, #searchbox<?php } ?> {
+h1, h2, .h2, h3, h4, p, label, .itemaddress, table, th, td, #content ul, #content ol, #content li<?php if($searchbox != 'false'){ ?>, #searchbox<?php } ?> {
 	color:<?php echo $color_main_text; ?>
 }
 h1 {
@@ -324,6 +324,15 @@ body {
 .open:not(.legacy) span:before, .closed:not(.legacy) span:before {
 	content:" - ";
 	text-align:center
+}
+#businessHours {
+	line-height:1em;
+}
+#businessHours li {
+	margin:0 0 -0.4em 0;
+}
+#businessHours li span {
+	margin: -0.4em 0; top: -0.2em;
 }
 #top ul#sidemenu {
 	padding:0 0 1em 2em;
