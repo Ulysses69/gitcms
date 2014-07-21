@@ -89,7 +89,7 @@ if(isset($form_attachments) && $form_attachments == true && $FILES != null){
 			// Check extension
 			if(!in_array(strtolower($upload_ext), $upload_allowed_extensions)){
 				$errors .= '<!-- Uploaded file -->';
-				$upload_errors .= '<li>Only '.implode(', ', $upload_allowed_extensions).' can be uploaded</li>';
+				$upload_errors .= '<li>Only '.implode(", ", $upload_allowed_extensions).' can be uploaded</li>';
 				$file_upload_submit_message = 'File Upload Type '.ltrim(strtoupper($upload_ext),'.');
 				$upload_unsupported = true;
 			}
@@ -147,7 +147,7 @@ if($errors != "") {
 	}
 
 	$postmessage = '<p class="warning">'.$errorsresult.'</p><ul class="warning">' . str_replace(array('<a','a>'),array('<li><a','a></li>'),$errors) . $upload_errors. '</ul>';
-	$postmessage = str_replace(', ','',$postmessage);
+	$postmessage = str_replace(', ',' ',$postmessage);
 
 	/* Strip trailing comma */
 	$errors = rtrim($errors,", ");

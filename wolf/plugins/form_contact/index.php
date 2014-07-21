@@ -101,7 +101,7 @@ function contactForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displayf
 					} else {
 						//include_once('./wolf/plugins/form_core/lib/submitcheck.php');
 					}
-					
+
 					include('./wolf/plugins/form_core/lib/posted.php');
 
 					//echo 'Formsize: '.$formsize;
@@ -186,10 +186,10 @@ function contactForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displayf
 					<label for="thisname" id="your_name"<?php echo $your_name_class;?>><span>Name<?php echo $your_name_req;?></span>
 					<input id="thisname" type="text" name="your_name" value="<?php echo $your_name;?>" size="30" autocompletetype="name" /></label>
 
-					<!--
+					<?php if(isset($your_telephone)){ ?>
 					<label for="thistelephone" id="your_telephone"<?php echo $your_telephone_class;?>><span>Telephone<?php echo $your_telephone_req;?></span>
 					<input id="thistelephone" type="tel" name="your_telephone" value="<?php echo $your_telephone;?>" size="30" autocompletetype="tel-national" /></label>
-					-->
+					<?php } ?>
 
 					<label for="thisemail" id="your_email"<?php echo $your_email_class;?>><span>Email<?php echo $your_email_req;?></span>
 					<input id="thisemail" type="email" name="your_email" value="<?php echo $your_email;?>" size="30" autocompletetype="email" /></label>

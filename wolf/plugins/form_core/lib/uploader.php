@@ -41,28 +41,6 @@
 					    return number_format($upload_size / pow(1024, $upload_power), 2, '.', ',') . ' ' . $upload_units[$upload_power];
 					}
 				}
-				if(!function_exists('getNixDirSize')){
-					function getNixDirSize($path) {
-					  $io = popen('/usr/bin/du -ks '.$path, 'r');
-					  $output = fgets ( $io, 4096);
-					  $result = preg_split('/\s/', $output);
-					  $size = $result[0]*1024;
-					  pclose($io);
-					  return $size;
-					}
-				}
-				if(!function_exists('getWinDirSize')){
-					function getWinDirSize($path) {
-					  $f = dirname(__FILE__);
-					  $obj = new COM ( 'scripting.filesystemobject' );
-					  if ( is_object ( $obj ) ){
-					    $ref = $obj->getfolder ( $path );
-					    $dir_size = $ref->size;
-					    $obj = null;
-					    return $dir_size;
-					  }
-					}
-				}
 				if(!function_exists('format_bytes')){
 					function format_bytes($a_bytes) {
 					  if ($a_bytes < 1024) {
@@ -78,6 +56,30 @@
 					  }
 					}
 				}
+
+				/*
+				if(!function_exists('getNixDirSize')){
+					function getNixDirSize($path) {
+					  $io = popen('/usr/bin/du -ks '.$path, 'r');
+					  $output = fgets($io, 4096);
+					  $result = preg_split('/\s/', $output);
+					  $size = $result[0]*1024;
+					  pclose($io);
+					  return $size;
+					}
+				}
+				if(!function_exists('getWinDirSize')){
+					function getWinDirSize($path) {
+					  $f = dirname(__FILE__);
+					  $obj = new COM('scripting.filesystemobject');
+					  if(is_object($obj)){
+					    $ref = $obj->getfolder($path);
+					    $dir_size = $ref->size;
+					    $obj = null;
+					    return $dir_size;
+					  }
+					}
+				}
 				if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 				  //This is a server using Windows
 				  $upload_get_folder_size = format_bytes(getWinDirSize(dirname(__FILE__)));
@@ -85,6 +87,21 @@
 				  //This is a server not using Windows
 				  $upload_get_folder_size = format_bytes(getNixDirSize(dirname(__FILE__)));
 				}
+				*/
+
+				if(!function_exists('GetDirectorySize')){
+					function GetDirectorySize($path){
+					    $bytestotal = 0;
+					    $path = realpath($path);
+					    if($path!==false){
+					        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+					            $bytestotal += $object->getSize();
+					        }
+					    }
+					    return $bytestotal;
+					}
+				}
+				$upload_get_folder_size = format_bytes(GetDirectorySize(dirname(__FILE__)));
 
 
 
