@@ -14,7 +14,8 @@
 				$linkback_array = array(
 				array ('Not set', ''),
 				array ('Blue Horizons Marketing Company', 'Blue Horizons <a href="http://www.bluehorizonsmarketing.co.uk">Marketing Company</a>'),
-				array ('Dental Marketing / Dental Website by Blue Horizons', '<a href="http://www.bluehorizonsmarketing.co.uk/dental-marketing.html">Dental Marketing</a> / <a href="http://www.bluehorizonsmarketing.co.uk/dental-marketing/dental-websites.html">Dental Website</a> by Blue Horizons'));
+				array ('Dental Marketing / Dental Website by Blue Horizons', '<a href="http://www.bluehorizonsmarketing.co.uk/dental-marketing.html">Dental Marketing</a> / <a href="http://www.bluehorizonsmarketing.co.uk/dental-marketing/dental-websites.html">Dental Website</a> by Blue Horizons'),
+				array ('Website by Blue Horizons', '<a href="http://www.bluehorizonsmarketing.co.uk">Website by Blue Horizons</a>'));
 				foreach($linkback_array as $subarray) {
 					list($text, $val) = $subarray;
 					if($val == $linkback){

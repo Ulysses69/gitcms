@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.1.0'); }
+if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.2.0'); }
 if (!defined('COPYRIGHT_ROOT')) { define('COPYRIGHT_ROOT', URI_PUBLIC.'wolf/plugins/copyright'); }
 Plugin::setInfos(array(
 	'id'					=> 'copyright',
