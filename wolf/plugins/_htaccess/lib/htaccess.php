@@ -12,7 +12,7 @@ $Options = '';
 $DirectoryIndex = '';
 $Env = '';
 $RewriteRules = '';
-$SubdomainCond = '';
+$SubdomainCond = 'RewriteCond %{HTTP_HOST} !^(.*)\.(.*)\. [NC]';
 $AdminAccess = '';
 $RedirectHome = '';
 $adminDir = ADMIN_DIR;
@@ -250,7 +250,7 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} !.local$ [NC]
 RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
 RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
 <?php echo $SubdomainCond; ?>
 RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
