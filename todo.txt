@@ -44,3 +44,11 @@ Possibly cleanup (remove inactive plugins) when a website goes live.
 \wolf\plugins\user_pic
 \wolf\plugins\layout_switch
 \wolf\plugins\dompdf
+
+
+Protect
+---
+\wolf\plugins\tcpdf\lib\fonts\helvetica.php
+\wolf\plugins\tcpdf\lib\fonts\helveticab.php
+\wolf\plugins\tcpdf\lib\fonts\helveticabi.php
+\wolf\plugins\tcpdf\lib\fonts\helveticai.php

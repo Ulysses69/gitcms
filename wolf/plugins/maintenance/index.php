@@ -59,7 +59,7 @@ include('models/MaintenancePage.php');
 
 $settings = Plugin::getAllSettings('maintenance');
 //if(Plugin::isEnabled('maintenance') == true){
-if($settings['maintenanceMode'] == 'on'){
+if(isset($settings['maintenanceMode']) && $settings['maintenanceMode'] == 'on'){
 	Observer::observe('dispatch_route_found', 'maintenance_check');
 	Observer::observe('page_requested', 'maintenance_check');
 }

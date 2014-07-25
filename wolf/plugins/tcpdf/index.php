@@ -473,7 +473,7 @@ EOS;
 		
 
 					//$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-					
+
 					//set auto page breaks
 					$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 					
@@ -486,16 +486,19 @@ EOS;
 					//$pdf->setLanguageArray($l);
 					
 					// Setup font type/encoding
-					$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueTypeUnicode'; $fontEnc = ''; $fontFlags = 32;
-					//$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueType'; $fontEnc = 'ansi'; $fontFlags = 32;
+					//$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueTypeUnicode'; $fontEnc = ''; $fontFlags = 32;
+					$fontPath = K_PATH_FONTS; $fontFile = 'Roboto-Regular.ttf'; $fontType = 'TrueType'; $fontEnc = 'ansi'; $fontFlags = 32;
+
 
 					// Add font
-					//$fontname = $pdf->addTTFfont('/path-to-font/'.$fontFile, $fontType, $fontEnc, $fontFlags);
+					$fontname = $pdf->addTTFfont('E:/webroot/tests/wolf/gitcms/inc/font/Roboto-Regular.ttf', $fontType, $fontEnc, $fontFlags);
 					//$fontname = $pdf->addTTFfont($fontPath . $fontFile, $fontType, $fontEnc, $fontFlags);
 					//echo $fontname;
-	
+
 					// set font
 					//$pdf->SetFont('helvetica', '', 9);
+					$pdf->AddFont($fontname, '', $fontname.'.php');
+					$pdf->SetFont($fontname, '', 9);
 
 					//echo 'K_PATH_URL: '.K_PATH_URL.'<br>';
 					//echo 'K_PATH_FONTS: '.K_PATH_FONTS.'<br>';

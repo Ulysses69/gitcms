@@ -28,6 +28,10 @@ h1 {
 	margin-bottom:.75em;
 	border-bottom:solid 1px #ccc
 }
+h1 span {
+	display: block;
+	font-size: 50%;
+}
 h3 {
 	font-size:100%
 }
