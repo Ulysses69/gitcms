@@ -4,8 +4,6 @@ class CleanerController extends PluginController {
 		$this->setLayout('backend');
 	}
     public function index() {
-        //$this->documentation();
-        //$this->display('cleaner/views/settings', $settings);
         $this->display('cleaner/views/settings');
     }
 	public function settings(){
