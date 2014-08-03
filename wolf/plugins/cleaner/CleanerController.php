@@ -2,9 +2,13 @@
 class CleanerController extends PluginController {
 	public function __construct(){
 		$this->setLayout('backend');
+        $this->assignToLayout('sidebar', new View('../../plugins/cleaner/views/sidebar'));
 	}
     public function index() {
         $this->display('cleaner/views/settings');
+    }
+    public function clean() {
+        $this->display('cleaner/views/clean');
     }
 	public function settings(){
 		$settings = Plugin::getAllSettings('cleaner');

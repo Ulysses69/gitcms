@@ -8,10 +8,10 @@
 
 ?>
 
-<div class="box">
-<h2><?php echo __('Cleaner');?></h2>
-<p>About cleaner.</p>
+
 <?php if (!AuthUser::hasPermission('client')) { ?>
-<p>Additional information not for clients.</p>
+
+<p class="button"><a href="<?php echo get_url('plugin/cleaner'); ?>/clean"><img src="<?php echo PLUGINS_URI . 'cleaner/images/clean.png'; ?>" align="middle" alt="Access" /> Clean</a></p>
+<p class="button"><a href="<?php echo get_url('plugin/cleaner'); ?>/settings"><img src="<?php echo PLUGINS_URI  . 'cleaner/images/settings.png'; ?>" align="middle" alt="Settings" /> Settings</a></p>
+
 <?php } ?>
-</div>
