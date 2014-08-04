@@ -20,16 +20,16 @@ Plugin::addController('cleaner', __('Cleaner'), 'administrator', true);
 if(!function_exists('prefix_safelist')){
 		// Function which will prefix file_path to all safelist values (saves specifying them into array)
 		function prefix_safelist($safelist){
-		    if (!is_array($safelist)){
-		        return false;
-		    }
-		    foreach($safelist as $key => $value){
-		        if (!is_string($value)){
-		            continue;
-		        }
-		        $safelist[$key] = file_path($value);
-		    }
-		    return $safelist;
+			if (!is_array($safelist)){
+				return false;
+			}
+			foreach($safelist as $key => $value){
+				if (!is_string($value)){
+					continue;
+				}
+				$safelist[$key] = file_path($value);
+			}
+			return $safelist;
 		}
 }
 	
@@ -56,168 +56,168 @@ if(!function_exists('get_dir_size')){
 }
 	
 if(!function_exists('format_size')){
-	    function format_size($size) {
-	        $mod = 1024;
-	        $units = explode(' ','B KB MB GB TB PB');
-	        for ($i = 0; $size > $mod; $i++) {
-	            $size /= $mod;
-	        }
-	        return round($size, 2) . ' ' . $units[$i];
-	    }
+		function format_size($size) {
+			$mod = 1024;
+			$units = explode(' ','B KB MB GB TB PB');
+			for ($i = 0; $size > $mod; $i++) {
+				$size /= $mod;
+			}
+			return round($size, 2) . ' ' . $units[$i];
+		}
 }
 	
 if(!function_exists('delete_directory')){
 		function delete_directory($dirname, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
 
 			if((time() - $start) < $end){
-                
-                $removeplugin = false;
-                
-                // Clean up trailing slashes
-                $dirname = rtrim($dirname,"/");
+				
+				$removeplugin = false;
+				
+				// Clean up trailing slashes
+				$dirname = rtrim($dirname,"/");
 
-                // Clean up whitespace
-                $dirname = trim($dirname);
+				// Clean up whitespace
+				$dirname = trim($dirname);
 
-                // Relative URL
-                $relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
-                
-                // Plugin check
-                if(stristr($dirname, 'wolf/plugins/')){
-                    $plugindir = str_replace($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/", '', $dirname);
-                    $pluginname = explode("/", $plugindir); $plugin = $pluginname[0];
-                    if(Plugin::isEnabled($plugin) != true){
-                        //$data .= '<li>Plugin: '.$plugin."</li>";
-                        $removeplugin = true;
-                    }
-                }
+				// Relative URL
+				$relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
+				
+				// Plugin check
+				if(stristr($dirname, 'wolf/plugins/')){
+					$plugindir = str_replace($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/", '', $dirname);
+					$pluginname = explode("/", $plugindir); $plugin = $pluginname[0];
+					if(Plugin::isEnabled($plugin) != true){
+						//$data .= '<li>Plugin: '.$plugin."</li>";
+						$removeplugin = true;
+					}
+				}
 
-                if($relname != '' || $removeplugin == true){
-                    $info = new SplFileInfo($dirname);
-                    if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
-                        //$data .= '<li>FOLDER: '.$dirname."</li>";
-                        $dir_handle = @opendir($dirname);
-                    }
-                    if (!isset($dir_handle)){
-                        if (file_exists($dirname)){				    
-                            //$data .= '<li>FILE: '.$dirname."</li>";
-                            $size = filesize($dirname);
-                            if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
+				if($relname != '' || $removeplugin == true){
+					$info = new SplFileInfo($dirname);
+					if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
+						//$data .= '<li>FOLDER: '.$dirname."</li>";
+						$dir_handle = @opendir($dirname);
+					}
+					if (!isset($dir_handle)){
+						if (file_exists($dirname)){					
+							//$data .= '<li>FILE: '.$dirname."</li>";
+							$size = filesize($dirname);
+							if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
 
-                                // Empty files
-                                if($size > 0){
-                                    $filesizes[] = $size;
-                                    $f = @fopen($dirname, "r+");
-                                    if ($f !== false){
-                                        $data .= '<li>Emptied '.$relname." (FILE ".format_size($size).")</li>";
-                                        //ftruncate($f, 0);
-                                        //fclose($f);
-                                    }
-                                }
+								// Empty files
+								if($size > 0){
+									$filesizes[] = $size;
+									$f = @fopen($dirname, "r+");
+									if ($f !== false){
+										$data .= '<li>Emptied '.$relname." (FILE ".format_size($size).")</li>";
+										//ftruncate($f, 0);
+										//fclose($f);
+									}
+								}
 
-                            } else {
+							} else {
 
-                                // Remove files
-                                $filesizes[] = $size;
+								// Remove files
+								$filesizes[] = $size;
 
-                                // Check if file is protected
-                                if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                                    $protected = ' Protected';
-                                } else {
+								// Check if file is protected
+								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+									$protected = ' Protected';
+								} else {
 
-                                    if($size > 0){
+									if($size > 0){
 
-                                        // Unlink both unlinks AND removes files, where as unlink does not itself remove folders
-                                        $data .= '<li>Removed '.$relname." (FILE ".format_size($size).$protected.")</li>";
-                                        //unlink($dirname);
+										// Unlink both unlinks AND removes files, where as unlink does not itself remove folders
+										$data .= '<li>Removed '.$relname." (FILE ".format_size($size).$protected.")</li>";
+										//unlink($dirname);
 
-                                    }
+									}
 
-                                }
+								}
 
-                            }
+							}
 
-                            return $data;
+							return $data;
 
-                        } else {
+						} else {
 
-                            $data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
+							$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
 
-                        }
+						}
 
-                    }
+					}
 
-                    // Collect found files
-                    $collected = glob($dirname.'/*');
+					// Collect found files
+					$collected = glob($dirname.'/*');
 
-                    // Get size of folder
-                    $size = get_dir_size($dirname);
+					// Get size of folder
+					$size = get_dir_size($dirname);
 
-                    // Folder contains some unprotected files
-                    if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
-                        while ($file = readdir($dir_handle)){
-                            if ($file != "." && $file != ".."){
+					// Folder contains some unprotected files
+					if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+						while ($file = readdir($dir_handle)){
+							if ($file != "." && $file != ".."){
 
-                                // Check if folder contains files or folders to protect
-                                if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                                    $protected = ' Protected';
-                                }
+								// Check if folder contains files or folders to protect
+								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+									$protected = ' Protected';
+								}
 
-                                // Unlink system files
-                                if($file == 'Thumbs.db'){
+								// Unlink system files
+								if($file == 'Thumbs.db' || $file == '.DS_Store'){
 									$data .= '<li>Removed '.$file." (FILE ".format_size($size).")</li>";
 									//unlink($dirname);
 								}
 
-                                if (!is_dir($dirname."/".$file)){
-                                    if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
-                                        $protected = ' Protected';
-                                    } else {
-                                        // Remove unprotected files only
-                                        $fsize = filesize($dirname);
-                                        $filesizes[] = $fsize;
-                                        
-                                        // Check fonts
-                                        if(stristr($dirname, 'inc/font')){
-                                            // Remove fonts if not found in collected CSS data
-                                            if(!stristr($cssdata, $file)){
-                                                $data .= '<li>Remove Font: '.$file.'</li>';
-                                            }
-                                        }                                        
-                                        //unlink($dirname."/".$file);
-                                    }
-                                } else {
-                                    delete_directory($dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
-                                }
+								if (!is_dir($dirname."/".$file)){
+									if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
+										$protected = ' Protected';
+									} else {
+										// Remove unprotected files only
+										$fsize = filesize($dirname);
+										$filesizes[] = $fsize;
+										
+										// Check fonts
+										if(stristr($dirname, 'inc/font')){
+											// Remove fonts if not found in collected CSS data
+											if(!stristr($cssdata, $file)){
+												$data .= '<li>Remove Font: '.$file.'</li>';
+											}
+										}										
+										//unlink($dirname."/".$file);
+									}
+								} else {
+									delete_directory($dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
+								}
 
-                            }
-                        }
-                    }
+							}
+						}
+					}
 
-                    // Check if folder contains files or folders to protect
-                    if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                        $protected = ' Protected Contents';
+					// Check if folder contains files or folders to protect
+					if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+						$protected = ' Protected Contents';
 
-                        // Folder contains some unprotected files
-                        if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
-                            $data .= '<li>Cleaned '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
-                        }
+						// Folder contains some unprotected files
+						if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+							$data .= '<li>Cleaned '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
+						}
 
-                    } else {
-                        $filesizes[] = $size;
-                        closedir($dir_handle);
-                        if($size > 0){
-                            $data .= '<li>Removed '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
-                        }
-                        //rmdir($dirname);
-                    }
+					} else {
+						$filesizes[] = $size;
+						closedir($dir_handle);
+						if($size > 0){
+							$data .= '<li>Removed '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
+						}
+						//rmdir($dirname);
+					}
 
-                    
-                }
-                
-            } 
+					
+				}
+				
+			} 
 
-            return $data;
+			return $data;
 
 		}
 }
@@ -251,49 +251,49 @@ function cleanCMS(){
 		sort($deletelist);
 		sort($safelist);
 
-        
-        // Get home page
-        $home = rtrim(URL_ABSOLUTE,"/");
-        $dom = new DOMDocument();
-        @$dom->loadHTMLFile($home);
-        $xpath = new DOMXPath($dom);
-        $stylesheets = $xpath->query('/html/head/link[@rel="stylesheet"]');
-        $cssfiles = array();
-        $cssdata = '';
-        foreach($stylesheets as $stylesheet){
-            //$css = $dom->saveHtml($stylesheet);
-            $href = $stylesheet->getAttribute('href');
-            $href = strtok($href, '?');
-            // Check local/relative stylesheets
-            if(!stristr($href, '//')){
-                $cssfiles[] = $href;
-                // Collect CSS data from home page stylesheets (not including @media)
-                $cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
-                $datalist .= '<li>CSS: '.$href.'</li>';
-            }
-        }
+		
+		// Get home page
+		$home = rtrim(URL_ABSOLUTE,"/");
+		$dom = new DOMDocument();
+		@$dom->loadHTMLFile($home);
+		$xpath = new DOMXPath($dom);
+		$stylesheets = $xpath->query('/html/head/link[@rel="stylesheet"]');
+		$cssfiles = array();
+		$cssdata = '';
+		foreach($stylesheets as $stylesheet){
+			//$css = $dom->saveHtml($stylesheet);
+			$href = $stylesheet->getAttribute('href');
+			$href = strtok($href, '?');
+			// Check local/relative stylesheets
+			if(!stristr($href, '//')){
+				$cssfiles[] = $href;
+				// Collect CSS data from home page stylesheets (not including @media)
+				$cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
+				$datalist .= '<li>CSS: '.$href.'</li>';
+			}
+		}
 
 
-        // Start timer
-        $start = time();
+		// Start timer
+		$start = time();
 		// Server time out
-        $maxtime = ini_get('max_execution_time');
-        // Seconds for timeout (set a second or two lower than server)
-        $end = 5;
-        foreach ($deletelist as $value) {
-            // Ensure script finishes executing before server time out
-            if((time() - $start) < $end){
-                //$datalist .= file_path($value).'<br/>';            
-                $datalist .= delete_directory(file_path($value), '', $filesizes, $safelist, '', $start, $end, $cssdata);
-            }
+		$maxtime = ini_get('max_execution_time');
+		// Seconds for timeout (set a second or two lower than server)
+		$end = 5;
+		foreach ($deletelist as $value) {
+			// Ensure script finishes executing before server time out
+			if((time() - $start) < $end){
+				//$datalist .= file_path($value).'<br/>';			
+				$datalist .= delete_directory(file_path($value), '', $filesizes, $safelist, '', $start, $end, $cssdata);
+			}
 		}
 
 		foreach ($filesizes as $value) {
 			$spacesaved = $spacesaved + $value;
-		}        
+		}		
 
 		if($datalist != ''){
-            echo '<h2>Cleaned</h2>';
+			echo '<h2>Cleaned</h2>';
 			$thedata .= "<ul>\n";
 			$thedata .= $datalist;
 			$thedata .= "</ul>\n";
