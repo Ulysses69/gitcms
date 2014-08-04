@@ -1,5 +1,7 @@
 
-<form action="<?php echo get_url('plugin/cleaner/save_settings'); ?>" method="post">    
+<form action="<?php echo get_url('plugin/cleaner/save_settings'); ?>" method="post"> 
+
+<input id="push_page_to_top" />   
     
 
     <?php if (!AuthUser::hasPermission('client')) { ?>

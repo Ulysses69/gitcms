@@ -163,7 +163,11 @@ if(!function_exists('delete_directory')){
                                     $protected = ' Protected';
                                 }
 
-
+                                // Unlink system files
+                                if($file == 'Thumbs.db'){
+									$data .= '<li>Removed '.$file." (FILE ".format_size($size).")</li>";
+									//unlink($dirname);
+								}
 
                                 if (!is_dir($dirname."/".$file)){
                                     if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
