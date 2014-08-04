@@ -171,10 +171,11 @@ if(!function_exists('delete_directory')){
                                     } else {
                                         // Remove unprotected files only
                                         $fsize = filesize($dirname);
-                                        $filesizes[] = $fsize;
+                                        $filesizes[] = $fsize;                                        
+                                        $ex = new SplFileInfo($file);
                                         
                                         // Check fonts
-                                        if(stristr($dirname, 'inc/font')){
+                                        if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
                                             // Remove fonts if not found in collected CSS data
                                             if(!stristr($cssdata, $file)){
                                                 $data .= '<li>Remove Font: '.$file.'</li>';
@@ -249,7 +250,9 @@ function cleanCMS(){
 
         
         // Get home page
-        $home = rtrim(URL_ABSOLUTE,"/");
+        $fullURL = !empty($_SERVER['HTTPS']) == 'on' ? 'https://' : 'http://';
+        $fullURL .= $_SERVER['SERVER_PORT'] != '80' ? $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"] : $_SERVER['SERVER_NAME'];
+        $home = $fullURL;
         $dom = new DOMDocument();
         @$dom->loadHTMLFile($home);
         $xpath = new DOMXPath($dom);
@@ -261,7 +264,7 @@ function cleanCMS(){
             $href = $stylesheet->getAttribute('href');
             $href = strtok($href, '?');
             // Check local/relative stylesheets
-            if(!stristr($href, '//')){
+            if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
                 $cssfiles[] = $href;
                 // Collect CSS data from home page stylesheets (not including @media)
                 $cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
