@@ -16,7 +16,7 @@
 
 <div class="box">
 <h2><?php echo __('Tip');?></h2>
-<p>Slash characters are automatically formatted as required when saved, even if mixed combinations of forward slashes and backward slashes.</p>
+<p>Slash characters are automatically formatted as required (when saved), even with mixed combinations of forward slashes and backward slashes, even trailing slashes.</p>
 </div>
 
 
