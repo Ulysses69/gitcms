@@ -4,11 +4,16 @@
 	background: #EEEEEE;
 }
 
-#body_plugin_cleaner #sidebar p {
+#body_plugin_cleaner #sidebar p.button {
 	margin: 0 0 1px 0;
 	border-bottom: solid 1px #bbbbbb;
 }
 
-#body_plugin_cleaner #sidebar p:hover {
+#body_plugin_cleaner #sidebar p.button:hover {
 	border-bottom: solid 1px #8f8f8f;
+}
+
+#body_plugin_cleaner #push_page_to_top {
+	position: absolute;
+	top: -2em;
 }
