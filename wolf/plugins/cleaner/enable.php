@@ -12,6 +12,7 @@ $settings = array('version' => CLEANER_VERSION);
 // Check for existing settings
 if(!Plugin::getSetting('cleanlist', 'cleaner')) $settings['cleanlist'] = '';
 if(!Plugin::getSetting('protectlist', 'cleaner')) $settings['protectlist'] = '';
+if(!Plugin::getSetting('customconditions', 'cleaner')) $settings['customconditions'] = '';
 
 // Check existing plugin settings
 if (!$version || $version == null) {

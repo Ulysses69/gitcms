@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.1'); }
+if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.2'); }
 if (!defined('CLEANER_ROOT')) { define('CLEANER_ROOT', URI_PUBLIC.'wolf/plugins/cleaner'); }
 Plugin::setInfos(array(
 	'id'					=> 'cleaner',
@@ -122,13 +122,13 @@ if(!function_exists('delete_directory')){
 
 								// Check if file is protected
 								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-									$protected = ' Protected';
+									$protected = 'protected';
 								} else {
 
 									if($size > 0){
 
 										// Unlink both unlinks AND removes files, where as unlink does not itself remove folders
-										$data .= '<li>Removed '.$relname." (FILE ".format_size($size).$protected.")</li>";
+										$data .= '<li>Removed '.$relname." (FILE ".format_size($size).' '.$protected.")</li>";
 										//unlink($dirname);
 
 									}
@@ -141,7 +141,7 @@ if(!function_exists('delete_directory')){
 
 						} else {
 
-							$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
+							//$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
 
 						}
 
@@ -158,9 +158,11 @@ if(!function_exists('delete_directory')){
 						while ($file = readdir($dir_handle)){
 							if ($file != "." && $file != ".."){
 
+
+
 								// Check if folder contains files or folders to protect
 								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-									$protected = ' Protected';
+									$protected = 'protected';
 								}
 
 								// Unlink system files
@@ -168,23 +170,29 @@ if(!function_exists('delete_directory')){
 									$data .= '<li>Removed '.$file." (FILE ".format_size($size).")</li>";
 									//unlink($dirname);
 								}
+								//include($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/fileconditions.php');
+
+
 
 								if (!is_dir($dirname."/".$file)){
 									if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
-										$protected = ' Protected';
+										$protected = 'protected';
 									} else {
 										// Remove unprotected files only
 										$fsize = filesize($dirname);
 										$filesizes[] = $fsize;
 										
-										// Check fonts
+										// Check fonts (only inc/font folder by default)
 										if(stristr($dirname, 'inc/font')){
 											// Remove fonts if not found in collected CSS data
 											if(!stristr($cssdata, $file)){
-												$data .= '<li>Remove Font: '.$file.'</li>';
+												//$data .= '<li>Remove Font: '.$file.'</li>';
+												//unlink($dirname."/".$file);
 											}
-										}										
-										//unlink($dirname."/".$file);
+										} else {
+											//unlink($dirname."/".$file);
+										}
+
 									}
 								} else {
 									delete_directory($dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
@@ -192,22 +200,22 @@ if(!function_exists('delete_directory')){
 
 							}
 						}
+						closedir($dir_handle);
 					}
 
 					// Check if folder contains files or folders to protect
 					if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-						$protected = ' Protected Contents';
+						$protected = 'protected contents';
 
 						// Folder contains some unprotected files
 						if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
-							$data .= '<li>Cleaned '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
+							$data .= '<li>Cleaned '.$relname." (FOLDER ".format_size($size).' '.$protected.")</li>";
 						}
 
 					} else {
 						$filesizes[] = $size;
-						closedir($dir_handle);
 						if($size > 0){
-							$data .= '<li>Removed '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
+							$data .= '<li>Removed '.$relname." (FOLDER ".format_size($size).' '.$protected.")</li>";
 						}
 						//rmdir($dirname);
 					}
@@ -290,7 +298,7 @@ function cleanCMS(){
 
 		foreach ($filesizes as $value) {
 			$spacesaved = $spacesaved + $value;
-		}		
+		}
 
 		if($datalist != ''){
 			echo '<h2>Cleaned</h2>';
@@ -302,6 +310,11 @@ function cleanCMS(){
 			if($spacesaved > 0){
 				echo '<h2>Space Saved</h2><p>'.format_size($spacesaved).'</p>';
 			}
+
+		} else {
+			
+			echo '<h2>Clean</h2>';
+			echo '<p>There are no files or folders to clean up.</p>';
 
 		}
 
