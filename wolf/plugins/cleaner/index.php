@@ -268,7 +268,7 @@ function cleanCMS(){
                 $cssfiles[] = $href;
                 // Collect CSS data from home page stylesheets (not including @media)
                 $cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
-                $datalist .= '<li>CSS: '.$href.'</li>';
+                //$datalist .= '<li>CSS: '.$href.'</li>';
             }
         }
 
