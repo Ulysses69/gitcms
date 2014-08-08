@@ -22,12 +22,12 @@ class CleanerController extends PluginController {
 		$tablename = TABLE_PREFIX.'cleaner';
 		$cleanlist = $_POST['cleanlist'];
 		$protectlist = $_POST['protectlist'];
-		$customconditions = $_POST['customconditions'];
+		//$customconditions = $_POST['customconditions'];
 
 		$cleanlist = str_replace("\\","/",$cleanlist);
 		$protectlist = str_replace("\\","/",$protectlist);
 
-		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist, 'customconditions' => $customconditions);
+		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist);
 		if (Plugin::setAllSettings($settings, 'cleaner')) {
 			Flash::set('success', 'Cleaner - '.__('plugin settings saved.'));
 			redirect(get_url('plugin/cleaner/settings'));

@@ -29,7 +29,7 @@
 	$lowestpath = getcwd();
 	$rep = str_replace('\\', '/', $lowestpath);
 	$wolfpath = str_replace('/'.ADMIN_DIR, '', $rep);
-	echo rtrim($wolfpath);
+	//echo rtrim($wolfpath);
 	?>
 
 
