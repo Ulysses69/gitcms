@@ -22,6 +22,8 @@
 
 	<?php } ?>
 
+<<<<<<< HEAD
+=======
 	
 	<?php
 	// Determine wolf path
@@ -29,9 +31,10 @@
 	$lowestpath = getcwd();
 	$rep = str_replace('\\', '/', $lowestpath);
 	$wolfpath = str_replace('/'.ADMIN_DIR, '', $rep);
-	echo rtrim($wolfpath);
+	//echo rtrim($wolfpath);
 	?>
 
+>>>>>>> FETCH_HEAD
 
     <!-- <p>Max Execution Time: <?php echo ini_get('max_execution_time'); ?> seconds</p> -->
 

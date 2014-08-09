@@ -65,13 +65,78 @@ if(!function_exists('format_size')){
         return round($size, 2) . ' ' . $units[$i];
     }
 }
-	
+
+// Plugin check
+if(!function_exists('plugin_check')){
+	function plugin_check($dirname) {
+		if(stristr($dirname, 'wolf/plugins/')){
+			$lowestpath = getcwd();
+			$rep = str_replace('\\', '/', $lowestpath);
+			$wolfpath = str_replace('/'.ADMIN_DIR, '', $rep);
+
+			$plugindir = str_replace(rtrim($wolfpath)."/wolf/plugins/", '', $dirname);
+			$pluginname = explode("/", $plugindir);
+			$plugin = $pluginname[0];
+			if(Plugin::isEnabled($plugin) == true){
+				$removeplugin = true;
+				return 'enabled';
+			}
+		}
+	}
+}
+
 if(!function_exists('delete_directory')){
-    function delete_directory($dirname, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
+<<<<<<< HEAD
+    function delete_directory($dirname, $wolfpath, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
 
         if((time() - $start) < $end){
 
             $removeplugin = false;
+=======
+		function delete_directory($debug = true, $dirname, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
+
+			if((time() - $start) < $end){
+
+                $removeplugin = false;
+                
+                // Clean up trailing slashes
+                $dirname = rtrim($dirname,"/");
+
+                // Clean up whitespace
+                $dirname = trim($dirname);
+
+                // Relative URL
+                $relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
+
+				if($relname != ''){
+                    $info = new SplFileInfo($dirname);
+                    if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
+                        //$data .= '<li>FOLDER: '.$dirname."</li>";
+                        $dir_handle = @opendir($dirname);
+                    }
+                    if (!isset($dir_handle)){
+                        if (file_exists($dirname)){
+                            //$data .= '<li>FILE: '.$dirname."</li>";
+                            $size = filesize($dirname);
+                            if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
+
+                                // Empty files
+                                if($size > 0){
+                                    $filesizes[] = $size;
+                                    $f = @fopen($dirname, "r+");
+                                    if ($f !== false){
+										
+										// Report task outcome
+                                        $data .= '<li>Emptied File: '.$relname." (".format_size($size).")</li>";
+
+										// Test task or carry it out
+										if($debug == false){
+	                                        ftruncate($f, 0);
+	                                        fclose($f);
+										}
+                                    }
+                                }
+>>>>>>> FETCH_HEAD
 
             // Clean up trailing slashes
             $dirname = rtrim($dirname,"/");
@@ -84,7 +149,7 @@ if(!function_exists('delete_directory')){
 
             // Plugin check
             if(stristr($dirname, 'wolf/plugins/')){
-                $plugindir = str_replace($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/", '', $dirname);
+                $plugindir = str_replace($wolfpath."/wolf/plugins/", '', $dirname);
                 $pluginname = explode("/", $plugindir); $plugin = $pluginname[0];
                 if(Plugin::isEnabled($plugin) != true){
                     //$data .= '<li>Plugin: '.$plugin."</li>";
@@ -92,6 +157,7 @@ if(!function_exists('delete_directory')){
                 }
             }
 
+<<<<<<< HEAD
             if($relname != '' || $removeplugin == true){
                 $info = new SplFileInfo($dirname);
                 if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
@@ -114,18 +180,34 @@ if(!function_exists('delete_directory')){
                                     //fclose($f);
                                 }
                             }
+=======
+                                // Remove files
+                                //$filesizes[] = $size;
+>>>>>>> FETCH_HEAD
 
                         } else {
 
                             // Remove files
                             $filesizes[] = $size;
 
+<<<<<<< HEAD
                             // Check if file is protected
                             if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
                                 $protected = ' Protected';
                             } else {
 
                                 if($size > 0){
+=======
+                                        // Unlink both unlinks AND removes files, where as unlink does not itself remove folders
+
+                                        // Report task outcome
+                                        $data .= '<li>Removed File: '.$relname." (".format_size($size).")</li>";
+
+										// Test task or carry it out
+										if($debug == false){
+	                                        unlink($dirname);
+										}
+>>>>>>> FETCH_HEAD
 
                                     // Unlink both unlinks AND removes files, where as unlink does not itself remove folders
                                     $data .= '<li>Removed '.$relname." (FILE ".format_size($size).$protected.")</li>";
@@ -135,11 +217,19 @@ if(!function_exists('delete_directory')){
 
                             }
 
+<<<<<<< HEAD
                         }
+=======
+                            //return $data;
+>>>>>>> FETCH_HEAD
 
                         return $data;
 
+<<<<<<< HEAD
                     } else {
+=======
+                            //$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
+>>>>>>> FETCH_HEAD
 
                         $data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
 
@@ -150,6 +240,7 @@ if(!function_exists('delete_directory')){
                 // Collect found files
                 $collected = glob($dirname.'/*');
 
+<<<<<<< HEAD
                 // Get size of folder
                 $size = get_dir_size($dirname);
 
@@ -162,9 +253,64 @@ if(!function_exists('delete_directory')){
                             if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
                                 $protected = ' Protected';
                             }
+=======
+                    // Folder contains some unprotected files
+                    if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+                        while ($file = readdir($dir_handle)){
+							
+							// Check if we need to exit loop
+							if(time() >= $start + $end){
+								global $stopdelete;
+								$stopdelete = '<p>Stop Deleting</p>';
+								break;
+							}
 
+                            if ($file != "." && $file != ".."){
+								
+								$removeFile = true;
+								$highlightopen = '';
+								$highlightclose = '';
 
+                                // Check if folder contains files or folders to protect
+                                if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+                                    $removeFile = false;
+                                }
+>>>>>>> FETCH_HEAD
 
+                                 // Check if this file is associated with an enabled plugin
+								if(plugin_check($dirname) == 'enabled'){
+
+									//if(!is_dir($dirname."/".$file)){
+										
+										// Don't remove enabled plugin files
+										$removeFile = false;
+
+										// This file IS in the safelist
+										if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
+											$highlightopen = '<b>';
+											$highlightclose = '</b>';
+											$removeFile = false;
+										} else {
+											$highlightopen = '';
+											$highlightclose = '';
+											$removeFile = true;
+										}
+
+										// Report task outcome
+		                                //$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
+
+									//}
+								}
+                                
+                                // Check if this file is associated with an enabled plugin
+								if($removeFile == true){
+
+	                                if(!is_dir($dirname."/".$file)){
+
+	                                    // Remove unprotected files only
+	                                    $fsize = filesize($dirname.'/'.$file);
+
+<<<<<<< HEAD
                             if (!is_dir($dirname."/".$file)){
                                 if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
                                     $protected = ' Protected';
@@ -178,19 +324,56 @@ if(!function_exists('delete_directory')){
                                     if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
                                         // Remove fonts if not found in collected CSS data
                                         if(!stristr($cssdata, $file)){
-                                            $data .= '<li>Remove Font: '.$file.'</li>';
+                                            //$data .= '<li>Remove Font: '.$file.'</li>';
                                         }
                                     }                                        
                                     //unlink($dirname."/".$file);
                                 }
                             } else {
-                                delete_directory($dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
+                                delete_directory($dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
                             }
 
+=======
+                                        //$filesizes[] = $fsize;
+                                        $ex = new SplFileInfo($file);
+
+                                        // Check fonts
+                                        if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
+                                            // Remove fonts if not found in collected CSS data
+                                            if(!stristr($cssdata, $file)){
+
+                                                // Report task outcome
+                                        		//$data .= '<li>Removed Font: '.$file.' ('.format_size($fsize).')</li>';
+
+                                            }
+                                        }
+                                        
+                                        $filesizes[] = $fsize;
+                                        
+                                        // Report task outcome
+                                        $data .= '<li>Removed File: '.$relname.'/'.$file.' ('.format_size($fsize).')</li>';
+
+										// Test task or carry it out
+                                        if($debug == false){
+                                        	unlink($dirname."/".$file);
+										}
+
+	                                } else {
+	                                    delete_directory($debug, $dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
+	                                }
+
+								}
+
+                            }
+
+
+
+>>>>>>> FETCH_HEAD
                         }
                     }
                 }
 
+<<<<<<< HEAD
                 // Check if folder contains files or folders to protect
                 if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
                     $protected = ' Protected Contents';
@@ -198,6 +381,39 @@ if(!function_exists('delete_directory')){
                     // Folder contains some unprotected files
                     if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
                         $data .= '<li>Cleaned '.$relname." (FOLDER ".format_size($size).$protected.")</li>";
+=======
+                    // Check if folder contains files or folders to protect
+                    if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+                        $protected = ' Protected Contents';
+
+                        // Folder contains some unprotected files
+                        if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+
+                            // Report task outcome
+                            //$data .= '<li>Cleaned Folder: '.$relname." (".format_size($size).")</li>";
+
+                        }
+
+                    } else {
+                        //$filesizes[] = $size;
+                        if($size > 0){
+
+                        	closedir($dir_handle);
+
+                            // Report task outcome
+                            //$data .= '<li>Removed Folder: '.$relname." (".format_size($size).")</li>";
+                            $data .= '<li>Removed Folder: '.$relname."</li>";
+                            
+                            // Test task or carry it out
+	                        if($debug == false){
+								rmdir($dirname);
+							}
+
+                        }
+
+
+
+>>>>>>> FETCH_HEAD
                     }
 
                 } else {
@@ -228,6 +444,15 @@ function cleanCMS(){
 	$protectlist = Plugin::getSetting('protectlist', 'cleaner');
 
 	if($cleanlist != ''){
+		
+		$debug = true;
+
+        // Determine wolf path
+        // As plugins run from admin folder, excluding this folder reveals wolf root
+        $lowestpath = getcwd();
+        $rep = str_replace('\\', '/', $lowestpath);
+        $wolfpath = rtrim(str_replace('/'.ADMIN_DIR, '', $rep));
+
 
 		global $filesizes;
 		global $deletelist;
@@ -238,13 +463,14 @@ function cleanCMS(){
 		global $lis;
 		global $size;
 		global $spacesaved;
+		global $stopdelete;
 
 		$filesizes = array();
 		$spacesaved = 0;
 
 		$deletelist = explode("\n", $cleanlist);
 		$safelist = explode("\n", $protectlist);
-		$data = ''; $lis = ''; $thedata = ''; $thedata = ''; $datalist = '';
+		$data = ''; $lis = ''; $thedata = ''; $thedata = ''; $datalist = ''; $stopdelete = '';
 		sort($deletelist);
 		sort($safelist);
 
@@ -267,7 +493,7 @@ function cleanCMS(){
             if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
                 $cssfiles[] = $href;
                 // Collect CSS data from home page stylesheets (not including @media)
-                $cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
+                $cssdata .= file_get_contents($wolfpath.'/'.ltrim($href,'/'));
                 //$datalist .= '<li>CSS: '.$href.'</li>';
             }
         }
@@ -278,12 +504,16 @@ function cleanCMS(){
 		// Server time out
         $maxtime = ini_get('max_execution_time');
         // Seconds for timeout (set a second or two lower than server)
-        $end = 5;
+        $end = 10;
         foreach ($deletelist as $value) {
             // Ensure script finishes executing before server time out
             if((time() - $start) < $end){
                 //$datalist .= file_path($value).'<br/>';            
-                $datalist .= delete_directory(file_path($value), '', $filesizes, $safelist, '', $start, $end, $cssdata);
+<<<<<<< HEAD
+                $datalist .= delete_directory(file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
+=======
+                $datalist .= delete_directory($debug, file_path($value), '', $filesizes, $safelist, '', $start, $end, $cssdata);
+>>>>>>> FETCH_HEAD
             }
 		}
 
@@ -292,15 +522,29 @@ function cleanCMS(){
 		}        
 
 		if($datalist != ''){
-            echo '<h2>Cleaned</h2>';
+
+			$saved = '';
+			if($spacesaved > 0){
+				$saved = format_size($spacesaved);
+			}
+			
+            echo '<h2>Cleaned '.$saved.'</h2>';
+			if($stopdelete != ''){
+				// Test task or carry it out
+	            if($debug == false){
+					echo '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
+				}
+			}
 			$thedata .= "<ul>\n";
 			$thedata .= $datalist;
 			$thedata .= "</ul>\n";
 			echo $thedata;
 
-			if($spacesaved > 0){
-				echo '<h2>Space Saved</h2><p>'.format_size($spacesaved).'</p>';
-			}
+
+		} else {
+
+			echo '<h2>Clean</h2>';
+			echo '<p>No files to clean up.</p>';
 
 		}
 
