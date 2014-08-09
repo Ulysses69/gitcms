@@ -86,7 +86,7 @@ if(!function_exists('plugin_check')){
 }
 
 if(!function_exists('delete_directory')){
-		function delete_directory($debug = true, $dirname, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
+		function delete_directory($debug = true, $dirname, $wolfpath, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
 
 			if((time() - $start) < $end){
 
@@ -254,7 +254,7 @@ if(!function_exists('delete_directory')){
 										}
 
 	                                } else {
-	                                    delete_directory($debug, $dirname.'/'.$file, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
+	                                    delete_directory($debug, $dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
 	                                }
 
 								}
@@ -321,6 +321,12 @@ function cleanCMS(){
 		
 		$debug = true;
 
+        // Determine wolf path
+        // As plugins run from admin folder, excluding this folder reveals wolf root
+        $lowestpath = getcwd();
+        $rep = str_replace('\\', '/', $lowestpath);
+        $wolfpath = rtrim(str_replace('/'.ADMIN_DIR, '', $rep));
+
 		global $filesizes;
 		global $deletelist;
 		global $safelist;
@@ -360,7 +366,7 @@ function cleanCMS(){
             if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
                 $cssfiles[] = $href;
                 // Collect CSS data from home page stylesheets (not including @media)
-                $cssdata .= file_get_contents($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.ltrim($href,'/'));
+                $cssdata .= file_get_contents($wolfpath.'/'.ltrim($href,'/'));
                 //$datalist .= '<li>CSS: '.$href.'</li>';
             }
         }
@@ -376,7 +382,7 @@ function cleanCMS(){
             // Ensure script finishes executing before server time out
             if((time() - $start) < $end){
                 //$datalist .= file_path($value).'<br/>';            
-                $datalist .= delete_directory($debug, file_path($value), '', $filesizes, $safelist, '', $start, $end, $cssdata);
+                $datalist .= delete_directory($debug, file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
             }
 		}
 
