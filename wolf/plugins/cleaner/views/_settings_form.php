@@ -22,8 +22,7 @@
 
 	<?php } ?>
 
-<<<<<<< HEAD
-=======
+
 	
 	<?php
 	// Determine wolf path
@@ -34,7 +33,7 @@
 	//echo rtrim($wolfpath);
 	?>
 
->>>>>>> FETCH_HEAD
+
 
     <!-- <p>Max Execution Time: <?php echo ini_get('max_execution_time'); ?> seconds</p> -->
 
