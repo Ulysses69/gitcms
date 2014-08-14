@@ -296,12 +296,12 @@ if(!function_exists('delete_directory')){
                         }
 
 
-
                     }
 
                     
                 }
-                
+
+
             } 
 
             return $data;
@@ -396,7 +396,7 @@ function cleanCMS(){
 			if($spacesaved > 0){
 				$saved = format_size($spacesaved);
 			}
-			
+
             echo '<h2>Cleaned '.$saved.'</h2>';
 			if($stopdelete != ''){
 				// Test task or carry it out
