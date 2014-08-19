@@ -22,6 +22,7 @@ class CleanerController extends PluginController {
 		$tablename = TABLE_PREFIX.'cleaner';
 		$cleanlist = $_POST['cleanlist'];
 		$protectlist = $_POST['protectlist'];
+		$debugmode = $_POST['debugmode'];
 		//$customconditions = $_POST['customconditions'];
 
 		$cleanlist = str_replace("\\","/",$cleanlist);

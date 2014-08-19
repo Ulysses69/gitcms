@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.1'); }
+if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.2'); }
 if (!defined('CLEANER_ROOT')) { define('CLEANER_ROOT', URI_PUBLIC.'wolf/plugins/cleaner'); }
 Plugin::setInfos(array(
 	'id'					=> 'cleaner',
@@ -316,10 +316,11 @@ if(!function_exists('cleanCMS')){
 function cleanCMS(){
 	$cleanlist = Plugin::getSetting('cleanlist', 'cleaner');
 	$protectlist = Plugin::getSetting('protectlist', 'cleaner');
+	$debug = Plugin::getSetting('debugmode', 'cleaner');
 
 	if($cleanlist != ''){
 		
-		$debug = true;
+		//$debug = true;
 
         // Determine wolf path
         // As plugins run from admin folder, excluding this folder reveals wolf root

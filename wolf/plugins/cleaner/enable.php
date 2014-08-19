@@ -13,6 +13,7 @@ $settings = array('version' => CLEANER_VERSION);
 if(!Plugin::getSetting('cleanlist', 'cleaner')) $settings['cleanlist'] = '';
 if(!Plugin::getSetting('protectlist', 'cleaner')) $settings['protectlist'] = '';
 if(!Plugin::getSetting('customconditions', 'cleaner')) $settings['customconditions'] = '';
+if(!Plugin::getSetting('debugmode', 'cleaner')) $settings['debugmode'] = true;
 
 // Check existing plugin settings
 if (!$version || $version == null) {

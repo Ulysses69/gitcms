@@ -17,3 +17,6 @@
 	position: absolute;
 	top: -2em;
 }
+#body_plugin_cleaner #sidebar .warning h2 {
+	font-weight: bold;
+}
