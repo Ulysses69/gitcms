@@ -107,6 +107,7 @@ if(!function_exists('delete_directory')){
                         //$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
                         $dir_handle = @opendir($dirname);
                     }
+
                     if (!isset($dir_handle)){
                         if (file_exists($dirname)){
                             //$data .= '<li><b>FILE: '.$dirname."</b></li>";
@@ -196,6 +197,25 @@ if(!function_exists('delete_directory')){
                                     $removeFile = false;
                                 }
 
+	                            $ex = new SplFileInfo($file);
+	
+	                            // Check fonts
+	                            if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
+	                                // Remove fonts if not found in collected CSS data
+	                                if(!stristr($cssdata, $file)){
+	
+	                                    // Report task outcome
+	                                    //$data .= '<li>Removed Font: '.$file.' ('.format_size($fsize).')</li>';
+	                                    $removeFile = true;
+	
+	                                } else {
+	
+										$removeFile = false;
+	
+									}
+	
+	                            }
+
                                  // Check if this file is associated with an enabled plugin
 								if(plugin_check($dirname) == 'enabled'){
 
@@ -231,19 +251,7 @@ if(!function_exists('delete_directory')){
 	                                    // Get file size
 	                                    $fsize = filesize($dirname.'/'.$file);
 
-                                        //$filesizes[] = $fsize;
-                                        $ex = new SplFileInfo($file);
 
-                                        // Check fonts
-                                        if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
-                                            // Remove fonts if not found in collected CSS data
-                                            if(!stristr($cssdata, $file)){
-
-                                                // Report task outcome
-                                        		//$data .= '<li>Removed Font: '.$file.' ('.format_size($fsize).')</li>';
-
-                                            }
-                                        }
                                         
                                         $filesizes[] = $fsize;
                                         
@@ -294,9 +302,9 @@ if(!function_exists('delete_directory')){
 
                         	closedir($dir_handle);
 
-                            // Report task outcome
+                            // Report task outcome (use child folder and file reporting for most accurate sizes)
                             //$data .= '<li>Removed Folder: '.$relname." (".format_size($size).")</li>";
-                            $data .= '<li>Removed Folder: '.$relname."</li>";
+                            //$data .= '<li>Removed Folder: '.$relname."</li>";
                             
                             // Test task or carry it out
 	                        if($debug == false){
@@ -376,7 +384,7 @@ function cleanCMS(){
             // Check local/relative stylesheets
             if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
                 $cssfiles[] = $href;
-                // Collect CSS data from home page stylesheets (not including @media)
+                // Collect CSS data from home page stylesheets (not including @media and includes commented fonts)
                 $cssdata .= file_get_contents($wolfpath.'/'.ltrim($href,'/'));
                 //$datalist .= '<li>CSS: '.$href.'</li>';
             }
