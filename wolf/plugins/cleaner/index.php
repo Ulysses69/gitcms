@@ -104,12 +104,12 @@ if(!function_exists('delete_directory')){
 				if($relname != ''){
                     $info = new SplFileInfo($dirname);
                     if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
-                        //$data .= '<li>FOLDER: '.$dirname."</li>";
+                        //$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
                         $dir_handle = @opendir($dirname);
                     }
                     if (!isset($dir_handle)){
                         if (file_exists($dirname)){
-                            //$data .= '<li>FILE: '.$dirname."</li>";
+                            //$data .= '<li><b>FILE: '.$dirname."</b></li>";
                             $size = filesize($dirname);
                             if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
 
@@ -177,7 +177,7 @@ if(!function_exists('delete_directory')){
                     // Folder contains some unprotected files
                     if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
                         while ($file = readdir($dir_handle)){
-							
+
 							// Check if we need to exit loop
 							if(time() >= $start + $end){
 								global $stopdelete;
@@ -225,8 +225,10 @@ if(!function_exists('delete_directory')){
 								if($removeFile == true){
 
 	                                if(!is_dir($dirname."/".$file)){
+										
+										//$data .= '<li><b>SUB FILE: '.$dirname."/".$file."</b></li>";
 
-	                                    // Remove unprotected files only
+	                                    // Get file size
 	                                    $fsize = filesize($dirname.'/'.$file);
 
                                         //$filesizes[] = $fsize;
@@ -254,16 +256,24 @@ if(!function_exists('delete_directory')){
 										}
 
 	                                } else {
-	                                    delete_directory($debug, $dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
+										// NOTE : Individual files in child folders are not looped through. They are deleted like a single file.
+
+										// Get size of folder
+					                    $size = get_dir_size($dirname."/".$file);
+										$filesizes[] = $size;
+
+                                        // Report task outcome
+                                        $data .= '<li>Removed Folder: '.$relname.'/'.$file.' ('.format_size($size).')</li>';
+
+										delete_directory($debug, $dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
 	                                }
 
 								}
-
+								
                             }
 
-
-
                         }
+
                     }
 
                     // Check if folder contains files or folders to protect
