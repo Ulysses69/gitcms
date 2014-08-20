@@ -5,7 +5,7 @@ class CleanerController extends PluginController {
         $this->assignToLayout('sidebar', new View('../../plugins/cleaner/views/sidebar'));
 	}
     public function index() {
-        $this->display('cleaner/views/settings');
+        $this->display('cleaner/views/index');
     }
     public function clean() {
         $this->display('cleaner/views/clean');

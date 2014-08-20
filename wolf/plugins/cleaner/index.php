@@ -331,7 +331,7 @@ if(!function_exists('delete_directory')){
 
 
 if(!function_exists('cleanCMS')){
-function cleanCMS(){
+function cleanCMS($mode='test'){
 	$cleanlist = Plugin::getSetting('cleanlist', 'cleaner');
 	$protectlist = Plugin::getSetting('protectlist', 'cleaner');
 	$debug = Plugin::getSetting('debugmode', 'cleaner');
@@ -398,9 +398,10 @@ function cleanCMS(){
         // Seconds for timeout (set a second or two lower than server)
         $end = 10;
         foreach ($deletelist as $value) {
-            // Ensure script finishes executing before server time out
-            if((time() - $start) < $end){
-                //$datalist .= file_path($value).'<br/>';            
+            // Ensure script finishes executing before server time out (or check if anything needs cleaning)
+            //if((time() - $start) < $end){
+			if(($mode != 'check' && (time() - $start) < $end) || ($mode == 'check' && $datalist == '')){
+                //$datalist .= file_path($value).'<br/>';
                 $datalist .= delete_directory($debug, file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
             }
 		}
@@ -411,22 +412,29 @@ function cleanCMS(){
 
 		if($datalist != ''){
 
-			$saved = '';
-			if($spacesaved > 0){
-				$saved = format_size($spacesaved);
-			}
+			if($mode == 'check'){
 
-            echo '<h2>Cleaned '.$saved.'</h2>';
-			if($stopdelete != ''){
-				// Test task or carry it out
-	            if($debug == false){
-					echo '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
+	            echo '<h2>Cleaning Recommended</h2>';
+	            echo '<p>There are files to <a href="'.get_url('plugin/cleaner').'/clean">clean</a>, according to the cleaning <a href="'.get_url('plugin/cleaner').'/settings">settings</a>.</p>';
+
+			} else {
+				$saved = '';
+				if($spacesaved > 0){
+					$saved = format_size($spacesaved);
 				}
+	
+	            echo '<h2>Cleaned '.$saved.'</h2>';
+				if($stopdelete != ''){
+					// Test task or carry it out
+		            if($debug == false){
+						echo '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
+					}
+				}
+				$thedata .= "<ul>\n";
+				$thedata .= $datalist;
+				$thedata .= "</ul>\n";
+				echo $thedata;
 			}
-			$thedata .= "<ul>\n";
-			$thedata .= $datalist;
-			$thedata .= "</ul>\n";
-			echo $thedata;
 
 
 		} else {

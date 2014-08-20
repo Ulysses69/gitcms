@@ -1,3 +1,3 @@
-<h1>Google Map <?php echo __('Preferences'); ?></h1>
+<!-- <h1>Google Map <?php echo __('Documentation'); ?></h1> -->
 
-<?php include "_settings_form.php"; ?>
+<?php cleanCMS('check'); ?>
