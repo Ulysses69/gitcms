@@ -245,7 +245,13 @@
 
 		if(Plugin::isEnabled('funky_cache') == true && $cacheCount > 0){
 				if($cacheCount != 1) { $cacheX = 's'; } else { $cacheX = ''; }
-				$warnings .= '<li><a href="/'.ADMIN_DIR.'/plugin/funky_cache"><b>Check Cached Pages <span class="counter">'.$cacheCount.'</span></b></a><br />Clear cached pages when making changes to pages/content.<br /><br /><span class="helper"><a href="/'.ADMIN_DIR.'/plugin/funky_cache/clear">Clear '.$cacheCount.' page'.$cacheX.'</a><!-- or <a href="/'.ADMIN_DIR.'/plugin/funky_cache/settings">Disable cache</a> --></span></li>';
+				$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/plugin/funky_cache"><b>Check Cached Pages <span class="counter">'.$cacheCount.'</span></b></a><br />Clear cached pages when making changes to pages/content.<br /><br /><span class="helper"><a href="/'.ADMIN_DIR.'/plugin/funky_cache/clear">Clear '.$cacheCount.' page'.$cacheX.'</a><!-- or <a href="/'.ADMIN_DIR.'/plugin/funky_cache/settings">Disable cache</a> --></span></li>';
+		}
+
+		if(Plugin::isEnabled('cleaner') == true){
+			if(cleanCMS('check') == true){
+				$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/plugin/cleaner"><b>Cleaning Recommended</span></b></a><br />There are files to <a href="'.get_url('plugin/cleaner').'/clean">clean</a>, according to the cleaning <a href="'.get_url('plugin/cleaner').'/settings">settings</a>.</li>';
+			}
 		}
 
 		if(Plugin::isEnabled('backup_restore') == true && AuthUser::hasPermission('client')){
