@@ -1,5 +1,8 @@
 <?php
 
+
+$debug = Plugin::getSetting('debugmode', 'cleaner');
+
   /* Ensure plugin update is enabled ONLY when new version */
   if (CLEANER_VERSION > Plugin::getSetting('version', 'cleaner')){
 	  define('CLEANER_INCLUDE',1);
@@ -13,6 +16,13 @@
 
 <p class="button"><a href="<?php echo get_url('plugin/cleaner'); ?>/clean"><img src="<?php echo PLUGINS_URI . 'cleaner/images/clean.png'; ?>" align="middle" alt="Access" /> Clean</a></p>
 <p class="button"><a href="<?php echo get_url('plugin/cleaner'); ?>/settings"><img src="<?php echo PLUGINS_URI  . 'cleaner/images/settings.png'; ?>" align="middle" alt="Settings" /> Settings</a></p>
+
+
+<?php if(is_dir($_SERVER["DOCUMENT_ROOT"].'/wolf/plugins/cleaner')) { ?>
+<?php if($debug == true){ $button = 'ENABLED'; } else { $button = 'DISABLED'; }  ?>
+<p class="button"><a href="<?php echo get_url('plugin/cleaner/save?test='.$button); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/cleaner/images/test_<?php echo $button; ?>.png" align="middle" alt="test icon" /> Test Mode <?php echo $button; ?></a></p>
+<?php } ?>
+
 
 <br />
 

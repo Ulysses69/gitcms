@@ -414,8 +414,7 @@ function cleanCMS($mode='test'){
 
 			if($mode == 'check'){
 
-	            echo '<h2>Cleaning Recommended</h2>';
-	            echo '<p>There are files to <a href="'.get_url('plugin/cleaner').'/clean">clean</a>, according to the cleaning <a href="'.get_url('plugin/cleaner').'/settings">settings</a>.</p>';
+	            return true;
 
 			} else {
 				$saved = '';

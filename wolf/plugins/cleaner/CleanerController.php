@@ -22,13 +22,21 @@ class CleanerController extends PluginController {
 		$tablename = TABLE_PREFIX.'cleaner';
 		$cleanlist = $_POST['cleanlist'];
 		$protectlist = $_POST['protectlist'];
-		$debugmode = $_POST['debugmode'];
+		//$debugmode = $_POST['debugmode'];
+		
+		$debug = htmlspecialchars($_GET['test']);
+		if(isset($debug)){
+			$debugmode = $_POST[$debug];
+		} else {
+			$debugmode = true;
+		}
+
 		//$customconditions = $_POST['customconditions'];
 
 		$cleanlist = str_replace("\\","/",$cleanlist);
 		$protectlist = str_replace("\\","/",$protectlist);
 
-		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist);
+		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist, 'debugmode' => $debugmode);
 		if (Plugin::setAllSettings($settings, 'cleaner')) {
 			Flash::set('success', 'Cleaner - '.__('plugin settings saved.'));
 			redirect(get_url('plugin/cleaner/settings'));
@@ -38,4 +46,30 @@ class CleanerController extends PluginController {
 		}
 
 	}
+
+	function save() {
+
+		$debug = htmlspecialchars($_GET['test']);
+		if(isset($_GET['test'])){
+			if($debug == 'DISABLED'){
+				$debugmode = true;
+			} else {
+				$debugmode = false;
+			}
+		} else {
+			$debugmode = true;
+		}
+
+		$settings = array('debugmode' => $debugmode);
+		if (Plugin::setAllSettings($settings, 'cleaner')) {
+			Flash::set('success', 'Cleaner - '.__('plugin settings saved.'));
+			redirect(get_url('plugin/cleaner/settings'));
+		} else {
+			Flash::set('error', 'Cleaner - '.__('plugin settings not saved!'));
+			redirect(get_url('plugin/cleaner/settings'));
+		}
+
+
+	}
+
 }
