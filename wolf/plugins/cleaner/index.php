@@ -216,7 +216,7 @@ if(!function_exists('delete_directory')){
 	
 	                            }
 
-                                 // Check if this file is associated with an enabled plugin
+                                 // Check if this file is associated with an enabled plugin (only seems to work for foler, not plugin files themselves)
 								if(plugin_check($dirname) == 'enabled'){
 
 									//if(!is_dir($dirname."/".$file)){
