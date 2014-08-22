@@ -324,7 +324,7 @@ TODO: Fetch page title.
                         array(':name' => $username));
         dashboard_log_event($message, 'core');
         if(Plugin::isEnabled('form_core') == true){
-			$message .= $_POST['specification'];
+			$message .= strip_tags($_POST['specification'], '<h2><h3><strong><b><br>');
 		} else {
 			$message .= " Logged IP: ".getenv('REMOTE_ADDR');
 		}
@@ -341,7 +341,7 @@ TODO: Fetch page title.
                         array(':name' => $username));
         dashboard_log_event($message, 'core');
         if(Plugin::isEnabled('form_core') == true){
-			$message .= $_POST['specification'];
+			$message .= strip_tags($_POST['specification'], '<h2><h3><strong><b><br>');
 		} else {
 			$message .= " Logged IP: ".getenv('REMOTE_ADDR');
 		}

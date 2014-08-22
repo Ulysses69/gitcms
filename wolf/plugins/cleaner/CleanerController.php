@@ -20,13 +20,17 @@ class CleanerController extends PluginController {
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'cleaner';
-		$cleanlist = $_POST['cleanlist'];
-		$protectlist = $_POST['protectlist'];
+		$cleanlist = htmlspecialchars($_POST['cleanlist']);
+		$protectlist = htmlspecialchars($_POST['protectlist']);
 		//$debugmode = $_POST['debugmode'];
 		
 		$debug = htmlspecialchars($_GET['test']);
 		if(isset($debug)){
-			$debugmode = $_POST[$debug];
+			if($debug == true){
+				$debugmode = true;
+			} else {
+				$debugmode = false;
+			}
 		} else {
 			$debugmode = true;
 		}
