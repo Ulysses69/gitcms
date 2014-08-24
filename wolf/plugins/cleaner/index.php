@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.2'); }
+if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.3'); }
 if (!defined('CLEANER_ROOT')) { define('CLEANER_ROOT', URI_PUBLIC.'wolf/plugins/cleaner'); }
 Plugin::setInfos(array(
 	'id'					=> 'cleaner',
@@ -414,10 +414,15 @@ function cleanCMS($mode='test'){
 
 			if($mode == 'check'){
 
-	            return true;
+	            // Is there over 100KB to clean?
+				if($spacesaved > 100000){
+					return true;
+				}
 
 			} else {
 				$saved = '';
+
+				// Is there over 100KB to clean?
 				if($spacesaved > 0){
 					$saved = format_size($spacesaved);
 				}
