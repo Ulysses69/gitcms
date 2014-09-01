@@ -225,20 +225,20 @@ if(!function_exists('delete_directory')){
 									if(plugin_check($dirname) == 'enabled'){
 
 									//if(!is_dir($dirname."/".$file)){
-										
+
 										// Don't remove enabled plugin files
 										$removeFile = false;
 
 										// This file IS in the safelist
-										//if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false || stristr($relname, 'wolf/plugins/')){
+										//if(!stristr(implode(' ', prefix_safelist($safelist)), $dirname."/".$file)){
 										if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
 											//$highlightopen = '<b>';
 											//$highlightclose = '</b>';
-											//$removeFile = false;
+											$removeFile = false;
 										} else {
 											//$highlightopen = '';
 											//$highlightclose = '';
-											//$removeFile = true;
+											$removeFile = true;
 
 											// Report task outcome
 			                                //$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
@@ -294,7 +294,7 @@ if(!function_exists('delete_directory')){
 	                                }
 
 								}
-								
+
                             }
 
                         }
