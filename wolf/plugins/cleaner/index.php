@@ -68,7 +68,7 @@ if(!function_exists('format_size')){
 
 // Plugin check
 if(!function_exists('plugin_check')){
-	function plugin_check($dirname) {
+	function plugin_check($dirname,$debug=false) {
 		if(stristr($dirname, 'wolf/plugins/')){
 			$lowestpath = getcwd();
 			$rep = str_replace('\\', '/', $lowestpath);
@@ -79,7 +79,11 @@ if(!function_exists('plugin_check')){
 			$plugin = $pluginname[0];
 			if(Plugin::isEnabled($plugin) == true){
 				$removeplugin = true;
-				return 'enabled';
+				if($debug == true){
+					return $plugin;
+				} else {
+					return 'enabled';
+				}
 			}
 		}
 	}
@@ -191,12 +195,12 @@ if(!function_exists('delete_directory')){
 								$removeFile = true;
 								$highlightopen = '';
 								$highlightclose = '';
-
-                                // Check if folder contains files or folders to protect
-                                if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                                    $removeFile = false;
-                                }
-
+	
+	                            // Check if folder contains files or folders to protect
+	                            if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+	                            	$removeFile = false;
+	                            }
+	
 	                            $ex = new SplFileInfo($file);
 	
 	                            // Check fonts
@@ -216,8 +220,9 @@ if(!function_exists('delete_directory')){
 	
 	                            }
 
-                                 // Check if this file is associated with an enabled plugin (only seems to work for foler, not plugin files themselves)
-								if(plugin_check($dirname) == 'enabled'){
+	                            // Check if this file is associated with an enabled plugin (only seems to work for folder, not plugin files themselves)
+								if(stristr($relname, 'wolf/plugins/')){
+									if(plugin_check($dirname) == 'enabled'){
 
 									//if(!is_dir($dirname."/".$file)){
 										
@@ -225,20 +230,32 @@ if(!function_exists('delete_directory')){
 										$removeFile = false;
 
 										// This file IS in the safelist
+										//if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false || stristr($relname, 'wolf/plugins/')){
 										if(strpos(implode(' ', prefix_safelist($safelist)), $dirname."/".$file) !== false){
-											$highlightopen = '<b>';
-											$highlightclose = '</b>';
-											$removeFile = false;
+											//$highlightopen = '<b>';
+											//$highlightclose = '</b>';
+											//$removeFile = false;
 										} else {
-											$highlightopen = '';
-											$highlightclose = '';
-											$removeFile = true;
+											//$highlightopen = '';
+											//$highlightclose = '';
+											//$removeFile = true;
+
+											// Report task outcome
+			                                //$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
+
 										}
+										
+										//$data .= '<li>Keep Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
 
-										// Report task outcome
-		                                //$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
-
+	
 									//}
+
+									} else {
+										// Remove plugin files
+										$removeFile = true;
+										//$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
+									}
+
 								}
                                 
                                 // Check if this file is associated with an enabled plugin
@@ -252,7 +269,7 @@ if(!function_exists('delete_directory')){
 	                                    $fsize = filesize($dirname.'/'.$file);
 
 
-                                        
+
                                         $filesizes[] = $fsize;
                                         
                                         // Report task outcome
@@ -414,37 +431,59 @@ function cleanCMS($mode='test'){
 
 			if($mode == 'check'){
 
-	            // Is there over 100KB to clean?
-				if($spacesaved > 100000){
+	            // Is there over 500KB to clean?
+				if($spacesaved > 500000){
 					return true;
 				}
 
 			} else {
 				$saved = '';
 
-				// Is there over 100KB to clean?
-				if($spacesaved > 0){
+				// Is there over 500KB to clean?
+				if($spacesaved > 500000){
 					$saved = format_size($spacesaved);
 				}
 	
-	            echo '<h2>Cleaned '.$saved.'</h2>';
+
 				if($stopdelete != ''){
 					// Test task or carry it out
 		            if($debug == false){
-						echo '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
+						// Is there over 500KB to clean?
+						if($spacesaved > 500000){
+							$thedata .= '<h2>Cleaned '.$saved.'</h2>';
+							$thedata .= '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
+						}
 					}
 				}
-				$thedata .= "<ul>\n";
-				$thedata .= $datalist;
-				$thedata .= "</ul>\n";
+
+				// Is there over 500KB to clean?
+				if($spacesaved > 500000){
+
+					if(!stristr($thedata, '<h2>')){
+						$thedata .= '<h2>Cleaned '.$saved.'</h2>';
+					}
+					$thedata .= "<ul>\n";
+					$thedata .= $datalist;
+					$thedata .= "</ul>\n";
+
+				} else {
+
+					if(!stristr($thedata, '<h2>')){
+						$thedata .= '<h2>Clean</h2>';
+						$thedata .= '<p>No cleaning is required.</p>';
+					}
+
+				}
+
 				echo $thedata;
+
 			}
 
 
 		} else {
 
 			echo '<h2>Clean</h2>';
-			echo '<p>No files to clean up.</p>';
+			echo '<p>No cleaning is required.</p>';
 
 		}
 
