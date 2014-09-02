@@ -284,11 +284,12 @@ if(!function_exists('delete_directory')){
 										// NOTE : Individual files in child folders are not looped through. They are deleted like a single file.
 
 										// Get size of folder
-					                    $size = get_dir_size($dirname."/".$file);
-										$filesizes[] = $size;
+					                    //$size = get_dir_size($dirname."/".$file);
+										//$filesizes[] = $size;
 
                                         // Report task outcome
-                                        $data .= '<li>Removed Folder: '.$relname.'/'.$file.' ('.format_size($size).')</li>';
+                                        //$data .= '<li>Removed Folder: '.$relname.'/'.$file.' ('.format_size($size).')</li>';
+                                        $data .= '<li>Cleaned Folder: '.$relname.'/'.$file.'</li>';
 
 										delete_directory($debug, $dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
 	                                }
@@ -356,6 +357,9 @@ function cleanCMS($mode='test'){
 	if($cleanlist != ''){
 		
 		//$debug = true;
+		
+		// Set size of minimum clean (1000 = 1KB)
+		$cleanSize = 50000;
 
         // Determine wolf path
         // As plugins run from admin folder, excluding this folder reveals wolf root
@@ -431,16 +435,16 @@ function cleanCMS($mode='test'){
 
 			if($mode == 'check'){
 
-	            // Is there over 500KB to clean?
-				if($spacesaved > 500000){
+	            // Is there over enough to clean?
+				if($spacesaved > $cleanSize){
 					return true;
 				}
 
 			} else {
 				$saved = '';
 
-				// Is there over 500KB to clean?
-				if($spacesaved > 500000){
+				// Is there over enough to clean?
+				if($spacesaved > $cleanSize){
 					$saved = format_size($spacesaved);
 				}
 	
@@ -449,15 +453,15 @@ function cleanCMS($mode='test'){
 					// Test task or carry it out
 		            if($debug == false){
 						// Is there over 500KB to clean?
-						if($spacesaved > 500000){
+						if($spacesaved > $cleanSize){
 							$thedata .= '<h2>Cleaned '.$saved.'</h2>';
 							$thedata .= '<p>Want to clean more? <a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/cleaner/clean">Continue Cleaning</a></p>';
 						}
 					}
 				}
 
-				// Is there over 500KB to clean?
-				if($spacesaved > 500000){
+				// Is there enough to clean?
+				if($spacesaved > $cleanSize){
 
 					if(!stristr($thedata, '<h2>')){
 						$thedata .= '<h2>Cleaned '.$saved.'</h2>';
