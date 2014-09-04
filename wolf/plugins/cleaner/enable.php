@@ -14,14 +14,14 @@ if(!Plugin::getSetting('cleanlist', 'cleaner')){
 	// Read clean list from txt file
 	$clist = strip_tags(file_get_contents($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/cleanlist.txt', true));
 	// If clean list fails or is empty, set to empty
-	if($clist) === false) $clist = '';
+	if($clist === false) $clist = '';
 	$settings['cleanlist'] = $clist;
 }
 if(!Plugin::getSetting('protectlist', 'cleaner')){
 	// Read protect list from txt file
 	$plist = strip_tags(file_get_contents($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/protectlist.txt', true));
 	// If protect list fails or is empty, set to empty
-	if($plist) === false) $plist = '';
+	if($plist === false) $plist = '';
 	$settings['protectlist'] = $plist;
 }
 if(!Plugin::getSetting('customconditions', 'cleaner')) $settings['customconditions'] = '';
