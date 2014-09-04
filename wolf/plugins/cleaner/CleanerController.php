@@ -37,8 +37,13 @@ class CleanerController extends PluginController {
 
 		//$customconditions = $_POST['customconditions'];
 
+		// Handle platform slashes cross-platform style
 		$cleanlist = str_replace("\\","/",$cleanlist);
 		$protectlist = str_replace("\\","/",$protectlist);
+
+		// Clean white spaces
+		$cleanlist = str_replace(" ", '', $cleanlist);
+		$protectlist = str_replace(" ", '', $protectlist);
 
 		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist, 'debugmode' => $debugmode);
 		if (Plugin::setAllSettings($settings, 'cleaner')) {
