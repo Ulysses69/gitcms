@@ -14,8 +14,8 @@ if (!defined('IN_CMS')) { exit(); }
 						/* QR COde */
 						// Style for barcodes (Google QR not working, plus Google white padding is annoying)
 						$qrstyle = array(
-						    'border' => 0,
-						    'padding' => 0
+							'border' => 0,
+							'padding' => 0
 						);
 						
 						/* Get values from tcpdf plugin */
@@ -43,13 +43,13 @@ if (!defined('IN_CMS')) { exit(); }
 						function hex2rgb($hex) {
 						   $hex = str_replace("#", "", $hex);
 						   if(strlen($hex) == 3) {
-						      $r = hexdec(substr($hex,0,1).substr($hex,0,1));
-						      $g = hexdec(substr($hex,1,1).substr($hex,1,1));
-						      $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+							  $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+							  $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+							  $b = hexdec(substr($hex,2,1).substr($hex,2,1));
 						   } else {
-						      $r = hexdec(substr($hex,0,2));
-						      $g = hexdec(substr($hex,2,2));
-						      $b = hexdec(substr($hex,4,2));
+							  $r = hexdec(substr($hex,0,2));
+							  $g = hexdec(substr($hex,2,2));
+							  $b = hexdec(substr($hex,4,2));
 						   }
 						   $rgb = array($r, $g, $b);
 						   //return implode(",", $rgb); // returns the rgb values separated by commas
@@ -58,9 +58,9 @@ if (!defined('IN_CMS')) { exit(); }
 						}
 
 						// Background color
-				        $bgcolor = hex2rgb($pdf_bg_color);
-				        $this->Rect(0,0,210,297,'F','',$fill_color = array($bgcolor[0], $bgcolor[1], $bgcolor[2]));
-				        //$this->Rect(0,0,210,297,'F','',$fill_color = array(255, 170, 96));
+						$bgcolor = hex2rgb($pdf_bg_color);
+						$this->Rect(0,0,210,297,'F','',$fill_color = array($bgcolor[0], $bgcolor[1], $bgcolor[2]));
+						//$this->Rect(0,0,210,297,'F','',$fill_color = array(255, 170, 96));
 
 						// Set Logo
 						if($logo_ext == 'eps' || $logo_ext == 'ai'){
@@ -81,8 +81,8 @@ if (!defined('IN_CMS')) { exit(); }
 
 						
 						// Header Text color
-				        //$textcolor = hex2rgb($pdf_text_color);
-				        //$this->SetTextColor($textcolor[0], $textcolor[1], $textcolor[2]);
+						//$textcolor = hex2rgb($pdf_text_color);
+						//$this->SetTextColor($textcolor[0], $textcolor[1], $textcolor[2]);
 
 						// Set font
 						//$this->SetFont('helvetica', 'B', 20);

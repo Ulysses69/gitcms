@@ -1,7 +1,7 @@
 <?php
 /**
  * @package dompdf
- * @link    http://www.dompdf.com/
+ * @link	http://www.dompdf.com/
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  * @version $Id: line_box.cls.php 471 2012-02-06 21:59:10Z fabien.menager $
@@ -76,11 +76,11 @@ class Line_Box {
    * @param Block_Frame_Decorator $frame the Block_Frame_Decorator containing this line
    */
   function __construct(Block_Frame_Decorator $frame, $y = 0) {
-    $this->_block_frame = $frame;
-    $this->_frames = array();
-    $this->y = $y;
-    
-    $this->get_float_offsets();
+	$this->_block_frame = $frame;
+	$this->_frames = array();
+	$this->y = $y;
+	
+	$this->get_float_offsets();
   }
   
   /**
@@ -88,106 +88,106 @@ class Line_Box {
    * @param $root
    */
   function get_floats_inside($root) {
-    // Find nearest floating element
-    $p = $this->_block_frame;
-    while( $p->get_style()->float === "none" ) {
-      $parent = $p->get_parent();
-      
-      if (!$parent) {
-        break;
-      }
-      
-      $p = $parent;
-    }
-    
-    $floating_frames = $root->get_floating_frames();  
-    
-    if ( $p == $root ) {
-      return $floating_frames;
-    }
-    
-    $parent = $p;
-    
-    $childs = array();
-    
-    foreach ($floating_frames as $_floating) {
-      $p = $_floating->get_parent();
-      
-      while(($p = $p->get_parent()) && $p !== $parent);
-      
-      if ($p) {
-        $childs[] = $p;
-      }
-    }
-    
-    return $childs;
-    
+	// Find nearest floating element
+	$p = $this->_block_frame;
+	while( $p->get_style()->float === "none" ) {
+	  $parent = $p->get_parent();
+	  
+	  if (!$parent) {
+		break;
+	  }
+	  
+	  $p = $parent;
+	}
+	
+	$floating_frames = $root->get_floating_frames();  
+	
+	if ( $p == $root ) {
+	  return $floating_frames;
+	}
+	
+	$parent = $p;
+	
+	$childs = array();
+	
+	foreach ($floating_frames as $_floating) {
+	  $p = $_floating->get_parent();
+	  
+	  while(($p = $p->get_parent()) && $p !== $parent);
+	  
+	  if ($p) {
+		$childs[] = $p;
+	  }
+	}
+	
+	return $childs;
+	
   }
   
   function get_float_offsets() {
-    if ( !DOMPDF_ENABLE_CSS_FLOAT ) {
-      return;
-    }
-      
-    static $anti_infinite_loop = 500; // FIXME smelly hack
-    
-    $reflower = $this->_block_frame->get_reflower();
-    
-    if ( !$reflower ) return;
-    
-    $cb_w = null;
+	if ( !DOMPDF_ENABLE_CSS_FLOAT ) {
+	  return;
+	}
+	  
+	static $anti_infinite_loop = 500; // FIXME smelly hack
+	
+	$reflower = $this->_block_frame->get_reflower();
+	
+	if ( !$reflower ) return;
+	
+	$cb_w = null;
   
-    $block = $this->_block_frame;
-    $root = $block->get_root();
-    $floating_frames = $this->get_floats_inside($root);
-    
-    foreach ( $floating_frames as $child_key => $floating_frame ) {
-      $id = $floating_frame->get_id();
-      
-      if ( isset($this->floating_blocks[$id]) ) {
-        continue;
-      }
-      
-      $floating_style = $floating_frame->get_style();
-      
-      $clear = $floating_style->clear;
-      $float = $floating_style->float;
-      
-      $floating_width = $floating_frame->get_margin_width();
-      
-      if (!$cb_w) {
-        $cb_w = $floating_frame->get_containing_block("w");
-      }
-      
-      $line_w = $this->get_width();
-      
-      if (!$floating_frame->_float_next_line && ($cb_w <= $line_w + $floating_width) && ($cb_w > $line_w) ) {
-        $floating_frame->_float_next_line = true;
-        continue;
-      }
-      
-      // If the child is still shifted by the floating element
-      if ( $anti_infinite_loop-- > 0 &&
-           $floating_frame->get_position("y") + $floating_frame->get_margin_height() > $this->y && 
-           $block->get_position("x") + $block->get_margin_width() > $floating_frame->get_position("x")
-           ) {
-        if ( $float === "left" )
-          $this->left  += $floating_width;
-        else
-          $this->right += $floating_width;
-        
-        $this->floating_blocks[$id] = true;
-      }
-      
-      // else, the floating element won't shift anymore
-      else {
-        $root->remove_floating_frame($child_key);
-      }
-    }
+	$block = $this->_block_frame;
+	$root = $block->get_root();
+	$floating_frames = $this->get_floats_inside($root);
+	
+	foreach ( $floating_frames as $child_key => $floating_frame ) {
+	  $id = $floating_frame->get_id();
+	  
+	  if ( isset($this->floating_blocks[$id]) ) {
+		continue;
+	  }
+	  
+	  $floating_style = $floating_frame->get_style();
+	  
+	  $clear = $floating_style->clear;
+	  $float = $floating_style->float;
+	  
+	  $floating_width = $floating_frame->get_margin_width();
+	  
+	  if (!$cb_w) {
+		$cb_w = $floating_frame->get_containing_block("w");
+	  }
+	  
+	  $line_w = $this->get_width();
+	  
+	  if (!$floating_frame->_float_next_line && ($cb_w <= $line_w + $floating_width) && ($cb_w > $line_w) ) {
+		$floating_frame->_float_next_line = true;
+		continue;
+	  }
+	  
+	  // If the child is still shifted by the floating element
+	  if ( $anti_infinite_loop-- > 0 &&
+		   $floating_frame->get_position("y") + $floating_frame->get_margin_height() > $this->y && 
+		   $block->get_position("x") + $block->get_margin_width() > $floating_frame->get_position("x")
+		   ) {
+		if ( $float === "left" )
+		  $this->left  += $floating_width;
+		else
+		  $this->right += $floating_width;
+		
+		$this->floating_blocks[$id] = true;
+	  }
+	  
+	  // else, the floating element won't shift anymore
+	  else {
+		$root->remove_floating_frame($child_key);
+	  }
+	}
   }
   
   function get_width(){
-    return $this->left + $this->w + $this->right;
+	return $this->left + $this->w + $this->right;
   }
 
   /**
@@ -201,21 +201,21 @@ class Line_Box {
   function &get_frames() { return $this->_frames; }
   
   function add_frame(Frame $frame) {
-    $this->_frames[] = $frame;
+	$this->_frames[] = $frame;
   }
   
   function __toString(){
-    $props = array("wc", "y", "w", "h", "left", "right", "br");
-    $s = "";
-    foreach($props as $prop) {
-      $s .= "$prop: ".$this->$prop."\n";
-    }
-    $s .= count($this->_frames)." frames\n";
-    return $s;
+	$props = array("wc", "y", "w", "h", "left", "right", "br");
+	$s = "";
+	foreach($props as $prop) {
+	  $s .= "$prop: ".$this->$prop."\n";
+	}
+	$s .= count($this->_frames)." frames\n";
+	return $s;
   }
   /*function __get($prop) {
-    if (!isset($this->{"_$prop"})) return;
-    return $this->{"_$prop"};
+	if (!isset($this->{"_$prop"})) return;
+	return $this->{"_$prop"};
   }*/
 }
 

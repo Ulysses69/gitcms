@@ -100,7 +100,7 @@ class PartRevisionsController extends PluginController {
 
 		$new = PagePart::findOneFrom('PagePart', 'page_id=? AND name=?', array($old->page_id,$old->name));
 		if ($new) { //the part exists in page
-		    
+			
 			$old = nl2br(htmlentities($old->content,ENT_COMPAT,'UTF-8'));
 
 			$old = str_replace('<br />','<br/>',$old);
@@ -114,7 +114,7 @@ class PartRevisionsController extends PluginController {
 	
 	public function getlist() {
 		echo new View('../../plugins/part_revisions/views/editpage/parts_list', array(
-			'page_id'           => $_POST['page_id'],
+			'page_id'		   => $_POST['page_id'],
 			'part_name_to_show' => $_POST['name'],
 		));
 	}	
@@ -146,18 +146,18 @@ class PartRevisionsController extends PluginController {
 	}
 	
 	public static function Callback_view_page_edit_tab_links($page) {
-                    echo '<li class="tab"><a href="#'.PR_CSS_ID.'_tabcontents">'. __('Part revisions') . '</a></li>';
+					echo '<li class="tab"><a href="#'.PR_CSS_ID.'_tabcontents">'. __('Part revisions') . '</a></li>';
 	}
-        
+		
 	public static function Callback_view_page_edit_tabs(& $page) {
-                    echo new View(self::VIEW_FOLDER.'editpage/tabcontents', array(
-                            'page_id' => $page->id,
-                    )); 
+					echo new View(self::VIEW_FOLDER.'editpage/tabcontents', array(
+							'page_id' => $page->id,
+					)); 
 	}	
 
 	public static function Callback_view_page_edit_popup($page) {
-                    echo new View(self::VIEW_FOLDER.'editpage/popup_part_preview', array(
-                            'page_id' => $page->id,
-                    )); 
+					echo new View(self::VIEW_FOLDER.'editpage/popup_part_preview', array(
+							'page_id' => $page->id,
+					)); 
 	}	
 }

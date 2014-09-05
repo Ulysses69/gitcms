@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Croatian file for plugin notes
-     *
-     * @package Plugins
-     * @subpackage notes
-     *
-     * @author Dejan Andjelkovic <dejan79@gmail.com>
-     * @version Wolf 0.7.5
-     */
+	/**
+	 * Croatian file for plugin notes
+	 *
+	 * @package Plugins
+	 * @subpackage notes
+	 *
+	 * @author Dejan Andjelkovic <dejan79@gmail.com>
+	 * @version Wolf 0.7.5
+	 */
 
-    return array(
-    	'All notes' => 'Sve bilješke',
+	return array(
+		'All notes' => 'Sve bilješke',
 	'All went well.' => 'Sve je prošlo ok',
 	'Cancel' => 'Odustani',
 	'Content' => 'Sadržaj',
@@ -37,4 +37,4 @@
 	'View All Notes' => 'Vidi sve bilješke',
 	'Your note was successfully deleted' => 'Vaša bilješka je uspješno obrisana',
 	'none' => 'ništa',
-    );
+	);

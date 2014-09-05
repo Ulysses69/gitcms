@@ -21,13 +21,13 @@ if(!defined("CMS_ROOT"))
 	function confirmAction(act)
 	{
 		var agree=confirm("Are you sure? This will delete associated menu items aswell.");
-	    if(agree)
+		if(agree)
 	   	{
-	        return true;
-	    } else
-	    {
-	        return false;
-	    }
+			return true;
+		} else
+		{
+			return false;
+		}
 	}
 </script>
 <!-- <h1>Site Menus</h1> -->

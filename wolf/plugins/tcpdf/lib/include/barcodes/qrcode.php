@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : qrcode.php
-// Version     : 1.0.010
-// Begin       : 2010-03-22
+// Version	 : 1.0.010
+// Begin	   : 2010-03-22
 // Last Update : 2012-07-25
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2010-2012 Nicola Asuni - Tecnick.com LTD
 //
@@ -162,29 +162,29 @@ if (!defined('QRCODEDEFS')) {
 	/**
 	 * Maximum matrix size for maximum version (version 40 is 177*177 matrix).
 	 */
-    define('QRSPEC_WIDTH_MAX', 177);
+	define('QRSPEC_WIDTH_MAX', 177);
 
 	// -----------------------------------------------------
 
 	/**
 	 * Matrix index to get width from $capacity array.
 	 */
-    define('QRCAP_WIDTH',    0);
+	define('QRCAP_WIDTH',	0);
 
-    /**
+	/**
 	 * Matrix index to get number of words from $capacity array.
 	 */
-    define('QRCAP_WORDS',    1);
+	define('QRCAP_WORDS',	1);
 
-    /**
+	/**
 	 * Matrix index to get remainder from $capacity array.
 	 */
-    define('QRCAP_REMINDER', 2);
+	define('QRCAP_REMINDER', 2);
 
-    /**
+	/**
 	 * Matrix index to get error correction level from $capacity array.
 	 */
-    define('QRCAP_EC',       3);
+	define('QRCAP_EC',	   3);
 
 	// -----------------------------------------------------
 
@@ -193,33 +193,33 @@ if (!defined('QRCODEDEFS')) {
 	/**
 	 * Number of header bits for structured mode
 	 */
-    define('STRUCTURE_HEADER_BITS',  20);
+	define('STRUCTURE_HEADER_BITS',  20);
 
-    /**
+	/**
 	 * Max number of symbols for structured mode
 	 */
-    define('MAX_STRUCTURED_SYMBOLS', 16);
+	define('MAX_STRUCTURED_SYMBOLS', 16);
 
 	// -----------------------------------------------------
 
-    // Masks
+	// Masks
 
-    /**
+	/**
 	 * Down point base value for case 1 mask pattern (concatenation of same color in a line or a column)
 	 */
-    define('N1',  3);
+	define('N1',  3);
 
-    /**
+	/**
 	 * Down point base value for case 2 mask pattern (module block of same color)
 	 */
 	define('N2',  3);
 
-    /**
+	/**
 	 * Down point base value for case 3 mask pattern (1:1:3:1:1(dark:bright:dark:bright:dark)pattern in a line or a column)
 	 */
 	define('N3', 40);
 
-    /**
+	/**
 	 * Down point base value for case 4 mask pattern (ration of dark modules in whole)
 	 */
 	define('N4', 10);
@@ -477,7 +477,7 @@ class QRcode {
 	 * @protected
 	 */
 	protected $capacity = array(
-		array(  0,    0, 0, array(   0,    0,    0,    0)), //
+		array(  0,	0, 0, array(   0,	0,	0,	0)), //
 		array( 21,   26, 0, array(   7,   10,   13,   17)), //  1
 		array( 25,   44, 7, array(  10,   16,   22,   28)), //
 		array( 29,   70, 7, array(  15,   26,   36,   44)), //
@@ -1318,7 +1318,7 @@ class QRcode {
 		$mode = $this->identifyMode($p);
 		if ($mode == QR_MODE_8B) {
 			$dif = $this->estimateBitsModeNum($run) + 4 + $ln
-			+ $this->estimateBitsMode8(1)         // + 4 + l8
+			+ $this->estimateBitsMode8(1)		 // + 4 + l8
 			- $this->estimateBitsMode8($run + 1); // - 4 - l8
 			if ($dif > 0) {
 				return $this->eat8();
@@ -1326,7 +1326,7 @@ class QRcode {
 		}
 		if ($mode == QR_MODE_AN) {
 			$dif = $this->estimateBitsModeNum($run) + 4 + $ln
-			+ $this->estimateBitsModeAn(1)        // + 4 + la
+			+ $this->estimateBitsModeAn(1)		// + 4 + la
 			- $this->estimateBitsModeAn($run + 1);// - 4 - la
 			if ($dif > 0) {
 				return $this->eatAn();
@@ -2825,17 +2825,17 @@ class QRcode {
 	 * @return parity array
 	 */
 	 protected function encode_rs_char($rs, $data, $parity) {
-		$MM       =& $rs['mm']; // bits per symbol
-		$NN       =& $rs['nn']; // the total number of symbols in a RS block
+		$MM	   =& $rs['mm']; // bits per symbol
+		$NN	   =& $rs['nn']; // the total number of symbols in a RS block
 		$ALPHA_TO =& $rs['alpha_to']; // the address of an array of NN elements to convert Galois field elements in index (log) form to polynomial form
 		$INDEX_OF =& $rs['index_of']; // the address of an array of NN elements to convert Galois field elements in polynomial form to index (log) form
 		$GENPOLY  =& $rs['genpoly']; // an array of NROOTS+1 elements containing the generator polynomial in index form
 		$NROOTS   =& $rs['nroots']; // the number of roots in the RS code generator polynomial, which is the same as the number of parity symbols in a block
-		$FCR      =& $rs['fcr']; // first consecutive root, index form
-		$PRIM     =& $rs['prim']; // primitive element, index form
-		$IPRIM    =& $rs['iprim']; // prim-th root of 1, index form
-		$PAD      =& $rs['pad']; // the number of pad symbols in a block
-		$A0       =& $NN;
+		$FCR	  =& $rs['fcr']; // first consecutive root, index form
+		$PRIM	 =& $rs['prim']; // primitive element, index form
+		$IPRIM	=& $rs['iprim']; // prim-th root of 1, index form
+		$PAD	  =& $rs['pad']; // the number of pad symbols in a block
+		$A0	   =& $NN;
 		$parity = array_fill(0, $NROOTS, 0);
 		for ($i=0; $i < ($NN - $NROOTS - $PAD); $i++) {
 			$feedback = $INDEX_OF[$data[$i] ^ $parity[0]];

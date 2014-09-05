@@ -2,21 +2,21 @@
 class CleanerController extends PluginController {
 	public function __construct(){
 		$this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/cleaner/views/sidebar'));
+		$this->assignToLayout('sidebar', new View('../../plugins/cleaner/views/sidebar'));
 	}
-    public function index() {
-        $this->display('cleaner/views/index');
-    }
-    public function clean() {
-        $this->display('cleaner/views/clean');
-    }
+	public function index() {
+		$this->display('cleaner/views/index');
+	}
+	public function clean() {
+		$this->display('cleaner/views/clean');
+	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('cleaner');
-	        if (!$settings) {
-	            Flash::set('error', 'Cleaner - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('cleaner/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Cleaner - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('cleaner/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'cleaner';

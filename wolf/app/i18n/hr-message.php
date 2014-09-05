@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Croatian language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Dejan Andjelkovic <dejan79@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Croatian language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Dejan Andjelkovic <dejan79@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    '&#8212; inherit &#8212;' => '&#8212; naslijedi &#8212;',
+	return array(
+	'&#8212; inherit &#8212;' => '&#8212; naslijedi &#8212;',
 	'<b>Information!</b> New Wolf version available (v. <b>:version</b>)! Visit <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> to upgrade your version!' => '<b>Obavijest!</b> Nova verzija Wolf CMS-a je dostupna (v. <b>:version</b>)! Posjetite <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> kako biste ažurirali na novu verziju!',
 	'A translatable string with a %param% system.' => 'Niz za prijevod sa %param% sustavom.',
 	'A translatable string.' => 'Niz za prijevod',
@@ -201,4 +201,4 @@
 	'seconds' => 'sekundi',
 	'unknown' => 'nepoznato',
 	'website:' => 'stranica',
-    );
+	);

@@ -8,12 +8,12 @@ define('HTACCESS_VERSION', '1.0.1');
 define('HTACCESS_ROOT', URI_PUBLIC.'wolf/plugins/'.HTACCESS_ID);
 
 Plugin::setInfos(array(
-    'id'							=> HTACCESS_ID,
-    'title'							=> __(HTACCESS_TITLE),
-    'description'					=> __('Manage server configuration.'),
-    'version'						=> HTACCESS_VERSION,
-    'author'						=> 'Steven Henderson',
-    'require_wolf_version'			=> '0.5.5'
+	'id'							=> HTACCESS_ID,
+	'title'							=> __(HTACCESS_TITLE),
+	'description'					=> __('Manage server configuration.'),
+	'version'						=> HTACCESS_VERSION,
+	'author'						=> 'Steven Henderson',
+	'require_wolf_version'			=> '0.5.5'
 ));
 
 # Example:

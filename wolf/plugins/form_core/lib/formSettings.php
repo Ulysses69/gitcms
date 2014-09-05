@@ -33,10 +33,10 @@ $upload_dir = $_SERVER['DOCUMENT_ROOT']."/public/uploads/tmp/";
 // Filesize formatter
 if(!function_exists('filesize_formatted')){
 	function filesize_formatted($upload_size){
-	    //$upload_size = filesize($upload_path);
-	    $upload_units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-	    $upload_power = $upload_size > 0 ? floor(log($upload_size, 1024)) : 0;
-	    return number_format($upload_size / pow(1024, $upload_power), 2, '.', ',') . ' ' . $upload_units[$upload_power];
+		//$upload_size = filesize($upload_path);
+		$upload_units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+		$upload_power = $upload_size > 0 ? floor(log($upload_size, 1024)) : 0;
+		return number_format($upload_size / pow(1024, $upload_power), 2, '.', ',') . ' ' . $upload_units[$upload_power];
 	}
 }
 

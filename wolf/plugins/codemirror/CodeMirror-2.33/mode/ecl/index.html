@@ -1,16 +1,16 @@
 ﻿<!doctype html>
 <html>
   <head>
-    <title>CodeMirror: ECL mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="ecl.js"></script>
-    <link rel="stylesheet" href="../../doc/docs.css">
-    <style>.CodeMirror {border: 1px solid black;}</style>
+	<title>CodeMirror: ECL mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="ecl.js"></script>
+	<link rel="stylesheet" href="../../doc/docs.css">
+	<style>.CodeMirror {border: 1px solid black;}</style>
   </head>
   <body>
-    <h1>CodeMirror: ECL mode</h1>
-    <form><textarea id="code" name="code">
+	<h1>CodeMirror: ECL mode</h1>
+	<form><textarea id="code" name="code">
 /*
 sample useless code to demonstrate ecl syntax highlighting
 this is a multiline comment!
@@ -28,15 +28,15 @@ r :=
 d := dataset('tmp::qb', r, thor);
 output(d);
 </textarea></form>
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        tabMode: "indent",
-        matchBrackets: true,
-      });
-    </script>
+	<script>
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		tabMode: "indent",
+		matchBrackets: true,
+	  });
+	</script>
 
-    <p>Based on CodeMirror's clike mode.  For more information see <a href="http://hpccsystems.com">HPCC Systems</a> web site.</p>
-    <p><strong>MIME types defined:</strong> <code>text/x-ecl</code>.</p>
+	<p>Based on CodeMirror's clike mode.  For more information see <a href="http://hpccsystems.com">HPCC Systems</a> web site.</p>
+	<p><strong>MIME types defined:</strong> <code>text/x-ecl</code>.</p>
 
   </body>
 </html>

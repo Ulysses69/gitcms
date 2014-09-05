@@ -9,9 +9,9 @@ All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-    * Neither the name of the finalwebsites.com nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	* Neither the name of the finalwebsites.com nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -23,15 +23,15 @@ Comments & suggestions: http://www.finalwebsites.com/blog/submit-a-question/
  
 class file_upload {
 
-    var $the_file;
+	var $the_file;
 	var $the_temp_file;
 	var $the_mime_type; // new in 2.33
-    var $upload_dir;
+	var $upload_dir;
 	var $replace;
 	var $do_filename_check;
 	var $max_length_filename = 100;
-    var $extensions;
-    var $valid_mime_types = array('.bmp'=>'image/bmp', '.gif'=>'image/gif', '.jpg'=>'image/jpeg', '.jpeg'=>'image/jpeg', '.pdf'=>'application/pdf', '.png'=>'image/png', '.zip'=>'application/zip'); // new in 2.33 (search google for a complete list)
+	var $extensions;
+	var $valid_mime_types = array('.bmp'=>'image/bmp', '.gif'=>'image/gif', '.jpg'=>'image/jpeg', '.jpeg'=>'image/jpeg', '.pdf'=>'application/pdf', '.png'=>'image/png', '.zip'=>'application/zip'); // new in 2.33 (search google for a complete list)
 	var $ext_string;
 	var $language;
 	var $http_error;
@@ -258,21 +258,21 @@ class file_upload {
 		switch ($this->language) {
 			case 'nl':	
 			$error[0] = 'Bestand <b>'.$this->the_file.'</b> staat nu op de server.';
-            $error[1] = 'Dit bestand is groter dan de toegestaane upload bestandgrootte in de server configuratie.';
-            $error[2] = 'Dit bestand is groter dan de MAX_FILE_SIZE parameter welke in de html formulier werdt gespecificiëerd.';
-            $error[3] = 'De upload is helaas mislukt.  Slechts een deel van het bestand is bij de server aangekomen.  Probeer het opnieuw.';
-            $error[4] = 'De upload is helaas mislukt.  Geen betrouwbare verbinding met de server kwam tot stand.  Probeer het opnieuw.';
-            $error[6] = 'De map voor tijdelijke opslag ontbreekt. ';
+			$error[1] = 'Dit bestand is groter dan de toegestaane upload bestandgrootte in de server configuratie.';
+			$error[2] = 'Dit bestand is groter dan de MAX_FILE_SIZE parameter welke in de html formulier werdt gespecificiëerd.';
+			$error[3] = 'De upload is helaas mislukt.  Slechts een deel van het bestand is bij de server aangekomen.  Probeer het opnieuw.';
+			$error[4] = 'De upload is helaas mislukt.  Geen betrouwbare verbinding met de server kwam tot stand.  Probeer het opnieuw.';
+			$error[6] = 'De map voor tijdelijke opslag ontbreekt. ';
 			$error[7] = 'Het schrijven op de server is mislukt. ';
 			$error[8] = 'Een PHP extensie is gestopt tijdens het uploaden. ';
-            // end  http errors
-            $error[10] = 'Selecteer een bestand om te uploaden.';
-            $error[11] = 'Uitsluitend bestanden van de volgende types zijn toegestaan: <b>'.$this->ext_string.'</b>';
-            $error[12] = 'Helaas heeft het gekozen bestand karakters die niet zijn toegestaan. Gebruik uitsluitend cijfers, letters, en onderstrepen. <br>Een geldige naam eindigt met een punt met daarop volgend het extensietype.';
-            $error[13] = 'De bestandsnaam is echter te lang, en mag een maximum van '.$this->max_length_filename.' tekens bevatten.';
-            $error[14] = 'De gekozen map werdt niet gevonden.';
-            $error[15] = 'Een bestand met dezelfde naam ('.$this->the_file.') bestaat al op de server.  Probeer opnieuw met een andere naam.';
-            $error[16] = 'Op de server werdt het bestand hernoemd tot <b>'.$this->file_copy.'</b>.';
+			// end  http errors
+			$error[10] = 'Selecteer een bestand om te uploaden.';
+			$error[11] = 'Uitsluitend bestanden van de volgende types zijn toegestaan: <b>'.$this->ext_string.'</b>';
+			$error[12] = 'Helaas heeft het gekozen bestand karakters die niet zijn toegestaan. Gebruik uitsluitend cijfers, letters, en onderstrepen. <br>Een geldige naam eindigt met een punt met daarop volgend het extensietype.';
+			$error[13] = 'De bestandsnaam is echter te lang, en mag een maximum van '.$this->max_length_filename.' tekens bevatten.';
+			$error[14] = 'De gekozen map werdt niet gevonden.';
+			$error[15] = 'Een bestand met dezelfde naam ('.$this->the_file.') bestaat al op de server.  Probeer opnieuw met een andere naam.';
+			$error[16] = 'Op de server werdt het bestand hernoemd tot <b>'.$this->file_copy.'</b>.';
 			$error[17] = 'Het bestand %s bestaat niet.';
 			$error[18] = 'De soort bestand (mime type) is niet toegestaan.'; // new ver. 2.33
 			break;

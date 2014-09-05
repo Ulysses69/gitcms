@@ -15,13 +15,13 @@
 
 class RedirectorRedirects extends Record 
 {
-    const TABLE_NAME = 'redirector_redirects';
-    
-    // public  $log_time;
-    // public  $ident;
-    // public  $priority;
-    // public  $message;
-    // public  $username;
+	const TABLE_NAME = 'redirector_redirects';
+	
+	// public  $log_time;
+	// public  $ident;
+	// public  $priority;
+	// public  $message;
+	// public  $username;
 
 }
 

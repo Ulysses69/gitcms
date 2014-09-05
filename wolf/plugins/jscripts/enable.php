@@ -26,53 +26,53 @@ if(!Plugin::getSetting('marqueetransition', 'jscripts')) $settings['marqueetrans
 // Check existing plugin settings
 if (!$version || $version == null) {
 
-    // This is a clean install.
+	// This is a clean install.
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'jscripts')) {
-        Flash::set('success', __('JScripts - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('JScripts - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'jscripts')) {
+		Flash::set('success', __('JScripts - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('JScripts - unable to save plugin settings.'));
 
 
 } else {
 
 
-    // Upgrade from previous installation
-    if (JSCRIPTS_VERSION > $version) {
+	// Upgrade from previous installation
+	if (JSCRIPTS_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='jscripts'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='jscripts'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='jscripts'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='jscripts'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
-            Flash::set('error', __('JScripts - unable to access plugin settings.'));
-            return;
-        }
+		if (!$result) {
+			Flash::set('error', __('JScripts - unable to access plugin settings.'));
+			return;
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-            if(defined('JSCRIPTS_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/jscripts'); }
-        }
-    }
+			if(defined('JSCRIPTS_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/jscripts'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'jscripts')) {
-        if (JSCRIPTS_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'jscripts')) {
+		if (JSCRIPTS_VERSION > $version){
 			Flash::set('success', __('JScripts - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

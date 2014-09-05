@@ -9,13 +9,13 @@ class HtaccessController extends PluginController {
 	public function index(){
 		$this->documentation();
 	}
-    public function documentation() {
-        //$this->display('_htaccess/views/documentation');
-        redirect(get_url('plugin/_htaccess/settings'));
-    }
-     public function settings() {
-        $this->display('_htaccess/views/settings');
-    }
+	public function documentation() {
+		//$this->display('_htaccess/views/documentation');
+		redirect(get_url('plugin/_htaccess/settings'));
+	}
+	 public function settings() {
+		$this->display('_htaccess/views/settings');
+	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'htaccess';
 		$htaccess = $_POST['htaccess'];

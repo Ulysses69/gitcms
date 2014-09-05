@@ -31,9 +31,9 @@ This layout_switch plugin makes use/provides the following features:
   again.
 
 * Did you know you can have the controller make a visible tab (or not)? Change
-    Plugin::addController('layout_switch', 'LayoutSwitch', 'administrator', false);
+	Plugin::addController('layout_switch', 'LayoutSwitch', 'administrator', false);
   to
-    Plugin::addController('layout_switch', 'LayoutSwitch', 'administrator', true);
+	Plugin::addController('layout_switch', 'LayoutSwitch', 'administrator', true);
   to have the plugin controller create a tab.
 
 == LICENSE ==

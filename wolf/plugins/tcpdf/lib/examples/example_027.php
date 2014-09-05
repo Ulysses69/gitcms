@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_027.php
-// Begin       : 2008-03-04
+// Begin	   : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 027 for TCPDF class
-//               1D Barcodes
+//			   1D Barcodes
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

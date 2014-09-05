@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_035.php
-// Begin       : 2008-07-22
+// Begin	   : 2008-07-22
 // Last Update : 2013-05-14
 //
 // Description : Example 035 for TCPDF class
-//               Line styles with cells and multicells
+//			   Line styles with cells and multicells
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

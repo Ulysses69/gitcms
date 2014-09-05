@@ -14,12 +14,12 @@
  */
 
 Plugin::setInfos(array(
-    'id'          => 'jquery_ui',
-    'title'       => 'jQuery UI', 
-    'description' => 'Add jQuery UI to admin interface.', 
-    'version'     => '1.7.0',
-    'license'     => 'MIT',
-    'require_frog_version' => '0.9.3',
-    'update_url'  => 'http://www.appelsiini.net/download/frog-plugins.xml',
-    'website'     => 'http://www.appelsiini.net/'
+	'id'		  => 'jquery_ui',
+	'title'	   => 'jQuery UI', 
+	'description' => 'Add jQuery UI to admin interface.', 
+	'version'	 => '1.7.0',
+	'license'	 => 'MIT',
+	'require_frog_version' => '0.9.3',
+	'update_url'  => 'http://www.appelsiini.net/download/frog-plugins.xml',
+	'website'	 => 'http://www.appelsiini.net/'
 ));

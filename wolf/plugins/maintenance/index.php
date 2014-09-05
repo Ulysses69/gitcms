@@ -45,7 +45,7 @@ Plugin::setInfos(array(
 	'website'		=>	'http://www.band-x.org/',
 	'update_url'	=>	'http://www.band-x.org/update.xml',
 	'version'		=>	'1.1.0',
-    'type'			=>	'both'
+	'type'			=>	'both'
 ));
 
 if(!AuthUser::hasPermission('client')) {

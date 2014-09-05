@@ -58,17 +58,17 @@ define('BASE_FILES_DIR', URL_PUBLIC . 'public');
 // DO NOT EDIT AFTER THIS LINE -----------------------------------------------
 
 Plugin::setInfos(array(
-    'id'          => 'file_manager',
-    'title'       => __('File Manager'),
-    'description' => __('Provides interface to manage files from the administration.'),
-    'version'     => '1.0.0', 
-    'website'     => 'http://www.wolfcms.org/',
-    'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
+	'id'		  => 'file_manager',
+	'title'	   => __('File Manager'),
+	'description' => __('Provides interface to manage files from the administration.'),
+	'version'	 => '1.0.0', 
+	'website'	 => 'http://www.wolfcms.org/',
+	'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
 ));
 
 Plugin::addController('file_manager', __('Media'), 'developer,editor');
 
 // Make sure possible hack attempts get registered if the statistics API is available.
 if (Plugin::isEnabled('statistics_api')) {
-    Observer::observe('stats_file_manager_hack_attempt', 'StatisticsEvent::registerEvent');
+	Observer::observe('stats_file_manager_hack_attempt', 'StatisticsEvent::registerEvent');
 }

@@ -19,12 +19,12 @@ This search plugin provides the following features:
   created when you enable the plugin. 
   
   1) To use, create a new page called search-results, set its status to hidden 
-     and inlcude the following snippet in the body of that page, e.g.
-     <?php $this->includeSnippet('site-search-results'); ?>
+	 and inlcude the following snippet in the body of that page, e.g.
+	 <?php $this->includeSnippet('site-search-results'); ?>
 	 
   2) Integrate the search form snippet in the sidebar of that page
-     or where ever you want the search form to appear on your site, e.g.
-     <?php $this->includeSnippet('site-search-form'); ?>
+	 or where ever you want the search form to appear on your site, e.g.
+	 <?php $this->includeSnippet('site-search-form'); ?>
 	 
 * Read the documentation on the plugin page, for explantions how certain
   features and settings work.

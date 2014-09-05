@@ -129,17 +129,17 @@ if(isset($_POST['movefile']))
 		$movethisfile = $tinybrowser['docroot'].$editpath.$_POST['actionfile'][$movethis];
 		$movefiledest = $tinybrowser['docroot'].$destfolder.$_POST['actionfile'][$movethis];
 		if (!file_exists($movefiledest) && file_exists($movethisfile) && copy($movethisfile,$movefiledest))
-         {
-         $moveqty++;
-         unlink($movethisfile);
-         if($typenow=='image')
+		 {
+		 $moveqty++;
+		 unlink($movethisfile);
+		 if($typenow=='image')
 			   {
 			   $movethisthumb = $tinybrowser['docroot'].$editpath.'_thumbs/_'.$_POST['actionfile'][$movethis];
 			   $movethumbdest = $tinybrowser['docroot'].$destfolder.'_thumbs/_'.$_POST['actionfile'][$movethis];
 			   if (file_exists($movethisthumb) && copy($movethisthumb,$movethumbdest)) unlink($movethisthumb);
 			   }
-         }
-      else $errorqty++;
+		 }
+	  else $errorqty++;
 		}
 	}
 	
@@ -176,7 +176,7 @@ if(isset($_POST['resizefile']))
 				   }
 				else $errorqty++;
 				}
-         else $errorqty++;
+		 else $errorqty++;
 			}
 		}
 	}
@@ -217,12 +217,12 @@ if(isset($_POST['rotatefile']))
 				$newim = imagerotate($im, $degree, 0);
 				imagedestroy($im);
 				
-            if($mime['mime'] == 'image/pjpeg' || $mime['mime'] == 'image/jpeg')
-            	imagejpeg ($newim,$targetimg,$tinybrowser['imagequality']);
-            elseif($mime['mime'] == 'image/x-png' || $mime['mime'] == 'image/png')
-               imagepng ($newim,$targetimg,substr($tinybrowser['imagequality'],0,1));
-            elseif($mime['mime'] == 'image/gif')
-               imagegif ($newim,$targetimg);
+			if($mime['mime'] == 'image/pjpeg' || $mime['mime'] == 'image/jpeg')
+				imagejpeg ($newim,$targetimg,$tinybrowser['imagequality']);
+			elseif($mime['mime'] == 'image/x-png' || $mime['mime'] == 'image/png')
+			   imagepng ($newim,$targetimg,substr($tinybrowser['imagequality'],0,1));
+			elseif($mime['mime'] == 'image/gif')
+			   imagegif ($newim,$targetimg);
 				imagedestroy($newim);
 				$rotateqty++;
 

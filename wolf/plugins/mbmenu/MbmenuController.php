@@ -34,144 +34,144 @@ class MbmenuController extends PluginController
 	public $mbvars = array();	
 
 	// constructor function to setup class
-    public function __construct() 
-    {       
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-        	$this->setLayout('backend');
-        	$this->assignToLayout('sidebar', new View('../../plugins/mbmenu/views/admin/sidebar'));        	
+	public function __construct() 
+	{	   
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			$this->setLayout('backend');
+			$this->assignToLayout('sidebar', new View('../../plugins/mbmenu/views/admin/sidebar'));			
 		} else
 		{
 			$this->parent = Page::find('/');
 			$this->setLayout('wolf');
 		}
-    }
+	}
 
 	/**
-     * index
-     *
-     * main admin menu page.
-    */    
-    public function index()
-    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-	        
-	        $menus = mbmenu::findAllFrom('mbmenu');
-	        if(count($menus) === 0)
-	        {
-	        	$menus = "There are no menu items in the database.";
-	        }        	        
-	        
-	        $this->display('mbmenu/views/admin/index', array('menus' => $menus));
-    
-    	} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
-    
-    
+	 * index
+	 *
+	 * main admin menu page.
+	*/	
+	public function index()
+	{
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			
+			$menus = mbmenu::findAllFrom('mbmenu');
+			if(count($menus) === 0)
+			{
+				$menus = "There are no menu items in the database.";
+			}					
+			
+			$this->display('mbmenu/views/admin/index', array('menus' => $menus));
+	
+		} else
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
+	
+	
   	/**
-     * manage
-     *
-     * main admin list page
-    */    
-    public function manage($id)
-    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-	    	global $__CMS_CONN__;
-	       
-	       	$menu = mbmenu::findOneFrom('mbmenu', "`id` = ".mbmenu::escape($id));	        
-	        $itemSQL = $__CMS_CONN__->prepare("SELECT * FROM `".TABLE_PREFIX."mbmenu_items` WHERE `menuid` = ".mbmenuItem::escape($id)."
-	        									ORDER BY `linkparent` ASC, `linkorder` ASC");
+	 * manage
+	 *
+	 * main admin list page
+	*/	
+	public function manage($id)
+	{
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			global $__CMS_CONN__;
+		   
+		   	$menu = mbmenu::findOneFrom('mbmenu', "`id` = ".mbmenu::escape($id));			
+			$itemSQL = $__CMS_CONN__->prepare("SELECT * FROM `".TABLE_PREFIX."mbmenu_items` WHERE `menuid` = ".mbmenuItem::escape($id)."
+												ORDER BY `linkparent` ASC, `linkorder` ASC");
 			$itemSQL->execute();
 			$items = $itemSQL->fetchAll(PDO::FETCH_OBJ);
-	        
-	        $menuItems = array();
-	        if(count($items) > 0)
-	        {
-	        	foreach($items as $k => $v)
-	        	{
-	        		if($v->linkparent == 0)
-	        		{
-	        			$menuItems[$v->id] = $v;
-	        		} elseif($v->linkparent > 0)
-	        		{        		
-	        			if(isset($menuItems[$v->linkparent]->subitems))
-	        			{
-	        				$menuItems[$v->linkparent]->subitems[$v->id] = $v;
-	        			} else
-	        			{
-	        				$menuItems[$v->linkparent]->subitems = array($v->id => $v);
-	        			}
-	        		}	
-	        	}
-	        } else
-	        {
-	        	$menuItems = "There are no menu items in this menu.";
-	        }
-	                
-	        $this->display('mbmenu/views/admin/manage', array('menuitems' => $menuItems, 'menu' => $menu));
-    
-    	} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }  
-    
+			
+			$menuItems = array();
+			if(count($items) > 0)
+			{
+				foreach($items as $k => $v)
+				{
+					if($v->linkparent == 0)
+					{
+						$menuItems[$v->id] = $v;
+					} elseif($v->linkparent > 0)
+					{				
+						if(isset($menuItems[$v->linkparent]->subitems))
+						{
+							$menuItems[$v->linkparent]->subitems[$v->id] = $v;
+						} else
+						{
+							$menuItems[$v->linkparent]->subitems = array($v->id => $v);
+						}
+					}	
+				}
+			} else
+			{
+				$menuItems = "There are no menu items in this menu.";
+			}
+					
+			$this->display('mbmenu/views/admin/manage', array('menuitems' => $menuItems, 'menu' => $menu));
+	
+		} else
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}  
+	
  
-    /**
-     * documentation
-     *
-     * Documentation function to load the docs for the admin area
-    */    
-    public function documentation()
-    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-	        $this->display('mbmenu/views/admin/docs');
-    
-    	} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
+	/**
+	 * documentation
+	 *
+	 * Documentation function to load the docs for the admin area
+	*/	
+	public function documentation()
+	{
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			$this->display('mbmenu/views/admin/docs');
+	
+		} else
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
 
 // --------------------------------------------------------------------------
 // Menu Functions
 
    /**
-    * addMenu
-    *
-    * Add a new Menu
+	* addMenu
+	*
+	* Add a new Menu
    */
    public function addMenu()
    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$viewArray = array('act' => 'add');
-    	
+		if(defined("CMS_BACKEND"))
+		{
+			$viewArray = array('act' => 'add');
+		
 			if(isset($_POST['menu']) && count($_POST['menu']))
 			{
 				if($this->checkEmpty($_POST['menu']['menutitle']) && 
@@ -198,23 +198,23 @@ class MbmenuController extends PluginController
 			$this->display('mbmenu/views/admin/menuform', $viewArray);
 						
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
-    
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
+	
    /**
-    * editMenu
-    *
-    * Edit a Menu
+	* editMenu
+	*
+	* Edit a Menu
    */
    public function editMenu($id)
    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$viewArray = array('act' => 'edit');
-    	
+		if(defined("CMS_BACKEND"))
+		{
+			$viewArray = array('act' => 'edit');
+		
 			if(isset($_POST['menu']) && count($_POST['menu']))
 			{
 				if($this->checkEmpty($_POST['menu']['menutitle']) && 
@@ -246,11 +246,11 @@ class MbmenuController extends PluginController
 			$this->display('mbmenu/views/admin/menuform', $viewArray);
 						
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }    
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}	
    
 
 	/**
@@ -260,8 +260,8 @@ class MbmenuController extends PluginController
 	*/
 	public function deleteMenu($id)
 	{
-    	if(defined("CMS_BACKEND"))
-    	{
+		if(defined("CMS_BACKEND"))
+		{
 			$result = mbmenu::deleteWhere("mbmenu", "`id` = ".Record::escape($id));			
 			if($result === true)
 			{	
@@ -273,10 +273,10 @@ class MbmenuController extends PluginController
 			}
 			$this->index();
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
 	}
 
 // --------------------------------------------------------------------------
@@ -304,16 +304,16 @@ class MbmenuController extends PluginController
 
 
    /**
-    * addItem
-    *
-    * Add a new Menu Item
+	* addItem
+	*
+	* Add a new Menu Item
    */
    public function addItem()
    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$viewArray = array('act' => 'add');
-    	
+		if(defined("CMS_BACKEND"))
+		{
+			$viewArray = array('act' => 'add');
+		
 			if(isset($_POST['item']) && count($_POST['item']))
 			{
 				if($this->checkEmpty($_POST['item']['linktext']) && 
@@ -349,24 +349,24 @@ class MbmenuController extends PluginController
 			$this->display('mbmenu/views/admin/itemform', $viewArray);
 						
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
 
    /**
-    * editItem
-    *
-    * edit a Menu Item
-    * @param int - item id
+	* editItem
+	*
+	* edit a Menu Item
+	* @param int - item id
    */
    public function editItem($id)
    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$viewArray = array('act' => 'edit');
-    	
+		if(defined("CMS_BACKEND"))
+		{
+			$viewArray = array('act' => 'edit');
+		
 			if(isset($_POST['item']) && count($_POST['item']))
 			{
 				if($this->checkEmpty($_POST['item']['linktext']) && 
@@ -407,12 +407,12 @@ class MbmenuController extends PluginController
 			$this->display('mbmenu/views/admin/itemform', $viewArray);
 						
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
-    
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
+	
 	/**
 	 * deleteItem
 	 *
@@ -420,9 +420,9 @@ class MbmenuController extends PluginController
 	*/
 	public function deleteItem($id)
 	{
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$menu = mbmenuItem::findOneFrom("mbmenuItem", "`id` = ".Record::escape($id));
+		if(defined("CMS_BACKEND"))
+		{
+			$menu = mbmenuItem::findOneFrom("mbmenuItem", "`id` = ".Record::escape($id));
 			$result = mbmenuItem::deleteWhere("mbmenuItem", "`id` = ".Record::escape($id));			
 			if($result === true)
 			{	
@@ -433,11 +433,11 @@ class MbmenuController extends PluginController
 			}
 			$this->manage($menu->menuid);
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-	}    
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}	
 
 
 	/**
@@ -474,29 +474,29 @@ class MbmenuController extends PluginController
 	/**
 	 * Redefine so we can have a public version of this function.
 	*/
-    public function executeFrontendLayout() {
-        global $__CMS_CONN__;
+	public function executeFrontendLayout() {
+		global $__CMS_CONN__;
 
-        $sql = 'SELECT content_type, content FROM '.TABLE_PREFIX.'layout WHERE name = '."'$this->frontend_layout'";
+		$sql = 'SELECT content_type, content FROM '.TABLE_PREFIX.'layout WHERE name = '."'$this->frontend_layout'";
 
-        $stmt = $__CMS_CONN__->prepare($sql);
-        $stmt->execute();
+		$stmt = $__CMS_CONN__->prepare($sql);
+		$stmt->execute();
 
-        if ($layout = $stmt->fetchObject()) {
-        // if content-type not set, we set html as default
-            if ($layout->content_type == '')
-                $layout->content_type = 'text/html';
+		if ($layout = $stmt->fetchObject()) {
+		// if content-type not set, we set html as default
+			if ($layout->content_type == '')
+				$layout->content_type = 'text/html';
 
-            // set content-type and charset of the page
-            header('Content-Type: '.$layout->content_type.'; charset=UTF-8');
+			// set content-type and charset of the page
+			header('Content-Type: '.$layout->content_type.'; charset=UTF-8');
 
-            // Provides compatibility with the Page class.
-            // TODO - cleaner way of doing multiple inheritance?
-            $this->url = CURRENT_URI;
+			// Provides compatibility with the Page class.
+			// TODO - cleaner way of doing multiple inheritance?
+			$this->url = CURRENT_URI;
 
-            // execute the layout code
-            eval('?>'.$layout->content);
-        }
-    }
+			// execute the layout code
+			eval('?>'.$layout->content);
+		}
+	}
 }
-    
+	

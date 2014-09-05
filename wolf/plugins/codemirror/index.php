@@ -1,7 +1,7 @@
 <?php
 /* Security measure */
 if (!defined('IN_CMS')) {
-    exit();
+	exit();
 }
 
 /**
@@ -16,12 +16,12 @@ if (!defined('IN_CMS')) {
  */
 
 Plugin::setInfos(array(
-        'id'          => 'codemirror',
-        'title'       => __('Code Mirror'),
-        'description' => __('Provides Code Mirror editor.'),
-        'version'     => '0.1b',
-        'website'     => 'https://github.com/wellcaffeinated/Code-Mirror-for-Wolf-CMS',
-        'update_url'  => 'https://raw.github.com/wellcaffeinated/Code-Mirror-for-Wolf-CMS/master/version.xml'
+		'id'		  => 'codemirror',
+		'title'	   => __('Code Mirror'),
+		'description' => __('Provides Code Mirror editor.'),
+		'version'	 => '0.1b',
+		'website'	 => 'https://github.com/wellcaffeinated/Code-Mirror-for-Wolf-CMS',
+		'update_url'  => 'https://raw.github.com/wellcaffeinated/Code-Mirror-for-Wolf-CMS/master/version.xml'
 ));
 
 Plugin::addJavascript('codemirror', 'CodeMirror-2.33/lib/codemirror.js');

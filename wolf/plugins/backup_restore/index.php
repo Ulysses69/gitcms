@@ -32,16 +32,16 @@ if (!defined('BR_VERSION')) { define('BR_VERSION', '0.8'); }
 define('BACKUPRESTORE_ROOT', URI_PUBLIC.'wolf/plugins/backup_restore');
 
 Plugin::setInfos(array(
-    'id'          => 'backup_restore',
-    'title'       => __('Backup Restore'),
-    'description' => __('Provides administrators with the option of backing up their pages and settings to an XML file.'),
-    'version'     => BR_VERSION,
-    'license'     => 'GPLv3',
-    'author'      => 'Martijn van der Kleijn',
-    'website'     => 'http://www.wolfcms.org/',
-    'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml',
-    'require_wolf_version' => '0.5.5',
-    'require_php_extensions' => 'dom,SimpleXML'
+	'id'		  => 'backup_restore',
+	'title'	   => __('Backup Restore'),
+	'description' => __('Provides administrators with the option of backing up their pages and settings to an XML file.'),
+	'version'	 => BR_VERSION,
+	'license'	 => 'GPLv3',
+	'author'	  => 'Martijn van der Kleijn',
+	'website'	 => 'http://www.wolfcms.org/',
+	'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml',
+	'require_wolf_version' => '0.5.5',
+	'require_php_extensions' => 'dom,SimpleXML'
 ));
 
 //Plugin::addController('backup_restore', __('Backup Restore'), 'backup_restore_view', true);

@@ -8,7 +8,7 @@
   convertWarningsToExceptions="true">
 
   <testsuite name="All Mobile Detect tests">
-    <directory suffix="Test.php">./</directory>
+	<directory suffix="Test.php">./</directory>
   </testsuite>
 
 </phpunit>

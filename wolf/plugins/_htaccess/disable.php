@@ -32,12 +32,12 @@ if(file_exists($htaccessfile)){
 				$restore = fopen($htaccessfile, 'w');
 				if($restore){
 		
-				    // Write backup server configuration file data to server configuration file.
-				    if (fwrite($restore, $backup) === FALSE) {
-				        Flash::set('error', __($plugintitle.' cannot restore '.$htaccesstitle));
+					// Write backup server configuration file data to server configuration file.
+					if (fwrite($restore, $backup) === FALSE) {
+						Flash::set('error', __($plugintitle.' cannot restore '.$htaccesstitle));
 						fclose($restore);
 						exit;
-				    }
+					}
 		
 					// New backup created.
 					Flash::set('success', __($htaccesstitle.' has been restored from backup.'));

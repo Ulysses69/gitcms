@@ -116,7 +116,7 @@ class Moxiecode_BasicFileFilter extends Moxiecode_FileFilter {
 	var $_maxLevels;
 	var $_debug;
 
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 

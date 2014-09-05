@@ -45,12 +45,12 @@ if (!defined('IN_CMS')) { exit(); }
   $paths = explode('/', $filename); 
   $nb_path = count($paths);
   foreach ($paths as $i => $path) {
-    if ($i+1 == $nb_path) {
-      $out .= $path;
-    } else {
-      $progres_path .= $path.'/';
-      $out .= '<a href="'.get_url('plugin/file_manager/browse/'.rtrim($progres_path, '/')).'">'.$path.'</a> / ';
-    }
+	if ($i+1 == $nb_path) {
+	  $out .= $path;
+	} else {
+	  $progres_path .= $path.'/';
+	  $out .= '<a href="'.get_url('plugin/file_manager/browse/'.rtrim($progres_path, '/')).'">'.$path.'</a> / ';
+	}
   }
 ?>
 <!-- <h1><a href="<?php echo get_url('plugin/file_manager'); ?>">public</a>/<?php echo $out; ?></h1> -->
@@ -60,17 +60,17 @@ if (!defined('IN_CMS')) { exit(); }
   <img src="<?php echo BASE_FILES_DIR.'/'.$filename; ?>" />
 <?php } else { ?>
 <form method="post" action="<?php echo get_url('plugin/file_manager/save'); ?>">
-    <div class="form-area">
-        <p class="content">
-            <input type="hidden" name="file[name]" value="<?php echo $filename; ?>" />
-            <textarea class="textarea" id="file_content" name="file[content]" style="width: 100%; height: 400px;" rows="20" cols="40"><?php echo htmlentities($content, ENT_COMPAT, 'UTF-8'); ?></textarea><br />
-        </p>
-    </div>
-    <p class="buttons">
-        <input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Save then close'); ?>" value="<?php echo __('Save'); ?>" />
-        <input class="button" id="site-update-page" name="continue" type="submit" accesskey="e" title="<?php echo __('Save then continue editing'); ?>" value="<?php echo __('Update'); ?>" />
-        <a href="<?php echo get_url('plugin/file_manager/browse/'.$progres_path); ?>" id="site-cancel-page" class="button" title="<?php echo __('Close without saving'); ?>"><?php echo __('Cancel'); ?></a>
-    </p>
+	<div class="form-area">
+		<p class="content">
+			<input type="hidden" name="file[name]" value="<?php echo $filename; ?>" />
+			<textarea class="textarea" id="file_content" name="file[content]" style="width: 100%; height: 400px;" rows="20" cols="40"><?php echo htmlentities($content, ENT_COMPAT, 'UTF-8'); ?></textarea><br />
+		</p>
+	</div>
+	<p class="buttons">
+		<input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Save then close'); ?>" value="<?php echo __('Save'); ?>" />
+		<input class="button" id="site-update-page" name="continue" type="submit" accesskey="e" title="<?php echo __('Save then continue editing'); ?>" value="<?php echo __('Update'); ?>" />
+		<a href="<?php echo get_url('plugin/file_manager/browse/'.$progres_path); ?>" id="site-cancel-page" class="button" title="<?php echo __('Close without saving'); ?>"><?php echo __('Cancel'); ?></a>
+	</p>
 </form>
 <?php } ?>
 

@@ -1,54 +1,54 @@
 (function () {
   function forEach(arr, f) {
-    for (var i = 0, e = arr.length; i < e; ++i) f(arr[i]);
+	for (var i = 0, e = arr.length; i < e; ++i) f(arr[i]);
   }
   
   function arrayContains(arr, item) {
-    if (!Array.prototype.indexOf) {
-      var i = arr.length;
-      while (i--) {
-        if (arr[i] === item) {
-          return true;
-        }
-      }
-      return false;
-    }
-    return arr.indexOf(item) != -1;
+	if (!Array.prototype.indexOf) {
+	  var i = arr.length;
+	  while (i--) {
+		if (arr[i] === item) {
+		  return true;
+		}
+	  }
+	  return false;
+	}
+	return arr.indexOf(item) != -1;
   }
 
   function scriptHint(editor, keywords, getToken) {
-    // Find the token at the cursor
-    var cur = editor.getCursor(), token = getToken(editor, cur), tprop = token;
-    // If it's not a 'word-style' token, ignore the token.
+	// Find the token at the cursor
+	var cur = editor.getCursor(), token = getToken(editor, cur), tprop = token;
+	// If it's not a 'word-style' token, ignore the token.
 
-    if (!/^[\w$_]*$/.test(token.string)) {
-        token = tprop = {start: cur.ch, end: cur.ch, string: "", state: token.state,
-                         className: token.string == ":" ? "pig-type" : null};
-    }
-      
-    if (!context) var context = [];
-    context.push(tprop);
-    
-    var completionList = getCompletions(token, context); 
-    completionList = completionList.sort();
-    //prevent autocomplete for last word, instead show dropdown with one word
-    if(completionList.length == 1) {
-      completionList.push(" ");
-    }
+	if (!/^[\w$_]*$/.test(token.string)) {
+		token = tprop = {start: cur.ch, end: cur.ch, string: "", state: token.state,
+						 className: token.string == ":" ? "pig-type" : null};
+	}
+	  
+	if (!context) var context = [];
+	context.push(tprop);
+	
+	var completionList = getCompletions(token, context); 
+	completionList = completionList.sort();
+	//prevent autocomplete for last word, instead show dropdown with one word
+	if(completionList.length == 1) {
+	  completionList.push(" ");
+	}
 
-    return {list: completionList,
-              from: {line: cur.line, ch: token.start},
-              to: {line: cur.line, ch: token.end}};
+	return {list: completionList,
+			  from: {line: cur.line, ch: token.start},
+			  to: {line: cur.line, ch: token.end}};
   }
   
   CodeMirror.pigHint = function(editor) {
-    return scriptHint(editor, pigKeywordsU, function (e, cur) {return e.getTokenAt(cur);});
+	return scriptHint(editor, pigKeywordsU, function (e, cur) {return e.getTokenAt(cur);});
   };
  
  function toTitleCase(str) {
-    return str.replace(/(?:^|\s)\w/g, function(match) {
-        return match.toUpperCase();
-    });
+	return str.replace(/(?:^|\s)\w/g, function(match) {
+		return match.toUpperCase();
+	});
  }
   
   var pigKeywords = "VOID IMPORT RETURNS DEFINE LOAD FILTER FOREACH ORDER CUBE DISTINCT COGROUP "
@@ -82,42 +82,42 @@
   + "IsEmpty JsonLoader JsonMetadata JsonStorage LongAbs LongAvg LongMax LongMin LongSum MapSize "
   + "MonitoredUDF Nondeterministic OutputSchema PigStorage PigStreaming StringConcat StringMax "
   + "StringMin StringSize TextLoader TupleSize Utf8StorageConverter").split(" ").join("() ").split(" ");
-                    
+					
   function getCompletions(token, context) {
-    var found = [], start = token.string;
-    function maybeAdd(str) {
-      if (str.indexOf(start) == 0 && !arrayContains(found, str)) found.push(str);
-    }
-    
-    function gatherCompletions(obj) {
-      if(obj == ":") {
-        forEach(pigTypesL, maybeAdd);
-      }
-      else {
-        forEach(pigBuiltinsU, maybeAdd);
-        forEach(pigBuiltinsL, maybeAdd);
-        forEach(pigBuiltinsC, maybeAdd);
-        forEach(pigTypesU, maybeAdd);
-        forEach(pigTypesL, maybeAdd);
-        forEach(pigKeywordsU, maybeAdd);
-        forEach(pigKeywordsL, maybeAdd);
-      }
-    }
+	var found = [], start = token.string;
+	function maybeAdd(str) {
+	  if (str.indexOf(start) == 0 && !arrayContains(found, str)) found.push(str);
+	}
+	
+	function gatherCompletions(obj) {
+	  if(obj == ":") {
+		forEach(pigTypesL, maybeAdd);
+	  }
+	  else {
+		forEach(pigBuiltinsU, maybeAdd);
+		forEach(pigBuiltinsL, maybeAdd);
+		forEach(pigBuiltinsC, maybeAdd);
+		forEach(pigTypesU, maybeAdd);
+		forEach(pigTypesL, maybeAdd);
+		forEach(pigKeywordsU, maybeAdd);
+		forEach(pigKeywordsL, maybeAdd);
+	  }
+	}
 
-    if (context) {
-      // If this is a property, see if it belongs to some object we can
-      // find in the current environment.
-      var obj = context.pop(), base;
+	if (context) {
+	  // If this is a property, see if it belongs to some object we can
+	  // find in the current environment.
+	  var obj = context.pop(), base;
 
-      if (obj.className == "pig-word") 
-          base = obj.string;
-      else if(obj.className == "pig-type")
-          base = ":" + obj.string;
-        
-      while (base != null && context.length)
-        base = base[context.pop().string];
-      if (base != null) gatherCompletions(base);
-    }
-    return found;
+	  if (obj.className == "pig-word") 
+		  base = obj.string;
+	  else if(obj.className == "pig-type")
+		  base = ":" + obj.string;
+		
+	  while (base != null && context.length)
+		base = base[context.pop().string];
+	  if (base != null) gatherCompletions(base);
+	}
+	return found;
   }
 })();

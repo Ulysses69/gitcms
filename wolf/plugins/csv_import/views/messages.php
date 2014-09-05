@@ -14,11 +14,11 @@
 
 /* Security measure */
 if ( !defined( 'IN_CMS' ) ) {
-    exit();
+	exit();
 }
 echo '<h3>' . __( 'Messages' ) . '</h3>';
 echo '<ul>';
 foreach ( $messages as $message )
-    echo '<li class="' . $message[0] . '">' . $message[1] . '</li>';
+	echo '<li class="' . $message[0] . '">' . $message[1] . '</li>';
 echo '</ul>';
 ?>

@@ -12,11 +12,11 @@ class TinymceStylesController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('tinymce_styles');
-	        if (!$settings) {
-	            Flash::set('error', 'TinyMCE Styles - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('tinymce_styles/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'TinyMCE Styles - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('tinymce_styles/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'tinymce_styles';

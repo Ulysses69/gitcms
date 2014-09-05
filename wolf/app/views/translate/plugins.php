@@ -34,8 +34,8 @@
 
 // Prevent any possible caching
 header('Content-type: text/plain');
-header("Cache-Control: no-cache, must-revalidate");     // HTTP/1.1
-header("Expires: Tue, 05 Dec 2000 00:00:01 GMT");       // Date in the past
+header("Cache-Control: no-cache, must-revalidate");	 // HTTP/1.1
+header("Expires: Tue, 05 Dec 2000 00:00:01 GMT");	   // Date in the past
 
 // Init
 $current = null;
@@ -43,28 +43,28 @@ $pluginname = null;
 
 // Do actual work
 foreach ($files as $file => $strings) {
-    $file = substr($file, strpos($file, '/plugins/') + 9);
-    $file = substr($file, 0, strpos($file, '/'));
+	$file = substr($file, strpos($file, '/plugins/') + 9);
+	$file = substr($file, 0, strpos($file, '/'));
 
-    if ($current == null) {
-        $current = $file;
-        $pluginname = $file;
-        $tmp = array();
-    }
+	if ($current == null) {
+		$current = $file;
+		$pluginname = $file;
+		$tmp = array();
+	}
 
-    if ($current == $file) {
-        foreach ($strings as $string)
-            $tmp[] = $string;
-    }
-    else {
-        writeTemplate($pluginname, $tmp);
+	if ($current == $file) {
+		foreach ($strings as $string)
+			$tmp[] = $string;
+	}
+	else {
+		writeTemplate($pluginname, $tmp);
 
-        $current = $file;
-        $pluginname = $file;
-        $tmp = array();
-        foreach ($strings as $string)
-            $tmp[] = $string;
-    }
+		$current = $file;
+		$pluginname = $file;
+		$tmp = array();
+		foreach ($strings as $string)
+			$tmp[] = $string;
+	}
 }
 
 writeTemplate($pluginname, $tmp);
@@ -78,30 +78,30 @@ writeTemplate($pluginname, $tmp);
  * @param array  $strings
  */
 function writeTemplate($pluginname, $strings) {
-    echo '<?php
+	echo '<?php
 
-    /**
-     * YourLanguage file for plugin '.$pluginname.'
-     *
-     * @package plugins
-     * @subpackage '.$pluginname.'
-     * @category translations
-     *
-     * @author Your Name <email@domain.something>
-     * @version Wolf x.y.z
-     */
+	/**
+	 * YourLanguage file for plugin '.$pluginname.'
+	 *
+	 * @package plugins
+	 * @subpackage '.$pluginname.'
+	 * @category translations
+	 *
+	 * @author Your Name <email@domain.something>
+	 * @version Wolf x.y.z
+	 */
 
-    return array(
-    ';
+	return array(
+	';
 
-    $strings = removeDoubles($strings);
-    sort($strings);
+	$strings = removeDoubles($strings);
+	sort($strings);
 
-    foreach ($strings as $string) {
-        echo "\t'".$string."' => '',\n";
-    }    
+	foreach ($strings as $string) {
+		echo "\t'".$string."' => '',\n";
+	}	
 
-    echo "    );\n\n\n\n\n\n";
+	echo "	);\n\n\n\n\n\n";
 }
 
 /**
@@ -111,12 +111,12 @@ function writeTemplate($pluginname, $strings) {
  * @return array 
  */
 function removeDoubles($array) {
-    $result = array();
-        
-    foreach ($array as $string) {
-        if (!in_array($string, $result))
-        $result[] = $string;
-    }
+	$result = array();
+		
+	foreach ($array as $string) {
+		if (!in_array($string, $result))
+		$result[] = $string;
+	}
 
-    return $result;
+	return $result;
 }

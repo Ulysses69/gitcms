@@ -1,10 +1,10 @@
 <?php
 Plugin::setInfos(array(
-    'id'          => 'pagepeel_plus',
-    'title'       => 'Pagepeel plus',
-    'description' => 'Advertising banner based on Page peel plugin',
-    'version'     => '1.0.0',
-    'website'     => 'http://www.bluehorizonsmarketing.co.uk')
+	'id'		  => 'pagepeel_plus',
+	'title'	   => 'Pagepeel plus',
+	'description' => 'Advertising banner based on Page peel plugin',
+	'version'	 => '1.0.0',
+	'website'	 => 'http://www.bluehorizonsmarketing.co.uk')
 );
 
 if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {

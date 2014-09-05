@@ -29,14 +29,14 @@ if(!defined("MBMENU"))
 
 // setup the plugin info
 Plugin::setInfos(array(
-    'id'          => 'mbmenu',
-    'title'       => 'mbMenu', 
-    'description' => 'Menu Management Plugin for WolfCMS.', 
-    'version'     => '1.0.1',
-    'require_wolf_version' => '0.6',
-    'type' => 'both',
-    'author' 	  => 'Mike Barlow',
-    'website'     => 'http://www.mikebarlow.co.uk',
+	'id'		  => 'mbmenu',
+	'title'	   => 'mbMenu', 
+	'description' => 'Menu Management Plugin for WolfCMS.', 
+	'version'	 => '1.0.1',
+	'require_wolf_version' => '0.6',
+	'type' => 'both',
+	'author' 	  => 'Mike Barlow',
+	'website'	 => 'http://www.mikebarlow.co.uk',
 	'update_url'  => 'http://www.mikebarlow.co.uk/mbplugins_version.xml'
 	)
 );
@@ -72,7 +72,7 @@ function loadMbMenu($menucode)
 			{
 				$menuItems[$v->id] = $v;
 			} elseif($v->linkparent > 0)
-			{        		
+			{				
 				if(isset($menuItems[$v->linkparent]->subitems))
 				{
 					$menuItems[$v->linkparent]->subitems[$v->id] = $v;

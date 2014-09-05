@@ -122,7 +122,7 @@
 					}
 				}
 			}
-            elseif ( $browser_info[5] == 'iphone' ) {
+			elseif ( $browser_info[5] == 'iphone' ) {
 				$os .=  'iOS (iPhone)';
 			}
 			// note: browser detection now returns os x version number if available, 10 or 10.4.3 style

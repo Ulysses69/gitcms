@@ -1,15 +1,15 @@
 <?php
 AuthUser::load();
 if (!AuthUser::isLoggedIn() && !AuthUser::hasPermission('myrole')) {
-    echo '<p>Sorry, you need the right permissions before you can download!</p>';
+	echo '<p>Sorry, you need the right permissions before you can download!</p>';
 } else {
-    if (!isset($_GET['file'])) {
-        echo '<p>You need to supply a file id!</p>';
-    } else {
-        $filename = "../" . $_GET['file'] . ".pdf";
-        header("Content-disposition: attachment; filename=" . $filename . "");
-        header('Content-type: application/octet-stream');
-        readfile($filename);
-    }
+	if (!isset($_GET['file'])) {
+		echo '<p>You need to supply a file id!</p>';
+	} else {
+		$filename = "../" . $_GET['file'] . ".pdf";
+		header("Content-disposition: attachment; filename=" . $filename . "");
+		header('Content-type: application/octet-stream');
+		readfile($filename);
+	}
 }
 ?>

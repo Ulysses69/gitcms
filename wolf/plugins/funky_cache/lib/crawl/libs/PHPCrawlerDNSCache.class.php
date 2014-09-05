@@ -25,19 +25,19 @@ class PHPCrawlerDNSCache
    */
   public function getIP($hostname)
   {
-    // If host already was queried
-    if (isset($this->host_ip_array[$hostname]))
-    {
-      return $this->host_ip_array[$hostname];
-    }
-    
-    // Else do DNS-query
-    else
-    {
-      $ip = gethostbyname($hostname);
-      $this->host_ip_array[$hostname] = $ip;
-      return $ip;
-    }
+	// If host already was queried
+	if (isset($this->host_ip_array[$hostname]))
+	{
+	  return $this->host_ip_array[$hostname];
+	}
+	
+	// Else do DNS-query
+	else
+	{
+	  $ip = gethostbyname($hostname);
+	  $this->host_ip_array[$hostname] = $ip;
+	  return $ip;
+	}
   }
   
   /**
@@ -48,8 +48,8 @@ class PHPCrawlerDNSCache
    */
   public function hostInCache($hostname)
   {
-    if (isset($this->host_ip_array[$hostname])) return true;
-    else return false;
+	if (isset($this->host_ip_array[$hostname])) return true;
+	else return false;
   }
   
   /**
@@ -60,8 +60,8 @@ class PHPCrawlerDNSCache
    */
   public function urlHostInCache(PHPCrawlerURLDescriptor $URL)
   {
-    $url_parts = PHPCrawlerUtils::splitURL($URL->url_rebuild);
-    return $this->hostInCache($url_parts["host"]);
+	$url_parts = PHPCrawlerUtils::splitURL($URL->url_rebuild);
+	return $this->hostInCache($url_parts["host"]);
   }
 }
 ?>

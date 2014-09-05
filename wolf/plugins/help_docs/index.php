@@ -51,14 +51,14 @@ if (!defined('IN_CMS')) { exit(); }
  */
 
 Plugin::setInfos(array(
-    'id'          => 'help_docs',
-    'title'       => __('Help docs'),
-    'description' => __('Quick help documentation'),
-    'version'     => '1.1.1',
-   'license'     => 'GPL',
-    'website'     => '',
-    'update_url'  => '',
-    'require_wolf_version' => '0.5.5'
+	'id'		  => 'help_docs',
+	'title'	   => __('Help docs'),
+	'description' => __('Quick help documentation'),
+	'version'	 => '1.1.1',
+   'license'	 => 'GPL',
+	'website'	 => '',
+	'update_url'  => '',
+	'require_wolf_version' => '0.5.5'
 ));
 
 Plugin::addController('help_docs', __('Help'), 'administrator', false);

@@ -63,14 +63,14 @@ if(!defined("CMS_ROOT"))
 <script type="text/javascript">
 	function confirmAction()
 	{
-	    var agree=confirm("Are you sure?");
-	    if (agree)
+		var agree=confirm("Are you sure?");
+		if (agree)
 	   	{
-	        return true;
-	    } else
-	    {
-	        return false;
-	    }
+			return true;
+		} else
+		{
+			return false;
+		}
 	}
 </script>
 <!-- <h1>Blog Posts</h1> -->

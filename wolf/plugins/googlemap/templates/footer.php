@@ -509,7 +509,7 @@ function addMarker(lastid) {
 		var point = event.latLng;
 		var lat = point.lat().toFixed(5);
 		var lng = point.lng().toFixed(5);
-	    document.getElementById("alatitude").value = lat;
+		document.getElementById("alatitude").value = lat;
 		document.getElementById("alongitude").value = lng;
 		map.setCenter(marker.position);
 	});
@@ -518,7 +518,7 @@ function addMarker(lastid) {
 		var point = event.latLng;
 		var lat = point.lat().toFixed(5);
 		var lng = point.lng().toFixed(5);
-	    document.getElementById("alatitude").value = lat;
+		document.getElementById("alatitude").value = lat;
 		document.getElementById("alongitude").value = lng;
 	});
 

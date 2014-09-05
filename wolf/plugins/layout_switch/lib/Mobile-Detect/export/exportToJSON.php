@@ -10,8 +10,8 @@
  *
  * The result of running this script is the export.json file.
  *
- * @license     Code and contributions have 'MIT License'
- *              More details: https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
+ * @license	 Code and contributions have 'MIT License'
+ *			  More details: https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  *
  */
 
@@ -45,7 +45,7 @@ $json = array(
 					// If match is found, triggers 'isMobile' to be true.
 					'browsers' => $detect->getBrowsers(),
 					// If match is found, triggers 'isMobile' to be true.
-					'os'       => $detect->getOperatingSystems()
+					'os'	   => $detect->getOperatingSystems()
 				)
 
 			);

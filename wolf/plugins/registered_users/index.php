@@ -23,14 +23,14 @@
  */
 
 Plugin::setInfos(array(
-    'id'          => 'registered_users',
-    'title'       => 'Registered Users',
-    'description' => 'Allows you to manage new user registrations on your site.',
-    'version'     => '0.9.9',
-    'author'      => 'Andrew Waters',
-    'website'     => 'http://www.band-x.org/',
-    'update_url'  => 'http://www.band-x.org/update.xml',
-    'require_wolf_version' => '0.7.3'
+	'id'		  => 'registered_users',
+	'title'	   => 'Registered Users',
+	'description' => 'Allows you to manage new user registrations on your site.',
+	'version'	 => '0.9.9',
+	'author'	  => 'Andrew Waters',
+	'website'	 => 'http://www.band-x.org/',
+	'update_url'  => 'http://www.band-x.org/update.xml',
+	'require_wolf_version' => '0.7.3'
 ));
 
 Plugin::addController('registered_users', 'Registered Users', 'administrator');
@@ -48,37 +48,37 @@ include('classes/RUCommon.php');
 include('observers/RUObservers.php');
 
 function ru_login_page() {
-    $registered_users_class = new RegisteredUsers();
-    $loginpage = $registered_users_class->login_page();
-    echo $loginpage;
+	$registered_users_class = new RegisteredUsers();
+	$loginpage = $registered_users_class->login_page();
+	echo $loginpage;
 }
 
 function ru_register_page() {
-    $registered_users_class = new RegisteredUsers();
-    $registerpage = $registered_users_class->registration_page();
-    echo $registerpage;
+	$registered_users_class = new RegisteredUsers();
+	$registerpage = $registered_users_class->registration_page();
+	echo $registerpage;
 }
 
 function ru_confirm_page() {
-    $registered_users_class = new RegisteredUsers();
-    $confirmation_page = $registered_users_class->confirm();
-    echo $confirmation_page;
+	$registered_users_class = new RegisteredUsers();
+	$confirmation_page = $registered_users_class->confirm();
+	echo $confirmation_page;
 }
 
 function ru_auth_required_page() {
-    $registered_users_class = new RegisteredUsers();
-    $auth_required_page = $registered_users_class->auth_required_page();
-    echo $auth_required_page;
+	$registered_users_class = new RegisteredUsers();
+	$auth_required_page = $registered_users_class->auth_required_page();
+	echo $auth_required_page;
 }
 
 function ru_reset_page() {
-    $registered_users_class = new RegisteredUsers();
-    $reset_page = $registered_users_class->password_reset();
-    echo $reset_page;
+	$registered_users_class = new RegisteredUsers();
+	$reset_page = $registered_users_class->password_reset();
+	echo $reset_page;
 }
 
 function ru_logout() {
-    $controller = new LoginController();
-    $logout = $controller->logout();
-    $logout;
+	$controller = new LoginController();
+	$logout = $controller->logout();
+	$logout;
 }

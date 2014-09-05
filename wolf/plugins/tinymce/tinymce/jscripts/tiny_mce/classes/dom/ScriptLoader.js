@@ -30,7 +30,7 @@
 	 * scriptLoader.add('somescript3.js');
 	 * 
 	 * scriptLoader.loadQueue(function() {
-	 *    alert('All scripts are now loaded.');
+	 *	alert('All scripts are now loaded.');
 	 * });
 	 */
 	tinymce.dom.ScriptLoader = function(settings) {

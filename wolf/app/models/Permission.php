@@ -40,5 +40,5 @@
  * @since Wolf version 0.5
  */
 class Permission extends Record {
-    const TABLE_NAME = 'permission';
+	const TABLE_NAME = 'permission';
 }

@@ -15,51 +15,51 @@ $settings = array('version' => SKELETON_VERSION);
 // Check existing plugin settings
 if (!$version || $version == null) {
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, SKELETON_ID)) {
-        Flash::set('success', __(SKELETON_TITLE.' - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __(SKELETON_TITLE.' - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, SKELETON_ID)) {
+		Flash::set('success', __(SKELETON_TITLE.' - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __(SKELETON_TITLE.' - unable to save plugin settings.'));
 
 
 
 } else {
 
-    // Upgrade from previous installation
-    if (SKELETON_VERSION > $version) {
+	// Upgrade from previous installation
+	if (SKELETON_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".SKELETON_ID."'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='".SKELETON_ID."'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".SKELETON_ID."'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='".SKELETON_ID."'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
+		if (!$result) {
 			Flash::set('error', __(SKELETON_TITLE.' - unable to access plugin settings.'));
 			return;
-        }
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
-            $result->closeCursor();
-            if(defined('SKELETON_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/'.SKELETON_ID); }
-        }
-    }
+			$result->closeCursor();
+			if(defined('SKELETON_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/'.SKELETON_ID); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, SKELETON_ID)) {
-        if (SKELETON_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, SKELETON_ID)) {
+		if (SKELETON_VERSION > $version){
 			Flash::set('success', __(SKELETON_TITLE.' - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

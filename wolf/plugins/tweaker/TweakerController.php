@@ -12,11 +12,11 @@ class TweakerController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('tweaker');
-	        if (!$settings) {
-	            Flash::set('error', 'Tweaker - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('tweaker/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Tweaker - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('tweaker/views/settings', $settings);
 	}
 	public function save_settings(){
 		$wof = 'wolf';
@@ -129,14 +129,14 @@ class TweakerController extends PluginController {
 
 
 
-	        if (empty($urlpublic)) {
+			if (empty($urlpublic)) {
 			$urlpublic = '/';
-	        } else {
-	        	$settings = array('urlpublic' => $urlpublic,
-	            			'autometa' => $autometa,
-	            			'plugindescriptions' => $plugindescriptions
-	                );
-			    
+			} else {
+				$settings = array('urlpublic' => $urlpublic,
+							'autometa' => $autometa,
+							'plugindescriptions' => $plugindescriptions
+					);
+				
 			if (Plugin::setAllSettings($settings, 'tweaker'))
 				Flash::set('success', 'Tweaker - '.__('plugin settings saved.'));
 			else

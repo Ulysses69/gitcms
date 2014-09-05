@@ -13,9 +13,9 @@
  *
  * @example
  * var Styles = new tinymce.html.Styles({
- *    url_converter: function(url) {
- *       return url;
- *    }
+ *	url_converter: function(url) {
+ *	   return url;
+ *	}
  * });
  *
  * styles = Styles.parse('border: 1px solid red');

@@ -4,8 +4,8 @@
 
 /*  { width: 100%; } */
 #parts_list_page_container {
-    overflow-y: scroll;
-    height: 150px;
+	overflow-y: scroll;
+	height: 150px;
 }
 #part_revisions_list { border: 1px solid #ccc; width: 100% }
 

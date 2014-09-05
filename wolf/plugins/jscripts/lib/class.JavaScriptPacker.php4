@@ -37,15 +37,15 @@
  * 
  * 
  * params of the constructor :
- * $script:       the JavaScript to pack, string.
- * $encoding:     level of encoding, int or string :
- *                0,10,62,95 or 'None', 'Numeric', 'Normal', 'High ASCII'.
- *                default: 62.
+ * $script:	   the JavaScript to pack, string.
+ * $encoding:	 level of encoding, int or string :
+ *				0,10,62,95 or 'None', 'Numeric', 'Normal', 'High ASCII'.
+ *				default: 62.
  * $fastDecode:   include the fast decoder in the packed result, boolean.
- *                default : true.
+ *				default : true.
  * $specialChars: if you are flagged your private and local variables
- *                in the script, boolean.
- *                default: false.
+ *				in the script, boolean.
+ *				default: false.
  * 
  * The pack() method return the compressed JavasScript, as a string.
  * 
@@ -239,7 +239,7 @@ class JavaScriptPacker {
 			//  words that are also used as codes. we assign them a code
 			//  equivalent to the word itself.
 			// e.g. if "do" falls within our encoding range
-			//      then we store keywords["do"] = "do";
+			//	  then we store keywords["do"] = "do";
 			// this avoids problems when decoding
 			$i = count($unsorted);
 			do {
@@ -372,7 +372,7 @@ class JavaScriptPacker {
 	// mmm.. ..which one do i need ??
 	function _getEncoder($ascii) {
 		return $ascii > 10 ? $ascii > 36 ? $ascii > 62 ?
-		       '_encode95' : '_encode62' : '_encode36' : '_encode10';
+			   '_encode95' : '_encode62' : '_encode36' : '_encode10';
 	}
 	
 	// zero encoding
@@ -460,74 +460,74 @@ class JavaScriptPacker {
 	//  this function when decoded in the target
 	// NOTE ! : without the ';' final.
 	var $JSFUNCTION_unpack = 'function($packed, $ascii, $count, $keywords, $encode, $decode) {
-    while ($count--) {
-        if ($keywords[$count]) {
-            $packed = $packed.replace(new RegExp(\'\\\\b\' + $encode($count) + \'\\\\b\', \'g\'), $keywords[$count]);
-        }
-    }
-    return $packed;
+	while ($count--) {
+		if ($keywords[$count]) {
+			$packed = $packed.replace(new RegExp(\'\\\\b\' + $encode($count) + \'\\\\b\', \'g\'), $keywords[$count]);
+		}
+	}
+	return $packed;
 }';
 /*
 'function($packed, $ascii, $count, $keywords, $encode, $decode) {
-    while ($count--)
-        if ($keywords[$count])
-            $packed = $packed.replace(new RegExp(\'\\\\b\' + $encode($count) + \'\\\\b\', \'g\'), $keywords[$count]);
-    return $packed;
+	while ($count--)
+		if ($keywords[$count])
+			$packed = $packed.replace(new RegExp(\'\\\\b\' + $encode($count) + \'\\\\b\', \'g\'), $keywords[$count]);
+	return $packed;
 }';
 */
 	
 	// code-snippet inserted into the unpacker to speed up decoding
-	var $JSFUNCTION_decodeBody = '    if (!\'\'.replace(/^/, String)) {
-        // decode all the values we need
-        while ($count--) {
-            $decode[$encode($count)] = $keywords[$count] || $encode($count);
-        }
-        // global replacement function
-        $keywords = [function ($encoded) {return $decode[$encoded]}];
-        // generic match
-        $encode = function () {return \'\\\\w+\'};
-        // reset the loop counter -  we are now doing a global replace
-        $count = 1;
-    }
+	var $JSFUNCTION_decodeBody = '	if (!\'\'.replace(/^/, String)) {
+		// decode all the values we need
+		while ($count--) {
+			$decode[$encode($count)] = $keywords[$count] || $encode($count);
+		}
+		// global replacement function
+		$keywords = [function ($encoded) {return $decode[$encoded]}];
+		// generic match
+		$encode = function () {return \'\\\\w+\'};
+		// reset the loop counter -  we are now doing a global replace
+		$count = 1;
+	}
 ';
 //};
 /*
 '	if (!\'\'.replace(/^/, String)) {
-        // decode all the values we need
-        while ($count--) $decode[$encode($count)] = $keywords[$count] || $encode($count);
-        // global replacement function
-        $keywords = [function ($encoded) {return $decode[$encoded]}];
-        // generic match
-        $encode = function () {return\'\\\\w+\'};
-        // reset the loop counter -  we are now doing a global replace
-        $count = 1;
-    }';
+		// decode all the values we need
+		while ($count--) $decode[$encode($count)] = $keywords[$count] || $encode($count);
+		// global replacement function
+		$keywords = [function ($encoded) {return $decode[$encoded]}];
+		// generic match
+		$encode = function () {return\'\\\\w+\'};
+		// reset the loop counter -  we are now doing a global replace
+		$count = 1;
+	}';
 */
 	
 	 // zero encoding
 	 // characters: 0123456789
 	 var $JSFUNCTION_encode10 = 'function($charCode) {
-    return $charCode;
+	return $charCode;
 }';//;';
 	
 	 // inherent base36 support
 	 // characters: 0123456789abcdefghijklmnopqrstuvwxyz
 	 var $JSFUNCTION_encode36 = 'function($charCode) {
-    return $charCode.toString(36);
+	return $charCode.toString(36);
 }';//;';
 	
 	// hitch a ride on base36 and add the upper case alpha characters
 	// characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 	var $JSFUNCTION_encode62 = 'function($charCode) {
-    return ($charCode < _encoding ? \'\' : arguments.callee(parseInt($charCode / _encoding))) +
-    (($charCode = $charCode % _encoding) > 35 ? String.fromCharCode($charCode + 29) : $charCode.toString(36));
+	return ($charCode < _encoding ? \'\' : arguments.callee(parseInt($charCode / _encoding))) +
+	(($charCode = $charCode % _encoding) > 35 ? String.fromCharCode($charCode + 29) : $charCode.toString(36));
 }';
 	
 	// use high-ascii values
 	// characters: ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿À�?ÂÃÄÅÆÇÈÉÊËÌ�?Î�?�?ÑÒÓÔÕÖ×ØÙÚÛÜ�?Þßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ
 	var $JSFUNCTION_encode95 = 'function($charCode) {
-    return ($charCode < _encoding ? \'\' : arguments.callee($charCode / _encoding)) +
-        String.fromCharCode($charCode % _encoding + 161);
+	return ($charCode < _encoding ? \'\' : arguments.callee($charCode / _encoding)) +
+		String.fromCharCode($charCode % _encoding + 161);
 }'; 
 	
 }
@@ -567,7 +567,7 @@ class ParseMaster {
 				} else { // a complicated lookup (e.g. "Hello $2 $1")
 					// build a function to do the lookup
 					$quote = preg_match($this->QUOTE, $this->_internalEscape($replacement))
-					         ? '"' : "'";
+							 ? '"' : "'";
 					$replacement = array(
 						'fn' => '_backReferences',
 						'data' => array(
@@ -647,8 +647,8 @@ class ParseMaster {
 				
 				}
 				$delete = ($this->escapeChar == '' ||
-				           strpos($arguments[$i], $this->escapeChar) === false)
-				        ? '' : "\x01" . $arguments[$i] . "\x01";
+						   strpos($arguments[$i], $this->escapeChar) === false)
+						? '' : "\x01" . $arguments[$i] . "\x01";
 				return $delete . $replacement;
 			
 			// skip over references to sub-expressions

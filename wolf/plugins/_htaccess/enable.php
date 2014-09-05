@@ -34,12 +34,12 @@ if(file_exists($htaccessfile)){
 			// Read default data to backup.
 			$defaultdata = file_get_contents($htaccessfile);
 			
-		    // Write default content to backup file.
-		    if (fwrite($default, $defaultdata) === FALSE) {
-		        Flash::set('error', __('Cannot backup '.$htaccesstitle));
-		        fclose($default);
+			// Write default content to backup file.
+			if (fwrite($default, $defaultdata) === FALSE) {
+				Flash::set('error', __('Cannot backup '.$htaccesstitle));
+				fclose($default);
 				exit;
-		    }
+			}
 	
 			// New default backup created.
 			Flash::set('success', __($htaccesstitle.' has been created.'));
@@ -68,12 +68,12 @@ if(file_exists($htaccessfile)){
 		// Read data to backup.
 		$data = file_get_contents($htaccessfile);
 
-	    // Write content to backup file.
-	    if (fwrite($backup, $data) === FALSE) {
-	        Flash::set('error', __('Cannot backup '.$htaccesstitle));
-	        fclose($backup);
+		// Write content to backup file.
+		if (fwrite($backup, $data) === FALSE) {
+			Flash::set('error', __('Cannot backup '.$htaccesstitle));
+			fclose($backup);
 			exit;
-	    }
+		}
 
 		// New backup created.
 		Flash::set('success', __($htaccesstitle.' has been created.'));
@@ -135,15 +135,15 @@ if(file_exists($htaccessfile)){
 	// Check if plugin settings already exist and create them if not.
 	if (Plugin::getSetting('htaccessbackup', 'htaccess') === false) {
 
-	    // Store settings
-	    $settings = array('htaccess' => $currentdata, 'htaccessbackup' => $data, 'htaccessdefault' => $defaultdata);
-	    Plugin::setAllSettings($settings, 'htaccess');
+		// Store settings
+		$settings = array('htaccess' => $currentdata, 'htaccessbackup' => $data, 'htaccessdefault' => $defaultdata);
+		Plugin::setAllSettings($settings, 'htaccess');
 
 	} else {
 
-	    // Store settings
-	    $settings = array('htaccess' => $currentdata);
-	    Plugin::setAllSettings($settings, 'htaccess');
+		// Store settings
+		$settings = array('htaccess' => $currentdata);
+		Plugin::setAllSettings($settings, 'htaccess');
 
 	}
 

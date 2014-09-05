@@ -23,24 +23,24 @@
 	 * 
 	 * // Add some menu items
 	 * dm.add({title : 'Menu 1', onclick : function() {
-	 *     alert('Item 1 was clicked.');
+	 *	 alert('Item 1 was clicked.');
 	 * }});
 	 * 
 	 * dm.add({title : 'Menu 2', onclick : function() {
-	 *     alert('Item 2 was clicked.');
+	 *	 alert('Item 2 was clicked.');
 	 * }});
 	 * 
 	 * // Adds a submenu
 	 * var sub1 = dm.addMenu({title : 'Menu 3'});
 	 * sub1.add({title : 'Menu 1.1', onclick : function() {
-	 *     alert('Item 1.1 was clicked.');
+	 *	 alert('Item 1.1 was clicked.');
 	 * }});
 	 * 
 	 * // Adds a horizontal separator
 	 * sub1.addSeparator();
 	 * 
 	 * sub1.add({title : 'Menu 1.2', onclick : function() {
-	 *     alert('Item 1.2 was clicked.');
+	 *	 alert('Item 1.2 was clicked.');
 	 * }});
 	 * 
 	 * // Adds a submenu to the submenu
@@ -48,15 +48,15 @@
 	 * 
 	 * // Adds items to the sub sub menu
 	 * sub2.add({title : 'Menu 1.3.1', onclick : function() {
-	 *     alert('Item 1.3.1 was clicked.');
+	 *	 alert('Item 1.3.1 was clicked.');
 	 * }});
 	 * 
 	 * sub2.add({title : 'Menu 1.3.2', onclick : function() {
-	 *     alert('Item 1.3.2 was clicked.');
+	 *	 alert('Item 1.3.2 was clicked.');
 	 * }});
 	 * 
 	 * dm.add({title : 'Menu 4', onclick : function() {
-	 *     alert('Item 3 was clicked.');
+	 *	 alert('Item 3 was clicked.');
 	 * }});
 	 * 
 	 * // Display the menu at position 100, 100

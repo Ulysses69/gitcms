@@ -15,10 +15,10 @@
  * @example
  * // Sends a low level Ajax request
  * tinymce.util.XHR.send({
- *    url : 'someurl',
- *    success : function(text) {
- *       console.debug(text);
- *    }
+ *	url : 'someurl',
+ *	success : function(text) {
+ *	   console.debug(text);
+ *	}
  * });
  */
 tinymce.create('static tinymce.util.XHR', {

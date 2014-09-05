@@ -6,23 +6,23 @@ class JscriptsController extends PluginController {
 		$this->assignToLayout('sidebar', new View('../../plugins/jscripts/views/sidebar'));
 	}
 	public function index() {
-	        $this->documentation();
+			$this->documentation();
 	}
 	public function documentation() {
 		$settings = Plugin::getAllSettings('jscripts');
-	        if (!$settings) {
-	            Flash::set('error', 'jScripts - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('jscripts/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'jScripts - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('jscripts/views/settings', $settings);
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('jscripts');
-	        if (!$settings) {
-	            Flash::set('error', 'jScripts - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('jscripts/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'jScripts - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('jscripts/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'jscripts';

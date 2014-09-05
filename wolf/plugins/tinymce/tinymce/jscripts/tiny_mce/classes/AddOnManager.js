@@ -78,11 +78,11 @@
 		 * @example
 		 * // Create a simple plugin
 		 * tinymce.create('tinymce.plugins.TestPlugin', {
-		 *     TestPlugin : function(ed, url) {
-		 *         ed.onClick.add(function(ed, e) {
-		 *             ed.windowManager.alert('Hello World!');
-		 *         });
-		 *     }
+		 *	 TestPlugin : function(ed, url) {
+		 *		 ed.onClick.add(function(ed, e) {
+		 *			 ed.windowManager.alert('Hello World!');
+		 *		 });
+		 *	 }
 		 * });
 		 * 
 		 * // Register plugin using the add method
@@ -90,8 +90,8 @@
 		 * 
 		 * // Initialize TinyMCE
 		 * tinyMCE.init({
-		 *    ...
-		 *    plugins : '-test' // Init the plugin but don't try to load it
+		 *	...
+		 *	plugins : '-test' // Init the plugin but don't try to load it
 		 * });
 		 */
 		add : function(id, o, dependencies) {
@@ -137,8 +137,8 @@
 		 *
 		 * // Initialize TinyMCE
 		 * tinyMCE.init({
-		 *    ...
-		 *    plugins : '-myplugin' // Don't try to load it again
+		 *	...
+		 *	plugins : '-myplugin' // Don't try to load it again
 		 * });
 		 */
 		load : function(n, u, cb, s) {
@@ -218,17 +218,17 @@
  * @example
  * // Create a new plugin class
  * tinymce.create('tinymce.plugins.ExamplePlugin', {
- *     init : function(ed, url) {
- *         // Register an example button
- *         ed.addButton('example', {
- *             title : 'example.desc',
- *             onclick : function() {
- *                  // Display an alert when the user clicks the button
- *                  ed.windowManager.alert('Hello world!');
- *             },
- *             'class' : 'bold' // Use the bold icon from the theme
- *         });
- *     }
+ *	 init : function(ed, url) {
+ *		 // Register an example button
+ *		 ed.addButton('example', {
+ *			 title : 'example.desc',
+ *			 onclick : function() {
+ *				  // Display an alert when the user clicks the button
+ *				  ed.windowManager.alert('Hello world!');
+ *			 },
+ *			 'class' : 'bold' // Use the bold icon from the theme
+ *		 });
+ *	 }
  * });
  * 
  * // Register plugin with a short name
@@ -236,9 +236,9 @@
  * 
  * // Initialize TinyMCE with the new plugin and button
  * tinyMCE.init({
- *    ...
- *    plugins : '-example', // - means TinyMCE will not try to load it
- *    theme_advanced_buttons1 : 'example' // Add the new example button to the toolbar
+ *	...
+ *	plugins : '-example', // - means TinyMCE will not try to load it
+ *	theme_advanced_buttons1 : 'example' // Add the new example button to the toolbar
  * });
  */
 
@@ -251,32 +251,32 @@
  * @example
  * // Creates a new plugin class
  * tinymce.create('tinymce.plugins.ExamplePlugin', {
- *     init : function(ed, url) {
- *         // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
- *         ed.addCommand('mceExample', function() {
- *             ed.windowManager.open({
- *                 file : url + '/dialog.htm',
- *                 width : 320 + ed.getLang('example.delta_width', 0),
- *                 height : 120 + ed.getLang('example.delta_height', 0),
- *                 inline : 1
- *             }, {
- *                 plugin_url : url, // Plugin absolute URL
- *                 some_custom_arg : 'custom arg' // Custom argument
- *             });
- *         });
+ *	 init : function(ed, url) {
+ *		 // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
+ *		 ed.addCommand('mceExample', function() {
+ *			 ed.windowManager.open({
+ *				 file : url + '/dialog.htm',
+ *				 width : 320 + ed.getLang('example.delta_width', 0),
+ *				 height : 120 + ed.getLang('example.delta_height', 0),
+ *				 inline : 1
+ *			 }, {
+ *				 plugin_url : url, // Plugin absolute URL
+ *				 some_custom_arg : 'custom arg' // Custom argument
+ *			 });
+ *		 });
  * 
- *         // Register example button
- *         ed.addButton('example', {
- *             title : 'example.desc',
- *             cmd : 'mceExample',
- *             image : url + '/img/example.gif'
- *         });
+ *		 // Register example button
+ *		 ed.addButton('example', {
+ *			 title : 'example.desc',
+ *			 cmd : 'mceExample',
+ *			 image : url + '/img/example.gif'
+ *		 });
  * 
- *         // Add a node change handler, selects the button in the UI when a image is selected
- *         ed.onNodeChange.add(function(ed, cm, n) {
- *             cm.setActive('example', n.nodeName == 'IMG');
- *         });
- *     }
+ *		 // Add a node change handler, selects the button in the UI when a image is selected
+ *		 ed.onNodeChange.add(function(ed, cm, n) {
+ *			 cm.setActive('example', n.nodeName == 'IMG');
+ *		 });
+ *	 }
  * });
  * 
  * // Register plugin
@@ -291,16 +291,16 @@
  * @example 
  * // Creates a new plugin class
  * tinymce.create('tinymce.plugins.ExamplePlugin', {
- *     // Meta info method
- *     getInfo : function() {
- *         return {
- *             longname : 'Example plugin',
- *             author : 'Some author',
- *             authorurl : 'http://tinymce.moxiecode.com',
- *             infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/example',
- *             version : "1.0"
- *         };
- *     }
+ *	 // Meta info method
+ *	 getInfo : function() {
+ *		 return {
+ *			 longname : 'Example plugin',
+ *			 author : 'Some author',
+ *			 authorurl : 'http://tinymce.moxiecode.com',
+ *			 infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/example',
+ *			 version : "1.0"
+ *		 };
+ *	 }
  * });
  * 
  * // Register plugin
@@ -308,8 +308,8 @@
  * 
  * // Initialize TinyMCE with the new plugin
  * tinyMCE.init({
- *    ...
- *    plugins : '-example' // - means TinyMCE will not try to load it
+ *	...
+ *	plugins : '-example' // - means TinyMCE will not try to load it
  * });
  */
 
@@ -323,27 +323,27 @@
  * @example 
  * // Creates a new plugin class
  * tinymce.create('tinymce.plugins.ExamplePlugin', {
- *     createControl: function(n, cm) {
- *         switch (n) {
- *             case 'mylistbox':
- *                 var mlb = cm.createListBox('mylistbox', {
- *                      title : 'My list box',
- *                      onselect : function(v) {
- *                          tinyMCE.activeEditor.windowManager.alert('Value selected:' + v);
- *                      }
- *                 });
+ *	 createControl: function(n, cm) {
+ *		 switch (n) {
+ *			 case 'mylistbox':
+ *				 var mlb = cm.createListBox('mylistbox', {
+ *					  title : 'My list box',
+ *					  onselect : function(v) {
+ *						  tinyMCE.activeEditor.windowManager.alert('Value selected:' + v);
+ *					  }
+ *				 });
  * 
- *                 // Add some values to the list box
- *                 mlb.add('Some item 1', 'val1');
- *                 mlb.add('some item 2', 'val2');
- *                 mlb.add('some item 3', 'val3');
+ *				 // Add some values to the list box
+ *				 mlb.add('Some item 1', 'val1');
+ *				 mlb.add('some item 2', 'val2');
+ *				 mlb.add('some item 3', 'val3');
  * 
- *                 // Return the new listbox instance
- *                 return mlb;
- *         }
+ *				 // Return the new listbox instance
+ *				 return mlb;
+ *		 }
  * 
- *         return null;
- *     }
+ *		 return null;
+ *	 }
  * });
  * 
  * // Register plugin
@@ -351,8 +351,8 @@
  * 
  * // Initialize TinyMCE with the new plugin and button
  * tinyMCE.init({
- *    ...
- *    plugins : '-example', // - means TinyMCE will not try to load it
- *    theme_advanced_buttons1 : 'mylistbox' // Add the new mylistbox control to the toolbar
+ *	...
+ *	plugins : '-example', // - means TinyMCE will not try to load it
+ *	theme_advanced_buttons1 : 'mylistbox' // Add the new mylistbox control to the toolbar
  * });
  */

@@ -23,73 +23,73 @@ if ($table == FALSE) {
 	$pdo   = Record::getConnection();
 
 	if (preg_match('/^mysql/', DB_DSN)) {
-	    // Schema for MySQL
-	    $pdo->exec("CREATE TABLE $table (
-	        id          INT(11) NOT NULL AUTO_INCREMENT,
-	        itemlabel   VARCHAR(255),
-	    	itemdesc 	VARCHAR(255),
-	    	itemprice 	VARCHAR(255),
-	    	itemprice2 	VARCHAR(255),
-	    	itemkey 	VARCHAR(255),
-	        PRIMARY KEY (id)
-	        ) DEFAULT CHARSET=utf8");    
+		// Schema for MySQL
+		$pdo->exec("CREATE TABLE $table (
+			id		  INT(11) NOT NULL AUTO_INCREMENT,
+			itemlabel   VARCHAR(255),
+			itemdesc 	VARCHAR(255),
+			itemprice 	VARCHAR(255),
+			itemprice2 	VARCHAR(255),
+			itemkey 	VARCHAR(255),
+			PRIMARY KEY (id)
+			) DEFAULT CHARSET=utf8");	
 	} else {
-	    // Otherwise assume SQLite
-	    $pdo->exec("CREATE TABLE $table (
-	        id          INTEGER PRIMARY KEY AUTOINCREMENT,
-		    itemlabel   VARCHAR(255),
+		// Otherwise assume SQLite
+		$pdo->exec("CREATE TABLE $table (
+			id		  INTEGER PRIMARY KEY AUTOINCREMENT,
+			itemlabel   VARCHAR(255),
 			itemdesc 	VARCHAR(255),
 			itemprice 	VARCHAR(255),
 			itemprice2 	VARCHAR(255),
 			itemkey 	VARCHAR(255)
-	        )");
+			)");
 	}
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'pricelist')) {
-        Flash::set('success', __('Pricelist - database "'.$table.'" created.'));
-    }
-    else
-        Flash::set('error', __('Pricelist - unable to create database "'.$table.'"'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'pricelist')) {
+		Flash::set('success', __('Pricelist - database "'.$table.'" created.'));
+	}
+	else
+		Flash::set('error', __('Pricelist - unable to create database "'.$table.'"'));
 
 
 
 } else {
 
-    // Upgrade from previous installation
-    if (PRICELIST_VERSION > $version) {
+	// Upgrade from previous installation
+	if (PRICELIST_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".'pricelist'."'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='".'pricelist'."'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".'pricelist'."'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='".'pricelist'."'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
+		if (!$result) {
 			Flash::set('error', __('Pricelist - unable to access plugin settings.'));
 			return;
-        }
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
-            $result->closeCursor();
-            if(defined('PRICELIST_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/'.'pricelist'); }
-        }
-    }
+			$result->closeCursor();
+			if(defined('PRICELIST_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/'.'pricelist'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'pricelist')) {
-        if (PRICELIST_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'pricelist')) {
+		if (PRICELIST_VERSION > $version){
 			Flash::set('success', __('Pricelist - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

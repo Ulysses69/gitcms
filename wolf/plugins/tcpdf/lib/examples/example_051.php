@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_051.php
-// Begin       : 2009-04-16
+// Begin	   : 2009-04-16
 // Last Update : 2013-05-14
 //
 // Description : Example 051 for TCPDF class
-//               Full page background
+//			   Full page background
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

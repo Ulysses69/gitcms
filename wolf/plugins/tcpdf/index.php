@@ -2,12 +2,12 @@
 
 if (!defined('TCPDF_VERSION')) { define('TCPDF_VERSION', '1.2.1'); }
 Plugin::setInfos(array(
-    'id'          			=> 'tcpdf',
-    'title'       			=> __('PDF Classes (TCPDF)'),
-    'description' 			=> __('PDF Classes (TCPDF).'),
-    'version'     			=> TCPDF_VERSION,
-    'license'     			=> 'GPL',
-    'require_wolf_version' 		=> '0.5.5'
+	'id'		  			=> 'tcpdf',
+	'title'	   			=> __('PDF Classes (TCPDF)'),
+	'description' 			=> __('PDF Classes (TCPDF).'),
+	'version'	 			=> TCPDF_VERSION,
+	'license'	 			=> 'GPL',
+	'require_wolf_version' 		=> '0.5.5'
 ));
 
 // http://sourceforge.net/p/tcpdf/code/ci/master/tree/CHANGELOG.TXT
@@ -529,8 +529,8 @@ EOS;
 					/*
 					// Style for barcodes (Google QR not working, plus Google white padding is annoying)
 					$qrstyle = array(
-					    'border' => 0,
-					    'padding' => 0
+						'border' => 0,
+						'padding' => 0
 					);
 					// Place QR code top right of page
 					$qrwidth = 20;

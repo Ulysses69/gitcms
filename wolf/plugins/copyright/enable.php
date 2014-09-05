@@ -28,53 +28,53 @@ if(!Plugin::getSetting('cqcurl', 'copyright')) $settings['cqcurl'] = '';
 // Check existing plugin settings
 if (!$version || $version == null) {
 
-    // This is a clean install.
+	// This is a clean install.
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'copyright')) {
-        Flash::set('success', __('Copyright - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('Copyright - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'copyright')) {
+		Flash::set('success', __('Copyright - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('Copyright - unable to save plugin settings.'));
 
 
 } else {
 
 
-    // Upgrade from previous installation
-    if (COPYRIGHT_VERSION > $version) {
+	// Upgrade from previous installation
+	if (COPYRIGHT_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='copyright'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='copyright'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='copyright'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='copyright'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
-            Flash::set('error', __('Copyright - unable to access plugin settings.'));
-            return;
-        }
+		if (!$result) {
+			Flash::set('error', __('Copyright - unable to access plugin settings.'));
+			return;
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-            if(defined('COPYRIGHT_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/copyright'); }
-        }
-    }
+			if(defined('COPYRIGHT_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/copyright'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'copyright')) {
-        if (COPYRIGHT_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'copyright')) {
+		if (COPYRIGHT_VERSION > $version){
 			Flash::set('success', __('Copyright - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

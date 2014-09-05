@@ -14,13 +14,13 @@ class MyCrawler extends PHPCrawler
 {
   function handleDocumentInfo($DocInfo) 
   {
-    // Just detect linebreak for output ("\n" in CLI-mode, otherwise "<br>").
-    if (PHP_SAPI == "cli") $lb = "\n";
-    else $lb = "<br />";
+	// Just detect linebreak for output ("\n" in CLI-mode, otherwise "<br>").
+	if (PHP_SAPI == "cli") $lb = "\n";
+	else $lb = "<br />";
 
-    // Print the URL and the HTTP-status-Code
-    echo "Page requested: ".$DocInfo->url." (".$DocInfo->http_status_code.")".$lb;
-    flush();
+	// Print the URL and the HTTP-status-Code
+	echo "Page requested: ".$DocInfo->url." (".$DocInfo->http_status_code.")".$lb;
+	flush();
   } 
 }
 
@@ -58,7 +58,7 @@ $report = $crawler->getProcessReport();
 
 if (PHP_SAPI == "cli") $lb = "\n";
 else $lb = "<br />";
-    
+	
 echo "Summary:".$lb;
 echo "Links followed: ".$report->links_followed.$lb;
 echo "Documents received: ".$report->files_received.$lb;

@@ -20,16 +20,16 @@ Plugin::addController('cleaner', __('Cleaner'), 'administrator', true);
 if(!function_exists('prefix_safelist')){
 		// Function which will prefix file_path to all safelist values (saves specifying them into array)
 		function prefix_safelist($safelist){
-		    if (!is_array($safelist)){
-		        return false;
-		    }
-		    foreach($safelist as $key => $value){
-		        if (!is_string($value)){
-		            continue;
-		        }
-		        $safelist[$key] = file_path($value);
-		    }
-		    return $safelist;
+			if (!is_array($safelist)){
+				return false;
+			}
+			foreach($safelist as $key => $value){
+				if (!is_string($value)){
+					continue;
+				}
+				$safelist[$key] = file_path($value);
+			}
+			return $safelist;
 		}
 }
 	
@@ -56,14 +56,14 @@ if(!function_exists('get_dir_size')){
 }
 	
 if(!function_exists('format_size')){
-	    function format_size($size) {
-	        $mod = 1024;
-	        $units = explode(' ','B KB MB GB TB PB');
-	        for ($i = 0; $size > $mod; $i++) {
-	            $size /= $mod;
-	        }
-	        return round($size, 2) . ' ' . $units[$i];
-	    }
+		function format_size($size) {
+			$mod = 1024;
+			$units = explode(' ','B KB MB GB TB PB');
+			for ($i = 0; $size > $mod; $i++) {
+				$size /= $mod;
+			}
+			return round($size, 2) . ' ' . $units[$i];
+		}
 }
 
 // Plugin check
@@ -94,94 +94,94 @@ if(!function_exists('delete_directory')){
 
 			if((time() - $start) < $end){
 
-                $removeplugin = false;
-                
-                // Clean up trailing slashes
-                $dirname = rtrim($dirname,"/");
+				$removeplugin = false;
+				
+				// Clean up trailing slashes
+				$dirname = rtrim($dirname,"/");
 
-                // Clean up whitespace
-                $dirname = trim($dirname);
+				// Clean up whitespace
+				$dirname = trim($dirname);
 
-                // Relative URL
-                $relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
+				// Relative URL
+				$relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
 
 				if($relname != ''){
-                    $info = new SplFileInfo($dirname);
-                    if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
-                        //$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
-                        $dir_handle = @opendir($dirname);
-                    }
+					$info = new SplFileInfo($dirname);
+					if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
+						//$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
+						$dir_handle = @opendir($dirname);
+					}
 
-                    if (!isset($dir_handle)){
-                        if (file_exists($dirname)){
-                            //$data .= '<li><b>FILE: '.$dirname."</b></li>";
-                            $size = filesize($dirname);
-                            if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
+					if (!isset($dir_handle)){
+						if (file_exists($dirname)){
+							//$data .= '<li><b>FILE: '.$dirname."</b></li>";
+							$size = filesize($dirname);
+							if (basename($dirname) == 'error_log' || basename($dirname) == 'error.log'){
 
-                                // Empty files
-                                if($size > 0){
-                                    $filesizes[] = $size;
-                                    $f = @fopen($dirname, "r+");
-                                    if ($f !== false){
+								// Empty files
+								if($size > 0){
+									$filesizes[] = $size;
+									$f = @fopen($dirname, "r+");
+									if ($f !== false){
 										
 										// Report task outcome
-                                        $data .= '<li>Emptied File: '.$relname." (".format_size($size).")</li>";
+										$data .= '<li>Emptied File: '.$relname." (".format_size($size).")</li>";
 
 										// Test task or carry it out
 										if($debug == false){
-	                                        ftruncate($f, 0);
-	                                        fclose($f);
+											ftruncate($f, 0);
+											fclose($f);
 										}
-                                    }
-                                }
+									}
+								}
 
-                            } else {
+							} else {
 
-                                // Remove files
-                                //$filesizes[] = $size;
+								// Remove files
+								//$filesizes[] = $size;
 
-                                // Check if file is protected
-                                if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                                    $protected = ' Protected';
-                                } else {
+								// Check if file is protected
+								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+									$protected = ' Protected';
+								} else {
 
-                                    if($size > 0){
+									if($size > 0){
 
-                                        // Unlink both unlinks AND removes files, where as unlink does not itself remove folders
+										// Unlink both unlinks AND removes files, where as unlink does not itself remove folders
 
-                                        // Report task outcome
-                                        $data .= '<li>Removed File: '.$relname." (".format_size($size).")</li>";
+										// Report task outcome
+										$data .= '<li>Removed File: '.$relname." (".format_size($size).")</li>";
 
 										// Test task or carry it out
 										if($debug == false){
-	                                        unlink($dirname);
+											unlink($dirname);
 										}
 
-                                    }
+									}
 
-                                }
+								}
 
-                            }
+							}
 
-                            //return $data;
+							//return $data;
 
-                        } else {
+						} else {
 
-                            //$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
+							//$data .= '<li>FILE DOES NOT EXIST: '.$relname."</li>";
 
-                        }
+						}
 
-                    }
+					}
 
-                    // Collect found files
-                    $collected = glob($dirname.'/*');
+					// Collect found files
+					$collected = glob($dirname.'/*');
 
-                    // Get size of folder
-                    $size = get_dir_size($dirname);
+					// Get size of folder
+					$size = get_dir_size($dirname);
 
-                    // Folder contains some unprotected files
-                    if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
-                        while ($file = readdir($dir_handle)){
+					// Folder contains some unprotected files
+					if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+						while ($file = readdir($dir_handle)){
 
 							// Check if we need to exit loop
 							if(time() >= $start + $end){
@@ -190,37 +190,37 @@ if(!function_exists('delete_directory')){
 								break;
 							}
 
-                            if ($file != "." && $file != ".."){
+							if ($file != "." && $file != ".."){
 								
 								$removeFile = true;
 								$highlightopen = '';
 								$highlightclose = '';
 	
-	                            // Check if folder contains files or folders to protect
-	                            if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-	                            	$removeFile = false;
-	                            }
+								// Check if folder contains files or folders to protect
+								if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+									$removeFile = false;
+								}
 	
-	                            $ex = new SplFileInfo($file);
+								$ex = new SplFileInfo($file);
 	
-	                            // Check fonts
-	                            if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
-	                                // Remove fonts if not found in collected CSS data
-	                                if(!stristr($cssdata, $file)){
+								// Check fonts
+								if(stristr($dirname, 'inc/font') || $ex->getExtension() == 'eot' || $ex->getExtension() == 'woff' || $ex->getExtension() == 'ttf'){
+									// Remove fonts if not found in collected CSS data
+									if(!stristr($cssdata, $file)){
 	
-	                                    // Report task outcome
-	                                    //$data .= '<li>Removed Font: '.$file.' ('.format_size($fsize).')</li>';
-	                                    $removeFile = true;
+										// Report task outcome
+										//$data .= '<li>Removed Font: '.$file.' ('.format_size($fsize).')</li>';
+										$removeFile = true;
 	
-	                                } else {
+									} else {
 	
 										$removeFile = false;
 	
 									}
 	
-	                            }
+								}
 
-	                            // Check if this file is associated with an enabled plugin (only seems to work for folder, not plugin files themselves)
+								// Check if this file is associated with an enabled plugin (only seems to work for folder, not plugin files themselves)
 								if(stristr($relname, 'wolf/plugins/')){
 									if(plugin_check($dirname) == 'enabled'){
 
@@ -241,7 +241,7 @@ if(!function_exists('delete_directory')){
 											$removeFile = true;
 
 											// Report task outcome
-			                                //$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
+											//$data .= '<li>Remove Plugin File: '.$highlightopen.$relname.'/'.$file.$highlightclose.' ('.format_size($fsize).')</li>';
 
 										}
 										
@@ -257,90 +257,90 @@ if(!function_exists('delete_directory')){
 									}
 
 								}
-                                
-                                // Check if this file is associated with an enabled plugin
+								
+								// Check if this file is associated with an enabled plugin
 								if($removeFile == true){
 
-	                                if(!is_dir($dirname."/".$file)){
+									if(!is_dir($dirname."/".$file)){
 										
 										//$data .= '<li><b>SUB FILE: '.$dirname."/".$file."</b></li>";
 
-	                                    // Get file size
-	                                    $fsize = filesize($dirname.'/'.$file);
+										// Get file size
+										$fsize = filesize($dirname.'/'.$file);
 
 
 
-                                        $filesizes[] = $fsize;
-                                        
-                                        // Report task outcome
-                                        $data .= '<li>Removed File: '.$relname.'/'.$file.' ('.format_size($fsize).')</li>';
+										$filesizes[] = $fsize;
+										
+										// Report task outcome
+										$data .= '<li>Removed File: '.$relname.'/'.$file.' ('.format_size($fsize).')</li>';
 
 										// Test task or carry it out
-                                        if($debug == false){
-                                        	unlink($dirname."/".$file);
+										if($debug == false){
+											unlink($dirname."/".$file);
 										}
 
-	                                } else {
+									} else {
 										// NOTE : Individual files in child folders are not looped through. They are deleted like a single file.
 
 										// Get size of folder
-					                    //$size = get_dir_size($dirname."/".$file);
+										//$size = get_dir_size($dirname."/".$file);
 										//$filesizes[] = $size;
 
-                                        // Report task outcome
-                                        //$data .= '<li>Removed Folder: '.$relname.'/'.$file.' ('.format_size($size).')</li>';
-                                        $data .= '<li>Cleaned Folder: '.$relname.'/'.$file.'</li>';
+										// Report task outcome
+										//$data .= '<li>Removed Folder: '.$relname.'/'.$file.' ('.format_size($size).')</li>';
+										$data .= '<li>Cleaned Folder: '.$relname.'/'.$file.'</li>';
 
 										delete_directory($debug, $dirname.'/'.$file, $wolfpath, $data, $filesizes, $safelist, $protected, $start, $end, $cssdata);
-	                                }
+									}
 
 								}
 
-                            }
+							}
 
-                        }
+						}
 
-                    }
+					}
 
-                    // Check if folder contains files or folders to protect
-                    if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
-                        $protected = ' Protected Contents';
+					// Check if folder contains files or folders to protect
+					if(strpos(implode(' ', prefix_safelist($safelist)), $dirname) !== false){
+						$protected = ' Protected Contents';
 
-                        // Folder contains some unprotected files
-                        if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
+						// Folder contains some unprotected files
+						if(count(array_diff($collected, prefix_safelist($safelist))) > 0){
 
-                            // Report task outcome
-                            //$data .= '<li>Cleaned Folder: '.$relname." (".format_size($size).")</li>";
+							// Report task outcome
+							//$data .= '<li>Cleaned Folder: '.$relname." (".format_size($size).")</li>";
 
-                        }
+						}
 
-                    } else {
-                        //$filesizes[] = $size;
-                        if($size > 0){
+					} else {
+						//$filesizes[] = $size;
+						if($size > 0){
 
-                        	closedir($dir_handle);
+							closedir($dir_handle);
 
-                            // Report task outcome (use child folder and file reporting for most accurate sizes)
-                            //$data .= '<li>Removed Folder: '.$relname." (".format_size($size).")</li>";
-                            //$data .= '<li>Removed Folder: '.$relname."</li>";
-                            
-                            // Test task or carry it out
-	                        if($debug == false){
+							// Report task outcome (use child folder and file reporting for most accurate sizes)
+							//$data .= '<li>Removed Folder: '.$relname." (".format_size($size).")</li>";
+							//$data .= '<li>Removed Folder: '.$relname."</li>";
+							
+							// Test task or carry it out
+							if($debug == false){
 								rmdir($dirname);
 							}
 
-                        }
+						}
 
 
-                    }
+					}
 
-                    
-                }
+					
+				}
 
 
-            } 
+			} 
 
-            return $data;
+			return $data;
 
 		}
 }
@@ -361,11 +361,11 @@ function cleanCMS($mode='test'){
 		// Set size of minimum clean (1000 = 1KB)
 		$cleanSize = 50000;
 
-        // Determine wolf path
-        // As plugins run from admin folder, excluding this folder reveals wolf root
-        $lowestpath = getcwd();
-        $rep = str_replace('\\', '/', $lowestpath);
-        $wolfpath = rtrim(str_replace('/'.ADMIN_DIR, '', $rep));
+		// Determine wolf path
+		// As plugins run from admin folder, excluding this folder reveals wolf root
+		$lowestpath = getcwd();
+		$rep = str_replace('\\', '/', $lowestpath);
+		$wolfpath = rtrim(str_replace('/'.ADMIN_DIR, '', $rep));
 
 		global $filesizes;
 		global $deletelist;
@@ -387,55 +387,55 @@ function cleanCMS($mode='test'){
 		sort($deletelist);
 		sort($safelist);
 
-        
-        // Get home page
-        $fullURL = !empty($_SERVER['HTTPS']) == 'on' ? 'https://' : 'http://';
-        $fullURL .= $_SERVER['SERVER_PORT'] != '80' ? $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"] : $_SERVER['SERVER_NAME'];
-        $home = $fullURL;
-        $dom = new DOMDocument();
-        @$dom->loadHTMLFile($home);
-        $xpath = new DOMXPath($dom);
-        $stylesheets = $xpath->query('/html/head/link[@rel="stylesheet"]');
-        $cssfiles = array();
-        $cssdata = '';
-        foreach($stylesheets as $stylesheet){
-            //$css = $dom->saveHtml($stylesheet);
-            $href = $stylesheet->getAttribute('href');
-            $href = strtok($href, '?');
-            // Check local/relative stylesheets
-            if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
-                $cssfiles[] = $href;
-                // Collect CSS data from home page stylesheets (not including @media and includes commented fonts)
-                $cssdata .= file_get_contents($wolfpath.'/'.ltrim($href,'/'));
-                //$datalist .= '<li>CSS: '.$href.'</li>';
-            }
-        }
+		
+		// Get home page
+		$fullURL = !empty($_SERVER['HTTPS']) == 'on' ? 'https://' : 'http://';
+		$fullURL .= $_SERVER['SERVER_PORT'] != '80' ? $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"] : $_SERVER['SERVER_NAME'];
+		$home = $fullURL;
+		$dom = new DOMDocument();
+		@$dom->loadHTMLFile($home);
+		$xpath = new DOMXPath($dom);
+		$stylesheets = $xpath->query('/html/head/link[@rel="stylesheet"]');
+		$cssfiles = array();
+		$cssdata = '';
+		foreach($stylesheets as $stylesheet){
+			//$css = $dom->saveHtml($stylesheet);
+			$href = $stylesheet->getAttribute('href');
+			$href = strtok($href, '?');
+			// Check local/relative stylesheets
+			if(!stristr($href, '//') || stristr($fullURL, $_SERVER["SERVER_NAME"])){
+				$cssfiles[] = $href;
+				// Collect CSS data from home page stylesheets (not including @media and includes commented fonts)
+				$cssdata .= file_get_contents($wolfpath.'/'.ltrim($href,'/'));
+				//$datalist .= '<li>CSS: '.$href.'</li>';
+			}
+		}
 
 
-        // Start timer
-        $start = time();
+		// Start timer
+		$start = time();
 		// Server time out
-        $maxtime = ini_get('max_execution_time');
-        // Seconds for timeout (set a second or two lower than server)
-        $end = 10;
-        foreach ($deletelist as $value) {
-            // Ensure script finishes executing before server time out (or check if anything needs cleaning)
-            //if((time() - $start) < $end){
+		$maxtime = ini_get('max_execution_time');
+		// Seconds for timeout (set a second or two lower than server)
+		$end = 10;
+		foreach ($deletelist as $value) {
+			// Ensure script finishes executing before server time out (or check if anything needs cleaning)
+			//if((time() - $start) < $end){
 			if(($mode != 'check' && (time() - $start) < $end) || ($mode == 'check' && $datalist == '')){
-                //$datalist .= file_path($value).'<br/>';
-                $datalist .= delete_directory($debug, file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
-            }
+				//$datalist .= file_path($value).'<br/>';
+				$datalist .= delete_directory($debug, file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
+			}
 		}
 
 		foreach ($filesizes as $value) {
 			$spacesaved = $spacesaved + $value;
-		}        
+		}		
 
 		if($datalist != ''){
 
 			if($mode == 'check'){
 
-	            // Is there over enough to clean?
+				// Is there over enough to clean?
 				if($spacesaved > $cleanSize){
 					return true;
 				}
@@ -451,7 +451,7 @@ function cleanCMS($mode='test'){
 
 				if($stopdelete != ''){
 					// Test task or carry it out
-		            if($debug == false){
+					if($debug == false){
 						// Is there over 500KB to clean?
 						if($spacesaved > $cleanSize){
 							$thedata .= '<h2>Cleaned '.$saved.'</h2>';

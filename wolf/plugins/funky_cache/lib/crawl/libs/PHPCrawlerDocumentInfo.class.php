@@ -77,7 +77,7 @@ class PHPCrawlerDocumentInfo
    * @section 2 Content-related information
    */
   public $responseHeader;
-    
+	
   /**
    * The complete HTTP-request-header the crawler sent to the server (debugging info).
    *
@@ -312,7 +312,7 @@ class PHPCrawlerDocumentInfo
    * Some internal benchmak-results as array.
    *
    * @var array Array containing some interlnal benchmark-results for receiving and processing this document.
-   *            The keys are the identifiers, the values are the benchmark-times.
+   *			The keys are the identifiers, the values are the benchmark-times.
    * @section 10 Benchmarks
    * @internal
    */
@@ -322,8 +322,8 @@ class PHPCrawlerDocumentInfo
    * All meta-tag atteributes found in the source of the document.
    *
    * @var array Assoziative array conatining all found meta-attributes.
-   *            The keys are the meta-names, the values the content of the attributes.
-   *            (like $tags["robots"] = "nofollow")
+   *			The keys are the meta-names, the values the content of the attributes.
+   *			(like $tags["robots"] = "nofollow")
    * @section 2 Content-related information
    *
    */
@@ -336,16 +336,16 @@ class PHPCrawlerDocumentInfo
    */
   public function setLinksFoundArray()
   { 
-    $cnt = count($this->links_found_url_descriptors);
-    for ($x=0; $x<$cnt; $x++)
-    {
-      $UrlDescriptor = $this->links_found_url_descriptors[$x];
-      
-      // Convert $UrlDescriptor-object to an array
-      $object_vars = get_object_vars($UrlDescriptor);
-      
-      $this->links_found[] = $object_vars;
-    }
+	$cnt = count($this->links_found_url_descriptors);
+	for ($x=0; $x<$cnt; $x++)
+	{
+	  $UrlDescriptor = $this->links_found_url_descriptors[$x];
+	  
+	  // Convert $UrlDescriptor-object to an array
+	  $object_vars = get_object_vars($UrlDescriptor);
+	  
+	  $this->links_found[] = $object_vars;
+	}
   }
   
   /**
@@ -356,7 +356,7 @@ class PHPCrawlerDocumentInfo
    */
   public function toArray()
   {
-    return get_object_vars($this);
+	return get_object_vars($this);
   }
 }
 ?>

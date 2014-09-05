@@ -567,7 +567,7 @@
 								  else if (elementRule.paddEmpty)
 									  parent.empty().append(new tinymce.html.Node('#text', 3)).value = '\u00a0';
 							  }
-              }
+			  }
 						}
 					}
 				}

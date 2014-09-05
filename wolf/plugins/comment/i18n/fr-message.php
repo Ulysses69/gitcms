@@ -1,17 +1,17 @@
 <?php
 
-     /**
-     * French language file
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Dimitri “Diti” Torterat <diti@adelieland.eu>
-     * @version Wolf 0.6.0
-     * @last modifed from 24 June 2010
-     */
+	 /**
+	 * French language file
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Dimitri “Diti” Torterat <diti@adelieland.eu>
+	 * @version Wolf 0.6.0
+	 * @last modifed from 24 June 2010
+	 */
 
-    return array(
+	return array(
 	
    	'A comment was added.' 							=> 'Un commentaire a été ajouté.',
 	'Approve' 													=> 'Approuver',
@@ -66,4 +66,4 @@
 	'none' 														=> 'aucun',
 	'or' 															=> 'ou',
   
-    );
+	);

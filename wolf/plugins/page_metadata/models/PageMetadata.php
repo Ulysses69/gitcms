@@ -16,16 +16,16 @@ class PageMetadata extends Record {
    * @return page_id or null
    */
   private static function Get_page_id($page) {
-    $page_id = null;
-    
-    if (is_numeric($page)) {
-      $page_id = $page;
-    }
-    else if ($page instanceof Page) {
-      $page_id = $page->id;
-    }
+	$page_id = null;
+	
+	if (is_numeric($page)) {
+	  $page_id = $page;
+	}
+	else if ($page instanceof Page) {
+	  $page_id = $page->id;
+	}
 
-    return $page_id;
+	return $page_id;
   }
   
   /**
@@ -35,11 +35,11 @@ class PageMetadata extends Record {
    * @return list of metadata object
    */
   public static function FindAllByPage($page) {
-    if (!$page_id = self::Get_page_id($page)) {
-      return array();
-    }
-    
-    return self::findAllFrom(__CLASS__, 'page_id = ? ORDER BY keyword', array($page_id));
+	if (!$page_id = self::Get_page_id($page)) {
+	  return array();
+	}
+	
+	return self::findAllFrom(__CLASS__, 'page_id = ? ORDER BY keyword', array($page_id));
   }
   
   /**
@@ -49,15 +49,15 @@ class PageMetadata extends Record {
    * @return associative array with key/value pairs
    */
   public static function FindAllByPageAsArray($page) {
-    // Returns an empty array if nothing was found
-    $metadata = array();
+	// Returns an empty array if nothing was found
+	$metadata = array();
 
-    foreach (self::FindAllByPage($page) as $meta) {
-      // Map to native PHP associative array
-      $metadata[$meta->keyword] = $meta->value;
-    }
-    
-    return $metadata;
+	foreach (self::FindAllByPage($page) as $meta) {
+	  // Map to native PHP associative array
+	  $metadata[$meta->keyword] = $meta->value;
+	}
+	
+	return $metadata;
   }
   
   /**
@@ -67,11 +67,11 @@ class PageMetadata extends Record {
    * @return a metadata object or null
    */
   public static function FindOneByPageAndKeyword($page, $keyword) {
-    if (!$page_id = self::Get_page_id($page)) {
-      return null;
-    }
+	if (!$page_id = self::Get_page_id($page)) {
+	  return null;
+	}
 
-    return self::findOneFrom(__CLASS__, 'page_id = ? AND keyword = ?', array($page_id, $keyword));
+	return self::findOneFrom(__CLASS__, 'page_id = ? AND keyword = ?', array($page_id, $keyword));
   }
   
   /**
@@ -80,11 +80,11 @@ class PageMetadata extends Record {
    * @param page page object or page_id as number
    */
   public static function DeleteAllByPage($page) {
-    if (!$page_id = self::Get_page_id($page)) {
-      return;
-    }
-    
-    self::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
+	if (!$page_id = self::Get_page_id($page)) {
+	  return;
+	}
+	
+	self::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
   }
   
   /**
@@ -93,11 +93,11 @@ class PageMetadata extends Record {
    * @param keyword name of the keyword
    */
   public static function DeleteAllByKeyword($keyword) {
-    if (empty($keyword)) {
-      return;
-    }
-    
-    self::deleteWhere(__CLASS__, 'keyword = ?', array($keyword));
+	if (empty($keyword)) {
+	  return;
+	}
+	
+	self::deleteWhere(__CLASS__, 'keyword = ?', array($keyword));
   }
 }
 ?>

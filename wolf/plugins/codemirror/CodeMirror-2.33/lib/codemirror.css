@@ -12,7 +12,7 @@
   overflow: auto;
   height: 300px;
   /* This is needed to prevent an IE[67] bug where the scrolled content
-     is visible outside of the scrolling box. */
+	 is visible outside of the scrolling box. */
   position: relative;
   outline: none;
 }
@@ -27,12 +27,12 @@
 }
 .CodeMirror-scrollbar-inner {
   /* This needs to have a nonzero width in order for the scrollbar to appear
-     in Firefox and IE9. */
+	 in Firefox and IE9. */
   width: 1px;
 }
 .CodeMirror-scrollbar.cm-sb-overlap {
   /* Ensure that the scrollbar appears in Lion, and that it overlaps the content
-     rather than sitting to the right of it. */
+	 rather than sitting to the right of it. */
   position: absolute;
   z-index: 1;
   float: none;
@@ -167,7 +167,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
   /* Hide the cursor when printing */
   .CodeMirror pre.CodeMirror-cursor {
-    visibility: hidden;
+	visibility: hidden;
   }
 
 }

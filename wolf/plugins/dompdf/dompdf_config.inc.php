@@ -1,7 +1,7 @@
 <?php
 /**
  * @package dompdf
- * @link    http://www.dompdf.com/
+ * @link	http://www.dompdf.com/
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @author  Fabien Ménager <fabien.menager@gmail.com>
@@ -37,10 +37,10 @@ if( !isset($_SERVER['DOCUMENT_ROOT']) ) {
   $path = "";
   
   if ( isset($_SERVER['SCRIPT_FILENAME']) )
-    $path = $_SERVER['SCRIPT_FILENAME'];
+	$path = $_SERVER['SCRIPT_FILENAME'];
   elseif ( isset($_SERVER['PATH_TRANSLATED']) )
-    $path = str_replace('\\\\', '\\', $_SERVER['PATH_TRANSLATED']);
-    
+	$path = str_replace('\\\\', '\\', $_SERVER['PATH_TRANSLATED']);
+	
   $_SERVER['DOCUMENT_ROOT'] = str_replace( '\\', '/', substr($path, 0, 0-strlen($_SERVER['PHP_SELF'])));
 }
 

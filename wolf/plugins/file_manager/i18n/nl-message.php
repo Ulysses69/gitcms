@@ -10,8 +10,8 @@
  * @version Wolf 0.9.4
  */
 
-    return array(
-    'A possible hack attempt was detected.' => 'Er is een mogelijke hack poging gededecteerd.',
+	return array(
+	'A possible hack attempt was detected.' => 'Er is een mogelijke hack poging gededecteerd.',
 	'Action' => 'Aktie',
 	'Are you sure you wish to delete?' => 'Weet u zeker dat u wilt verwijderen?',
 	'Cancel' => 'Annuleer',
@@ -46,6 +46,6 @@
 	'delete file icon' => 'Verwijder bestand icon',
 	'or' => 'of',
 	'overwrite it?' => 'overschrijven?',
-    );
+	);
 	
 	

@@ -9,7 +9,7 @@ function select_files($dir) {
 		$mydir = "<p>These are the files in the directory:</p>\n";
 		$mydir .= "<form name=\"form1\" method=\"post\" action=\"".$_SERVER['PHP_SELF']."\">\n";
 		$mydir .= "  <select name=\"file_in_folder\">\n";
-		$mydir .= "    <option value=\"\" selected>...\n";
+		$mydir .= "	<option value=\"\" selected>...\n";
 		while (false !== ($file = readdir($handle))) {
 			$files[] = $file;
 		}
@@ -17,7 +17,7 @@ function select_files($dir) {
 		sort($files);
 		foreach ($files as $val) {
 			if (is_file($dir.$val)) { // show only real files (ver. 1.01)
-				$mydir .= "    <option value=\"".$val."\">";
+				$mydir .= "	<option value=\"".$val."\">";
 				$mydir .= (strlen($val) > 30) ? substr($val, 0, 30)."...\n" : $val."\n";
 				$teller++;	
 			}

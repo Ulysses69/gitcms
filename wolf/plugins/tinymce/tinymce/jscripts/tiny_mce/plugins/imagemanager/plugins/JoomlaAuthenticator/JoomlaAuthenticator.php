@@ -41,7 +41,7 @@ chdir($mcOldCWD);
  * @package MCImageManager.Authenticators
  */
 class Moxiecode_JoomlaAuthenticator extends Moxiecode_ManagerPlugin {
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 

@@ -16,8 +16,8 @@ $max_x = $pdf->get_width() - 50;
 $max_y = $pdf->get_height() - 50; 
 for ( $i = 0; $i < 30; $i++) {
   $pdf->circle(rand(50, $max_x), rand(50, $max_y), rand(10, 70),
-               array(rand()/getrandmax(), rand()/getrandmax(), rand()/getrandmax()),
-               rand(1,40));
+			   array(rand()/getrandmax(), rand()/getrandmax(), rand()/getrandmax()),
+			   rand(1,40));
 }
 </script>
 <?php

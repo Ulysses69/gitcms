@@ -199,7 +199,7 @@ if(!Plugin::getSetting('marker_shadow_img_point_y', 'googlemap')) $settings['mar
 // Check if settings were found for googlemap
 if (!$version || $version == null) {
 
-    if(Plugin::isEnabled('clientdetails') == true){
+	if(Plugin::isEnabled('clientdetails') == true){
 		if($latitude == null || $longitude == null){
 			$clientaddress = str_replace('(Blue Horizons)','',Plugin::getSetting('clientaddress', 'clientdetails'));
 			$encoded_clientaddress = str_replace(' ','+',$clientaddress);
@@ -256,53 +256,53 @@ if (!$version || $version == null) {
 
 	$settings = array(	'latitude' => $latitude,
 						'longitude' => $longitude,
-	        			'marker_img' => $marker_img,
-	        			'marker_img_width' => $marker_img_width,
-	        			'marker_img_height' => $marker_img_height,
-	        			'marker_img_x' => $marker_img_x,
-	        			'marker_img_y' => $marker_img_y,
-	        			'marker_img_point_x' => $marker_img_point_x,
-	        			'marker_img_point_y' => $marker_img_point_y,
-	        			'marker_shadow_img' => $marker_shadow_img,
-	        			'marker_shadow_img_width' => $marker_shadow_img_width,
-	        			'marker_shadow_img_height' => $marker_shadow_img_height,
-	        			'marker_shadow_img_x' => $marker_shadow_img_x,
-	        			'marker_shadow_img_y' => $marker_shadow_img_y,
-	        			'marker_shadow_img_point_x' => $marker_shadow_img_point_x,
-	        			'marker_shadow_img_point_y' => $marker_shadow_img_point_y);
+						'marker_img' => $marker_img,
+						'marker_img_width' => $marker_img_width,
+						'marker_img_height' => $marker_img_height,
+						'marker_img_x' => $marker_img_x,
+						'marker_img_y' => $marker_img_y,
+						'marker_img_point_x' => $marker_img_point_x,
+						'marker_img_point_y' => $marker_img_point_y,
+						'marker_shadow_img' => $marker_shadow_img,
+						'marker_shadow_img_width' => $marker_shadow_img_width,
+						'marker_shadow_img_height' => $marker_shadow_img_height,
+						'marker_shadow_img_x' => $marker_shadow_img_x,
+						'marker_shadow_img_y' => $marker_shadow_img_y,
+						'marker_shadow_img_point_x' => $marker_shadow_img_point_x,
+						'marker_shadow_img_point_y' => $marker_shadow_img_point_y);
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'googlemap')) {
-        Flash::set('success', __('Googlemap - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('Googlemap - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'googlemap')) {
+		Flash::set('success', __('Googlemap - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('Googlemap - unable to save plugin settings.'));
 
 
 
 } else {
 
-    // Upgrade from previous installation
-    if (GMAP_VERSION > $version) {
+	// Upgrade from previous installation
+	if (GMAP_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".'googlemap'."'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='".'googlemap'."'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='".'googlemap'."'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='".'googlemap'."'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
+		if (!$result) {
 			Flash::set('error', __('Googlemap - unable to access plugin settings.'));
 			return;
-        }
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if(Plugin::isEnabled('clientdetails') == true){
+		if(Plugin::isEnabled('clientdetails') == true){
 			/* Get latitude and longitude from client address if possible */
 			//$latitude = Plugin::getSetting('latitude', 'googlemap');
 			//$longitude = Plugin::getSetting('longitude', 'googlemap');
@@ -321,20 +321,20 @@ if (!$version || $version == null) {
 			$longitude = '';
 		}
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
-            $result->closeCursor();
-            if(defined('GMAP_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/googlemap'); }
-        }
-    }
+			$result->closeCursor();
+			if(defined('GMAP_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/googlemap'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'googlemap')) {
-        if (GMAP_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'googlemap')) {
+		if (GMAP_VERSION > $version){
 			Flash::set('success', __('Googlemap - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

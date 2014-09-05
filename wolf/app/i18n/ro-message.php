@@ -1,17 +1,17 @@
 ﻿<?php
 
-    /**
-     * Romanian language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Cosmin Huţanu <urecheatu007@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Romanian language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Cosmin Huţanu <urecheatu007@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    '&#8212; inherit &#8212;' => '&#8212; moşteneşte &#8212;',
+	return array(
+	'&#8212; inherit &#8212;' => '&#8212; moşteneşte &#8212;',
 	'<b>Information!</b> Este disponibilă o nouă versiune Wolf (v. <b>:version</b>)! Mergi la <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> pentru a actualiza versiunea!' => '',
 	'A translatable string with a %param% system.' => 'Un şir care poate fi tradus cu un sistem %param%',
 	'A translatable string.' => 'Un şir care poate fi tradus',
@@ -214,4 +214,4 @@
 	'seconds' => 'secunde',
 	'unknown' => 'necunoscut',
 	'website:' => 'website:',
-    );
+	);

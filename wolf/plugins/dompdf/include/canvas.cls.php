@@ -1,7 +1,7 @@
 <?php
 /**
  * @package dompdf
- * @link    http://www.dompdf.com/
+ * @link	http://www.dompdf.com/
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
@@ -148,11 +148,11 @@ interface Canvas {
    * array.  $points has the following structure:
    * <code>
    * array(0 => x1,
-   *       1 => y1,
-   *       2 => x2,
-   *       3 => y2,
-   *       ...
-   *       );
+   *	   1 => y1,
+   *	   2 => x2,
+   *	   3 => y2,
+   *	   ...
+   *	   );
    * </code>
    *
    * See {@link Style::munge_colour()} for the format of the colour array.

@@ -10,56 +10,56 @@ CodeMirror.defineMode("spec", function(config, modeConfig) {
   var operators = /^(\!|\?|\<\=|\<|\>\=|\>|\=\=|\&\&|\|\|)/; // operators in control flow macros
 
   return {
-    startState: function () {
-        return {
-          controlFlow: false,
-          macroParameters: false,
-          section: false
-        };
-    },
-    token: function (stream, state) {
-      var ch = stream.peek();
-      if (ch == "#") { stream.skipToEnd(); return "comment"; }
+	startState: function () {
+		return {
+		  controlFlow: false,
+		  macroParameters: false,
+		  section: false
+		};
+	},
+	token: function (stream, state) {
+	  var ch = stream.peek();
+	  if (ch == "#") { stream.skipToEnd(); return "comment"; }
 
-      if (stream.sol()) {
-        if (stream.match(preamble)) { return "preamble"; }
-        if (stream.match(section)) { return "section"; }
-      }
+	  if (stream.sol()) {
+		if (stream.match(preamble)) { return "preamble"; }
+		if (stream.match(section)) { return "section"; }
+	  }
 
-      if (stream.match(/^\$\w+/)) { return "def"; } // Variables like '$RPM_BUILD_ROOT'
-      if (stream.match(/^\$\{\w+\}/)) { return "def"; } // Variables like '${RPM_BUILD_ROOT}'
+	  if (stream.match(/^\$\w+/)) { return "def"; } // Variables like '$RPM_BUILD_ROOT'
+	  if (stream.match(/^\$\{\w+\}/)) { return "def"; } // Variables like '${RPM_BUILD_ROOT}'
 
-      if (stream.match(control_flow_simple)) { return "keyword"; }
-      if (stream.match(control_flow_complex)) {
-        state.controlFlow = true;
-        return "keyword";
-      }
-      if (state.controlFlow) {
-        if (stream.match(operators)) { return "operator"; }
-        if (stream.match(/^(\d+)/)) { return "number"; }
-        if (stream.eol()) { state.controlFlow = false; }
-      }
+	  if (stream.match(control_flow_simple)) { return "keyword"; }
+	  if (stream.match(control_flow_complex)) {
+		state.controlFlow = true;
+		return "keyword";
+	  }
+	  if (state.controlFlow) {
+		if (stream.match(operators)) { return "operator"; }
+		if (stream.match(/^(\d+)/)) { return "number"; }
+		if (stream.eol()) { state.controlFlow = false; }
+	  }
 
-      if (stream.match(arch)) { return "number"; }
+	  if (stream.match(arch)) { return "number"; }
 
-      // Macros like '%make_install' or '%attr(0775,root,root)'
-      if (stream.match(/^%[\w]+/)) {
-        if (stream.match(/^\(/)) { state.macroParameters = true; }
-        return "macro";
-      }
-      if (state.macroParameters) {
-        if (stream.match(/^\d+/)) { return "number";}
-        if (stream.match(/^\)/)) {
-          state.macroParameters = false;
-          return "macro";
-        }
-      }
-      if (stream.match(/^%\{\??[\w \-]+\}/)) { return "macro"; } // Macros like '%{defined fedora}'
+	  // Macros like '%make_install' or '%attr(0775,root,root)'
+	  if (stream.match(/^%[\w]+/)) {
+		if (stream.match(/^\(/)) { state.macroParameters = true; }
+		return "macro";
+	  }
+	  if (state.macroParameters) {
+		if (stream.match(/^\d+/)) { return "number";}
+		if (stream.match(/^\)/)) {
+		  state.macroParameters = false;
+		  return "macro";
+		}
+	  }
+	  if (stream.match(/^%\{\??[\w \-]+\}/)) { return "macro"; } // Macros like '%{defined fedora}'
 
-      //TODO: Include bash script sub-parser (CodeMirror supports that)
-      stream.next();
-      return null;
-    }
+	  //TODO: Include bash script sub-parser (CodeMirror supports that)
+	  stream.next();
+	  return null;
+	}
   };
 });
 

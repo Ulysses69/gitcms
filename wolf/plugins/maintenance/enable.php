@@ -16,8 +16,8 @@
 	$pdo = $__CMS_CONN__->prepare($sql);
 	$pdo->execute();
 
-    $createAllowedTable = "
-    	CREATE TABLE `".TABLE_PREFIX."maintenance_allowed` (
+	$createAllowedTable = "
+		CREATE TABLE `".TABLE_PREFIX."maintenance_allowed` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`ip` varchar(20) DEFAULT NULL,
 			`name` varchar(128) DEFAULT NULL,
@@ -25,16 +25,16 @@
 			`enabled` enum('yes','no') DEFAULT NULL,
 			PRIMARY KEY (`id`)
 		)";
-    $stmt = $__CMS_CONN__->prepare($createAllowedTable);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($createAllowedTable);
+	$stmt->execute();
 
-    $createPageContent = "
-    	CREATE TABLE `".TABLE_PREFIX."maintenance_page` (
-    		`id` int(1) DEFAULT NULL,
+	$createPageContent = "
+		CREATE TABLE `".TABLE_PREFIX."maintenance_page` (
+			`id` int(1) DEFAULT NULL,
 			`value` varchar(4096) DEFAULT NULL
 		)";
-    $stmt = $__CMS_CONN__->prepare($createPageContent);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($createPageContent);
+	$stmt->execute();
 
 	$maintenanceHTML = '<html>
 	<head>

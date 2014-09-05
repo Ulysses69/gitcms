@@ -1,20 +1,20 @@
 <?php
 //============================================================+
 // File name   : spa.php
-// Begin       : 2004-03-03
+// Begin	   : 2004-03-03
 // Last Update : 2010-10-26
 //
 // Description : Language module for TCPDF
-//               (contains translated texts)
-//               Spanish; Castilian
+//			   (contains translated texts)
+//			   Spanish; Castilian
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

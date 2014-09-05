@@ -250,14 +250,14 @@ function whois(){
 
 	
 	//ob_start();
-    require_once(dirname(__FILE__).'/samswhois/samswhois.inc.php');
-    //$domaincontents = ob_get_contents();
-    //ob_end_clean();
-    
-    //$domaincontents = str_replace("\n",'',$domaincontents);
-    //$domaincontents = str_replace("\r",'',$domaincontents);
-    
-    //echo $domaincontents;
+	require_once(dirname(__FILE__).'/samswhois/samswhois.inc.php');
+	//$domaincontents = ob_get_contents();
+	//ob_end_clean();
+	
+	//$domaincontents = str_replace("\n",'',$domaincontents);
+	//$domaincontents = str_replace("\r",'',$domaincontents);
+	
+	//echo $domaincontents;
 
 }
 ?>

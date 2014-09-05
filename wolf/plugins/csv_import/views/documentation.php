@@ -13,7 +13,7 @@
 
 /* Security measure */
 if ( !defined( 'IN_CMS' ) ) {
-    exit();
+	exit();
 }
 ?>
 <?php Observer::notify('mm_core_stylesheet'); ?>

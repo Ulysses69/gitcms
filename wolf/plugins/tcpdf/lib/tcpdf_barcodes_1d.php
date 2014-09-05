@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_barcodes_1d.php
-// Version     : 1.0.026
-// Begin       : 2008-06-09
+// Version	 : 1.0.026
+// Begin	   : 2008-06-09
 // Last Update : 2014-05-20
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2008-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -28,7 +28,7 @@
 // -------------------------------------------------------------------
 //
 // Description : PHP class to creates array representations for
-//               common 1D barcodes to be used with TCPDF.
+//			   common 1D barcodes to be used with TCPDF.
 //
 //============================================================+
 

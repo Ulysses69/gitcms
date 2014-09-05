@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Português-brasileiro language file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Aiyumi Moriya <aiyumi.br@gmail.com>
-     * @version Wolf 0.7.3
-     */
+	/**
+	 * Português-brasileiro language file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Aiyumi Moriya <aiyumi.br@gmail.com>
+	 * @version Wolf 0.7.3
+	 */
 
-    return array(
-    	'A comment was added.' => 'Um comentário foi adicionado.',
+	return array(
+		'A comment was added.' => 'Um comentário foi adicionado.',
 	'Approve' => 'Aprovar',
 	'Are you sure you wish to delete it?' => 'Tem certeza de que deseja apagar?',
 	'Auto approve' => 'Aprovação automática',
@@ -65,4 +65,4 @@
 	'comment not found!' => 'Comentário não encontrado!',
 	'none' => 'nenhum',
 	'or' => 'ou',
-    );
+	);

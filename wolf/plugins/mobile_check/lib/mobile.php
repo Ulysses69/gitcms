@@ -536,11 +536,11 @@ thead td, th {
 }
 #content ul.boxesx3 > li:nth-child(3n+1),
 #content ul.boxesx4 > li:nth-child(4n+1) {
-    clear: both;
+	clear: both;
 }
 .mobile #content ul.boxesx3 > li:nth-child(3n+1),
 .mobile #content ul.boxesx4 > li:nth-child(4n+1) {
-    clear: none;
+	clear: none;
 }
 #content ul.boxesx2,
 #content ul.boxesx4,

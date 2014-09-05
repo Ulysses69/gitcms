@@ -54,7 +54,7 @@ tinyMCEPopup = {
 		 * @example
 		 * // Alerts the selected contents when the dialog is loaded
 		 * tinyMCEPopup.onInit.add(function(ed) {
-		 *     alert(ed.selection.getContent());
+		 *	 alert(ed.selection.getContent());
 		 * });
 		 * 
 		 * // Executes the init method on page load in some object using the SomeObject scope

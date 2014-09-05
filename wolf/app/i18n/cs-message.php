@@ -1,16 +1,16 @@
 <?php
 
-    /**
-     * Czech language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Iva Pelcová <ivy046@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Czech language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Iva Pelcová <ivy046@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
+	return array(
   '&#8212; inherit &#8212;' => '&#8212; zděděno &#8212;',
 	'<b>Information!</b> New Wolf version available (v. <b>:version</b>)! Visit <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> to upgrade your version!' => '<b>Pozor!</b> Je k dispozici nová verze Wolf CMS (v. <b>:version</b>)! Navštivte <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> a zaktualizujte vaši verzi!',
 	'A translatable string with a %param% system.' => 'Přeložitelný řetězec s %param% systémem',
@@ -213,5 +213,5 @@
 	'seconds' => 'sekund',
 	'unknown' => 'neznámé',
 	'website:' => 'web:',
-    );
+	);
 

@@ -46,8 +46,8 @@
 		 * @example
 		 * // Adds an observer to the onPreProcess event
 		 * serializer.onPreProcess.add(function(se, o) {
-		 *     // Add a class to each paragraph
-		 *     se.dom.addClass(se.dom.select('p', o.node), 'myclass');
+		 *	 // Add a class to each paragraph
+		 *	 se.dom.addClass(se.dom.select('p', o.node), 'myclass');
 		 * });
 		 */
 		onPreProcess = new tinymce.util.Dispatcher(self);
@@ -61,9 +61,9 @@
 		 * @example
 		 * // Adds an observer to the onPostProcess event
 		 * serializer.onPostProcess.add(function(se, o) {
-		 *    // Remove all paragraphs and replace with BR
-		 *    o.content = o.content.replace(/<p[^>]+>|<p>/g, '');
-		 *    o.content = o.content.replace(/<\/p>/g, '<br />');
+		 *	// Remove all paragraphs and replace with BR
+		 *	o.content = o.content.replace(/<p[^>]+>|<p>/g, '');
+		 *	o.content = o.content.replace(/<\/p>/g, '<br />');
 		 * });
 		 */
 		onPostProcess = new tinymce.util.Dispatcher(self);

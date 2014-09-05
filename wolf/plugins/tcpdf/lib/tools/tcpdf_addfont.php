@@ -2,12 +2,12 @@
 <?php
 //============================================================+
 // File name   : tcpdf_addfont.php
-// Version     : 1.0.002
-// Begin       : 2013-05-13
+// Version	 : 1.0.002
+// Begin	   : 2013-05-13
 // Last Update : 2013-08-05
-// Authors     : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-//               Remi Collet
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Authors	 : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+//			   Remi Collet
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2011-2013 Nicola Asuni - Tecnick.com LTD
 //
@@ -66,8 +66,8 @@ Usage: tcpdf_addfont.php [ options ] -i fontfile[,fontfile]...
 Options:
 
 	-t
-	--type      Font type. Leave empty for autodetect mode.
-	            Valid values are:
+	--type	  Font type. Leave empty for autodetect mode.
+				Valid values are:
 					TrueTypeUnicode
 					TrueType
 					Type1
@@ -77,49 +77,49 @@ Options:
 					CID0CT = CID-0 Chinese Traditional
 
 	-e
-	--enc       Name of the encoding table to use. Leave empty for
-	            default mode. Omit this parameter for TrueType Unicode
-	            and symbolic fonts like Symbol or ZapfDingBats.
+	--enc	   Name of the encoding table to use. Leave empty for
+				default mode. Omit this parameter for TrueType Unicode
+				and symbolic fonts like Symbol or ZapfDingBats.
 
 	-f
-	--flags     Unsigned 32-bit integer containing flags specifying
-	            various characteristics of the font (PDF32000:2008 -
-	            9.8.2 Font Descriptor Flags): +1 for fixed font; +4 for
-	            symbol or +32 for non-symbol; +64 for italic. Fixed and
-	            Italic mode are generally autodetected so you have to
-	            set it to 32 = non-symbolic font (default) or 4 =
-	            symbolic font.
+	--flags	 Unsigned 32-bit integer containing flags specifying
+				various characteristics of the font (PDF32000:2008 -
+				9.8.2 Font Descriptor Flags): +1 for fixed font; +4 for
+				symbol or +32 for non-symbol; +64 for italic. Fixed and
+				Italic mode are generally autodetected so you have to
+				set it to 32 = non-symbolic font (default) or 4 =
+				symbolic font.
 
 	-o
 	--outpath   Output path for generated font files (must be writeable
-	            by the web server). Leave empty for default font folder.
+				by the web server). Leave empty for default font folder.
 
 	-p
-	--platid    Platform ID for CMAP table to extract (when building a
-	            Unicode font for Windows this value should be 3, for
-	            Macintosh should be 1).
+	--platid	Platform ID for CMAP table to extract (when building a
+				Unicode font for Windows this value should be 3, for
+				Macintosh should be 1).
 
 	-n
-	--encid     Encoding ID for CMAP table to extract (when building a
-	            Unicode font for Windows this value should be 1, for
-	            Macintosh should be 0). When Platform ID is 3, legal
-	            values for Encoding ID are: 0=Symbol, 1=Unicode,
-	            2=ShiftJIS, 3=PRC, 4=Big5, 5=Wansung, 6=Johab,
-	            7=Reserved, 8=Reserved, 9=Reserved, 10=UCS-4.
+	--encid	 Encoding ID for CMAP table to extract (when building a
+				Unicode font for Windows this value should be 1, for
+				Macintosh should be 0). When Platform ID is 3, legal
+				values for Encoding ID are: 0=Symbol, 1=Unicode,
+				2=ShiftJIS, 3=PRC, 4=Big5, 5=Wansung, 6=Johab,
+				7=Reserved, 8=Reserved, 9=Reserved, 10=UCS-4.
 
 	-b
 	--addcbbox  Includes the character bounding box information on the
-	            php font file.
+				php font file.
 
 	-l
-	--link      Link to system font instead of copying the font data #
-	            (not transportable) - Note: do not work with Type1 fonts.
+	--link	  Link to system font instead of copying the font data #
+				(not transportable) - Note: do not work with Type1 fonts.
 
 	-i
-	--fonts     Comma-separated list of input font files.
+	--fonts	 Comma-separated list of input font files.
 
 	-h
-	--help      Display this help and exit.
+	--help	  Display this help and exit.
 EOD;
 	echo $help."\n\n";
 	exit(0);

@@ -203,7 +203,7 @@
 				
 				$j(document)
 					.bind('mouseup.miniColors touchend.miniColors', function(event) {
-					    event.preventDefault();
+						event.preventDefault();
 						input.data('mousebutton', 0).removeData('moving');
 					})
 					.bind('mousemove.miniColors touchmove.miniColors', function(event) {

@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>CodeMirror: Erlang mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="erlang.js"></script>
-    <link rel="stylesheet" href="../../theme/erlang-dark.css">
-    <style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
-    <link rel="stylesheet" href="../../doc/docs.css">
+	<meta charset="utf-8">
+	<title>CodeMirror: Erlang mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="erlang.js"></script>
+	<link rel="stylesheet" href="../../theme/erlang-dark.css">
+	<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
+	<link rel="stylesheet" href="../../doc/docs.css">
   </head>
   <body>
-    <h1>CodeMirror: Erlang mode</h1>
+	<h1>CodeMirror: Erlang mode</h1>
 
 <form><textarea id="code" name="code">
 %% -*- mode: erlang; erlang-indent-level: 2 -*-
@@ -24,7 +24,7 @@
 -module('ex').
 -author('mats cronqvist').
 -export([demo/0,
-         rec_info/1]).
+		 rec_info/1]).
 
 -record(demo,{a="One",b="Two",c="Three",d="Four"}).
 
@@ -36,28 +36,28 @@ expand_recs(M,List) when is_list(List) ->
   [expand_recs(M,L)||L<-List];
 expand_recs(M,Tup) when is_tuple(Tup) ->
   case tuple_size(Tup) of
-    L when L < 1 -> Tup;
-    L ->
-      try Fields = M:rec_info(element(1,Tup)),
-          L = length(Fields)+1,
-          lists:zip(Fields,expand_recs(M,tl(tuple_to_list(Tup))))
-      catch _:_ ->
-          list_to_tuple(expand_recs(M,tuple_to_list(Tup)))
-      end
+	L when L < 1 -> Tup;
+	L ->
+	  try Fields = M:rec_info(element(1,Tup)),
+		  L = length(Fields)+1,
+		  lists:zip(Fields,expand_recs(M,tl(tuple_to_list(Tup))))
+	  catch _:_ ->
+		  list_to_tuple(expand_recs(M,tuple_to_list(Tup)))
+	  end
   end;
 expand_recs(_,Term) ->
   Term.
 </textarea></form>
 
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        matchBrackets: true,
-        extraKeys: {"Tab":  "indentAuto"},
-        theme: "erlang-dark"
-      });
-    </script>
+	<script>
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		extraKeys: {"Tab":  "indentAuto"},
+		theme: "erlang-dark"
+	  });
+	</script>
 
-    <p><strong>MIME types defined:</strong> <code>text/x-erlang</code>.</p>
+	<p><strong>MIME types defined:</strong> <code>text/x-erlang</code>.</p>
   </body>
 </html>

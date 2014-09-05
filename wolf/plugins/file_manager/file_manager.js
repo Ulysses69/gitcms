@@ -26,48 +26,48 @@
 function toggle_chmod_popup(file, chmod) {
 	var popup = $j('#chmod-popup');
 
-    var height = $j(document).height();
-    var popup_height = popup.height();
-    var width = $j(document).width();
-    var popup_width = popup.width();
+	var height = $j(document).height();
+	var popup_height = popup.height();
+	var width = $j(document).width();
+	var popup_width = popup.width();
 
-    popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
-    popup.toggle("normal");
+	popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
+	popup.toggle("normal");
 
-    $j('#chmod_file_name').val(file);
-    $j('#chmod_file_mode').val(chmod);
-    $j("#chmod_file_mode").focus();
+	$j('#chmod_file_name').val(file);
+	$j('#chmod_file_mode').val(chmod);
+	$j("#chmod_file_mode").focus();
 }
 
 function toggle_rename_popup(file, filename) {
 	var popup = $j('#rename-popup');
 	var file_mode = $j('#rename_file_new_name');
 
-    var height = $j(document).height();
-    var popup_height = popup.height();
-    var width = $j(document).width();
-    var popup_width = popup.width();
+	var height = $j(document).height();
+	var popup_height = popup.height();
+	var width = $j(document).width();
+	var popup_width = popup.width();
 
-    popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
-    popup.toggle("normal");
+	popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
+	popup.toggle("normal");
 
-    $j('#rename_file_current_name').val(file);
+	$j('#rename_file_current_name').val(file);
 	file_mode.val(filename);
-    file_mode.focus();
+	file_mode.focus();
 }
 
 
 $j(document).ready(function() {
-    // Make all modal dialogs draggable
-    $j("#boxes .window").draggable({
-        addClasses: false,
-        containment: 'window',
-        scroll: false,
-        handle: '.titlebar'
-    })
+	// Make all modal dialogs draggable
+	$j("#boxes .window").draggable({
+		addClasses: false,
+		containment: 'window',
+		scroll: false,
+		handle: '.titlebar'
+	})
 
 	//select all the a tag with name equal to modal
-    $j('a.popupLink').click(function(e) {
+	$j('a.popupLink').click(function(e) {
 		//Cancel the link behavior
 		e.preventDefault();
 		//Get the A tag
@@ -95,7 +95,7 @@ $j(document).ready(function() {
 		//transition effect
 		$j(id).fadeIn(500); //2000
 
-        $j(id+" :input:visible:enabled:first").focus();
+		$j(id+" :input:visible:enabled:first").focus();
 
 	});
 

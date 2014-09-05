@@ -13,11 +13,11 @@ class PagepeelPlusController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('pagepeel_plus');
-	        if (!$settings) {
-	            Flash::set('error', 'Pagepeel Plus - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('pagepeel_plus/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Pagepeel Plus - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('pagepeel_plus/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'pagepeel_plus';
@@ -26,8 +26,8 @@ class PagepeelPlusController extends PluginController {
 
 		if (empty($pagelist)) {
 			$pagelist = 'all';
-	        } else {
-	        	$settings = array('pagelink' => $pagelink,'pagelist' => $pagelist);
+			} else {
+				$settings = array('pagelink' => $pagelink,'pagelist' => $pagelist);
 
 			if (Plugin::setAllSettings($settings, 'pagepeel_plus'))
 				Flash::set('success', 'Pagepeel Plus - '.__('plugin settings saved.'));

@@ -65,9 +65,9 @@ class PHPCrawlerLinkFinder
   
   public function __construct()
   {
-    if (!class_exists("PHPCrawlerMemoryURLCache")) include_once(dirname(__FILE__)."/UrlCache/PHPCrawlerMemoryURLCache.class.php");
-    $this->LinkCache = new PHPCrawlerMemoryURLCache();
-    $this->LinkCache->url_distinct_property = PHPCrawlerURLCacheBase::URLHASH_URL;
+	if (!class_exists("PHPCrawlerMemoryURLCache")) include_once(dirname(__FILE__)."/UrlCache/PHPCrawlerMemoryURLCache.class.php");
+	$this->LinkCache = new PHPCrawlerMemoryURLCache();
+	$this->LinkCache->url_distinct_property = PHPCrawlerURLCacheBase::URLHASH_URL;
   }
   
   /**
@@ -77,8 +77,8 @@ class PHPCrawlerLinkFinder
    */
   public function setSourceUrl(PHPCrawlerURLDescriptor $SourceUrl)
   {
-    $this->SourceUrl = $SourceUrl;
-    $this->baseUrlParts = PHPCrawlerUrlPartsDescriptor::fromURL($SourceUrl->url_rebuild);
+	$this->SourceUrl = $SourceUrl;
+	$this->baseUrlParts = PHPCrawlerUrlPartsDescriptor::fromURL($SourceUrl->url_rebuild);
   }
   
   /**
@@ -88,10 +88,10 @@ class PHPCrawlerLinkFinder
    */
   public function processHTTPHeader(&$header)
   {
-    if ($this->find_redirect_urls == true)
-    {
-      $this->findRedirectLinkInHeader($header);
-    }
+	if ($this->find_redirect_urls == true)
+	{
+	  $this->findRedirectLinkInHeader($header);
+	}
   }
   
   /**
@@ -99,8 +99,8 @@ class PHPCrawlerLinkFinder
    */
   public function resetLinkCache()
   {
-    $this->LinkCache->clear();
-    $this->top_lines_processed = false;
+	$this->LinkCache->clear();
+	$this->top_lines_processed = false;
   }
   
   /**
@@ -108,24 +108,24 @@ class PHPCrawlerLinkFinder
    */
   protected function findRedirectLinkInHeader(&$http_header)
   {
-    PHPCrawlerBenchmark::start("checking_for_redirect_link");
-    
-    // Get redirect-URL or link from header
-    $redirect_link = PHPCrawlerUtils::getRedirectURLFromHeader($http_header);
-    
-    // Add redirect-URL to linkcache
-    if ($redirect_link != null)
-    {
-      // Rebuild URL
-      $url_rebuild = PHPCrawlerUtils::buildURLFromLink($redirect_link, $this->baseUrlParts);
-      
-      // Add URL to cache
-      $UrlDescriptor = new PHPCrawlerURLDescriptor($url_rebuild, $redirect_link, "", "", $this->SourceUrl->url_rebuild);
-      $UrlDescriptor->is_redirect_url = true;
-      $this->LinkCache->addURL($UrlDescriptor);
-    }
-    
-     PHPCrawlerBenchmark::stop("checking_for_redirect_link");
+	PHPCrawlerBenchmark::start("checking_for_redirect_link");
+	
+	// Get redirect-URL or link from header
+	$redirect_link = PHPCrawlerUtils::getRedirectURLFromHeader($http_header);
+	
+	// Add redirect-URL to linkcache
+	if ($redirect_link != null)
+	{
+	  // Rebuild URL
+	  $url_rebuild = PHPCrawlerUtils::buildURLFromLink($redirect_link, $this->baseUrlParts);
+	  
+	  // Add URL to cache
+	  $UrlDescriptor = new PHPCrawlerURLDescriptor($url_rebuild, $redirect_link, "", "", $this->SourceUrl->url_rebuild);
+	  $UrlDescriptor->is_redirect_url = true;
+	  $this->LinkCache->addURL($UrlDescriptor);
+	}
+	
+	 PHPCrawlerBenchmark::stop("checking_for_redirect_link");
   }
   
   /**
@@ -133,126 +133,126 @@ class PHPCrawlerLinkFinder
    */
   public function findLinksInHTMLChunk(&$html_source)
   {
-    PHPCrawlerBenchmark::start("searching_for_links_in_page");
-    
-    // Check for meta-base-URL and meta-tags in top of HTML-source
-    if ($this->top_lines_processed == false)
-    {
-      $meta_base_url = PHPCrawlerUtils::getBaseUrlFromMetaTag($html_source);
-      if ($meta_base_url != null)
-      {
-        $base_url = PHPCrawlerUtils::buildURLFromLink($meta_base_url, $this->baseUrlParts);
-        $this->baseUrlParts = PHPCrawlerUrlPartsDescriptor::fromURL($base_url);
-      }
-      
-      // Get all meta-tags
-      $this->meta_attributes = PHPCrawlerUtils::getMetaTagAttributes($html_source);
-      
-      // Set flag that top-lines of source were processed
-      $this->top_lines_processed == true;
-    }
-    
-    // Build the RegEx-part for html-tags to search links in
-    $tag_regex_part = "";
-    $cnt = count($this->extract_tags);
-    for ($x=0; $x<$cnt; $x++)
-    {
-      $tag_regex_part .= "|".$this->extract_tags[$x];
-    }
-    $tag_regex_part = substr($tag_regex_part, 1);
-    
-    // 1. <a href="...">LINKTEXT</a> (well formed link with </a> at the end and quotes around the link)
-    // Get the link AND the linktext from these tags
-    // This has to be done FIRST !!              
-    preg_match_all("#<\s*a\s[^<>]*(?<=\s)(?:".$tag_regex_part.")\s*=\s*".
-                   "(?|\"([^\"]+)\"|'([^']+)'|([^\s><'\"]+))[^<>]*>".
-                   "((?:(?!<\s*\/a\s*>).){0,500})".
-                   "<\s*\/a\s*># is", $html_source, $matches);
-                          
-    $cnt = count($matches[0]);
-    for ($x=0; $x<$cnt; $x++)
-    {  
-      $link_raw = trim($matches[1][$x]);
-      $linktext = $matches[2][$x];
-      $linkcode = trim($matches[0][$x]);
+	PHPCrawlerBenchmark::start("searching_for_links_in_page");
+	
+	// Check for meta-base-URL and meta-tags in top of HTML-source
+	if ($this->top_lines_processed == false)
+	{
+	  $meta_base_url = PHPCrawlerUtils::getBaseUrlFromMetaTag($html_source);
+	  if ($meta_base_url != null)
+	  {
+		$base_url = PHPCrawlerUtils::buildURLFromLink($meta_base_url, $this->baseUrlParts);
+		$this->baseUrlParts = PHPCrawlerUrlPartsDescriptor::fromURL($base_url);
+	  }
+	  
+	  // Get all meta-tags
+	  $this->meta_attributes = PHPCrawlerUtils::getMetaTagAttributes($html_source);
+	  
+	  // Set flag that top-lines of source were processed
+	  $this->top_lines_processed == true;
+	}
+	
+	// Build the RegEx-part for html-tags to search links in
+	$tag_regex_part = "";
+	$cnt = count($this->extract_tags);
+	for ($x=0; $x<$cnt; $x++)
+	{
+	  $tag_regex_part .= "|".$this->extract_tags[$x];
+	}
+	$tag_regex_part = substr($tag_regex_part, 1);
+	
+	// 1. <a href="...">LINKTEXT</a> (well formed link with </a> at the end and quotes around the link)
+	// Get the link AND the linktext from these tags
+	// This has to be done FIRST !!			  
+	preg_match_all("#<\s*a\s[^<>]*(?<=\s)(?:".$tag_regex_part.")\s*=\s*".
+				   "(?|\"([^\"]+)\"|'([^']+)'|([^\s><'\"]+))[^<>]*>".
+				   "((?:(?!<\s*\/a\s*>).){0,500})".
+				   "<\s*\/a\s*># is", $html_source, $matches);
+						  
+	$cnt = count($matches[0]);
+	for ($x=0; $x<$cnt; $x++)
+	{  
+	  $link_raw = trim($matches[1][$x]);
+	  $linktext = $matches[2][$x];
+	  $linkcode = trim($matches[0][$x]);
 
-      if (!empty($link_raw)) $this->addLinkToCache($link_raw, $linkcode, $linktext);
-    }
-                   
-    // Second regex (everything that could be a link inside of <>-tags)
-    preg_match_all("#<[^<>]*\s(?:".$tag_regex_part.")\s*=\s*".
-                   "(?|\"([^\"]+)\"|'([^']+)'|([^\s><'\"]+))[^<>]*># is", $html_source, $matches);
+	  if (!empty($link_raw)) $this->addLinkToCache($link_raw, $linkcode, $linktext);
+	}
+				   
+	// Second regex (everything that could be a link inside of <>-tags)
+	preg_match_all("#<[^<>]*\s(?:".$tag_regex_part.")\s*=\s*".
+				   "(?|\"([^\"]+)\"|'([^']+)'|([^\s><'\"]+))[^<>]*># is", $html_source, $matches);
 
-    $cnt = count($matches[0]);
-    for ($x=0; $x<$cnt; $x++)
-    {
-      $link_raw = trim($matches[1][$x]);
-      $linktext = "";
-      $linkcode = trim($matches[0][$x]);
-      
-      if (!empty($link_raw)) $this->addLinkToCache($link_raw, $linkcode, $linktext);
-    }
-    
-    // Now, if agressive_mode is set to true, we look for some
-    // other things
-    $pregs = array();
-    if ($this->aggressive_search == true)
-    {
-      // Links like "...:url("animage.gif")..."
-      $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*\(\s*([\"|']{0,1})([^\"'\) ]{1,500})['\"\)]/ is";
-      
-      // Everything like "...href="bla.html"..." with qoutes
-      $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*=\s*([\"|'])(.{0,500}?)\\1/ is";
-      
-      // Everything like "...href=bla.html..." without qoutes
-      $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*(=)\s*([^\s\">']{1,500})/ is";
-      
-      for ($x=0; $x<count($pregs); $x++)
-      {
-        unset($matches);
-        preg_match_all($pregs[$x], $html_source, $matches);
-        
-        $cnt = count($matches[0]);
-        for ($y=0; $y<$cnt; $y++)
-        {
-          $link_raw = trim($matches[2][$y]);
-          $linkcode = trim($matches[0][$y]);
-          $linktext = "";
-          
-          $this->addLinkToCache($link_raw, $linkcode, $linktext);
-        }
-      }
-    }
-    
-    $this->found_links_map = array();
-    
-    PHPCrawlerBenchmark::stop("searching_for_links_in_page");
+	$cnt = count($matches[0]);
+	for ($x=0; $x<$cnt; $x++)
+	{
+	  $link_raw = trim($matches[1][$x]);
+	  $linktext = "";
+	  $linkcode = trim($matches[0][$x]);
+	  
+	  if (!empty($link_raw)) $this->addLinkToCache($link_raw, $linkcode, $linktext);
+	}
+	
+	// Now, if agressive_mode is set to true, we look for some
+	// other things
+	$pregs = array();
+	if ($this->aggressive_search == true)
+	{
+	  // Links like "...:url("animage.gif")..."
+	  $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*\(\s*([\"|']{0,1})([^\"'\) ]{1,500})['\"\)]/ is";
+	  
+	  // Everything like "...href="bla.html"..." with qoutes
+	  $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*=\s*([\"|'])(.{0,500}?)\\1/ is";
+	  
+	  // Everything like "...href=bla.html..." without qoutes
+	  $pregs[]="/[\s\.:;](?:".$tag_regex_part.")\s*(=)\s*([^\s\">']{1,500})/ is";
+	  
+	  for ($x=0; $x<count($pregs); $x++)
+	  {
+		unset($matches);
+		preg_match_all($pregs[$x], $html_source, $matches);
+		
+		$cnt = count($matches[0]);
+		for ($y=0; $y<$cnt; $y++)
+		{
+		  $link_raw = trim($matches[2][$y]);
+		  $linkcode = trim($matches[0][$y]);
+		  $linktext = "";
+		  
+		  $this->addLinkToCache($link_raw, $linkcode, $linktext);
+		}
+	  }
+	}
+	
+	$this->found_links_map = array();
+	
+	PHPCrawlerBenchmark::stop("searching_for_links_in_page");
   }
   
   protected function addLinkToCache($link_raw, $link_code, $link_text = "")
   {
-    //PHPCrawlerBenchmark::start("preparing_link_for_cache");
-    
-    // If liks already was found and processed -> skip this link
-    if (isset($this->found_links_map[$link_raw])) return;
-    
-    // Rebuild URL from link
-    $url_rebuild = PHPCrawlerUtils::buildURLFromLink($link_raw, $this->baseUrlParts);
+	//PHPCrawlerBenchmark::start("preparing_link_for_cache");
+	
+	// If liks already was found and processed -> skip this link
+	if (isset($this->found_links_map[$link_raw])) return;
+	
+	// Rebuild URL from link
+	$url_rebuild = PHPCrawlerUtils::buildURLFromLink($link_raw, $this->baseUrlParts);
 
-    // If link coulnd't be rebuild
-    if ($url_rebuild == null) return;
-    
-    // Create an PHPCrawlerURLDescriptor-object with URL-data
-    $UrlDescriptor = new PHPCrawlerURLDescriptor($url_rebuild, $link_raw, $link_code, $link_text, $this->SourceUrl->url_rebuild);
-    
-    // Add the PHPCrawlerURLDescriptor-object to LinkCache
-    $this->LinkCache->addURL($UrlDescriptor);
-        
-    // Add the PHPCrawlerURLDescriptor-object to found-links-array
-    $map_key = $link_raw;
-    $this->found_links_map[$map_key] = true;
-    
-    //PHPCrawlerBenchmark::stop("preparing_link_for_cache");
+	// If link coulnd't be rebuild
+	if ($url_rebuild == null) return;
+	
+	// Create an PHPCrawlerURLDescriptor-object with URL-data
+	$UrlDescriptor = new PHPCrawlerURLDescriptor($url_rebuild, $link_raw, $link_code, $link_text, $this->SourceUrl->url_rebuild);
+	
+	// Add the PHPCrawlerURLDescriptor-object to LinkCache
+	$this->LinkCache->addURL($UrlDescriptor);
+		
+	// Add the PHPCrawlerURLDescriptor-object to found-links-array
+	$map_key = $link_raw;
+	$this->found_links_map[$map_key] = true;
+	
+	//PHPCrawlerBenchmark::stop("preparing_link_for_cache");
   }
   
   /**
@@ -262,20 +262,20 @@ class PHPCrawlerLinkFinder
    */
   public function getAllURLs()
   {
-    return $this->LinkCache->getAllURLs();
+	return $this->LinkCache->getAllURLs();
   }
   
   /**
    * Returns all meta-tag attributes found so far in the document.
    *
    * @return array Assoziative array conatining all found meta-attributes.
-   *               The keys are the meta-names, the values the content of the attributes.
-   *               (like $tags["robots"] = "nofollow")
+   *			   The keys are the meta-names, the values the content of the attributes.
+   *			   (like $tags["robots"] = "nofollow")
    *
    */
   public function getAllMetaAttributes()
   {
-    return $this->meta_attributes;
+	return $this->meta_attributes;
   }
 }
 ?>

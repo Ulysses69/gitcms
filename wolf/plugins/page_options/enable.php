@@ -52,52 +52,52 @@ if(!Plugin::getSetting('pdf_hx_color', 'page_options')) $settings['pdf_hx_color'
 // Check existing plugin settings
 if (!$version || $version == null) {
 
-    // This is a clean install.
+	// This is a clean install.
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'page_options')) {
-        Flash::set('success', __('Page Options - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('Page Options - unable to save plugin settings!'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'page_options')) {
+		Flash::set('success', __('Page Options - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('Page Options - unable to save plugin settings!'));
 
 
 } else {
 
 
-    // Upgrading from previous installation
-    if (PAGEOPTIONS_VERSION > $version) {
+	// Upgrading from previous installation
+	if (PAGEOPTIONS_VERSION > $version) {
 
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='page_options'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='page_options'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='page_options'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='page_options'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
-            Flash::set('error', __('Page Options - unable to access plugin settings.'));
-            return;
-        }
+		if (!$result) {
+			Flash::set('error', __('Page Options - unable to access plugin settings.'));
+			return;
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
-            $result->closeCursor();
-            if(defined('PAGEOPTIONS_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/page_options'); }
-        }
-    }
+			$result->closeCursor();
+			if(defined('PAGEOPTIONS_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/page_options'); }
+		}
+	}
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'page_options')) {
-        if (PAGEOPTIONS_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'page_options')) {
+		if (PAGEOPTIONS_VERSION > $version){
 			Flash::set('success', __('Page Options - plugin settings updated.'));
 		}
-    }
+	}
 
 
 }

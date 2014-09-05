@@ -4,18 +4,18 @@ class SkeletonController extends PluginController {
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/'.SKELETON_ID.'/views/sidebar'));
 	}
-    public function index() {
-        //$this->documentation();
-        //$this->display('skeleton/views/settings', $settings);
-        $this->display(SKELETON_ID.'/views/settings');
-    }
+	public function index() {
+		//$this->documentation();
+		//$this->display('skeleton/views/settings', $settings);
+		$this->display(SKELETON_ID.'/views/settings');
+	}
 	public function settings(){
 		$settings = Plugin::getAllSettings(SKELETON_ID);
-	        if (!$settings) {
-	            Flash::set('error', SKELETON_TITLE.' - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display(SKELETON_ID.'/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', SKELETON_TITLE.' - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display(SKELETON_ID.'/views/settings', $settings);
 	}
 	public function save_settings(){
 		$version = $_POST['version'];

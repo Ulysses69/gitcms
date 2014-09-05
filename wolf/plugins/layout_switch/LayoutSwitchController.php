@@ -56,33 +56,33 @@ if (!defined('IN_CMS')) { exit(); }
  */
 class LayoutSwitchController extends PluginController {
 
-    public function __construct() {
-        $this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/layout_switch/views/sidebar'));
-    }
+	public function __construct() {
+		$this->setLayout('backend');
+		$this->assignToLayout('sidebar', new View('../../plugins/layout_switch/views/sidebar'));
+	}
 
-    public function index() {
-        $this->documentation();
-    }
+	public function index() {
+		$this->documentation();
+	}
 
-    public function documentation() {
-        $this->display('layout_switch/views/documentation');
-    }
+	public function documentation() {
+		$this->display('layout_switch/views/documentation');
+	}
 
-    function settings() {
-        /** You can do this...
-        $tmp = Plugin::getAllSettings('layout_switch');
-        $settings = array('my_setting1' => $tmp['setting1'],
-                          'setting2' => $tmp['setting2'],
-                          'a_setting3' => $tmp['setting3']
-                         );
-        $this->display('comment/views/settings', $settings);
-         *
-         * Or even this...
-         */
+	function settings() {
+		/** You can do this...
+		$tmp = Plugin::getAllSettings('layout_switch');
+		$settings = array('my_setting1' => $tmp['setting1'],
+						  'setting2' => $tmp['setting2'],
+						  'a_setting3' => $tmp['setting3']
+						 );
+		$this->display('comment/views/settings', $settings);
+		 *
+		 * Or even this...
+		 */
 
-        $this->display('layout_switch/views/settings', Plugin::getAllSettings('layout_switch'));
-    }
+		$this->display('layout_switch/views/settings', Plugin::getAllSettings('layout_switch'));
+	}
 
 }
 

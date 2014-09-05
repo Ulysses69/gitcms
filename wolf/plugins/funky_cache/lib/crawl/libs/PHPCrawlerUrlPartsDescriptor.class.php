@@ -30,25 +30,25 @@ class PHPCrawlerUrlPartsDescriptor
    */
   public static function fromURL($url)
   {
-    $parts = PHPCrawlerUtils::splitURL($url);
-    
-    $tmp = new PHPCrawlerUrlPartsDescriptor();
-    
-    $tmp->protocol = $parts["protocol"];
-    $tmp->host = $parts["host"];
-    $tmp->path = $parts["path"];
-    $tmp->file = $parts["file"];
-    $tmp->domain = $parts["domain"];
-    $tmp->port = $parts["port"];
-    $tmp->auth_username = $parts["auth_username"];
-    $tmp->auth_password = $parts["auth_password"];
-    
-    return $tmp;
+	$parts = PHPCrawlerUtils::splitURL($url);
+	
+	$tmp = new PHPCrawlerUrlPartsDescriptor();
+	
+	$tmp->protocol = $parts["protocol"];
+	$tmp->host = $parts["host"];
+	$tmp->path = $parts["path"];
+	$tmp->file = $parts["file"];
+	$tmp->domain = $parts["domain"];
+	$tmp->port = $parts["port"];
+	$tmp->auth_username = $parts["auth_username"];
+	$tmp->auth_password = $parts["auth_password"];
+	
+	return $tmp;
   }
   
   public function toArray()
   {
-    return get_object_vars($this);
+	return get_object_vars($this);
   }
 }
 ?>

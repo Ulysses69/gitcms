@@ -1,17 +1,17 @@
 <?php
 
-     /**
-     * Russian language file
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Dmitry Kostromin <kostromind@gmail.com>
-     * @version Wolf 0.6.0
-     * @last modifed from 07 February 2010
-     */
+	 /**
+	 * Russian language file
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Dmitry Kostromin <kostromind@gmail.com>
+	 * @version Wolf 0.6.0
+	 * @last modifed from 07 February 2010
+	 */
 
-    return array(
+	return array(
 	
    	'A comment was added.' 							=> 'Комментарий был добавлен.',
 	'Approve' 													=> 'Одобрить',
@@ -66,4 +66,4 @@
 	'none' 														=> 'нет',
 	'or' 															=> 'или',
   
-    );
+	);

@@ -1,18 +1,18 @@
 <?php
 
-    /**
-     * Russian language file
-     *
-     * @package plugins
-     * @subpackage file_manager
-     * @category translations
-     *
-     * @author Dmitry Kostromin <kostromind@gmail.com>
-     * @version Wolf 0.6.0
-     * @last modifed from 07 February 2010
-     */
+	/**
+	 * Russian language file
+	 *
+	 * @package plugins
+	 * @subpackage file_manager
+	 * @category translations
+	 *
+	 * @author Dmitry Kostromin <kostromind@gmail.com>
+	 * @version Wolf 0.6.0
+	 * @last modifed from 07 February 2010
+	 */
 
-    return array(
+	return array(
 	
    	'A possible hack attempt was detected.' 	=> 'Возможно обнаружена попытка взлома',
 	'Action' 													=> 'Действие',
@@ -48,4 +48,4 @@
 	'or' 														=> 'или',
 	'overwrite it?' 											=> 'заменить?',
 
-    );
+	);

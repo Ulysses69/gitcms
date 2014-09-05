@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_fonts.php
-// Version     : 1.0.013
-// Begin       : 2008-01-01
+// Version	 : 1.0.013
+// Begin	   : 2008-01-01
 // Last Update : 2014-05-23
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2008-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -1537,28 +1537,28 @@ class TCPDF_FONTS {
 	 *   Encoding UTF-16:
 	 *
 	 *   Encoding of a single character from an ISO 10646 character value to
-	 *    UTF-16 proceeds as follows. Let U be the character number, no greater
-	 *    than 0x10FFFF.
+	 *	UTF-16 proceeds as follows. Let U be the character number, no greater
+	 *	than 0x10FFFF.
 	 *
-	 *    1) If U < 0x10000, encode U as a 16-bit unsigned integer and
-	 *       terminate.
+	 *	1) If U < 0x10000, encode U as a 16-bit unsigned integer and
+	 *	   terminate.
 	 *
-	 *    2) Let U' = U - 0x10000. Because U is less than or equal to 0x10FFFF,
-	 *       U' must be less than or equal to 0xFFFFF. That is, U' can be
-	 *       represented in 20 bits.
+	 *	2) Let U' = U - 0x10000. Because U is less than or equal to 0x10FFFF,
+	 *	   U' must be less than or equal to 0xFFFFF. That is, U' can be
+	 *	   represented in 20 bits.
 	 *
-	 *    3) Initialize two 16-bit unsigned integers, W1 and W2, to 0xD800 and
-	 *       0xDC00, respectively. These integers each have 10 bits free to
-	 *       encode the character value, for a total of 20 bits.
+	 *	3) Initialize two 16-bit unsigned integers, W1 and W2, to 0xD800 and
+	 *	   0xDC00, respectively. These integers each have 10 bits free to
+	 *	   encode the character value, for a total of 20 bits.
 	 *
-	 *    4) Assign the 10 high-order bits of the 20-bit U' to the 10 low-order
-	 *       bits of W1 and the 10 low-order bits of U' to the 10 low-order
-	 *       bits of W2. Terminate.
+	 *	4) Assign the 10 high-order bits of the 20-bit U' to the 10 low-order
+	 *	   bits of W1 and the 10 low-order bits of U' to the 10 low-order
+	 *	   bits of W2. Terminate.
 	 *
-	 *    Graphically, steps 2 through 4 look like:
-	 *    U' = yyyyyyyyyyxxxxxxxxxx
-	 *    W1 = 110110yyyyyyyyyy
-	 *    W2 = 110111xxxxxxxxxx
+	 *	Graphically, steps 2 through 4 look like:
+	 *	U' = yyyyyyyyyyxxxxxxxxxx
+	 *	W1 = 110110yyyyyyyyyy
+	 *	W2 = 110111xxxxxxxxxx
 	 * </pre>
 	 * @param $unicode (array) array containing UTF-8 unicode values
 	 * @param $setbom (boolean) if true set the Byte Order Mark (BOM = 0xFEFF)
@@ -1782,26 +1782,26 @@ class TCPDF_FONTS {
 	 * Invalid byte sequences will be replaced with 0xFFFD (replacement character)<br>
 	 * Based on: http://www.faqs.org/rfcs/rfc3629.html
 	 * <pre>
-	 *    Char. number range  |        UTF-8 octet sequence
-	 *       (hexadecimal)    |              (binary)
-	 *    --------------------+-----------------------------------------------
-	 *    0000 0000-0000 007F | 0xxxxxxx
-	 *    0000 0080-0000 07FF | 110xxxxx 10xxxxxx
-	 *    0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
-	 *    0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-	 *    ---------------------------------------------------------------------
+	 *	Char. number range  |		UTF-8 octet sequence
+	 *	   (hexadecimal)	|			  (binary)
+	 *	--------------------+-----------------------------------------------
+	 *	0000 0000-0000 007F | 0xxxxxxx
+	 *	0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+	 *	0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+	 *	0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+	 *	---------------------------------------------------------------------
 	 *
 	 *   ABFN notation:
 	 *   ---------------------------------------------------------------------
 	 *   UTF8-octets = *( UTF8-char )
 	 *   UTF8-char   = UTF8-1 / UTF8-2 / UTF8-3 / UTF8-4
-	 *   UTF8-1      = %x00-7F
-	 *   UTF8-2      = %xC2-DF UTF8-tail
+	 *   UTF8-1	  = %x00-7F
+	 *   UTF8-2	  = %xC2-DF UTF8-tail
 	 *
-	 *   UTF8-3      = %xE0 %xA0-BF UTF8-tail / %xE1-EC 2( UTF8-tail ) /
-	 *                 %xED %x80-9F UTF8-tail / %xEE-EF 2( UTF8-tail )
-	 *   UTF8-4      = %xF0 %x90-BF 2( UTF8-tail ) / %xF1-F3 3( UTF8-tail ) /
-	 *                 %xF4 %x80-8F 2( UTF8-tail )
+	 *   UTF8-3	  = %xE0 %xA0-BF UTF8-tail / %xE1-EC 2( UTF8-tail ) /
+	 *				 %xED %x80-9F UTF8-tail / %xEE-EF 2( UTF8-tail )
+	 *   UTF8-4	  = %xF0 %x90-BF 2( UTF8-tail ) / %xF1-F3 3( UTF8-tail ) /
+	 *				 %xF4 %x80-8F 2( UTF8-tail )
 	 *   UTF8-tail   = %x80-BF
 	 *   ---------------------------------------------------------------------
 	 * </pre>

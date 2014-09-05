@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Slovenian file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Andrej Čremožnik <andrej.cremoznik@gmail.com>
-     * @version Wolf 0.5.5
-     */
+	/**
+	 * Slovenian file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Andrej Čremožnik <andrej.cremoznik@gmail.com>
+	 * @version Wolf 0.5.5
+	 */
 
-    return array(
-    	'A comment was added.' => 'Komentar je bil dodan.',
+	return array(
+		'A comment was added.' => 'Komentar je bil dodan.',
 	'Approve' => 'Odobritev',
 	'Are you sure you wish to delete it?' => 'Ali ste prepričani, da želite izbrisati?',
 	'Auto approve' => 'Avtomatska odobritev',
@@ -56,4 +56,4 @@
 	'comment not found!' => 'komentarja ni moč najti!',
 	'none' => 'brez',
 	'or' => 'ali',
-    );
+	);

@@ -22,6 +22,6 @@ if (!defined('IN_CMS')) { exit(); }
 <div id="showMeAll"><?php echo $notes->showContent(); ?></div>
 
 <div class="border">
-    <a href="<?php echo get_url('plugin/notes/update/'.$notes->id); ?>" title="Edit note"><?php echo __('Edit Note'); ?></a> 
-    or <a href="<?php echo get_url('plugin/notes/tasks'); ?>"><?php echo __('Cancel'); ?></a>
+	<a href="<?php echo get_url('plugin/notes/update/'.$notes->id); ?>" title="Edit note"><?php echo __('Edit Note'); ?></a> 
+	or <a href="<?php echo get_url('plugin/notes/tasks'); ?>"><?php echo __('Cancel'); ?></a>
 </div>

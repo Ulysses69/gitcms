@@ -16,35 +16,35 @@
 	 *
 	 * @example
 	 * var parser = new tinymce.html.SaxParser({
-	 *     validate: true,
+	 *	 validate: true,
 	 *
-	 *     comment: function(text) {
-	 *         console.log('Comment:', text);
-	 *     },
+	 *	 comment: function(text) {
+	 *		 console.log('Comment:', text);
+	 *	 },
 	 *
-	 *     cdata: function(text) {
-	 *         console.log('CDATA:', text);
-	 *     },
+	 *	 cdata: function(text) {
+	 *		 console.log('CDATA:', text);
+	 *	 },
 	 *
-	 *     text: function(text, raw) {
-	 *         console.log('Text:', text, 'Raw:', raw);
-	 *     },
+	 *	 text: function(text, raw) {
+	 *		 console.log('Text:', text, 'Raw:', raw);
+	 *	 },
 	 *
-	 *     start: function(name, attrs, empty) {
-	 *         console.log('Start:', name, attrs, empty);
-	 *     },
+	 *	 start: function(name, attrs, empty) {
+	 *		 console.log('Start:', name, attrs, empty);
+	 *	 },
 	 *
-	 *     end: function(name) {
-	 *         console.log('End:', name);
-	 *     },
+	 *	 end: function(name) {
+	 *		 console.log('End:', name);
+	 *	 },
 	 *
-	 *     pi: function(name, text) {
-	 *         console.log('PI:', name, text);
-	 *     },
+	 *	 pi: function(name, text) {
+	 *		 console.log('PI:', name, text);
+	 *	 },
 	 *
-	 *     doctype: function(text) {
-	 *         console.log('DocType:', text);
-	 *     }
+	 *	 doctype: function(text) {
+	 *		 console.log('DocType:', text);
+	 *	 }
 	 * }, schema);
 	 * @class tinymce.html.SaxParser
 	 * @version 3.4

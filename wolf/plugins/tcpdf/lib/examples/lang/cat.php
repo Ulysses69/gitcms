@@ -1,20 +1,20 @@
 <?php
 //============================================================+
 // File name   : cat.php
-// Begin       : 2010-10-26
+// Begin	   : 2010-10-26
 // Last Update : 2010-10-26
 //
 // Description : Language module for TCPDF
-//               (contains translated texts)
-//               Catalan
+//			   (contains translated texts)
+//			   Catalan
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

@@ -26,8 +26,8 @@ if (!defined('IN_CMS')) { exit(); }
 ?>
 <h3>How to use this plugin</h3>
 <p>
-    By default, the comments plugin tab displays for example: "Comments (2/5)". This means that two comments are
-    waiting for approval in the moderation list out of five total comments.
+	By default, the comments plugin tab displays for example: "Comments (2/5)". This means that two comments are
+	waiting for approval in the moderation list out of five total comments.
 </p>
 <p>
   On each page edit screen, you will have a drop-down box available called "Comments".
@@ -43,13 +43,13 @@ if (!defined('IN_CMS')) { exit(); }
 </p>
 <pre>
 &lt;?php
-    if (Plugin::isEnabled('comment'))
-    {
-        if ($this->comment_status != Comment::NONE)
-            $this->includeSnippet('comment-each');
-        if ($this->comment_status == Comment::OPEN)
-            $this->includeSnippet('comment-form');
-    }
+	if (Plugin::isEnabled('comment'))
+	{
+		if ($this->comment_status != Comment::NONE)
+			$this->includeSnippet('comment-each');
+		if ($this->comment_status == Comment::OPEN)
+			$this->includeSnippet('comment-form');
+	}
 ?&gt;
 </pre>
 

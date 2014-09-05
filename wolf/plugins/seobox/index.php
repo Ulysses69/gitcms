@@ -116,21 +116,21 @@ function pageisnew($page){
 				$days = $creadteddiff;
 				if($days <= $countdays){
 					if($days == 0) {
-			            $days = ' today';
-			        } else if($days == 1) {
-			            $days = ' yesterday';
-			        } else if($days < 7) {
-			            $days = $days . ' days ago';
-			        } else if($days == 7) {
-			            $days = ' a week ago';
-			        } else if($days < (7*6)) {
-			            $days = ' ' . ceil($days/7) . ' weeks ago';
-			        } else if($days < 365) {
-			            $days = ' ' . ceil($days/(365/12)) . ' months ago';
-			        } else {
-			            $years = round($days/365);
-			            $days = ' ' . $years . ' year' . ($years != 1 ? 's' : '') . ' ago';
-			        }
+						$days = ' today';
+					} else if($days == 1) {
+						$days = ' yesterday';
+					} else if($days < 7) {
+						$days = $days . ' days ago';
+					} else if($days == 7) {
+						$days = ' a week ago';
+					} else if($days < (7*6)) {
+						$days = ' ' . ceil($days/7) . ' weeks ago';
+					} else if($days < 365) {
+						$days = ' ' . ceil($days/(365/12)) . ' months ago';
+					} else {
+						$years = round($days/365);
+						$days = ' ' . $years . ' year' . ($years != 1 ? 's' : '') . ' ago';
+					}
 					return ' title="added'.$days.'"><em> </em';
 				}
 			} else if(strtotime($page->created_on) < strtotime($livedate)) {
@@ -138,22 +138,22 @@ function pageisnew($page){
 					$days = $updateddiff;
 					if($days <= $countdays){
 						if($days == 0) {
-				            $days = ' today';
-				        } else if($days == 1) {
-				            $days = ' yesterday';
-				        } else if($days < 7) {
-				            $days = $days . ' days ago';
-				        } else if($days == 7) {
-				            $days = ' a week ago';
-				        } else if($days < (7*6)) {
-				            $days = ' ' . ceil($days/7) . ' weeks ago';
-				        } else if($days < 365) {
-				            $days = ' ' . ceil($days/(365/12)) . ' months ago';
-				        } else {
-				            $years = round($days/365);
-				            $days = ' ' . $years . ' year' . ($years != 1 ? 's' : '') . ' ago';
-				        }
-				        return ' title="updated'.$days.'"><em> </em';
+							$days = ' today';
+						} else if($days == 1) {
+							$days = ' yesterday';
+						} else if($days < 7) {
+							$days = $days . ' days ago';
+						} else if($days == 7) {
+							$days = ' a week ago';
+						} else if($days < (7*6)) {
+							$days = ' ' . ceil($days/7) . ' weeks ago';
+						} else if($days < 365) {
+							$days = ' ' . ceil($days/(365/12)) . ' months ago';
+						} else {
+							$years = round($days/365);
+							$days = ' ' . $years . ' year' . ($years != 1 ? 's' : '') . ' ago';
+						}
+						return ' title="updated'.$days.'"><em> </em';
 					}
 				}
 			} else {
@@ -614,14 +614,14 @@ function setanalytics($parent){
 					//	$trackPageviewParams = ", '404', 'Visit', '404 Error Page - Visit - Page'";
 					//} else {
 						/* Track 404 pageviews in Google Analytics: Create a new custom report with the following (http://www.thepiepers.net/blog/bryan-pieper/2011/06/google-analytics-track-404-pages/):
-					    Filter: Include Page [regex=^/404.html]
-					    Metrics:
-					        Pageviews
-					        Bounce Rate
-					        Avg Time on Page
-					        Avg Time on Site
-					    Segments: Page
-					    */
+						Filter: Include Page [regex=^/404.html]
+						Metrics:
+							Pageviews
+							Bounce Rate
+							Avg Time on Page
+							Avg Time on Site
+						Segments: Page
+						*/
 						if($_GET['404'] != '' && $_GET['404'] != 'Error'){
 							$page404 = str_replace('?404=','?referrer=',$page404);
 						} else {
@@ -1007,10 +1007,10 @@ function setanalytics($parent){
 										$script .= "if(dad){"."\n";
 					
 										$script .= "String.prototype.capitalize = function(){"."\n";
-									    $script .= "return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );"."\n";
-									    $script .= "};"."\n";
+										$script .= "return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );"."\n";
+										$script .= "};"."\n";
 					
-									    $script .= "thisDad = thisDad.toLowerCase().capitalize();"."\n";
+										$script .= "thisDad = thisDad.toLowerCase().capitalize();"."\n";
 		
 										$script .= "if(dad.id == 'date-go' || dad.id == 'legal'){thisDad = 'Footer'}; if(dad.id == 'options'){thisDad = 'Page Options'};"."\n";
 										$script .= "if(obj.parentNode.className == 'followup'){thisDad = 'Follow Up';};"."\n";
@@ -1072,7 +1072,7 @@ function setanalytics($parent){
 		
 								$script .= "};"."\n";
 			
-								//echo "    return false;";
+								//echo "	return false;";
 								$script .= "};"."\n";
 
 								//$script .= "assignClickEvent();";
@@ -1116,11 +1116,11 @@ function setanalytics($parent){
 						ob_start();
 						include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/seobox/lib/jquery.scrolldepth.min.js";
 						$scrolljstemplate = ob_get_contents();
-					    ob_end_clean();
+						ob_end_clean();
 
-					    $jssave = @fopen($scrolljsfilepath,'w+');
-					    fwrite($jssave,$scrolljstemplate);
-					    fclose($jssave);
+						$jssave = @fopen($scrolljsfilepath,'w+');
+						fwrite($jssave,$scrolljstemplate);
+						fclose($jssave);
 					}
 	
 					$setupscroll = '<script src="'.$scrolljspath.$scrolljsfile.'"></script>'."\n";
@@ -1172,11 +1172,11 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 		/* Check if tracking type is valid and that a category and action have been set */
 		if(($track == '_trackEvent' || $track == 'event' || $track == '_trackPageview') && $category != '' && $action != ''){
 
-            
-            /* If page object not returned, set page to home page id, 1 */
-            if(!isset($parent)){
-                $parent = Page::findById(1);
-            }
+			
+			/* If page object not returned, set page to home page id, 1 */
+			if(!isset($parent)){
+				$parent = Page::findById(1);
+			}
 
 
 			/* Determine script type (remove for HTML5) */

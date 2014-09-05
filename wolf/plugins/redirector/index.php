@@ -14,12 +14,12 @@
  */
 
 Plugin::setInfos(array(
-    'id'          => 'redirector',
-    'title'       => 'Redirector',
-    'description' => 'Provides an interface to manage redirects.',
-    'version'     => '0.1', 
-   	'license'     => 'MIT',
-	'author'      => 'Design Spike'
+	'id'		  => 'redirector',
+	'title'	   => 'Redirector',
+	'description' => 'Provides an interface to manage redirects.',
+	'version'	 => '0.1', 
+   	'license'	 => 'MIT',
+	'author'	  => 'Design Spike'
 ));
 
 //Behavior::add('page_not_found', '');

@@ -33,12 +33,12 @@
 	$permission_settings = $__CMS_CONN__->prepare($permission_settings);
 	$permission_settings->execute();
 	while ($settings = $permission_settings->fetchObject()) {*/
-        foreach ($roles as $role) {
+		foreach ($roles as $role) {
 		global $__CMS_CONN__;
 		//$id = $settings->id;
 		//$name = $settings->name;
-                $id = $role->id;
-                $name = $role->name;
+				$id = $role->id;
+				$name = $role->name;
 ?>
 
 		<tr class="<?php echo odd_even(); ?>">
@@ -93,7 +93,7 @@
 				<img src="<?php echo URL_PUBLIC; ?>wolf/plugins/registered_users/images/blank.png" align="middle" alt="User Group" />
 				<a href="#add-user-group" class="popupLink">
 				<img src="<?php echo URL_PUBLIC; ?>wolf/admin/images/plus.png" align="middle" title="<?php echo __('Add User Group'); ?>" alt="<?php echo __('Add User Group'); ?>" /></a>
-                        </td>
+						</td>
 		</tr>
 	</tbody>
 </table>
@@ -110,45 +110,45 @@
 <p><strong><small>For the integrity of the core CMS, editing administrators, developers and editors is forbidden.</small></strong></p>
 
 <div id="boxes">
-    <div id="add-user-group" class="window">
+	<div id="add-user-group" class="window">
 	<div class="titlebar">
-            <?php echo __('Add user group'); ?>
-            <a href="#" class="close">[x]</a>
-        </div>
-        <div class="content">
-            <form action="<?php echo get_url('plugin/registered_users/add_user_group/'); ?>" method="post" name="add_user_group">
-                <p>Group Name <input id="new_group" maxlength="255" name="new_group" type="text" value="" /></p>
+			<?php echo __('Add user group'); ?>
+			<a href="#" class="close">[x]</a>
+		</div>
+		<div class="content">
+			<form action="<?php echo get_url('plugin/registered_users/add_user_group/'); ?>" method="post" name="add_user_group">
+				<p>Group Name <input id="new_group" maxlength="255" name="new_group" type="text" value="" /></p>
 		<p>Make default group for new users? <input type="checkbox" name="default" value="1" /></p>
-                <input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Add user group'); ?>" />
-            </form>
-        </div>
-    </div>
-    
-    <div id="rename_user_group" class="window">
+				<input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Add user group'); ?>" />
+			</form>
+		</div>
+	</div>
+	
+	<div id="rename_user_group" class="window">
 	<div class="titlebar">
-            <?php echo __('Rename group'); ?>
-            <a href="#" class="close">[x]</a>
-        </div>
-        <div class="content">
-            <form action="<?php echo get_url('plugin/registered_users/rename_user_group/'); ?>" method="post" name="rename_user_group">
-                <input type="hidden" id="rename_user_group_id" name="id" value="'.$id.'" />
-                <p>Group Name <input id="rename_user_group_new_name" maxlength="255" name="renamed" type="text" value="" /></p>
+			<?php echo __('Rename group'); ?>
+			<a href="#" class="close">[x]</a>
+		</div>
+		<div class="content">
+			<form action="<?php echo get_url('plugin/registered_users/rename_user_group/'); ?>" method="post" name="rename_user_group">
+				<input type="hidden" id="rename_user_group_id" name="id" value="'.$id.'" />
+				<p>Group Name <input id="rename_user_group_new_name" maxlength="255" name="renamed" type="text" value="" /></p>
 		<input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Rename group'); ?>" />
-            </form>
-        </div>
-    </div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <div id="popups">
   <div class="popup" id="rename_user_group" style="display:none;">
-      <h3><?php echo __('Rename group'); ?></h3>
-      <form action="<?php echo get_url('plugin/registered_users/rename_user_group/'); ?>" method="post"> 
-        <div>
-            <input type="hidden" id="rename_user_group_id" name="id" value="'.$id.'" />
-                <p>Group Name <input id="rename_user_group_new_name" maxlength="255" name="renamed" type="text" value="" /></p>
+	  <h3><?php echo __('Rename group'); ?></h3>
+	  <form action="<?php echo get_url('plugin/registered_users/rename_user_group/'); ?>" method="post"> 
+		<div>
+			<input type="hidden" id="rename_user_group_id" name="id" value="'.$id.'" />
+				<p>Group Name <input id="rename_user_group_new_name" maxlength="255" name="renamed" type="text" value="" /></p>
 		<input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Rename group'); ?>" />
-        </div>
-        <p><a class="close-link" href="#" onclick="toggle_rename_popup(); return false;"><?php echo __('Close'); ?></a></p>
-      </form>
-    </div>
+		</div>
+		<p><a class="close-link" href="#" onclick="toggle_rename_popup(); return false;"><?php echo __('Close'); ?></a></p>
+	  </form>
+	</div>
 </div>

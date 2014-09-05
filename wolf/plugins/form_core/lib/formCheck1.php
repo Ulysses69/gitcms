@@ -3,7 +3,7 @@
 /* Check uploads comply with server upload settings - this is checked first before further upload checks can be carried out */
 if(isset($_SERVER['CONTENT_LENGTH']) && intval($_SERVER['CONTENT_LENGTH'])>0 && count($_POST)===0){
 	$errors = 'Uploads must be under '.filesize_formatted($upload_allowed_file_size);
-    echo '<div id="reply"><p class="warning"><strong>Uploads must be under '.filesize_formatted($upload_allowed_file_size).'</strong></p><p class="warning">Please fill out the form again.</p></div>';
+	echo '<div id="reply"><p class="warning"><strong>Uploads must be under '.filesize_formatted($upload_allowed_file_size).'</strong></p><p class="warning">Please fill out the form again.</p></div>';
 }
 
 /* First upload check */

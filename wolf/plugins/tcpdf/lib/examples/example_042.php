@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_042.php
-// Begin       : 2008-12-23
+// Begin	   : 2008-12-23
 // Last Update : 2013-05-14
 //
 // Description : Example 042 for TCPDF class
-//               Test Image with alpha channel
+//			   Test Image with alpha channel
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

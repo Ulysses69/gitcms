@@ -49,14 +49,14 @@ Behavior::add('Banner', '');
 		//echo $bannerimages."\n";
 	
 		if (stristr($servpath, '/')){
-	    	$strike = '/';
-	    	$bannerpath = $bannerimages;
-	    	$servpath = str_replace('/wolf/plugins/banner5','',$servpath);
-	    } else {
-	    	$strike = '\\';
-	    	$bannerpath = str_replace('/','\\',$bannerimages);
-	    	$servpath = str_replace('\wolf\plugins\banner5','',$servpath);
-	    }
+			$strike = '/';
+			$bannerpath = $bannerimages;
+			$servpath = str_replace('/wolf/plugins/banner5','',$servpath);
+		} else {
+			$strike = '\\';
+			$bannerpath = str_replace('/','\\',$bannerimages);
+			$servpath = str_replace('\wolf\plugins\banner5','',$servpath);
+		}
 	
 		if($pref_controls == 'false'){ $pref_controls							= 'showControls="'.$pref_controls.'" ';} else { $pref_controls = ''; }
 		if($pref_random == 'true'){ $pref_random								= 'randomizeImages="'.$pref_random.'" ';} else { $pref_random = ''; }

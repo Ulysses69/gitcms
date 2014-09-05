@@ -6,24 +6,24 @@
 
 <style>
   body {
-    font-family: sans-serif;
-    font-size: 11px;
+	font-family: sans-serif;
+	font-size: 11px;
   }
   div.transformed {
-    border: 1px solid red;
-    -webkit-transform-origin: 50% 50%;
-    -moz-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
+	border: 1px solid red;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
   }
   div.transformed:after {
-    content: attr(style);
+	content: attr(style);
   }
   
   div.grid {
-    border: 1px dotted grey;
-    margin: 0;
-    padding: 1em;
-    margin-bottom: -1px;
+	border: 1px dotted grey;
+	margin: 0;
+	padding: 1em;
+	margin-bottom: -1px;
   }
 </style>
 
@@ -37,18 +37,18 @@
   if (!document.documentMode || document.documentMode < 9)
   
   window.onload = function(){
-    var nodes = document.querySelectorAll("*[style]");
-    
-    for (var i = 0; i < nodes.length; i++) {
-      var style = nodes[i].getAttribute("style");
-      var trans = /-ms-transform\s*:\s*([^;]+)/i.exec(style);
-      
-      try {
-        if (trans && trans[1] !== "none") {
-          cssSandpaper.setTransform(nodes[i], trans[1]);
-        }
-      } catch(e) {}
-    }
+	var nodes = document.querySelectorAll("*[style]");
+	
+	for (var i = 0; i < nodes.length; i++) {
+	  var style = nodes[i].getAttribute("style");
+	  var trans = /-ms-transform\s*:\s*([^;]+)/i.exec(style);
+	  
+	  try {
+		if (trans && trans[1] !== "none") {
+		  cssSandpaper.setTransform(nodes[i], trans[1]);
+		}
+	  } catch(e) {}
+	}
   }
 </script>
 <![endif]-->

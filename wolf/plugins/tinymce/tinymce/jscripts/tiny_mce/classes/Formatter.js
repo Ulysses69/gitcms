@@ -17,8 +17,8 @@
 	 * @class tinymce.Formatter
 	 * @example
 	 *  tinymce.activeEditor.formatter.register('mycustomformat', {
-	 *    inline : 'span',
-	 *    styles : {color : '#ff0000'}
+	 *	inline : 'span',
+	 *	styles : {color : '#ff0000'}
 	 *  });
 	 *
 	 *  tinymce.activeEditor.formatter.apply('mycustomformat');

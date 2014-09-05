@@ -4,8 +4,8 @@ The Events plugin provides a backend interface to manage events and an API
 to use event data on the front end.
 
 Dependencies:
-    - Wolf CMS 0.6.0+
-    - PHP 5.2 or higher
+	- Wolf CMS 0.6.0+
+	- PHP 5.2 or higher
 	- MySQL (SQLite not supported)
 
 If you wish to use Frog CMS 0.9.5 instead of Wolf CMS, you will need to apply

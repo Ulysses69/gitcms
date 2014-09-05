@@ -13,12 +13,12 @@
 
 if (!defined('TOKEN_VERSION')) { define('TOKEN_VERSION', '0.2'); }
 Plugin::setInfos(array(
-    'id'          => 'token',
-    'title'       => 'Token',
-    'description' => 'Use placeholders to insert text such as [email].',
-    'version'     => TOKEN_VERSION,
-   	'license'     => 'MIT',
-	'author'      => 'Steven Henderson'
+	'id'		  => 'token',
+	'title'	   => 'Token',
+	'description' => 'Use placeholders to insert text such as [email].',
+	'version'	 => TOKEN_VERSION,
+   	'license'	 => 'MIT',
+	'author'	  => 'Steven Henderson'
 ));
 
 //Behavior::add('page_not_found', '');

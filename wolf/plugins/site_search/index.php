@@ -29,15 +29,15 @@ if (!defined('IN_CMS')) { exit(); }
 define('SEARCH_ROOT', URI_PUBLIC.'wolf/plugins/site_search');
 
 Plugin::setInfos(array(
-    'id'          => 'site_search',
-    'title'       => __('Site search'),
-    'description' => __('Provides a basic search function with boolean support'),
-    'version'     => '1.0.0',
-   	'license'     => 'GPL',
-	'author'      => 'Tina Keil',
-    'website'     => 'http://www.geovoyagers.de/',
-    'update_url'  => 'http://www.tk-doku.de/wolf/plugin-versions.xml',
-    'require_wolf_version' => '0.6.0'
+	'id'		  => 'site_search',
+	'title'	   => __('Site search'),
+	'description' => __('Provides a basic search function with boolean support'),
+	'version'	 => '1.0.0',
+   	'license'	 => 'GPL',
+	'author'	  => 'Tina Keil',
+	'website'	 => 'http://www.geovoyagers.de/',
+	'update_url'  => 'http://www.tk-doku.de/wolf/plugin-versions.xml',
+	'require_wolf_version' => '0.6.0'
 ));
 
 // Add the plugin's tab and controller
@@ -50,7 +50,7 @@ function site_search_truncate($text='', $length, $suffix ='&hellip;', $break=' '
   if (strlen($text) <= $length) return trim($text);
   // is $break present between $limit and the end of the string? 
   if(false !== ($breakpoint = strpos($text, $break, $length))) { 
-    if($breakpoint < strlen($text) - 1) { 
+	if($breakpoint < strlen($text) - 1) { 
 	  $trimmed = substr($text, 0, $breakpoint) . ' ' . $suffix; 
 	} 
   } 
@@ -64,8 +64,8 @@ function site_search($search_query='') {
 	global $__CMS_CONN__;
 	
 	//Get settings
-    $min_wordlength = (int) Plugin::getSetting('min_wordlength', 'site_search');
-    $max_terms_allowed = (int) Plugin::getSetting('max_terms_allowed', 'site_search');
+	$min_wordlength = (int) Plugin::getSetting('min_wordlength', 'site_search');
+	$max_terms_allowed = (int) Plugin::getSetting('max_terms_allowed', 'site_search');
 	$title_weight = (int) Plugin::getSetting('title_weight', 'site_search');
 	$meta_weight = (int) Plugin::getSetting('meta_weight', 'site_search');
 	$short_desc_length = (int) Plugin::getSetting('short_desc_length', 'site_search');
@@ -89,7 +89,7 @@ function site_search($search_query='') {
 	$uni_search_query = utf8_decode($search_query);
 	//only allow normal charset plus some additonal special chars
 	$allowed_extra_chars = 'ÀÁÂÃÄÅÆàáâãäåæÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñÞßÿý+-';
-    
+	
 	//sanitize input $_POST['search']
 	if (strlen($search_query) >= $min_wordlength &&  preg_match('#^[a-zA-Z0-9\x20'.$allowed_extra_chars.']+$#i', $uni_search_query)) {
 		$searchfor = trim($search_query);
@@ -111,7 +111,7 @@ function site_search($search_query='') {
 		
 		if ($count_terms > 1) {
 
-		    //we have more than one word to search for (allow only limited separate terms)!!
+			//we have more than one word to search for (allow only limited separate terms)!!
 			if ($count_terms > $max_terms_allowed) { $count_terms = $max_terms_allowed; }
 			for ($i = 0; $i < $count_terms; $i++) {
 
@@ -145,7 +145,7 @@ function site_search($search_query='') {
 			
 		} else {
 			$searchfor_new = $searchfor;
-		    //ok, we only have one search word
+			//ok, we only have one search word
 			$sql_terms = "(content.content LIKE '%".$searchfor."%'
 						  OR meta.title LIKE '%".$searchfor."%'
 						  OR meta.description LIKE '%".$searchfor."%'

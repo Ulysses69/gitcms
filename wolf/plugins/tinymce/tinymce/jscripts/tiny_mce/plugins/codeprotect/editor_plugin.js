@@ -20,21 +20,21 @@
 		 * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
-        init : function(ed, url) {
+		init : function(ed, url) {
 
-            ed.onBeforeSetContent.add(function(ed, o) {
+			ed.onBeforeSetContent.add(function(ed, o) {
 
-            	var startPos = 0;
-            	var endPos = 0;
+				var startPos = 0;
+				var endPos = 0;
 
-            	var startTag = "<?";
-            	var endTag = "?>";
-            	var running = true;
+				var startTag = "<?";
+				var endTag = "?>";
+				var running = true;
 
-            	// This section encodes all your php code, so things like:
-            	//		echo "<td nowrap>";
-            	// don't get encoded into:
-            	//		echo "<td nowrap="nowrap">";
+				// This section encodes all your php code, so things like:
+				//		echo "<td nowrap>";
+				// don't get encoded into:
+				//		echo "<td nowrap="nowrap">";
 
 				while((running == true) && (o.content.indexOf(startTag) != -1)){
 					startPos = o.content.indexOf(startTag);
@@ -67,17 +67,17 @@
 				o.content = o.content.replace(/&quot;/gi, '"');
 				//End Fixes URL Encoding---
 
-            });
+			});
 
-            ed.onPostProcess.add(function(ed, o) {
-                if (o.get) {
+			ed.onPostProcess.add(function(ed, o) {
+				if (o.get) {
 
-                	var startPos = 0;
-	            	var endPos = 0;
+					var startPos = 0;
+					var endPos = 0;
 
-	            	var startTag = "<span style=\"color: red; font-weight: bold;\">[CODE]<!--CODE";
-	            	var endTag = "CODE--></span>";
-	            	var running = true;
+					var startTag = "<span style=\"color: red; font-weight: bold;\">[CODE]<!--CODE";
+					var endTag = "CODE--></span>";
+					var running = true;
 
 					while((running == true) && (o.content.indexOf(startTag) != -1)){
 						startPos = o.content.indexOf(startTag);
@@ -102,10 +102,10 @@
 					o.content = o.content.replace(/&quot;/gi, '"');
 					//End Fixes URL Encoding---
 
-                }
-            });
+				}
+			});
 
-        },
+		},
 
 		/**
 		 * Returns information about the plugin as a name/value array.

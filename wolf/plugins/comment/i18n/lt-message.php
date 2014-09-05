@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Lithuanian file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>
-     * @version Wolf 0.7.0
-     */
+	/**
+	 * Lithuanian file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>
+	 * @version Wolf 0.7.0
+	 */
 
-    return array(
-    'A comment was added.' => 'Komentaras buvo pridėtas',
+	return array(
+	'A comment was added.' => 'Komentaras buvo pridėtas',
 	'Approve' => 'Patvirtinti',
 	'Are you sure you wish to delete it?' => 'Ar jūs tikrai norite tai ištrinti?',
 	'Auto approve' => 'Automatiškai patvirtinti',
@@ -65,4 +65,4 @@
 	'comment not found!' => 'komentaras nerastas!',
 	'none' => 'nieko',
 	'or' => 'arba',
-    );
+	);

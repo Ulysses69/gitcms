@@ -17,7 +17,7 @@
 if (!defined('IN_CMS')) { exit(); }
 
 // Connect
-$PDO    = Record::getConnection();
+$PDO	= Record::getConnection();
 $driver = strtolower($PDO->getAttribute(Record::ATTR_DRIVER_NAME));
 
 $sql_create = '';
@@ -25,29 +25,29 @@ $sql_create = '';
 //Create Tables
 if ($driver == 'mysql')
 {
-    $sql_create = "CREATE TABLE ".TABLE_PREFIX."notes (
-        id INT(3) unsigned NOT NULL AUTO_INCREMENT,
-        title VARCHAR(50),
-        filter_id VARCHAR(25),
-        content TEXT,
-        content_html TEXT,
-        created_on DATE,
-        updated_on DATE,
-        PRIMARY KEY  (id)
-    ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+	$sql_create = "CREATE TABLE ".TABLE_PREFIX."notes (
+		id INT(3) unsigned NOT NULL AUTO_INCREMENT,
+		title VARCHAR(50),
+		filter_id VARCHAR(25),
+		content TEXT,
+		content_html TEXT,
+		created_on DATE,
+		updated_on DATE,
+		PRIMARY KEY  (id)
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8";
 
    }
 elseif ($driver=='sqlite')
 {
-    $sql_create = "CREATE TABLE ".TABLE_PREFIX."notes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT,
-        filter_id TEXT,
-        content TEXT,
-        content_html TEXT,
-        created_on DATE,
-        updated_on DATE
-    )";
+	$sql_create = "CREATE TABLE ".TABLE_PREFIX."notes (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		title TEXT,
+		filter_id TEXT,
+		content TEXT,
+		content_html TEXT,
+		created_on DATE,
+		updated_on DATE
+	)";
 
 }
 

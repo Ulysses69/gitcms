@@ -288,12 +288,12 @@
 		 * @example
 		 * // Iterate an array
 		 * tinymce.each([1,2,3], function(v, i) {
-		 *     console.debug("Value: " + v + ", Index: " + i);
+		 *	 console.debug("Value: " + v + ", Index: " + i);
 		 * });
 		 * 
 		 * // Iterate an object
 		 * tinymce.each({a : 1, b : 2, c: 3], function(v, k) {
-		 *     console.debug("Value: " + v + ", Key: " + k);
+		 *	 console.debug("Value: " + v + ", Key: " + k);
 		 * });
 		 */
 		each : function(o, cb, s) {
@@ -401,8 +401,8 @@
 		 * @example
 		 * // Extends obj1 with two new fields
 		 * var obj = tinymce.extend(obj1, {
-		 *     somefield1 : 'a',
-		 *     somefield2 : 'a'
+		 *	 somefield1 : 'a',
+		 *	 somefield2 : 'a'
 		 * });
 		 * 
 		 * // Extends obj with obj2 and obj3
@@ -447,39 +447,39 @@
 		 * @example
 		 * // Creates a basic class
 		 * tinymce.create('tinymce.somepackage.SomeClass', {
-		 *     SomeClass : function() {
-		 *         // Class constructor
-		 *     },
+		 *	 SomeClass : function() {
+		 *		 // Class constructor
+		 *	 },
 		 * 
-		 *     method : function() {
-		 *         // Some method
-		 *     }
+		 *	 method : function() {
+		 *		 // Some method
+		 *	 }
 		 * });
 		 *
 		 * // Creates a basic subclass class
 		 * tinymce.create('tinymce.somepackage.SomeSubClass:tinymce.somepackage.SomeClass', {
-		 *     SomeSubClass: function() {
-		 *         // Class constructor
-		 *         this.parent(); // Call parent constructor
-		 *     },
+		 *	 SomeSubClass: function() {
+		 *		 // Class constructor
+		 *		 this.parent(); // Call parent constructor
+		 *	 },
 		 * 
-		 *     method : function() {
-		 *         // Some method
-		 *         this.parent(); // Call parent method
-		 *     },
+		 *	 method : function() {
+		 *		 // Some method
+		 *		 this.parent(); // Call parent method
+		 *	 },
 		 * 
-		 *     'static' : {
-		 *         staticMethod : function() {
-		 *             // Static method
-		 *         }
-		 *     }
+		 *	 'static' : {
+		 *		 staticMethod : function() {
+		 *			 // Static method
+		 *		 }
+		 *	 }
 		 * });
 		 *
 		 * // Creates a singleton/static class
 		 * tinymce.create('static tinymce.somepackage.SomeSingletonClass', {
-		 *     method : function() {
-		 *         // Some method
-		 *     }
+		 *	 method : function() {
+		 *		 // Some method
+		 *	 }
 		 * });
 		 */
 		create : function(s, p, root) {
@@ -604,9 +604,9 @@
 		 *
 		 * // Add a singleton
 		 * var tinymce.somepackage.subpackage.SomeSingleton = {
-		 *     method : function() {
-		 *         // Some method
-		 *     }
+		 *	 method : function() {
+		 *		 // Some method
+		 *	 }
 		 * };
 		 */
 		createNS : function(n, o) {
@@ -665,8 +665,8 @@
 		 * @example
 		 * // Fixes a leak with a DOM element that was palces in the someObject
 		 * tinymce.addUnload(function() {
-		 *     // Null DOM element to reduce IE memory leak
-		 *     someObject.someElement = null;
+		 *	 // Null DOM element to reduce IE memory leak
+		 *	 someObject.someElement = null;
 		 * });
 		 */
 		addUnload : function(f, s) {

@@ -15,9 +15,9 @@ This plugin currently has no features
   the plugin.
 
 * Did you know you can have the controller make a visible tab (or not)? Change
-    Plugin::addController('googlemap', 'Google Map', 'administrator', false);
+	Plugin::addController('googlemap', 'Google Map', 'administrator', false);
   to
-    Plugin::addController('googlemap', 'Google Map', 'administrator', true);
+	Plugin::addController('googlemap', 'Google Map', 'administrator', true);
   to have the plugin controller create a tab.
 
 == LICENSE ==

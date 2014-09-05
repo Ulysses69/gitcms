@@ -465,7 +465,7 @@ if (Plugin::isEnabled('googlemap')) {
 				$page = str_replace("<<script", "<script", $page);
 			}
 	
-	        echo $page;
+			echo $page;
 	
 			exit();
 		}

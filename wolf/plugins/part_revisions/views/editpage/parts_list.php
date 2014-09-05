@@ -33,11 +33,11 @@ if (isset($part_name_to_show) && $part_name_to_show!=='') {
 		if ($partIsDeleted) {$delClass = ' deleted';} else {$delClass = '';}
 		echo '<tr class="' .  even_odd() . $delClass . '">';
 		echo '<td class="name">' . $partRevision->name . '</td>' . 
-		     '<td class="updated_by">' . $partRevision->updated_by_name . '</td>' . 
-		     '<td class="size">' . $partRevision->size . '</td>' .
-		     '<td class="filter">' . $partRevision->filter_id . '</td>' .
-		     '<td class="date"><div class="daterelative">' . DateDifference::getString(new DateTime($partRevision->updated_on)) .'</div><div class="dateabsolute">' . $partRevision->updated_on . '</div></td>' . 
-		     '<td class="actions">' . // actions below
+			 '<td class="updated_by">' . $partRevision->updated_by_name . '</td>' . 
+			 '<td class="size">' . $partRevision->size . '</td>' .
+			 '<td class="filter">' . $partRevision->filter_id . '</td>' .
+			 '<td class="date"><div class="daterelative">' . DateDifference::getString(new DateTime($partRevision->updated_on)) .'</div><div class="dateabsolute">' . $partRevision->updated_on . '</div></td>' . 
+			 '<td class="actions">' . // actions below
 			'<div class="actions_wrapper">' . 
 			'<a href="#" class="preview_revision" rel="'.(int)$partRevision->id.'"><img src="' . PLUGINS_URI.'part_revisions/icons/magnifier-zoom.png' . '" alt="'.__('preview revision'). '" title="'.__('preview this revision').'"></a> ';
 			if (! $partIsDeleted) { // show diff button for existing parts
@@ -49,7 +49,7 @@ if (isset($part_name_to_show) && $part_name_to_show!=='') {
 				echo	'<a href="' . get_url('plugin/part_revisions/deleteolder') . '/' . (int)$partRevision->id . '/' . (int)$page_id . '"><img src="' . PLUGINS_URI.'part_revisions/icons/deleteolder-16.png' . '" alt="'.__('delete all OLDER revisions'). '" title="'.__('delete all OLDER revisions').'"></a> ';
 			}
 		echo 	'</div>' .		  
-		     '</td>'; 
+			 '</td>'; 
 		echo '</tr>';
 	}
 	} else {

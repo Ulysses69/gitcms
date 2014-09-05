@@ -3,27 +3,27 @@
 if (!defined('IN_CMS')) { exit(); }
 
 Plugin::setInfos(array(
-    'id'          			=> 'layout_switch',
-    'title'       			=> __('Layout Switch'),
-    'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-    'version'     			=> '6.0.1',
-    'license'     			=> 'GPL',
-    'require_wolf_version' 		=> '0.5.5'
+	'id'		  			=> 'layout_switch',
+	'title'	   			=> __('Layout Switch'),
+	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
+	'version'	 			=> '6.0.1',
+	'license'	 			=> 'GPL',
+	'require_wolf_version' 		=> '0.5.5'
 ));
 
 Observer::observe('page_found', 'layout_switch_check');
 Behavior::add('LayoutSwitch', '');
 function sanitize_output($page){
 	$search = array(
-        '/\>[^\S ]+/s', // Strip whitespaces after tags, except space
-        '/[^\S ]+\</s', // Strip whitespaces before tags, except space
-        '/(\s)+/s'  // Shorten multiple whitespace sequences
-        );
+		'/\>[^\S ]+/s', // Strip whitespaces after tags, except space
+		'/[^\S ]+\</s', // Strip whitespaces before tags, except space
+		'/(\s)+/s'  // Shorten multiple whitespace sequences
+		);
 	$replace = array(
-        '>',
-        '<',
-        '\\1'
-        );
+		'>',
+		'<',
+		'\\1'
+		);
 	$page = preg_replace($search, $replace, $page);
 	return $page;
 }
@@ -88,8 +88,8 @@ function mobiledevice(){
 		$browseragent = 'windows';
 
 	if(isset($_SERVER['HTTP_USER_AGENT']) && strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone') !== false)
-        $mobile_browser++;
-        $browseragent = 'windows phone';
+		$mobile_browser++;
+		$browseragent = 'windows phone';
 
 	if(!defined('BROWSERAGENT')) define('BROWSERAGENT', $browseragent);
 	if($mobile_browser > 0 && $_SESSION['mobilemode'] != 'set'){

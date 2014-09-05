@@ -148,8 +148,8 @@ class mbPager
 			$page = $this->page-1;
 			$item = $this->itemTpl;
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array('page page_prev',$this->prepend.$page.$this->append, '&lt;'),
-							    $item);
+								array('page page_prev',$this->prepend.$page.$this->append, '&lt;'),
+								$item);
 			$this->pagination['prevLink'] = $item;
 		}
 	}
@@ -167,8 +167,8 @@ class mbPager
 			$page = 1;			
 			$item = $this->itemTpl;
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array('page page_first',$this->prepend.$page.$this->append, '&lt;&lt;'),
-							    $item);							
+								array('page page_first',$this->prepend.$page.$this->append, '&lt;&lt;'),
+								$item);							
 			$this->pagination['firstLink'] = $item;				
 		}
 	}
@@ -186,8 +186,8 @@ class mbPager
 			$page = $this->page+1;				
 			$item = $this->itemTpl;
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array('page page_next',$this->prepend.$page.$this->append, '&gt;'),
-							    $item);							
+								array('page page_next',$this->prepend.$page.$this->append, '&gt;'),
+								$item);							
 			$this->pagination['nextLink'] = $item;
 		}
 	}
@@ -205,8 +205,8 @@ class mbPager
 			$page = $this->numofpages;
 			$item = $this->itemTpl;
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array('page page_last',$this->prepend.$page.$this->append, '&gt;&gt;'),
-							    $item);						
+								array('page page_last',$this->prepend.$page.$this->append, '&gt;&gt;'),
+								$item);						
 			$this->pagination['lastLink'] = $item;	
 		}
 	}
@@ -232,8 +232,8 @@ class mbPager
 				$styleclass = 'page';
 			}
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array($styleclass, $this->prepend.$page.$this->append, $i),
-							    $item);	
+								array($styleclass, $this->prepend.$page.$this->append, $i),
+								$item);	
 			$pageLinks[$i] = $item;
 		}	
 	
@@ -250,8 +250,8 @@ class mbPager
 				$styleclass = 'page';
 			}
 			$item = str_replace(array('{pageclass}','{pagelink}', '{pagetext}'),
-							    array($styleclass, $this->prepend.$page.$this->append, $i),
-							    $item);					
+								array($styleclass, $this->prepend.$page.$this->append, $i),
+								$item);					
 			$pageLinks[$i] = $item;
 		}
 		ksort($pageLinks);

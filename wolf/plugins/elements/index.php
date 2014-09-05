@@ -1,9 +1,9 @@
 <?php
 Plugin::setInfos(array(
-    'id'          => 'elements',
-    'title'       => 'Elements',
-    'description' => 'Elements and attributes',
-    'version'     => '1.0.0')
+	'id'		  => 'elements',
+	'title'	   => 'Elements',
+	'description' => 'Elements and attributes',
+	'version'	 => '1.0.0')
 );
 
 /* Security measure */

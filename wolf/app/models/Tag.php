@@ -40,5 +40,5 @@
  * @since Wolf version 0.8.7
  */
 class Tag extends Record {
-    const TABLE_NAME = 'tag';
+	const TABLE_NAME = 'tag';
 }

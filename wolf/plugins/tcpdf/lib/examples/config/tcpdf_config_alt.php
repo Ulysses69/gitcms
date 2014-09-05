@@ -1,12 +1,12 @@
 <?php
 //============================================================+
 // File name   : tcpdf_config.php
-// Begin       : 2004-06-11
+// Begin	   : 2004-06-11
 // Last Update : 2013-05-16
 //
 // Description : Example of alternative configuration file for TCPDF.
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2004-2013  Nicola Asuni - Tecnick.com LTD
 //

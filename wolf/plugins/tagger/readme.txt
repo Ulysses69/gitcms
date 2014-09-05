@@ -66,7 +66,7 @@ Create a new page and add this code below inside it:
 $pages = $this->tagger->pagesByTag();
 if($pages){
 echo "<h3>Pages tagged with '".$this->tagger->tag()."'</h3>";
-      foreach($pages as $slug => $page)
+	  foreach($pages as $slug => $page)
 {
 		echo '<h3><a href="'.$slug.'">'.$page.'</a></h3>';
 	}

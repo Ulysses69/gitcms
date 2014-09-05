@@ -13,7 +13,7 @@
  * @package MCImageManager.Authenticators
  */
 class Moxiecode_ExternalAuthenticator extends Moxiecode_ManagerPlugin {
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 

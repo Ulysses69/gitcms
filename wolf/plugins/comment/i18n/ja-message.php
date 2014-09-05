@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Japanese file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Your Name <email@domain.something>
-     * @version Wolf 0.7.3
-     */
+	/**
+	 * Japanese file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Your Name <email@domain.something>
+	 * @version Wolf 0.7.3
+	 */
 
-    return array(
-    	'A comment was added.' => 'コメントが追加されました。',
+	return array(
+		'A comment was added.' => 'コメントが追加されました。',
 	'Approve' => '承認',
 	'Are you sure you wish to delete it?' => 'あなたはそれを削除してもよろしいですか？',
 	//'Auto approve' => '',
@@ -65,4 +65,4 @@
 	'comment not found!' => 'コメントが見つかりませんでした！',
 	'none' => '無し',
 	//'or' => '',
-    );
+	);

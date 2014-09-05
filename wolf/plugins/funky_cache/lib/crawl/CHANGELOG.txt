@@ -6,9 +6,9 @@ Methods getCrawlerId(), enableResumption() and resume() added.
 
 * Fixed bug 3530805: Links that are partially urlencoded and partially not get rebuild/encoded
 correctly now.
-    
+	
 * Fixed bug 3526202: Removed a unnecessary debug var_dump() from PHPCrawlerRobotsTxtParser.class.php
-    
+	
 * Fixed bug 3533872: Server-name-indication in TLS/SSL works correctly now.
 
 * Fixed bug 3533877: "base-href"-tags in websites get interpreted correctly now again.
@@ -123,7 +123,7 @@ handlePageData() never contained a linktext.
 
 Version 0.71
 2011/06/30
-    
+	
 * Bugfix: Empty links found in documents (like <a href="">) are rebuild correctly now 
 so that they lead to the same document they were found in.
 
@@ -161,7 +161,7 @@ was a little to low.
 
 * Fixed some minor-bugs ih the test-interface and updated the containing example-setup (since
 the old one didn't work anymore because of site-changes over at php.net)
-    
+	
 
 Version 0.70
 2007/01/05 

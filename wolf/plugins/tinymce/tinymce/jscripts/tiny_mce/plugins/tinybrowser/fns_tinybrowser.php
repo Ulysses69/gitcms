@@ -2,7 +2,7 @@
 // *************************CREATE FOLDER**********************************
 function createfolder($dir,$perm) {
 is_dir(dirname($dir)) || createfolder(dirname($dir), $perm);
-    return is_dir($dir) || @mkdir($dir, $perm);
+	return is_dir($dir) || @mkdir($dir, $perm);
 }
 
 // *************************VALIDATE FILE EXTENSIONS**********************************
@@ -216,130 +216,130 @@ function truncate_text($textstring,$length){
 /**
  * Present a size (in bytes) as a human-readable value
  * 
- * @param int    $size        size (in bytes)
- * @param int    $precision    number of digits after the decimal point
+ * @param int	$size		size (in bytes)
+ * @param int	$precision	number of digits after the decimal point
  * @return string
  */
 function bytestostring($size, $precision = 0) {
-    $sizes = array('YB', 'ZB', 'EB', 'PB', 'TB', 'GB', 'MB', 'KB', 'B');
-    $total = count($sizes);
+	$sizes = array('YB', 'ZB', 'EB', 'PB', 'TB', 'GB', 'MB', 'KB', 'B');
+	$total = count($sizes);
 
-    while($total-- && $size > 1024) $size /= 1024;
-    return round($size, $precision).' '.$sizes[$total];
+	while($total-- && $size > 1024) $size /= 1024;
+	return round($size, $precision).' '.$sizes[$total];
 }
 
 //function to clean a filename string so it is a valid filename
 function clean_filename($filename){
-    $filename = preg_replace('/^\W+|\W+$/', '', $filename); // remove all non-alphanumeric chars at begin & end of string
-    $filename = preg_replace('/\s+/', '_', $filename); // compress internal whitespace and replace with _
-    return strtolower(preg_replace('/\W-/', '', $filename)); // remove all non-alphanumeric chars except _ and -
+	$filename = preg_replace('/^\W+|\W+$/', '', $filename); // remove all non-alphanumeric chars at begin & end of string
+	$filename = preg_replace('/\s+/', '_', $filename); // compress internal whitespace and replace with _
+	return strtolower(preg_replace('/\W-/', '', $filename)); // remove all non-alphanumeric chars except _ and -
 
 }
 
 //********************************Return File MIME Type***************************
 function returnMIMEType($filename)
-    {
-        preg_match("|\.([a-z0-9]{2,4})$|i", $filename, $fileSuffix);
+	{
+		preg_match("|\.([a-z0-9]{2,4})$|i", $filename, $fileSuffix);
 
-        switch(strtolower($fileSuffix[1]))
-        {
-            case 'js' :
-                return 'application/x-javascript';
+		switch(strtolower($fileSuffix[1]))
+		{
+			case 'js' :
+				return 'application/x-javascript';
 
-            case 'json' :
-                return 'application/json';
+			case 'json' :
+				return 'application/json';
 
-            case 'jpg' :
-            case 'jpeg' :
-            case 'jpe' :
-                return 'image/jpg';
+			case 'jpg' :
+			case 'jpeg' :
+			case 'jpe' :
+				return 'image/jpg';
 
-            case 'png' :
-            case 'gif' :
-            case 'bmp' :
-            case 'tiff' :
-                return 'image/'.strtolower($fileSuffix[1]);
+			case 'png' :
+			case 'gif' :
+			case 'bmp' :
+			case 'tiff' :
+				return 'image/'.strtolower($fileSuffix[1]);
 
-            case 'css' :
-                return 'text/css';
+			case 'css' :
+				return 'text/css';
 
-            case 'xml' :
-                return 'application/xml';
+			case 'xml' :
+				return 'application/xml';
 
-            case 'doc' :
-            case 'docx' :
-                return 'application/msword';
+			case 'doc' :
+			case 'docx' :
+				return 'application/msword';
 
-            case 'xls' :
-            case 'xlt' :
-            case 'xlm' :
-            case 'xld' :
-            case 'xla' :
-            case 'xlc' :
-            case 'xlw' :
-            case 'xll' :
-                return 'application/vnd.ms-excel';
+			case 'xls' :
+			case 'xlt' :
+			case 'xlm' :
+			case 'xld' :
+			case 'xla' :
+			case 'xlc' :
+			case 'xlw' :
+			case 'xll' :
+				return 'application/vnd.ms-excel';
 
-            case 'ppt' :
-            case 'pps' :
-                return 'application/vnd.ms-powerpoint';
+			case 'ppt' :
+			case 'pps' :
+				return 'application/vnd.ms-powerpoint';
 
-            case 'rtf' :
-                return 'application/rtf';
+			case 'rtf' :
+				return 'application/rtf';
 
-            case 'pdf' :
-                return 'application/pdf';
+			case 'pdf' :
+				return 'application/pdf';
 
-            case 'html' :
-            case 'htm' :
-            case 'php' :
-                return 'text/html';
+			case 'html' :
+			case 'htm' :
+			case 'php' :
+				return 'text/html';
 
-            case 'txt' :
-                return 'text/plain';
+			case 'txt' :
+				return 'text/plain';
 
-            case 'mpeg' :
-            case 'mpg' :
-            case 'mpe' :
-                return 'video/mpeg';
+			case 'mpeg' :
+			case 'mpg' :
+			case 'mpe' :
+				return 'video/mpeg';
 
-            case 'mp3' :
-                return 'audio/mpeg3';
+			case 'mp3' :
+				return 'audio/mpeg3';
 
-            case 'wav' :
-                return 'audio/wav';
+			case 'wav' :
+				return 'audio/wav';
 
-            case 'aiff' :
-            case 'aif' :
-                return 'audio/aiff';
+			case 'aiff' :
+			case 'aif' :
+				return 'audio/aiff';
 
-            case 'avi' :
-                return 'video/msvideo';
+			case 'avi' :
+				return 'video/msvideo';
 
-            case 'wmv' :
-                return 'video/x-ms-wmv';
+			case 'wmv' :
+				return 'video/x-ms-wmv';
 
-            case 'mov' :
-                return 'video/quicktime';
+			case 'mov' :
+				return 'video/quicktime';
 
-            case 'zip' :
-                return 'application/zip';
+			case 'zip' :
+				return 'application/zip';
 
-            case 'tar' :
-                return 'application/x-tar';
+			case 'tar' :
+				return 'application/x-tar';
 
-            case 'swf' :
-                return 'application/x-shockwave-flash';
+			case 'swf' :
+				return 'application/x-shockwave-flash';
 
-            default :
-            if(function_exists('mime_content_type'))
-            {
-                $fileSuffix = mime_content_type($filename);
-            }
+			default :
+			if(function_exists('mime_content_type'))
+			{
+				$fileSuffix = mime_content_type($filename);
+			}
 
-            return 'unknown/' . trim($fileSuffix[0], '.');
-        }
-    }
+			return 'unknown/' . trim($fileSuffix[0], '.');
+		}
+	}
 
 // sql_regcase replacement
 function mb_sql_regcase($item,$encoding='auto'){
@@ -384,7 +384,7 @@ while (($dirname = readdir($dh)) !== false)
 			$filenum = $filenum + count(glob($root.$tree.$branch.$dirname.'/'.mb_sql_regcase($filetype),GLOB_NOSORT)); }
 		$indent = '';
 		for($i=0;$i<$level;$i++) { $indent .= ' &nbsp; '; }
-      if(strlen($indent)>0) $indent .= '&rarr; ';
+	  if(strlen($indent)>0) $indent .= '&rarr; ';
 		$alldirs[] = array(urlencode($branch.$dirname.'/'),$indent.$dirname.' ('.$filenum.')',$indent.$dirname,$dirname,$filenum,filemtime($root.$tree.$branch.$dirname));
 		dirtree($alldirs,$types,$root,$tree,$branch.$dirname.'/',$level);
 		}
@@ -396,43 +396,43 @@ $level--;
 /* user defined error handling function. */
 function userErrorHandler($errno, $errmsg, $filename, $linenum, $vars)
 {
-    // timestamp for the error entry.
-    $dt = date('Y-m-d H:i:s (T)');
+	// timestamp for the error entry.
+	$dt = date('Y-m-d H:i:s (T)');
 
-    // define an assoc array of error string
-    // in reality the only entries we should
-    // consider are E_WARNING, E_NOTICE, E_USER_ERROR,
-    // E_USER_WARNING and E_USER_NOTICE.
-    $errortype = array (
-                E_ERROR => 'Error',
-                E_WARNING => 'Warning',
-                E_PARSE => 'Parsing Error',
-                E_NOTICE => 'Notice',
-                E_CORE_ERROR => 'Core Error',
-                E_CORE_WARNING => 'Core Warning',
-                E_COMPILE_ERROR => 'Compile Error',
-                E_COMPILE_WARNING => 'Compile Warning',
-                E_USER_ERROR => 'User Error',
-                E_USER_WARNING => 'User Warning',
-                E_USER_NOTICE => 'User Notice',
-                E_STRICT => 'Runtime Notice'
-                );
-    // set of errors for which a var trace will be saved.
-    $user_errors = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE);
+	// define an assoc array of error string
+	// in reality the only entries we should
+	// consider are E_WARNING, E_NOTICE, E_USER_ERROR,
+	// E_USER_WARNING and E_USER_NOTICE.
+	$errortype = array (
+				E_ERROR => 'Error',
+				E_WARNING => 'Warning',
+				E_PARSE => 'Parsing Error',
+				E_NOTICE => 'Notice',
+				E_CORE_ERROR => 'Core Error',
+				E_CORE_WARNING => 'Core Warning',
+				E_COMPILE_ERROR => 'Compile Error',
+				E_COMPILE_WARNING => 'Compile Warning',
+				E_USER_ERROR => 'User Error',
+				E_USER_WARNING => 'User Warning',
+				E_USER_NOTICE => 'User Notice',
+				E_STRICT => 'Runtime Notice'
+				);
+	// set of errors for which a var trace will be saved.
+	$user_errors = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE);
 
 	 if($errno != E_STRICT) // exclude Runtime Notices
 		{
 	 	$err  = $dt. "\t";
-    	$err .= $errno.' '.$errortype[$errno]. "\t";
-    	$err .= $errmsg. "\t";
-    	$err .= 'File: '.basename($filename). "\t";
-    	$err .= 'Line: '.$linenum. "\t";
+		$err .= $errno.' '.$errortype[$errno]. "\t";
+		$err .= $errmsg. "\t";
+		$err .= 'File: '.basename($filename). "\t";
+		$err .= 'Line: '.$linenum. "\t";
 
-    	if (in_array($errno, $user_errors))
+		if (in_array($errno, $user_errors))
 			{
-        	$err .= 'Trace: '.wddx_serialize_value($vars, 'Variables'). "\t";
-    		}
-    	$err .= "\n";
+			$err .= 'Trace: '.wddx_serialize_value($vars, 'Variables'). "\t";
+			}
+		$err .= "\n";
 
 	   // save to the error log file, and e-mail me if there is a critical user error.
 	   error_log($err, 3, 'error.log');

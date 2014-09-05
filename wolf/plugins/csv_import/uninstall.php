@@ -14,13 +14,13 @@
 
 /* Security measure */
 if ( !defined( 'IN_CMS' ) ) {
-    exit();
+	exit();
 }
 
 if ( Plugin::deleteAllSettings( 'csv_import' ) ) {
-    Flash::set( 'success', __( 'Plugin settings deleted!' ) );
+	Flash::set( 'success', __( 'Plugin settings deleted!' ) );
 } else {
-    Flash::set( 'error', __( 'Error deleting plugin settings!' ) );
+	Flash::set( 'error', __( 'Error deleting plugin settings!' ) );
 }
 
 exit();

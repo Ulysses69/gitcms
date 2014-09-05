@@ -29,7 +29,7 @@ $check_registered_users_temp->execute();
 $check_registered_users_temp = $check_registered_users_temp->rowCount();
 
 if ($check_registered_users_temp == 0) {
-    $create_temp_users = '
+	$create_temp_users = '
 		CREATE TABLE `'.TABLE_PREFIX.'registered_users_temp` (
 		`id` int(11) unsigned NOT NULL auto_increment,
 		`name` varchar(100) default NULL,
@@ -41,8 +41,8 @@ if ($check_registered_users_temp == 0) {
 		PRIMARY KEY  (`id`),
 		UNIQUE KEY `username` (`username`)
 		) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
-    $stmt = $__CMS_CONN__->prepare($create_temp_users);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($create_temp_users);
+	$stmt->execute();
 }
 
 
@@ -54,13 +54,13 @@ $check_permission_page->execute();
 $check_permission_page = $check_permission_page->rowCount();
 
 if ($check_permission_page == 0) {
-    $create_page_permissions = '
+	$create_page_permissions = '
 		CREATE TABLE `'.TABLE_PREFIX.'permission_page` (
 		`page_id` int(25) default NULL,
 		`permission_id` int(25) default NULL
 		) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
-    $stmt = $__CMS_CONN__->prepare($create_page_permissions);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($create_page_permissions);
+	$stmt->execute();
 }
 
 
@@ -72,7 +72,7 @@ $check_registration_settings->execute();
 $check_registration_settings = $check_registration_settings->rowCount();
 
 if ($check_registration_settings == 0) {
-    $create_settings = 'CREATE TABLE `'.TABLE_PREFIX.'registered_users_settings` (
+	$create_settings = 'CREATE TABLE `'.TABLE_PREFIX.'registered_users_settings` (
 		`id` int(1) default NULL,
 		`allow_registrations` int(1) default NULL,
 		`closed_message` varchar(1000) default NULL,
@@ -124,7 +124,7 @@ if ($check_registration_settings == 0) {
 
 	) ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
-    $settings_insert = "
+	$settings_insert = "
 	INSERT INTO `".TABLE_PREFIX."registered_users_settings` (
 		`id`,
 		`allow_registrations`,
@@ -226,12 +226,12 @@ if ($check_registration_settings == 0) {
 		'<p>Your Account has been activated!</p><p>You can now login using your username and the password you chose when you registered.</p>' );";
 
 
-    global $__CMS_CONN__;
+	global $__CMS_CONN__;
 
-    $stmt = $__CMS_CONN__->prepare($create_settings);
-    $stmt->execute();
-    $stmt = $__CMS_CONN__->prepare($settings_insert);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($create_settings);
+	$stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($settings_insert);
+	$stmt->execute();
 
 }
 ?>

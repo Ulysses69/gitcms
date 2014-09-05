@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_055.php
-// Begin       : 2009-10-21
+// Begin	   : 2009-10-21
 // Last Update : 2013-05-14
 //
 // Description : Example 055 for TCPDF class
-//               Display all characters available on core fonts.
+//			   Display all characters available on core fonts.
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

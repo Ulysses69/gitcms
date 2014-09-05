@@ -228,10 +228,10 @@ function referralForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$display
 					<input id="date_of_birth_dd" name="date_of_birth_dd" type="text" class="w2em" value="" maxlength="2" />
 
 					<label for="date_of_birth_mm" id="date_of_birth_mmonth">MM</label>
-		            <input id="date_of_birth_mm" name="date_of_birth_mm" type="text" class="w2em" value="" maxlength="2" />
+					<input id="date_of_birth_mm" name="date_of_birth_mm" type="text" class="w2em" value="" maxlength="2" />
 
-		            <label for="date_of_birth_yyyy" id="date_of_birth_year">YYYY</label>
-		            <input id="date_of_birth_yyyy" name="date_of_birth_yyyy" type="text" class="w4em highlight-days-67 range-low-2006-08-11 range-high-2009-09-13 disable-days-12 split-date" value="" maxlength="4" />
+					<label for="date_of_birth_yyyy" id="date_of_birth_year">YYYY</label>
+					<input id="date_of_birth_yyyy" name="date_of_birth_yyyy" type="text" class="w4em highlight-days-67 range-low-2006-08-11 range-high-2009-09-13 disable-days-12 split-date" value="" maxlength="4" />
 				</fieldset>
 				-->
 				</label>

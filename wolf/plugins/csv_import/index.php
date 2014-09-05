@@ -14,20 +14,20 @@
 
 /* Security measure */
 if ( !defined( 'IN_CMS' ) ) {
-    exit();
+	exit();
 }
 
 
 Plugin::setInfos( array(
-            'id'                   => 'csv_import',
-            'title'                => __( 'CSV Import' ),
-            'description'          => __( 'Import .csv, .tsv and .txt spreadsheet files into Wolf CMS pages and parts' ),
-            'version'              => '0.1.2',
-            'license'              => 'GPL',
-            'author'               => 'Marek Murawski',
-            'website'              => 'http://marekmurawski.pl/',
-            'update_url'           => 'http://marekmurawski.pl/static/wolfplugins/plugin-versions.xml',
-            'require_wolf_version' => '0.5.5' // 0.7.5SP-1 fix -> downgrading requirement to 0.7.3
+			'id'				   => 'csv_import',
+			'title'				=> __( 'CSV Import' ),
+			'description'		  => __( 'Import .csv, .tsv and .txt spreadsheet files into Wolf CMS pages and parts' ),
+			'version'			  => '0.1.2',
+			'license'			  => 'GPL',
+			'author'			   => 'Marek Murawski',
+			'website'			  => 'http://marekmurawski.pl/',
+			'update_url'		   => 'http://marekmurawski.pl/static/wolfplugins/plugin-versions.xml',
+			'require_wolf_version' => '0.5.5' // 0.7.5SP-1 fix -> downgrading requirement to 0.7.3
 ) );
 
 Plugin::addController( 'csv_import', __( 'CSV Import' ), 'admin_edit', true );

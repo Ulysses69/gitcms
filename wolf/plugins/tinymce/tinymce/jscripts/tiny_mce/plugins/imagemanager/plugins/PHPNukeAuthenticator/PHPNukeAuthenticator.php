@@ -20,7 +20,7 @@ chdir($mcOldCWD);
  * @package MCImageManager.Authenticators
  */
 class Moxiecode_PHPNukeAuthenticator extends Moxiecode_ManagerPlugin {
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 

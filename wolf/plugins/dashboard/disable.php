@@ -15,7 +15,7 @@
 
 /* Prevent direct access. */
 if (!defined("FRAMEWORK_STARTING_MICROTIME")) {
-    die("All your base are belong to us!");
+	die("All your base are belong to us!");
 }
 
 $PDO = Record::getConnection();

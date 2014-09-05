@@ -17,16 +17,16 @@
  * var t = $.template('<div id="foo">Hello ${name}, how are you ${question}?  I am ${me:substr(0,10)}</div>');
  *
  * $(selector).append( t , {
- *     name: 'Stan',
- *     question: 'feeling',
- *     me: 'doing quite well myself, thank you very much!'
+ *	 name: 'Stan',
+ *	 question: 'feeling',
+ *	 me: 'doing quite well myself, thank you very much!'
  * });
  *
  * Requires: jQuery 1.2+
  *
  *
- * @todo    Add callbacks to the DOM manipulation methods, so that events can be bound
- *          to template nodes after creation.
+ * @todo	Add callbacks to the DOM manipulation methods, so that events can be bound
+ *		  to template nodes after creation.
  */
 (function($){
 	
@@ -43,16 +43,16 @@
 	 * @param 	html 	The string of HTML to be used for the template.
 	 * @param 	options An object of configurable options.  Currently
 	 * 			you can toggle compile as a boolean value and set a custom
-	 *          template regular expression on the property regx by
-	 *          specifying the key of the regx to use from the regx object.
+	 *		  template regular expression on the property regx by
+	 *		  specifying the key of the regx to use from the regx object.
 	 */
 	$.template.instance = function(html, options) {
-        // If a custom regular expression has been set, grab it from the regx object
-        if ( options && options['regx'] ) options.regx = this.regx[ options.regx ];
+		// If a custom regular expression has been set, grab it from the regx object
+		if ( options && options['regx'] ) options.regx = this.regx[ options.regx ];
 
 		this.options = $.extend({
 			compile: 		false,
-			regx:           this.regx.standard
+			regx:		   this.regx.standard
 		}, options || {});
 
 		this.html = html;
@@ -72,16 +72,16 @@
 	 *
 	 * You can add your own regular expressions for variable ussage by doing.
 	 * $.extend({ $.template.re , {
-	 *     myvartype: /...../g
+	 *	 myvartype: /...../g
 	 * }
 	 *
 	 * Then when creating a template do:
 	 * var t = $.template("<div>...</div>", { regx: 'myvartype' });
 	 */
 	$.template.regx = $.template.instance.prototype.regx = {
-	    jsp:        /\$\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
-        ext:        /\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
-        jtemplates: /\{\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}\}/g
+		jsp:		/\$\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+		ext:		/\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}/g,
+		jtemplates: /\{\{([\w-]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?\}\}/g
 	};
 	
 	/**
@@ -207,9 +207,9 @@
 	 * going to overload.
 	 **/
 	var $_old = {
-	    domManip: $.fn.domManip,
-	    text: $.fn.text,
-	    html: $.fn.html
+		domManip: $.fn.domManip,
+		text: $.fn.text,
+		html: $.fn.html
 	};
 
 	/**
@@ -230,11 +230,11 @@
 		return r;
 	};
 
-    /**
-     * Overwrite the html() method
-     */
+	/**
+	 * Overwrite the html() method
+	 */
 	$.fn.html = function( value , o ) {
-	    if (value && value.isTemplate) var value = value.apply( o );
+		if (value && value.isTemplate) var value = value.apply( o );
 
 		var r = $_old.html.apply(this, [value]);
 
@@ -245,7 +245,7 @@
 	 * Overwrite the text() method
 	 */
 	$.fn.text = function( value , o ) {
-	    if (value && value.isTemplate) var value = value.apply( o );
+		if (value && value.isTemplate) var value = value.apply( o );
 
 		var r = $_old.text.apply(this, [value]);
 

@@ -11,7 +11,7 @@ if(stristr($req,'page/add/')){
 	/* Get parent id */
 	$matches = array();
 	if (preg_match('#(\d+)$#', $req, $matches)) {
-	    $parentid = $matches[1];
+		$parentid = $matches[1];
 	}
 
 	$form_sql = "SELECT * FROM ".TABLE_PREFIX."page_metadata";
@@ -40,20 +40,20 @@ if(!isset($pageid)){ ?>
 <div class="page-metadata-row">
   <label for="<?php echo $css_id_prefix; ?>selection"><?php echo __('Page'); ?></label>
   <div class="page-metadata-column">
-    <input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>][name]" value="<?php echo $plugin_id; ?>" />
-    <input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>][visible]" value="0" />
-    <select id="<?php echo $css_id_prefix; ?>selection" name="page_metadata[<?php echo $plugin_id; ?>][value]" class="page-metadata-value" title="Set profile for this page">
-      <option value="">&#8212; <?php echo __('none'); ?> &#8212;</option>
-    <?php foreach($page_part_forms as $form) {
-      echo '<option value="'.$form->id.'"'.($form->id == $selected ? ' selected="selected"' : '').'>'.$form->name.'</option>';
-      
-      // Allow plugins and CMS to know if page has form parts enabled
+	<input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>][name]" value="<?php echo $plugin_id; ?>" />
+	<input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>][visible]" value="0" />
+	<select id="<?php echo $css_id_prefix; ?>selection" name="page_metadata[<?php echo $plugin_id; ?>][value]" class="page-metadata-value" title="Set profile for this page">
+	  <option value="">&#8212; <?php echo __('none'); ?> &#8212;</option>
+	<?php foreach($page_part_forms as $form) {
+	  echo '<option value="'.$form->id.'"'.($form->id == $selected ? ' selected="selected"' : '').'>'.$form->name.'</option>';
+	  
+	  // Allow plugins and CMS to know if page has form parts enabled
 	  //if($form->id == $selected && $form->id != ''){
 	  //	define('PAGE_PART_FORM','enabled');
-      //}
+	  //}
 
-    } ?>
-    </select>
+	} ?>
+	</select>
   </div>
 </div>
 
@@ -63,20 +63,20 @@ if(!isset($pageid)){ ?>
 <div class="page-metadata-row">
   <label for="<?php echo $css_id_prefix; ?>selection"><?php echo __('Children'); ?></label>
   <div class="page-metadata-column">
-    <input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>_children][name]" value="<?php echo $plugin_id; ?>_children" />
-    <input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>_children][visible]" value="0" />
-    <select id="<?php echo $css_id_prefix; ?>selection" name="page_metadata[<?php echo $plugin_id; ?>_children][value]" class="page-metadata-value" title="Set profile for child pages">
-      <option value="">&#8212; <?php echo __('none'); ?> &#8212;</option>
-    <?php foreach($page_part_forms as $form) {
-      echo '<option value="'.$form->id.'"'.($form->id == $children_selected ? ' selected="selected"' : '').'>'.$form->name.'</option>';
+	<input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>_children][name]" value="<?php echo $plugin_id; ?>_children" />
+	<input type="hidden" name="page_metadata[<?php echo $plugin_id; ?>_children][visible]" value="0" />
+	<select id="<?php echo $css_id_prefix; ?>selection" name="page_metadata[<?php echo $plugin_id; ?>_children][value]" class="page-metadata-value" title="Set profile for child pages">
+	  <option value="">&#8212; <?php echo __('none'); ?> &#8212;</option>
+	<?php foreach($page_part_forms as $form) {
+	  echo '<option value="'.$form->id.'"'.($form->id == $children_selected ? ' selected="selected"' : '').'>'.$form->name.'</option>';
 
-      // Allow plugins and CMS to know if page has form parts enabled
+	  // Allow plugins and CMS to know if page has form parts enabled
 	  if($form->id == $selected && $form->id != ''){
 	  	define('PAGE_PART_FORM','enabled');
-      }
+	  }
 
-    } ?>
-    </select>
+	} ?>
+	</select>
   </div>
 </div>
 

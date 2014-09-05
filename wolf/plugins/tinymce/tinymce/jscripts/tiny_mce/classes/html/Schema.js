@@ -187,10 +187,10 @@
 	 * @class tinymce.html.Schema
 	 * @example
 	 *  if (tinymce.activeEditor.schema.isValidChild('p', 'span'))
-	 *    alert('span is valid child of p.');
+	 *	alert('span is valid child of p.');
 	 *
 	 *  if (tinymce.activeEditor.schema.getElementRule('p'))
-	 *    alert('P is a valid element.');
+	 *	alert('P is a valid element.');
 	 *
 	 * @class tinymce.html.Schema
 	 * @version 3.4
@@ -511,7 +511,7 @@
 		 *
 		 * @example
 		 * children = {
-		 *    div:{p:{}, h1:{}}
+		 *	div:{p:{}, h1:{}}
 		 * };
 		 * @field children
 		 * @type {Object}

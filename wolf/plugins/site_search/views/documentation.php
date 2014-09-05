@@ -68,35 +68,35 @@ if (!defined('IN_CMS')) { exit(); }
 <pre>
   /* Paging */
   #paginator {
-    font-size:0.8em;
-    overflow:auto;
-    padding:4px;
+	font-size:0.8em;
+	overflow:auto;
+	padding:4px;
   }
 	
   .pageselected {
-    font-size:1.1em;
-    font-weight:bold;
-    color:#ddd;
-    background-color:#555;
-    border:1px solid #666 !important;
-    padding:1px 3px 1px 2px !important;
-    margin:0 2px 0 2px !important;
+	font-size:1.1em;
+	font-weight:bold;
+	color:#ddd;
+	background-color:#555;
+	border:1px solid #666 !important;
+	padding:1px 3px 1px 2px !important;
+	margin:0 2px 0 2px !important;
   }
 
   #paginator li, .pageselected {
-    font-size:1.1em;
-    line-height: 1.4em;
-    border:1px solid #a6a6a6;
-    padding:1px 6px 0px 5px !important;
-    margin:0 7px 0 0!important;
-    list-style-type:none !important;
-    float:left;
-    display:block;
+	font-size:1.1em;
+	line-height: 1.4em;
+	border:1px solid #a6a6a6;
+	padding:1px 6px 0px 5px !important;
+	margin:0 7px 0 0!important;
+	list-style-type:none !important;
+	float:left;
+	display:block;
   }
   
   a:hover.page {
-    color:#444;
-    background:#f0f0f0;
+	color:#444;
+	background:#f0f0f0;
   }
 </pre>
 <br />
@@ -104,10 +104,10 @@ if (!defined('IN_CMS')) { exit(); }
 <p>The script will detect if you have mod_rewrite enabled and change the pagination links accordingly. You will most likely have to adjust you mod_rewrite condition to match, the parameters the search script is expecting. Here, a suitable mod_rewrite syntax for Lighttpd:</p>
 <pre>
  url.rewrite-once = (
-    "^/search-results/([0-9]+)/(.*)$" => "/index.php?WOLFPAGE=search-results&p=$1&q=$2",	
+	"^/search-results/([0-9]+)/(.*)$" => "/index.php?WOLFPAGE=search-results&p=$1&q=$2",	
  )
  url.rewrite-if-not-file = (
-    "^/(.*)$" => "/index.php?WOLFPAGE=$1"
+	"^/(.*)$" => "/index.php?WOLFPAGE=$1"
  )
 </pre>
 <p>If you have renamed the search results page to anything other than "search-results" you will need to change the syntax above accordingly. The same applies to the snipped code of the site-search-form.</p>

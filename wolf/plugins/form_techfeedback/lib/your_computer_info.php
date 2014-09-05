@@ -100,14 +100,14 @@
 					$os .= 'Windows Vista';
 				}
 				elseif ($browser_info[6] == 6.1)
-            {
-               //$os .= '6.1 (Windows 7)';
-               $os .= 'Windows 7';
-            }
-            elseif ($browser_info[6] == 'ce')
-            {
-               $os .= 'CE';
-            }
+			{
+			   //$os .= '6.1 (Windows 7)';
+			   $os .= 'Windows 7';
+			}
+			elseif ($browser_info[6] == 'ce')
+			{
+			   $os .= 'CE';
+			}
 			}
 			elseif ( $browser_info[5] == 'iphone' )
 			{

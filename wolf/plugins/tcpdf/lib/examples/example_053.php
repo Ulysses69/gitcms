@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_053.php
-// Begin       : 2009-09-02
+// Begin	   : 2009-09-02
 // Last Update : 2013-05-14
 //
 // Description : Example 053 for TCPDF class
-//               Javascript example.
+//			   Javascript example.
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

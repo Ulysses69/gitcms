@@ -6,7 +6,7 @@
 <div id="<?php echo $css_id_prefix; ?>delete-table" style="display: none;">
   <?php echo __('Once you delete your table, there is no going back. Please be certain.'); ?>
   <form id="<?php echo $css_id_prefix; ?>delete-table-form" action="<?echo $plugin_url;?>cleanup" method="post">
-    <input type="submit" id="cleanup" value="<?php echo __("Delete Page Part Forms table"); ?>"/>
+	<input type="submit" id="cleanup" value="<?php echo __("Delete Page Part Forms table"); ?>"/>
   </form>
 </div>
 <script type="text/javascript">
@@ -14,11 +14,11 @@
 (function($) {
   // Document load
   $(function() {
-    $('#<?php echo $css_id_prefix; ?>delete-table-link').click(function() {
-      // Show confirmation
-      $('#<?php echo $css_id_prefix; ?>delete-table').css('display', 'block');
-      return false;
-    });
+	$('#<?php echo $css_id_prefix; ?>delete-table-link').click(function() {
+	  // Show confirmation
+	  $('#<?php echo $css_id_prefix; ?>delete-table').css('display', 'block');
+	  return false;
+	});
   });
 })(jQuery);
 //]]>

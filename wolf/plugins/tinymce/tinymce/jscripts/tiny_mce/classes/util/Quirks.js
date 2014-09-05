@@ -103,7 +103,7 @@
 	 * browser just deletes the paragraph - the browser fails to merge the text node with a horizontal rule so it is
 	 * left there. TinyMCE sees a floating text node and wraps it in a paragraph on the key up event (ForceBlocks.js
 	 * addRootBlocks), meaning the action does nothing. With this code, FireFox/IE matche the behaviour of other
-     * browsers
+	 * browsers
 	 */
 	function removeHrOnBackspace(ed) {
 		ed.onKeyDown.add(function(ed, e) {

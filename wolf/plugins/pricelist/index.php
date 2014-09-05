@@ -2,10 +2,10 @@
 
 if (!defined('PRICELIST_VERSION')) { define('PRICELIST_VERSION', '0.1.4'); }
 Plugin::setInfos(array(
-    'id'          => 'pricelist',
-    'title'       => 'Pricelist',
-    'description' => 'Pricelist and Page Type',
-    'version'     => PRICELIST_VERSION
+	'id'		  => 'pricelist',
+	'title'	   => 'Pricelist',
+	'description' => 'Pricelist and Page Type',
+	'version'	 => PRICELIST_VERSION
 ));
 
 Behavior::add('Pricelist', '');

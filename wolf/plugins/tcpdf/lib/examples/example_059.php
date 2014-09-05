@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_059.php
-// Begin       : 2010-05-06
+// Begin	   : 2010-05-06
 // Last Update : 2013-05-14
 //
 // Description : Example 059 for TCPDF class
-//               Table Of Content using HTML templates.
+//			   Table Of Content using HTML templates.
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**
@@ -157,12 +157,12 @@ $bookmark_templates = array();
 /*
  * The key of the $bookmark_templates array represent the bookmark level (from 0 to n).
  * The following templates will be replaced with proper content:
- *     #TOC_DESCRIPTION#    this will be replaced with the bookmark description;
- *     #TOC_PAGE_NUMBER#    this will be replaced with page number.
+ *	 #TOC_DESCRIPTION#	this will be replaced with the bookmark description;
+ *	 #TOC_PAGE_NUMBER#	this will be replaced with page number.
  *
  * NOTES:
- *     If you want to align the page number on the right you have to use a monospaced font like courier, otherwise you can left align using any font type.
- *     The following is just an example, you can get various styles by combining various HTML elements.
+ *	 If you want to align the page number on the right you have to use a monospaced font like courier, otherwise you can left align using any font type.
+ *	 The following is just an example, you can get various styles by combining various HTML elements.
  */
 
 // A monospaced font for the page number is mandatory to get the right alignment

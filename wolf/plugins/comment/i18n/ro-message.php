@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Romanian file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Cosmin Huţanu <urecheatu007@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Romanian file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Cosmin Huţanu <urecheatu007@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    'A comment was added.' => 'Un comentariu a fost adăugat.',
+	return array(
+	'A comment was added.' => 'Un comentariu a fost adăugat.',
 	'Approve' => 'Aprobă',
 	'Are you sure you wish to delete it?' => 'Eşti sigur că doreşti să îl ştergi?',
 	'Auto approve' => 'Auto aprobare',
@@ -65,4 +65,4 @@
 	'comment not found!' => 'comentariul nu a fost găsit!',
 	'none' => 'nimic',
 	'or' => 'sau',
-    );
+	);

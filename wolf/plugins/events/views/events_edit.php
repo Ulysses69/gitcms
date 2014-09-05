@@ -1,14 +1,14 @@
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
-        <!-- required plugins -->
+		<!-- required plugins -->
 		<script type="text/javascript" src="scripts/date.js"></script>
 		<!--[if lt IE 7]><script type="text/javascript" src="/wolf/plugins/events/js/jquery.bgiframe.min.js"></script><![endif]-->
-        
-        <!-- jquery.datePicker.js -->
+		
+		<!-- jquery.datePicker.js -->
 		<script type="text/javascript" src="/wolf/plugins/events/js/jquery.datePicker.js"></script>
-        
-        <!-- datePicker required styles -->
+		
+		<!-- datePicker required styles -->
 		<link rel="stylesheet" type="text/css" media="screen" href="/wolf/plugins/events/css/datePicker.css">
 
 

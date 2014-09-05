@@ -1,7 +1,7 @@
 <?php
 /**
  * @package php-font-lib
- * @link    http://php-font-lib.googlecode.com/
+ * @link	http://php-font-lib.googlecode.com/
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  * @version $Id: font_truetype_collection.cls.php 34 2011-10-23 13:53:25Z fabien.menager $
@@ -29,18 +29,18 @@ class Font_TrueType_Collection extends Font_Binary_Stream implements Iterator, C
   protected $numFonts;
   
   function parse(){
-    if (isset($this->numFonts)) {
-      return;
-    }
-    
-    $tag = $this->read(4);
-    
-    $this->version = $this->readFixed();
-    $this->numFonts = $this->readUInt32();
-    
-    for($i = 0; $i < $this->numFonts; $i++) {
-      $this->collectionOffsets[] = $this->readUInt32();
-    }
+	if (isset($this->numFonts)) {
+	  return;
+	}
+	
+	$tag = $this->read(4);
+	
+	$this->version = $this->readFixed();
+	$this->numFonts = $this->readUInt32();
+	
+	for($i = 0; $i < $this->numFonts; $i++) {
+	  $this->collectionOffsets[] = $this->readUInt32();
+	}
   }
   
   /**
@@ -48,46 +48,46 @@ class Font_TrueType_Collection extends Font_Binary_Stream implements Iterator, C
    * @return Font_TrueType
    */
   function getFont($fontId) {
-    $this->parse();
-    
-    if (!isset($this->collectionOffsets[$fontId])) {
-      throw new OutOfBoundsException();
-    }
-    
-    if (isset($this->collection[$fontId])) {
-      return $this->collection[$fontId];
-    }
-    
-    $font = new Font_TrueType();
-    $font->f = $this->f;
-    $font->setTableOffset($this->collectionOffsets[$fontId]);
-    
-    return $this->collection[$fontId] = $font;
+	$this->parse();
+	
+	if (!isset($this->collectionOffsets[$fontId])) {
+	  throw new OutOfBoundsException();
+	}
+	
+	if (isset($this->collection[$fontId])) {
+	  return $this->collection[$fontId];
+	}
+	
+	$font = new Font_TrueType();
+	$font->f = $this->f;
+	$font->setTableOffset($this->collectionOffsets[$fontId]);
+	
+	return $this->collection[$fontId] = $font;
   }
   
   function current() {
-    return $this->getFont($this->position);
+	return $this->getFont($this->position);
   }
   
   function key() {
-    return $this->position;
+	return $this->position;
   }
   
   function next() {
-    return ++$this->position;
+	return ++$this->position;
   }
   
   function rewind() {
-    $this->position = 0;
+	$this->position = 0;
   }
   
   function valid() {
-    $this->parse();
-    return isset($this->collectionOffsets[$this->position]);
+	$this->parse();
+	return isset($this->collectionOffsets[$this->position]);
   }
   
   function count() {
-    $this->parse();
-    return $this->numFonts;
+	$this->parse();
+	return $this->numFonts;
   }
 }

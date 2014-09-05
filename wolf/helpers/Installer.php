@@ -11,7 +11,7 @@
  * - error generation specific to installations
  *
  * Note: This file must be placed in /wolf/helpers and can be called like
- *       any helper. All methods are static and should be called directly.
+ *	   any helper. All methods are static and should be called directly.
  *
  * @package Helpers
  * @subpackage Installer

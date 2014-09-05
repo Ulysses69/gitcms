@@ -21,8 +21,8 @@ rating:
   type: select
   limt: 1
   values:
-    - good
-    - bad'); ?>
+	- good
+	- bad'); ?>
 </pre>
 <p>
 <?php echo __('See the <a href="http://wiki.github.com/them/frog_page_part_forms">wiki</a> for more examples.'); ?>

@@ -149,24 +149,24 @@
 			var state = LIST_UNKNOWN;
 
 			function isTabInList(e) {
-                // Don't indent on Ctrl+Tab or Alt+Tab
+				// Don't indent on Ctrl+Tab or Alt+Tab
 				return e.keyCode === tinymce.VK.TAB && !(e.altKey || e.ctrlKey) &&
 					(ed.queryCommandState('InsertUnorderedList') || ed.queryCommandState('InsertOrderedList'));
 			}
 
-            function isCursorAtEndOfContainer() {
+			function isCursorAtEndOfContainer() {
 				var range = ed.selection.getRng();
-                var startContainer = range.startContainer;
-                if (startContainer.nodeType == 3) {
-                    return (range.endOffset == startContainer.nodeValue.length);
-                } else if (startContainer.nodeType == 1) {
-                    return range.endOffset == startContainer.childNodes.length;
-                }
-                return false;
-            }
+				var startContainer = range.startContainer;
+				if (startContainer.nodeType == 3) {
+					return (range.endOffset == startContainer.nodeValue.length);
+				} else if (startContainer.nodeType == 1) {
+					return range.endOffset == startContainer.childNodes.length;
+				}
+				return false;
+			}
 			
-            // If we are at the end of a paragraph in a list item, pressing enter should create a new list item instead of a new paragraph.
-            function isEndOfParagraph() {
+			// If we are at the end of a paragraph in a list item, pressing enter should create a new list item instead of a new paragraph.
+			function isEndOfParagraph() {
 				var node = ed.selection.getNode();
 				var isLastParagraphOfLi = node.tagName === 'P' && node.parentNode.tagName === 'LI' && node.parentNode.lastChild === node;
 				return ed.selection.isCollapsed() && isLastParagraphOfLi && isCursorAtEndOfContainer();
@@ -215,11 +215,11 @@
 
 			function isEnter(e) {
 				return e.keyCode === tinymce.VK.ENTER;
-            }
+			}
 
-            function isEnterWithoutShift(e) {
-                return isEnter(e) && !e.shiftKey;
-            }
+			function isEnterWithoutShift(e) {
+				return isEnter(e) && !e.shiftKey;
+			}
 
 			function getListKeyState(e) {
 				if (isTabInList(e)) {
@@ -229,8 +229,8 @@
 				} else if (isEnterWithoutShift(e) && isInEmptyListItem()) {
 					return LIST_EMPTY_ITEM;
 				} else if (isEnterWithoutShift(e) && isEndOfParagraph()) {
-                    return LIST_PARAGRAPH;
-                } else {
+					return LIST_PARAGRAPH;
+				} else {
 					return LIST_UNKNOWN;
 				}
 			}
@@ -242,31 +242,31 @@
 				}
 			}
 			
-            // Creates a new list item after the current selection's list item parent
-            function createNewLi(ed, e) {
-                if (state == LIST_PARAGRAPH) {
+			// Creates a new list item after the current selection's list item parent
+			function createNewLi(ed, e) {
+				if (state == LIST_PARAGRAPH) {
 					var node = ed.selection.getNode();
 					var li = ed.dom.create("li");
 					var parentLi = ed.dom.getParent(node, 'li');
 					ed.dom.insertAfter(li, parentLi);
 
-                    // Move caret to new list element.
-                    if (tinyMCE.isIE8) {
-                        li.appendChild(ed.dom.create("&nbsp;")); // IE needs an element within the bullet point
-                        ed.selection.setCursorLocation(li, 1);
-                    } else if (tinyMCE.isGecko) {
-                        // This setTimeout is a hack as FF behaves badly if there is no content after the bullet point
-                        setTimeout(function () {
+					// Move caret to new list element.
+					if (tinyMCE.isIE8) {
+						li.appendChild(ed.dom.create("&nbsp;")); // IE needs an element within the bullet point
+						ed.selection.setCursorLocation(li, 1);
+					} else if (tinyMCE.isGecko) {
+						// This setTimeout is a hack as FF behaves badly if there is no content after the bullet point
+						setTimeout(function () {
 							var n = ed.getDoc().createTextNode('\uFEFF');
-                            li.appendChild(n);
-                            ed.selection.setCursorLocation(li, 0);
-                        }, 0);
-                    } else {
-                        ed.selection.setCursorLocation(li, 0);
-                    }
+							li.appendChild(n);
+							ed.selection.setCursorLocation(li, 0);
+						}, 0);
+					} else {
+						ed.selection.setCursorLocation(li, 0);
+					}
 					Event.cancel(e);
 				}
-            }
+			}
 
 			function imageJoiningListItem(ed, e) {
 				var prevSibling;
@@ -374,8 +374,8 @@
 			ed.onKeyUp.add(function(ed, e) {
 				if (state == LIST_TABBING) {
 					ed.execCommand(e.shiftKey ? 'Outdent' : 'Indent', true, null);
-                    state = LIST_UNKNOWN;
-                    return Event.cancel(e);
+					state = LIST_UNKNOWN;
+					return Event.cancel(e);
 				} else if (state == LIST_EMPTY_ITEM) {
 					var li = getLi();
 					var shouldOutdent =  ed.settings.list_outdent_on_enter === true || e.shiftKey;
@@ -397,7 +397,7 @@
 						// Gecko does not create a paragraph outdenting inside a TD so default behaviour is cancelled and we outdent ourselves
 						ed.execCommand('Outdent');
 						return Event.cancel(e);
-                    }
+					}
 				}
 			});
 
@@ -481,7 +481,7 @@
 			ed.onKeyDown.add(function(_, e) { state = getListKeyState(e); });
 			ed.onKeyDown.add(cancelDefaultEvents);
 			ed.onKeyDown.add(imageJoiningListItem);
-            ed.onKeyDown.add(createNewLi);
+			ed.onKeyDown.add(createNewLi);
 
 			if (tinymce.isGecko) {
 				ed.onKeyUp.add(fixIndentedListItemForGecko);
@@ -563,7 +563,7 @@
 					li = dom.create('li');
 					start.parentNode.insertBefore(li, start);
 				}
-                while (n && n != end) {
+				while (n && n != end) {
 					tmp = n.nextSibling;
 					li.appendChild(n);
 					n = tmp;

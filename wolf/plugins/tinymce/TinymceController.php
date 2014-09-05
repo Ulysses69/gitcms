@@ -32,78 +32,78 @@
  */
 class TinyMCEController extends PluginController {
 
-    public function __construct() {
-        // Check to make sure user is logged in.
-        AuthUser::load();
-        if ( ! AuthUser::isLoggedIn()) {
-            redirect(get_url('login'));
-        }
-        
-        $this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/tinymce/views/sidebar'));
-    }
+	public function __construct() {
+		// Check to make sure user is logged in.
+		AuthUser::load();
+		if ( ! AuthUser::isLoggedIn()) {
+			redirect(get_url('login'));
+		}
+		
+		$this->setLayout('backend');
+		$this->assignToLayout('sidebar', new View('../../plugins/tinymce/views/sidebar'));
+	}
 
-    public function index() {
-        $this->documentation();
-    }    
-    
-    public function documentation() {
-        $this->display('tinymce/views/documentation');
-    }
+	public function index() {
+		$this->documentation();
+	}	
+	
+	public function documentation() {
+		$this->display('tinymce/views/documentation');
+	}
 
-    function settings() {
-        $settings = Plugin::getAllSettings('tinymce');
+	function settings() {
+		$settings = Plugin::getAllSettings('tinymce');
 
-        if (!$settings) {
-            Flash::set('error', 'TinyMCE - '.__('unable to retrieve plugin settings.'));
-            return;
-        }
+		if (!$settings) {
+			Flash::set('error', 'TinyMCE - '.__('unable to retrieve plugin settings.'));
+			return;
+		}
 
-        $this->display('tinymce/views/settings', $settings);
+		$this->display('tinymce/views/settings', $settings);
 
-    }
-    
-    public function save() {
-        $tablename = TABLE_PREFIX.'tinymce';
-        
-        //$listpublished = mysql_escape_string($_POST['listpublished']);
-        if (!array_key_exists('listhidden', $_POST))
-            $listhidden = '0';
-        else
-            $listhidden = '1';
+	}
+	
+	public function save() {
+		$tablename = TABLE_PREFIX.'tinymce';
+		
+		//$listpublished = mysql_escape_string($_POST['listpublished']);
+		if (!array_key_exists('listhidden', $_POST))
+			$listhidden = '0';
+		else
+			$listhidden = '1';
 
-        if (!array_key_exists('imagesdir', $_POST) || !array_key_exists('imagesuri', $_POST) || !array_key_exists('cssuri', $_POST)) {
-		    Flash::set('error', 'TinyMCE - '.__('form was not posted.'));
-		    redirect(get_url('plugin/tinymce'));
-        }
-        else {
-            $imagesdir = $_POST['imagesdir'];
-            $imagesuri = $_POST['imagesuri'];
-            $cssuri = $_POST['cssuri'];
-
-            if ($imagesdir[strlen($imagesdir)-1] == '/' || $imagesdir[strlen($imagesdir)-1] == '\\')
-                $imagesdir = substr($imagesdir, 0, strlen($imagesdir)-1);
-            if ($imagesuri[strlen($imagesuri)-1] == '/' || $imagesuri[strlen($imagesuri)-1] == '\\')
-                $imagesuri = substr($imagesuri, 0, strlen($imagesuri)-1);
-        }
-
-		if(empty($imagesdir) || empty($imagesuri) || empty($cssuri)) {
-		    Flash::set('error', 'TinyMCE - '.__('one of the fields was empty, please try again!'));
-		    redirect(get_url('plugin/tinymce'));
+		if (!array_key_exists('imagesdir', $_POST) || !array_key_exists('imagesuri', $_POST) || !array_key_exists('cssuri', $_POST)) {
+			Flash::set('error', 'TinyMCE - '.__('form was not posted.'));
+			redirect(get_url('plugin/tinymce'));
 		}
 		else {
-            $settings = array('listhidden' => $listhidden,
-                              'imagesdir' => $imagesdir,
-                              'imagesuri' => $imagesuri,
-                              'cssuri'=> $cssuri
-                             );
-		    
-		    if (Plugin::setAllSettings($settings, 'tinymce'))
-		        Flash::set('success', 'TinyMCE - '.__('plugin settings saved.'));
-		    else
-		        Flash::set('error', 'TinyMCE - '.__('plugin settings not saved!'));
-                
-		    redirect(get_url('plugin/tinymce/settings'));
-		}	    	
-    }
+			$imagesdir = $_POST['imagesdir'];
+			$imagesuri = $_POST['imagesuri'];
+			$cssuri = $_POST['cssuri'];
+
+			if ($imagesdir[strlen($imagesdir)-1] == '/' || $imagesdir[strlen($imagesdir)-1] == '\\')
+				$imagesdir = substr($imagesdir, 0, strlen($imagesdir)-1);
+			if ($imagesuri[strlen($imagesuri)-1] == '/' || $imagesuri[strlen($imagesuri)-1] == '\\')
+				$imagesuri = substr($imagesuri, 0, strlen($imagesuri)-1);
+		}
+
+		if(empty($imagesdir) || empty($imagesuri) || empty($cssuri)) {
+			Flash::set('error', 'TinyMCE - '.__('one of the fields was empty, please try again!'));
+			redirect(get_url('plugin/tinymce'));
+		}
+		else {
+			$settings = array('listhidden' => $listhidden,
+							  'imagesdir' => $imagesdir,
+							  'imagesuri' => $imagesuri,
+							  'cssuri'=> $cssuri
+							 );
+			
+			if (Plugin::setAllSettings($settings, 'tinymce'))
+				Flash::set('success', 'TinyMCE - '.__('plugin settings saved.'));
+			else
+				Flash::set('error', 'TinyMCE - '.__('plugin settings not saved!'));
+				
+			redirect(get_url('plugin/tinymce/settings'));
+		}			
+	}
 }

@@ -12,11 +12,11 @@ class PasswordProtectionController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('password_protection');
-	        if (!$settings) {
-	            Flash::set('error', 'Password Protection - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('password_protection/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Password Protection - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('password_protection/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'password_protection';

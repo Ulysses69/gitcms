@@ -13,7 +13,7 @@
 					$upload_error .= 'Upload folder not found: <b>'.$upload_dir.'</b> ';
 				} else {
 					if (!is_writable(dirname($upload_dir))) {
-					    $upload_error .= 'Upload folder needs writable permissions. ';
+						$upload_error .= 'Upload folder needs writable permissions. ';
 					}
 				}
 
@@ -35,24 +35,24 @@
 				// Filesize formatter
 				if(!function_exists('filesize_formatted')){
 					function filesize_formatted($upload_size){
-					    //$upload_size = filesize($upload_path);
-					    $upload_units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-					    $upload_power = $upload_size > 0 ? floor(log($upload_size, 1024)) : 0;
-					    return number_format($upload_size / pow(1024, $upload_power), 2, '.', ',') . ' ' . $upload_units[$upload_power];
+						//$upload_size = filesize($upload_path);
+						$upload_units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+						$upload_power = $upload_size > 0 ? floor(log($upload_size, 1024)) : 0;
+						return number_format($upload_size / pow(1024, $upload_power), 2, '.', ',') . ' ' . $upload_units[$upload_power];
 					}
 				}
 				if(!function_exists('format_bytes')){
 					function format_bytes($a_bytes) {
 					  if ($a_bytes < 1024) {
-					    return $a_bytes .' B';
+						return $a_bytes .' B';
 					  } elseif ($a_bytes < 1048576) {
-					    return round($a_bytes / 1024, 2) .' KB';
+						return round($a_bytes / 1024, 2) .' KB';
 					  } elseif ($a_bytes < 1073741824) {
-					    return round($a_bytes / 1048576, 2) . ' MB';
+						return round($a_bytes / 1048576, 2) . ' MB';
 					  } elseif ($a_bytes < 1099511627776) {
-					    return round($a_bytes / 1073741824, 2) . ' GB';
+						return round($a_bytes / 1073741824, 2) . ' GB';
 					  } elseif ($a_bytes < 1125899906842624) {
-					    return round($a_bytes / 1099511627776, 2) .' TB';
+						return round($a_bytes / 1099511627776, 2) .' TB';
 					  }
 					}
 				}
@@ -73,10 +73,10 @@
 					  $f = dirname(__FILE__);
 					  $obj = new COM('scripting.filesystemobject');
 					  if(is_object($obj)){
-					    $ref = $obj->getfolder($path);
-					    $dir_size = $ref->size;
-					    $obj = null;
-					    return $dir_size;
+						$ref = $obj->getfolder($path);
+						$dir_size = $ref->size;
+						$obj = null;
+						return $dir_size;
 					  }
 					}
 				}
@@ -91,14 +91,14 @@
 
 				if(!function_exists('GetDirectorySize')){
 					function GetDirectorySize($path){
-					    $bytestotal = 0;
-					    $path = realpath($path);
-					    if($path!==false){
-					        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
-					            $bytestotal += $object->getSize();
-					        }
-					    }
-					    return $bytestotal;
+						$bytestotal = 0;
+						$path = realpath($path);
+						if($path!==false){
+							foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+								$bytestotal += $object->getSize();
+							}
+						}
+						return $bytestotal;
 					}
 				}
 				$upload_get_folder_size = format_bytes(GetDirectorySize(dirname(__FILE__)));

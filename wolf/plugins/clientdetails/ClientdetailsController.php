@@ -12,11 +12,11 @@ class ClientdetailsController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('clientdetails');
-	        if (!$settings) {
-	            Flash::set('error', 'Client Details - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('clientdetails/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Client Details - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('clientdetails/views/settings', $settings);
 	}
 	public function save_settings(){
 		
@@ -79,17 +79,17 @@ class ClientdetailsController extends PluginController {
 		$mergelunch = $_POST['mergelunch'];
 		$daytag = $_POST['daytag'];
 		$settings = array('clientname' => $clientname,
-	            			'clientslogan' => $clientslogan,
-	            			'clientaddress_building' => $clientaddress_building,
-	            			'clientaddress_thoroughfare' => $clientaddress_thoroughfare,
-	            			'clientaddress_street' => $clientaddress_street,
-	            			'clientaddress_locality' => $clientaddress_locality,
-	            			'clientaddress_town' => $clientaddress_town,
-	            			'clientaddress_county' => $clientaddress_county,
-	            			'clientaddress_postcode' => $clientaddress_postcode,
-	            			'clientphone' => $clientphone,
-	            			'clientemail' => $clientemail,
-	            			'schema' => $schema,
+							'clientslogan' => $clientslogan,
+							'clientaddress_building' => $clientaddress_building,
+							'clientaddress_thoroughfare' => $clientaddress_thoroughfare,
+							'clientaddress_street' => $clientaddress_street,
+							'clientaddress_locality' => $clientaddress_locality,
+							'clientaddress_town' => $clientaddress_town,
+							'clientaddress_county' => $clientaddress_county,
+							'clientaddress_postcode' => $clientaddress_postcode,
+							'clientphone' => $clientphone,
+							'clientemail' => $clientemail,
+							'schema' => $schema,
 							'mondayopen' => $mondayopen,
 							'mondayclose' => $mondayclose,
 							'tuesdayopen' => $tuesdayopen,
@@ -119,17 +119,17 @@ class ClientdetailsController extends PluginController {
 							'sundaylunchstart' => $sundaylunchstart,
 							'sundaylunchend' => $sundaylunchend,
 							'mondayappt' => $mondayappt,
-                            'tuesdayappt' => $tuesdayappt,
-                            'wednesdayappt' => $wednesdayappt,
-                            'thursdayappt' => $thursdayappt,
-                            'fridayappt' => $fridayappt,
-                            'saturdayappt' => $saturdayappt,
-                            'sundayappt' => $sundayappt,
-                            'showcurrentday' => $showcurrentday,
-                            'hournotation' => $hournotation,
-                            'mergelunch' => $mergelunch,
-                            'daytag' => $daytag
-	    );
+							'tuesdayappt' => $tuesdayappt,
+							'wednesdayappt' => $wednesdayappt,
+							'thursdayappt' => $thursdayappt,
+							'fridayappt' => $fridayappt,
+							'saturdayappt' => $saturdayappt,
+							'sundayappt' => $sundayappt,
+							'showcurrentday' => $showcurrentday,
+							'hournotation' => $hournotation,
+							'mergelunch' => $mergelunch,
+							'daytag' => $daytag
+		);
 
 		if (Plugin::setAllSettings($settings, 'clientdetails')) {
 			

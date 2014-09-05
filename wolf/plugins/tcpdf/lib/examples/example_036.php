@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_036.php
-// Begin       : 2008-08-08
+// Begin	   : 2008-08-08
 // Last Update : 2013-05-14
 //
 // Description : Example 036 for TCPDF class
-//               Annotations
+//			   Annotations
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

@@ -23,27 +23,27 @@ class PHPCrawlerBenchmark
   /**
    * Starts the clock for the given benchmark.
    *
-   * @param string $identifie           The benchmark name/identifier.
+   * @param string $identifie		   The benchmark name/identifier.
    * @param bool   $temporary_benchmark If set to TRUE, the benchmark will not be returned by methods
-   *                                    like getAllBenchmarks() and printAllBenchmarks()
+   *									like getAllBenchmarks() and printAllBenchmarks()
    */
   public static function start($identifier, $temporary_benchmark = false)
   {
-    self::$benchmark_starttimes[$identifier] = self::getmicrotime();
-    
-    if (isset(self::$benchmark_startcount[$identifier]))
-      self::$benchmark_startcount[$identifier] = self::$benchmark_startcount[$identifier] + 1;
-    else self::$benchmark_startcount[$identifier] = 1;
-    
-    if ($temporary_benchmark == true)
-    {
-      self::$temporary_benchmarks[$identifier] = true;
-    }
+	self::$benchmark_starttimes[$identifier] = self::getmicrotime();
+	
+	if (isset(self::$benchmark_startcount[$identifier]))
+	  self::$benchmark_startcount[$identifier] = self::$benchmark_startcount[$identifier] + 1;
+	else self::$benchmark_startcount[$identifier] = 1;
+	
+	if ($temporary_benchmark == true)
+	{
+	  self::$temporary_benchmarks[$identifier] = true;
+	}
   }
   
   public static function getCallCount($identifier)
   {
-    return self::$benchmark_startcount[$identifier];
+	return self::$benchmark_startcount[$identifier];
   }
   
   /**
@@ -53,13 +53,13 @@ class PHPCrawlerBenchmark
    */
   public static function stop($identifier)
   {
-    if (isset(self::$benchmark_starttimes[$identifier]))
-    {
-      $elapsed_time = self::getmicrotime() - self::$benchmark_starttimes[$identifier];
+	if (isset(self::$benchmark_starttimes[$identifier]))
+	{
+	  $elapsed_time = self::getmicrotime() - self::$benchmark_starttimes[$identifier];
 
-      if (isset(self::$benchmark_results[$identifier])) self::$benchmark_results[$identifier] += $elapsed_time;
-      else self::$benchmark_results[$identifier] = $elapsed_time;
-    }
+	  if (isset(self::$benchmark_results[$identifier])) self::$benchmark_results[$identifier] += $elapsed_time;
+	  else self::$benchmark_results[$identifier] = $elapsed_time;
+	}
   }
   
   /**
@@ -70,10 +70,10 @@ class PHPCrawlerBenchmark
    */
   public static function getElapsedTime($identifier)
   {
-    if (isset(self::$benchmark_results[$identifier]))
-    {
-      return self::$benchmark_results[$identifier];
-    }
+	if (isset(self::$benchmark_results[$identifier]))
+	{
+	  return self::$benchmark_results[$identifier];
+	}
   }
   
   /**
@@ -81,10 +81,10 @@ class PHPCrawlerBenchmark
    */
   public static function reset($identifier)
   {
-    if (isset(self::$benchmark_results[$identifier]))
-    {
-      self::$benchmark_results[$identifier] = 0;
-    }
+	if (isset(self::$benchmark_results[$identifier]))
+	{
+	  self::$benchmark_results[$identifier] = 0;
+	}
   }
   
   /**
@@ -94,31 +94,31 @@ class PHPCrawlerBenchmark
    */
   public static function resetAll($retain_benchmarks = array())
   {
-    // If no benchmarks should be retained
-    if (count($retain_benchmarks) == 0)
-    {
-      self::$benchmark_results = array();
-      return;
-    }
-    
-    // Else reset all benchmarks BUT the retain_benachmarks
-    @reset(self::$benchmark_results);
-    while (list($identifier) = @each(self::$benchmark_results))
-    {
-      if (!in_array($identifier, $retain_benchmarks))
-      {
-        self::$benchmark_results[$identifier] = 0;
-      }
-    }
+	// If no benchmarks should be retained
+	if (count($retain_benchmarks) == 0)
+	{
+	  self::$benchmark_results = array();
+	  return;
+	}
+	
+	// Else reset all benchmarks BUT the retain_benachmarks
+	@reset(self::$benchmark_results);
+	while (list($identifier) = @each(self::$benchmark_results))
+	{
+	  if (!in_array($identifier, $retain_benchmarks))
+	  {
+		self::$benchmark_results[$identifier] = 0;
+	  }
+	}
   }
   
   public static function printAllBenchmarks($linebreak = "<br />")
   {
-    @reset(self::$benchmark_results);
-    while (list($identifier, $elapsed_time) = @each(self::$benchmark_results))
-    {
-      if (!isset(self::$temporary_benchmarks[$identifier])) echo $identifier.": ".$elapsed_time." sec" . $linebreak;
-    }
+	@reset(self::$benchmark_results);
+	while (list($identifier, $elapsed_time) = @each(self::$benchmark_results))
+	{
+	  if (!isset(self::$temporary_benchmarks[$identifier])) echo $identifier.": ".$elapsed_time." sec" . $linebreak;
+	}
   }
   
   /**
@@ -128,15 +128,15 @@ class PHPCrawlerBenchmark
    */
   public static function getAllBenchmarks()
   {
-    $benchmarks = array();
-    
-    @reset(self::$benchmark_results);
-    while (list($identifier, $elapsed_time) = @each(self::$benchmark_results))
-    {
-      if (!isset(self::$temporary_benchmarks[$identifier])) $benchmarks[$identifier] = $elapsed_time;
-    }
-    
-    return $benchmarks;
+	$benchmarks = array();
+	
+	@reset(self::$benchmark_results);
+	while (list($identifier, $elapsed_time) = @each(self::$benchmark_results))
+	{
+	  if (!isset(self::$temporary_benchmarks[$identifier])) $benchmarks[$identifier] = $elapsed_time;
+	}
+	
+	return $benchmarks;
   }
   
   /**
@@ -146,7 +146,7 @@ class PHPCrawlerBenchmark
    */
   public static function getmicrotime()
   { 
-    list($usec, $sec) = explode(" ",microtime());
-    return ((float)$usec + (float)$sec); 
+	list($usec, $sec) = explode(" ",microtime());
+	return ((float)$usec + (float)$sec); 
   }
 }

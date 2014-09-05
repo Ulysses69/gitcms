@@ -1,18 +1,18 @@
 ﻿<?php
 
-    /**
-     * Croatian language file for plugin file_manager
-     *
-     * @package plugins
-     * @subpackage file_manager
-     * @category translations
-     *
-     * @author Dejan Andjelkovic <dejan79@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Croatian language file for plugin file_manager
+	 *
+	 * @package plugins
+	 * @subpackage file_manager
+	 * @category translations
+	 *
+	 * @author Dejan Andjelkovic <dejan79@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    'A possible hack attempt was detected.' => 'Mogući pokušaj hakiranja je otkriven.',
+	return array(
+	'A possible hack attempt was detected.' => 'Mogući pokušaj hakiranja je otkriven.',
 	'Action' => 'Radnja',
 	'Are you sure you wish to delete' => 'Da li ste sigurni da želite obrisati',
 	'Cancel' => 'Odustani',
@@ -45,4 +45,4 @@
 	'You do not have permission to access the requested page!' => 'Nemate dozvolu za pristup traženoj stranici!',
 	'or' => 'ili',
 	'overwrite it?' => 'prepisati?',
-    );
+	);

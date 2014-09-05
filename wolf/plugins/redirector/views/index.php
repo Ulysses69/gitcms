@@ -21,28 +21,28 @@
 <div id="redirect_form">
 	<form action="<?php echo get_url('plugin/redirector/save'); ?>" method="post">
 		<table cellpadding="5" cellspacing="5" border="0" id="redirect_form_table"> 
-	      <tr>
-		        <td>
+		  <tr>
+				<td>
 					<label for="redirect_url"><?php echo __('Request URL from'); ?></label><br />
-		        	<input class="textbox" id="redirect_url" maxlength="255" name="redirect[url]" type="text" value="" />
+					<input class="textbox" id="redirect_url" maxlength="255" name="redirect[url]" type="text" value="" />
 				</td>
-		        <td>
+				<td>
 					<label for="redirect_destination"><?php echo __('Redirect URL to'); ?></label><br />
-		        	<input class="textbox" id="redirect_destination" maxlength="255" name="redirect[destination]" type="text" value="" />
+					<input class="textbox" id="redirect_destination" maxlength="255" name="redirect[destination]" type="text" value="" />
 				</td>
-		        <!--
+				<!--
 				<td class="status">
 					<label for="redirect_status"><?php echo __('Status'); ?></label><br />
 					<select id="redirect_status" name="redirect[status]" type="text" >
 					<option value="301">Permanent</option>
 					<option value="302">Temporary</option>
-		        	</select>
+					</select>
 				</td>
 				-->
-	      </tr> 
-	    </table>	
+		  </tr> 
+		</table>	
 		  <p class="buttons">
-		        <input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Save and continue'); ?>" value="<?php echo __('Save'); ?>" />
+				<input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Save and continue'); ?>" value="<?php echo __('Save'); ?>" />
 		  </p>
 	</form>
 </div>
@@ -54,7 +54,7 @@
 	<thead id="requests" class="node_heading">
 	<tr>
 		<th class="url"><?php echo __('Requested URL'); ?></th>
-	    <th class="destination"><?php echo __('Redirects to'); ?></th>
+		<th class="destination"><?php echo __('Redirects to'); ?></th>
 		<!-- <th class="hits"><?php echo __('Hits'); ?></th> -->
 		<!-- <th class="status"><?php echo __('Status'); ?></th> -->
 		<th class="action"><?php echo __(''); ?></th>
@@ -64,12 +64,12 @@
 	<tbody id="redirects_<?php echo $redirect->id; ?>" class="node">
 	<tr>
 	<?php $testlink = '/'.$redirect->url; $testlink = str_replace('//','/',$testlink) ?>
-     <!-- <img align="middle" alt="layout-icon" src="../../../wolf/plugins/redirector/images/redirect.png" title="" class="node_image" /> -->
-	    <td class="url"><!-- <?php echo $redirect->url; ?> --><a href="<?php echo $testlink; ?>" target="_blank" class="url_link"><?php echo $redirect->url; ?></a></td>
-	    <td class="destination"><?php echo $redirect->destination; ?></td>
+	 <!-- <img align="middle" alt="layout-icon" src="../../../wolf/plugins/redirector/images/redirect.png" title="" class="node_image" /> -->
+		<td class="url"><!-- <?php echo $redirect->url; ?> --><a href="<?php echo $testlink; ?>" target="_blank" class="url_link"><?php echo $redirect->url; ?></a></td>
+		<td class="destination"><?php echo $redirect->destination; ?></td>
 		<!-- <td class="hits"><?php echo $redirect->hits; ?></td> -->
 		<!-- <td class="status"><?php echo $redirect->status; ?></td> -->
-	    <td class="action"><a href="<?php echo get_url('plugin/redirector/remove/'.$redirect->id); ?>" onclick="return confirm('Are you sure you wish to delete this redirect?');"><img alt="Remove Redirect" src="../../../wolf/plugins/redirector/images/icon-remove.gif" /></a></td>
+		<td class="action"><a href="<?php echo get_url('plugin/redirector/remove/'.$redirect->id); ?>" onclick="return confirm('Are you sure you wish to delete this redirect?');"><img alt="Remove Redirect" src="../../../wolf/plugins/redirector/images/icon-remove.gif" /></a></td>
 	</tr>
 	</tbody>
 	<?php endforeach ?>
@@ -127,10 +127,10 @@ foreach ($redirects_f as $redirects) {
 	</li>
 	<?php foreach ($current_404s as $error): ?>
 	  <li id="redirects_<?php echo $error->id; ?>" class="node"> 
-	    <img align="middle" alt="layout-icon" src="../../../wolf/plugins/redirector/images/error.png" title="" class="node_image" /> 
-	    <a href="#" class="url_link"><?php echo $error->url; ?></a>
+		<img align="middle" alt="layout-icon" src="../../../wolf/plugins/redirector/images/error.png" title="" class="node_image" /> 
+		<a href="#" class="url_link"><?php echo $error->url; ?></a>
 		<div class="hits"><?php echo $error->hits; ?></div>
-	    <div class="remove"><a href="<?php echo get_url('plugin/redirector/remove_404/'.$error->id); ?>" onclick="return confirm('Are you sure you wish to delete this redirect?');"><img alt="Remove Redirect" src="../../../wolf/plugins/redirector/images/icon-remove.gif" /></a></div>
+		<div class="remove"><a href="<?php echo get_url('plugin/redirector/remove_404/'.$error->id); ?>" onclick="return confirm('Are you sure you wish to delete this redirect?');"><img alt="Remove Redirect" src="../../../wolf/plugins/redirector/images/icon-remove.gif" /></a></div>
 	  </li> 
 	<?php endforeach ?>
 </ul>

@@ -1,7 +1,7 @@
 <?php
 
 	//	Written by Andrew Waters - andrew@band-x.org
-    //  Additional code by Martijn van der Kleijn (martijn.niji@gmail.com)
+	//  Additional code by Martijn van der Kleijn (martijn.niji@gmail.com)
 	//	Please leave credit
 
    /*
@@ -71,7 +71,7 @@ function registered_users_page_found($page) {
 			$userid = AuthUser::getRecord()->id;
 
 			// Get permissions that this user has
-                        /*
+						/*
 			$user_permissions_check = "SELECT * FROM ".TABLE_PREFIX."user_permission WHERE user_id='$userid'";
 			$user_permissions_check = $__CMS_CONN__->prepare($user_permissions_check);
 			$user_permissions_check->execute();
@@ -82,10 +82,10 @@ function registered_users_page_found($page) {
 				$user_permission = $user_permissions->permission_id;
 				array_push($user_permissions_array, $user_permission);
 			}*/
-                        $roles = AuthUser::getRecord()->roles();
-                        foreach ($roles as $role) {
-                            $user_permissions_array[] = $role->id;
-                        }
+						$roles = AuthUser::getRecord()->roles();
+						foreach ($roles as $role) {
+							$user_permissions_array[] = $role->id;
+						}
 			
 			$permission_result = array_intersect($permission_array, $user_permissions_array);
 			
@@ -110,11 +110,11 @@ function registered_users_access_page_checkbox($page) {
 
 	global $__CMS_CONN__;
 	$page_id = $page->id;
-        $roles = Role::findAllFrom('Role');
+		$roles = Role::findAllFrom('Role');
 
 	echo '<label for="access">Access:</label> ';
 
-        foreach ($roles as $role) {
+		foreach ($roles as $role) {
 		//global $__CMS_CONN__;
 		$id = $role->id;
 		$name = $role->name;
@@ -143,19 +143,19 @@ function registered_users_add_page_permissions($page) {
 	global $__CMS_CONN__;
 	$page_id = $page->id;
 
-        $roles = Role::findAllFrom('Role');
+		$roles = Role::findAllFrom('Role');
 
-        foreach ($roles as $role) {
+		foreach ($roles as $role) {
 		global $__CMS_CONN__;
 		$id = $role->id;
 
-        if (isset($_POST['permission_'.$id.''])) {
-            $permission = $_POST['permission_'.$id.''];
-    		if ($permission == 'allowed') {
-        		$add_page_permission = "INSERT INTO ".TABLE_PREFIX."permission_page VALUES ('".$page_id."','".$id."')";
-            	$add_page_permission = $__CMS_CONN__->prepare($add_page_permission);
-                $add_page_permission->execute();
-            }
+		if (isset($_POST['permission_'.$id.''])) {
+			$permission = $_POST['permission_'.$id.''];
+			if ($permission == 'allowed') {
+				$add_page_permission = "INSERT INTO ".TABLE_PREFIX."permission_page VALUES ('".$page_id."','".$id."')";
+				$add_page_permission = $__CMS_CONN__->prepare($add_page_permission);
+				$add_page_permission->execute();
+			}
 		}
 	}
 }
@@ -169,8 +169,8 @@ function registered_users_edit_page_permissions($page) {
 	/*$permissions_list = "SELECT * FROM ".TABLE_PREFIX."permission";
 	$permissions_list = $__CMS_CONN__->prepare($permissions_list);
 	$permissions_list->execute();*/
-        
-        $roles = Role::findAllFrom('Role');
+		
+		$roles = Role::findAllFrom('Role');
 
 	$delete_page_permission = "DELETE FROM ".TABLE_PREFIX."permission_page WHERE page_id = '$page_id'";
 	$delete_page_permission = $__CMS_CONN__->prepare($delete_page_permission);
@@ -178,17 +178,17 @@ function registered_users_edit_page_permissions($page) {
 
 
 	//while ($permission = $permissions_list->fetchObject()) {
-        foreach ($roles as $role) {
+		foreach ($roles as $role) {
 		$id = $role->id;
 
 		if (isset($_POST['permission_'.$id.''])) {
-            $permission = $_POST['permission_'.$id.''];
-            if ($permission == 'allowed') {
-                $add_page_permission = "INSERT INTO ".TABLE_PREFIX."permission_page VALUES ('".$page_id."','".$id."')";
-                $add_page_permission = $__CMS_CONN__->prepare($add_page_permission);
-                $add_page_permission->execute();
-            }
-        }
+			$permission = $_POST['permission_'.$id.''];
+			if ($permission == 'allowed') {
+				$add_page_permission = "INSERT INTO ".TABLE_PREFIX."permission_page VALUES ('".$page_id."','".$id."')";
+				$add_page_permission = $__CMS_CONN__->prepare($add_page_permission);
+				$add_page_permission->execute();
+			}
+		}
 	}
 }
 

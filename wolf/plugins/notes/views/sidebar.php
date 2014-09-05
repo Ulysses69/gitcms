@@ -29,11 +29,11 @@ if (!defined('IN_CMS')) { exit(); }
 
 <?php if (!AuthUser::hasPermission('client')) { ?>
 <div class="box">
-    <h3>Show note in frontend</h3>
-    <p>There are two ways to display your notes in your layout, page or snippet.</p>
-    <h5>Show only one note</h5>
-    <p><code>&lt;?php shownotebyid('note_id'); ?&gt;</code></p>
-    <h5>Show all your notes</h5>
-    <p><code>&lt;?php showallnotes(); ?&gt;</code></p>
+	<h3>Show note in frontend</h3>
+	<p>There are two ways to display your notes in your layout, page or snippet.</p>
+	<h5>Show only one note</h5>
+	<p><code>&lt;?php shownotebyid('note_id'); ?&gt;</code></p>
+	<h5>Show all your notes</h5>
+	<p><code>&lt;?php showallnotes(); ?&gt;</code></p>
 </div>
 <?php } ?>

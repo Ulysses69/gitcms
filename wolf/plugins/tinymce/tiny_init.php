@@ -24,7 +24,7 @@ if($data == 'enabled'){
 ?>
 
 tinyMCE.init({
-    mode : "exact",
+	mode : "exact",
 	theme : "advanced",
 	skin : "o2k7",
 	skin_variant : "silver",
@@ -54,7 +54,7 @@ tinyMCE.init({
 	theme_advanced_resizing : true,
 	theme_advanced_resizing_min_height : 400,
 	pdw_toggle_on : 1,
-    pdw_toggle_toolbars : "2",
+	pdw_toggle_toolbars : "2",
 	//theme_advanced_styles : "Introduction=intro;Popup=popup;Buy=buy;Demo=demo;Trial=trial;Quote=quote",
 	<?php
 	$styles = $_GET['styles'];
@@ -74,15 +74,15 @@ tinyMCE.init({
 	// Some performance enhancements according to TinyMCE website
 	button_tile_map : true,
 
-    	// Fix for images showing up correctly in editor, but not in final page
-    	relative_urls : false,
-    	//document_base_url : "/",
+		// Fix for images showing up correctly in editor, but not in final page
+		relative_urls : false,
+		//document_base_url : "/",
 
-    	//Example of how to add your stylesheet styles to the styles dropdown box in TinyMCE
-    	//theme_advanced_styles : "Normal text=normaltext, Align left=align-left, Align right=align-right",
+		//Example of how to add your stylesheet styles to the styles dropdown box in TinyMCE
+		//theme_advanced_styles : "Normal text=normaltext, Align left=align-left, Align right=align-right",
 
-    	// Preview content in system\'s style
-    	content_css : "<?php echo $pluginDir; ?>/config.php?g=css",
+		// Preview content in system\'s style
+		content_css : "<?php echo $pluginDir; ?>/config.php?g=css",
 
 	// Dropdown lists for link/image/media/template dialogs
 	external_image_list_url : "<?php echo $pluginDir; ?>/lists/image_list.php",
@@ -93,15 +93,15 @@ tinyMCE.init({
 	//extended_valid_elements : "*[*]",
 
 	paste_preprocess : function(pl, o) {
-            // Content string containing the HTML from the clipboard
-            //alert(o.content);
-            //o.content = "-: CLEANED :-\n" + o.content;
-        },
-        paste_postprocess : function(pl, o) {
-            // Content DOM node containing the DOM structure of the clipboard
-            //alert(o.node.innerHTML);
-            //o.node.innerHTML = o.node.innerHTML + "\n-: CLEANED :-";
-        },
+			// Content string containing the HTML from the clipboard
+			//alert(o.content);
+			//o.content = "-: CLEANED :-\n" + o.content;
+		},
+		paste_postprocess : function(pl, o) {
+			// Content DOM node containing the DOM structure of the clipboard
+			//alert(o.node.innerHTML);
+			//o.node.innerHTML = o.node.innerHTML + "\n-: CLEANED :-";
+		},
 
 
 	// Client data
@@ -111,22 +111,22 @@ tinyMCE.init({
 
 
 		// Set Minimum Height of Textarea
-        ed.onInit.add(function() {
-            var e = tinymce.DOM.get(ed.id + '_tbl'), ifr = tinymce.DOM.get(ed.id + '_ifr'), w = ed.getWin(), dh;
-            var h = 20; //new height of edit area
-            dh = e.clientHeight - ifr.clientHeight; //get the height of the toolbars
+		ed.onInit.add(function() {
+			var e = tinymce.DOM.get(ed.id + '_tbl'), ifr = tinymce.DOM.get(ed.id + '_ifr'), w = ed.getWin(), dh;
+			var h = 20; //new height of edit area
+			dh = e.clientHeight - ifr.clientHeight; //get the height of the toolbars
 			ed.theme.resizeTo(w.clientWidth, 400);
-        });
-        
+		});
+		
 
 		/*
 		// Force Paste-as-Plain-Text or Paste-from-word
-        ed.onPaste.add( function(ed, e, o) {
-            //ed.execCommand('mcePasteText', true);
-            ed.execCommand('mcePasteWord', true);
-            return tinymce.dom.Event.cancel(e);
-        });
-        */
+		ed.onPaste.add( function(ed, e, o) {
+			//ed.execCommand('mcePasteText', true);
+			ed.execCommand('mcePasteWord', true);
+			return tinymce.dom.Event.cancel(e);
+		});
+		*/
 
 		// Client Buttons
 		ed.addButton('clientname', {
@@ -175,52 +175,52 @@ tinyMCE.init({
 
 
 tinymce.create('tinymce.plugins.SnippetsPlugin', {
-    createControl: function(n, cm) {
-        switch (n) {
-            case 'snippetsbox':
-                var mlb = cm.createListBox('snippetsbox', {
-                     title : 'Snippets',
-                     onselect : function(v) {
-                         //tinyMCE.activeEditor.windowManager.alert('Value selected:' + v);
-                         tinyMCE.activeEditor.focus();
-                         tinyMCE.activeEditor.selection.setContent(v);
-                     }
-                });
+	createControl: function(n, cm) {
+		switch (n) {
+			case 'snippetsbox':
+				var mlb = cm.createListBox('snippetsbox', {
+					 title : 'Snippets',
+					 onselect : function(v) {
+						 //tinyMCE.activeEditor.windowManager.alert('Value selected:' + v);
+						 tinyMCE.activeEditor.focus();
+						 tinyMCE.activeEditor.selection.setContent(v);
+					 }
+				});
 
-                // Add some values to the list box
-                // mlb.add('Client name', 'admin_title');
-                // mlb.add('Client address', 'address');
-                // mlb.add('Client telephone', 'telephone');
+				// Add some values to the list box
+				// mlb.add('Client name', 'admin_title');
+				// mlb.add('Client address', 'address');
+				// mlb.add('Client telephone', 'telephone');
 
-                // Return the new listbox instance
-                return mlb;
+				// Return the new listbox instance
+				return mlb;
 
-            case 'mysplitbutton':
-                var c = cm.createSplitButton('mysplitbutton', {
-                    title : 'My split button',
-                    image : 'img/example.gif',
-                    onclick : function() {
-                        //tinyMCE.activeEditor.windowManager.alert('Button was clicked.');
-                    }
-                });
+			case 'mysplitbutton':
+				var c = cm.createSplitButton('mysplitbutton', {
+					title : 'My split button',
+					image : 'img/example.gif',
+					onclick : function() {
+						//tinyMCE.activeEditor.windowManager.alert('Button was clicked.');
+					}
+				});
 
-                c.onRenderMenu.add(function(c, m) {
-                    m.add({title : 'Client name', 'class' : 'mceMenuItemTitle'}).setDisabled(1);
+				c.onRenderMenu.add(function(c, m) {
+					m.add({title : 'Client name', 'class' : 'mceMenuItemTitle'}).setDisabled(1);
 
-                    m.add({title : 'Client address', onclick : function() {
-                        //tinyMCE.activeEditor.windowManager.alert('Some  item 1 was clicked.');
-                    }});
+					m.add({title : 'Client address', onclick : function() {
+						//tinyMCE.activeEditor.windowManager.alert('Some  item 1 was clicked.');
+					}});
 
-                    m.add({title : 'Client telephone', onclick : function() {
-                        //tinyMCE.activeEditor.windowManager.alert('Some  item 2 was clicked.');
-                    }});
-                });
+					m.add({title : 'Client telephone', onclick : function() {
+						//tinyMCE.activeEditor.windowManager.alert('Some  item 2 was clicked.');
+					}});
+				});
 
-                // Return the new splitbutton instance
-                return c;
-        }
+				// Return the new splitbutton instance
+				return c;
+		}
 
-        return null;
-    }
+		return null;
+	}
 });
 tinymce.PluginManager.add('snippets', tinymce.plugins.SnippetsPlugin);

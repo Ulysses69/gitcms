@@ -1,16 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>CodeMirror: Groovy mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="groovy.js"></script>
-    <link rel="stylesheet" href="../../doc/docs.css">
-    <style>.CodeMirror {border-top: 1px solid #500; border-bottom: 1px solid #500;}</style>
+	<meta charset="utf-8">
+	<title>CodeMirror: Groovy mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="groovy.js"></script>
+	<link rel="stylesheet" href="../../doc/docs.css">
+	<style>.CodeMirror {border-top: 1px solid #500; border-bottom: 1px solid #500;}</style>
   </head>
   <body>
-    <h1>CodeMirror: Groovy mode</h1>
+	<h1>CodeMirror: Groovy mode</h1>
 
 <form><textarea id="code" name="code">
 //Pattern for groovy script
@@ -19,15 +19,15 @@ new File( 'd:\\scripts' ).eachFileMatch(p) {f ->
   // imports list
   def imports = []
   f.eachLine {
-    // condition to detect an import instruction
-    ln -> if ( ln =~ '^import .*' ) {
-      imports << "${ln - 'import '}"
-    }
+	// condition to detect an import instruction
+	ln -> if ( ln =~ '^import .*' ) {
+	  imports << "${ln - 'import '}"
+	}
   }
   // print thmen
   if ( ! imports.empty ) {
-    println f
-    imports.each{ println "   $it" }
+	println f
+	imports.each{ println "   $it" }
   }
 }
 
@@ -52,21 +52,21 @@ def plural(word, count) {
 
 def change(currency, amount) {
   currency.values().inject([]){ list, coin ->
-     int count = amount / coin.value
-     amount = amount % coin.value
-     list += "$count ${plural(coin.toString(), count)}"
+	 int count = amount / coin.value
+	 amount = amount % coin.value
+	 list += "$count ${plural(coin.toString(), count)}"
   }
 }
 </textarea></form>
 
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        matchBrackets: true,
-        mode: "text/x-groovy"
-      });
-    </script>
+	<script>
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-groovy"
+	  });
+	</script>
 
-    <p><strong>MIME types defined:</strong> <code>text/x-groovy</code></p>
+	<p><strong>MIME types defined:</strong> <code>text/x-groovy</code></p>
   </body>
 </html>

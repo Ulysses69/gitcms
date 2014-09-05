@@ -25,7 +25,7 @@
 
 /* Security measure */
 if (!defined('IN_CMS')) {
-    exit();
+	exit();
 }
 
 /**
@@ -42,12 +42,12 @@ if (!defined('IN_CMS')) {
  */
 
 Plugin::setInfos(array(
-        'id'          => 'page_not_found',
-        'title'       => __('Page not found'),
-        'description' => __('Provides Page not found page types.'),
-        'version'     => '1.1.0',
-        'website'     => 'http://www.wolfcms.org/',
-        'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
+		'id'		  => 'page_not_found',
+		'title'	   => __('Page not found'),
+		'description' => __('Provides Page not found page types.'),
+		'version'	 => '1.1.0',
+		'website'	 => 'http://www.wolfcms.org/',
+		'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
 ));
 
 Behavior::add('page_not_found', '');
@@ -59,21 +59,21 @@ Observer::observe('page_not_found', 'behavior_page_not_found');
  */
 function behavior_page_not_found() {
 
-    $sql = 'SELECT * FROM '.TABLE_PREFIX."page WHERE behavior_id='page_not_found'";
+	$sql = 'SELECT * FROM '.TABLE_PREFIX."page WHERE behavior_id='page_not_found'";
 
-    $stmt = Record::getConnection()->prepare($sql);
-    $stmt->execute();
+	$stmt = Record::getConnection()->prepare($sql);
+	$stmt->execute();
 
-    $page = $stmt->fetchObject();
+	$page = $stmt->fetchObject();
 
-    if ($page) {
-        $page = Page::find_page_by_uri($page->slug);
+	if ($page) {
+		$page = Page::find_page_by_uri($page->slug);
 
 
-        if (is_object($page)) {
+		if (is_object($page)) {
 			
-            /* Try and find content. Feature not finished. */
-            $searchkey = substr(strrchr($_SERVER['REQUEST_URI'], '/'), 1);
+			/* Try and find content. Feature not finished. */
+			$searchkey = substr(strrchr($_SERVER['REQUEST_URI'], '/'), 1);
 			if(Plugin::isEnabled('searchbox') == true && (strlen($searchkey) < 30 || $page->slug == 'notfound')){
 				if(isset($_SERVER['HTTP_REFERER'])){ $referrer = $_SERVER['HTTP_REFERER']; } else { $referrer = ''; }
 				if($referrer == ''){ $referrer = 'Error'; }
@@ -86,7 +86,7 @@ function behavior_page_not_found() {
 			}
 
 			header("HTTP/1.0 404 Not Found");
-            header("Status: 404 Not Found");
+			header("Status: 404 Not Found");
 
 
 			$page->includeSnippet('registerfunctions'); // Include custom functions snippet
@@ -123,8 +123,8 @@ function behavior_page_not_found() {
 				exit();
 			}
 
-            $page->_executeLayout();
-            exit(); // need to exit otherwise true error page will be sent
-        }
-    }
+			$page->_executeLayout();
+			exit(); // need to exit otherwise true error page will be sent
+		}
+	}
 }

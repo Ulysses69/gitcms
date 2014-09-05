@@ -10,18 +10,18 @@ class PHPCrawlerResponseHeader
    * Initiates an new PHPCrawlerResponseHeader.
    *
    * @param string $header_string A complete response-header as it was send by the server
-   * @param string $source_url    The URL of the website the header was recevied from.
+   * @param string $source_url	The URL of the website the header was recevied from.
    * @internal
    */
   public function __construct($header_string, $source_url)
   {
-    $this->header_raw = $header_string;
-    $this->source_url = $source_url;
-    
-    $this->http_status_code = PHPCrawlerUtils::getHTTPStatusCode($header_string);
-    $this->content_type = strtolower(PHPCrawlerUtils::getHeaderValue($header_string, "content-type"));
-    $this->content_length = strtolower(PHPCrawlerUtils::getHeaderValue($header_string, "content-length"));
-    $this->cookies = PHPCrawlerUtils::getCookiesFromHeader($header_string, $source_url);
+	$this->header_raw = $header_string;
+	$this->source_url = $source_url;
+	
+	$this->http_status_code = PHPCrawlerUtils::getHTTPStatusCode($header_string);
+	$this->content_type = strtolower(PHPCrawlerUtils::getHeaderValue($header_string, "content-type"));
+	$this->content_length = strtolower(PHPCrawlerUtils::getHeaderValue($header_string, "content-length"));
+	$this->cookies = PHPCrawlerUtils::getCookiesFromHeader($header_string, $source_url);
   }
   
   /**

@@ -30,7 +30,7 @@ var test = document.createElement('input');
 try {
   test.type = 'range';
   if (test.type == 'range')
-    return;
+	return;
 } catch (e) {
   return;
 }
@@ -78,15 +78,15 @@ function initialize() {
 function onNodeInserted(e) {
   check(e.target);
   if (e.target.querySelectorAll)
-    Array.forEach(e.target.querySelectorAll('input'), check);
+	Array.forEach(e.target.querySelectorAll('input'), check);
 }
 
 function check(input, async) {
   if (input.localName != 'input' || input.type == 'range');
   else if (input.getAttribute('type') == 'range')
-    transform(input);
+	transform(input);
   else if (!async)
-    setTimeout(check, 0, input, true);
+	setTimeout(check, 0, input, true);
 }
 
 function transform(slider) {
@@ -96,28 +96,28 @@ function transform(slider) {
 
   // lazily create shared slider affordance
   if (!scale) {
-    scale = document.body.appendChild(document.createElement('hr'));
-    style(scale, {
-      '-moz-appearance': isMac ? 'scale-horizontal' : 'scalethumb-horizontal',
-      display: 'block',
-      visibility: 'visible',
-      opacity: 1,
-      position: 'fixed',
-      top: '-999999px'
-    });
-    document.mozSetImageElement('__sliderthumb__', scale);
+	scale = document.body.appendChild(document.createElement('hr'));
+	style(scale, {
+	  '-moz-appearance': isMac ? 'scale-horizontal' : 'scalethumb-horizontal',
+	  display: 'block',
+	  visibility: 'visible',
+	  opacity: 1,
+	  position: 'fixed',
+	  top: '-999999px'
+	});
+	document.mozSetImageElement('__sliderthumb__', scale);
   }
 
   // reimplement value and type properties
   var getValue = function() { return '' + value; };
   var setValue = function setValue(val) {
-    value = '' + val;
-    isValueSet = true;
-    draw();
-    delete slider.value;
-    slider.value = value;
-    slider.__defineGetter__('value', getValue);
-    slider.__defineSetter__('value', setValue);
+	value = '' + val;
+	isValueSet = true;
+	draw();
+	delete slider.value;
+	slider.value = value;
+	slider.__defineGetter__('value', getValue);
+	slider.__defineSetter__('value', setValue);
   };
   slider.__defineGetter__('value', getValue);
   slider.__defineSetter__('value', setValue);
@@ -125,14 +125,14 @@ function transform(slider) {
 
   // sync properties with attributes
   ['min', 'max', 'step'].forEach(function(prop) {
-    if (slider.hasAttribute(prop))
-      areAttrsSet = true;
-    slider.__defineGetter__(prop, function() {
-      return this.hasAttribute(prop) ? this.getAttribute(prop) : '';
-    });
-    slider.__defineSetter__(prop, function(val) {
-      val === null ? this.removeAttribute(prop) : this.setAttribute(prop, val);
-    });
+	if (slider.hasAttribute(prop))
+	  areAttrsSet = true;
+	slider.__defineGetter__(prop, function() {
+	  return this.hasAttribute(prop) ? this.getAttribute(prop) : '';
+	});
+	slider.__defineSetter__(prop, function(val) {
+	  val === null ? this.removeAttribute(prop) : this.setAttribute(prop, val);
+	});
   });
 
   // initialize slider
@@ -141,15 +141,15 @@ function transform(slider) {
   update();
 
   slider.addEventListener('DOMAttrModified', function(e) {
-    // note that value attribute only sets initial value
-    if (e.attrName == 'value' && !isValueSet) {
-      value = e.newValue;
-      draw();
-    }
-    else if (~['min', 'max', 'step'].indexOf(e.attrName)) {
-      update();
-      areAttrsSet = true;
-    }
+	// note that value attribute only sets initial value
+	if (e.attrName == 'value' && !isValueSet) {
+	  value = e.newValue;
+	  draw();
+	}
+	else if (~['min', 'max', 'step'].indexOf(e.attrName)) {
+	  update();
+	  areAttrsSet = true;
+	}
   }, true);
 
   slider.addEventListener('mousedown', onDragStart, true);
@@ -158,111 +158,111 @@ function transform(slider) {
   slider.addEventListener('blur', onBlur, true);
 
   function onDragStart(e) {
-    isClick = true;
-    setTimeout(function() { isClick = false; }, 0);
-    if (e.button || !range)
-      return;
-    var width = parseFloat(getComputedStyle(this, 0).width);
-    var multiplier = (width - thumb.width) / range;
-    if (!multiplier)
-      return;
-    // distance between click and center of thumb
-    var dev = e.clientX - this.getBoundingClientRect().left - thumb.width / 2 -
-              (value - min) * multiplier;
-    // if click was not on thumb, move thumb to click location
-    if (Math.abs(dev) > thumb.radius) {
-      isChanged = true;
-      this.value -= -dev / multiplier;
-    }
-    rawValue = value;
-    prevX = e.clientX;
-    this.addEventListener('mousemove', onDrag, true);
-    this.addEventListener('mouseup', onDragEnd, true);
+	isClick = true;
+	setTimeout(function() { isClick = false; }, 0);
+	if (e.button || !range)
+	  return;
+	var width = parseFloat(getComputedStyle(this, 0).width);
+	var multiplier = (width - thumb.width) / range;
+	if (!multiplier)
+	  return;
+	// distance between click and center of thumb
+	var dev = e.clientX - this.getBoundingClientRect().left - thumb.width / 2 -
+			  (value - min) * multiplier;
+	// if click was not on thumb, move thumb to click location
+	if (Math.abs(dev) > thumb.radius) {
+	  isChanged = true;
+	  this.value -= -dev / multiplier;
+	}
+	rawValue = value;
+	prevX = e.clientX;
+	this.addEventListener('mousemove', onDrag, true);
+	this.addEventListener('mouseup', onDragEnd, true);
   }
 
   function onDrag(e) {
-    var width = parseFloat(getComputedStyle(this, 0).width);
-    var multiplier = (width - thumb.width) / range;
-    if (!multiplier)
-      return;
-    rawValue += (e.clientX - prevX) / multiplier;
-    prevX = e.clientX;
-    isChanged = true;
-    this.value = rawValue;
+	var width = parseFloat(getComputedStyle(this, 0).width);
+	var multiplier = (width - thumb.width) / range;
+	if (!multiplier)
+	  return;
+	rawValue += (e.clientX - prevX) / multiplier;
+	prevX = e.clientX;
+	isChanged = true;
+	this.value = rawValue;
   }
 
   function onDragEnd() {
-    this.removeEventListener('mousemove', onDrag, true);
-    this.removeEventListener('mouseup', onDragEnd, true);
+	this.removeEventListener('mousemove', onDrag, true);
+	this.removeEventListener('mouseup', onDragEnd, true);
   }
 
   function onKeyDown(e) {
-    if (e.keyCode > 36 && e.keyCode < 41) { // 37-40: left, up, right, down
-      onFocus.call(this);
-      isChanged = true;
-      this.value = value + (e.keyCode == 38 || e.keyCode == 39 ? step : -step);
-    }
+	if (e.keyCode > 36 && e.keyCode < 41) { // 37-40: left, up, right, down
+	  onFocus.call(this);
+	  isChanged = true;
+	  this.value = value + (e.keyCode == 38 || e.keyCode == 39 ? step : -step);
+	}
   }
 
   function onFocus() {
-    if (!isClick)
-      this.style.boxShadow = !isMac ? '0 0 0 2px #fb0' :
-        '0 0 2px 1px -moz-mac-focusring, inset 0 0 1px -moz-mac-focusring';
+	if (!isClick)
+	  this.style.boxShadow = !isMac ? '0 0 0 2px #fb0' :
+		'0 0 2px 1px -moz-mac-focusring, inset 0 0 1px -moz-mac-focusring';
   }
 
   function onBlur() {
-    this.style.boxShadow = '';
+	this.style.boxShadow = '';
   }
 
   // determines whether value is valid number in attribute form
   function isAttrNum(value) {
-    return !isNaN(value) && +value == parseFloat(value);
+	return !isNaN(value) && +value == parseFloat(value);
   }
 
   // validates min, max, and step attributes and redraws
   function update() {
-    min = isAttrNum(slider.min) ? +slider.min : 0;
-    max = isAttrNum(slider.max) ? +slider.max : 100;
-    if (max < min)
-      max = min > 100 ? min : 100;
-    step = isAttrNum(slider.step) && slider.step > 0 ? +slider.step : 1;
-    range = max - min;
-    draw(true);
+	min = isAttrNum(slider.min) ? +slider.min : 0;
+	max = isAttrNum(slider.max) ? +slider.max : 100;
+	if (max < min)
+	  max = min > 100 ? min : 100;
+	step = isAttrNum(slider.step) && slider.step > 0 ? +slider.step : 1;
+	range = max - min;
+	draw(true);
   }
 
   // recalculates value property
   function calc() {
-    if (!isValueSet && !areAttrsSet)
-      value = slider.getAttribute('value');
-    if (!isAttrNum(value))
-      value = (min + max) / 2;;
-    // snap to step intervals (WebKit sometimes does not - bug?)
-    value = Math.round((value - min) / step) * step + min;
-    if (value < min)
-      value = min;
-    else if (value > max)
-      value = min + ~~(range / step) * step;
+	if (!isValueSet && !areAttrsSet)
+	  value = slider.getAttribute('value');
+	if (!isAttrNum(value))
+	  value = (min + max) / 2;;
+	// snap to step intervals (WebKit sometimes does not - bug?)
+	value = Math.round((value - min) / step) * step + min;
+	if (value < min)
+	  value = min;
+	else if (value > max)
+	  value = min + ~~(range / step) * step;
   }
 
   // renders slider using CSS background ;)
   function draw(attrsModified) {
-    calc();
-    if (isChanged && value != prevValue)
-      slider.dispatchEvent(onChange);
-    isChanged = false;
-    if (!attrsModified && value == prevValue)
-      return;
-    prevValue = value;
-    var position = range ? (value - min) / range * 100 : 0;
-    var bg = '-moz-element(#__sliderthumb__) ' + position + '% no-repeat, ';
-    style(slider, { background: bg + track });
+	calc();
+	if (isChanged && value != prevValue)
+	  slider.dispatchEvent(onChange);
+	isChanged = false;
+	if (!attrsModified && value == prevValue)
+	  return;
+	prevValue = value;
+	var position = range ? (value - min) / range * 100 : 0;
+	var bg = '-moz-element(#__sliderthumb__) ' + position + '% no-repeat, ';
+	style(slider, { background: bg + track });
   }
 
 }
 
 function style(element, styles) {
   for (var prop in styles)
-    element.style.setProperty(prop, styles[prop], 'important');
+	element.style.setProperty(prop, styles[prop], 'important');
 }
 
 })();

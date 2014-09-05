@@ -10,12 +10,12 @@
 
 // function to toggle tinymce editor based on the onchange event
 function toggleEditor(id, filter) {
-    if (tinyMCE.getInstanceById(id) == null && filter == 'tinymce') {
-        tinyMCE.execCommand('mceAddControl', true, id);
-    }
-    else {
-        tinyMCE.execCommand('mceRemoveControl', true, id);
-    }
+	if (tinyMCE.getInstanceById(id) == null && filter == 'tinymce') {
+		tinyMCE.execCommand('mceAddControl', true, id);
+	}
+	else {
+		tinyMCE.execCommand('mceRemoveControl', true, id);
+	}
 }
 
 function setTextAreaToolbar(textarea, filter) {
@@ -33,12 +33,12 @@ var filt = filter;
   
   var ul_toolbar = document.getElementById(toolbar_name);
   if (ul_toolbar != null)
-    ul_toolbar.parentNode.removeChild(ul_toolbar);
+	ul_toolbar.parentNode.removeChild(ul_toolbar);
   
   if (Control.TextArea.ToolBar[filter] != null)
   {
-    var tb = new Control.TextArea.ToolBar[filter](textarea);
-    tb.toolbar.container.id = toolbar_name;
+	var tb = new Control.TextArea.ToolBar[filter](textarea);
+	tb.toolbar.container.id = toolbar_name;
   }
 
 // START tinymce stuff

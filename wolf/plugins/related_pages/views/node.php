@@ -8,7 +8,7 @@
 	} ?>
 	<?php $exclude_pages = array('2','8','9','10','13','14','15','17','18','19','21','42','53','59','64','65','67','69','75','95','99','111','112','113','114'); ?>
 	<?php if($visibility == 'Draft' || in_array($child->id,$exclude_pages)){ ?><!-- <?php } ?>
-    <li id="page-<?php echo $child->id; ?>-<?php echo $level; ?>" class="node level-<?php echo $level; if ( ! $child->has_children) echo ' no-children'; else if ($child->is_expanded) echo ' children-visible'; else echo ' children-hidden'; ?>">
+	<li id="page-<?php echo $child->id; ?>-<?php echo $level; ?>" class="node level-<?php echo $level; if ( ! $child->has_children) echo ' no-children'; else if ($child->is_expanded) echo ' children-visible'; else echo ' children-hidden'; ?>">
 		<?php if ($child->has_children): ?><img align="top" alt="toggle children" class="expander" src="<?php echo URI_PUBLIC . ADMIN_DIR ?>/images/<?php echo $child->is_expanded ? 'collapse': 'expand'; ?>.png" /><?php endif; ?>
 		<input type="checkbox" value="<?php echo $child->id; ?>"<?php if ($child->is_related){ ?> checked="checked"<?php } ?><?php if ($pageid == $child->id){?> disabled="disabled"<?php } ?> /> <?php echo $child->breadcrumb; //echo $child->title; ?>
 
@@ -20,7 +20,7 @@
 		</span>
 
 		<?php if ($child->is_expanded) echo $child->children_rows; ?>
-    </li>
-    <?php if($visibility == 'Draft' || in_array($child->id,$exclude_pages)){ ?> --><?php } ?>
+	</li>
+	<?php if($visibility == 'Draft' || in_array($child->id,$exclude_pages)){ ?> --><?php } ?>
 	<?php endforeach; ?>
 </ul>

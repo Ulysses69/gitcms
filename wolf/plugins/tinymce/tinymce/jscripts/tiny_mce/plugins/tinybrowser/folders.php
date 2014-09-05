@@ -80,10 +80,10 @@ if(isset($_POST['deletefolder']))
 		$delthisdir = $tinybrowser['docroot'].$dirpath.urldecode($_POST['actionfolder'][$delthis]);
 		if (is_dir($delthisdir) && rmdir($delthisdir)) $deleteqty++; else $errorqty++;
 		if($foldernow==urldecode($_POST['actionfolder'][$delthis]))
-         {
-         $foldernow = '';
-         $passfolder = '';
-         }
+		 {
+		 $foldernow = '';
+		 $passfolder = '';
+		 }
 		}
 
 	}
@@ -93,18 +93,18 @@ if(isset($_POST['renamefolder']))
 	{
 	foreach($_POST['renamefolder'] as $namethis => $newname)
 		{
-      $urlparts = explode('/',rtrim(urldecode($_POST['actionfolder'][$namethis]),'/'));
+	  $urlparts = explode('/',rtrim(urldecode($_POST['actionfolder'][$namethis]),'/'));
 		if(array_pop($urlparts) != $newname)
 			{
 			$namethisfolderfrom = $tinybrowser['docroot'].$dirpath.urldecode($_POST['actionfolder'][$namethis]);
-         $renameurl = implode('/',$urlparts).'/'.clean_filename($newname).'/';
+		 $renameurl = implode('/',$urlparts).'/'.clean_filename($newname).'/';
 			$namethisfolderto = $tinybrowser['docroot'].$dirpath.$renameurl;
 			if (is_dir($namethisfolderfrom) && rename($namethisfolderfrom,$namethisfolderto)) $renameqty++; else $errorqty++;
 			if($foldernow==urldecode($_POST['actionfolder'][$namethis]))
-            {
-            $foldernow = ltrim($renameurl,'/');
-            $passfolder = '&folder='.urlencode(ltrim($renameurl,'/'));
-            }
+			{
+			$foldernow = ltrim($renameurl,'/');
+			$passfolder = '&folder='.urlencode(ltrim($renameurl,'/'));
+			}
 			}
 		}
 	}
@@ -245,11 +245,11 @@ for($i=0;$i<$num_of_folders;$i++)
 	switch($actionnow) 
 		{
 		case 'create':
-         echo '&rarr; ';
+		 echo '&rarr; ';
 			form_text_input('createfolder['.$i.']',false,'',30,120);
 			break;
 		case 'delete':
-         $disabledel = ($dirs[$i][4] > 0 ? ' DISABLED' : '');
+		 $disabledel = ($dirs[$i][4] > 0 ? ' DISABLED' : '');
 			if(!$disable) echo '<input class="del" type="checkbox" name="deletefolder['.$i.']" value="1"'.$disabledel.' />';
 			break;
 		case 'rename':

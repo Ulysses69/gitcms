@@ -1,31 +1,31 @@
 function toggle_rename_popup(id, name) {
-    var popup = $('#rename_user_group');
-    var new_id = $('#rename_user_group_id');
-    var new_name = $('#rename_user_group_new_name');
-    //$('#rename_file_current_name').val(file);
-    new_id.val(id);
-    new_name.val(name);
+	var popup = $('#rename_user_group');
+	var new_id = $('#rename_user_group_id');
+	var new_name = $('#rename_user_group_new_name');
+	//$('#rename_file_current_name').val(file);
+	new_id.val(id);
+	new_name.val(name);
 
-    var height = $(document).height();
-    var popup_height = popup.height();
-    var width = $(document).width();
-    var popup_width = popup.width();
-    popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
-    popup.toggle("normal");
-    new_name.focus();
+	var height = $(document).height();
+	var popup_height = popup.height();
+	var width = $(document).width();
+	var popup_width = popup.width();
+	popup.css({"position" : "absolute", "top" : height/3 - popup_height/2, "left" : width/3 - popup_width/2});
+	popup.toggle("normal");
+	new_name.focus();
 }
 
 $(document).ready(function() {
-    // Make all modal dialogs draggable
-    $("#boxes .window").draggable({
-        addClasses: false,
-        containment: 'window',
-        scroll: false,
-        handle: '.titlebar'
-    })
+	// Make all modal dialogs draggable
+	$("#boxes .window").draggable({
+		addClasses: false,
+		containment: 'window',
+		scroll: false,
+		handle: '.titlebar'
+	})
 
 	//select all the a tag with name equal to modal
-    $('a.popupLink').click(function(e) {
+	$('a.popupLink').click(function(e) {
 		//Cancel the link behavior
 		e.preventDefault();
 		//Get the A tag
@@ -53,7 +53,7 @@ $(document).ready(function() {
 		//transition effect
 		$(id).fadeIn("fast"); //2000
 
-        $(id+" :input:visible:enabled:first").focus();
+		$(id+" :input:visible:enabled:first").focus();
 
 	});
 

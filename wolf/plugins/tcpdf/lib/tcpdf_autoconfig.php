@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_autoconfig.php
-// Version     : 1.0.000
-// Begin       : 2013-05-16
+// Version	 : 1.0.000
+// Begin	   : 2013-05-16
 // Last Update : 2014-09-02
-// Authors     : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Authors	 : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2011-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -29,7 +29,7 @@
 // -------------------------------------------------------------------
 //
 // Description : Try to automatically configure some TCPDF
-//               constants if not defined.
+//			   constants if not defined.
 //
 //============================================================+
 

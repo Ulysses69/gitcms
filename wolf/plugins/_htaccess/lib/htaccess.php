@@ -109,8 +109,8 @@ if(Plugin::isEnabled('redirector') == true){
 		} else {
 			$thisCase = '';
 		}
-        
-        
+		
+		
 
 	  	if($url == '/'){
 			$RedirectHome .= "RewriteCond %{REQUEST_URI} ^/+$\n";
@@ -118,7 +118,7 @@ if(Plugin::isEnabled('redirector') == true){
 		} else {
 	  	 	if($url[strlen($url)-1] == '/' && $destination[strlen($destination)-1] == '/'){
 				//$RewriteRules .= "RewriteRule ^".$url."(.*)$ ".$destination."$1 [L,R=".$status.$thisCache.",NC]\n";
-                $RewriteRules .= "RewriteRule ^".$url."(.*)$ ".$destination."$1 [L,R=".$status.$thisCache.$thisCase."]\n";
+				$RewriteRules .= "RewriteRule ^".$url."(.*)$ ".$destination."$1 [L,R=".$status.$thisCache.$thisCase."]\n";
 			} else if(stristr($destination,'?')){
 				$RewriteRules .= 'redirect 301 '.$url.' '.$destination."\n";
 			} else if (stristr($url, '?')){

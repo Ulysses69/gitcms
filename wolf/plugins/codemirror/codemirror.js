@@ -3,13 +3,13 @@ $(function(){
 
 		$this = $(this);
 
-	    var myCodeMirror = CodeMirror.fromTextArea(
-	        this,
-	        {
-	            mode: $this.hasClass('markdown')? 'gfm' : 'php',
-	            matchBrackets: true,
-	            lineWrapping: true
-	        }
-	    );
+		var myCodeMirror = CodeMirror.fromTextArea(
+			this,
+			{
+				mode: $this.hasClass('markdown')? 'gfm' : 'php',
+				matchBrackets: true,
+				lineWrapping: true
+			}
+		);
 	});
 });

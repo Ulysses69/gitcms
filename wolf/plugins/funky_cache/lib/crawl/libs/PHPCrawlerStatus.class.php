@@ -26,7 +26,7 @@ class PHPCrawlerStatus
    * Abort reason for aborting the crawling-process.
    *
    * @var int One of the PHPCrawlerAbortReasons-contants or NULL if the process shouldn't
-   *          get aborted yet.
+   *		  get aborted yet.
    */
   public $abort_reason = null;
   

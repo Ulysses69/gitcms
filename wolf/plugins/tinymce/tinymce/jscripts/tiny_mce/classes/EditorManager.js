@@ -54,7 +54,7 @@
 	 * @example
 	 * tinyMCE.execCommand("mceAddControl", false, "some_textarea");
 	 * tinyMCE.onAddEditor.add(function(mgr,ed) {
-	 *     console.debug('A new editor is available' + ed.id);
+	 *	 console.debug('A new editor is available' + ed.id);
 	 * });
 	 */
 	tinymce.onAddEditor = new Dispatcher(tinymce);
@@ -76,7 +76,7 @@
 		 * @type Object
 		 * @example
 		 * for (edId in tinyMCE.editors)
-		 *     tinyMCE.editors[edId].save();
+		 *	 tinyMCE.editors[edId].save();
 		 */
 		editors : [],
 
@@ -107,12 +107,12 @@
 		 * @example
 		 * // Initializes a editor using the longer method
 		 * tinymce.EditorManager.init({
-		 *    some_settings : 'some value'
+		 *	some_settings : 'some value'
 		 * });
 		 * 
 		 * // Initializes a editor instance using the shorter version
 		 * tinyMCE.init({
-		 *    some_settings : 'some value'
+		 *	some_settings : 'some value'
 		 * });
 		 */
 		init : function(s) {
@@ -238,12 +238,12 @@
 		 * @example
 		 * // Adds an onclick event to an editor by id (shorter version)
 		 * tinyMCE.get('mytextbox').onClick.add(function(ed, e) {
-		 *    ed.windowManager.alert('Hello world!');
+		 *	ed.windowManager.alert('Hello world!');
 		 * });
 		 * 
 		 * // Adds an onclick event to an editor by id (longer version)
 		 * tinymce.EditorManager.get('mytextbox').onClick.add(function(ed, e) {
-		 *    ed.windowManager.alert('Hello world!');
+		 *	ed.windowManager.alert('Hello world!');
 		 * });
 		 */
 		get : function(id) {
@@ -487,7 +487,7 @@
  * @example
  * // To initialize editor instances
  * tinyMCE.init({
- *    ...
+ *	...
  * });
  */
 

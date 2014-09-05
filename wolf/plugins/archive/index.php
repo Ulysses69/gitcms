@@ -40,12 +40,12 @@ if (!defined('IN_CMS')) { exit(); }
  */
 
 Plugin::setInfos(array(
-    'id'          => 'archive',
-    'title'       => __('Archive'),
-    'description' => __('Provides an Archive pagetype behaving similar to a blog or news archive.'),
-    'version'     => '1.0.0',
-    'website'     => 'http://www.wolfcms.org/',
-    'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
+	'id'		  => 'archive',
+	'title'	   => __('Archive'),
+	'description' => __('Provides an Archive pagetype behaving similar to a blog or news archive.'),
+	'version'	 => '1.0.0',
+	'website'	 => 'http://www.wolfcms.org/',
+	'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
 ));
 
 Behavior::add('archive', 'archive/archive.php');

@@ -13,27 +13,27 @@ PHPCrawl webcrawler library</title>
  {
    if (document["expandimage" + name].src.search(/expand.gif/) > 0)
    {
-     document["expandimage" + name].src = collapseImage.src;
+	 document["expandimage" + name].src = collapseImage.src;
    }
    else
    {
-     document["expandimage" + name].src = expandImage.src;
+	 document["expandimage" + name].src = expandImage.src;
    }
    
    cnt = document.getElementsByName(name).length;
    
    for (i=0; i<cnt; i++)
    {
-     node = document.getElementsByName(name)[i];
-     
-     if (node.style.display == "none")
-     {
-       node.style.display = "";
-     }
-     else
-     {
-       node.style.display = "none";
-     }
+	 node = document.getElementsByName(name)[i];
+	 
+	 if (node.style.display == "none")
+	 {
+	   node.style.display = "";
+	 }
+	 else
+	 {
+	   node.style.display = "none";
+	 }
    }
  }
  

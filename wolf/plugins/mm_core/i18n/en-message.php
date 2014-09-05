@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * YourLanguage file for plugin mm_core
-     *
-     * @package Plugins
-     * @subpackage mm_core
-     *
-     * @author Your Name <email@domain.something>
-     * @version Wolf x.y.z
-     */
+	/**
+	 * YourLanguage file for plugin mm_core
+	 *
+	 * @package Plugins
+	 * @subpackage mm_core
+	 *
+	 * @author Your Name <email@domain.something>
+	 * @version Wolf x.y.z
+	 */
 
-    return array(
-    	'Assigned permission <b>:perm</b> to role <b>:role</b>!' => 'Assigned permission <b>:perm</b> to role <b>:role</b>!',
+	return array(
+		'Assigned permission <b>:perm</b> to role <b>:role</b>!' => 'Assigned permission <b>:perm</b> to role <b>:role</b>!',
 	'Could not assign permission <b>:perm</b> to role <b>:role</b>!' => 'Could not assign permission <b>:perm</b> to role <b>:role</b>!',
 	'Could not create role <b>:role</b>' => 'Could not create role <b>:role</b>',
 	'Created role <b>:role</b>' => 'Created role <b>:role</b>',
@@ -33,4 +33,4 @@
 	'Successfully activated plugin <b>:name</b>' => 'Successfully activated plugin <b>:name</b>',
 	'Support plugin for mm plugins.' => 'Support plugin for mm plugins.',
 	'mmCore library' => 'mmCore library',
-    );
+	);

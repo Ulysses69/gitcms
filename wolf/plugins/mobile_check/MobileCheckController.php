@@ -4,18 +4,18 @@ class MobileCheckController extends PluginController {
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/mobile_check/views/sidebar'));
 	}
-    public function index() {
+	public function index() {
 		//$settings = array('enable' => $enable);
 		$settings = array();
-        $this->display('mobile_check/views/settings', $settings);
-    }
+		$this->display('mobile_check/views/settings', $settings);
+	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('mobile_check');
-	        if (!$settings) {
-	            Flash::set('error', 'MobileCheck - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('mobile_check/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'MobileCheck - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('mobile_check/views/settings', $settings);
 	}
 	public function save_settings(){
 		/* Temporarily store current enable value */
@@ -97,21 +97,21 @@ class MobileCheckController extends PluginController {
 
 
 		function html2rgb($color){
-		    if ($color[0] == '#')
-		        $color = substr($color, 1);
+			if ($color[0] == '#')
+				$color = substr($color, 1);
 		
-		    if (strlen($color) == 6)
-		        list($r, $g, $b) = array($color[0].$color[1],
-		                                 $color[2].$color[3],
-		                                 $color[4].$color[5]);
-		    elseif (strlen($color) == 3)
-		        list($r, $g, $b) = array($color[0].$color[0], $color[1].$color[1], $color[2].$color[2]);
-		    else
-		        return false;
+			if (strlen($color) == 6)
+				list($r, $g, $b) = array($color[0].$color[1],
+										 $color[2].$color[3],
+										 $color[4].$color[5]);
+			elseif (strlen($color) == 3)
+				list($r, $g, $b) = array($color[0].$color[0], $color[1].$color[1], $color[2].$color[2]);
+			else
+				return false;
 		
-		    $r = hexdec($r); $g = hexdec($g); $b = hexdec($b);
+			$r = hexdec($r); $g = hexdec($g); $b = hexdec($b);
 		
-		    return array($r, $g, $b);
+			return array($r, $g, $b);
 		}
 
 		$color_button_bg_rgb = html2rgb($color_button_bg);
@@ -126,7 +126,7 @@ class MobileCheckController extends PluginController {
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/mobile.php";
 		$mobilecsstemplate = ob_get_contents();
-	    ob_end_clean();
+		ob_end_clean();
 
 		/* Remove comments array */
 		$regex = array(
@@ -201,7 +201,7 @@ class MobileCheckController extends PluginController {
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/toggle.js";
 		$toggletemplate = ob_get_contents();
-	    ob_end_clean();
+		ob_end_clean();
 
 		$toggletemplate = preg_replace(array_keys($regex),$regex,$toggletemplate);
 		$togglepath = '/inc/js/';
@@ -250,7 +250,7 @@ class MobileCheckController extends PluginController {
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/nav.css";
 		$navtemplate = ob_get_contents();
-	    ob_end_clean();
+		ob_end_clean();
 
 		$navtemplate = preg_replace(array_keys($regex),$regex,$navtemplate);
 		$navpath = '/inc/css/';
@@ -350,10 +350,10 @@ class MobileCheckController extends PluginController {
 			$new_hamburger = $_SERVER{'DOCUMENT_ROOT'}.'/inc/img/hamburger.gif';
 			$new_hamburger_retina = $_SERVER{'DOCUMENT_ROOT'}.'/inc/img/hamburger-retina.gif';
 			if (!copy($hamburger, $new_hamburger)) {
-			    Flash::set('error', 'Failed to copy hamburger.gif');
+				Flash::set('error', 'Failed to copy hamburger.gif');
 			}
 			if (!copy($hamburger_retina, $new_hamburger_retina)) {
-			    Flash::set('error', 'Failed to copy hamburger-retina.gif');
+				Flash::set('error', 'Failed to copy hamburger-retina.gif');
 			}
 
 			//if($enable != $get_enable){

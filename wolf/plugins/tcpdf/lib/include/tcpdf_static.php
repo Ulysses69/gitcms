@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_static.php
-// Version     : 1.0.004
-// Begin       : 2002-08-03
+// Version	 : 1.0.004
+// Begin	   : 2002-08-03
 // Last Update : 2014-09-02
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2002-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -566,15 +566,15 @@ class TCPDF_STATIC {
 			case '2A0': {$pf = array( 3370.394, 4767.874); break;}
 			// Variations on the ISO Standard
 			case 'A2_EXTRA'   : {$pf = array( 1261.417, 1754.646); break;}
-			case 'A3+'        : {$pf = array(  932.598, 1369.134); break;}
+			case 'A3+'		: {$pf = array(  932.598, 1369.134); break;}
 			case 'A3_EXTRA'   : {$pf = array(  912.756, 1261.417); break;}
 			case 'A3_SUPER'   : {$pf = array(  864.567, 1440.000); break;}
 			case 'SUPER_A3'   : {$pf = array(  864.567, 1380.472); break;}
 			case 'A4_EXTRA'   : {$pf = array(  666.142,  912.756); break;}
 			case 'A4_SUPER'   : {$pf = array(  649.134,  912.756); break;}
 			case 'SUPER_A4'   : {$pf = array(  643.465, 1009.134); break;}
-			case 'A4_LONG'    : {$pf = array(  595.276,  986.457); break;}
-			case 'F4'         : {$pf = array(  595.276,  935.433); break;}
+			case 'A4_LONG'	: {$pf = array(  595.276,  986.457); break;}
+			case 'F4'		 : {$pf = array(  595.276,  935.433); break;}
 			case 'SO_B5_EXTRA': {$pf = array(  572.598,  782.362); break;}
 			case 'A5_EXTRA'   : {$pf = array(  490.394,  666.142); break;}
 			// ANSI Series
@@ -639,20 +639,20 @@ class TCPDF_STATIC {
 			//   - Commercial Envelopes
 			case 'COMMENV_N6_1/4': {$pf = array(  252.000,  432.000); break;}
 			case 'COMMENV_N6_3/4': {$pf = array(  260.640,  468.000); break;}
-			case 'COMMENV_N8'    : {$pf = array(  278.640,  540.000); break;}
-			case 'COMMENV_N9'    : {$pf = array(  278.640,  638.640); break;}
+			case 'COMMENV_N8'	: {$pf = array(  278.640,  540.000); break;}
+			case 'COMMENV_N9'	: {$pf = array(  278.640,  638.640); break;}
 			case 'COMMENV_N10'   : {$pf = array(  296.640,  684.000); break;}
 			case 'COMMENV_N11'   : {$pf = array(  324.000,  746.640); break;}
 			case 'COMMENV_N12'   : {$pf = array(  342.000,  792.000); break;}
 			case 'COMMENV_N14'   : {$pf = array(  360.000,  828.000); break;}
 			//   - Catalogue Envelopes
-			case 'CATENV_N1'     : {$pf = array(  432.000,  648.000); break;}
+			case 'CATENV_N1'	 : {$pf = array(  432.000,  648.000); break;}
 			case 'CATENV_N1_3/4' : {$pf = array(  468.000,  684.000); break;}
-			case 'CATENV_N2'     : {$pf = array(  468.000,  720.000); break;}
-			case 'CATENV_N3'     : {$pf = array(  504.000,  720.000); break;}
-			case 'CATENV_N6'     : {$pf = array(  540.000,  756.000); break;}
-			case 'CATENV_N7'     : {$pf = array(  576.000,  792.000); break;}
-			case 'CATENV_N8'     : {$pf = array(  594.000,  810.000); break;}
+			case 'CATENV_N2'	 : {$pf = array(  468.000,  720.000); break;}
+			case 'CATENV_N3'	 : {$pf = array(  504.000,  720.000); break;}
+			case 'CATENV_N6'	 : {$pf = array(  540.000,  756.000); break;}
+			case 'CATENV_N7'	 : {$pf = array(  576.000,  792.000); break;}
+			case 'CATENV_N8'	 : {$pf = array(  594.000,  810.000); break;}
 			case 'CATENV_N9_1/2' : {$pf = array(  612.000,  756.000); break;}
 			case 'CATENV_N9_3/4' : {$pf = array(  630.000,  810.000); break;}
 			case 'CATENV_N10_1/2': {$pf = array(  648.000,  864.000); break;}
@@ -724,19 +724,19 @@ class TCPDF_STATIC {
 			case 'BUSINESS_CARD_UK':
 			case 'BUSINESS_CARD_FR':
 			case 'BUSINESS_CARD_DE':
-			case 'BUSINESS_CARD_ES'     : {$pf = array(  155.906,  240.945); break;}
+			case 'BUSINESS_CARD_ES'	 : {$pf = array(  155.906,  240.945); break;}
 			case 'BUSINESS_CARD_CA':
-			case 'BUSINESS_CARD_US'     : {$pf = array(  144.567,  252.283); break;}
-			case 'BUSINESS_CARD_JP'     : {$pf = array(  155.906,  257.953); break;}
-			case 'BUSINESS_CARD_HK'     : {$pf = array(  153.071,  255.118); break;}
+			case 'BUSINESS_CARD_US'	 : {$pf = array(  144.567,  252.283); break;}
+			case 'BUSINESS_CARD_JP'	 : {$pf = array(  155.906,  257.953); break;}
+			case 'BUSINESS_CARD_HK'	 : {$pf = array(  153.071,  255.118); break;}
 			case 'BUSINESS_CARD_AU':
 			case 'BUSINESS_CARD_DK':
-			case 'BUSINESS_CARD_SE'     : {$pf = array(  155.906,  255.118); break;}
+			case 'BUSINESS_CARD_SE'	 : {$pf = array(  155.906,  255.118); break;}
 			case 'BUSINESS_CARD_RU':
 			case 'BUSINESS_CARD_CZ':
 			case 'BUSINESS_CARD_FI':
 			case 'BUSINESS_CARD_HU':
-			case 'BUSINESS_CARD_IL'     : {$pf = array(  141.732,  255.118); break;}
+			case 'BUSINESS_CARD_IL'	 : {$pf = array(  141.732,  255.118); break;}
 			// Billboards
 			case '4SHEET' : {$pf = array( 2880.000, 4320.000); break;}
 			case '6SHEET' : {$pf = array( 3401.575, 5102.362); break;}
@@ -748,81 +748,81 @@ class TCPDF_STATIC {
 			case '96SHEET': {$pf = array(34560.000, 8640.000); break;}
 			// Old European Sizes
 			//   - Old Imperial English Sizes
-			case 'EN_EMPEROR'          : {$pf = array( 3456.000, 5184.000); break;}
-			case 'EN_ANTIQUARIAN'      : {$pf = array( 2232.000, 3816.000); break;}
-			case 'EN_GRAND_EAGLE'      : {$pf = array( 2070.000, 3024.000); break;}
+			case 'EN_EMPEROR'		  : {$pf = array( 3456.000, 5184.000); break;}
+			case 'EN_ANTIQUARIAN'	  : {$pf = array( 2232.000, 3816.000); break;}
+			case 'EN_GRAND_EAGLE'	  : {$pf = array( 2070.000, 3024.000); break;}
 			case 'EN_DOUBLE_ELEPHANT'  : {$pf = array( 1926.000, 2880.000); break;}
-			case 'EN_ATLAS'            : {$pf = array( 1872.000, 2448.000); break;}
-			case 'EN_COLOMBIER'        : {$pf = array( 1692.000, 2484.000); break;}
-			case 'EN_ELEPHANT'         : {$pf = array( 1656.000, 2016.000); break;}
-			case 'EN_DOUBLE_DEMY'      : {$pf = array( 1620.000, 2556.000); break;}
-			case 'EN_IMPERIAL'         : {$pf = array( 1584.000, 2160.000); break;}
-			case 'EN_PRINCESS'         : {$pf = array( 1548.000, 2016.000); break;}
-			case 'EN_CARTRIDGE'        : {$pf = array( 1512.000, 1872.000); break;}
+			case 'EN_ATLAS'			: {$pf = array( 1872.000, 2448.000); break;}
+			case 'EN_COLOMBIER'		: {$pf = array( 1692.000, 2484.000); break;}
+			case 'EN_ELEPHANT'		 : {$pf = array( 1656.000, 2016.000); break;}
+			case 'EN_DOUBLE_DEMY'	  : {$pf = array( 1620.000, 2556.000); break;}
+			case 'EN_IMPERIAL'		 : {$pf = array( 1584.000, 2160.000); break;}
+			case 'EN_PRINCESS'		 : {$pf = array( 1548.000, 2016.000); break;}
+			case 'EN_CARTRIDGE'		: {$pf = array( 1512.000, 1872.000); break;}
 			case 'EN_DOUBLE_LARGE_POST': {$pf = array( 1512.000, 2376.000); break;}
-			case 'EN_ROYAL'            : {$pf = array( 1440.000, 1800.000); break;}
+			case 'EN_ROYAL'			: {$pf = array( 1440.000, 1800.000); break;}
 			case 'EN_SHEET':
-			case 'EN_HALF_POST'        : {$pf = array( 1404.000, 1692.000); break;}
-			case 'EN_SUPER_ROYAL'      : {$pf = array( 1368.000, 1944.000); break;}
-			case 'EN_DOUBLE_POST'      : {$pf = array( 1368.000, 2196.000); break;}
-			case 'EN_MEDIUM'           : {$pf = array( 1260.000, 1656.000); break;}
-			case 'EN_DEMY'             : {$pf = array( 1260.000, 1620.000); break;}
-			case 'EN_LARGE_POST'       : {$pf = array( 1188.000, 1512.000); break;}
-			case 'EN_COPY_DRAUGHT'     : {$pf = array( 1152.000, 1440.000); break;}
-			case 'EN_POST'             : {$pf = array( 1116.000, 1386.000); break;}
-			case 'EN_CROWN'            : {$pf = array( 1080.000, 1440.000); break;}
-			case 'EN_PINCHED_POST'     : {$pf = array( 1062.000, 1332.000); break;}
-			case 'EN_BRIEF'            : {$pf = array(  972.000, 1152.000); break;}
-			case 'EN_FOOLSCAP'         : {$pf = array(  972.000, 1224.000); break;}
+			case 'EN_HALF_POST'		: {$pf = array( 1404.000, 1692.000); break;}
+			case 'EN_SUPER_ROYAL'	  : {$pf = array( 1368.000, 1944.000); break;}
+			case 'EN_DOUBLE_POST'	  : {$pf = array( 1368.000, 2196.000); break;}
+			case 'EN_MEDIUM'		   : {$pf = array( 1260.000, 1656.000); break;}
+			case 'EN_DEMY'			 : {$pf = array( 1260.000, 1620.000); break;}
+			case 'EN_LARGE_POST'	   : {$pf = array( 1188.000, 1512.000); break;}
+			case 'EN_COPY_DRAUGHT'	 : {$pf = array( 1152.000, 1440.000); break;}
+			case 'EN_POST'			 : {$pf = array( 1116.000, 1386.000); break;}
+			case 'EN_CROWN'			: {$pf = array( 1080.000, 1440.000); break;}
+			case 'EN_PINCHED_POST'	 : {$pf = array( 1062.000, 1332.000); break;}
+			case 'EN_BRIEF'			: {$pf = array(  972.000, 1152.000); break;}
+			case 'EN_FOOLSCAP'		 : {$pf = array(  972.000, 1224.000); break;}
 			case 'EN_SMALL_FOOLSCAP'   : {$pf = array(  954.000, 1188.000); break;}
-			case 'EN_POTT'             : {$pf = array(  900.000, 1080.000); break;}
+			case 'EN_POTT'			 : {$pf = array(  900.000, 1080.000); break;}
 			//   - Old Imperial Belgian Sizes
 			case 'BE_GRAND_AIGLE' : {$pf = array( 1984.252, 2948.031); break;}
 			case 'BE_COLOMBIER'   : {$pf = array( 1757.480, 2409.449); break;}
 			case 'BE_DOUBLE_CARRE': {$pf = array( 1757.480, 2607.874); break;}
-			case 'BE_ELEPHANT'    : {$pf = array( 1746.142, 2182.677); break;}
+			case 'BE_ELEPHANT'	: {$pf = array( 1746.142, 2182.677); break;}
 			case 'BE_PETIT_AIGLE' : {$pf = array( 1700.787, 2381.102); break;}
 			case 'BE_GRAND_JESUS' : {$pf = array( 1559.055, 2069.291); break;}
-			case 'BE_JESUS'       : {$pf = array( 1530.709, 2069.291); break;}
-			case 'BE_RAISIN'      : {$pf = array( 1417.323, 1842.520); break;}
+			case 'BE_JESUS'	   : {$pf = array( 1530.709, 2069.291); break;}
+			case 'BE_RAISIN'	  : {$pf = array( 1417.323, 1842.520); break;}
 			case 'BE_GRAND_MEDIAN': {$pf = array( 1303.937, 1714.961); break;}
 			case 'BE_DOUBLE_POSTE': {$pf = array( 1233.071, 1601.575); break;}
-			case 'BE_COQUILLE'    : {$pf = array( 1218.898, 1587.402); break;}
+			case 'BE_COQUILLE'	: {$pf = array( 1218.898, 1587.402); break;}
 			case 'BE_PETIT_MEDIAN': {$pf = array( 1176.378, 1502.362); break;}
-			case 'BE_RUCHE'       : {$pf = array( 1020.472, 1303.937); break;}
+			case 'BE_RUCHE'	   : {$pf = array( 1020.472, 1303.937); break;}
 			case 'BE_PROPATRIA'   : {$pf = array(  977.953, 1218.898); break;}
-			case 'BE_LYS'         : {$pf = array(  898.583, 1125.354); break;}
-			case 'BE_POT'         : {$pf = array(  870.236, 1088.504); break;}
-			case 'BE_ROSETTE'     : {$pf = array(  765.354,  983.622); break;}
+			case 'BE_LYS'		 : {$pf = array(  898.583, 1125.354); break;}
+			case 'BE_POT'		 : {$pf = array(  870.236, 1088.504); break;}
+			case 'BE_ROSETTE'	 : {$pf = array(  765.354,  983.622); break;}
 			//   - Old Imperial French Sizes
-			case 'FR_UNIVERS'          : {$pf = array( 2834.646, 3685.039); break;}
+			case 'FR_UNIVERS'		  : {$pf = array( 2834.646, 3685.039); break;}
 			case 'FR_DOUBLE_COLOMBIER' : {$pf = array( 2551.181, 3571.654); break;}
-			case 'FR_GRANDE_MONDE'     : {$pf = array( 2551.181, 3571.654); break;}
-			case 'FR_DOUBLE_SOLEIL'    : {$pf = array( 2267.717, 3401.575); break;}
-			case 'FR_DOUBLE_JESUS'     : {$pf = array( 2154.331, 3174.803); break;}
-			case 'FR_GRAND_AIGLE'      : {$pf = array( 2125.984, 3004.724); break;}
-			case 'FR_PETIT_AIGLE'      : {$pf = array( 1984.252, 2664.567); break;}
-			case 'FR_DOUBLE_RAISIN'    : {$pf = array( 1842.520, 2834.646); break;}
-			case 'FR_JOURNAL'          : {$pf = array( 1842.520, 2664.567); break;}
+			case 'FR_GRANDE_MONDE'	 : {$pf = array( 2551.181, 3571.654); break;}
+			case 'FR_DOUBLE_SOLEIL'	: {$pf = array( 2267.717, 3401.575); break;}
+			case 'FR_DOUBLE_JESUS'	 : {$pf = array( 2154.331, 3174.803); break;}
+			case 'FR_GRAND_AIGLE'	  : {$pf = array( 2125.984, 3004.724); break;}
+			case 'FR_PETIT_AIGLE'	  : {$pf = array( 1984.252, 2664.567); break;}
+			case 'FR_DOUBLE_RAISIN'	: {$pf = array( 1842.520, 2834.646); break;}
+			case 'FR_JOURNAL'		  : {$pf = array( 1842.520, 2664.567); break;}
 			case 'FR_COLOMBIER_AFFICHE': {$pf = array( 1785.827, 2551.181); break;}
 			case 'FR_DOUBLE_CAVALIER'  : {$pf = array( 1757.480, 2607.874); break;}
-			case 'FR_CLOCHE'           : {$pf = array( 1700.787, 2267.717); break;}
-			case 'FR_SOLEIL'           : {$pf = array( 1700.787, 2267.717); break;}
-			case 'FR_DOUBLE_CARRE'     : {$pf = array( 1587.402, 2551.181); break;}
+			case 'FR_CLOCHE'		   : {$pf = array( 1700.787, 2267.717); break;}
+			case 'FR_SOLEIL'		   : {$pf = array( 1700.787, 2267.717); break;}
+			case 'FR_DOUBLE_CARRE'	 : {$pf = array( 1587.402, 2551.181); break;}
 			case 'FR_DOUBLE_COQUILLE'  : {$pf = array( 1587.402, 2494.488); break;}
-			case 'FR_JESUS'            : {$pf = array( 1587.402, 2154.331); break;}
-			case 'FR_RAISIN'           : {$pf = array( 1417.323, 1842.520); break;}
-			case 'FR_CAVALIER'         : {$pf = array( 1303.937, 1757.480); break;}
+			case 'FR_JESUS'			: {$pf = array( 1587.402, 2154.331); break;}
+			case 'FR_RAISIN'		   : {$pf = array( 1417.323, 1842.520); break;}
+			case 'FR_CAVALIER'		 : {$pf = array( 1303.937, 1757.480); break;}
 			case 'FR_DOUBLE_COURONNE'  : {$pf = array( 1303.937, 2040.945); break;}
-			case 'FR_CARRE'            : {$pf = array( 1275.591, 1587.402); break;}
-			case 'FR_COQUILLE'         : {$pf = array( 1247.244, 1587.402); break;}
+			case 'FR_CARRE'			: {$pf = array( 1275.591, 1587.402); break;}
+			case 'FR_COQUILLE'		 : {$pf = array( 1247.244, 1587.402); break;}
 			case 'FR_DOUBLE_TELLIERE'  : {$pf = array( 1247.244, 1927.559); break;}
-			case 'FR_DOUBLE_CLOCHE'    : {$pf = array( 1133.858, 1700.787); break;}
-			case 'FR_DOUBLE_POT'       : {$pf = array( 1133.858, 1757.480); break;}
-			case 'FR_ECU'              : {$pf = array( 1133.858, 1474.016); break;}
-			case 'FR_COURONNE'         : {$pf = array( 1020.472, 1303.937); break;}
-			case 'FR_TELLIERE'         : {$pf = array(  963.780, 1247.244); break;}
-			case 'FR_POT'              : {$pf = array(  878.740, 1133.858); break;}
+			case 'FR_DOUBLE_CLOCHE'	: {$pf = array( 1133.858, 1700.787); break;}
+			case 'FR_DOUBLE_POT'	   : {$pf = array( 1133.858, 1757.480); break;}
+			case 'FR_ECU'			  : {$pf = array( 1133.858, 1474.016); break;}
+			case 'FR_COURONNE'		 : {$pf = array( 1020.472, 1303.937); break;}
+			case 'FR_TELLIERE'		 : {$pf = array(  963.780, 1247.244); break;}
+			case 'FR_POT'			  : {$pf = array(  878.740, 1133.858); break;}
 			// DEFAULT ISO A4
 			default: {$pf = array(  595.276,  841.890); break;}
 		}
@@ -976,7 +976,7 @@ class TCPDF_STATIC {
 	 */
 	public static function isValidURL($url) {
 		$headers = @get_headers($url);
-    	return (strpos($headers[0], '200') !== false);
+		return (strpos($headers[0], '200') !== false);
 	}
 
 	/**

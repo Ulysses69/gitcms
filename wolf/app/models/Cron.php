@@ -38,30 +38,30 @@
  * Also generates the webbug needed for use of the poor man's cron functionality.
  */
 final class Cron extends Record {
-    const TABLE_NAME = 'cron';
+	const TABLE_NAME = 'cron';
 
-    protected $id = '1';
-    protected $lastrun;
+	protected $id = '1';
+	protected $lastrun;
 
-    public function __construct($data=null) {
-        if ($data !== null)
-            $this->lastrun = $data->lastrun;
-    }
+	public function __construct($data=null) {
+		if ($data !== null)
+			$this->lastrun = $data->lastrun;
+	}
 
-    public function getLastRunTime() {
-        return $this->lastrun;
-    }
+	public function getLastRunTime() {
+		return $this->lastrun;
+	}
 
-    public function beforeUpdate() {
-        $this->lastrun = time();
-        return true;
-    }
+	public function beforeUpdate() {
+		$this->lastrun = time();
+		return true;
+	}
 
-    public function generateWebBug() {
-            $cronbug = '<!-- About the image below: the website owner chose to have Wolf CMS start a (cron) job on the server by displaying the following image. -->'."\n";
-            $cronbug .= '<img id="wolf-cron-webbug" style="display: none;" src="'.URL_PUBLIC.'/wolf/app/cron.php" width="1" height="1" border="0" />'."\n";
-            return $cronbug;
-    }
+	public function generateWebBug() {
+			$cronbug = '<!-- About the image below: the website owner chose to have Wolf CMS start a (cron) job on the server by displaying the following image. -->'."\n";
+			$cronbug .= '<img id="wolf-cron-webbug" style="display: none;" src="'.URL_PUBLIC.'/wolf/app/cron.php" width="1" height="1" border="0" />'."\n";
+			return $cronbug;
+	}
 
 }
 

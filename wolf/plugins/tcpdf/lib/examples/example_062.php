@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_062.php
-// Begin       : 2010-08-25
+// Begin	   : 2010-08-25
 // Last Update : 2013-05-14
 //
 // Description : Example 062 for TCPDF class
-//               XObject Template
+//			   XObject Template
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

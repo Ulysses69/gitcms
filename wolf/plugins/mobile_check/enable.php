@@ -54,20 +54,20 @@ if(!Plugin::getSetting('header_banner', 'mobile_check')) $settings['header_banne
 // Check existing plugin settings
 if (!$version || $version == null) {
 
-    // This is a clean install.
+	// This is a clean install.
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'mobile_check')) {
-        Flash::set('success', __('MobileCheck - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('MobileCheck - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'mobile_check')) {
+		Flash::set('success', __('MobileCheck - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('MobileCheck - unable to save plugin settings.'));
 
 
 } else {
 
-    // Upgrade from previous installation
-    if (MOBILE_VERSION > $version) {
+	// Upgrade from previous installation
+	if (MOBILE_VERSION > $version) {
 
 		$navcss = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/nav.css';
 		$navjs = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/nav.js';
@@ -76,26 +76,26 @@ if (!$version || $version == null) {
 		$new_navjs = $_SERVER{'DOCUMENT_ROOT'}.'/inc/js/nav.js';
 		$new_togglejs = $_SERVER{'DOCUMENT_ROOT'}.'/inc/js/toggle.js';
 		if (!copy($navcss, $new_navcss)) {
-		    Flash::set('error', 'Failed to copy nav.css');
+			Flash::set('error', 'Failed to copy nav.css');
 		}
 		if (!copy($navjs, $new_navjs)) {
-		    Flash::set('error', 'Failed to copy nav.js');
+			Flash::set('error', 'Failed to copy nav.js');
 		}
 		if (!copy($toglejs, $new_togglejs)) {
-		    Flash::set('error', 'Failed to copy toggle.js');
+			Flash::set('error', 'Failed to copy toggle.js');
 		}
 
 		/* Get nav JS Template */
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/nav.js";
 		$jstemplate = ob_get_contents();
-	    ob_end_clean();
+		ob_end_clean();
   
 		/* Get toggle JS Template */
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/toggle.js";
 		$toggletemplate = ob_get_contents();
-	    ob_end_clean();
+		ob_end_clean();
 
 		/* Remove comments array */
 		$regex = array(
@@ -203,10 +203,10 @@ if (!$version || $version == null) {
 		$new_hamburger_retina = $_SERVER{'DOCUMENT_ROOT'}.'/inc/img/hamburger-retina.gif';
 
 		if (!copy($hamburger, $new_hamburger)) {
-		    Flash::set('error', 'Failed to copy hamburger.gif');
+			Flash::set('error', 'Failed to copy hamburger.gif');
 		}
 		if (!copy($hamburger_retina, $new_hamburger_retina)) {
-		    Flash::set('error', 'Failed to copy hamburger-retina.gif');
+			Flash::set('error', 'Failed to copy hamburger-retina.gif');
 		}
 
 
@@ -226,37 +226,37 @@ if (!$version || $version == null) {
 			//$stmt->execute();
 		}
 		
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='mobile_check'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='mobile_check'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='mobile_check'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='mobile_check'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
-            Flash::set('error', __('MobileCheck - unable to access plugin settings.'));
-            return;
-        }
+		if (!$result) {
+			Flash::set('error', __('MobileCheck - unable to access plugin settings.'));
+			return;
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-            if(defined('MOBILE_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/mobile_check'); }
-        }
-    }
+			if(defined('MOBILE_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/mobile_check'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'mobile_check')) {
-        if (MOBILE_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'mobile_check')) {
+		if (MOBILE_VERSION > $version){
 			Flash::set('success', __('MobileCheck - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

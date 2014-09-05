@@ -169,9 +169,9 @@ label {
 	<div>
 	  <label for="upload">Select a foto</label>
 	<input type="file" name="upload" id="upload" size="35"></div>
-    <div>
-      <label for="replace">Replace an old foto?</label>
-    <input type="checkbox" name="replace" value="y"></div>
+	<div>
+	  <label for="replace">Replace an old foto?</label>
+	<input type="checkbox" name="replace" value="y"></div>
 	<p style="margin-top:25px;text-align:center;"><input type="submit" name="Submit" id="Submit" value="Upload">
 	</p>
   </form>

@@ -9,11 +9,11 @@ class Banner5Controller extends PluginController {
 	}
 	function settings(){
 		$settings = Plugin::getAllSettings('banner5');
-	        if (!$settings) {
-	            Flash::set('error', 'Banner 5 - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('banner5/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Banner 5 - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('banner5/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'banner5';
@@ -36,17 +36,17 @@ class Banner5Controller extends PluginController {
 			$descriptionsarray .= $title.'|';
 		}
 
-	    $pref_controls = $_POST['pref_controls'];
-	    $pref_random = $_POST['pref_random'];
-	    $pref_preload = $_POST['pref_preload'];
-	    $pref_transition = $_POST['pref_transition'];
-	    $pref_burns = $_POST['pref_burns'];
-	    $pref_burntime = $_POST['pref_burntime'];
-	    $pref_time = $_POST['pref_time'];
-	    $pref_pause = $_POST['pref_pause'];
-	    $pref_delay = $_POST['pref_delay'];
-	    
-	    if(is_dir($_SERVER{'DOCUMENT_ROOT'}.$_POST['bannerimages'])){
+		$pref_controls = $_POST['pref_controls'];
+		$pref_random = $_POST['pref_random'];
+		$pref_preload = $_POST['pref_preload'];
+		$pref_transition = $_POST['pref_transition'];
+		$pref_burns = $_POST['pref_burns'];
+		$pref_burntime = $_POST['pref_burntime'];
+		$pref_time = $_POST['pref_time'];
+		$pref_pause = $_POST['pref_pause'];
+		$pref_delay = $_POST['pref_delay'];
+		
+		if(is_dir($_SERVER{'DOCUMENT_ROOT'}.$_POST['bannerimages'])){
 
 			$settings = array('bannerid' => $bannerid,
 							  'bannerwidth' => $bannerwidth,
@@ -64,7 +64,7 @@ class Banner5Controller extends PluginController {
 							  'pref_time' => $pref_time,
 							  'pref_pause' => $pref_pause,
 							  'pref_delay' => $pref_delay
-		        );
+				);
 	
 			if (Plugin::setAllSettings($settings, 'banner5')){
 	

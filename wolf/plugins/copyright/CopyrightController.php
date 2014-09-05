@@ -4,18 +4,18 @@ class CopyrightController extends PluginController {
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/copyright/views/sidebar'));
 	}
-    public function index() {
-        //$this->documentation();
-        //$this->display('copyright/views/settings', $settings);
-        $this->display('copyright/views/settings');
-    }
+	public function index() {
+		//$this->documentation();
+		//$this->display('copyright/views/settings', $settings);
+		$this->display('copyright/views/settings');
+	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('copyright');
-	        if (!$settings) {
-	            Flash::set('error', 'Copyright - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('copyright/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Copyright - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('copyright/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'copyright';

@@ -71,7 +71,7 @@ class EventsUtil
 	
 	private static function public_path()
 	{
-	    return '/' . basename(CORE_ROOT) . '/plugins/events';
+		return '/' . basename(CORE_ROOT) . '/plugins/events';
 	}
 
 }

@@ -72,10 +72,10 @@
 				for(j = 0; j < tbIds.length; j++){
 					
 					obj = ed.controlManager.get(tbIds[j]);
-                    if(typeof obj =="undefined") {
-                        continue;
-                    }
-                    id = obj.id;
+					if(typeof obj =="undefined") {
+						continue;
+					}
+					id = obj.id;
 					
 					if (DOM.isHidden(id)) {
 						Toggle_PDW = 0;

@@ -1,33 +1,33 @@
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>CodeMirror: VB.NET mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="vb.js"></script>
-    <link rel="stylesheet" href="../../doc/docs.css">
-    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
-    <style>
-      .CodeMirror {border: 1px solid #aaa; height:210px;}
-      .CodeMirror-scroll { overflow-x: auto; height: 100%;}
-      .CodeMirror pre { font-family: Inconsolata; font-size: 14px}
-    </style> 
-    <script type="text/javascript" src="../../lib/util/runmode.js"></script>
+	<meta charset="utf-8">
+	<title>CodeMirror: VB.NET mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="vb.js"></script>
+	<link rel="stylesheet" href="../../doc/docs.css">
+	<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+	<style>
+	  .CodeMirror {border: 1px solid #aaa; height:210px;}
+	  .CodeMirror-scroll { overflow-x: auto; height: 100%;}
+	  .CodeMirror pre { font-family: Inconsolata; font-size: 14px}
+	</style> 
+	<script type="text/javascript" src="../../lib/util/runmode.js"></script>
   </head>
   <body onload="init()">
-    <h1>CodeMirror: VB.NET mode</h1>
+	<h1>CodeMirror: VB.NET mode</h1>
 <script type="text/javascript">
 function test(golden, text) {
   var ok = true;
   var i = 0;
   function callback(token, style, lineNo, pos){
 		//console.log(String(token) + " " + String(style) + " " + String(lineNo) + " " + String(pos));
-    var result = [String(token), String(style)];
-    if (golden[i][0] != result[0] || golden[i][1] != result[1]){
-      return "Error, expected: " + String(golden[i]) + ", got: " + String(result);
-      ok = false;
-    }
-    i++;
+	var result = [String(token), String(style)];
+	if (golden[i][0] != result[0] || golden[i][1] != result[1]){
+	  return "Error, expected: " + String(golden[i]) + ", got: " + String(result);
+	  ok = false;
+	}
+	i++;
   }
   CodeMirror.runMode(text, "text/x-vb",callback); 
 
@@ -63,14 +63,14 @@ function initText(editor) {
   for (var i =0; i< editor.lineCount(); i++) editor.indentLine(i);
 }
 function init() {
-    editor = CodeMirror.fromTextArea(document.getElementById("solution"), {
-        lineNumbers: true,
-        matchBrackets: true,
-        mode: "text/x-vb",
-        readOnly: false,
-        tabMode: "shift"
-    });
-    runTest();
+	editor = CodeMirror.fromTextArea(document.getElementById("solution"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-vb",
+		readOnly: false,
+		tabMode: "shift"
+	});
+	runTest();
 }
 function runTest() {
 	document.getElementById('testresult').innerHTML = testAll();

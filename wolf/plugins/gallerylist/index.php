@@ -1,12 +1,12 @@
 <?php
 
 Plugin::setInfos(array(
-    'id'          			=> 'gallerylist',
-    'title'       			=> __('Gallery List'),
-    'description' 			=> __('Gallery List.'),
-    'version'     			=> '1.1.0',
-    'license'     			=> 'GPL',
-    'require_wolf_version' 		=> '0.5.5'
+	'id'		  			=> 'gallerylist',
+	'title'	   			=> __('Gallery List'),
+	'description' 			=> __('Gallery List.'),
+	'version'	 			=> '1.1.0',
+	'license'	 			=> 'GPL',
+	'require_wolf_version' 		=> '0.5.5'
 ));
 
 Behavior::add('Gallery', '');
@@ -21,15 +21,15 @@ function gallerylist_page_edit($page) {
 	$page = Page::findById($page->id);
 
 	// If setThumbs is activiated for page, then update scripts.js
-    //echo 'Saved: page_edit for '.$page->slug.'<br/>';
+	//echo 'Saved: page_edit for '.$page->slug.'<br/>';
 	if(!defined('REGISTER_FUNCTIONS')){
 		include('../../.RegisterFunctions');
 	}
-    //echo REGISTER_FUNCTIONS;
+	//echo REGISTER_FUNCTIONS;
 	if(stristr($page->content(),'setThumbs') || stristr($page->content('scripts'),'setThumbs')){
 		echo 'setThumbs is set.';
 	}
-    //echo print_r($page);
+	//echo print_r($page);
 
 
 	$jscriptstemplate = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/jscripts/lib/scripts.php';
@@ -87,7 +87,7 @@ function gallerylist_page_edit($page) {
 
 	}
 
-    //exit;
+	//exit;
 }
 function gallerylist_page_add($page) {
 }
@@ -131,7 +131,7 @@ function gallerylist_view_edit($page) {
 
 		$url_array = array();
 		//print each file name
-	    if (is_dir($directory)) {
+		if (is_dir($directory)) {
 			$iterator = new RecursiveDirectoryIterator($directory);
 			foreach (new RecursiveIteratorIterator($iterator, RecursiveIteratorIterator::CHILD_FIRST) as $file) {
 				if (!$file->isFile() && $file->getFilename() != '_thumbs') {

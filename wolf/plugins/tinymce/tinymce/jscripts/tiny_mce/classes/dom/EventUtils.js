@@ -42,7 +42,7 @@
 		 * @example
 		 * // Adds a click handler to the current document
 		 * tinymce.dom.Event.add(document, 'click', function(e) {
-		 *    console.debug(e.target);
+		 *	console.debug(e.target);
 		 * });
 		 */
 		add : function(o, n, f, s) {
@@ -137,7 +137,7 @@
 		 * @example
 		 * // Adds a click handler to the current document
 		 * var func = tinymce.dom.Event.add(document, 'click', function(e) {
-		 *    console.debug(e.target);
+		 *	console.debug(e.target);
 		 * });
 		 * 
 		 * // Removes the click handler from the document
@@ -180,7 +180,7 @@
 		 * @example
 		 * // Cancels all mousedown events in the active editor
 		 * tinyMCE.activeEditor.onMouseDown.add(function(ed, e) {
-		 *    return tinymce.dom.Event.cancel(e);
+		 *	return tinymce.dom.Event.cancel(e);
 		 * });
 		 */
 		clear : function(o) {

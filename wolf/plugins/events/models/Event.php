@@ -4,14 +4,14 @@ require_once('Record.php');
 
 class EventsEvent extends EventsRecord
 {
-    const TABLE_NAME = 'events_events';
+	const TABLE_NAME = 'events_events';
 
-    public $id;
+	public $id;
 	public $name;
-    public $start_date;
-    public $link;
-    public $cost;
-    public $description;
+	public $start_date;
+	public $link;
+	public $cost;
+	public $description;
 	public $category_id;
 	public $attraction_id;
 	public $venue_id;

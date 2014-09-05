@@ -79,10 +79,10 @@ return array(
 'Page Type' => 'Sidtyp',
 
 // plugins
-'Plugin'    => 'Plugin',
+'Plugin'	=> 'Plugin',
 'Website'   => 'Webbplats',
 'Version'   => 'Version',
-'Latest'    => 'Senaste',
+'Latest'	=> 'Senaste',
 'Enabled'   => 'Aktiverad',
 
 // settings
@@ -192,10 +192,10 @@ return array(
 'Files' => 'Filer',
 
 // Comments
-'Enable comments'       => 'Aktivera kommentarer',
+'Enable comments'	   => 'Aktivera kommentarer',
 'Auto approve comments' => 'Godkänn kommentarer automatiskt',
-'Delete'                => 'Radera',
-'Reject'                => 'Avslå',
-'Comments'              => 'Kommentarer',
+'Delete'				=> 'Radera',
+'Reject'				=> 'Avslå',
+'Comments'			  => 'Kommentarer',
 
 );

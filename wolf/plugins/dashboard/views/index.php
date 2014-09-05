@@ -22,7 +22,7 @@
 		curl_setopt($curl,CURLOPT_NOBODY,true);
 		curl_setopt($curl,CURLOPT_HEADER,true);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($curl,CURLOPT_TIMEOUT_MS,206);
+		curl_setopt($curl,CURLOPT_TIMEOUT_MS,206);
 		curl_exec($curl);
 		$info = curl_getinfo($curl);
 		curl_close($curl);
@@ -72,10 +72,10 @@
 				if(stristr($gif,'.gif')){ $avatar .= $gif; }
 			} else {
 				// The image doesn't exist
-		    	$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
+				$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
 			}
 		} else {
-		     echo '<!-- File Get Contents Not Supported -->';
+			 echo '<!-- File Get Contents Not Supported -->';
 		}
 
 		/*
@@ -273,7 +273,7 @@
 		Hello <?php echo $avatarName; ?></h2>
 	<?php } ?>
 
-    <ul class="warnings"><?php echo $warnings; ?>
+	<ul class="warnings"><?php echo $warnings; ?>
 
 	<?php if (AuthUser::hasPermission('client')) { ?>
 	<li><a href="/<?php echo ADMIN_DIR; ?>/page"><b>Manage pages</b></a><br />Add, delete, organize and update pages.<br /><br /></li>

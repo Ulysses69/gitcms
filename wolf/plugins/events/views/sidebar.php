@@ -31,22 +31,22 @@
 
 
 <!-- <div class="box">
-    <h2>What is the Events Plugin?</h2>
-    <p>The Events Plugin allows you to create and manage Events.</p>
+	<h2>What is the Events Plugin?</h2>
+	<p>The Events Plugin allows you to create and manage Events.</p>
 </div> -->
 
 <!--
 <div class="box">
-    <h2>How do I use events?</h2>
-    <p>Events can be created using the 'Events' tab.</p>
-    <p>You can include a calendar on your front-end with the following PHP code:
-        <br /><br />
-        <code>&lt;?php echo events_showEvents(); ?&gt;</code>
-    </p>
-    <p>You can include a smaller mini-calendar like so:
-        <br /><br />
-        <code>&lt;?php echo events_showEvents(true); ?&gt;</code>
-    </p>
-    <p>This is useful to put into a Snippet, which you can include in your Layouts.</p>
+	<h2>How do I use events?</h2>
+	<p>Events can be created using the 'Events' tab.</p>
+	<p>You can include a calendar on your front-end with the following PHP code:
+		<br /><br />
+		<code>&lt;?php echo events_showEvents(); ?&gt;</code>
+	</p>
+	<p>You can include a smaller mini-calendar like so:
+		<br /><br />
+		<code>&lt;?php echo events_showEvents(true); ?&gt;</code>
+	</p>
+	<p>This is useful to put into a Snippet, which you can include in your Layouts.</p>
 </div>
 -->

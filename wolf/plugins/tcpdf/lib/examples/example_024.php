@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_024.php
-// Begin       : 2008-03-04
+// Begin	   : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 024 for TCPDF class
-//               Object Visibility and Layers
+//			   Object Visibility and Layers
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

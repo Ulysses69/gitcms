@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+		 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title><?php if(defined('CMS_TEST_MODE') && CMS_TEST_MODE == true){$local=' (Stage) ';}else{$local='';} ?><?php echo Setting::get('admin_title').' / '.$local . __('Password reminder'); ?></title>
@@ -14,25 +14,25 @@
 </head>
 <body id="login">
   <div id="dialog">
-    <h1><?php echo __('Forgot password'); ?></h1>
+	<h1><?php echo __('Forgot password'); ?></h1>
 <?php if (Flash::get('error') != null) { ?>
-    <div id="error" style="display: none"><?php echo Flash::get('error'); ?></div>
-    <script type="text/javascript">Effect.Appear('error', {duration:.5});</script>
+	<div id="error" style="display: none"><?php echo Flash::get('error'); ?></div>
+	<script type="text/javascript">Effect.Appear('error', {duration:.5});</script>
 <?php } ?>
 <?php if (Flash::get('success') != null) { ?>
-    <div id="success" style="display: none"><?php echo Flash::get('success'); ?></div>
-    <script type="text/javascript">Effect.Appear('success', {duration:.5});</script>
+	<div id="success" style="display: none"><?php echo Flash::get('success'); ?></div>
+	<script type="text/javascript">Effect.Appear('success', {duration:.5});</script>
 <?php } ?>
-    <form action="<?php echo get_url('login', 'forgot'); ?>" method="post">
-      <div>
-        <label for="forgot-email"><?php echo __('Email address'); ?>:</label>
-        <input class="long" id="forgot-email" type="text" name="forgot[email]" value="<?php echo $email; ?>" />
-      </div>
-      <div id="forgot-submit">
-        <input class="submit" type="submit" accesskey="s" value="<?php echo __('Send password'); ?>" />
-        <span>(<a href="<?php echo get_url('login'); ?>"><?php echo __('Login'); ?></a>)</span>
-      </div>
-    </form>
+	<form action="<?php echo get_url('login', 'forgot'); ?>" method="post">
+	  <div>
+		<label for="forgot-email"><?php echo __('Email address'); ?>:</label>
+		<input class="long" id="forgot-email" type="text" name="forgot[email]" value="<?php echo $email; ?>" />
+	  </div>
+	  <div id="forgot-submit">
+		<input class="submit" type="submit" accesskey="s" value="<?php echo __('Send password'); ?>" />
+		<span>(<a href="<?php echo get_url('login'); ?>"><?php echo __('Login'); ?></a>)</span>
+	  </div>
+	</form>
   </div>
   <script type="text/javascript" language="javascript" charset="utf-8">
   // <![CDATA[

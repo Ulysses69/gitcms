@@ -6,17 +6,17 @@ if (!defined('IN_CMS')) { exit(); }
  * 
  * The catalog plugin adds a catalog or webshop to Wolf CMS.
  * 
- * @package     Plugins
+ * @package	 Plugins
  * @subpackage  catalog
  * 
- * @author      Nic Wortel <nic.wortel@nth-root.nl>
+ * @author	  Nic Wortel <nic.wortel@nth-root.nl>
  * @copyright   Nic Wortel, 2012
- * @version     0.1.5
+ * @version	 0.1.5
  */
 
 use_helper('ActiveRecord');
 
 class ValueFloat extends Value {
-    const TABLE_NAME = 'catalog_value_float';
-    
+	const TABLE_NAME = 'catalog_value_float';
+	
 }

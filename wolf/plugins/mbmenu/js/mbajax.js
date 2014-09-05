@@ -13,7 +13,7 @@ function getMenuItems(menu)
 				success: function(data)
 						 {
 						 	$j("#linkparent").html(data);						
-        				 }
+						 }
 			});
 	}
 }
@@ -29,6 +29,6 @@ function loadMenuItems(menuid,linkparent)
 			success: function(data)
 					 {
 					 	$j("#linkparent").html(data);						
-    				 }
+					 }
 		});
 }

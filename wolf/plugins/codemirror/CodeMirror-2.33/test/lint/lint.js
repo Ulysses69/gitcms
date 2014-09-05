@@ -23,14 +23,14 @@ var reserved = {};
 
 function checkVariable(scope, name, pos) {
   while (scope) {
-    if (scope.cur.hasOwnProperty(name)) return;
-    scope = scope.prev;
+	if (scope.cur.hasOwnProperty(name)) return;
+	scope = scope.prev;
   }
   fail("Accidental global: " + name, pos);
 }
 function checkProperty(name, pos) {
   if (reserved.hasOwnProperty(name)) {
-    fail("Using a keyword or reserved word as a property: " + name, pos);
+	fail("Using a keyword or reserved word as a property: " + name, pos);
   }
 }
 
@@ -40,48 +40,48 @@ function walk(ast, scope) {
   function sub(ast) { if (ast) walk(ast, scope); }
   function subn(array) { if (array) array.forEach(sub); }
   if (tp == "block" || tp == "splice" || tp == "toplevel" || tp == "array") {
-    subn(ast[1]);
+	subn(ast[1]);
   } else if (tp == "var" || tp == "const") {
-    ast[1].forEach(function(def) { scope.cur[def[0]] = true; if (def[1]) sub(def[1]); });
+	ast[1].forEach(function(def) { scope.cur[def[0]] = true; if (def[1]) sub(def[1]); });
   } else if (tp == "try") {
-    subn(ast[1]);
-    if (ast[2]) { scope.cur[ast[2][0]] = true; subn(ast[2][1]); }
-    subn(ast[3]);
+	subn(ast[1]);
+	if (ast[2]) { scope.cur[ast[2][0]] = true; subn(ast[2][1]); }
+	subn(ast[3]);
   } else if (tp == "throw" || tp == "return" || tp == "dot" || tp == "stat") {
-    sub(ast[1]);
+	sub(ast[1]);
   } else if (tp == "dot") {
-    sub(ast[1]);
-    checkProperty(ast[2], ast[0]);
+	sub(ast[1]);
+	checkProperty(ast[2], ast[0]);
   } else if (tp == "new" || tp == "call") {
-    sub(ast[1]); subn(ast[2]);
+	sub(ast[1]); subn(ast[2]);
   } else if (tp == "switch") {
-    sub(ast[1]);
-    ast[2].forEach(function(part) { sub(part[0]); subn(part[1]); });
+	sub(ast[1]);
+	ast[2].forEach(function(part) { sub(part[0]); subn(part[1]); });
   } else if (tp == "conditional" || tp == "if" || tp == "for" || tp == "for-in") {
-    sub(ast[1]); sub(ast[2]); sub(ast[3]); sub(ast[4]);
+	sub(ast[1]); sub(ast[2]); sub(ast[3]); sub(ast[4]);
   } else if (tp == "assign") {
-    if (ast[2][0].name == "name") checkVariable(scope, ast[2][1], ast[2][0]);
-    sub(ast[2]); sub(ast[3]);
+	if (ast[2][0].name == "name") checkVariable(scope, ast[2][1], ast[2][0]);
+	sub(ast[2]); sub(ast[3]);
   } else if (tp == "function" || tp == "defun") {
-    if (tp == "defun") scope.cur[ast[1]] = true;
-    var nscope = {prev: scope, cur: {}};
-    ast[2].forEach(function(arg) { nscope.cur[arg] = true; });
-    ast[3].forEach(function(ast) { walk(ast, nscope); });
+	if (tp == "defun") scope.cur[ast[1]] = true;
+	var nscope = {prev: scope, cur: {}};
+	ast[2].forEach(function(arg) { nscope.cur[arg] = true; });
+	ast[3].forEach(function(ast) { walk(ast, nscope); });
   } else if (tp == "while" || tp == "do" || tp == "sub" || tp == "with") {
-    sub(ast[1]); sub(ast[2]);
+	sub(ast[1]); sub(ast[2]);
   } else if (tp == "binary" || tp == "unary-prefix" || tp == "unary-postfix" || tp == "label") {
-    if (/\+\+|--/.test(ast[1]) && ast[2][0].name == "name") checkVariable(scope, ast[2][1], ast[2][0]);
-    sub(ast[2]); sub(ast[3]);
+	if (/\+\+|--/.test(ast[1]) && ast[2][0].name == "name") checkVariable(scope, ast[2][1], ast[2][0]);
+	sub(ast[2]); sub(ast[3]);
   } else if (tp == "object") {
-    ast[1].forEach(function(prop) {
-      if (prop.type != "string") checkProperty(prop[0], ast[0]);
-      sub(prop[1]); sub(prop[2]);
-    });
+	ast[1].forEach(function(prop) {
+	  if (prop.type != "string") checkProperty(prop[0], ast[0]);
+	  sub(prop[1]); sub(prop[2]);
+	});
   } else if (tp == "seq") {
-    subn(ast.slice(1));
+	subn(ast.slice(1));
   } else if (tp == "name") {
-    if (reserved.hasOwnProperty(ast[1]) && !/^(?:null|true|false)$/.test(ast[1]))
-      fail("Using reserved word as variable name: " + ast[1], ast[0]);
+	if (reserved.hasOwnProperty(ast[1]) && !/^(?:null|true|false)$/.test(ast[1]))
+	  fail("Using reserved word as variable name: " + ast[1], ast[0]);
   }
 }
 
@@ -99,19 +99,19 @@ function checkFile(fileName) {
   if (badChar) fail("Undesirable character " + badChar[0].charCodeAt(0) + " at position " + badChar.index);
   if (/^#!/.test(file)) file = file.slice(file.indexOf("\n") + 1);
   try {
-    var parsed = parse_js(file, true, true);
+	var parsed = parse_js(file, true, true);
   } catch(e) {
-    fail(e.message, e.line);
-    return;
+	fail(e.message, e.line);
+	return;
   }
   walk(parsed, {prev: null, cur: {}});
 }
 
 function checkDir(dir) {
   fs.readdirSync(dir).forEach(function(file) {
-    var fname = dir + "/" + file;
-    if (/\.js$/.test(file)) checkFile(fname);
-    else if (fs.lstatSync(fname).isDirectory()) checkDir(fname);
+	var fname = dir + "/" + file;
+	if (/\.js$/.test(file)) checkFile(fname);
+	else if (fs.lstatSync(fname).isDirectory()) checkDir(fname);
   });
 }
 

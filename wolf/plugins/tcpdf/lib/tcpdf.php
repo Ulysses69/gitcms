@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf.php
-// Version     : 6.0.093
-// Begin       : 2002-08-03
+// Version	 : 6.0.093
+// Begin	   : 2002-08-03
 // Last Update : 2014-09-02
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2002-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -1974,7 +1974,7 @@ class TCPDF {
 		// check if PCRE Unicode support is enabled
 		if ($this->isunicode AND (@preg_match('/\pL/u', 'a') == 1)) {
 			// PCRE unicode support is turned ON
-			// \s     : any whitespace character
+			// \s	 : any whitespace character
 			// \p{Z}  : any separator
 			// \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
 			// \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
@@ -2317,10 +2317,10 @@ class TCPDF {
 	 * Unicode and PCRE unicode support: "/(?!\xa0)[\s\p{Z}]/u"
 	 * Unicode and PCRE unicode support in Chinese mode: "/(?!\xa0)[\s\p{Z}\p{Lo}]/u"
 	 * if PCRE unicode support is turned ON ("\P" is the negate class of "\p"):
-	 *      \s     : any whitespace character
-	 *      \p{Z}  : any separator
-	 *      \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
-	 *      \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
+	 *	  \s	 : any whitespace character
+	 *	  \p{Z}  : any separator
+	 *	  \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
+	 *	  \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
 	 * </pre>
 	 * @param $re (string) regular expression (leave empty for default).
 	 * @public
@@ -13534,7 +13534,7 @@ class TCPDF {
 		// to create self-signed signature: openssl req -x509 -nodes -days 365000 -newkey rsa:1024 -keyout tcpdf.crt -out tcpdf.crt
 		// to export crt to p12: openssl pkcs12 -export -in tcpdf.crt -out tcpdf.p12
 		// to convert pfx certificate to pem: openssl
-		//     OpenSSL> pkcs12 -in <cert.pfx> -out <cert.crt> -nodes
+		//	 OpenSSL> pkcs12 -in <cert.pfx> -out <cert.crt> -nodes
 		$this->sign = true;
 		++$this->n;
 		$this->sig_obj_id = $this->n; // signature widget

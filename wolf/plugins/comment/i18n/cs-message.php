@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Czech file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Iva Pelcová <ivy046@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Czech file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Iva Pelcová <ivy046@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    	'A comment was added.' => 'Komentář byl přidán',
+	return array(
+		'A comment was added.' => 'Komentář byl přidán',
 	'Approve' => 'Schválit',
 	'Are you sure you wish to delete it?' => 'Opravdu smazat?',
 	'Auto approve' => 'Automatické schválení',
@@ -65,4 +65,4 @@
 	'comment not found!' => 'komentář nenalezen!',
 	'none' => 'žádné',
 	'or' => 'nebo',
-    );
+	);

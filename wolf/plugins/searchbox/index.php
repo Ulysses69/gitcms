@@ -1,12 +1,12 @@
 <?php
 
 Plugin::setInfos(array(
-    'id'					=> 'searchbox',
-    'title'					=> 'Search Box',
-    'description'			=> 'Provides site search.',
-    'version'				=> '1.2.0',
-    'author'				=> 'Steven Henderson',
-    'require_frog_version'	=> '0.9.4'
+	'id'					=> 'searchbox',
+	'title'					=> 'Search Box',
+	'description'			=> 'Provides site search.',
+	'version'				=> '1.2.0',
+	'author'				=> 'Steven Henderson',
+	'require_frog_version'	=> '0.9.4'
 ));
 
 //Behavior::add('page_not_found', '');
@@ -135,7 +135,7 @@ function sitesearch($parent){
 				@$dom->loadHTML($string);
 				$dom->preserveWhiteSpace = false;
 				$elements = $dom->getElementsByTagName('form');
-				while($span = $elements->item(0)) {       
+				while($span = $elements->item(0)) {	   
 				   $span->parentNode->removeChild($span);
 				}
 				$string = $dom->saveHTML();
@@ -305,14 +305,14 @@ function sitesearch($parent){
 		
 		if(!function_exists('array_sort_bycolumn')) {
 			function array_sort_bycolumn(&$array,$column,$dir = 'asc') {
-			    foreach($array as $a) $sortcol[$a[$column]][] = $a;
-			    ksort($sortcol);
-			    foreach($sortcol as $col) {
-			        foreach($col as $row) $newarr[] = $row;
-			    }
-			    
-			    if($dir=='desc') $array = array_reverse($newarr);
-			    else $array = $newarr;
+				foreach($array as $a) $sortcol[$a[$column]][] = $a;
+				ksort($sortcol);
+				foreach($sortcol as $col) {
+					foreach($col as $row) $newarr[] = $row;
+				}
+				
+				if($dir=='desc') $array = array_reverse($newarr);
+				else $array = $newarr;
 			}
 		}
 

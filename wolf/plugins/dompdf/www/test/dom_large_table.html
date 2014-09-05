@@ -369,7 +369,7 @@ ul.menu_group {
 }
 
 ul.menu_group li { 
-  color: #114C8D;    
+  color: #114C8D;	
   list-style: none;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -1825,32 +1825,32 @@ if ( isset($pdf) ) {
 
   
   if ( !"2004-11-18 17:19:38" ) {
-    // Add an initals box if the document has not already been approved
+	// Add an initals box if the document has not already been approved
   
-    global $initials;
-    $initials = $pdf->open_object();
-    
-    $text = "Initials:";
-    $width = Font_Metrics::get_text_width($text, $font, $size);
-    $pdf->text($w - 16 - $width - 38, $y, $text, $font, $size, $color);
-    $pdf->rectangle($w - 16 - 36, $y - 2, 36, $text_height + 4, array(0.5,0.5,0.5), 0.5);
-    
-        $pdf->close_object();
-    $pdf->add_object($initials);
+	global $initials;
+	$initials = $pdf->open_object();
+	
+	$text = "Initials:";
+	$width = Font_Metrics::get_text_width($text, $font, $size);
+	$pdf->text($w - 16 - $width - 38, $y, $text, $font, $size, $color);
+	$pdf->rectangle($w - 16 - 36, $y - 2, 36, $text_height + 4, array(0.5,0.5,0.5), 0.5);
+	
+		$pdf->close_object();
+	$pdf->add_object($initials);
 
   } else {
 
-    // Mark the document as a duplicate if has been approved
-    $watermark = $pdf->open_object();
-    $pdf->text(110, $h - 240, "DUPLICATE", Font_Metrics::get_font("verdana", "bold"),
-               110, array(0.5, 0.5, 0.5), 0, 0, -52);
+	// Mark the document as a duplicate if has been approved
+	$watermark = $pdf->open_object();
+	$pdf->text(110, $h - 240, "DUPLICATE", Font_Metrics::get_font("verdana", "bold"),
+			   110, array(0.5, 0.5, 0.5), 0, 0, -52);
 
-    $text = "Approved: 2004-11-18";
-    $width = Font_Metrics::get_text_width($text, $font, $size);
-    $pdf->text($w - 16 - $width, $y, $text, $font, $size, $color);
-    
-    $pdf->close_object();
-    $pdf->add_object($watermark, "all");
+	$text = "Approved: 2004-11-18";
+	$width = Font_Metrics::get_text_width($text, $font, $size);
+	$pdf->text($w - 16 - $width, $y, $text, $font, $size, $color);
+	
+	$pdf->close_object();
+	$pdf->add_object($watermark, "all");
   }
 
   $text = "Page {PAGE_NUM} of {PAGE_COUNT}";  
@@ -2050,107 +2050,107 @@ Komant</td>
 <td style="font-weight: bold" colspan="6">Custom items:</td>
 </tr>
 
-    <tr class="list_row">
+	<tr class="list_row">
   <td class="center">1</td>
 <td>upgrade to brushed chrome hardware </td>
 <td class="center">1</td>
 <td style="text-align: right">$195.00</td>
 <td>Ea.</td>
 <td class="right">$195.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">2</td>
 <td>box out FIREPLACE as per plan attached</td>
 <td class="center">1</td>
 <td style="text-align: right">$250.00</td>
 <td>Ea.</td>
 <td class="right">$250.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">3</td>
 <td>reduce WIC size by 6&quot; to 8&quot; to allow for large vanity ensuite</td>
 <td class="center">1</td>
 <td style="text-align: right">$0.00</td>
 <td>Ea.</td>
 <td class="right">$0.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">4</td>
 <td>add gas line to basement for future gas FP</td>
 <td class="center">1</td>
 <td style="text-align: right">$300.00</td>
 <td>Ea.</td>
 <td class="right">$300.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">5</td>
 <td>add pocket dorr to ensuite joining WIC and Ensuite.  Delete 2 existing doors</td>
 <td class="center">1</td>
 <td style="text-align: right">$0.00</td>
 <td>Ea.</td>
 <td class="right">$0.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">6</td>
 <td>Main floor to be ISLAND Kitchen design</td>
 <td class="center">1</td>
 <td style="text-align: right">$0.00</td>
 <td>Ea.</td>
 <td class="right">$0.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">7</td>
 <td>price adjustment</td>
 <td class="center">1</td>
 <td style="text-align: right">($0.37)</td>
 <td>Ea.</td>
 <td class="right">($0.37)</td>
-    </tr>
+	</tr>
   
 <tr class="list_row">
 <td style="font-weight: bold" colspan="6">Custom items:</td>
 </tr>
 
-    <tr class="list_row">
+	<tr class="list_row">
   <td class="center">1</td>
 <td>upgrade to brushed chrome hardware </td>
 <td class="center">1</td>
 <td style="text-align: right">$195.00</td>
 <td>Ea.</td>
 <td class="right">$195.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">2</td>
 <td>box out FIREPLACE as per plan attached</td>
 <td class="center">1</td>
 <td style="text-align: right">$250.00</td>
 <td>Ea.</td>
 <td class="right">$250.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">3</td>
 <td>reduce WIC size by 6&quot; to 8&quot; to allow for large vanity ensuite</td>
 <td class="center">1</td>
 <td style="text-align: right">$0.00</td>
 <td>Ea.</td>
 <td class="right">$0.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">4</td>
 <td>add gas line to basement for future gas FP</td>
 <td class="center">1</td>
 <td style="text-align: right">$300.00</td>
 <td>Ea.</td>
 <td class="right">$300.00</td>
-    </tr>
-    <tr class="list_row">
+	</tr>
+	<tr class="list_row">
   <td class="center">5</td>
 <td>add pocket dorr to ensuite joining WIC and Ensuite.  Delete 2 existing doors</td>
 <td class="center">1</td>
 <td style="text-align: right">$0.00</td>
 <td>Ea.</td>
 <td class="right">$0.00</td>
-    </tr>
+	</tr>
 
 
 
@@ -2165,15 +2165,15 @@ Komant</td>
 </table><div style="font-size: 0.8em">
 <table class="signature_table">
 
-  <tr>    
-    <td>WITNESS:</td><td class="written_field" style="width: 38%">&nbsp;</td>
-    <td style="padding-left: 1em">PURCHASER:</td>
-    <td class="written_field" style="width: 39%; text-align: right;">X</td>
+  <tr>	
+	<td>WITNESS:</td><td class="written_field" style="width: 38%">&nbsp;</td>
+	<td style="padding-left: 1em">PURCHASER:</td>
+	<td class="written_field" style="width: 39%; text-align: right;">X</td>
   </tr>
   <tr>
-    <td colspan="3" style="padding-top: 0em">&nbsp;</td>
-    <td style="text-align: center; padding-top: 0em;">
-              Tammy Komant</td>
+	<td colspan="3" style="padding-top: 0em">&nbsp;</td>
+	<td style="text-align: center; padding-top: 0em;">
+			  Tammy Komant</td>
   </tr>
 </table>
 <p style="font-size: 0.65em">This change order shall have no force or effect until approved and signed

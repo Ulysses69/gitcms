@@ -16,8 +16,8 @@ $(function(){
   resizePreview();
 
   $(window).scroll(function() {
-    var scrollTop = Math.min($(this).scrollTop(), preview.height()+preview.parent().offset().top) - 2;
-    preview.css("margin-top", scrollTop + "px");
+	var scrollTop = Math.min($(this).scrollTop(), preview.height()+preview.parent().offset().top) - 2;
+	preview.css("margin-top", scrollTop + "px");
   });
 
   $(window).resize(resizePreview);
@@ -41,14 +41,14 @@ if ( DOMPDF_ENABLE_PHP ) {
 
 $test_files = glob("test/*.{".implode(",", $extensions)."}", GLOB_BRACE);
 $sections = array(
-  "css"      => array(), 
-  "dom"      => array(), 
-  "image"    => array(), 
-  "page"     => array(),
+  "css"	  => array(), 
+  "dom"	  => array(), 
+  "image"	=> array(), 
+  "page"	 => array(),
   "encoding" => array(), 
   "script"   => array(), 
   "quirks"   => array(), 
-  "other"    => array(), 
+  "other"	=> array(), 
 );
 
 //if dompdf.php runs in virtual server root, dirname does not return empty folder but '/' or '\' (windows).
@@ -67,10 +67,10 @@ foreach ( $test_files as $file ) {
   $prefix = $matches[2];
 
   if ( array_key_exists($prefix, $sections) ) {
-    $sections[$prefix][] = array($file, $matches[3]);
+	$sections[$prefix][] = array($file, $matches[3]);
   }
   else {
-    $sections["other"][] = array($file, $matches[1]);
+	$sections["other"][] = array($file, $matches[1]);
   }
 }
 
@@ -79,15 +79,15 @@ foreach ( $sections as $section => $files ) {
   
   echo "<ul class=\"samples\">";
   foreach ( $files as $file ) {
-    $filename = basename($file[0]);
-    $title = $file[1];
-    $arrow = "images/arrow_0" . rand(1, 6) . ".gif";  
-    echo "<li style=\"list-style-image: url('$arrow');\">\n";
-    echo " 
+	$filename = basename($file[0]);
+	$title = $file[1];
+	$arrow = "images/arrow_0" . rand(1, 6) . ".gif";  
+	echo "<li style=\"list-style-image: url('$arrow');\">\n";
+	echo " 
   [<a class=\"button\" target=\"preview\" href=\"test/$filename\">HTML</a>] 
   [<a class=\"button\" target=\"preview\" href=\"$dompdf&amp;options[Attachment]=0&amp;input_file=" . rawurlencode($filename) . "#toolbar=0&amp;view=FitH&amp;statusbar=0&amp;messages=0&amp;navpanes=0\">PDF</a>] ";
-    echo $title;
-    echo "</li>\n";
+	echo $title;
+	echo "</li>\n";
   }
   echo "</ul>";
 }

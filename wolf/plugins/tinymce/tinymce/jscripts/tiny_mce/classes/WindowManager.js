@@ -19,11 +19,11 @@
 	 * // Opens a new dialog with the file.htm file and the size 320x240
 	 * // It also adds a custom parameter this can be retrieved by using tinyMCEPopup.getWindowArg inside the dialog.
 	 * tinyMCE.activeEditor.windowManager.open({
-	 *    url : 'file.htm',
-	 *    width : 320,
-	 *    height : 240
+	 *	url : 'file.htm',
+	 *	width : 320,
+	 *	height : 240
 	 * }, {
-	 *    custom_param : 1
+	 *	custom_param : 1
 	 * });
 	 * 
 	 * // Displays an alert box using the active editors window manager instance
@@ -31,10 +31,10 @@
 	 * 
 	 * // Displays an confirm box and an alert message will be displayed depending on what you choose in the confirm
 	 * tinyMCE.activeEditor.windowManager.confirm("Do you want to do something", function(s) {
-	 *    if (s)
-	 *       tinyMCE.activeEditor.windowManager.alert("Ok");
-	 *    else
-	 *       tinyMCE.activeEditor.windowManager.alert("Cancel");
+	 *	if (s)
+	 *	   tinyMCE.activeEditor.windowManager.alert("Ok");
+	 *	else
+	 *	   tinyMCE.activeEditor.windowManager.alert("Cancel");
 	 * });
 	 */
 	tinymce.create('tinymce.WindowManager', {
@@ -177,10 +177,10 @@
 		 * @example
 		 * // Displays an confirm box and an alert message will be displayed depending on what you choose in the confirm
 		 * tinyMCE.activeEditor.windowManager.confirm("Do you want to do something", function(s) {
-		 *    if (s)
-		 *       tinyMCE.activeEditor.windowManager.alert("Ok");
-		 *    else
-		 *       tinyMCE.activeEditor.windowManager.alert("Cancel");
+		 *	if (s)
+		 *	   tinyMCE.activeEditor.windowManager.alert("Ok");
+		 *	else
+		 *	   tinyMCE.activeEditor.windowManager.alert("Cancel");
 		 * });
 		 */
 		confirm : function(t, cb, s, w) {

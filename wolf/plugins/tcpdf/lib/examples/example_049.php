@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_049.php
-// Begin       : 2009-04-03
+// Begin	   : 2009-04-03
 // Last Update : 2013-05-14
 //
 // Description : Example 049 for TCPDF class
-//               WriteHTML with TCPDF callback functions
+//			   WriteHTML with TCPDF callback functions
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

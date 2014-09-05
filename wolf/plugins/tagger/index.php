@@ -21,15 +21,15 @@
  */
 
 Plugin::setInfos(array(
-    'id'          => 'tagger',
-    'title'       => 'Tagger',
-    'description' => 'Add tags to any page and organize your website.',
-    'version'     => '1.2.3',
-    'license'     => 'AGPL',
-    'author'      => 'Andrew Smith and Tyler Beckett',
-    'website'     => 'http://www.tbeckett.net/articles/plugins/tagger.xhtml',
+	'id'		  => 'tagger',
+	'title'	   => 'Tagger',
+	'description' => 'Add tags to any page and organize your website.',
+	'version'	 => '1.2.3',
+	'license'	 => 'AGPL',
+	'author'	  => 'Andrew Smith and Tyler Beckett',
+	'website'	 => 'http://www.tbeckett.net/articles/plugins/tagger.xhtml',
 	'update_url'  => 'http://www.tbeckett.net/wpv.xhtml',
-    'require_wolf_version' => '0.5.5')
+	'require_wolf_version' => '0.5.5')
 );
 
 Plugin::addController('tagger', 'Tagger', 'administrator,developer', false);
@@ -49,25 +49,25 @@ function cmpVals($val1, $val2)
  */
 function tagger($option = false, $case = false, $limit = false)
 {
-    global $__CMS_CONN__;
+	global $__CMS_CONN__;
 
-    $sql = 'SELECT DISTINCT(slug) FROM '.TABLE_PREFIX.'page WHERE behavior_id = "tagger"';
+	$sql = 'SELECT DISTINCT(slug) FROM '.TABLE_PREFIX.'page WHERE behavior_id = "tagger"';
 
-    $stmt = $__CMS_CONN__->prepare($sql);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($sql);
+	$stmt->execute();
 
-    if (!is_null($slug = $stmt->fetchColumn())) { $tagger = BASE_URL.$slug.'/'; }
+	if (!is_null($slug = $stmt->fetchColumn())) { $tagger = BASE_URL.$slug.'/'; }
 	// Setting Limit if selected
 	if($limit){ $limit_set = " LIMIT 0, {$limit}"; } else { $limit_set = ""; }
-    $sql = 'SELECT name, count FROM '.TABLE_PREFIX.'tag AS tag, '.TABLE_PREFIX.'page AS page, '.TABLE_PREFIX.'page_tag AS page_tag WHERE tag.id = page_tag.tag_id AND page_tag.page_id = page.id AND page.status_id != '.Page::STATUS_HIDDEN.' AND page.status_id != '.Page::STATUS_DRAFT . $limit_set;
-    $stmt = $__CMS_CONN__->prepare($sql);
-    $stmt->execute();
+	$sql = 'SELECT name, count FROM '.TABLE_PREFIX.'tag AS tag, '.TABLE_PREFIX.'page AS page, '.TABLE_PREFIX.'page_tag AS page_tag WHERE tag.id = page_tag.tag_id AND page_tag.page_id = page.id AND page.status_id != '.Page::STATUS_HIDDEN.' AND page.status_id != '.Page::STATUS_DRAFT . $limit_set;
+	$stmt = $__CMS_CONN__->prepare($sql);
+	$stmt->execute();
 
-    // Putting Tags into a array
-    while($tag = $stmt->fetchObject()) $tags[$tag->name] = $tag->count;
+	// Putting Tags into a array
+	while($tag = $stmt->fetchObject()) $tags[$tag->name] = $tag->count;
 
-    if($tags)
-    {
+	if($tags)
+	{
 		// Sort array
 		uksort($tags,'cmpVals');
 
@@ -125,7 +125,7 @@ function tagger($option = false, $case = false, $limit = false)
 				echo '</ul>';
 			break;
 		}
-    }
+	}
 }
 
 /**
@@ -139,12 +139,12 @@ function tag_links($tags, $delimiter = ', ')
 {
 	global $__CMS_CONN__;
 
-    $sql = 'SELECT DISTINCT(slug) FROM '.TABLE_PREFIX.'page WHERE behavior_id = "tagger"';
+	$sql = 'SELECT DISTINCT(slug) FROM '.TABLE_PREFIX.'page WHERE behavior_id = "tagger"';
 
-    $stmt = $__CMS_CONN__->prepare($sql);
-    $stmt->execute();
+	$stmt = $__CMS_CONN__->prepare($sql);
+	$stmt->execute();
 
-    if (!is_null($slug = $stmt->fetchColumn())) $tagger = BASE_URL.$slug.'/';
+	if (!is_null($slug = $stmt->fetchColumn())) $tagger = BASE_URL.$slug.'/';
 
 	$i = 1;
 	foreach($tags as $tag){
@@ -164,7 +164,7 @@ function tag_links($tags, $delimiter = ', ')
 function slugify($string){
 	$search = array(' ','å','ä','á','à','â','ã','ª','Á','À','Â','Ã','é','ë','è','ê','Ë','É','È','Ê','ï','í','ì','î','Í','Ì','Î','ø','ö','ò','ó','ô','õ','º','Ó','Ò','Ô','Õ','ü','ú','ù','û','Ú','Ù','Û','ç','Ç','Ñ','ñ');
 	$replace = array('-','a','a','a','a','a','a','a','A','A','A','A','e','e','e','e','E','E','E','E','i','i','i','i','I','I','I','o','o','o','o','o','o','o','O','O','O','O','u','u','u','u','U','U','U','c','C','N','n');
-    $slug = trim(str_replace($search, $replace, $string)); // substitute the spaces with hyphens
-    $slug = strtolower($slug); // lower-case the string
+	$slug = trim(str_replace($search, $replace, $string)); // substitute the spaces with hyphens
+	$slug = strtolower($slug); // lower-case the string
 	return preg_replace('[^A-Za-z0-9\_\.\-]', '', $slug); // remove all non-alphanumeric characters except for spaces and hyphens
 }

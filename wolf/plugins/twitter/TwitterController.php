@@ -7,9 +7,9 @@ class TwitterController extends PluginController {
 		$this->assignToLayout('sidebar', new View('../../plugins/twitter/views/sidebar'));
 	}
 	
-    public function documentation() {
-        $this->display('twitter/views/index');
-    }
+	public function documentation() {
+		$this->display('twitter/views/index');
+	}
 	
 	public function index() {
 		$this->display('twitter/views/index');

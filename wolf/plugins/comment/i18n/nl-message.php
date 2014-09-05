@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Dutch language file for comment plugin
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Rinus <rinus@rosiq.nl>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Dutch language file for comment plugin
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Rinus <rinus@rosiq.nl>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    'A comment was added.' => 'Een reactie is geplaatst.',
+	return array(
+	'A comment was added.' => 'Een reactie is geplaatst.',
 	'Approve' => 'Toestaan',
 	'Are you sure you wish to delete it?' => 'Weet u zeker dat u deze wilt verwijderen?',
 	'Auto approve' => 'Automatisch goedkeuren',
@@ -63,4 +63,4 @@
 	'comment not found!' => 'geen opmerking geplaatst',
 	'none' => 'geen',
 	'or' => 'of',
-    );
+	);

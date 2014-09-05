@@ -8,13 +8,13 @@
   // Use a simple counter as key for the forms
   $index = 0;
   foreach($metadata as $m) {
-    // Only show the visible (direct editable) ones
-    if (!$m->visible) { continue; }
+	// Only show the visible (direct editable) ones
+	if (!$m->visible) { continue; }
 
-    // Use the template to display the metadata
-    echo PageMetadataController::Get_instance()->create_view('template', array("unique" => $index, "keyword" => $m->keyword, "value" => $m->value));
+	// Use the template to display the metadata
+	echo PageMetadataController::Get_instance()->create_view('template', array("unique" => $index, "keyword" => $m->keyword, "value" => $m->value));
 
-    $index++;
+	$index++;
   }
 
   // Allow extensions

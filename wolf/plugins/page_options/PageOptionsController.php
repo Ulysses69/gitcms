@@ -4,18 +4,18 @@ class PageOptionsController extends PluginController {
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/page_options/views/sidebar'));
 	}
-    public function index() {
-        //$this->documentation();
-        //$this->display('page_options/views/settings', $settings);
-        $this->display('page_options/views/settings');
-    }
+	public function index() {
+		//$this->documentation();
+		//$this->display('page_options/views/settings', $settings);
+		$this->display('page_options/views/settings');
+	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('page_options');
-	        if (!$settings) {
-	            Flash::set('error', 'Page Options - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('page_options/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'Page Options - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('page_options/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'page_options';

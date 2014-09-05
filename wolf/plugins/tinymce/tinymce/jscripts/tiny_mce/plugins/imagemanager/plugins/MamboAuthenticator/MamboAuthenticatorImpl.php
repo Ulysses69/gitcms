@@ -39,7 +39,7 @@ chdir("mambots/editors/mosce/jscripts/tiny_mce/plugins/imagemanager/");
  * @package MCImageManager.Authenticators
  */
 class MamboAuthenticatorImpl extends BaseAuthenticator {
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 

@@ -60,12 +60,12 @@ The offered software is property of Christian Harz, webpicasso media (http://www
 
 The software is Freeware and may be used on private and commercial web pages free of charge, as long as you agree to the following license:
 
-    * The copyright may not be changed. The copyright only belongs to Christian Harz, webpicass media.
-    * It is not allowed to use the software on pages with illegal, pornography or ethicalally doubtful contents.
-    * Advertising link / Backlinks to webpicasso media, so far available, may not be removed.
-    * The software may not be sold (e.g. Ebay) or make money in any way, also not as part of another software or a script packages.
-    * It is not allowed to use pageear or parts of it in own public scripts / projects without author agreement.
-    * On commercial pages set a backlink to webpicasso media.
+	* The copyright may not be changed. The copyright only belongs to Christian Harz, webpicass media.
+	* It is not allowed to use the software on pages with illegal, pornography or ethicalally doubtful contents.
+	* Advertising link / Backlinks to webpicasso media, so far available, may not be removed.
+	* The software may not be sold (e.g. Ebay) or make money in any way, also not as part of another software or a script packages.
+	* It is not allowed to use pageear or parts of it in own public scripts / projects without author agreement.
+	* On commercial pages set a backlink to webpicasso media.
 
 Webpicasso media is not responsible for damage and legal consequences, which can result from the use of the software.
 

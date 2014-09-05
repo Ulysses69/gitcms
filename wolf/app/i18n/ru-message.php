@@ -1,19 +1,19 @@
 <?php
 
-    /**
-     * Russian language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Dmitry Kostromin <kostromind@gmail.com>
-     * @author Maslakov Alexander <jmas.ukraine@gmail.com>
-     * @version Wolf 0.6.0
-     * @last modifed from 07 February 2010
-     */
+	/**
+	 * Russian language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Dmitry Kostromin <kostromind@gmail.com>
+	 * @author Maslakov Alexander <jmas.ukraine@gmail.com>
+	 * @version Wolf 0.6.0
+	 * @last modifed from 07 February 2010
+	 */
 
-    return array(
-    '&#8212; inherit &#8212;' => '&#8212; наследуется &#8212;',
+	return array(
+	'&#8212; inherit &#8212;' => '&#8212; наследуется &#8212;',
 	'<b>Information!</b> New Wolf version available (v. <b>:version</b>)! Visit <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> to upgrade your version!' => '<b>Информация!</b> Доступна новая версия WolfCMS (в. <b>:version</b>)! Зайдите на <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> для обновления вашей версии!',
 	'A translatable string with a %param% system.' => 'A translatable string with a %param% system.',
 	'A translatable string.' 	=> 'A translatable string.',

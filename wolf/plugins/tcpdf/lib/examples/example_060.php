@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_060.php
-// Begin       : 2010-05-17
+// Begin	   : 2010-05-17
 // Last Update : 2013-05-14
 //
 // Description : Example 060 for TCPDF class
-//               Advanced page settings.
+//			   Advanced page settings.
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

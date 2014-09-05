@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * YourLanguage language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Your Name <email@domain.something>
-     * @version Wolf x.y.z
-     */
+	/**
+	 * YourLanguage language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Your Name <email@domain.something>
+	 * @version Wolf x.y.z
+	 */
 
-    return array(
-    '&#8212; inherit &#8212;' => '&#8212; overerf &#8212;',
+	return array(
+	'&#8212; inherit &#8212;' => '&#8212; overerf &#8212;',
 	'<b>Information!</b> New Wolf version available (v. <b>:version</b>)! Visit <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> to upgrade your version!' => '<b>Informatie!</b> Nieuw Wolf versie beschikbaar (v. <b>:version</b>)! Bezoek <a href="http://www.wolfcms.org/">http://www.wolfcms.org/</a> om jou versie te updaten!',
 	'A translatable string with a %param% system.' => '',
 	'A translatable string.' => '',
@@ -221,7 +221,7 @@
 	'seconds' => 'seconden',
 	'unknown' => 'onbekend',
 	'website:' => 'website',
-    );
+	);
 
 
 

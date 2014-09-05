@@ -4,7 +4,7 @@ $treat = false;
 if (isset($_POST['src'])) {
   $script = $_POST['src'];
   if (get_magic_quotes_gpc())
-    $script = stripslashes($script);
+	$script = stripslashes($script);
   $encoding = (int)$_POST['ascii_encoding'];
   $fast_decode = isset($_POST['fast_decode']) && $_POST['fast_decode'];
   $special_char = isset($_POST['special_char'])&& $_POST['special_char'];
@@ -24,7 +24,7 @@ if (isset($_POST['src'])) {
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-          "http://www.w3.org/TR/html4/strict.dtd">
+		  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <title>JavaScript Packer in PHP</title>
@@ -46,42 +46,42 @@ function decode() {
 </head>
 <body>
   <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <div>
-      <h3>script to pack:</h3>
-      <textarea name="src" id="src" rows="10" cols="80"><?php if($treat) echo htmlspecialchars($script);?></textarea>
-    </div>
-    <!-- <fieldset> -->
-    <div>
-      <label for="ascii-encoding">Encoding:</label>
-      <select name="ascii_encoding" id="ascii-encoding">
-        <option value="0"<?php if ($treat && $encoding == 0) echo ' selected'?>>None</option>
-        <option value="10"<?php if ($treat && $encoding == 10) echo ' selected'?>>Numeric</option>
-        <option value="62"<?php if (!$treat) echo 'selected';if ($treat && $encoding == 62) echo ' selected';?>>Normal</option>
-        <option value="95"<?php if ($treat && $encoding == 95) echo ' selected'?>>High ASCII</option>
-      </select>
-      <label>
-        Fast Decode:
-        <input type="checkbox" name="fast_decode" id="fast-decode"<?php if (!$treat || $fast_decode) echo ' checked'?>>
-      </label>
-      <label>
-        Special Characters:
-        <input type="checkbox" name="special_char" id="special-char"<?php if ($treat && $special_char) echo ' checked'?>>
-      </label>
-      <input type="submit" value="Pack">
-    </div>
-    <!-- </fieldset> -->
+	<div>
+	  <h3>script to pack:</h3>
+	  <textarea name="src" id="src" rows="10" cols="80"><?php if($treat) echo htmlspecialchars($script);?></textarea>
+	</div>
+	<!-- <fieldset> -->
+	<div>
+	  <label for="ascii-encoding">Encoding:</label>
+	  <select name="ascii_encoding" id="ascii-encoding">
+		<option value="0"<?php if ($treat && $encoding == 0) echo ' selected'?>>None</option>
+		<option value="10"<?php if ($treat && $encoding == 10) echo ' selected'?>>Numeric</option>
+		<option value="62"<?php if (!$treat) echo 'selected';if ($treat && $encoding == 62) echo ' selected';?>>Normal</option>
+		<option value="95"<?php if ($treat && $encoding == 95) echo ' selected'?>>High ASCII</option>
+	  </select>
+	  <label>
+		Fast Decode:
+		<input type="checkbox" name="fast_decode" id="fast-decode"<?php if (!$treat || $fast_decode) echo ' checked'?>>
+	  </label>
+	  <label>
+		Special Characters:
+		<input type="checkbox" name="special_char" id="special-char"<?php if ($treat && $special_char) echo ' checked'?>>
+	  </label>
+	  <input type="submit" value="Pack">
+	</div>
+	<!-- </fieldset> -->
   </form>
   
   <?php if ($treat) {?>
   <div id="result">
-    <h3>packed result:</h3>
-    <textarea id="packed" class="result" rows="10" cols="80" readonly="readonly"><?php echo htmlspecialchars($packed);?></textarea>
-    <p>
-      compression ratio:
-      <?php echo $originalLength, '/', $packedLength, ' = ',$ratio; ?>
-      <br>performed in <?php echo $time; ?> s.
-    </p>
-    <p><button type="button" onclick="decode()">decode</button></p>
+	<h3>packed result:</h3>
+	<textarea id="packed" class="result" rows="10" cols="80" readonly="readonly"><?php echo htmlspecialchars($packed);?></textarea>
+	<p>
+	  compression ratio:
+	  <?php echo $originalLength, '/', $packedLength, ' = ',$ratio; ?>
+	  <br>performed in <?php echo $time; ?> s.
+	</p>
+	<p><button type="button" onclick="decode()">decode</button></p>
   </div>
   <?php };//end if($treat)?>
 </body>

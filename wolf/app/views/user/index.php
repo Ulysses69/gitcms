@@ -41,13 +41,13 @@
 <h2>Users</h2>
 <table id="users" class="index" cellpadding="0" cellspacing="0" border="0">
   <thead id="site-map-def">
-    <tr>
-      <th class="name"><?php echo __('Name'); ?></th>
-      <th class="username"><?php echo __('Username'); ?></th>
-      <?php if (DEV_AUTH==2){ ?><!-- <th class="email"><?php echo __('Email'); ?></th> --><?php } ?>
-      <th class="roles"><?php echo __('Roles'); ?></th>
-      <th class="delete"><?php echo __('Action'); ?></th>
-    </tr>
+	<tr>
+	  <th class="name"><?php echo __('Name'); ?></th>
+	  <th class="username"><?php echo __('Username'); ?></th>
+	  <?php if (DEV_AUTH==2){ ?><!-- <th class="email"><?php echo __('Email'); ?></th> --><?php } ?>
+	  <th class="roles"><?php echo __('Roles'); ?></th>
+	  <th class="delete"><?php echo __('Action'); ?></th>
+	</tr>
   </thead>
   <tbody>
 <?php 
@@ -80,9 +80,9 @@ foreach($users as $user): ?>
 
 <?php if((AuthUser::hasPermission('client') && in_array("client", $user->getPermissions())) || !AuthUser::hasPermission('client')){ ?>
 
-    <tr class="node <?php echo odd_even(); ?>">
-      <td class="user">
-        <img src="<?php 
+	<tr class="node <?php echo odd_even(); ?>">
+	  <td class="user">
+		<img src="<?php 
 
 		$avatar = '';
 		$png = $sourceurl.$user->username.'.png';
@@ -116,7 +116,7 @@ foreach($users as $user): ?>
 				if(stristr($gif,'.gif')){ $avatar = $gif; }
 			} else {
 				// The image doesn't exist
-		    	$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
+				$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
 			}
 
 
@@ -137,23 +137,23 @@ foreach($users as $user): ?>
 		echo $avatar;
 
 		?>" align="middle" alt="<?php echo $user->username; ?> icon" class="avatar" />
-        <a href="<?php echo get_url('user/edit/'.$user->id); ?>" title="Name"><?php echo $user->name; ?></a>
-      </td>
-      <td title="Username"><?php echo $user->username; ?></td>
+		<a href="<?php echo get_url('user/edit/'.$user->id); ?>" title="Name"><?php echo $user->name; ?></a>
+	  </td>
+	  <td title="Username"><?php echo $user->username; ?></td>
 	  <?php if (DEV_AUTH==2){ ?><!-- <td><?php echo $user->email; ?></td> --><?php } ?>
-      <td title="Roles">
+	  <td title="Roles">
 	  <?php $roles = implode(', ', $user->getPermissions()); 
 	  if(AuthUser::hasPermission('client')){ $roles = str_replace('developer','',$roles); $roles = str_replace(", ,",",",$roles); }
 	  echo $roles; ?>
 	  </td>
-      <td class="action">
+	  <td class="action">
 <?php if ($user->id > 1): ?>
-        <a href="<?php echo get_url('user/delete/'.$user->id.'?csrf_token='.SecureToken::generateToken(BASE_URL.'user/delete/'.$user->id)); ?>" onclick="return confirm('<?php echo __('Are you sure you wish to delete').' '.$user->name.'?'; ?>');"><img src="images/icon-remove.gif" alt="<?php echo __('delete '.$user->username.' icon'); ?>" title="<?php echo __('Delete '.$user->name); ?>" /></a>
+		<a href="<?php echo get_url('user/delete/'.$user->id.'?csrf_token='.SecureToken::generateToken(BASE_URL.'user/delete/'.$user->id)); ?>" onclick="return confirm('<?php echo __('Are you sure you wish to delete').' '.$user->name.'?'; ?>');"><img src="images/icon-remove.gif" alt="<?php echo __('delete '.$user->username.' icon'); ?>" title="<?php echo __('Delete '.$user->name); ?>" /></a>
 <?php else: ?>
-        <img src="images/icon-remove-disabled.gif" alt="<?php echo __('delete '.$user->username.' icon disabled'); ?>" title="<?php echo __('Delete '.$user->name.' unavailable'); ?>" />
+		<img src="images/icon-remove-disabled.gif" alt="<?php echo __('delete '.$user->username.' icon disabled'); ?>" title="<?php echo __('Delete '.$user->name.' unavailable'); ?>" />
 <?php endif; ?>
-      </td>
-    </tr>
+	  </td>
+	</tr>
 
 <?php } ?>
 

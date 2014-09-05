@@ -1,18 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>CodeMirror: Velocity mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="velocity.js"></script>
-    <link rel="stylesheet" href="../../theme/night.css">
-    <style>.CodeMirror {border: 1px solid black;}</style>
-    <link rel="stylesheet" href="../../doc/docs.css">
+	<meta charset="utf-8">
+	<title>CodeMirror: Velocity mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="velocity.js"></script>
+	<link rel="stylesheet" href="../../theme/night.css">
+	<style>.CodeMirror {border: 1px solid black;}</style>
+	<link rel="stylesheet" href="../../doc/docs.css">
   </head>
   <body>
-    <h1>CodeMirror: Velocity mode</h1>
-    <form><textarea id="code" name="code">
+	<h1>CodeMirror: Velocity mode</h1>
+	<form><textarea id="code" name="code">
 ## Velocity Code Demo
 #*
    based on PL/SQL mode by Peter Raganitsch, adapted to Velocity by Steve O'Hara ( http://www.pivotal-solutions.co.uk )
@@ -44,28 +44,28 @@
 
 #foreach( $customer in $customerList )
 
-    $foreach.count $customer.Name
+	$foreach.count $customer.Name
 
-    #if( $foo == ${bar})
-        it's true!
-        #break
-    #{else}
-        it's not!
-        #stop
-    #end
+	#if( $foo == ${bar})
+		it's true!
+		#break
+	#{else}
+		it's not!
+		#stop
+	#end
 
-    #if ($foreach.parent.hasNext)
-        $velocityCount
-    #end
+	#if ($foreach.parent.hasNext)
+		$velocityCount
+	#end
 #end
 
 $someObject.getValues("this is a string split
-        across lines")
+		across lines")
 
 #macro( tablerows $color $somelist )
-    #foreach( $something in $somelist )
-        <tr><td bgcolor=$color>$something</td></tr>
-    #end
+	#foreach( $something in $somelist )
+		<tr><td bgcolor=$color>$something</td></tr>
+	#end
 #end
 
 #tablerows("red" ["dadsdf","dsa"])
@@ -87,18 +87,18 @@ Addition: #set( $value = $foo + 1 )
    Remainder: #set( $value = $foo % $bar )
 
 </textarea></form>
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        tabMode: "indent",
-        matchBrackets: true,
-        theme: "night",
-        lineNumbers: true,
-        indentUnit: 4,
-        mode: "text/velocity"
-      });
-    </script>
+	<script>
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		tabMode: "indent",
+		matchBrackets: true,
+		theme: "night",
+		lineNumbers: true,
+		indentUnit: 4,
+		mode: "text/velocity"
+	  });
+	</script>
 
-    <p><strong>MIME types defined:</strong> <code>text/velocity</code>.</p>
+	<p><strong>MIME types defined:</strong> <code>text/velocity</code>.</p>
 
   </body>
 </html>

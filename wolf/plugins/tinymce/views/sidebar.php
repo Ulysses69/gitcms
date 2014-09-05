@@ -7,13 +7,13 @@
 TinyMCE: v3.2.1.1 (2008-11-27)
 </p>
 <p>
-    <?php echo __('The TinyMCE editor plugin for Frog consists of a stock (unchanged) version of TinyMCE packaged with a number of supporting files.');?>
+	<?php echo __('The TinyMCE editor plugin for Frog consists of a stock (unchanged) version of TinyMCE packaged with a number of supporting files.');?>
 </p>
 <p>
-    <?php echo __('This allows TinyMCE to be used or updated quickly in an easy manner for Frog users without needing to change TinyMCE itself.');?>
+	<?php echo __('This allows TinyMCE to be used or updated quickly in an easy manner for Frog users without needing to change TinyMCE itself.');?>
 </p>
 <p>
-    <?php echo __('Homepage:');?> <a href="http://www.vanderkleijn.net/frog-cms/plugins/tinymce.html"><?php echo __('Frog TinyMCE plugin');?></a><br/>
-    <?php echo __('Homepage:');?> <a href="http://tinymce.moxiecode.com/"><?php echo __('TinyMCE itself');?></a>
+	<?php echo __('Homepage:');?> <a href="http://www.vanderkleijn.net/frog-cms/plugins/tinymce.html"><?php echo __('Frog TinyMCE plugin');?></a><br/>
+	<?php echo __('Homepage:');?> <a href="http://tinymce.moxiecode.com/"><?php echo __('TinyMCE itself');?></a>
 </p>
 </div>

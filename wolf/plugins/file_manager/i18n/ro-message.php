@@ -1,18 +1,18 @@
 ﻿<?php
 
-    /**
-     * Romanian file for plugin file_manager
-     *
-     * @package plugins
-     * @subpackage file_manager
-     * @category translations
-     *
-     * @author Cosmin Huţanu <urecheatu007@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Romanian file for plugin file_manager
+	 *
+	 * @package plugins
+	 * @subpackage file_manager
+	 * @category translations
+	 *
+	 * @author Cosmin Huţanu <urecheatu007@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    'A possible hack attempt was detected.' => 'O posibilă încercare de hack a fost detectată.',
+	return array(
+	'A possible hack attempt was detected.' => 'O posibilă încercare de hack a fost detectată.',
 	'Action' => 'Acţiune',
 	'Are you sure you wish to delete?' => 'Sigur doreşti ştergerea?',
 	'Cancel' => 'Anulare',
@@ -47,4 +47,4 @@
 	'delete file icon' => 'miniatură ştergere fişier',
 	'or' => 'sau',
 	'overwrite it?' => 'suprascrie?',
-    );
+	);

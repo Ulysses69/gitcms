@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : pdf417.php
-// Version     : 1.0.005
-// Begin       : 2010-06-03
+// Version	 : 1.0.005
+// Begin	   : 2010-06-03
 // Last Update : 2014-04-25
-// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2010-2013  Nicola Asuni - Tecnick.com LTD
 //
@@ -33,13 +33,13 @@
 // PDF417 (ISO/IEC 15438:2006) is a 2-dimensional stacked bar code created by Symbol Technologies in 1991.
 // It is one of the most popular 2D codes because of its ability to be read with slightly modified handheld laser or linear CCD scanners.
 // TECHNICAL DATA / FEATURES OF PDF417:
-//		Encodable Character Set:     All 128 ASCII Characters (including extended)
-//		Code Type:                   Continuous, Multi-Row
-//		Symbol Height:               3 - 90 Rows
-//		Symbol Width:                90X - 583X
-//		Bidirectional Decoding:      Yes
+//		Encodable Character Set:	 All 128 ASCII Characters (including extended)
+//		Code Type:				   Continuous, Multi-Row
+//		Symbol Height:			   3 - 90 Rows
+//		Symbol Width:				90X - 583X
+//		Bidirectional Decoding:	  Yes
 //		Error Correction Characters: 2 - 512
-//		Maximum Data Characters:     1850 text, 2710 digits, 1108 bytes
+//		Maximum Data Characters:	 1850 text, 2710 digits, 1108 bytes
 //
 //============================================================+
 
@@ -247,7 +247,7 @@ class PDF417 {
 			0x18e64,0x18622,0x19ee4,0x18e62,0x19ee2,0x10428,0x18216,0x10c68,0x18636,0x11ce8, // 900
 			0x10c64,0x10422,0x13de8,0x11ce4,0x10c62,0x13de4,0x11ce2,0x10436,0x10c76,0x11cf6, // 910
 			0x13df6,0x1f7d4,0x1f7d2,0x1e794,0x1efb4,0x1e792,0x1efb2,0x1c714,0x1cf34,0x1c712, // 920
-			0x1df74,0x1cf32,0x1df72,0x18614,0x18e34,0x18612,0x19e74,0x18e32,0x1bef4),        // 929
+			0x1df74,0x1cf32,0x1df72,0x18614,0x18e34,0x18612,0x19e74,0x18e32,0x1bef4),		// 929
 		array( // cluster 3 -----------------------------------------------------------------------
 			0x1f560,0x1fab8,0x1ea40,0x1f530,0x1fa9c,0x1ea20,0x1f518,0x1fa8e,0x1ea10,0x1f50c, //  10
 			0x1ea08,0x1f506,0x1ea04,0x1eb60,0x1f5b8,0x1fade,0x1d640,0x1eb30,0x1f59c,0x1d620, //  20
@@ -341,7 +341,7 @@ class PDF417 {
 			0x106fa,0x10ebe,0x11ebc,0x11e9e,0x13eb8,0x19f5e,0x13e9c,0x13e8e,0x11e5e,0x13ede, // 900
 			0x17eb0,0x1bf5c,0x17e98,0x1bf4e,0x17e8c,0x17e86,0x13e5c,0x17edc,0x13e4e,0x17ece, // 910
 			0x17e58,0x1bf2e,0x17e4c,0x17e46,0x13e2e,0x17e6e,0x17e2c,0x17e26,0x10f5e,0x11f5c, // 920
-			0x11f4e,0x13f58,0x19fae,0x13f4c,0x13f46,0x11f2e,0x13f6e,0x13f2c,0x13f26),        // 929
+			0x11f4e,0x13f58,0x19fae,0x13f4c,0x13f46,0x11f2e,0x13f6e,0x13f2c,0x13f26),		// 929
 		array( // cluster 6 -----------------------------------------------------------------------
 			0x1abe0,0x1d5f8,0x153c0,0x1a9f0,0x1d4fc,0x151e0,0x1a8f8,0x1d47e,0x150f0,0x1a87c, //  10
 			0x15078,0x1fad0,0x15be0,0x1adf8,0x1fac8,0x159f0,0x1acfc,0x1fac4,0x158f8,0x1ac7e, //  20
@@ -435,7 +435,7 @@ class PDF417 {
 			0x11f64,0x10f22,0x11f62,0x10716,0x10f36,0x11f76,0x1cfd4,0x1cfd2,0x18f94,0x19fb4, // 900
 			0x18f92,0x19fb2,0x10f14,0x11f34,0x10f12,0x13f74,0x11f32,0x13f72,0x1cfca,0x18f8a, // 910
 			0x19f9a,0x10f0a,0x11f1a,0x13f3a,0x103ac,0x103a6,0x107a8,0x183d6,0x107a4,0x107a2, // 920
-			0x10396,0x107b6,0x187d4,0x187d2,0x10794,0x10fb4,0x10792,0x10fb2,0x1c7ea)         // 929
+			0x10396,0x107b6,0x187d4,0x187d2,0x10794,0x10fb4,0x10792,0x10fb2,0x1c7ea)		 // 929
 	); // end of $clusters array
 
 	/**
@@ -444,11 +444,11 @@ class PDF417 {
 	 */
 	protected $rsfactors = array(
 		array( // ECL 0 (2 factors) -------------------------------------------------------------------------------
-			0x01b,0x395),                                                                                    //   2
+			0x01b,0x395),																					//   2
 		array( // ECL 1 (4 factors) -------------------------------------------------------------------------------
-			0x20a,0x238,0x2d3,0x329),                                                                        //   4
+			0x20a,0x238,0x2d3,0x329),																		//   4
 		array( // ECL 2 (8 factors) -------------------------------------------------------------------------------
-			0x0ed,0x134,0x1b4,0x11c,0x286,0x28d,0x1ac,0x17b),                                                //   8
+			0x0ed,0x134,0x1b4,0x11c,0x286,0x28d,0x1ac,0x17b),												//   8
 		array( // ECL 3 (16 factors) ------------------------------------------------------------------------------
 			0x112,0x232,0x0e8,0x2f3,0x257,0x20c,0x321,0x084,0x127,0x074,0x1ba,0x1ac,0x127,0x02a,0x0b0,0x041),//  16
 		array( // ECL 4 (32 factors) ------------------------------------------------------------------------------

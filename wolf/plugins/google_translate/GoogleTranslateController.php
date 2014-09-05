@@ -12,16 +12,16 @@ if (!defined('IN_CMS')) { exit(); }
 
 class GoogleTranslateController extends PluginController {
 
-    public function __construct() {
-        $this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/google_translate/views/sidebar'));
-    }
+	public function __construct() {
+		$this->setLayout('backend');
+		$this->assignToLayout('sidebar', new View('../../plugins/google_translate/views/sidebar'));
+	}
 
-    public function index() {
-        $this->documentation();
-    }
+	public function index() {
+		$this->documentation();
+	}
 
-    public function documentation() {
-        $this->display('google_translate/views/documentation');
-    }
+	public function documentation() {
+		$this->display('google_translate/views/documentation');
+	}
 }

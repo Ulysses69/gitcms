@@ -25,17 +25,17 @@ if (!defined('IN_CMS')) { exit(); }
 
 // Check if the plugin's settings already exist and create them if not.
 if (Plugin::getSetting('zip', 'backup_restore') === false) {
-    // Store settings new style
-    $settings = array('zip' => '1',
-                      'pwd' => '1',
-                      'backupfiles' => '1',
-                      'erasefiles' => '0',
-                      'restorefiles' => '0',
-                      'default_pwd' => 'pswpsw123',
-                      'stamp' => 'Ymd',
-                      'extension' => 'xml',
-                      'wolfversion' => '0.6.0'
-                     );
+	// Store settings new style
+	$settings = array('zip' => '1',
+					  'pwd' => '1',
+					  'backupfiles' => '1',
+					  'erasefiles' => '0',
+					  'restorefiles' => '0',
+					  'default_pwd' => 'pswpsw123',
+					  'stamp' => 'Ymd',
+					  'extension' => 'xml',
+					  'wolfversion' => '0.6.0'
+					 );
 
-    Plugin::setAllSettings($settings, 'backup_restore');
+	Plugin::setAllSettings($settings, 'backup_restore');
 }

@@ -22,30 +22,30 @@
 
 class Tagger
 {
-    public function __construct(&$page, $params)
-    {
-        $this->page =& $page;
-        $this->params = $params;
+	public function __construct(&$page, $params)
+	{
+		$this->page =& $page;
+		$this->params = $params;
 
-        switch(count($params))
-        {
-            case 0: break;
-            case 1:
-                $this->pagesByTag($params);
-            break;
-            default:
-                page_not_found();
-        }
-    }
+		switch(count($params))
+		{
+			case 0: break;
+			case 1:
+				$this->pagesByTag($params);
+			break;
+			default:
+				page_not_found();
+		}
+	}
 
-    public function tag($params = false)
-    {
-        if(!$params) $params = $this->params;
+	public function tag($params = false)
+	{
+		if(!$params) $params = $this->params;
 
-        return $params[0];
-    }
+		return $params[0];
+	}
 
-    public function pagesByTag($params = false)
+	public function pagesByTag($params = false)
 	{
 		global $__CMS_CONN__;
 		

@@ -25,54 +25,54 @@ if (!defined('IN_CMS')) { exit(); }
 
 class SiteSearchController extends PluginController {
 
-    public function __construct() {
-        $this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/site_search/views/sidebar'));
-    }
+	public function __construct() {
+		$this->setLayout('backend');
+		$this->assignToLayout('sidebar', new View('../../plugins/site_search/views/sidebar'));
+	}
 
-    public function index() {
-        $this->documentation();
+	public function index() {
+		$this->documentation();
 		$this->settings();
-    }
+	}
 
-    public function documentation() {
-        $this->display('site_search/views/documentation');
-    }
+	public function documentation() {
+		$this->display('site_search/views/documentation');
+	}
 
-    function settings() {
-        $tmp = Plugin::getAllSettings('site_search');				 
+	function settings() {
+		$tmp = Plugin::getAllSettings('site_search');				 
 		$settings = array('min_wordlength' => $tmp['min_wordlength'],
-                  'max_terms_allowed' => $tmp['max_terms_allowed'],
-                  'title_weight' => $tmp['title_weight'],
-                  'meta_weight' => $tmp['meta_weight'],
+				  'max_terms_allowed' => $tmp['max_terms_allowed'],
+				  'title_weight' => $tmp['title_weight'],
+				  'meta_weight' => $tmp['meta_weight'],
 				  'short_desc_length' => $tmp['short_desc_length'],
 				  'results_perpage' => $tmp['results_perpage']
-        );
+		);
 				 
-        $this->display('site_search/views/settings', $settings);;
-    }
+		$this->display('site_search/views/settings', $settings);;
+	}
 	
 	function save() {
-        if (isset($_POST['settings'])) {
-            $settings = $_POST['settings'];
-            foreach ($settings as $key => $value) {
-                $settings[$key] = mysql_escape_string($value);
-            }
-            
-            $ret = Plugin::setAllSettings($settings, 'site_search');
+		if (isset($_POST['settings'])) {
+			$settings = $_POST['settings'];
+			foreach ($settings as $key => $value) {
+				$settings[$key] = mysql_escape_string($value);
+			}
+			
+			$ret = Plugin::setAllSettings($settings, 'site_search');
 
-            if ($ret) {
-                Flash::set('success', __('The settings have been saved.'));
-            }
-            else {
-                Flash::set('error', 'An error occured trying to save the settings.');
-            }
-        }
-        else {
-            Flash::set('error', 'Could not save settings, no settings found.');
-        }
+			if ($ret) {
+				Flash::set('success', __('The settings have been saved.'));
+			}
+			else {
+				Flash::set('error', 'An error occured trying to save the settings.');
+			}
+		}
+		else {
+			Flash::set('error', 'Could not save settings, no settings found.');
+		}
 
-        redirect(get_url('plugin/site_search/settings'));
-    }
+		redirect(get_url('plugin/site_search/settings'));
+	}
 
 }

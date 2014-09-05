@@ -66,7 +66,7 @@ $basepath = $access_check['basepath'];
  * @package MCImageManager.Authenticators
  */
 class Moxiecode_DrupalAuthenticator extends Moxiecode_ManagerPlugin {
-    /**#@+
+	/**#@+
 	 * @access public
 	 */
 
@@ -80,7 +80,7 @@ class Moxiecode_DrupalAuthenticator extends Moxiecode_ManagerPlugin {
 		global $isDrupalAuth;
 		global $user;
 
-        $config =& $man->getConfig(); 
+		$config =& $man->getConfig(); 
 
 		// If authenticated then
 		if ($isDrupalAuth && isset($user)) {
@@ -99,7 +99,7 @@ class Moxiecode_DrupalAuthenticator extends Moxiecode_ManagerPlugin {
 				mkdir($rootPath);
 		}
 
-        return $isDrupalAuth;
+		return $isDrupalAuth;
 	}
 
 	/**#@-*/

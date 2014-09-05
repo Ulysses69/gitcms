@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_006.php
-// Begin       : 2008-03-04
+// Begin	   : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 006 for TCPDF class
-//               WriteHTML and RTL support
+//			   WriteHTML and RTL support
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**
@@ -281,8 +281,8 @@ Hello
 </div>
 <pre style="background-color:#336699;color:white;">
 int main() {
-    printf("HelloWorld");
-    return 0;
+	printf("HelloWorld");
+	return 0;
 }
 </pre>
 <tt>Monospace font</tt>, normal font, <tt>monospace font</tt>, normal font.

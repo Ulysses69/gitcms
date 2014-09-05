@@ -29,7 +29,7 @@
 // Start by outputting the image and then severing the browser connection.
 // Any output in a cron run should NOT be done.
 
-set_time_limit(86400);      // Stop the script after a day if need be
+set_time_limit(86400);	  // Stop the script after a day if need be
 
 // Output web bug dummy image
 ob_end_clean();
@@ -41,7 +41,7 @@ echo base64_decode("R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==
 $size = ob_get_length();
 header("Content-Length: $size");
 ob_end_flush();
-flush();            // Both need to be called!
+flush();			// Both need to be called!
 
 // Setup system
 define('CMS_ROOT', dirname(__FILE__).'/../..');
@@ -60,7 +60,7 @@ require CORE_ROOT.'/Framework.php';
 
 $__CMS_CONN__ = new PDO(DB_DSN, DB_USER, DB_PASS);
 if ($__CMS_CONN__->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql')
-    $__CMS_CONN__->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+	$__CMS_CONN__->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 
 Record::connection($__CMS_CONN__);
 Record::getConnection()->exec("set names 'utf8'");

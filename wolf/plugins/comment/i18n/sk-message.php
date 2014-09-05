@@ -1,17 +1,17 @@
 <?php
 
   /**
-     * Slovak file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Pali Petras <payo@creoactive.com>
-     * @version Wolf 0.5.5
-     */
+	 * Slovak file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Pali Petras <payo@creoactive.com>
+	 * @version Wolf 0.5.5
+	 */
 
-    return array(
-    'A comment was added.' => 'Komentár bol pridaný.',
+	return array(
+	'A comment was added.' => 'Komentár bol pridaný.',
 	'Approve' => 'Schváliť',
 	'Are you sure you wish to delete it?' => 'Naozaj si to želáte zmazať?',
 	'Auto approve' => 'Automatické schválenie',
@@ -57,4 +57,4 @@
 	'comment not found!' => 'komentár nenájdený',
 	'none' => 'žiadne',
 	'or' => 'alebo',
-    );
+	);

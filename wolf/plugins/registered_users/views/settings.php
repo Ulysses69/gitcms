@@ -108,7 +108,7 @@ while ($settings = $registration_settings->fetchObject()) {
 ?>
 			<form action="<?php echo get_url('plugin/registered_users/edit_settings/'); ?>" method="POST" name="edit_settings">
 
-		        <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+				<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 		
 					<tr>
 						<td class="label">
@@ -145,7 +145,7 @@ while ($settings = $registration_settings->fetchObject()) {
 							<label for="default_permissions">Default User Group</label>
 						</td>
 						<td class="field">
-                                                    <select name="default_permissions" id="default_permissions">
+													<select name="default_permissions" id="default_permissions">
 <?php
 foreach ($roles as $role) {
 	echo '<option value="'.$role->id.'"';
@@ -153,7 +153,7 @@ foreach ($roles as $role) {
 	echo '>'.$role->name.'</option>';
 }
 ?>
-                                                        </select>
+														</select>
 						</td>
 						<td class="help">
 							<p>What permissions new users should have when they first sign up</p>
@@ -210,9 +210,9 @@ foreach ($roles as $role) {
 						</td>
 					</tr>
 
-        </table>
-        
-        
+		</table>
+		
+		
 		</div>
 
 		<div id="reset-page" class="page">
@@ -784,8 +784,8 @@ foreach ($roles as $role) {
 
 	<p><label>&nbsp;</label><input class="button" name="edit_settings" type="submit" value="Edit User Registration Settings"></p>
 	<p>&nbsp;</p>
-    </div>
-    </form>
+	</div>
+	</form>
 
 </div>
 

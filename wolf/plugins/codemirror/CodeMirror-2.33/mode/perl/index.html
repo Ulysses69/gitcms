@@ -1,16 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>CodeMirror: Perl mode</title>
-    <link rel="stylesheet" href="../../lib/codemirror.css">
-    <script src="../../lib/codemirror.js"></script>
-    <script src="perl.js"></script>
-    <link rel="stylesheet" href="../../doc/docs.css">
-    <style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
+	<meta charset="utf-8">
+	<title>CodeMirror: Perl mode</title>
+	<link rel="stylesheet" href="../../lib/codemirror.css">
+	<script src="../../lib/codemirror.js"></script>
+	<script src="perl.js"></script>
+	<link rel="stylesheet" href="../../doc/docs.css">
+	<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
   </head>
   <body>
-    <h1>CodeMirror: Perl mode</h1>
+	<h1>CodeMirror: Perl mode</h1>
 
 <div><textarea id="code" name="code">
 #!/usr/bin/perl
@@ -20,7 +20,7 @@ use Something qw(func1 func2);
 # strings
 my $s1 = qq'single line';
 our $s2 = q(multi-
-              line);
+			  line);
 
 =item Something
 	Example.
@@ -51,13 +51,13 @@ something...
 
 </textarea></div>
 
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        matchBrackets: true
-      });
-    </script>
+	<script>
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true
+	  });
+	</script>
 
-    <p><strong>MIME types defined:</strong> <code>text/x-perl</code>.</p>
+	<p><strong>MIME types defined:</strong> <code>text/x-perl</code>.</p>
   </body>
 </html>

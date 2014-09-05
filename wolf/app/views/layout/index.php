@@ -43,21 +43,21 @@
 <ul id="layouts" class="index">
 <?php foreach($layouts as $layout) { ?><?php if (DEV_AUTH != 2){ $exclude = array(5,7,12,13,15);}else{ $exclude = array(); } ?><?php if(!in_array($layout->id,$exclude)){ ?>
   <li id="layout_<?php echo $layout->id; ?>" class="layout node <?php echo odd_even(); ?>">
-    <img align="middle" alt="layout-icon" src="images/layout.png" title="" />
-    <a href="<?php echo get_url('layout/edit/'.$layout->id); ?>"><?php echo $layout->name; ?></a>
-    <img class="handle" src="images/drag.gif" alt="<?php echo __('Drag and Drop'); ?>" align="middle" />
-    <div class="remove"><a href="<?php echo get_url('layout/delete/'.$layout->id); ?>" onclick="return confirm('<?php echo __('Are you sure you wish to delete'); ?> <?php echo $layout->name; ?>?');"><img alt="<?php echo __('delete layout icon'); ?>" title="<?php echo __('Delete layout'); ?>" src="images/icon-remove.gif" /></a></div>
+	<img align="middle" alt="layout-icon" src="images/layout.png" title="" />
+	<a href="<?php echo get_url('layout/edit/'.$layout->id); ?>"><?php echo $layout->name; ?></a>
+	<img class="handle" src="images/drag.gif" alt="<?php echo __('Drag and Drop'); ?>" align="middle" />
+	<div class="remove"><a href="<?php echo get_url('layout/delete/'.$layout->id); ?>" onclick="return confirm('<?php echo __('Are you sure you wish to delete'); ?> <?php echo $layout->name; ?>?');"><img alt="<?php echo __('delete layout icon'); ?>" title="<?php echo __('Delete layout'); ?>" src="images/icon-remove.gif" /></a></div>
   </li>
 <?php } ?><?php } ?>
 </ul>
 
 <script type="text/javascript" language="javascript" charset="utf-8">
 Sortable.create('layouts', {
-    constraint: 'vertical',
-    scroll: window,
-    handle: 'handle',
-    onUpdate: function() {
-        new Ajax.Request('index.php?/layout/reorder', {method: 'post', parameters: {data: Sortable.serialize('layouts')}});
-    }
+	constraint: 'vertical',
+	scroll: window,
+	handle: 'handle',
+	onUpdate: function() {
+		new Ajax.Request('index.php?/layout/reorder', {method: 'post', parameters: {data: Sortable.serialize('layouts')}});
+	}
 });
 </script>

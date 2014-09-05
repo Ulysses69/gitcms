@@ -21,14 +21,14 @@
 
 /* TODO - Fix... Bad karma to put stuff like this in view. */
 try {
-    $__CMS_CONN__ = new PDO(DB_DSN, DB_USER, DB_PASS);
+	$__CMS_CONN__ = new PDO(DB_DSN, DB_USER, DB_PASS);
 } 
 catch (PDOException $error) {
-    die('Warning - you need the PDO MySQL driver to enable this plugin...');
+	die('Warning - you need the PDO MySQL driver to enable this plugin...');
 }
-    
+	
 if ($__CMS_CONN__->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql')
-    $__CMS_CONN__->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+	$__CMS_CONN__->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 
 ?>
 
@@ -97,17 +97,17 @@ if ($__CMS_CONN__->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql')
 <p><strong>4. Set up the <a href="<?php echo get_url('plugin/registered_users/settings'); ?>">finer details.</a></strong></p>
 
 <div id="boxes">
-    <div id="add-user-group" class="window">
+	<div id="add-user-group" class="window">
 	<div class="titlebar">
-            <?php echo __('Add user group'); ?>
-            <a href="#" class="close">[x]</a>
-        </div>
-        <div class="content">
-            <form action="<?php echo get_url('plugin/registered_users/add_user_group/'); ?>" method="post" name="add_user_group">
-                <p>Group Name <input id="new_group" maxlength="255" name="new_group" type="text" value="" /></p>
+			<?php echo __('Add user group'); ?>
+			<a href="#" class="close">[x]</a>
+		</div>
+		<div class="content">
+			<form action="<?php echo get_url('plugin/registered_users/add_user_group/'); ?>" method="post" name="add_user_group">
+				<p>Group Name <input id="new_group" maxlength="255" name="new_group" type="text" value="" /></p>
 		<p>Make default group for new users? <input type="checkbox" name="default" value="1" /></p>
-                <input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Add user group'); ?>" />
-            </form>
-        </div>
-    </div>
+				<input id="add_user_group_button" name="commit" type="submit" value="<?php echo __('Add user group'); ?>" />
+			</form>
+		</div>
+	</div>
 </div>

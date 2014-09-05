@@ -34,8 +34,8 @@
 
 // Prevent any possible caching
 header('Content-type: text/plain');
-header("Cache-Control: no-cache, must-revalidate");     // HTTP/1.1
-header("Expires: Tue, 05 Dec 2000 00:00:01 GMT");       // Date in the past
+header("Cache-Control: no-cache, must-revalidate");	 // HTTP/1.1
+header("Expires: Tue, 05 Dec 2000 00:00:01 GMT");	   // Date in the past
 
 // Do work
 writeTemplate($complete);
@@ -47,29 +47,29 @@ writeTemplate($complete);
  * @param array  $strings
  */
 function writeTemplate($strings) {
-    echo '<?php
+	echo '<?php
 
-    /**
-     * YourLanguage language file
-     *
-     * @package wolf
-     * @subpackage translations
-     *
-     * @author Your Name <email@domain.something>
-     * @version Wolf x.y.z
-     */
+	/**
+	 * YourLanguage language file
+	 *
+	 * @package wolf
+	 * @subpackage translations
+	 *
+	 * @author Your Name <email@domain.something>
+	 * @version Wolf x.y.z
+	 */
 
-    return array(
-    ';
+	return array(
+	';
 
-    $strings = removeDoubles($strings);
-    sort($strings);
+	$strings = removeDoubles($strings);
+	sort($strings);
 
-    foreach ($strings as $string) {
-        echo "\t'".$string."' => '',\n";
-    }    
+	foreach ($strings as $string) {
+		echo "\t'".$string."' => '',\n";
+	}	
 
-    echo "    );\n\n\n\n\n\n";
+	echo "	);\n\n\n\n\n\n";
 }
 
 /**
@@ -79,12 +79,12 @@ function writeTemplate($strings) {
  * @return array 
  */
 function removeDoubles($array) {
-    $result = array();
-        
-    foreach ($array as $string) {
-        if (!in_array($string, $result))
-        $result[] = $string;
-    }
+	$result = array();
+		
+	foreach ($array as $string) {
+		if (!in_array($string, $result))
+		$result[] = $string;
+	}
 
-    return $result;
+	return $result;
 }

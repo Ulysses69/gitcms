@@ -2,10 +2,10 @@
 
 if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.0'); }
 Plugin::setInfos(array(
-    'id'          => 'jscripts',
-    'title'       => 'jScripts',
-    'description' => 'Provides organisation of external javascript and css files',
-    'version'     => JSCRIPTS_VERSION)
+	'id'		  => 'jscripts',
+	'title'	   => 'jScripts',
+	'description' => 'Provides organisation of external javascript and css files',
+	'version'	 => JSCRIPTS_VERSION)
 );
 
 /* Security measure */
@@ -542,16 +542,16 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 			$(function() {
 	
 				var imgs = [
-	                'banner2.jpg',
-	                'banner3.jpg',
-	                'banner4.jpg',
-	                'banner5.jpg',
-	                'banner6.jpg',
-	                'banner7.jpg',
-	                'banner8.jpg',
+					'banner2.jpg',
+					'banner3.jpg',
+					'banner4.jpg',
+					'banner5.jpg',
+					'banner6.jpg',
+					'banner7.jpg',
+					'banner8.jpg',
 					'banner-home.jpg'];
 	
-	            var cnt = imgs.length;
+				var cnt = imgs.length;
 	
 				$('#' + container + ' img').remove();
 				var z = 3;
@@ -562,17 +562,17 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 				$('#' + container + ' .active').css({'z-index':z,'display':'block'});
 	
 				var cycleImages = function(){
-				      z = z + 1;
-				      var $container = $('#' + container);
-				      var $containerwidth = $container.width();
-				      var $active = $('#' + container + ' .active');
-				      var $next = ($active.next().length > 0) ? $active.next() : $('#' + container + ' img:first');
-				      $next.css('z-index',2);
-				      $next.css('display','block');
-				      $active.fadeOut(0,function(){
+					  z = z + 1;
+					  var $container = $('#' + container);
+					  var $containerwidth = $container.width();
+					  var $active = $('#' + container + ' .active');
+					  var $next = ($active.next().length > 0) ? $active.next() : $('#' + container + ' img:first');
+					  $next.css('z-index',2);
+					  $next.css('display','block');
+					  $active.fadeOut(0,function(){
 						  $active.css('z-index',1).show().removeClass('active').animate({marginLeft:'-='+$containerwidth+'px'},1500);
-					      $next.css('z-index',3).css('marginLeft',$containerwidth+'px').addClass('active').animate({marginLeft:'-='+$containerwidth+'px'},1500);
-				      });
+						  $next.css('z-index',3).css('marginLeft',$containerwidth+'px').addClass('active').animate({marginLeft:'-='+$containerwidth+'px'},1500);
+					  });
 				};
 	
 				$(document).ready(function(){
@@ -581,8 +581,8 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 					var init = setInterval(cycleImages, 4000);
 				});
 	
-	        });
-	        */
+			});
+			*/
 
 
 
@@ -752,6 +752,6 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 	}
 	
 
-    //exit;
+	//exit;
 }
 }

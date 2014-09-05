@@ -33,53 +33,53 @@ if(!Plugin::getSetting('clientanalyticsversion', 'seobox')) $settings['clientana
 // Check existing plugin settings
 if (!$version || $version == null) {
 	
-    // This is a clean install.
+	// This is a clean install.
 
-    // Store settings.
-    if (Plugin::setAllSettings($settings, 'seobox')) {
-        Flash::set('success', __('SEO Box - plugin settings setup.'));
-    }
-    else
-        Flash::set('error', __('SEO Box - unable to save plugin settings.'));
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'seobox')) {
+		Flash::set('success', __('SEO Box - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('SEO Box - unable to save plugin settings.'));
 
 
 } else {
 
 
-    // Upgrade from previous installation
-    if (SEOBOX_VERSION > $version) {
+	// Upgrade from previous installation
+	if (SEOBOX_VERSION > $version) {
 		
-        // Retrieve the old settings.
-        $PDO = Record::getConnection();
-        $tablename = TABLE_PREFIX.'plugin_settings';
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
 
-        $sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='seobox'";
-        $sql = "SELECT * FROM $tablename WHERE plugin_id='seobox'";
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='seobox'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='seobox'";
 
-        $result = $PDO->query($sql_check);
+		$result = $PDO->query($sql_check);
 
-        if (!$result) {
-            Flash::set('error', __('SEO Box - unable to access plugin settings.'));
-            return;
-        }
+		if (!$result) {
+			Flash::set('error', __('SEO Box - unable to access plugin settings.'));
+			return;
+		}
 
-        // Fetch the old installation's records.
-        $result = $PDO->query($sql);
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
 
-        if ($result && $row = $result->fetchObject()) {
+		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-            if(defined('SEOBOX_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/seobox'); }
-        }
-    }
+			if(defined('SEOBOX_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/seobox'); }
+		}
+	}
 
 
-    // Store settings.
-    if (isset($settings) && Plugin::setAllSettings($settings, 'seobox')) {
-        if (SEOBOX_VERSION > $version){
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'seobox')) {
+		if (SEOBOX_VERSION > $version){
 			Flash::set('success', __('SEO Box - plugin settings updated.'));
 		}
-    }
+	}
 
 }
 

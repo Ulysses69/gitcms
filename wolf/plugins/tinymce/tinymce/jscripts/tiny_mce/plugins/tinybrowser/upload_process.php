@@ -27,7 +27,7 @@ if ($handle = opendir($folder))
 			//-- File Naming
 			$tmp_filename = $folder.$file;
 			$dest_filename	 = $folder.rtrim($file,'_');
-        
+		
 			//-- Duplicate Files
 			if(file_exists($dest_filename)) { unlink($tmp_filename); $dup++; continue; }
 
@@ -36,7 +36,7 @@ if ($handle = opendir($folder))
 			$ext = end($nameparts);
 			
 			if(!validateExtension($ext, $tinybrowser['prohibited'])) { unlink($tmp_filename); continue; }
-        
+		
 			//-- Rename temp file to dest file
 			rename($tmp_filename, $dest_filename);
 			$good++;
@@ -75,7 +75,7 @@ if ($handle = opendir($folder))
 					}
 				}
 
-      	}
+	  	}
 		}
 	closedir($handle);
 	}

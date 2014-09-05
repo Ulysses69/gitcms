@@ -29,55 +29,55 @@
 
 class Tagger extends Tag
 {   
-    public $name;
-    public $count;
-    
-    public static function find($args = null) {
-        
-        // Collect attributes...
-        $where    = isset($args['where']) ? trim($args['where']) : '';
-        $order_by = isset($args['order']) ? trim($args['order']) : '';
-        $offset   = isset($args['offset']) ? (int) $args['offset'] : 0;
-        $limit    = isset($args['limit']) ? (int) $args['limit'] : 0;
+	public $name;
+	public $count;
+	
+	public static function find($args = null) {
+		
+		// Collect attributes...
+		$where	= isset($args['where']) ? trim($args['where']) : '';
+		$order_by = isset($args['order']) ? trim($args['order']) : '';
+		$offset   = isset($args['offset']) ? (int) $args['offset'] : 0;
+		$limit	= isset($args['limit']) ? (int) $args['limit'] : 0;
 
-        // Prepare query parts
-        $where_string = empty($where) ? '' : "WHERE $where";
-        $order_by_string = empty($order_by) ? '' : "ORDER BY $order_by";
-        $limit_string = $limit > 0 ? "LIMIT $offset, $limit" : '';
+		// Prepare query parts
+		$where_string = empty($where) ? '' : "WHERE $where";
+		$order_by_string = empty($order_by) ? '' : "ORDER BY $order_by";
+		$limit_string = $limit > 0 ? "LIMIT $offset, $limit" : '';
 
-        $tablename = self::tableNameFromClassName('Tag');
+		$tablename = self::tableNameFromClassName('Tag');
 
-        // Prepare SQL
-        $sql = "SELECT * FROM $tablename"." $where_string $order_by_string $limit_string";
+		// Prepare SQL
+		$sql = "SELECT * FROM $tablename"." $where_string $order_by_string $limit_string";
 
-        $stmt = self::$__CONN__->prepare($sql);
-        $stmt->execute();
+		$stmt = self::$__CONN__->prepare($sql);
+		$stmt->execute();
 
-        // Run!
-        if ($limit == 1) {
-            return $stmt->fetchObject('Tag');
-        } else {
-            $objects = array();
-            while ($object = $stmt->fetchObject('Tag')) {
-                $objects[] = $object;
-            }
-            return $objects;
-        }
-    
-    } // find
-    
-    public static function findAll($args = null) {
-        return self::find($args);
-    }
-    
-    public static function findById($id) {
-        return self::find(array(
-            'where' => self::tableNameFromClassName('Tag').'.id='.(int)$id,
-            'limit' => 1
-        ));
-    }
-    
-    /**
+		// Run!
+		if ($limit == 1) {
+			return $stmt->fetchObject('Tag');
+		} else {
+			$objects = array();
+			while ($object = $stmt->fetchObject('Tag')) {
+				$objects[] = $object;
+			}
+			return $objects;
+		}
+	
+	} // find
+	
+	public static function findAll($args = null) {
+		return self::find($args);
+	}
+	
+	public static function findById($id) {
+		return self::find(array(
+			'where' => self::tableNameFromClassName('Tag').'.id='.(int)$id,
+			'limit' => 1
+		));
+	}
+	
+	/**
 	 * Gives the name of the tag fields
 	 *
 	 * @since 1.1.0
@@ -86,8 +86,8 @@ class Tagger extends Tag
 	 *
 	 * Updated $value to not be required, which was causing error on Settings page.  Version 1.2.3
 	 */
-    public function sortField($value = null) {
-    	$fields = array('id', 'name', 'count');
-    	return isset($value) ? $fields[$value] : $fields;
-    }
+	public function sortField($value = null) {
+		$fields = array('id', 'name', 'count');
+		return isset($value) ? $fields[$value] : $fields;
+	}
 }

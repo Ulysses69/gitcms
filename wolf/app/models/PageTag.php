@@ -39,9 +39,9 @@
  * @since Wolf version 0.8.7
  */
 class PageTag extends Record {
-    const TABLE_NAME = 'page_tag';
+	const TABLE_NAME = 'page_tag';
 
-    public static function deleteByPageId($id) {
-        return self::$__CONN__->exec('DELETE FROM '.self::tableNameFromClassName(self::TABLE_NAME).' WHERE page_id='.(int)$id) === false ? false: true;
-    }
+	public static function deleteByPageId($id) {
+		return self::$__CONN__->exec('DELETE FROM '.self::tableNameFromClassName(self::TABLE_NAME).' WHERE page_id='.(int)$id) === false ? false: true;
+	}
 }

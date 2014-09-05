@@ -15,15 +15,15 @@ if (!defined('IN_CMS')) { exit(); }
  */
 
 Plugin::setInfos(array(
-    'id'          => 'google_translate',
-    'title'       => __('Google Translate'),
-    'description' => __('Adds a translate dropdown to the top of your webpage in a multitude of languages.'),
-    'version'     => '0.0.1',
-   	'license'     => 'GPL',
-	'author'      => 'thulium',
+	'id'		  => 'google_translate',
+	'title'	   => __('Google Translate'),
+	'description' => __('Adds a translate dropdown to the top of your webpage in a multitude of languages.'),
+	'version'	 => '0.0.1',
+   	'license'	 => 'GPL',
+	'author'	  => 'thulium',
 	'update_url'  => 'http://raw.github.com/thulium/wolf_plugins/master/update.xml',
-    'website'     => 'http://www.wolfcms.org/',
-    //'require_wolf_version' => '0.7.5'
+	'website'	 => 'http://www.wolfcms.org/',
+	//'require_wolf_version' => '0.7.5'
 ));
 
 Plugin::addController('google_translate', __('Google Translate'), 'administrator', false);

@@ -23,10 +23,10 @@ if (!defined('IN_CMS')) { exit(); }
  */
 
 if (Plugin::deleteAllSettings('backup_restore') === false) {
-    Flash::set('error', __('Unable to remove plugin settings.'));
-    redirect(get_url('setting'));
+	Flash::set('error', __('Unable to remove plugin settings.'));
+	redirect(get_url('setting'));
 }
 else {
-    Flash::set('success', __('Successfully uninstalled plugin.'));
-    redirect(get_url('setting'));
+	Flash::set('success', __('Successfully uninstalled plugin.'));
+	redirect(get_url('setting'));
 }

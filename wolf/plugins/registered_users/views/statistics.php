@@ -45,9 +45,9 @@ $months = array(
 );
 
 while (list($monthname, $month) = each ($months)) {
-    $where = "created_on LIKE '%-$month-%'";
-    $users = User::findAllFrom('User', $where);
-    $users_count = User::countFrom('User', $where);
+	$where = "created_on LIKE '%-$month-%'";
+	$users = User::findAllFrom('User', $where);
+	$users_count = User::countFrom('User', $where);
 ?>
 		<tr>
 			<td><?php echo $monthname; ?></td>

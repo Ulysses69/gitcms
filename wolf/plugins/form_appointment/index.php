@@ -113,7 +113,7 @@ function appointmentForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$disp
 				$req = $k.'_req';
 				$id = ucwords(str_replace('_',' ',$k));
 
-    			if($id == "Appointment Date" && ($appointment_date != null && $appointment_date != 'No Preference')){
+				if($id == "Appointment Date" && ($appointment_date != null && $appointment_date != 'No Preference')){
 					/* Check date is in the present */
 					$start = strtotime($appointment_date);
 					$end = strtotime('D jS M Y');
@@ -466,7 +466,7 @@ function appointmentForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$disp
 					/* Add additional years as set by appointment_date_year_range */
 					for ($i = 1; $i < $appointment_date_year_range; $i++) {
 						$appointment_date_year_array[] = array((date('Y') + $i), (date('Y') + $i));
-	                }
+					}
 					foreach($appointment_date_year_array as $subarray) {
 						list($val, $text) = $subarray;
 						if($val == $appointment_date_year){

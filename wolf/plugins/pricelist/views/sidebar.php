@@ -24,8 +24,8 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 	<h2>Currency</h2>
 
 			<table cellpadding="5" cellspacing="5" border="0" id="price_form_sidebar">
-		      <tr>
-			        <td>
+			  <tr>
+					<td>
 						<label for="itempricecurrency"><span>Symbol</span>
 							<?php if(!isset($itempricecurrency)) $itempricecurrency = ''; ?>
 							<select name="<?php echo $itempricecurrency; ?>" >
@@ -47,8 +47,8 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 							</select>
 							<br />
 					</td>
-		      </tr>
-		    </table>	
+			  </tr>
+			</table>	
 
 
 	<h2>Prefix and Suffix</h2>
@@ -64,17 +64,17 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 	<!-- <p>The price label can be changed from <strong><?php echo $itempricelabel; ?></strong> to any other desired label, as can <strong><?php echo $itemprice2label; ?></strong>. Simply select a label, change the value, then save the changes.</p> -->
 	
 			<table cellpadding="5" cellspacing="5" border="0" id="price_form_sidebar">
-		      <tr>
-			        <td>
+			  <tr>
+					<td>
 						<label for="itempricelabel"><span>Label A</span>
 						<input class="textbox" id="itempricelabel" maxlength="255" name="itempricelabel" type="text" value="<?php echo $itempricelabel; ?>" /></label><br />
 					</td>
-			        <td>
+					<td>
 						<label for="itemprice2label"><span>Label B</span>
 						<input class="textbox" id="itemprice2label" maxlength="255" name="itemprice2label" type="text" value="<?php echo $itemprice2label; ?>" /></label><br />
 					</td>
-		      </tr>
-		    </table>	
+			  </tr>
+			</table>	
 	
 			<p class="buttons">
 				<input class="button" id="save-sidebar" name="save-sidebar" title="Save" type="submit" accesskey="s" value="<?php echo __('Save');?>" />

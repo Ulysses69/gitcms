@@ -39,63 +39,63 @@ class MbblogController extends PluginController
 	public $mbvars = array();	
 
 	// constructor function to setup class
-    public function __construct() 
-    {
-    	// setup vars
-    	$this->title = Plugin::getSetting('blogtitle', 'mbblog');
-    	$this->breadcrumb = $this->title;
-    	$this->slug = Plugin::getSetting('blogpath', 'mbblog').'/';
-    
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-        	$this->setLayout('backend');
-        	$this->assignToLayout('sidebar', new View('../../plugins/mbblog/views/<?php echo ADMIN_DIR; ?>/sidebar'));
+	public function __construct() 
+	{
+		// setup vars
+		$this->title = Plugin::getSetting('blogtitle', 'mbblog');
+		$this->breadcrumb = $this->title;
+		$this->slug = Plugin::getSetting('blogpath', 'mbblog').'/';
+	
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			$this->setLayout('backend');
+			$this->assignToLayout('sidebar', new View('../../plugins/mbblog/views/<?php echo ADMIN_DIR; ?>/sidebar'));
 		} else
 		{
 			$this->parent = Page::find('/');
 			$this->setLayout('wolf');
 		}
-    }
-    
-    /**
-     * content
-     *
-     * overwritten content function from Page
-     * bit of a hack, but allows mbcontact to integrate seamlessly without having to create extra layouts / modifying your existing one etc...
-    */
-    public function content($part='body', $inherit=false)
-    {
-    	if($part == 'body')
-    	{  	
-    		if($this->result == 'view')
-    		{
-    			$viewPath = '../../plugins/mbblog/views/viewblog';
-    		} elseif($this->result == 'list')
-    		{
-    			$viewPath = '../../plugins/mbblog/views/bloglist';
-    		} else
-    		{
-    			$viewPath = '../../plugins/mbblog/views/noblog';
-    		}    	
-    		return new View($viewPath, $this->mbvars);
-    	} else
-    	{
-    		return $this->parent->content($part, $inherit);
-    	}   
-    }    
-    
-    /**
-     * index
-     *
-     * Loads the blog posts for front end or backend
+	}
+	
+	/**
+	 * content
+	 *
+	 * overwritten content function from Page
+	 * bit of a hack, but allows mbcontact to integrate seamlessly without having to create extra layouts / modifying your existing one etc...
+	*/
+	public function content($part='body', $inherit=false)
+	{
+		if($part == 'body')
+		{  	
+			if($this->result == 'view')
+			{
+				$viewPath = '../../plugins/mbblog/views/viewblog';
+			} elseif($this->result == 'list')
+			{
+				$viewPath = '../../plugins/mbblog/views/bloglist';
+			} else
+			{
+				$viewPath = '../../plugins/mbblog/views/noblog';
+			}		
+			return new View($viewPath, $this->mbvars);
+		} else
+		{
+			return $this->parent->content($part, $inherit);
+		}   
+	}	
+	
+	/**
+	 * index
+	 *
+	 * Loads the blog posts for front end or backend
   	 *
-    */
-    public function index($page='1')
-    {	
+	*/
+	public function index($page='1')
+	{	
 		global $__CMS_CONN__;	
 	
 		$limit = Plugin::getSetting('postspp', 'mbblog');
@@ -136,15 +136,15 @@ class MbblogController extends PluginController
 							  'paging' => $paging);
 			
 			
-    	if(defined("CMS_BACKEND"))
-    	{
-       		$this->display('mbblog/views/admin/index', $this->mbvars);
-    	} else
-    	{   			
+		if(defined("CMS_BACKEND"))
+		{
+	   		$this->display('mbblog/views/admin/index', $this->mbvars);
+		} else
+		{   			
 			$this->executeFrontendLayout();
-	    	exit;
-	    }
-    }
+			exit;
+		}
+	}
    
 	/**
 	 * view
@@ -178,70 +178,70 @@ class MbblogController extends PluginController
 		$this->executeFrontendLayout();
 		exit;   
 	}
-    
+	
 	// --------------------------------------------------------------------------
 	// Admin functions
-    
-    /**
-     * documentation
-     *
-     * Documentation function to load the docs for the admin area
-    */    
-    public function documentation()
-    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-	        $this->display('mbblog/views/admin/docs');
-    
-    	} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    }
-    
-    /**
-     * settings
-     *
-     * Function to manage the settings within mbContact
-    */
-    public function settings()
-    {
-    	if(defined("CMS_BACKEND"))
-    	{
-    		AuthUser::load();
-	        if ( ! AuthUser::isLoggedIn()) {
-	            redirect(get_url('login'));
-	        }
-	        
-	        if(isset($_POST['save']) && $_POST['save'] == 'Save Settings')
-	        {
+	
+	/**
+	 * documentation
+	 *
+	 * Documentation function to load the docs for the admin area
+	*/	
+	public function documentation()
+	{
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			$this->display('mbblog/views/admin/docs');
+	
+		} else
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}
+	
+	/**
+	 * settings
+	 *
+	 * Function to manage the settings within mbContact
+	*/
+	public function settings()
+	{
+		if(defined("CMS_BACKEND"))
+		{
+			AuthUser::load();
+			if ( ! AuthUser::isLoggedIn()) {
+				redirect(get_url('login'));
+			}
+			
+			if(isset($_POST['save']) && $_POST['save'] == 'Save Settings')
+			{
 				Plugin::setAllSettings($_POST['setting'], 'mbblog');
-				Flash::setNow('success', __('Settings have been saved!'));	       	
-	        }
-	        	        
-	        $this->display('mbblog/views/admin/settings', array('settings' => Plugin::getAllSettings('mbblog')));
-    	} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-    } 
-    
+				Flash::setNow('success', __('Settings have been saved!'));		   	
+			}
+						
+			$this->display('mbblog/views/admin/settings', array('settings' => Plugin::getAllSettings('mbblog')));
+		} else
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	} 
+	
 	/**
 	 * addPost
 	 *
 	*/
 	public function addPost()
 	{
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$viewArray = array('act' => 'add');
-    	
+		if(defined("CMS_BACKEND"))
+		{
+			$viewArray = array('act' => 'add');
+		
 			if(isset($_POST['post']) && count($_POST['post']) > 0)
 			{
 				if($this->checkErrors($_POST['post']))
@@ -284,12 +284,12 @@ class MbblogController extends PluginController
 			$this->display('mbblog/views/admin/postform', $viewArray);
 		
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
-	}    
-       
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
+	}	
+	   
 	/**
 	 * deletePost
 	 *
@@ -297,9 +297,9 @@ class MbblogController extends PluginController
 	*/
 	public function deletePost($id)
 	{
-    	if(defined("CMS_BACKEND"))
-    	{
-    		$result = Record::deleteWhere("MbblogController", "`id` = ".Record::escape($id));
+		if(defined("CMS_BACKEND"))
+		{
+			$result = Record::deleteWhere("MbblogController", "`id` = ".Record::escape($id));
 			
 			if($result === true)
 			{
@@ -312,10 +312,10 @@ class MbblogController extends PluginController
 			}
 			$this->index();
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
 	}
 	
 	
@@ -326,12 +326,12 @@ class MbblogController extends PluginController
 	*/
 	public function editPost($id)
 	{
-    	if(defined("CMS_BACKEND"))
-    	{
+		if(defined("CMS_BACKEND"))
+		{
 	   		$viewArray = array('act' => 'edit');
-    	
-    		if(isset($_POST['post']) && count($_POST['post']) > 0)
-    		{
+		
+			if(isset($_POST['post']) && count($_POST['post']) > 0)
+			{
 				if($this->checkErrors($_POST['post']))
 				{				
 					// get the url title
@@ -364,20 +364,20 @@ class MbblogController extends PluginController
 				}
 				
 				$viewArray['post'] = (object)$_POST['post'];
-    			$this->display('mbblog/views/admin/postform', $viewArray);
-    		}
-    		
-    		if(!isset($viewArray['post']))
-    		{
-    			$post = Record::findByIdFrom('MbblogController', $id);
-    		}    	
+				$this->display('mbblog/views/admin/postform', $viewArray);
+			}
+			
+			if(!isset($viewArray['post']))
+			{
+				$post = Record::findByIdFrom('MbblogController', $id);
+			}		
 			$this->display('mbblog/views/admin/postform', array('act' => 'edit', 'post' => $post));
 			
 		} else
-    	{
-            Flash::set('error', __('You do not have permission to access the requested page!'));
-            redirect(get_url());
-    	}
+		{
+			Flash::set('error', __('You do not have permission to access the requested page!'));
+			redirect(get_url());
+		}
 	}
 	
 	/**
@@ -442,29 +442,29 @@ class MbblogController extends PluginController
 	/**
 	 * Redefine so we can have a public version of this function.
 	*/
-    public function executeFrontendLayout() {
-        global $__CMS_CONN__;
+	public function executeFrontendLayout() {
+		global $__CMS_CONN__;
 
-        $sql = 'SELECT content_type, content FROM '.TABLE_PREFIX.'layout WHERE name = '."'$this->frontend_layout'";
+		$sql = 'SELECT content_type, content FROM '.TABLE_PREFIX.'layout WHERE name = '."'$this->frontend_layout'";
 
-        $stmt = $__CMS_CONN__->prepare($sql);
-        $stmt->execute();
+		$stmt = $__CMS_CONN__->prepare($sql);
+		$stmt->execute();
 
-        if ($layout = $stmt->fetchObject()) {
-        // if content-type not set, we set html as default
-            if ($layout->content_type == '')
-                $layout->content_type = 'text/html';
+		if ($layout = $stmt->fetchObject()) {
+		// if content-type not set, we set html as default
+			if ($layout->content_type == '')
+				$layout->content_type = 'text/html';
 
-            // set content-type and charset of the page
-            header('Content-Type: '.$layout->content_type.'; charset=UTF-8');
+			// set content-type and charset of the page
+			header('Content-Type: '.$layout->content_type.'; charset=UTF-8');
 
-            // Provides compatibility with the Page class.
-            // TODO - cleaner way of doing multiple inheritance?
-            $this->url = CURRENT_URI;
+			// Provides compatibility with the Page class.
+			// TODO - cleaner way of doing multiple inheritance?
+			$this->url = CURRENT_URI;
 
-            // execute the layout code
-            eval('?>'.$layout->content);
-        }
-    }
+			// execute the layout code
+			eval('?>'.$layout->content);
+		}
+	}
 }
-    
+	

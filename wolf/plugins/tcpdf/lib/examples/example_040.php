@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_040.php
-// Begin       : 2008-10-28
+// Begin	   : 2008-10-28
 // Last Update : 2013-05-14
 //
 // Description : Example 040 for TCPDF class
-//               Booklet mode (double-sided pages)
+//			   Booklet mode (double-sided pages)
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

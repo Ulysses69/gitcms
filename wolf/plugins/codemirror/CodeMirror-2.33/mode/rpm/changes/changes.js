@@ -4,15 +4,15 @@ CodeMirror.defineMode("changes", function(config, modeConfig) {
   var simpleEmail = /^[\w+.-]+@[\w.-]+/;
 
   return {
-    token: function(stream) {
-      if (stream.sol()) {
-        if (stream.match(headerSeperator)) { return 'tag'; }
-        if (stream.match(headerLine)) { return 'tag'; }
-      }
-      if (stream.match(simpleEmail)) { return 'string'; }
-      stream.next();
-      return null;
-    }
+	token: function(stream) {
+	  if (stream.sol()) {
+		if (stream.match(headerSeperator)) { return 'tag'; }
+		if (stream.match(headerLine)) { return 'tag'; }
+	  }
+	  if (stream.match(simpleEmail)) { return 'string'; }
+	  stream.next();
+	  return null;
+	}
   };
 });
 

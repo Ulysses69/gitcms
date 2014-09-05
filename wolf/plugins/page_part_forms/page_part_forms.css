@@ -38,10 +38,10 @@
 	padding-left: 15px;
 }
 
-.page-part-forms-type-page-part       { background: url(../../../wolf/plugins/page_part_forms/images/type_page_part.png)   no-repeat 0 0; }
-.page-part-forms-type-text            { background: url(../../../wolf/plugins/page_part_forms/images/type_text.png)        no-repeat 0 0; }
-.page-part-forms-type-date            { background: url(../../../wolf/plugins/page_part_forms/images/type_date.png)        no-repeat 0 0; }
-.page-part-forms-type-select          {	background: url(../../../wolf/plugins/page_part_forms/images/type_select.png)      no-repeat 0 0; }
+.page-part-forms-type-page-part	   { background: url(../../../wolf/plugins/page_part_forms/images/type_page_part.png)   no-repeat 0 0; }
+.page-part-forms-type-text			{ background: url(../../../wolf/plugins/page_part_forms/images/type_text.png)		no-repeat 0 0; }
+.page-part-forms-type-date			{ background: url(../../../wolf/plugins/page_part_forms/images/type_date.png)		no-repeat 0 0; }
+.page-part-forms-type-select		  {	background: url(../../../wolf/plugins/page_part_forms/images/type_select.png)	  no-repeat 0 0; }
 .page-part-forms-type-select-items li { background: url(../../../wolf/plugins/page_part_forms/images/type_select_item.png) no-repeat 0 1px;	}
 
 /* No main node warning */

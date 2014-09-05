@@ -15,7 +15,7 @@ abstract class PHPCrawlerURLCacheBase
    * @var int One of the URLHASH_.. constants
    */
   public $url_distinct_property = self::URLHASH_URL;
-    
+	
   const URLHASH_URL = 1;
   const URLHASH_RAWLINK= 2; 
   const URLHASH_NONE = 3;
@@ -42,7 +42,7 @@ abstract class PHPCrawlerURLCacheBase
   /**
    * Adds an URL to the url-cache
    *
-   * @param PHPCrawlerURLDescriptor $UrlDescriptor      
+   * @param PHPCrawlerURLDescriptor $UrlDescriptor	  
    */
   abstract public function addURL(PHPCrawlerURLDescriptor $UrlDescriptor);
   
@@ -84,12 +84,12 @@ abstract class PHPCrawlerURLCacheBase
    */
   protected function getDistinctURLHash(PHPCrawlerURLDescriptor $UrlDescriptor)
   {
-    if ($this->url_distinct_property == self::URLHASH_URL)
-      return md5($UrlDescriptor->url_rebuild);
-    elseif ($this->url_distinct_property == self::URLHASH_RAWLINK)
-      return md5($UrlDescriptor->link_raw);
-    else
-      return null;
+	if ($this->url_distinct_property == self::URLHASH_URL)
+	  return md5($UrlDescriptor->url_rebuild);
+	elseif ($this->url_distinct_property == self::URLHASH_RAWLINK)
+	  return md5($UrlDescriptor->link_raw);
+	else
+	  return null;
   }
   
   /**
@@ -97,32 +97,32 @@ abstract class PHPCrawlerURLCacheBase
    */
   protected function getUrlPriority($url)
   {
-    $cnt = count($this->url_priorities);
-    for ($x=0; $x<$cnt; $x++)
-    {
-      if (preg_match($this->url_priorities[$x]["match"], $url))
-      {
-        return $this->url_priorities[$x]["level"];
-      }
-    }
-    
-    return 0;
+	$cnt = count($this->url_priorities);
+	for ($x=0; $x<$cnt; $x++)
+	{
+	  if (preg_match($this->url_priorities[$x]["match"], $url))
+	  {
+		return $this->url_priorities[$x]["level"];
+	  }
+	}
+	
+	return 0;
   }
   
   /**
    * Adds a Link-Priority-Level
    *
    * @param string $regex
-   * @param int    $level
+   * @param int	$level
    */
   public function addLinkPriority($regex, $level)
   {
-    $c = count($this->url_priorities);
-    $this->url_priorities[$c]["match"] = trim($regex);
-    $this->url_priorities[$c]["level"] = trim($level);
-    
-    // Sort url-priortie-array so that high priority-levels come firts.
-    PHPCrawlerUtils::sort2dArray($this->url_priorities, "level", SORT_DESC);
+	$c = count($this->url_priorities);
+	$this->url_priorities[$c]["match"] = trim($regex);
+	$this->url_priorities[$c]["level"] = trim($level);
+	
+	// Sort url-priortie-array so that high priority-levels come firts.
+	PHPCrawlerUtils::sort2dArray($this->url_priorities, "level", SORT_DESC);
   }
   
   /**
@@ -132,10 +132,10 @@ abstract class PHPCrawlerURLCacheBase
    */
   public function addLinkPriorities($priority_array)
   {
-    for ($x=0; $x<count($priority_array); $x++)
-    {
-      $this->addLinkPriority($priority_array[$x]["match"], $priority_array[$x]["level"]);
-    }
+	for ($x=0; $x<count($priority_array); $x++)
+	{
+	  $this->addLinkPriority($priority_array[$x]["match"], $priority_array[$x]["level"]);
+	}
   }
 }
 ?>

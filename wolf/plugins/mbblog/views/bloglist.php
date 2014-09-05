@@ -10,7 +10,7 @@
 	{
 		$bPost = stripslashes($post->body);
 	}
-    echo $bPost; ?>
+	echo $bPost; ?>
   <p class="info">Posted by <?php echo $post->author; ?> on <?php echo $date; ?> 
   </p>
 </div>

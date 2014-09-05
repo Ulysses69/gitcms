@@ -23,12 +23,12 @@ class EventsController extends PluginController
 	
 	private function findByUri($uri)
 	{
-	    if (function_exists('find_page_by_uri')) {
-	        // Frog
-	        return find_page_by_uri($uri);
-	    }
-	    // Wolf
-	    return Page::findByUri($uri);
+		if (function_exists('find_page_by_uri')) {
+			// Frog
+			return find_page_by_uri($uri);
+		}
+		// Wolf
+		return Page::findByUri($uri);
 	}
 
 	private function getLayoutId($page)

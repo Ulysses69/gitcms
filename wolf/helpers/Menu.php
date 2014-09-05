@@ -7,10 +7,10 @@
  *
  * LICENSE: see license.txt and exception.txt for the full license texts.
  *
- * @package    wolf/helpers
- * @author     Maslakov Alexander <jmas.ukraine@gmail.com>
+ * @package	wolf/helpers
+ * @author	 Maslakov Alexander <jmas.ukraine@gmail.com>
  * @copyright  2008-2010 Maslakov Alexander
- * @license    http://www.wolfcms.org/about/wolf-cms-licensing.html
+ * @license	http://www.wolfcms.org/about/wolf-cms-licensing.html
  */
 
 

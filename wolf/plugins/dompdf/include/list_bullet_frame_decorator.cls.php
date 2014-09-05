@@ -1,7 +1,7 @@
 <?php
 /**
  * @package dompdf
- * @link    http://www.dompdf.com/
+ * @link	http://www.dompdf.com/
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
@@ -27,39 +27,39 @@ class List_Bullet_Frame_Decorator extends Frame_Decorator {
   //........................................................................
 
   function __construct(Frame $frame, DOMPDF $dompdf) {
-    parent::__construct($frame, $dompdf);
+	parent::__construct($frame, $dompdf);
   }
   
   function get_margin_width() {
-    $style = $this->_frame->get_style();
-    
-    // Small hack to prevent extra indenting of list text on list_style_position === "inside"
-    // and on suppressed bullet
-    if ( $style->list_style_position === "outside" ||
-         $style->list_style_type === "none" ) {
-      return 0;
-    }
-    
-    return $style->get_font_size() * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
+	$style = $this->_frame->get_style();
+	
+	// Small hack to prevent extra indenting of list text on list_style_position === "inside"
+	// and on suppressed bullet
+	if ( $style->list_style_position === "outside" ||
+		 $style->list_style_type === "none" ) {
+	  return 0;
+	}
+	
+	return $style->get_font_size() * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
   }
 
   //hits only on "inset" lists items, to increase height of box
   function get_margin_height() {
-    $style = $this->_frame->get_style();
-    
-    if ( $style->list_style_type === "none" ) {
-      return 0;
-    }
-    
-    return $style->get_font_size() * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
+	$style = $this->_frame->get_style();
+	
+	if ( $style->list_style_type === "none" ) {
+	  return 0;
+	}
+	
+	return $style->get_font_size() * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
   }
 
   function get_width() {
-    return $this->get_margin_height();
+	return $this->get_margin_height();
   }
   
   function get_height() {
-    return $this->get_margin_height();
+	return $this->get_margin_height();
   }
   
   //........................................................................

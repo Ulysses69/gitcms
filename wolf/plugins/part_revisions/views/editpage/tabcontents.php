@@ -38,10 +38,10 @@ $deletedParts = array_diff($partNames, $existingParts);
 			<div id="part_revisions_container">
 			<?php
 				echo new View('../../plugins/part_revisions/views/editpage/parts_list', array(
-					'page_id'           => $page_id,
-					'partNames'	    => $partNames,
-					'existingParts'	    => $existingParts,
-					'deletedParts'      => $deletedParts,
+					'page_id'		   => $page_id,
+					'partNames'		=> $partNames,
+					'existingParts'		=> $existingParts,
+					'deletedParts'	  => $deletedParts,
 					'part_name_to_show' => '',
 				)); 
 

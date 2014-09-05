@@ -56,59 +56,59 @@ if (!defined('IN_CMS')) { exit(); }
  */
 class HelpDocsController extends PluginController {
 
-    public function __construct() {
-        $this->setLayout('backend');
-        $this->assignToLayout('sidebar', new View('../../plugins/help_docs/views/sidebar'));
-    }
+	public function __construct() {
+		$this->setLayout('backend');
+		$this->assignToLayout('sidebar', new View('../../plugins/help_docs/views/sidebar'));
+	}
 
-    public function index() {
-        $this->documentation();
-    }
+	public function index() {
+		$this->documentation();
+	}
 
-    public function documentation() {
-        $this->display('help_docs/views/pages/documentation');
-    }
+	public function documentation() {
+		$this->display('help_docs/views/pages/documentation');
+	}
 
-    public function menus() {
-        $this->display('help_docs/views/pages/menus');
-    }
+	public function menus() {
+		$this->display('help_docs/views/pages/menus');
+	}
 
-    public function forms() {
-        $this->display('help_docs/views/pages/forms');
-    }
+	public function forms() {
+		$this->display('help_docs/views/pages/forms');
+	}
 
-    public function features() {
-        $this->display('help_docs/views/pages/features');
-    }
+	public function features() {
+		$this->display('help_docs/views/pages/features');
+	}
 
-    public function tabs() {
-        $this->display('help_docs/views/pages/tabs');
-    }
+	public function tabs() {
+		$this->display('help_docs/views/pages/tabs');
+	}
 
-    public function snippets() {
-        $this->display('help_docs/views/pages/snippets');
-    }
+	public function snippets() {
+		$this->display('help_docs/views/pages/snippets');
+	}
 
-    public function clientdetails() {
-        $this->display('help_docs/views/pages/clientdetails');
-    }
+	public function clientdetails() {
+		$this->display('help_docs/views/pages/clientdetails');
+	}
 
-    public function pages() {
-        $this->display('help_docs/views/pages/pages');
-    }
+	public function pages() {
+		$this->display('help_docs/views/pages/pages');
+	}
 
-    function settings() {
-        /** You can do this...
-        $tmp = Plugin::getAllSettings('help_docs');
-        $settings = array('my_setting1' => $tmp['setting1'],
-                          'setting2' => $tmp['setting2'],
-                          'a_setting3' => $tmp['setting3']
-                         );
-        $this->display('comment/views/settings', $settings);
-         *
-         * Or even this...
-         */
+	function settings() {
+		/** You can do this...
+		$tmp = Plugin::getAllSettings('help_docs');
+		$settings = array('my_setting1' => $tmp['setting1'],
+						  'setting2' => $tmp['setting2'],
+						  'a_setting3' => $tmp['setting3']
+						 );
+		$this->display('comment/views/settings', $settings);
+		 *
+		 * Or even this...
+		 */
 
-        $this->display('help_docs/views/settings', Plugin::getAllSettings('help_docs'));
-    }
+		$this->display('help_docs/views/settings', Plugin::getAllSettings('help_docs'));
+	}
 }

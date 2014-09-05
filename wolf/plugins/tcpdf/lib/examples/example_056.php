@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_056.php
-// Begin       : 2010-03-26
+// Begin	   : 2010-03-26
 // Last Update : 2013-09-30
 //
 // Description : Example 056 for TCPDF class
-//               Crop marks and color registration bars
+//			   Crop marks and color registration bars
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

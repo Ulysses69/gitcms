@@ -29,15 +29,15 @@
  */
 
 Plugin::setInfos(array(
-    'id'          		=> 'tinymce',
-    'title'       		=> 'TinyMCE Editor',
-    'description' 		=> 'Allows you to use the TinyMCE text editor. 2.0.0_RC1 updated with TinyBrowser and TinyMCE 3.2.5',
-    'version'     		=> '2.0.1',
-    'license'     		=> 'GPLv3',
-    'author'      		=> 'Martijn van der Kleijn and Hypermedia',
-    'website'     		=> 'http://www.madebyfrog.com',
-    'update_url'  		=> 'http://www.vanderkleijn.net/plugins.xml',
-    'require_wolf_version' 	=> '0.5.5'
+	'id'		  		=> 'tinymce',
+	'title'	   		=> 'TinyMCE Editor',
+	'description' 		=> 'Allows you to use the TinyMCE text editor. 2.0.0_RC1 updated with TinyBrowser and TinyMCE 3.2.5',
+	'version'	 		=> '2.0.1',
+	'license'	 		=> 'GPLv3',
+	'author'	  		=> 'Martijn van der Kleijn and Hypermedia',
+	'website'	 		=> 'http://www.madebyfrog.com',
+	'update_url'  		=> 'http://www.vanderkleijn.net/plugins.xml',
+	'require_wolf_version' 	=> '0.5.5'
 ));
 
 //function tinymce_styles(){

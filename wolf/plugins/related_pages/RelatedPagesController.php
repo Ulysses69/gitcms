@@ -78,7 +78,7 @@ class RelatedPagesController extends PluginController {
 	}
 
 	public static function children($page_id, $parent_id, $level, $output = true) {
-        $expanded_node = isset($_COOKIE['expanded_node']) ? explode(',', $_COOKIE['expanded_node']): array();
+		$expanded_node = isset($_COOKIE['expanded_node']) ? explode(',', $_COOKIE['expanded_node']): array();
 
 		$related = RelatedPages::GetRelations($page_id);
 
@@ -116,9 +116,9 @@ class RelatedPagesController extends PluginController {
 		RelatedPages::DeleteAllByPage($page->id);
 	}
 
-    public static function documentation() {
-        self::Get_instance()->display('documentation', array(
-        ))->display();
-    }
+	public static function documentation() {
+		self::Get_instance()->display('documentation', array(
+		))->display();
+	}
 }
 ?>

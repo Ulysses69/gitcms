@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_046.php
-// Begin       : 2009-02-28
+// Begin	   : 2009-02-28
 // Last Update : 2013-05-14
 //
 // Description : Example 046 for TCPDF class
-//               Text Hyphenation
+//			   Text Hyphenation
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

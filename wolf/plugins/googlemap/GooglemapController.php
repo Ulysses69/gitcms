@@ -14,11 +14,11 @@ class GoogleMapController extends PluginController {
 
 	public function settings(){
 		$settings = Plugin::getAllSettings('googlemap');
-        if (!$settings) {
-            Flash::set('error', 'Google Map - '.__('unable to retrieve plugin settings.'));
-            return;
-        }
-        $this->display('googlemap/views/settings', $settings);
+		if (!$settings) {
+			Flash::set('error', 'Google Map - '.__('unable to retrieve plugin settings.'));
+			return;
+		}
+		$this->display('googlemap/views/settings', $settings);
 	}
 	public function save_settings(){
 
@@ -390,7 +390,7 @@ class GoogleMapController extends PluginController {
 		if(isset($_POST['marker_shadow_img_point_y'])) { $marker_shadow_img_point_y = $_POST['marker_shadow_img_point_y']; } else { $marker_shadow_img_point_y = ''; }
 		if(isset($_POST['streetview'])) { $streetview = $_POST['streetview']; } else { $streetview = ''; }
 
-        if($latitude == null || $longitude == null || $latitude == '' || $longitude == ''){
+		if($latitude == null || $longitude == null || $latitude == '' || $longitude == ''){
 			if(Plugin::isEnabled('clientdetails') == true){
 				$clientaddress = str_replace('(Blue Horizons)','',clientdetails_address(true));
 				$encoded_clientaddress = str_replace(' ','+',$clientaddress);
@@ -500,27 +500,27 @@ class GoogleMapController extends PluginController {
 		}
 
 		$settings = array(	'version' => GMAP_VERSION,
-	        			'sensor' => $sensor,
-	        			'infowindow' => $infowindow,
-	        			'directions' => $directions,
-	        			'autodisplay' => $autodisplay,
-	        			'viewport_width' => $viewport_width,
+						'sensor' => $sensor,
+						'infowindow' => $infowindow,
+						'directions' => $directions,
+						'autodisplay' => $autodisplay,
+						'viewport_width' => $viewport_width,
 						'viewport_scale' => $viewport_scale,
 						'viewport_zoom' => $viewport_zoom,
 						'latitude' => $latitude,
 						'longitude' => $longitude,
-	        			'zoom' => $zoom,
-	        			'zoom_control' => $zoom_control,
-	        			'navigation_control' => $navigation_control,
-	        			'map_id' => $map_id,
-	        			'map_width' => $map_width,
-	        			'map_height' => $map_height,
-	        			'map_code' => $map_code,
-	        			'map_ui' => $map_ui,
-	        			'map_type' => $map_type,
-	        			'map_control' => $map_control,
-	        			'map_libraries' => $map_libraries,
-	        			'map_styling' => $map_styling,
+						'zoom' => $zoom,
+						'zoom_control' => $zoom_control,
+						'navigation_control' => $navigation_control,
+						'map_id' => $map_id,
+						'map_width' => $map_width,
+						'map_height' => $map_height,
+						'map_code' => $map_code,
+						'map_ui' => $map_ui,
+						'map_type' => $map_type,
+						'map_control' => $map_control,
+						'map_libraries' => $map_libraries,
+						'map_styling' => $map_styling,
 						'road_local_element_visibility' => $road_local_element_visibility,
 						'road_local_element_hue_status' => $road_local_element_hue_status,
 						'road_local_element_hue' => $road_local_element_hue,
@@ -686,10 +686,10 @@ class GoogleMapController extends PluginController {
 
 
 
-		    if (Plugin::setAllSettings($settings, 'googlemap'))
-		        Flash::set('success', 'Google Map - '.__('plugin settings saved: Lat: '.$latitude.' Long: '.$longitude));
-		    else
-		        Flash::set('error', 'Google Map - '.__('plugin settings not saved!'));
+			if (Plugin::setAllSettings($settings, 'googlemap'))
+				Flash::set('success', 'Google Map - '.__('plugin settings saved: Lat: '.$latitude.' Long: '.$longitude));
+			else
+				Flash::set('error', 'Google Map - '.__('plugin settings not saved!'));
    
 			if(function_exists('funky_cache_delete_all')){
 				funky_cache_delete_all();

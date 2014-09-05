@@ -11,7 +11,7 @@ class ElementsController extends PluginController {
 	}
 	public function documentation() {
 		jselements();
-  		     $this->display('elements/views/settings');
+  			 $this->display('elements/views/settings');
 	}
 	public function save_settings(){
 	}

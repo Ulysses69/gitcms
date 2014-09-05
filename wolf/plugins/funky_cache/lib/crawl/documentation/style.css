@@ -60,10 +60,10 @@ body
 
 #menu li
 {
-    display: inline;
-    font-weight: bold;
-    list-style: none outside none;
-    padding: 10px;
+	display: inline;
+	font-weight: bold;
+	list-style: none outside none;
+	padding: 10px;
 }
 
 #container

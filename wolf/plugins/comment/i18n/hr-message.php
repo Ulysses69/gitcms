@@ -1,17 +1,17 @@
 <?php
 
-    /**
-     * Croatian language file for plugin comment
-     *
-     * @package Plugins
-     * @subpackage comment
-     *
-     * @author Dejan Andjelkovic <dejan79@gmail.com>
-     * @version Wolf 0.6.0
-     */
+	/**
+	 * Croatian language file for plugin comment
+	 *
+	 * @package Plugins
+	 * @subpackage comment
+	 *
+	 * @author Dejan Andjelkovic <dejan79@gmail.com>
+	 * @version Wolf 0.6.0
+	 */
 
-    return array(
-    'A comment was added.' => 'Komentar je dodan.',
+	return array(
+	'A comment was added.' => 'Komentar je dodan.',
 	'Approve' => 'Odobriti',
 	'Are you sure you wish to delete it?' => 'Da li ste sigurni da želite obrisati?',
 	'Auto approve' => 'Odobri automatski',
@@ -63,4 +63,4 @@
 	'comment not found!' => 'komentar nije pronađen',
 	'none' => 'ništa',
 	'or' => 'ili',
-    );
+	);

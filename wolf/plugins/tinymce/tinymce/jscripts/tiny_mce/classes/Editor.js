@@ -29,12 +29,12 @@
 	 * 
 	 * // Creates a new editor instance
 	 * var ed = new tinymce.Editor('textareaid', {
-	 *     some_setting : 1
+	 *	 some_setting : 1
 	 * });
 	 * 
 	 * // Select each item the user clicks on
 	 * ed.onClick.add(function(ed, e) {
-	 *     ed.selection.select(e.target);
+	 *	 ed.selection.select(e.target);
 	 * });
 	 * 
 	 * ed.render();
@@ -71,12 +71,12 @@
 			 * @type Boolean
 			 * @example
 			 * function ajaxSave() {
-			 *     var ed = tinyMCE.get('elm1');
+			 *	 var ed = tinyMCE.get('elm1');
 			 *
-			 *     // Save contents using some XHR call
-			 *     alert(ed.getContent());
+			 *	 // Save contents using some XHR call
+			 *	 alert(ed.getContent());
 			 *
-			 *     ed.isNotDirty = 1; // Force not dirty state
+			 *	 ed.isNotDirty = 1; // Force not dirty state
 			 * }
 			 */
 			t.isNotDirty = false;
@@ -103,12 +103,12 @@
 				 * @example
 				 * // Adds an observer to the onPreInit event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onPreInit.add(function(ed) {
-				 *           console.debug('PreInit: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onPreInit.add(function(ed) {
+				 *		   console.debug('PreInit: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onPreInit',
@@ -121,12 +121,12 @@
 				 * @example
 				 * // Adds an observer to the onBeforeRenderUI event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
- 				 *      ed.onBeforeRenderUI.add(function(ed, cm) {
- 				 *          console.debug('Before render: ' + ed.id);
- 				 *      });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+ 				 *	  ed.onBeforeRenderUI.add(function(ed, cm) {
+ 				 *		  console.debug('Before render: ' + ed.id);
+ 				 *	  });
+				 *	}
 				 * });
 				 */
 				'onBeforeRenderUI',
@@ -139,12 +139,12 @@
 				 * @example
 				 * // Adds an observer to the onPostRender event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onPostRender.add(function(ed, cm) {
-				 *           console.debug('After render: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onPostRender.add(function(ed, cm) {
+				 *		   console.debug('After render: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onPostRender',
@@ -158,12 +158,12 @@
 				 * @example
 				 * // Adds an observer to the onInit event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onInit.add(function(ed) {
-				 *           console.debug('Editor is done: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onInit.add(function(ed) {
+				 *		   console.debug('Editor is done: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onInit',
@@ -176,12 +176,12 @@
 				 * @example
 				 * // Adds an observer to the onRemove event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onRemove.add(function(ed) {
-				 *           console.debug('Editor was removed: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onRemove.add(function(ed) {
+				 *		   console.debug('Editor was removed: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onRemove',
@@ -194,12 +194,12 @@
 				 * @example
 				 * // Adds an observer to the onActivate event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onActivate.add(function(ed) {
-				 *           console.debug('Editor was activated: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onActivate.add(function(ed) {
+				 *		   console.debug('Editor was activated: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onActivate',
@@ -212,12 +212,12 @@
 				 * @example
 				 * // Adds an observer to the onDeactivate event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onDeactivate.add(function(ed) {
-				 *           console.debug('Editor was deactivated: ' + ed.id);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onDeactivate.add(function(ed) {
+				 *		   console.debug('Editor was deactivated: ' + ed.id);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onDeactivate',
@@ -231,12 +231,12 @@
 				 * @example
 				 * // Adds an observer to the onClick event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onClick.add(function(ed, e) {
-				 *           console.debug('Editor was clicked: ' + e.target.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onClick.add(function(ed, e) {
+				 *		   console.debug('Editor was clicked: ' + e.target.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onClick',
@@ -250,12 +250,12 @@
 				 * @example
 				 * // Adds an observer to the onEvent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onEvent.add(function(ed, e) {
- 				 *          console.debug('Editor event occured: ' + e.target.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onEvent.add(function(ed, e) {
+ 				 *		  console.debug('Editor event occured: ' + e.target.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onEvent',
@@ -269,12 +269,12 @@
 				 * @example
 				 * // Adds an observer to the onMouseUp event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onMouseUp.add(function(ed, e) {
-				 *           console.debug('Mouse up event: ' + e.target.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onMouseUp.add(function(ed, e) {
+				 *		   console.debug('Mouse up event: ' + e.target.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onMouseUp',
@@ -288,12 +288,12 @@
 				 * @example
 				 * // Adds an observer to the onMouseDown event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onMouseDown.add(function(ed, e) {
-				 *           console.debug('Mouse down event: ' + e.target.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onMouseDown.add(function(ed, e) {
+				 *		   console.debug('Mouse down event: ' + e.target.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onMouseDown',
@@ -307,12 +307,12 @@
 				 * @example
 				 * // Adds an observer to the onDblClick event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onDblClick.add(function(ed, e) {
- 				 *          console.debug('Double click event: ' + e.target.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onDblClick.add(function(ed, e) {
+ 				 *		  console.debug('Double click event: ' + e.target.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onDblClick',
@@ -326,12 +326,12 @@
 				 * @example
 				 * // Adds an observer to the onKeyDown event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onKeyDown.add(function(ed, e) {
-				 *           console.debug('Key down event: ' + e.keyCode);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onKeyDown.add(function(ed, e) {
+				 *		   console.debug('Key down event: ' + e.keyCode);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onKeyDown',
@@ -345,12 +345,12 @@
 				 * @example
 				 * // Adds an observer to the onKeyUp event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onKeyUp.add(function(ed, e) {
-				 *           console.debug('Key up event: ' + e.keyCode);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onKeyUp.add(function(ed, e) {
+				 *		   console.debug('Key up event: ' + e.keyCode);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onKeyUp',
@@ -364,12 +364,12 @@
 				 * @example
 				 * // Adds an observer to the onKeyPress event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onKeyPress.add(function(ed, e) {
-				 *           console.debug('Key press event: ' + e.keyCode);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onKeyPress.add(function(ed, e) {
+				 *		   console.debug('Key press event: ' + e.keyCode);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onKeyPress',
@@ -383,12 +383,12 @@
 				 * @example
 				 * // Adds an observer to the onContextMenu event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onContextMenu.add(function(ed, e) {
-				 *            console.debug('Context menu event:' + e.target);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onContextMenu.add(function(ed, e) {
+				 *			console.debug('Context menu event:' + e.target);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onContextMenu',
@@ -402,12 +402,12 @@
 				 * @example
 				 * // Adds an observer to the onSubmit event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onSubmit.add(function(ed, e) {
-				 *            console.debug('Form submit:' + e.target);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onSubmit.add(function(ed, e) {
+				 *			console.debug('Form submit:' + e.target);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onSubmit',
@@ -421,12 +421,12 @@
 				 * @example
 				 * // Adds an observer to the onReset event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onReset.add(function(ed, e) {
-				 *            console.debug('Form reset:' + e.target);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onReset.add(function(ed, e) {
+				 *			console.debug('Form reset:' + e.target);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onReset',
@@ -440,12 +440,12 @@
 				 * @example
 				 * // Adds an observer to the onPaste event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onPaste.add(function(ed, e) {
-				 *            console.debug('Pasted plain text');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onPaste.add(function(ed, e) {
+				 *			console.debug('Pasted plain text');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onPaste',
@@ -464,13 +464,13 @@
 				 * @example
 				 * // Adds an observer to the onPreProcess event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onPreProcess.add(function(ed, o) {
-				 *            // Add a class to each paragraph in the editor
-				 *            ed.dom.addClass(ed.dom.select('p', o.node), 'myclass');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onPreProcess.add(function(ed, o) {
+				 *			// Add a class to each paragraph in the editor
+				 *			ed.dom.addClass(ed.dom.select('p', o.node), 'myclass');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onPreProcess',
@@ -484,14 +484,14 @@
 				 * @example
 				 * // Adds an observer to the onPostProcess event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onPostProcess.add(function(ed, o) {
-				 *            // Remove all paragraphs and replace with BR
-				 *            o.content = o.content.replace(/<p[^>]+>|<p>/g, '');
-				 *            o.content = o.content.replace(/<\/p>/g, '<br />');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onPostProcess.add(function(ed, o) {
+				 *			// Remove all paragraphs and replace with BR
+				 *			o.content = o.content.replace(/<p[^>]+>|<p>/g, '');
+				 *			o.content = o.content.replace(/<\/p>/g, '<br />');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onPostProcess',
@@ -504,13 +504,13 @@
 				 * @example
 				 * // Adds an observer to the onBeforeSetContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onBeforeSetContent.add(function(ed, o) {
-				 *            // Replaces all a characters with b characters
-				 *            o.content = o.content.replace(/a/g, 'b');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onBeforeSetContent.add(function(ed, o) {
+				 *			// Replaces all a characters with b characters
+				 *			o.content = o.content.replace(/a/g, 'b');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onBeforeSetContent',
@@ -524,12 +524,12 @@
 				 * @example
 				 * // Adds an observer to the onBeforeGetContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onBeforeGetContent.add(function(ed, o) {
-				 *            console.debug('Before get content.');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onBeforeGetContent.add(function(ed, o) {
+				 *			console.debug('Before get content.');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onBeforeGetContent',
@@ -542,13 +542,13 @@
 				 * @example
 				 * // Adds an observer to the onSetContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onSetContent.add(function(ed, o) {
-				 *            // Replaces all a characters with b characters
-				 *            o.content = o.content.replace(/a/g, 'b');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onSetContent.add(function(ed, o) {
+				 *			// Replaces all a characters with b characters
+				 *			o.content = o.content.replace(/a/g, 'b');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onSetContent',
@@ -561,13 +561,13 @@
 				 * @example
 				 * // Adds an observer to the onGetContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onGetContent.add(function(ed, o) {
-				 *           // Replace all a characters with b
-				 *           o.content = o.content.replace(/a/g, 'b');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onGetContent.add(function(ed, o) {
+				 *		   // Replace all a characters with b
+				 *		   o.content = o.content.replace(/a/g, 'b');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onGetContent',
@@ -580,13 +580,13 @@
 				 * @example
 				 * // Adds an observer to the onLoadContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onLoadContent.add(function(ed, o) {
-				 *           // Output the element name
-				 *           console.debug(o.element.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onLoadContent.add(function(ed, o) {
+				 *		   // Output the element name
+				 *		   console.debug(o.element.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onLoadContent',
@@ -599,13 +599,13 @@
 				 * @example
 				 * // Adds an observer to the onSaveContent event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onSaveContent.add(function(ed, o) {
-				 *           // Output the element name
-				 *           console.debug(o.element.nodeName);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onSaveContent.add(function(ed, o) {
+				 *		   // Output the element name
+				 *		   console.debug(o.element.nodeName);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onSaveContent',
@@ -618,14 +618,14 @@
 				 * @example
 				 * // Adds an observer to the onNodeChange event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onNodeChange.add(function(ed, cm, e) {
-				 *           // Activates the link button when the caret is placed in a anchor element
-				 *           if (e.nodeName == 'A')
-				 *              cm.setActive('link', true);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onNodeChange.add(function(ed, cm, e) {
+				 *		   // Activates the link button when the caret is placed in a anchor element
+				 *		   if (e.nodeName == 'A')
+				 *			  cm.setActive('link', true);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onNodeChange',
@@ -638,12 +638,12 @@
 				 * @example
 				 * // Adds an observer to the onChange event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
+				 *	...
+				 *	setup : function(ed) {
 				 * 	  ed.onChange.add(function(ed, l) {
 				 * 		  console.debug('Editor contents was modified. Contents: ' + l.content);
 				 * 	  });
-				 *    }
+				 *	}
 				 * });
 				 */
 				'onChange',
@@ -656,12 +656,12 @@
 				 * @example
 				 * // Adds an observer to the onBeforeExecCommand event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onBeforeExecCommand.add(function(ed, cmd, ui, val) {
-				 *           console.debug('Command is to be executed: ' + cmd);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onBeforeExecCommand.add(function(ed, cmd, ui, val) {
+				 *		   console.debug('Command is to be executed: ' + cmd);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onBeforeExecCommand',
@@ -674,12 +674,12 @@
 				 * @example
 				 * // Adds an observer to the onExecCommand event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onExecCommand.add(function(ed, cmd, ui, val) {
-				 *           console.debug('Command was executed: ' + cmd);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onExecCommand.add(function(ed, cmd, ui, val) {
+				 *		   console.debug('Command was executed: ' + cmd);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onExecCommand',
@@ -693,12 +693,12 @@
 				 * @ example
 				 * // Adds an observer to the onUndo event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onUndo.add(function(ed, level) {
-				 *           console.debug('Undo was performed: ' + level.content);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onUndo.add(function(ed, level) {
+				 *		   console.debug('Undo was performed: ' + level.content);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onUndo',
@@ -712,12 +712,12 @@
 				 * @example
 				 * // Adds an observer to the onRedo event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onRedo.add(function(ed, level) {
-				 *           console.debug('Redo was performed: ' +level.content);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onRedo.add(function(ed, level) {
+				 *		   console.debug('Redo was performed: ' +level.content);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onRedo',
@@ -730,12 +730,12 @@
 				 * @example
 				 * // Adds an observer to the onVisualAid event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onVisualAid.add(function(ed, e, s) {
-				 *           console.debug('onVisualAid event: ' + ed.id + ", State: " + s);
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onVisualAid.add(function(ed, e, s) {
+				 *		   console.debug('onVisualAid event: ' + ed.id + ", State: " + s);
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onVisualAid',
@@ -748,15 +748,15 @@
 				 * @example
 				 * // Adds an observer to the onSetProgressState event using tinyMCE.init
 				 * tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onSetProgressState.add(function(ed, b) {
-				 *            if (b)
-				 *                 console.debug('SHOW!');
-				 *            else
-				 *                 console.debug('HIDE!');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onSetProgressState.add(function(ed, b) {
+				 *			if (b)
+				 *				 console.debug('SHOW!');
+				 *			else
+				 *				 console.debug('HIDE!');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onSetProgressState',
@@ -769,12 +769,12 @@
 				 * @example
 				 * // Adds an observer to the onSetAttrib event using tinyMCE.init
 				 *tinyMCE.init({
-				 *    ...
-				 *    setup : function(ed) {
-				 *       ed.onSetAttrib.add(function(ed, node, attribute, attributeValue) {
-				 *            console.log('onSetAttrib tag');
-				 *       });
-				 *    }
+				 *	...
+				 *	setup : function(ed) {
+				 *	   ed.onSetAttrib.add(function(ed, node, attribute, attributeValue) {
+				 *			console.log('onSetAttrib tag');
+				 *	   });
+				 *	}
 				 * });
 				 */
 				'onSetAttrib'
@@ -930,11 +930,11 @@
 			 * // Opens a new dialog with the file.htm file and the size 320x240
 			 * // It also adds a custom parameter this can be retrieved by using tinyMCEPopup.getWindowArg inside the dialog.
 			 * tinyMCE.activeEditor.windowManager.open({
-			 *    url : 'file.htm',
-			 *    width : 320,
-			 *    height : 240
+			 *	url : 'file.htm',
+			 *	width : 320,
+			 *	height : 240
 			 * }, {
-			 *    custom_param : 1
+			 *	custom_param : 1
 			 * });
 			 */
 			if (tinymce.WindowManager)
@@ -2059,20 +2059,20 @@
 		 * // Adds a custom button to the editor and when a user clicks the button it will open
 		 * // an alert box with the selected contents as plain text.
 		 * tinyMCE.init({
-		 *    ...
+		 *	...
 		 * 
-		 *    theme_advanced_buttons1 : 'example,..'
+		 *	theme_advanced_buttons1 : 'example,..'
 		 * 
-		 *    setup : function(ed) {
-		 *       // Register example button
-		 *       ed.addButton('example', {
-		 *          title : 'example.desc',
-		 *          image : '../jscripts/tiny_mce/plugins/example/img/example.gif',
-		 *          onclick : function() {
-		 *             ed.windowManager.alert('Hello world!! Selection: ' + ed.selection.getContent({format : 'text'}));
-		 *          }
-		 *       });
-		 *    }
+		 *	setup : function(ed) {
+		 *	   // Register example button
+		 *	   ed.addButton('example', {
+		 *		  title : 'example.desc',
+		 *		  image : '../jscripts/tiny_mce/plugins/example/img/example.gif',
+		 *		  onclick : function() {
+		 *			 ed.windowManager.alert('Hello world!! Selection: ' + ed.selection.getContent({format : 'text'}));
+		 *		  }
+		 *	   });
+		 *	}
 		 * });
 		 */
 		addButton : function(n, s) {
@@ -2093,14 +2093,14 @@
 		 * @example
 		 * // Adds a custom command that later can be executed using execCommand
 		 * tinyMCE.init({
-		 *    ...
+		 *	...
 		 * 
-		 *    setup : function(ed) {
-		 *       // Register example command
-		 *       ed.addCommand('mycommand', function(ui, v) {
-		 *          ed.windowManager.alert('Hello world!! Selection: ' + ed.selection.getContent({format : 'text'}));
-		 *       });
-		 *    }
+		 *	setup : function(ed) {
+		 *	   // Register example command
+		 *	   ed.addCommand('mycommand', function(ui, v) {
+		 *		  ed.windowManager.alert('Hello world!! Selection: ' + ed.selection.getContent({format : 'text'}));
+		 *	   });
+		 *	}
 		 * });
 		 */
 		addCommand : function(name, callback, scope) {
@@ -2628,7 +2628,7 @@
 		 * @return {Boolean} True/false if the editor is dirty or not. It will get dirty if the user has made modifications to the contents.
 		 * @example
 		 * if (tinyMCE.activeEditor.isDirty())
-		 *     alert("You must save your contents.");
+		 *	 alert("You must save your contents.");
 		 */
 		isDirty : function() {
 			var self = this;

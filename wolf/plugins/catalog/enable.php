@@ -6,19 +6,19 @@ if (!defined('IN_CMS')) { exit(); }
  * 
  * The catalog plugin adds a catalog or webshop to Wolf CMS.
  * 
- * @package     Plugins
+ * @package	 Plugins
  * @subpackage  catalog
  * 
- * @author      Nic Wortel <nic.wortel@nth-root.nl>
+ * @author	  Nic Wortel <nic.wortel@nth-root.nl>
  * @copyright   Nic Wortel, 2012
- * @version     0.1.5
+ * @version	 0.1.5
  */
 
 Plugin::setAllSettings(array(
-    'layout_id' => 0,
-    'decimal_seperator' => 'point',
-    'brands_title' => 'Brands',
-    'brands_slug' => 'brands'
+	'layout_id' => 0,
+	'decimal_seperator' => 'point',
+	'brands_title' => 'Brands',
+	'brands_slug' => 'brands'
 ), 'catalog');
 
 $PDO = Record::getConnection();
@@ -54,10 +54,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_category` (
   INDEX `fk_category_parent` (`parent_id` ASC) ,
   UNIQUE INDEX `slug_UNIQUE` (`parent_id` ASC, `slug` ASC) ,
   CONSTRAINT `fk_category_parent`
-    FOREIGN KEY (`parent_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`parent_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("INSERT INTO `" . TABLE_PREFIX . "catalog_category` (`id`,`title`,`slug`,`description`,`parent_id`,`position`,`created_on`,`updated_on`,`created_by_id`,`updated_by_id`) VALUES (1,'Products','products',NULL,NULL,NULL,NOW(),NOW(),1,1);");
@@ -78,15 +78,15 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_product` (
   INDEX `fk_product_brand` (`brand_id` ASC) ,
   UNIQUE INDEX `slug_UNIQUE` (`category_id` ASC, `slug` ASC) ,
   CONSTRAINT `fk_product_category`
-    FOREIGN KEY (`category_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+	FOREIGN KEY (`category_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_brand`
-    FOREIGN KEY (`brand_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_brand` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`brand_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_brand` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_vat` (
@@ -114,10 +114,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_product_var
   INDEX `fk_product_variant_product` (`product_id` ASC) ,
   UNIQUE INDEX `sku_UNIQUE` (`sku` ASC) ,
   CONSTRAINT `fk_product_variant_product`
-    FOREIGN KEY (`product_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_attribute_unit_system` (
@@ -160,20 +160,20 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_attribute_u
   INDEX `fk_attribute_unit_attribute_unit_system` (`attribute_unit_system_id` ASC) ,
   INDEX `fk_attribute_unit_attribute_type` (`attribute_type_id` ASC) ,
   CONSTRAINT `fk_attribute_unit_attribute_unit`
-    FOREIGN KEY (`parent_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+	FOREIGN KEY (`parent_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
   CONSTRAINT `fk_attribute_unit_attribute_unit_system`
-    FOREIGN KEY (`attribute_unit_system_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit_system` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+	FOREIGN KEY (`attribute_unit_system_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit_system` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
   CONSTRAINT `fk_attribute_unit_attribute_type`
-    FOREIGN KEY (`attribute_type_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute_type` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`attribute_type_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute_type` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("INSERT INTO `" . TABLE_PREFIX . "catalog_attribute_unit` (`id`, `name`, `abbreviation`, `multiplier`, `parent_id`, `attribute_unit_system_id`, `attribute_type_id`) VALUES (1, 'Millimeter', 'mm', 0.001, 4, 1, 1);");
@@ -202,15 +202,15 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_attribute` 
   INDEX `fk_attribute_attribute_unit` (`default_unit_id` ASC) ,
   INDEX `fk_attribute_attribute_type` (`attribute_type_id` ASC) ,
   CONSTRAINT `fk_attribute_attribute_unit`
-    FOREIGN KEY (`default_unit_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+	FOREIGN KEY (`default_unit_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute_unit` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
   CONSTRAINT `fk_attribute_attribute_type`
-    FOREIGN KEY (`attribute_type_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute_type` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`attribute_type_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute_type` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("INSERT INTO `" . TABLE_PREFIX . "catalog_attribute` (`id`, `name`, `description`, `attribute_type_id`, `default_unit_id`) VALUES (1, 'Height', NULL, 1, 2);");
@@ -228,15 +228,15 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_category_at
   INDEX `fk_category_attribute_attribute` (`attribute_id` ASC) ,
   INDEX `fk_category_attribute_category` (`category_id` ASC) ,
   CONSTRAINT `fk_category_attribute_attribute`
-    FOREIGN KEY (`attribute_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_attribute` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+	FOREIGN KEY (`attribute_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_attribute` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION,
   CONSTRAINT `fk_category_attribute_category`
-    FOREIGN KEY (`category_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`category_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_category` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("INSERT INTO `" . TABLE_PREFIX . "catalog_category_attribute` (`id`, `category_id`, `attribute_id`, `is_filter`, `position`) VALUES (1, 1, 1, 0, NULL);");
@@ -251,10 +251,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_boole
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_boolean_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_boolean_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_date` (
@@ -264,10 +264,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_date`
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_date_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_date_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_datetime` (
@@ -277,10 +277,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_datet
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_datetime_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_datetime_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_float` (
@@ -290,10 +290,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_float
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_float_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_float_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_integer` (
@@ -303,10 +303,10 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_integ
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_integer_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_integer_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");
 
 $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_varchar` (
@@ -316,8 +316,8 @@ $PDO->exec("CREATE  TABLE IF NOT EXISTS `" . TABLE_PREFIX . "catalog_value_varch
   PRIMARY KEY (`id`) ,
   INDEX `fk_value_varchar_product_variant_value` (`product_variant_value_id` ASC) ,
   CONSTRAINT `fk_value_varchar_product_variant_value`
-    FOREIGN KEY (`product_variant_value_id` )
-    REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+	FOREIGN KEY (`product_variant_value_id` )
+	REFERENCES `" . TABLE_PREFIX . "catalog_product_variant_value` (`id` )
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION)
 ENGINE = InnoDB");

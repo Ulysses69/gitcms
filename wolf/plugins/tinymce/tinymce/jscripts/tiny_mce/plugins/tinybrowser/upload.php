@@ -113,28 +113,28 @@ document.location = url;
 </script>
 </head>
 <body onload='
-      var so = new SWFObject("flexupload.swf", "mymovie", "100%", "340", "9", "#ffffff");
-      so.addVariable("folder", "<?php echo $uploadpath; ?>");
-      so.addVariable("uptype", "<?php echo $typenow; ?>");
-      so.addVariable("destid", "<?php echo $passupfeid; ?>");
-      so.addVariable("maxsize", "<?php echo $tinybrowser['maxsize'][$_GET['type']]; ?>");
-      so.addVariable("sessid", "<?php echo session_id(); ?>");
-      so.addVariable("obfus", "<?php echo md5($_SERVER['DOCUMENT_ROOT'].$tinybrowser['obfuscate']); ?>");
-      so.addVariable("filenames", "<?php echo $filelist; ?>");
-      so.addVariable("extensions", "<?php echo $fileexts; ?>");
-      so.addVariable("filenamelbl", "<?php echo TB_FILENAME; ?>");
-      so.addVariable("sizelbl", "<?php echo TB_SIZE; ?>");
-      so.addVariable("typelbl", "<?php echo TB_TYPE; ?>");
-      so.addVariable("progresslbl", "<?php echo TB_PROGRESS; ?>");
-      so.addVariable("browselbl", "<?php echo TB_BROWSE; ?>");
-      so.addVariable("removelbl", "<?php echo TB_REMOVE; ?>");
-      so.addVariable("uploadlbl", "<?php echo TB_UPLOAD; ?>");
-      so.addVariable("uplimitmsg", "<?php echo TB_MSGMAXSIZE; ?>");
-      so.addVariable("uplimitlbl", "<?php echo TB_TTLMAXSIZE; ?>");
-      so.addVariable("uplimitbyte", "<?php echo TB_BYTES; ?>");
-      so.addParam("allowScriptAccess", "always");
-      so.addParam("type", "application/x-shockwave-flash");
-      so.write("flashcontent");'>
+	  var so = new SWFObject("flexupload.swf", "mymovie", "100%", "340", "9", "#ffffff");
+	  so.addVariable("folder", "<?php echo $uploadpath; ?>");
+	  so.addVariable("uptype", "<?php echo $typenow; ?>");
+	  so.addVariable("destid", "<?php echo $passupfeid; ?>");
+	  so.addVariable("maxsize", "<?php echo $tinybrowser['maxsize'][$_GET['type']]; ?>");
+	  so.addVariable("sessid", "<?php echo session_id(); ?>");
+	  so.addVariable("obfus", "<?php echo md5($_SERVER['DOCUMENT_ROOT'].$tinybrowser['obfuscate']); ?>");
+	  so.addVariable("filenames", "<?php echo $filelist; ?>");
+	  so.addVariable("extensions", "<?php echo $fileexts; ?>");
+	  so.addVariable("filenamelbl", "<?php echo TB_FILENAME; ?>");
+	  so.addVariable("sizelbl", "<?php echo TB_SIZE; ?>");
+	  so.addVariable("typelbl", "<?php echo TB_TYPE; ?>");
+	  so.addVariable("progresslbl", "<?php echo TB_PROGRESS; ?>");
+	  so.addVariable("browselbl", "<?php echo TB_BROWSE; ?>");
+	  so.addVariable("removelbl", "<?php echo TB_REMOVE; ?>");
+	  so.addVariable("uploadlbl", "<?php echo TB_UPLOAD; ?>");
+	  so.addVariable("uplimitmsg", "<?php echo TB_MSGMAXSIZE; ?>");
+	  so.addVariable("uplimitlbl", "<?php echo TB_TTLMAXSIZE; ?>");
+	  so.addVariable("uplimitbyte", "<?php echo TB_BYTES; ?>");
+	  so.addParam("allowScriptAccess", "always");
+	  so.addParam("type", "application/x-shockwave-flash");
+	  so.write("flashcontent");'>
 <?php
 if(count($notify['type'])>0) alert($notify);
 form_open('foldertab',false,'upload.php','?type='.$typenow.$passfeid);
@@ -171,7 +171,7 @@ if(count($uploaddirs)>1)
 <?php
 
 ?>
-    <div id="flashcontent"></div>
+	<div id="flashcontent"></div>
 </fieldset></div></div>
 </body>
 </html>

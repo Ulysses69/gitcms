@@ -15,33 +15,33 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 <div id="price_form">
 	<form action="<?php echo get_url('plugin/pricelist/save'); ?>" method="post">
 		<table cellpadding="5" cellspacing="5" border="0" id="price_form_table"> 
-	      <tr>
-		        <td>
+		  <tr>
+				<td>
 					<label for="price_itemlabel"><?php echo __('Name'); ?></label><br />
-		        	<input class="textbox" id="price_itemlabel" maxlength="255" name="price[itemlabel]" type="text" value="" />
+					<input class="textbox" id="price_itemlabel" maxlength="255" name="price[itemlabel]" type="text" value="" />
 				</td>
-		        <td class="desc">
+				<td class="desc">
 					<label for="price_itemdesc"><?php echo __('Description'); ?></label><br />
-		        	<input class="textbox" id="price_itemdesc" maxlength="255" name="price[itemdesc]" type="text" value="" />
+					<input class="textbox" id="price_itemdesc" maxlength="255" name="price[itemdesc]" type="text" value="" />
 				</td>
-		        <td class="price">
+				<td class="price">
 					<label for="price_itemprice"><?php echo $itempricelabel; ?></label><br />
-		        	<input class="textbox" id="price_itemprice" maxlength="55" name="price[itemprice]" type="text" value="" />
+					<input class="textbox" id="price_itemprice" maxlength="55" name="price[itemprice]" type="text" value="" />
 				</td>
-		        <td class="price">
+				<td class="price">
 					<label for="price_itemprice2"><?php echo $itemprice2label; ?></label><br />
-		        	<input class="textbox" id="price_itemprice2" maxlength="55" name="price[itemprice2]" type="text" value="" />
+					<input class="textbox" id="price_itemprice2" maxlength="55" name="price[itemprice2]" type="text" value="" />
 				</td>
 
 				<!--
 				<td>
 					<label for="price_itemkey"><?php echo __('Token'); ?></label><br />
-		        	<input class="textbox" id="price_itemkey" maxlength="55" name="price[itemkey]" type="text" value="" />
+					<input class="textbox" id="price_itemkey" maxlength="55" name="price[itemkey]" type="text" value="" />
 				</td>
 				-->
 
-	      </tr>
-	    </table>	
+		  </tr>
+		</table>	
 
 		<p class="buttons">
 			<input class="button" id="site-save-page" name="commit" title="Save then close" type="submit" accesskey="s" value="<?php echo __('Add');?>" />
@@ -57,13 +57,13 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 	<thead id="requests" class="node_heading">
 	<tr>
 		<th class="itemlabel"><?php echo __('Name'); ?></th>
-	    <th class="itemdesc"><?php echo __('Description'); ?></th>
-	    <th class="itemprice"><?php echo __('Prefix'); ?></th>
-	    <th class="itemprice"><?php echo $itempricelabel; ?></th>
-	    <th class="itemprice2"><?php echo $itemprice2label; ?></th>
+		<th class="itemdesc"><?php echo __('Description'); ?></th>
+		<th class="itemprice"><?php echo __('Prefix'); ?></th>
+		<th class="itemprice"><?php echo $itempricelabel; ?></th>
+		<th class="itemprice2"><?php echo $itemprice2label; ?></th>
 		<th class="itemprice"><?php echo __('Suffix'); ?></th>
-	    <!-- <th class="itemtoken"><?php echo __('Token'); ?></th> -->
-	    <th class="action"><?php echo __('Action'); ?></th>
+		<!-- <th class="itemtoken"><?php echo __('Token'); ?></th> -->
+		<th class="action"><?php echo __('Action'); ?></th>
 	</tr>
 	</thead>
 	<?php foreach ($current_prices as $price): ?>
@@ -73,20 +73,20 @@ $itemprice2label = Plugin::getSetting('itemprice2label', 'pricelist');
 	<form action="<?php echo get_url('plugin/pricelist/update'); ?>" method="post">
 	<input type="hidden" name="prices_id" value="<?php echo $price->id; ?>" />
 	<tr>
-     <!-- <img align="middle" alt="layout-icon" src="../../../wolf/plugins/pricelist/images/price.png" title="" class="node_image" /> -->
-	    <td class="itemlabel"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemlabel]" type="text" value="<?php echo $price->itemlabel; ?>" /></td>
-	    <td class="itemdesc"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemdesc]" type="text" value="<?php echo $price->itemdesc; ?>" /></td>
+	 <!-- <img align="middle" alt="layout-icon" src="../../../wolf/plugins/pricelist/images/price.png" title="" class="node_image" /> -->
+		<td class="itemlabel"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemlabel]" type="text" value="<?php echo $price->itemlabel; ?>" /></td>
+		<td class="itemdesc"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemdesc]" type="text" value="<?php echo $price->itemdesc; ?>" /></td>
 
 		<td class="itemprice_pref"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemlabel_pref]" type="text" value="<?php echo $price_prefix; ?>" /></td>
 
-	    <td class="itemprice"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemprice]" type="text" value="<?php echo $price->itemprice; ?>" /></td>
-	    <td class="itemprice2"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemprice2]" type="text" value="<?php echo $price->itemprice2; ?>" /></td>
+		<td class="itemprice"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemprice]" type="text" value="<?php echo $price->itemprice; ?>" /></td>
+		<td class="itemprice2"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemprice2]" type="text" value="<?php echo $price->itemprice2; ?>" /></td>
 
 		<td class="itemprice_suff"><input class="textbox" maxlength="255" name="<?php echo $price->id; ?>[itemlabel_suff]" type="text" value="<?php echo $price_sufffix; ?>" /></td>
 
-	    <!-- Token -->
+		<!-- Token -->
 		<!-- <td class="itemtoken">[price id="<?php echo $price->id; ?>"]</td> -->
-	    <td class="action">
+		<td class="action">
 		<!-- <a href="<?php echo get_url('plugin/pricelist/remove/'.$price->id); ?>" onclick="return confirm('Are you sure you wish to delete <?php echo $price->itemlabel; ?>?');"><img alt="Remove Price" src="../../../wolf/plugins/pricelist/images/icon-remove.gif" /></a> -->
 		<button class="btn" type="submit" name="remove" onclick="return confirm('Are you sure you wish to delete <?php echo $price->itemlabel; ?>?');"><img alt="Remove Price" src="../../../wolf/plugins/pricelist/images/icon-remove.gif" /></button><button class="btn" type="submit" name="update" onclick="return confirm('Are you sure you wish to update <?php echo $price->itemlabel; ?>?');"><img alt="Update Price" src="../../../wolf/plugins/pricelist/images/icon-update.gif" /></button>
 		</td>

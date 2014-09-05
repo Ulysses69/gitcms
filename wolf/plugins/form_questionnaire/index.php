@@ -63,7 +63,7 @@ function questionnaireForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$di
 				$req = $k.'_req';
 				$id = ucwords(str_replace('_',' ',$k));
 
-    			if($id == "Appointment Date" && ($appointment_date != null && $appointment_date != 'No Preference')){
+				if($id == "Appointment Date" && ($appointment_date != null && $appointment_date != 'No Preference')){
 					/* Check date is in the present */
 					$start = strtotime($appointment_date);
 					$end = strtotime('D jS M Y');

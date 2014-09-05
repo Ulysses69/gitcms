@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_058.php
-// Begin       : 2010-04-22
+// Begin	   : 2010-04-22
 // Last Update : 2013-05-14
 //
 // Description : Example 058 for TCPDF class
-//               SVG Image
+//			   SVG Image
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//			   Nicola Asuni
+//			   Tecnick.com LTD
+//			   www.tecnick.com
+//			   info@tecnick.com
 //============================================================+
 
 /**

@@ -4,8 +4,8 @@ The Comments plugin provides you with the functionality to enable visitors to
 leave comments on your pages.
 
 Dependencies:
-    - Wolf 0.5.5+
-    - Statistics API plugin (optional, see NOTES section)
+	- Wolf 0.5.5+
+	- Statistics API plugin (optional, see NOTES section)
 
 == HOW TO USE IT ==
 
@@ -19,13 +19,13 @@ options (none, open and close).
 You will need to add this little code in your layout:
 
 <?php
-    if (Plugin::isEnabled('comment'))
-    {
-        if ($this->comment_status != Comment::NONE)
-            $this->includeSnippet('comment-each');
-        if ($this->comment_status == Comment::OPEN)
-            $this->includeSnippet('comment-form');
-    }
+	if (Plugin::isEnabled('comment'))
+	{
+		if ($this->comment_status != Comment::NONE)
+			$this->includeSnippet('comment-each');
+		if ($this->comment_status == Comment::OPEN)
+			$this->includeSnippet('comment-form');
+	}
 ?>
 
 == NOTES ==
@@ -39,7 +39,7 @@ You will need to add this little code in your layout:
 
 * When the optional statistics_api plugin is enabled, the comments plugin registers
   an event with the statistics_api plugin each time:
-    - a comment is added.
+	- a comment is added.
 
 * The statistics_api plugin is a plugin by Martijn van der Kleijn and can be
   downloaded from http://www.vanderkleijn.net/wolf-cms/plugins.html
@@ -53,7 +53,7 @@ Comments plugin:
 Copyright (C) 2009,2010 Martijn van der Kleijn <martijn.niji@gmail.com>
 Copyright (C) 2008 Philippe Archambault <philippe.archambault@gmail.com>
 and parts are
-    Copyright (C) 2008 Bebliuc George <bebliuc.george@gmail.com>
+	Copyright (C) 2008 Bebliuc George <bebliuc.george@gmail.com>
 
  This file is part of Wolf CMS.
 

@@ -28,25 +28,25 @@ ModeTest.test = function() {
   var mode = CodeMirror.getMode(ModeTest.modeOptions, ModeTest.modeName);
 
   if (arguments.length < 1) {
-    throw "must have text for test";
+	throw "must have text for test";
   }
   if (arguments.length % 2 != 1) {
-    throw "must have text for test plus expected (style, token) pairs";
+	throw "must have text for test plus expected (style, token) pairs";
   }
 
   var text = arguments[0];
   var expectedOutput = [];
   for (var i = 1; i < arguments.length; i += 2) {
-    expectedOutput.push([arguments[i],arguments[i + 1]]);
+	expectedOutput.push([arguments[i],arguments[i + 1]]);
   }
 
   var observedOutput = ModeTest.highlight(text, mode)
 
   var pass, passStyle = "";
   if (expectedOutput.length > 0) {
-    pass = ModeTest.highlightOutputsEqual(expectedOutput, observedOutput);
-    passStyle = pass ? 'mt-pass' : 'mt-fail';
-    ModeTest.passes += pass ? 1 : 0;
+	pass = ModeTest.highlightOutputsEqual(expectedOutput, observedOutput);
+	passStyle = pass ? 'mt-pass' : 'mt-fail';
+	ModeTest.passes += pass ? 1 : 0;
   }
 
   var s = '';
@@ -54,12 +54,12 @@ ModeTest.test = function() {
   s +=   '<pre>' + ModeTest.htmlEscape(text) + '</pre>';
   s +=   '<div class="cm-s-default">';
   if (pass || expectedOutput.length == 0) {
-    s +=   ModeTest.prettyPrintOutputTable(observedOutput);
+	s +=   ModeTest.prettyPrintOutputTable(observedOutput);
   } else {
-    s += 'expected:';
-    s +=   ModeTest.prettyPrintOutputTable(expectedOutput);
-    s += 'observed:';
-    s +=   ModeTest.prettyPrintOutputTable(observedOutput);
+	s += 'expected:';
+	s +=   ModeTest.prettyPrintOutputTable(expectedOutput);
+	s += 'observed:';
+	s +=   ModeTest.prettyPrintOutputTable(observedOutput);
   }
   s +=   '</div>';
   s += '</div>';
@@ -82,15 +82,15 @@ ModeTest.highlight = function(string, mode) {
   var lines = string.replace(/\r\n/g,'\n').split('\n');
   var output = [];
   for (var i = 0; i < lines.length; ++i) {
-    var line = lines[i];
-    var stream = new CodeMirror.StringStream(line);
-    if (line == "" && mode.blankLine) mode.blankLine(state);
-    while (!stream.eol()) {
-      var style = mode.token(stream, state);
-      var substr = line.slice(stream.start, stream.pos);
-      output.push([style, substr]);
-      stream.start = stream.pos;
-    }
+	var line = lines[i];
+	var stream = new CodeMirror.StringStream(line);
+	if (line == "" && mode.blankLine) mode.blankLine(state);
+	while (!stream.eol()) {
+	  var style = mode.token(stream, state);
+	  var substr = line.slice(stream.start, stream.pos);
+	  output.push([style, substr]);
+	  stream.start = stream.pos;
+	}
   }
 
   return output;
@@ -108,10 +108,10 @@ ModeTest.highlight = function(string, mode) {
 ModeTest.highlightOutputsEqual = function(o1, o2) {
   var eq = (o1.length == o2.length);
   if (eq) {
-    for (var j in o1) {
-      eq = eq &&
-        o1[j].length == 2 && o1[j][0] == o2[j][0] && o1[j][1] == o2[j][1];
-    }
+	for (var j in o1) {
+	  eq = eq &&
+		o1[j].length == 2 && o1[j][0] == o2[j][0] && o1[j][1] == o2[j][1];
+	}
   }
   return eq;
 }
@@ -128,19 +128,19 @@ ModeTest.prettyPrintOutputTable = function(output) {
   var s = '<table class="mt-output">';
   s += '<tr>';
   for (var i = 0; i < output.length; ++i) {
-    var token = output[i];
-    s +=
-      '<td class="mt-token">' +
-        '<span class="cm-' + token[0] + '">' +
-          ModeTest.htmlEscape(token[1]).replace(/ /g,'&middot;') +
-        '</span>' +
-      '</td>';
+	var token = output[i];
+	s +=
+	  '<td class="mt-token">' +
+		'<span class="cm-' + token[0] + '">' +
+		  ModeTest.htmlEscape(token[1]).replace(/ /g,'&middot;') +
+		'</span>' +
+	  '</td>';
   }
   s += '</tr><tr>';
   for (var i = 0; i < output.length; ++i) {
-    var token = output[i];
-    s +=
-      '<td class="mt-style"><span>' + token[0] + '</span></td>';
+	var token = output[i];
+	s +=
+	  '<td class="mt-style"><span>' + token[0] + '</span></td>';
   }
   s += '</table>';
   return s;
@@ -159,6 +159,6 @@ ModeTest.printSummary = function() {
 ModeTest.htmlEscape = function(str) {
   str = str.toString();
   return str.replace(/[<&]/g,
-      function(str) {return str == "&" ? "&amp;" : "&lt;";});
+	  function(str) {return str == "&" ? "&amp;" : "&lt;";});
 }
 

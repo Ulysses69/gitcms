@@ -12,11 +12,11 @@ class SeoboxController extends PluginController {
 	}
 	public function settings(){
 		$settings = Plugin::getAllSettings('seobox');
-	        if (!$settings) {
-	            Flash::set('error', 'SEO Box - '.__('unable to retrieve plugin settings.'));
-	            return;
-	        }
-	        $this->display('seobox/views/settings', $settings);
+			if (!$settings) {
+				Flash::set('error', 'SEO Box - '.__('unable to retrieve plugin settings.'));
+				return;
+			}
+			$this->display('seobox/views/settings', $settings);
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'seobox';
@@ -43,19 +43,19 @@ class SeoboxController extends PluginController {
 						  'sitemapdescription' => $sitemapdescription,
 						  'sitemapheadings' => $sitemapheadings,
 						  'sitemaparchives' => $sitemaparchives,
-	            		  'clientlocation' => $clientlocation,
-	            		  'clientanalytics' => $clientanalytics,
-	            		  'clientanalyticssubdomain' => $clientanalyticssubdomain,
-	            		  'clientanalyticsstatus' => $clientanalyticsstatus,
-	            		  'clientanalyticslinks' => $clientanalyticslinks,
-	            		  'clientanalyticspolicy' => $clientanalyticspolicy,
-	            		  'clientanalyticsnoscript' => $clientanalyticsnoscript,
-	            		  'noticestatus' => $noticestatus,
-	            		  'noticedays' => $noticedays,
-	            		  'noticelivecheck' => $noticelivecheck,
-	            		  'bots' => $bots,
-	            		  'clientanalyticsscreenstats' => $clientanalyticsscreenstats,
-	            		  'clientanalyticsversion' => $clientanalyticsversion);
+						  'clientlocation' => $clientlocation,
+						  'clientanalytics' => $clientanalytics,
+						  'clientanalyticssubdomain' => $clientanalyticssubdomain,
+						  'clientanalyticsstatus' => $clientanalyticsstatus,
+						  'clientanalyticslinks' => $clientanalyticslinks,
+						  'clientanalyticspolicy' => $clientanalyticspolicy,
+						  'clientanalyticsnoscript' => $clientanalyticsnoscript,
+						  'noticestatus' => $noticestatus,
+						  'noticedays' => $noticedays,
+						  'noticelivecheck' => $noticelivecheck,
+						  'bots' => $bots,
+						  'clientanalyticsscreenstats' => $clientanalyticsscreenstats,
+						  'clientanalyticsversion' => $clientanalyticsversion);
 
 		if (Plugin::setAllSettings($settings, 'seobox')) {
 

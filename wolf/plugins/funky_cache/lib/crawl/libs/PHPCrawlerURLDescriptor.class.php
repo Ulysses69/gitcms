@@ -49,12 +49,12 @@ class PHPCrawlerURLDescriptor
    */
   public function __construct($url_rebuild, $link_raw = null, $linkcode = null, $linktext = null, $refering_url = null)
   {
-    $this->url_rebuild = $url_rebuild;
-    
-    if (!empty($link_raw)) $this->link_raw = $link_raw;
-    if (!empty($linkcode)) $this->linkcode = $linkcode;
-    if (!empty($linktext)) $this->linktext = $linktext;
-    if (!empty($refering_url)) $this->refering_url = $refering_url;
+	$this->url_rebuild = $url_rebuild;
+	
+	if (!empty($link_raw)) $this->link_raw = $link_raw;
+	if (!empty($linkcode)) $this->linkcode = $linkcode;
+	if (!empty($linktext)) $this->linktext = $linktext;
+	if (!empty($refering_url)) $this->refering_url = $refering_url;
   }  
 }
 ?>

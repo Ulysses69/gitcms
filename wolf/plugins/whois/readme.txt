@@ -12,7 +12,7 @@ You can install this plugin in 4 easy steps.
 1 - Unzip and upload this plugin to the Frog plugins directory.
 
 2 - IF NECESSARY, edit the index.php file and change the variables.
-    All variables are well commented in the code.
+	All variables are well commented in the code.
 
 3 - Access the Frog Administration screen and activate the plugin.
 
