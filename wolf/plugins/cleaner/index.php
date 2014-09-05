@@ -105,7 +105,8 @@ if(!function_exists('delete_directory')){
 				// Relative URL
 				$relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
 
-				if($relname != ''){
+				// Ensure files/folders exist within root (to protect server critical files/folders)
+				if($relname != '' && stristr($relname, $_SERVER{'DOCUMENT_ROOT'})){
 					$info = new SplFileInfo($dirname);
 					if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
 						//$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
