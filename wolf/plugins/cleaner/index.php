@@ -12,7 +12,7 @@ Plugin::setInfos(array(
 ));
 
 
-Plugin::addController('cleaner', __('Cleaner'), 'administrator', true);
+Plugin::addController('cleaner', __('Clean'), 'administrator', true);
 
 
 
