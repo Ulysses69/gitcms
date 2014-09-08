@@ -487,8 +487,10 @@ function cleanCMS($mode='test'){
 
 		} else {
 
-			echo '<h2>Clean</h2>';
-			echo '<p>No cleaning is required.</p>';
+			if($mode != 'check'){
+				echo '<h2>Clean</h2>';
+				echo '<p>No cleaning is required.</p>';
+			}
 
 		}
 
