@@ -33,7 +33,7 @@
 			</td>
 			<td>
 				<a href="<?php echo get_url('maintenance/view/'.$allow->id.''); ?>">
-					<img src="<?php echo URL_PUBLIC.ADMIN_DIR; ?>/images/file.png" height="16" /></a>
+					<img src="<?php echo PLUGINS_URI; ?>maintenance/images/edit.png" /></a>
 			</td>
 			<td>
 				<a href="<?php echo get_url('maintenance/delete/'.$allow->id.''); ?>" onclick="return confirm('You are about to remove access to this site during maintenance session from the IP address <?php echo $allow->ip ?>\n\nYou will also lose any associated notes and names.\n\nAre you sure you wish to do this?\n');">

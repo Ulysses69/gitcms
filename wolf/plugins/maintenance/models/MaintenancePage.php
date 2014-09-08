@@ -68,7 +68,7 @@ class MaintenancePage extends Record {
 		header('Location: ' . BASE_URL . $maintenancePageSlug);
 	}
 
-	public function getMaintenanceURI() {
+	public static function getMaintenanceURI() {
 		$page = Record::findOneFrom('Page', "behavior_id='Maintenance'");
 		return $page->slug;
 	}

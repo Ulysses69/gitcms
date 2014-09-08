@@ -7,3 +7,12 @@
 	<p class="button"><a href="<?php echo get_url('maintenance/settings'); ?>"><img src="<?php echo PLUGINS_URI  . 'maintenance/images/settings.png'; ?>" align="middle" alt="Settings" /> Settings</a></p>
 
 </div>
+
+<br />
+
+<?php if(Plugin::isEnabled('searchbox') == true){ ?>
+<div class="box warning">
+<h2><?php echo __('Search Conflict');?></h2>
+<p>Search feature does not presently work with maintenance mode on.</p>
+</div>
+<?php } ?>

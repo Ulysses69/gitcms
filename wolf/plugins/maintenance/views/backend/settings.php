@@ -12,7 +12,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="label">Maintenance Status:</td>
+		<td class="label">Maintenance Mode:</td>
 		<td class="field">
 			<input type="radio" name="maintenanceMode" <?php if($settings['maintenanceMode'] == 'on') echo 'checked="checked" '; ?>value="on" /> On<br />
 			<input type="radio" name="maintenanceMode" <?php if($settings['maintenanceMode'] == 'off') echo 'checked="checked" '; ?>value="off" />	Off

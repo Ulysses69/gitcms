@@ -1,6 +1,6 @@
 #body_plugin_maintenance #content img {
-	width: 20px;
-	height: 20px;
+	width: 17px;
+	height: auto;
 }
 #body_plugin_maintenance #sidebar .box {
 	padding: 0;
@@ -16,4 +16,13 @@
 }
 #body_plugin_maintenance input:focus {
 	border-color: #389702;
+}
+
+
+#body_plugin_maintenance .warning {
+	overflow: hidden;
+	position: relative;
+	border: solid 1px #cccccc;
+	padding: 10px 20px !important;
+	margin: 0 0 20px 0;
 }
