@@ -82,7 +82,7 @@ function buildscripts($page, $insertref, $checkup = false){
 			}
 
 			/* Determine script type (remove for HTML5) */
-			if($page->layout_id == '17' || $page->parent->layout_id == '17'){
+			if($page->layout_id == '17' || (is_object($page->parent) && $page->parent->layout_id == '17')){
 				$script_type = '';
 			} else {
 				$script_type = ' type="text/javascript"';
