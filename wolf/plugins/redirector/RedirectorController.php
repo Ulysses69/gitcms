@@ -61,13 +61,24 @@ class RedirectorController extends PluginController {
 			redirect(get_url('plugin/redirector/'));
 		}
 
-		$dataURL = addslashes($data['url']);
-		$dataDestination = addslashes($data['destination']);
+		$dataURL = $data['url'];
+		$dataDestination = $data['destination'];
+
+		$dataURL = addslashes($dataURL);
+		$dataDestination = addslashes($dataDestination);
 		
 		if(function_exists('slugify','none')){
 			$dataURL = slugify($dataURL);
 			$dataDestination = slugify($dataDestination);
 		}
+
+
+		// Ensure destination URL is not identical to redirect (page and page.html are deemed identical however)
+		if (stristr($dataURL, ' ') || stristr($dataDestination, ' ')){
+			Flash::set('error', __('URLs cannot contain spaces.'));
+			redirect(get_url('plugin/redirector/'));
+		}
+
 
 		if(isset($data['status'])){ $dataStatus = $data['status']; } else { $dataStatus = 301; }
 		//if($dataStatus == '') $dataStatus = 301;
@@ -121,6 +132,7 @@ class RedirectorController extends PluginController {
 		//echo $dataDestination;
 		//exit;
 
+		// Ensure destination URL is not identical to redirect (page and page.html are deemed identical however)
 		if ($dataDestination == $dataURL){
 			Flash::set('error', __('Pages cannot redirect to itself.'));
 			redirect(get_url('plugin/redirector/'));
