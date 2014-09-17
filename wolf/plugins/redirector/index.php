@@ -17,7 +17,7 @@ Plugin::setInfos(array(
 	'id'		  => 'redirector',
 	'title'	   => 'Redirector',
 	'description' => 'Provides an interface to manage redirects.',
-	'version'	 => '0.1', 
+	'version'	 => '0.1.1', 
    	'license'	 => 'MIT',
 	'author'	  => 'Design Spike'
 ));
