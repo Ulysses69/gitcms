@@ -97,6 +97,8 @@ if(Plugin::isEnabled('redirector') == true){
   	
 	  	$url = trim( preg_replace( '/\s+/', ' ', $url ));
 	  	$destination = trim( preg_replace( '/\s+/', ' ', $destination ));
+	  	
+	  	//$destination = str_replace(' ', '%20', $destination);
 
 	  	$status = $redirects->status;
 	  	if($status == '301'){
@@ -114,13 +116,13 @@ if(Plugin::isEnabled('redirector') == true){
 
 	  	if($url == '/'){
 			$RedirectHome .= "RewriteCond %{REQUEST_URI} ^/+$\n";
-			$RedirectHome .= "RewriteRule ^/*$ ".$destination." [L,R=".$status.$thisCache.$thisCase."]\n";
+			$RedirectHome .= "RewriteRule ^/*$ ".'"'.$destination.'"'." [L,R=".$status.$thisCache.$thisCase."]\n";
 		} else {
 	  	 	if($url[strlen($url)-1] == '/' && $destination[strlen($destination)-1] == '/'){
 				//$RewriteRules .= "RewriteRule ^".$url."(.*)$ ".$destination."$1 [L,R=".$status.$thisCache.",NC]\n";
 				$RewriteRules .= "RewriteRule ^".$url."(.*)$ ".$destination."$1 [L,R=".$status.$thisCache.$thisCase."]\n";
 			} else if(stristr($destination,'?')){
-				$RewriteRules .= 'redirect 301 '.$url.' '.$destination."\n";
+				$RewriteRules .= 'redirect 301 '.$url.' '.'"'.$destination.'"'."\n";
 			} else if (stristr($url, '?')){
 
 				//$url = $url."$"; $destination = $destination."?";
@@ -131,7 +133,7 @@ if(Plugin::isEnabled('redirector') == true){
 				$RewriteRules .= "RewriteRule ^(.*)$ ".$destination."? [L,R=".$status.$thisCache.$thisCase."]\n";
 
 			} else {
-				$RewriteRules .= "RewriteRule ^".ltrim($url,'/').' '.$destination." [L,R=".$status.$thisCache.$thisCase."]\n";
+				$RewriteRules .= "RewriteRule ^".ltrim($url,'/').' '.'"'.$destination.'"'." [L,R=".$status.$thisCache.$thisCase."]\n";
 			}
 		}
 	}
