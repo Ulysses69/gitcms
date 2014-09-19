@@ -36,7 +36,7 @@ class CsvImportController extends PluginController {
 				'file_locale'		=> 'en_GB.UTF-8',
 				'create_empty_parts' => '1',
 				'default_filter'	 => '',
-				'fileurl'			=> 'public/sample_excel2000_export.csv',
+				'fileurl'			=> 'public/sql_default_example.csv',
 	);
 	public static $translators		 = array(
 				'comma'	   => ",",
