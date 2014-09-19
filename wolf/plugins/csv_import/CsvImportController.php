@@ -142,6 +142,12 @@ class CsvImportController extends PluginController {
 	private static $pagesList = array( );
 
 	public function __construct() {
+		
+		/* Fix for DS warnings */
+		if (!defined('DS')) {
+		    define("DS", "");
+		}
+
 		$this->setLayout( 'backend' );
 		$lang = ( $user = AuthUser::getRecord() ) ? strtolower( $user->language ) : 'en';
 		if ( !file_exists( PLUGINS_ROOT . DS . 'csv_import/views/documentation/sidebar/' . $lang . '.php' ) ) {
@@ -633,6 +639,7 @@ class CsvImportController extends PluginController {
 								'label' => str_replace( " ", "- ", str_pad( ' ', $nestLevel, " ", STR_PAD_LEFT ) ) . ' ' . $childpage->title,
 								'id'	=> $childpage->id,
 								'count' => $childCount,
+								'breadcrumb' => $childpage->breadcrumb,
 					);
 					self::makePagesListRecursive( $childpage->id );
 				}

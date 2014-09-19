@@ -130,7 +130,7 @@ $parent_page_id = isset( $_POST['parent_page_id'] ) ? $_POST['parent_page_id'] :
 						<select name="parent_page_id" id="csv_import-pageslist" class="full large">
 							<option disabled="disabled"><?php echo __( 'Root page' ); ?></option>
 							<?php foreach ( $pagesList as $k ): ?>
-								<option value="<?php echo $k['id'] ?>"<?php echo ($k['id'] == $parent_page_id) ? ' selected="selected"' : ''; ?>><?php echo $k['label'] ?></option>
+								<option value="<?php echo $k['id'] ?>"<?php echo ($k['id'] == $parent_page_id) ? ' selected="selected"' : ''; ?>><?php echo $k['breadcrumb'] ?></option>
 							<?php endforeach; ?>
 						</select>
 					</td>
