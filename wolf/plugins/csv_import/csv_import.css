@@ -4,6 +4,7 @@
 #body_plugin_csv_import .warning	{color: #F80; background-color: #FDA;}
 #body_plugin_csv_import .success	{color: #080; background-color: #CFC;}
 
+#body_plugin_csv_import .quarter	{padding-right:5px;}
 
 #body_plugin_csv_import table.preview td {background: #EEE; border: 1px solid #888;}
 #body_plugin_csv_import table.preview td.required {background: orange; }

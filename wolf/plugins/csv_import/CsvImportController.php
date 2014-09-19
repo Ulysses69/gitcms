@@ -23,7 +23,7 @@ class CsvImportController extends PluginController {
 	const VIEW_FOLDER = "../../plugins/csv_import/views/";
 
 	public static $options = array(
-				'encoding'		   => 'WINDOWS-1250',
+				'encoding'		   => 'UTF-8',
 				'folder'			 => 'public',
 				'escape'			 => 'doublequote',
 				'delimeter'		  => 'semicolon',
@@ -33,10 +33,10 @@ class CsvImportController extends PluginController {
 				'is_protected'	   => '0',
 				'needs_login'		=> '2',
 				'behavior_id'		=> '',
-				'file_locale'		=> 'en_US.UTF-8',
+				'file_locale'		=> 'en_GB.UTF-8',
 				'create_empty_parts' => '1',
 				'default_filter'	 => '',
-				'fileurl'			=> 'http://marekmurawski.pl/static/wolfplugins/csv_import/sample_excel2000_export.csv',
+				'fileurl'			=> 'public/sample_excel2000_export.csv',
 	);
 	public static $translators		 = array(
 				'comma'	   => ",",
@@ -145,7 +145,7 @@ class CsvImportController extends PluginController {
 		
 		/* Fix for DS warnings */
 		if (!defined('DS')) {
-		    define("DS", "");
+		    define("DS", URL_PUBLIC);
 		}
 
 		$this->setLayout( 'backend' );
@@ -704,8 +704,8 @@ class CsvImportController extends PluginController {
 	 * Retrieves an array of all files
 	 */
 	protected function getFiles( $dir ) {
-		$scandir = scandir( CMS_ROOT . DS . trim( $dir, '/' ) );
-
+		$scandir = scandir( $_SERVER{'DOCUMENT_ROOT'} . URL_PUBLIC . trim( $dir, '/' ) );
+		//$scandir = scandir( CMS_ROOT . DS . trim( $dir, '/' ) );
 		foreach ( $scandir as $k => $v ) {
 			if (
 						strpos( strtolower( trim( $v ) ), '.csv' ) === false &&
