@@ -44,5 +44,8 @@ Plugin::setInfos(array(
 	'require_php_extensions' => 'dom,SimpleXML'
 ));
 
-//Plugin::addController('backup_restore', __('Backup Restore'), 'backup_restore_view', true);
-Plugin::addController('backup_restore', __('Backup / Restore'), 'administrator', false);
+if(Plugin::isEnabled('dashboard') == true) {
+	Plugin::addController('backup_restore', __('Backup / Restore'), 'administrator', false);
+} else {
+	Plugin::addController('backup_restore', __('Backup / Restore'), 'administrator', true);
+}

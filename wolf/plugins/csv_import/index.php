@@ -30,4 +30,8 @@ Plugin::setInfos( array(
 			'require_wolf_version' => '0.5.5' // 0.7.5SP-1 fix -> downgrading requirement to 0.7.3
 ) );
 
-Plugin::addController( 'csv_import', __( 'CSV Import' ), 'admin_edit', true );
+if(Plugin::isEnabled('dashboard') == true) {
+	Plugin::addController( 'csv_import', __( 'CSV Import' ), 'admin_edit', false );
+} else {
+	Plugin::addController( 'csv_import', __( 'CSV Import' ), 'admin_edit', true );
+}

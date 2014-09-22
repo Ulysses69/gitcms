@@ -28,7 +28,7 @@ Plugin::setInfos(array(
 	'id' 			=> 'dashboard',
 	'title' 			=> 'Dashboard',
 	'description' 		=> 'Keep up to date what is happening with your site.',
-	'version' 			=> '0.5.2.1',
+	'version' 			=> '0.5.3.0',
 	'license' 			=> 'MIT',
 	'author' 			=> 'Mika Tuupola',
 	'require_wolf_version' 	=> '0.5.5',

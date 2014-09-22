@@ -44,6 +44,11 @@ if (!defined('IN_CMS')) { exit(); }
 	<p class="button"><a href="<?php echo get_url('plugin/backup_restore/restore'); ?>"><img src="<?php echo BACKUPRESTORE_ROOT;?>/images/upload.png" align="middle" alt="restore icon" /> <?php echo __('Restore a backup'); ?></a></p>
 	<!-- <p class="button"><a href="<?php echo get_url('plugin/backup_restore/documentation'); ?>"><img src="<?php echo BACKUPRESTORE_ROOT;?>/images/page.png" align="middle" alt="documentation icon" /> <?php echo __('Documentation'); ?></a></p> -->
 <?php } ?>
+
+<?php if(Plugin::isEnabled('csv_import') == true){ ?>
+	<p class="button"><a href="<?php echo get_url('plugin/csv_import'); ?>"><img src="<?php echo BACKUPRESTORE_ROOT;?>/images/upload.png" align="middle" alt="import icon" /> <?php echo __('Import from CSV'); ?></a></p>
+<?php } ?>
+
 <?php if (!AuthUser::hasPermission('client')) { ?>
 	<?php if(Plugin::isEnabled('clientdetails') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/clientdetails'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/clientdetails/images/details.png" align="middle" alt="client icon" /> <?php echo __('Client details'); ?></a></p><?php } ?>
 	<?php if(Plugin::isEnabled('token') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/token'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/token/images/dashboard.png" align="middle" alt="token icon" /> <?php echo __('Tokens'); ?></a></p><?php } ?>
