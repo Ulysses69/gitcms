@@ -26,7 +26,7 @@ class CsvImportController extends PluginController {
 				'encoding'		   => 'UTF-8',
 				'folder'			 => 'public',
 				'escape'			 => 'doublequote',
-				'delimeter'		  => 'semicolon',
+				'delimeter'		  => 'comma',
 				'enclosure'		  => 'doublequote',
 				'status_id'		  => Page::STATUS_PUBLISHED,
 				'layout_id'		  => '1',
