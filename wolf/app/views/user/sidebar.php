@@ -38,6 +38,12 @@
 <?php //if(!AuthUser::hasPermission('client')){ ?>
 <?php if(AuthUser::hasPermission('administrator')){ ?>
 
+
+<?php if(!AuthUser::hasPermission('client') && Plugin::isEnabled('dashboard') == true) { ?>
+<p class="button"><a href="/admin/plugin/maintenance"><img src="/wolf/plugins/dashboard/img/keys.png" align="middle" alt="maintenance icon" /><?php echo __('Access'); ?></a></p>
+<?php } ?>
+
+
 <?php if(Plugin::isEnabled('registered_users') == true){ ?>
 <p class="button"><a href="/admin/plugin/registered_users/settings"><img src="/wolf/plugins/registered_users/images/settings.png" align="middle" alt="settings icon" /><?php echo __('Settings'); ?></a></p>
 <p class="button"><a href="/admin/plugin/registered_users/groups"><img src="/wolf/plugins/registered_users/images/groups.png" align="middle" alt="user groups icon" /><?php echo __('User Groups'); ?></a></p><?php } ?>

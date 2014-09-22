@@ -49,7 +49,11 @@ Plugin::setInfos(array(
 ));
 
 if(!AuthUser::hasPermission('client')) {
-	Plugin::addController('maintenance', 'Access', 'administrator,developer,editor', TRUE);
+	if(Plugin::isEnabled('dashboard') == false) {
+		Plugin::addController('maintenance', 'Access', 'administrator,developer,editor', TRUE);
+	} else {
+		Plugin::addController('maintenance', 'Access', 'administrator,developer,editor', FALSE);
+	}
 } else {
 	Plugin::addController('maintenance', 'Access', 'client', FALSE);
 }
