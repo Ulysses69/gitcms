@@ -46,7 +46,7 @@ if (!defined('IN_CMS')) { exit(); }
 <?php } ?>
 
 <?php if(Plugin::isEnabled('csv_import') == true){ ?>
-	<p class="button"><a href="<?php echo get_url('plugin/csv_import'); ?>"><img src="<?php echo BACKUPRESTORE_ROOT;?>/images/upload.png" align="middle" alt="import icon" /> <?php echo __('Import from CSV'); ?></a></p>
+	<p class="button"><a href="<?php echo get_url('plugin/csv_import'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/dashboard/img/import.png" align="middle" alt="import icon" /> <?php echo __('Import from CSV'); ?></a></p>
 <?php } ?>
 
 <?php if (!AuthUser::hasPermission('client')) { ?>
