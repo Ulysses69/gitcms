@@ -33,7 +33,7 @@ if(Plugin::isEnabled('file_manager') == true){
 	<li><b>slug - <i>required</i></b>, must be unique</li>
 	<li>title - if not present - will be converted from slug</li>
 	<li>breadcrumb - if not present - will be converted from slug</li>
-	<li>content</li>
+	<li>body</li>
 	<li>keywords</li>
 	<li>description</li>
 	<li>created_on</li>
