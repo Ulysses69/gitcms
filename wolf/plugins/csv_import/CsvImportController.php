@@ -34,9 +34,9 @@ class CsvImportController extends PluginController {
 				'needs_login'		=> '2',
 				'behavior_id'		=> '',
 				'file_locale'		=> 'en_GB.UTF-8',
-				'create_empty_parts' => '1',
+				'create_empty_parts' => '0',
 				'default_filter'	 => '',
-				'fileurl'			=> 'public/sql_default_example.csv',
+				'fileurl'			=> '',
 	);
 	public static $translators		 = array(
 				'comma'	   => ",",

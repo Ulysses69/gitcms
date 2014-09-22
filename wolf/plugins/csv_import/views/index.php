@@ -18,6 +18,8 @@ $parent_page_id = isset( $_POST['parent_page_id'] ) ? $_POST['parent_page_id'] :
 <!-- <h1><?php echo __( 'CSV Importer' ) ?></h1> -->
 <div id="mm_plugin">
 	<form action="<?php echo get_url( 'plugin/csv_import' ); ?>" method="POST">
+	
+	<input id="push_page_to_top" />
 
 		<fieldset>
 			<legend><?php echo __( 'Input file parsing options' ); ?></legend>
@@ -25,10 +27,10 @@ $parent_page_id = isset( $_POST['parent_page_id'] ) ? $_POST['parent_page_id'] :
 				<tbody>
 					<tr>
 						<td class="quarter">
-							<label><?php echo __( 'Directory' ); ?></label>
+							<!-- <label><?php echo __( 'Directory' ); ?></label> -->
 						</td>
 						<td class="quarter">
-							<b><?php echo CMS_ROOT . $directory ?></b>
+							<!-- <b><?php echo $directory; ?></b> -->
 						</td>
 						<td class="quarter">
 							<label for="options-delimeter"><?php echo __( 'Column seperator character' ); ?></label>
@@ -83,7 +85,7 @@ $parent_page_id = isset( $_POST['parent_page_id'] ) ? $_POST['parent_page_id'] :
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="url" name="options[fileurl]" value="<?php echo URL_ABSOLUTE . $options['fileurl'] ?>" class="full"/>
+							<input type="url" name="options[fileurl]" value="<?php echo $options['fileurl']; ?>" class="full"/>
 						</td>
 						<td class="quarter">
 							<label for="options-encoding"><?php echo __( 'Input character set' ); ?></label>
@@ -156,7 +158,11 @@ $parent_page_id = isset( $_POST['parent_page_id'] ) ? $_POST['parent_page_id'] :
 							<option value="<?php echo Page::STATUS_PREVIEW; ?>"<?php echo $options['status_id'] == Page::STATUS_PREVIEW ? ' selected="selected"' : ''; ?>><?php echo __( 'Preview' ); ?></option>
 							<option value="<?php echo Page::STATUS_PUBLISHED; ?>"<?php echo $options['status_id'] == Page::STATUS_PUBLISHED ? ' selected="selected"' : ''; ?>><?php echo __( 'Published' ); ?></option>
 							<option value="<?php echo Page::STATUS_HIDDEN; ?>"<?php echo $options['status_id'] == Page::STATUS_HIDDEN ? ' selected="selected"' : ''; ?>><?php echo __( 'Hidden' ); ?></option>
+
+							<?php if(defined('STATUS_ARCHIVED')){ ?>
 							<option value="<?php echo Page::STATUS_ARCHIVED; ?>"<?php echo $options['status_id'] == Page::STATUS_ARCHIVED ? ' selected="selected"' : ''; ?>><?php echo __( 'Archived' ); ?></option>
+							<?php } ?>
+
 						</select>
 
 					</td>

@@ -14,10 +14,17 @@
 if ( !defined( 'IN_CMS' ) ) {
 	exit();
 }
+
+if(Plugin::isEnabled('file_manager') == true){
+	 $public_dir = '<a href="' . URI_PUBLIC . ADMIN_DIR .'/plugin/file_manager">public</a>';
+} else {
+	$public_dir = 'public';
+}
+
 ?>
 <p>
-	You can import <b>.csv, .tsv and .txt </b> files containing tables
-	exported from MS Excel or Open Office Calc.
+	You can import <b>.csv, .tsv and .txt </b> files containing tables exported from MS Excel or Open Office Calc.
+	These files must be added to the <b><?php echo $public_dir; ?></b> directory.
 
 </p>
 <p>

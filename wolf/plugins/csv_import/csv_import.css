@@ -6,7 +6,7 @@
 
 #body_plugin_csv_import .quarter	{padding-right:5px;}
 
-#body_plugin_csv_import table.preview td {background: #EEE; border: 1px solid #888;}
+#body_plugin_csv_import table.preview td {padding: 2px 3px 1px 3px; background: #EEE; border: 1px solid #888;}
 #body_plugin_csv_import table.preview td.required {background: orange; }
 #body_plugin_csv_import table.preview td.empty {background: #CCC; }
 #body_plugin_csv_import table.preview td.required.empty {background: red; }
@@ -30,3 +30,7 @@
 	min-height: 32px;
 }
 
+#body_plugin_csv_import #push_page_to_top {
+	position: absolute;
+	top: -2em;
+}
