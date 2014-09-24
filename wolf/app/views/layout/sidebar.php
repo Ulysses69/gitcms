@@ -35,7 +35,7 @@
 ?>
 <?php if (Dispatcher::getAction() == 'index'): ?>
 
-<p class="button"><a href="<?php echo get_url('layout/add'); ?>"><img src="images/new_layout.png" align="middle" alt="layout icon" /> <?php echo __('New Layout'); ?></a></p>
+<p class="button"><a href="<?php echo get_url('layout/add'); ?>"><img src="<?php echo URI_PUBLIC . ADMIN_DIR . '/';?>images/new_layout.png" align="middle" alt="layout icon" /> <?php echo __('New Layout'); ?></a></p>
 
 
 <?php if(Plugin::isEnabled('page_options') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/page_options'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/page_options/images/page_options.png" align="middle" alt="page options icon" /> <?php echo __('Page Options'); ?></a></p><?php } ?>
