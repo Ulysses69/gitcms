@@ -246,9 +246,9 @@ function robots($page,$returnstatus='echo'){
 	}
 
 	if($robots != 'follow,index'){
-		if ($robots != 'nofollow,noindex' || $robots == 'follow,noindex'){
-			$robotdata .= '<meta name="robots" content="'.$robots.'">'."\r";
-		}
+		//if ($robots != 'nofollow,noindex' || $robots == 'follow,noindex'){
+			$robotdata = '<meta name="robots" content="'.$robots.'">'."\r";
+		//}
 		if($canonical != NULL){
 			$robotdata .= '<link rel="canonical" href="'.$canonical.'">'."\r";
 		}
@@ -294,7 +294,6 @@ function robots($page,$returnstatus='echo'){
 	} else {
 		echo $robotdata;
 	}
-
 
 }
 function robotredirect($page,$returnstatus='echo'){
