@@ -1,4 +1,4 @@
-### CMS-Generated Update September 17, 2014, 11:51 am ###
+### CMS-Generated Update September 30, 2014, 1:31 pm ###
 #
 # Setting Frog requirements
 #
@@ -20,12 +20,6 @@ Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteCond %{HTTP_HOST} !.local$ [NC]
-RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
-RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
-#RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteCond %{HTTP_HOST} !^(.*)\.(.*)\. [NC]
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/index.php$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/$ install/index.php?rewrite=1 [L,QSA]
