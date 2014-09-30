@@ -3,7 +3,8 @@
 Plugin::setInfos(array(
 				'id' 			=> 'robots',
 				'title' 		=> __('Redirect/Robots'),
-				'description'	=> __('Add page redirect and meta data for search engines.')
+				'description'	=> __('Add page redirect and meta data for search engines.'),
+				'version'		=> '1.0.1'
 ));
 
 /***
