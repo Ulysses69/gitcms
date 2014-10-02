@@ -14,13 +14,17 @@ $Env = '';
 $RewriteRules = '';
 
 // Domain without www (supports subdomains - domain name must be explicitly set)
-preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $domain_name);
-$SubdomainCond = '#RewriteCond %{HTTP_HOST} !^([^.]+\.)'.str_replace('.', '\.', $domain_name[0]).'$ [NC]'."\n";
-$SubdomainCond .= '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]'."\n";
+#preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $domain_name);
+#$SubdomainCond = '#RewriteCond %{HTTP_HOST} !^([^.]+\.)'.str_replace('.', '\.', $domain_name[0]).'$ [NC]'."\n";
+#$SubdomainCond .= '#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]'."\n";
 
 // Domain without www (breaks subdomains)
-$SubdomainCond = 'RewriteCond %{HTTP_HOST} !^www\. [NC]'."\n";
-$SubdomainCond .= 'RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]'."\n";
+#$SubdomainCond = 'RewriteCond %{HTTP_HOST} !^www\. [NC]'."\n";
+#$SubdomainCond .= 'RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]'."\n";
+
+$SubdomainCond = 'RewriteCond %{HTTPS} !=on'."\n";
+$SubdomainCond .= 'RewriteCond %{HTTP_HOST} !^(www|([^.]+)\.([a-z]{2,4})$) [NC]'."\n";
+$SubdomainCond .= 'RewriteRule .? http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]'."\n";
 
 $AdminAccess = '';
 $RedirectHome = '';
