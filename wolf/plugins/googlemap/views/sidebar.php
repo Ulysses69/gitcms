@@ -248,7 +248,7 @@ $region = Plugin::getSetting('region', 'googlemap');
 
 <script type="text/javascript">
 //<![CDATA[
-document.write('<style type=\"text/css\" />#<?php echo $map_id; ?>{width:100%;height:100%;background-color:#fff;#map_canvas{background-color:#fff !important}#map_canvas div div div div div div img{visibility:hidden}}}</style>');
+document.write('<style type=\"text/css\" />#<?php echo $map_id; ?>{width:100%;height:100%;background-color:#fff;#map_canvas{background-color:#fff !important}</style>');
 //]]>
 </script>
 

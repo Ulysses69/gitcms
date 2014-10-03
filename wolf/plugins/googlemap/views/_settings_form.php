@@ -411,9 +411,9 @@ onload = function() {
 				<select name="api_version" id="aapi_version">
 				<?php
 				$api_version_array = array(
-				array ('3.exp', '3.exp'),
-				array ('3.18', '3.18'),
-				array ('3.17', '3.17'));
+				array ('Experimental', '3.exp'),
+				array ('Stable Release', '3.0'),
+				array ('Version 3.17', '3.17'));
 				foreach($api_version_array as $subarray) {
 					list($text, $val) = $subarray;
 					if($val == $api_version){
@@ -425,7 +425,7 @@ onload = function() {
 				?>
 				</select>
 				</td>
-				<td class="help">Stable version is 3.17</td>
+				<td class="help">Default stable release version is 3.17</td>
 			</tr>
 
 			<tr>
