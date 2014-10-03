@@ -35,15 +35,15 @@ class SeoboxController extends PluginController {
 		$noticedays = $_POST['noticedays'];
 		$noticelivecheck = $_POST['noticelivecheck'];
 		$bots = $_POST['bots']; if($bots == '') $bots = 'disallow';
-		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];        
+		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];  
 		
-        $clientanalyticsversion = $_POST['clientanalyticsversion'];
-		if(stristr($clientanalyticsversion, 'analytics.js')){
+        $clientanalytics = $_POST['clientanalytics'];
+		if(stristr($clientanalytics, 'analytics.js')){
             // Universal tracking code detected
-            $clientanalytics = 'universal';
+            $clientanalyticsversion = 'universal';
         } else {
             // Default to saved analytics version
-            $clientanalytics = $_POST['clientanalytics'];
+            $clientanalyticsversion = $_POST['clientanalyticsversion'];
         }
         
 		$settings = array('sitemaplink' => $sitemaplink,
