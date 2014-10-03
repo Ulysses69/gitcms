@@ -146,6 +146,9 @@ $marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'go
 $marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 $streetview = Plugin::getSetting('streetview', 'googlemap');
 
+$api_version = Plugin::getSetting('api_version', 'googlemap');
+$region = Plugin::getSetting('region', 'googlemap');
+
 
 //if($latitude == null || $longitude == null){
 	if(Plugin::isEnabled('clientdetails') == true){

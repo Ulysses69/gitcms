@@ -389,6 +389,9 @@ class GoogleMapController extends PluginController {
 		if(isset($_POST['marker_shadow_img_point_x'])) { $marker_shadow_img_point_x = $_POST['marker_shadow_img_point_x']; } else { $marker_shadow_img_point_x = ''; }
 		if(isset($_POST['marker_shadow_img_point_y'])) { $marker_shadow_img_point_y = $_POST['marker_shadow_img_point_y']; } else { $marker_shadow_img_point_y = ''; }
 		if(isset($_POST['streetview'])) { $streetview = $_POST['streetview']; } else { $streetview = ''; }
+		
+		if(isset($_POST['api_version'])) { $api_version = $_POST['api_version']; } else { $api_version = ''; }
+		if(isset($_POST['region'])) { $region = $_POST['region']; } else { $region = ''; }
 
 		if($latitude == null || $longitude == null || $latitude == '' || $longitude == ''){
 			if(Plugin::isEnabled('clientdetails') == true){
@@ -680,7 +683,9 @@ class GoogleMapController extends PluginController {
 						'marker_shadow_img_y' => $marker_shadow_img_y,
 						'marker_shadow_img_point_x' => $marker_shadow_img_point_x,
 						'marker_shadow_img_point_y' => $marker_shadow_img_point_y,
-						'streetview' => $streetview
+						'streetview' => $streetview,
+						'api_version' => $api_version,
+						'region' => $region
 						);
 
 

@@ -3,7 +3,7 @@
 
 	$markerLat = $latitude;
 	$markerLong = $longitude;
-	
+
 	if(isset($draggable) && $draggable == 'true'){
 		$draggable = 'true';
 	} else {
@@ -25,7 +25,7 @@
 	if($map_libraries != '') $map_libraries = '&map_libraries='.$map_libraries;
 
 	#Markers (id,lat,long,icon,iconWidth,iconHeight,iconX,iconY,iconPointX,iconPointY,shadow,shadowWidth,shadowHeight,shadowX,shadowY,shadowPointX,shadowPointY)
-	$markers = array(	array($marker_id,$markerLat,$markerLong,$marker_img,$marker_img_width,$marker_img_height,$marker_img_x,$marker_img_y,$marker_img_point_x,$marker_img_point_y,$marker_shadow_img,$marker_shadow_img_width,$marker_shadow_img_height,$marker_shadow_img_x,$marker_shadow_img_y,$marker_shadow_img_point_x,$marker_shadow_img_point_y));
+	$markers = array(	array($marker_id, $markerLat, $markerLong, $marker_img, $marker_img_width, $marker_img_height, $marker_img_x, $marker_img_y, $marker_img_point_x, $marker_img_point_y, $marker_shadow_img, $marker_shadow_img_width, $marker_shadow_img_height, $marker_shadow_img_x, $marker_shadow_img_y, $marker_shadow_img_point_x, $marker_shadow_img_point_y));
 	//$markers = array(	array('default','52.517683','13.447179','googlemapflag.png','20','32','0','0','0','32','googlemapflag_shadow.png','37','32','0','0','0','32'));
 	//$markers = array(	array('default','52.511467','13.394393','googlemapflag.png','20','32','0','0','0','32','googlemapflag_shadow.png','37','32','0','0','0','32'), array('geo','52.517683','13.447179','googlemapflag.png','20','32','0','0','0','32','googlemapflag_shadow.png','37','32','0','0','0','32'));
 	$markerCount = count($markers);
@@ -45,9 +45,16 @@
 	
 
 
+
+$api_params = '';
+$api_params .= '?sensor='.$sensor;
+$api_params .= $map_libraries;
+if(isset($api_version)) $api_params .= '&amp;v='.$api_version;
+if(isset($region)) $api_params .= '&amp;region='.$region;
+
 ?>
 
-<script src="http://maps.googleapis.com/maps/api/js?sensor=<?php echo $sensor.$map_libraries; ?>"></script>
+<script src="http://maps.googleapis.com/maps/api/js<?php echo $api_params; ?>"></script>
 <script>
 <?php if(isset($marker) && $marker != 'false'){ ?>
 var markers = [];
@@ -82,7 +89,7 @@ for ($row = 0; $row < $markerCount; $row++) {
 	  $shadowPointY = $markers[$row][16];
 	  if($shadow == '') $missingshadow = true;
 	}
-?>[<?php echo '"'.$id.'","'.$lat.'","'.$long.'","'.$icon.'","'.$iconWidth.'","'.$iconHeight.'","'.$iconX.'","'.$iconY.'","'.$iconPointX.'","'.$iconPointY.'","'.$shadow.'","'.$shadowWidth.'","'.$shadowHeight.'","'.$shadowX.'","'.$shadowY.'","'.$shadowPointX.'","'.$shadowPointY.'"'; ?>]<?php if($row < $markerCount && $markerCount != 1){ echo ", "; }
+?>[<?php echo '"'.$id.'", "'.$lat.'", "'.$long.'", "'.$icon.'", "'.$iconWidth.'", "'.$iconHeight.'", "'.$iconX.'", "'.$iconY.'", "'.$iconPointX.'", "'.$iconPointY.'", "'.$shadow.'", "'.$shadowWidth.'", "'.$shadowHeight.'", "'.$shadowX.'", "'.$shadowY.'", "'.$shadowPointX.'", "'.$shadowPointY.'"'; ?>]<?php if($row < $markerCount && $markerCount != 1){ echo ", "; }
 }?>];
 
 
@@ -93,7 +100,7 @@ var maplocations = [<?php
 for ($row = 0; $row < $markerCount; $row++) {
 	for ($col = 0; $col < count($markers[$row][$col]); $col++) {
 	}
-	?>new google.maps.LatLng(<?php echo $markers[$row][1]; ?>,<?php echo $markers[$row][2]; ?>)<?php if($row < $markerCount && $markerCount != 1) echo ", ";
+	?>new google.maps.LatLng(<?php echo $markers[$row][1]; ?>, <?php echo $markers[$row][2]; ?>)<?php if($row < $markerCount && $markerCount != 1) echo ", ";
 }
 ?>];
 <?php } ?>

@@ -182,6 +182,8 @@ $marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'go
 $marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 $streetview = Plugin::getSetting('streetview', 'googlemap');
 
+$api_version = Plugin::getSetting('api_version', 'googlemap');
+$region = Plugin::getSetting('region', 'googlemap');
 
 if($marker_img != '' && $marker_shadow_img != ''){
 	if($marker_img == '' || stristr($marker_img,'marker.png')) $marker_img = 'marker.png';
@@ -309,6 +311,7 @@ onload = function() {
 <br />
 
 	<fieldset style="padding: 0.5em;">
+
 		<h2 class="group">Location</h2>
 		<table id="group-location" class="fieldset" cellpadding="0" cellspacing="0" border="0">
 
@@ -334,6 +337,28 @@ onload = function() {
 				</td>
 				<td class="help">Determine User&#39;s Location (not tested).</td>
 			</tr>
+
+			<tr>
+				<td class="label"><label for="aregion">Localized Region</label></td>
+				<td class="field">
+				<select name="region" id="aregion">
+				<?php
+				$region_array = array(
+				array ('GB', 'GB'));
+				foreach($region_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $region){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help">Two letter country code.</td>
+			</tr>
+
 			<?php } ?>
 
 			<tr>
@@ -379,6 +404,30 @@ onload = function() {
 		<table id="group-map" class="fieldset" cellpadding="0" cellspacing="0" border="0">
 
 			<?php if(!AuthUser::hasPermission('client')) { ?>
+
+			<tr>
+				<td class="label"><label for="aapi_version">API Version</label></td>
+				<td class="field">
+				<select name="api_version" id="aapi_version">
+				<?php
+				$api_version_array = array(
+				array ('3.exp', '3.exp'),
+				array ('3.18', '3.18'),
+				array ('3.17', '3.17'));
+				foreach($api_version_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $api_version){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help">Stable version is 3.17</td>
+			</tr>
+
 			<tr>
 				<td class="label"><label for="amap_id">Map ID</label></td>
 				<td class="field"><input class="textbox" type="text" name="map_id" id="amap_id" size="30" value="<?php echo $map_id; ?>" /></td>

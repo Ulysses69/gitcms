@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '3.5.0'); }
+if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.0.0'); }
 if (!defined('GMAP_ROOT')) {	define('GMAP_ROOT', URI_PUBLIC.'wolf/plugins/googlemap/images'); }
 if (!defined('GMAP_PATH')) {	define('GMAP_PATH', $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/googlemap/images'); }
 
@@ -206,6 +206,9 @@ function displayGoogleMap(){
 		$marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'googlemap');
 		$marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 		$streetview = Plugin::getSetting('streetview', 'googlemap');
+
+		$api_version = Plugin::getSetting('api_version', 'googlemap');
+		$region = Plugin::getSetting('region', 'googlemap');
 	
 		//if($map_id != null && $map_code != ''){
 		if($map_id != null){

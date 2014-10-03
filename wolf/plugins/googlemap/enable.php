@@ -195,6 +195,8 @@ if(!Plugin::getSetting('marker_shadow_img_y', 'googlemap')) $settings['marker_sh
 if(!Plugin::getSetting('marker_shadow_img_point_x', 'googlemap')) $settings['marker_shadow_img_point_x'] = '';
 if(!Plugin::getSetting('marker_shadow_img_point_y', 'googlemap')) $settings['marker_shadow_img_point_y'] = '';
 */
+if(!Plugin::getSetting('api_version', 'googlemap')) $settings['api_version'] = '3.17';
+if(!Plugin::getSetting('region', 'googlemap')) $settings['region'] = 'GB';
 
 // Check if settings were found for googlemap
 if (!$version || $version == null) {
