@@ -26,7 +26,6 @@ class SeoboxController extends PluginController {
 		$sitemapheadings = $_POST['sitemapheadings'];
 		$sitemaparchives = $_POST['sitemaparchives'];
 		$clientlocation = $_POST['clientlocation'];
-		$clientanalytics = $_POST['clientanalytics'];
 		$clientanalyticssubdomain = $_POST['clientanalyticssubdomain'];
 		$clientanalyticsstatus = $_POST['clientanalyticsstatus'];
 		$clientanalyticslinks = $_POST['clientanalyticslinks'];
@@ -36,8 +35,17 @@ class SeoboxController extends PluginController {
 		$noticedays = $_POST['noticedays'];
 		$noticelivecheck = $_POST['noticelivecheck'];
 		$bots = $_POST['bots']; if($bots == '') $bots = 'disallow';
-		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];
-		$clientanalyticsversion = $_POST['clientanalyticsversion'];
+		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];        
+		
+        $clientanalyticsversion = $_POST['clientanalyticsversion'];
+		if(stristr($clientanalyticsversion, 'analytics.js')){
+            // Universal tracking code detected
+            $clientanalytics = 'universal';
+        } else {
+            // Default to saved analytics version
+            $clientanalytics = $_POST['clientanalytics'];
+        }
+        
 		$settings = array('sitemaplink' => $sitemaplink,
 				  		  'sitemaptitle' => $sitemaptitle,
 						  'sitemapdescription' => $sitemapdescription,
