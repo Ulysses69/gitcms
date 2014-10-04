@@ -4,7 +4,7 @@ if (!defined('IN_CMS')) { exit(); }
 
 define('HTACCESS_TITLE', 'Server Configuration');
 define('HTACCESS_ID', '_htaccess');
-define('HTACCESS_VERSION', '1.0.3');
+define('HTACCESS_VERSION', '1.2.0');
 define('HTACCESS_ROOT', URI_PUBLIC.'wolf/plugins/'.HTACCESS_ID);
 
 Plugin::setInfos(array(
@@ -26,6 +26,12 @@ function saveServerConfig($htaccess='',$htaccessbackup='',$htaccessfile='',$htac
 
 	//echo $htaccess;
 	//exit;
+
+    /* Sanitize parameters */
+    $htaccess = strip_tags(trim($htaccess));
+    $htaccessbackup = strip_tags(trim($htaccessbackup));
+    $htaccessfile = strip_tags(trim($htaccessfile));
+    $htaccessbackupfile = strip_tags(trim($htaccessbackupfile));
 
 	/* htaccess and backup data required. Don't proceed without data. */
 	 if($htaccess != '' && $htaccessbackup != ''){

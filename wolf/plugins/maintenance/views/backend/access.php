@@ -2,7 +2,7 @@
 
 <!-- <h1>Maintenance Access Control</h1> -->
 
-<p>Below is a list of all IP addresses that will be allowed access to the website whilst in maintenance mode.</p>
+<p>Below is a whitelist of all IP addresses that will be allowed access to the website, whilst in restricted mode.</p>
 
 <table class="index" cellpadding="0" cellspacing="0" border="0">
 
@@ -36,7 +36,7 @@
 					<img src="<?php echo PLUGINS_URI; ?>maintenance/images/edit.png" /></a>
 			</td>
 			<td>
-				<a href="<?php echo get_url('maintenance/delete/'.$allow->id.''); ?>" onclick="return confirm('You are about to remove access to this site during maintenance session from the IP address <?php echo $allow->ip ?>\n\nYou will also lose any associated notes and names.\n\nAre you sure you wish to do this?\n');">
+				<a href="<?php echo get_url('maintenance/delete/'.$allow->id.''); ?>" onclick="return confirm('You are about to remove access to this site during restricted mode from the IP address <?php echo $allow->ip ?>\n\nYou will also lose any associated notes and names.\n\nAre you sure you wish to do this?\n');">
 					<img src="<?php echo URL_PUBLIC.ADMIN_DIR; ?>/images/icon-remove.gif" /></a>
 			</td>
 		</tr>

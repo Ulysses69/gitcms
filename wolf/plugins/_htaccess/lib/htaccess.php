@@ -194,12 +194,32 @@ $AdminAccess .= "#RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]\n";
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^\.local\n";
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^127\.0\.0\.1\n";
 /* Work IP */
-$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125\n";
+//$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125\n";
 /* Home IP */
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^77\.99\.231\.221\n";
 /* My iPhone IP */
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^213\.205\.231\.157\n";
-$AdminAccess .= "#RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
+//$AdminAccess .= "#RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
+
+
+
+// Restrict access to enabled whitelist IPs, when IPs have been granted authorized access.
+$maintenance = Plugin::getAllSettings('maintenance');
+//if(Plugin::isEnabled('maintenance') == true && $maintenance['maintenanceAuthorizedAccess'] == 'on'){
+if(Plugin::isEnabled('maintenance') == true){
+    $allowed_ips = 0;
+	$allowed = MaintenanceAccessControl::getAllowed();
+    foreach($allowed as $allow) {
+		if($allow->enabled == 'yes'){
+            $allowed_ips++;
+            $AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^".str_replace('.', '\.', $allow->ip)."\n";
+        }
+	}
+	if($allowed_ips > 0){
+        $AdminAccess .= "#RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
+    }
+}
+
 
 
 /* Private access (whitelist exception needs setting) */

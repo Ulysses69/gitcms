@@ -81,6 +81,42 @@
 
 
 
+<?php
+// Restrict access to enabled whitelist IPs, when IPs have been granted authorized access.
+$settings = Plugin::getAllSettings('maintenance');
+//if(Plugin::isEnabled('maintenance') == true && $settings['maintenanceAuthorizedAccess'] == 'on'){
+if(Plugin::isEnabled('maintenance') == true){
+?>
+<div class="boxed">
+<h2>Allowed IPs</h2>
+<table class="index" cellpadding="0" cellspacing="0" border="0">
+
+	<thead>
+		<th>IP</th>
+		<th>Name</th>
+	</thead>
+
+	<tbody>
+    <?php
+	$allowed = MaintenanceAccessControl::getAllowed();
+    foreach($allowed as $allow) {
+		if($allow->enabled == 'yes'){ ?>
+		<tr>
+			<td><strong><?php echo $allow->ip; ?></strong></td>
+			<td><strong><?php echo $allow->name; ?></strong></td>
+		</tr>
+
+        <?php }
+
+	} ?>
+	</tbody>
+
+</table>
+</div>
+<?php } ?>
+
+
+
 
 
 <script type="text/javascript" charset="utf-8">

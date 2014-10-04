@@ -281,6 +281,12 @@
 	</ul>
 
 
+	<?php
+    // Set history group count
+    $history_spacer = 0;
+    ?>
+
+
 	
 	<h2>Activity history</h2>
 
@@ -299,7 +305,7 @@
 		<?php } ?>
 		<?php endforeach; ?>
 		</table>
-		<?php } ?>
+		<?php $history_spacer++; if($history_spacer > 0) echo '<br/>'; } ?>
 	
 	
 		<?php if(sizeof($log_entry_yesterday) > 0){ $logitems .= sizeof($log_entry_yesterday); ?>
@@ -316,7 +322,7 @@
 		 <?php } ?>
 		<?php endforeach; ?>
 		</table>
-		<?php } ?>
+		<?php $history_spacer++; if($history_spacer > 0) echo '<br/>'; } ?>
 
 	
 		<?php if(sizeof($log_entry_older) > 0){ $logitems .= sizeof($log_entry_older); ?>

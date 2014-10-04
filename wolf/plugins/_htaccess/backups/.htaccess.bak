@@ -20,6 +20,16 @@ Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteRule ^test2 "test2.html" [L,R=301,E=nocache:1]
+RewriteRule ^test3 "test3.html" [L,R=301,E=nocache:1]
+RewriteCond %{HTTP_HOST} !.local$ [NC]
+RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
+RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} !^(www|([^.]+)\.([a-z]{2,4})$) [NC]
+RewriteRule .? http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/index.php$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/$ install/index.php?rewrite=1 [L,QSA]
