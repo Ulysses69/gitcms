@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.2.0'); }
+if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.3.0'); }
 if (!defined('COPYRIGHT_ROOT')) { define('COPYRIGHT_ROOT', URI_PUBLIC.'wolf/plugins/copyright'); }
 Plugin::setInfos(array(
 	'id'					=> 'copyright',
@@ -239,19 +239,39 @@ function gdcUrl(){
 if(!function_exists('cqcUrl')){
 function cqcUrl(){
 	$url = Plugin::getSetting('cqcurl', 'copyright');
-	if($url != ''){
+	$cqcnumber = Plugin::getSetting('cqcnumber', 'copyright');
+	$name = Plugin::getSetting('cqcname', 'copyright');
+	if($cqcnumber != ''){
+		$testurl = 'http://www.cqc.org.uk/location/'.$cqcnumber;
+		$array = get_headers($testurl);
+		$string = $array[0];
+		if(strpos($string,"200")) {
+		    $url = $testurl;
+		} else {
+		    if($name != ''){
+				$url = 'http://www.cqc.org.uk/search/site/'.urlencode($name);
+			} else {
+				$url = '';
+			}
+		}
+	}
+	if($url != '' ){
 		return $url;
 	} else {
-		return 'http://www.cqc.org.uk/search-criteria/dentists#dentists';
+		$param = '';
+		if(Plugin::getSetting('schema', 'clientdetails') != ''){
+			$param = Plugin::getSetting('schema', 'clientdetails');
+		}
+		return 'http://www.cqc.org.uk/search-criteria/'.$param;
 	}
 }
 }
 
 if(!function_exists('cqcName')){
 function cqcName(){
-	$url = Plugin::getSetting('cqcname', 'copyright');
-	if($url != ''){
-		return $url;
+	$name = Plugin::getSetting('cqcname', 'copyright');
+	if($name != ''){
+		return $name;
 	}
 }
 }
