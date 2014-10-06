@@ -12,7 +12,7 @@
 
 <?php if(Plugin::isEnabled('searchbox') == true){ ?>
 <div class="box warning">
-<h2><?php echo __('Search Conflict');?></h2>
+<h2><?php echo __('Warning');?></h2>
 <p>Search feature does not presently work with restricted mode on.</p>
 </div>
 <?php } ?>

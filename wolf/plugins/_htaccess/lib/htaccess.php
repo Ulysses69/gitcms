@@ -212,11 +212,12 @@ if(Plugin::isEnabled('maintenance') == true){
     foreach($allowed as $allow) {
 		if($allow->enabled == 'yes'){
             $allowed_ips++;
-            $AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^".str_replace('.', '\.', $allow->ip)."\n";
+            $AdminAccess .= "RewriteCond %{REMOTE_HOST} !^".str_replace('.', '\.', $allow->ip)."\n";
         }
 	}
 	if($allowed_ips > 0){
-        $AdminAccess .= "#RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
+        //$AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
+        $AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html?noaccess [R,L]\n";
     }
 }
 

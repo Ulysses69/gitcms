@@ -2,6 +2,17 @@
 	width: 17px;
 	height: auto;
 }
+#body_plugin_maintenance .boxed {
+	overflow: hidden;
+	position: relative;
+	border: solid 1px #cccccc;
+	padding: 10px;
+	margin: 0 0 20px 0;
+}
+#body_plugin_maintenance .boxed h2 {
+	font-size: 110%;
+	margin: 0 0 -8px 0;
+}
 #body_plugin_maintenance #sidebar .box {
 	padding: 0;
 	border: none;
@@ -17,6 +28,37 @@
 #body_plugin_maintenance input:focus {
 	border-color: #389702;
 }
+#body_plugin_maintenance #ip_form td {
+	padding-top: 10px;
+    border-top: none;
+    border-bottom: solid 1px #ccc;
+}
+#body_plugin_maintenance .help {
+	background: #fff;
+}
+
+
+
+
+#ip_form {
+	background-color: #fff;
+	padding: 10px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 0 20px 0;
+	border-bottom: solid 1px #cacaca;
+}
+#ip_form p {
+	margin: 15px 0 10px 0;
+}
+#add_ip {
+	width: 100%;
+}
+#add_ip td {
+	padding: 0 10px 10px 0;
+}
+
+
 
 
 #body_plugin_maintenance .warning {

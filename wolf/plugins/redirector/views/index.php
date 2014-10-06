@@ -41,7 +41,7 @@
 		  </tr> 
 		</table>	
 		  <p class="buttons">
-				<input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Save and continue'); ?>" value="<?php echo __('Save'); ?>" />
+				<input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="<?php echo __('Add and continue'); ?>" value="<?php echo __('Add'); ?>" />
 		  </p>
 	</form>
 </div>
@@ -81,6 +81,8 @@
 
 
 
+
+
 <?php
 // Restrict access to enabled whitelist IPs, when IPs have been granted authorized access.
 $settings = Plugin::getAllSettings('maintenance');
@@ -114,6 +116,35 @@ if(Plugin::isEnabled('maintenance') == true){
 </table>
 </div>
 <?php } ?>
+
+
+<?php
+	/* Check for existence of notfound scripts tab */
+	$behavior_sql = "SELECT * FROM ".TABLE_PREFIX."page WHERE behavior_id='page_not_found'";
+	$behavior_q = Record::getConnection()->query($behavior_sql);
+	$behavior_f = $behavior_q->fetchAll(PDO::FETCH_OBJ);
+	foreach ($behavior_f as $behavior) {
+        $notfoundid = $behavior->id;
+        if($notfoundid){
+            $scripts_sql = "SELECT * FROM ".TABLE_PREFIX."page_part WHERE page_id='".$notfoundid."' AND name='scripts'";
+            $scripts_q = Record::getConnection()->query($scripts_sql);
+            $scripts_f = $scripts_q->fetchAll(PDO::FETCH_OBJ);
+            if(count($scripts_f) > 0){
+                echo '<p>Page '.$notfoundid.' Scripts Exists.</p>';
+            }
+            foreach ($scripts_f as $script) {
+                $name = $script->name;
+                $body = $script->id;
+                $body_html = $script->content_html;
+                if($body != '' || $body_html != ''){
+                    //echo '<p>Page 10 Scripts Exists: '.$name.', '.$body.'</p>';
+                }
+            }
+        }
+	}
+
+?>
+
 
 
 
