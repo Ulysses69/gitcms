@@ -62,7 +62,7 @@ function downloadPDF($page){
 			} else {
 				$content .= qrimg($thepage->url);
 			}
-			$content .= '<p>QR Code Passed: '.$thepage->url.'</p>';
+			$content .= '<p>QR Code Passed: '.URL_ABSOLUTE.$thepage->url.'</p>';
 		}
 
 		$html = $content;
@@ -448,17 +448,17 @@ EOS;
 					if($header == false){
 						$pdf->setPrintHeader(false);
 					}
-					$pdf->setPrintFooter(false);
-				
+					$pdf->setPrintFooter(false);  
+
 					// set header and footer fonts
 					if($header == true){
 						$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 					}
 					//$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-					
+                    
 					// set default monospaced font
 					$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-		
+
 		
 					if($header == true){
 						//set margins
@@ -483,22 +483,33 @@ EOS;
 					}
 
 					//set some language-dependent strings
-					//$pdf->setLanguageArray($l);
-					
+					//$pdf->setLanguageArray($l);                                      
+                    
 					// Setup font type/encoding
 					//$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueTypeUnicode'; $fontEnc = ''; $fontFlags = 32;
-					$fontPath = K_PATH_FONTS; $fontFile = 'Roboto-Regular.ttf'; $fontType = 'TrueType'; $fontEnc = 'ansi'; $fontFlags = 32;
+					$fontEnc = 'ansi'; $fontFlags = 32;
 
+					// Check if specified font exists and is ttf
+                    $custom_font = realpath('inc/font/Roboto-Regular.ttf'); 
+                    if(file_exists($custom_font) && stripos($custom_font, '.ttf')){                        
+                        // Add font
+                        $fontType = 'TrueType';
+                        $fontname = $pdf->addTTFfont(realpath('inc/font/Roboto-Regular.ttf'), $fontType, $fontEnc, $fontFlags);
+                    } else {
+                        // Use default font
+                        $fontPath = K_PATH_FONTS; $fontFile = 'helvetica.ttf'; $fontType = 'TrueType';
+                        $fontname = $pdf->addTTFfont($fontPath . $fontFile, $fontType, $fontEnc, $fontFlags);
+                    }
 
-					// Add font
-					$fontname = $pdf->addTTFfont('E:/webroot/tests/wolf/gitcms/inc/font/Roboto-Regular.ttf', $fontType, $fontEnc, $fontFlags);
-					//$fontname = $pdf->addTTFfont($fontPath . $fontFile, $fontType, $fontEnc, $fontFlags);
 					//echo $fontname;
+
+                    //echo 'HALT: '.realpath('inc/font/Roboto-Regular.ttf');
+                    //exit;
 
 					// set font
 					//$pdf->SetFont('helvetica', '', 9);
-					$pdf->AddFont($fontname, '', $fontname.'.php');
-					$pdf->SetFont($fontname, '', 9);
+					//$pdf->AddFont($fontname, '', $fontname.'.php');
+					//$pdf->SetFont($fontname, '', 9);
 
 					//echo 'K_PATH_URL: '.K_PATH_URL.'<br>';
 					//echo 'K_PATH_FONTS: '.K_PATH_FONTS.'<br>';
