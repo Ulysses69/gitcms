@@ -149,19 +149,22 @@
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('CQC'); ?></legend>
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 			<tr>
-				<td class="label"><label for="cqcname"><?php echo __('Registered Name'); ?></label></td>
-				<td colspan="2" class="field"><?php $cqcname = Plugin::getSetting('cqcname', 'copyright'); ?>
+				<td class="label number"><label for="cqcnumber"><?php echo __('Registration Number'); ?></label></td>
+				<td colspan="2" class="field"><?php $cqcnumber = Plugin::getSetting('cqcnumber', 'copyright'); ?>
+				<input name="cqcnumber" id="cqcnumber" value="<?php echo $cqcnumber; ?>" /></td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td class="label name"><label for="cqcname"><?php echo __('Registered Name'); ?></label></td>
+				<td colspan="2" class="field name"><?php $cqcname = Plugin::getSetting('cqcname', 'copyright'); ?>
 				<input name="cqcname" id="cqcname" value="<?php echo $cqcname; ?>" /></td>
 				<td class="help"><?php echo __('As per CQC website.');?></td>
 			</tr>
 			<tr>
-				<td class="label number"><label for="cqcnumber"><?php echo __('Registration Number'); ?></label></td>
-				<td class="field number"><?php $cqcnumber = Plugin::getSetting('cqcnumber', 'copyright'); ?>
-				<input name="cqcnumber" id="cqcnumber" value="<?php echo $cqcnumber; ?>" /></td>
-
 				<td class="label url"><label for="cqcurl"><?php echo __('Registration URL'); ?></label></td>
-				<td class="field url"><?php $cqcurl = Plugin::getSetting('cqcurl', 'copyright'); ?>
+				<td colspan="2" class="field url"><?php $cqcurl = Plugin::getSetting('cqcurl', 'copyright'); ?>
 				<input name="cqcurl" id="cqcurl" value="<?php echo $cqcurl; ?>" /></td>
+				<td class="help"><?php echo __('Leave blank to auto-generate.');?></td>
 			</tr>
 		</table>
 	</fieldset>

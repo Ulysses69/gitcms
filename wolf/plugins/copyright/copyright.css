@@ -7,7 +7,8 @@
 	background: #f3efef !important;
 }
 #body_plugin_copyright #linkcustom,
-#body_plugin_copyright #cqcname {
+#body_plugin_copyright #cqcname,
+#body_plugin_copyright #cqcurl {
 	width: 100%;
 }
 #body_plugin_copyright #linkback {
@@ -18,6 +19,7 @@
 #body_plugin_copyright td.field.number {
 	width: 11em;
 }
+#body_plugin_copyright td.label.name,
 #body_plugin_copyright td.label.url {
 	width: 10em;
 }
@@ -27,7 +29,7 @@
 #body_plugin_copyright td.field.address textarea {
 	height: 7em;
 }
-#body_plugin_copyright td.field.number input,
+#body_plugin_copyright td.field.name input,
 #body_plugin_copyright td.field.url input,
 #body_plugin_copyright td textarea {
 	width: 98%;
