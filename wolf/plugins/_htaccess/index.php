@@ -4,7 +4,7 @@ if (!defined('IN_CMS')) { exit(); }
 
 define('HTACCESS_TITLE', 'Server Configuration');
 define('HTACCESS_ID', '_htaccess');
-define('HTACCESS_VERSION', '1.2.0');
+define('HTACCESS_VERSION', '1.3.0');
 define('HTACCESS_ROOT', URI_PUBLIC.'wolf/plugins/'.HTACCESS_ID);
 
 Plugin::setInfos(array(
@@ -32,6 +32,33 @@ function saveServerConfig($htaccess='',$htaccessbackup='',$htaccessfile='',$htac
     $htaccessbackup = strip_tags(trim($htaccessbackup));
     $htaccessfile = strip_tags(trim($htaccessfile));
     $htaccessbackupfile = strip_tags(trim($htaccessbackupfile));
+    
+
+
+
+
+    /*
+    if($htaccess=''){
+        $htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
+        ob_start();
+        include($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/lib/htaccess.php');
+        $htaccesstemplate = ob_get_contents();
+        ob_end_clean();
+
+        //$htaccess = file_get_contents($htaccesstemplate);
+        $htaccess = $htaccesstemplate;
+        $htaccess = preg_replace("/(\s\s){1,}/","\n",trim($htaccess));
+
+        $htaccessbackupfile = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/backups/.htaccess.bak';
+        $htaccessbackup = file_get_contents($htaccessbackupfile);
+        $htaccessbackup = preg_replace("/(\s\s){1,}/","\n",trim($htaccessbackup));
+
+        saveServerConfig($htaccess,$htaccessbackup,$htaccessfile,$htaccessbackupfile);
+    }
+    */
+
+    
+    
 
 	/* htaccess and backup data required. Don't proceed without data. */
 	 if($htaccess != '' && $htaccessbackup != ''){
