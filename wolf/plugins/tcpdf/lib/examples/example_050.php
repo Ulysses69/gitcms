@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_050.php
-// Begin	   : 2009-04-09
+// Begin       : 2009-04-09
 // Last Update : 2013-05-14
 //
 // Description : Example 050 for TCPDF class
-//			   2D Barcodes
+//               2D Barcodes
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

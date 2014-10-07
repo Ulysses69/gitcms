@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_colors.php
-// Version	 : 1.0.004
-// Begin	   : 2002-04-09
+// Version     : 1.0.004
+// Begin       : 2002-04-09
 // Last Update : 2014-04-25
-// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2002-2013  Nicola Asuni - Tecnick.com LTD
 //
@@ -218,20 +218,20 @@ class TCPDF_COLORS {
 	 */
 	public static $spotcolor = array (
 		// special registration colors
-		'none'	=> array(  0,   0,   0,   0, 'None'),
-		'all'	 => array(100, 100, 100, 100, 'All'),
+		'none'    => array(  0,   0,   0,   0, 'None'),
+		'all'     => array(100, 100, 100, 100, 'All'),
 		// standard CMYK colors
-		'cyan'	=> array(100,   0,   0,   0, 'Cyan'),
+		'cyan'    => array(100,   0,   0,   0, 'Cyan'),
 		'magenta' => array(  0, 100,   0,   0, 'Magenta'),
 		'yellow'  => array(  0,   0, 100,   0, 'Yellow'),
-		'key'	 => array(  0,   0,   0, 100, 'Key'),
+		'key'     => array(  0,   0,   0, 100, 'Key'),
 		// alias
 		'white'   => array(  0,   0,   0,   0, 'White'),
 		'black'   => array(  0,   0,   0, 100, 'Black'),
 		// standard RGB colors
-		'red'	 => array(  0, 100, 100,   0, 'Red'),
+		'red'     => array(  0, 100, 100,   0, 'Red'),
 		'green'   => array(100,   0, 100,   0, 'Green'),
-		'blue'	=> array(100, 100,   0,   0, 'Blue'),
+		'blue'    => array(100, 100,   0,   0, 'Blue'),
 		// Add here standard spot colors or dynamically define them with AddSpotColor()
 		// ...
 	); // end of spot colors

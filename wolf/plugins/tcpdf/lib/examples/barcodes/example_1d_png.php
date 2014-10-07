@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : example_1d_png.php
-// Version	 : 1.0.000
-// Begin	   : 2011-07-21
+// Version     : 1.0.000
+// Begin       : 2011-07-21
 // Last Update : 2013-03-19
-// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2009-2013 Nicola Asuni - Tecnick.com LTD
 //

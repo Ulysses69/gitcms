@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_029.php
-// Begin	   : 2008-06-09
+// Begin       : 2008-06-09
 // Last Update : 2013-05-14
 //
 // Description : Example 029 for TCPDF class
-//			   Set PDF viewer display preferences.
+//               Set PDF viewer display preferences.
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

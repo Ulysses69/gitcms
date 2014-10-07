@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_030.php
-// Begin	   : 2008-06-09
+// Begin       : 2008-06-09
 // Last Update : 2013-05-14
 //
 // Description : Example 030 for TCPDF class
-//			   Colour gradients
+//               Colour gradients
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**
@@ -110,11 +110,11 @@ $pdf->Text(20, 240, 'CoonsPatchMesh()');
 
 // set the coordinates for the cubic Bézier points x1,y1 ... x12, y12 of the patch (see coons_patch_mesh_coords.jpg)
 $coords = array(
-	0.00,0.00, 0.33,0.20,			 //lower left
+	0.00,0.00, 0.33,0.20,             //lower left
 	0.67,0.00, 1.00,0.00, 0.80,0.33,  //lower right
 	0.80,0.67, 1.00,1.00, 0.67,0.80,  //upper right
 	0.33,1.00, 0.00,1.00, 0.20,0.67,  //upper left
-	0.00,0.33);					   //lower left
+	0.00,0.33);                       //lower left
 $coords_min = 0;   //minimum value of the coordinates
 $coords_max = 1;   //maximum value of the coordinates
 

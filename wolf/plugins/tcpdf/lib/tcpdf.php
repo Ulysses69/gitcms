@@ -1,17 +1,17 @@
 <?php
 //============================================================+
 // File name   : tcpdf.php
-// Version	 : 6.0.093
-// Begin	   : 2002-08-03
-// Last Update : 2014-09-02
-// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Version     : 6.0.096
+// Begin       : 2002-08-03
+// Last Update : 2014-10-06
+// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2002-2014 Nicola Asuni - Tecnick.com LTD
 //
 // This file is part of TCPDF software library.
 //
-// TCPDF is free software: you can ioredistribute it and/or modify it
+// TCPDF is free software: you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as
 // published by the Free Software Foundation, either version 3 of the
 // License, or (at your option) any later version.
@@ -104,7 +104,7 @@
  * Tools to encode your unicode fonts are on fonts/utils directory.</p>
  * @package com.tecnick.tcpdf
  * @author Nicola Asuni
- * @version 6.0.093
+ * @version 6.0.096
  */
 
 // TCPDF configuration
@@ -128,7 +128,7 @@ require_once(dirname(__FILE__).'/include/tcpdf_static.php');
  * TCPDF project (http://www.tcpdf.org) has been originally derived in 2002 from the Public Domain FPDF class by Olivier Plathey (http://www.fpdf.org), but now is almost entirely rewritten.<br>
  * @package com.tecnick.tcpdf
  * @brief PHP class for generating PDF documents without requiring external extensions.
- * @version 6.0.093
+ * @version 6.0.096
  * @author Nicola Asuni - info@tecnick.com
  */
 class TCPDF {
@@ -1974,7 +1974,7 @@ class TCPDF {
 		// check if PCRE Unicode support is enabled
 		if ($this->isunicode AND (@preg_match('/\pL/u', 'a') == 1)) {
 			// PCRE unicode support is turned ON
-			// \s	 : any whitespace character
+			// \s     : any whitespace character
 			// \p{Z}  : any separator
 			// \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
 			// \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
@@ -2317,10 +2317,10 @@ class TCPDF {
 	 * Unicode and PCRE unicode support: "/(?!\xa0)[\s\p{Z}]/u"
 	 * Unicode and PCRE unicode support in Chinese mode: "/(?!\xa0)[\s\p{Z}\p{Lo}]/u"
 	 * if PCRE unicode support is turned ON ("\P" is the negate class of "\p"):
-	 *	  \s	 : any whitespace character
-	 *	  \p{Z}  : any separator
-	 *	  \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
-	 *	  \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
+	 *      \s     : any whitespace character
+	 *      \p{Z}  : any separator
+	 *      \p{Lo} : Unicode letter or ideograph that does not have lowercase and uppercase variants. Is used to chunk chinese words.
+	 *      \xa0   : Unicode Character 'NO-BREAK SPACE' (U+00A0)
 	 * </pre>
 	 * @param $re (string) regular expression (leave empty for default).
 	 * @public
@@ -13534,7 +13534,7 @@ class TCPDF {
 		// to create self-signed signature: openssl req -x509 -nodes -days 365000 -newkey rsa:1024 -keyout tcpdf.crt -out tcpdf.crt
 		// to export crt to p12: openssl pkcs12 -export -in tcpdf.crt -out tcpdf.p12
 		// to convert pfx certificate to pem: openssl
-		//	 OpenSSL> pkcs12 -in <cert.pfx> -out <cert.crt> -nodes
+		//     OpenSSL> pkcs12 -in <cert.pfx> -out <cert.crt> -nodes
 		$this->sign = true;
 		++$this->n;
 		$this->sig_obj_id = $this->n; // signature widget
@@ -18187,7 +18187,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 							$cellh = 0;
 						}
 						if (isset($dom[$key]['content'])) {
-							$cell_content = stripslashes($dom[$key]['content']);
+							$cell_content = $dom[$key]['content'];
 						} else {
 							$cell_content = '&nbsp;';
 						}
@@ -19768,7 +19768,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 									$ccode .= $this->getCellCode($w, $h, '', $cborder, 1, '', $fill, '', 0, true)."\n";
 								} // end for each column
 							}
-							if ($cborder OR $fill) {
+							if (!empty($cborder) OR !empty($fill)) {
 								$offsetlen = strlen($ccode);
 								// draw border and fill
 								if ($this->inxobj) {

@@ -1,20 +1,20 @@
 <?php
 //============================================================+
 // File name   : urd.php
-// Begin	   : 2004-03-03
+// Begin       : 2004-03-03
 // Last Update : 2010-10-26
 //
 // Description : Language module for TCPDF
-//			   (contains translated texts)
-//			   Welsh
+//               (contains translated texts)
+//               Welsh
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

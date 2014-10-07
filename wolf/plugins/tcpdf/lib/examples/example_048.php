@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_048.php
-// Begin	   : 2009-03-20
+// Begin       : 2009-03-20
 // Last Update : 2013-05-14
 //
 // Description : Example 048 for TCPDF class
-//			   HTML tables and table headers
+//               HTML tables and table headers
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**
@@ -80,18 +80,18 @@ $pdf->SetFont('helvetica', '', 8);
 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="1" border="1">
-	<tr>
-		<td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3</td>
-		<td>COL 2 - ROW 1</td>
-		<td>COL 3 - ROW 1</td>
-	</tr>
-	<tr>
-		<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
-		<td>COL 3 - ROW 2</td>
-	</tr>
-	<tr>
-	   <td>COL 3 - ROW 3</td>
-	</tr>
+    <tr>
+        <td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3</td>
+        <td>COL 2 - ROW 1</td>
+        <td>COL 3 - ROW 1</td>
+    </tr>
+    <tr>
+    	<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
+    	<td>COL 3 - ROW 2</td>
+    </tr>
+    <tr>
+       <td>COL 3 - ROW 3</td>
+    </tr>
 
 </table>
 EOD;
@@ -102,18 +102,18 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="1" border="1">
-	<tr>
-		<td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3<br />text line<br />text line<br />text line<br />text line<br />text line<br />text line</td>
-		<td>COL 2 - ROW 1</td>
-		<td>COL 3 - ROW 1</td>
-	</tr>
-	<tr>
-		<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
-		 <td>COL 3 - ROW 2</td>
-	</tr>
-	<tr>
-	   <td>COL 3 - ROW 3</td>
-	</tr>
+    <tr>
+        <td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3<br />text line<br />text line<br />text line<br />text line<br />text line<br />text line</td>
+        <td>COL 2 - ROW 1</td>
+        <td>COL 3 - ROW 1</td>
+    </tr>
+    <tr>
+    	<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
+    	 <td>COL 3 - ROW 2</td>
+    </tr>
+    <tr>
+       <td>COL 3 - ROW 3</td>
+    </tr>
 
 </table>
 EOD;
@@ -124,18 +124,18 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 
 $tbl = <<<EOD
 <table cellspacing="0" cellpadding="1" border="1">
-	<tr>
-		<td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3<br />text line<br />text line<br />text line<br />text line<br />text line<br />text line</td>
-		<td>COL 2 - ROW 1</td>
-		<td>COL 3 - ROW 1</td>
-	</tr>
-	<tr>
-		<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
-		 <td>COL 3 - ROW 2<br />text line<br />text line</td>
-	</tr>
-	<tr>
-	   <td>COL 3 - ROW 3</td>
-	</tr>
+    <tr>
+        <td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3<br />text line<br />text line<br />text line<br />text line<br />text line<br />text line</td>
+        <td>COL 2 - ROW 1</td>
+        <td>COL 3 - ROW 1</td>
+    </tr>
+    <tr>
+    	<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
+    	 <td>COL 3 - ROW 2<br />text line<br />text line</td>
+    </tr>
+    <tr>
+       <td>COL 3 - ROW 3</td>
+    </tr>
 
 </table>
 EOD;

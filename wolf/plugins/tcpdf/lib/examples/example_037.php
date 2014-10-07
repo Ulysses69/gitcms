@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_037.php
-// Begin	   : 2008-09-12
+// Begin       : 2008-09-12
 // Last Update : 2013-09-30
 //
 // Description : Example 037 for TCPDF class
-//			   Spot colors
+//               Spot colors
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

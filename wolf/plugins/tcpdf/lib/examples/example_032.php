@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_032.php
-// Begin	   : 2008-06-09
+// Begin       : 2008-06-09
 // Last Update : 2013-06-19
 //
 // Description : Example 032 for TCPDF class
-//			   EPS/AI image
+//               EPS/AI image
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

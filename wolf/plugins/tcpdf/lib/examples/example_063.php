@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_063.php
-// Begin	   : 2010-09-29
+// Begin       : 2010-09-29
 // Last Update : 2013-05-14
 //
 // Description : Example 063 for TCPDF class
-//			   Text stretching and spacing (tracking)
+//               Text stretching and spacing (tracking)
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

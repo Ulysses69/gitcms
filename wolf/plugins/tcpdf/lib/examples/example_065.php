@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_065.php
-// Begin	   : 2011-09-28
+// Begin       : 2011-09-28
 // Last Update : 2013-05-14
 //
 // Description : Example 065 for TCPDF class
-//			   Creates an example PDF/A-1b document using TCPDF
+//               Creates an example PDF/A-1b document using TCPDF
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

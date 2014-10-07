@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_filters.php
-// Version	 : 1.0.001
-// Begin	   : 2011-05-23
+// Version     : 1.0.001
+// Begin       : 2011-05-23
 // Last Update : 2014-04-25
-// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License	 : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
+// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
 // Copyright (C) 2011-2013 Nicola Asuni - Tecnick.com LTD
 //

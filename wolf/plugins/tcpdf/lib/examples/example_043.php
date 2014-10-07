@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_043.php
-// Begin	   : 2009-01-02
+// Begin       : 2009-01-02
 // Last Update : 2013-05-14
 //
 // Description : Example 043 for TCPDF class
-//			   Disk caching
+//               Disk caching
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

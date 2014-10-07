@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_004.php
-// Begin	   : 2008-03-04
+// Begin       : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 004 for TCPDF class
-//			   Cell stretching
+//               Cell stretching
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

@@ -1,11 +1,11 @@
 <?php
 //============================================================+
 // File name   : tcpdf_parser.php
-// Version	 : 1.0.014
-// Begin	   : 2011-05-23
+// Version     : 1.0.014
+// Begin       : 2011-05-23
 // Last Update : 2014-02-18
-// Author	  : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
-// License	 : http://www.tecnick.com/pagefiles/tcpdf/LICENSE.TXT GNU-LGPLv3
+// Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
+// License     : http://www.tecnick.com/pagefiles/tcpdf/LICENSE.TXT GNU-LGPLv3
 // -------------------------------------------------------------------
 // Copyright (C) 2011-2014 Nicola Asuni - Tecnick.com LTD
 //
@@ -601,7 +601,7 @@ class TCPDF_PARSER {
 						$offset += strlen($matches[0]);
 					} elseif (($endpos = strpos($this->pdfdata, '>', $offset)) !== FALSE) {
 						$offset = $endpos + 1;
-					}
+                    }
 				}
 				break;
 			}

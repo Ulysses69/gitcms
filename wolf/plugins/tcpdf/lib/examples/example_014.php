@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_014.php
-// Begin	   : 2008-03-04
+// Begin       : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 014 for TCPDF class
-//			   Javascript Form and user rights (only works on Adobe Acrobat)
+//               Javascript Form and user rights (only works on Adobe Acrobat)
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**
@@ -166,9 +166,9 @@ $js = <<<EOD
 function CheckField(name,message) {
 	var f = getField(name);
 	if(f.value == '') {
-		app.alert(message);
-		f.setFocus();
-		return false;
+	    app.alert(message);
+	    f.setFocus();
+	    return false;
 	}
 	return true;
 }

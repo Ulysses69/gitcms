@@ -1,7 +1,7 @@
 <?php
 //============================================================+
 // File name   : tcpdf_barcodes_1d_include.php
-// Begin	   : 2013-05-19
+// Begin       : 2013-05-19
 // Last Update : 2013-05-19
 //
 // Description : Search and include the TCPDF Barcode 1D class.
@@ -9,10 +9,10 @@
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_057.php
-// Begin	   : 2010-04-03
+// Begin       : 2010-04-03
 // Last Update : 2013-05-14
 //
 // Description : Example 057 for TCPDF class
-//			   Cell vertical alignments
+//               Cell vertical alignments
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

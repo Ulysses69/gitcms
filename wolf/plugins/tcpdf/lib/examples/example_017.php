@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_017.php
-// Begin	   : 2008-03-04
+// Begin       : 2008-03-04
 // Last Update : 2013-05-14
 //
 // Description : Example 017 for TCPDF class
-//			   Two independent columns with MultiCell
+//               Two independent columns with MultiCell
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**

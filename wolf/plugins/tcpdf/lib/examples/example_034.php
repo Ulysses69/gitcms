@@ -1,19 +1,19 @@
 <?php
 //============================================================+
 // File name   : example_034.php
-// Begin	   : 2008-07-18
+// Begin       : 2008-07-18
 // Last Update : 2013-05-14
 //
 // Description : Example 034 for TCPDF class
-//			   Clipping
+//               Clipping
 //
 // Author: Nicola Asuni
 //
 // (c) Copyright:
-//			   Nicola Asuni
-//			   Tecnick.com LTD
-//			   www.tecnick.com
-//			   info@tecnick.com
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
 //============================================================+
 
 /**
