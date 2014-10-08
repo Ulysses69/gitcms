@@ -190,13 +190,14 @@ function main() {
 
 	// if we found it, display it!
 	if (is_object($page)) {
+
 		// If a page is in preview status, only display to logged in users
 		if (Page::STATUS_PREVIEW == $page->status_id) {
 			AuthUser::load();
 			if (!AuthUser::isLoggedIn() || !AuthUser::hasPermission('administrator, developer, editor'))
 				page_not_found();
 		}
-
+		
 		// If page needs login, redirect to login
 		if ($page->getLoginNeeded() == Page::LOGIN_REQUIRED) {
 			AuthUser::load();

@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.0.1',
+	'version'	 			=> '6.1.0',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -208,7 +208,29 @@ function layoutScreenCss($content,$get='ob_get_contents'){
 
 
 function layout_switch_check($page) {
+	
+	/* Check for notfound page (as per invalid admin redirects) */
+	if(strpos($_SERVER["REQUEST_URI"], 'notfound'.URL_SUFFIX)){
+		header("HTTP/1.0 404 Not Found");
+		header("Status: 404 Not Found");
+		//echo $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
+		//echo 'NOT FOUND';
+		//exit;
+		
+		$log_file = $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
 
+
+		 // Check if log file is smaller than 1MB
+		 if(filesize($log_file) < 1048576){
+			// Write IP to existing file
+			file_put_contents($log_file, date("d/m/y", time()) . ' ' . date("H:i:s", time()) . ' ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
+		} else {
+			// Write IP to new file
+			file_put_contents($log_file, date("d/m/y", time()) . ' ' . date("H:i:s", time()) . ' ' . $_SERVER['REMOTE_ADDR'] . "\n");
+		}
+
+	}
+	
 	//echo 'Layout Loaded'; exit;
 	if(is_object($page)){
 		if(isset($_GET['media']) && $_GET['media'] == 'standard'){
@@ -223,7 +245,7 @@ function layout_switch_check($page) {
 			$standard_canonical = '<meta name="robots" content="nofollow,noindex" />'."\n";
 			$standard_canonical .= '<link rel="canonical" href="'.str_replace('standard/','',$_SERVER['REQUEST_URI']).'" />'."\n";
 			$page = str_replace('</head',$standard_canonical.'</head', $page);
-	
+
 			$page = str_replace('<a href="/', '<a href="/standard/', $page);
 			$page = str_replace('/standard/public/', '/public/', $page);
 			$page = str_replace('/standard/mobile/', '/mobile/', $page);

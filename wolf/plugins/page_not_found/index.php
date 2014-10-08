@@ -80,6 +80,10 @@ function behavior_page_not_found() {
 				$redirect = str_replace(URL_ABSOLUTE, URL_ABSOLUTE.'search', URL_ABSOLUTE.$_SERVER['REQUEST_URI'].'?404='.$referrer);
 				//$redirect = str_replace(URL_ABSOLUTE, URL_ABSOLUTE.'search', URL_ABSOLUTE.$_SERVER['REQUEST_URI'].'?404=http://www.google.com');
 				//exit;
+
+				//header("HTTP/1.0 404 Not Found");
+				//header("Status: 404 Not Found");
+
 				header("Location: ".$redirect);
 				//echo "site search for: ".$redirect;
 				exit;
