@@ -44,7 +44,7 @@ Plugin::setInfos(array(
 	'author'		=>	'Andrew Waters',
 	'website'		=>	'http://www.band-x.org/',
 	'update_url'	=>	'http://www.band-x.org/update.xml',
-	'version'		=>	'1.2.0',
+	'version'		=>	'1.2.1',
 	'type'			=>	'both'
 ));
 

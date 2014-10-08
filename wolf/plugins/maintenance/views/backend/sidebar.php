@@ -16,3 +16,40 @@
 <p>Search feature does not presently work with restricted mode on.</p>
 </div>
 <?php } ?>
+
+
+
+<?php
+$log_file = $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
+if(filesize($log_file) > 0){ ?>
+
+<div class="box warning logins">
+<h2><?php echo __('Logged IPs');?></h2>
+<p>Failed attempts at admin access.</p>
+
+<?php
+//echo "<html><body><table>\n\n";
+echo '<ul>';
+$f = fopen($log_file, "r");
+$used_ips = array();
+while (($line = fgetcsv($f)) !== false) {
+	//echo "<tr>";
+	foreach ($line as $cell) {
+		//echo "<td>" . htmlspecialchars($cell) . "</td>";
+	}
+	//echo "</tr>\n";
+	$date = $line[0];
+	$time = $line[1];
+	$ip = $line[2];
+	if(!in_array($ip, $used_ips)){
+		echo '<li><p><b>' . $ip . '</b><span> on ' . $date . ' at ' . $time . '<span></p></li>';
+	}
+	$used_ips[] = $ip;
+}
+fclose($f);
+echo '</ul>';
+//echo "\n</table></body></html>";
+?>
+</div>
+
+<?php } ?>

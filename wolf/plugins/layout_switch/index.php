@@ -222,11 +222,13 @@ function layout_switch_check($page) {
 
 		 // Check if log file is smaller than 1MB
 		 if(filesize($log_file) < 1048576){
+		 	// TODO: Prepend or reverse the data (new to old)
+
 			// Write IP to existing file
-			file_put_contents($log_file, date("d/m/y", time()) . ' ' . date("H:i:s", time()) . ' ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
+			file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
 		} else {
 			// Write IP to new file
-			file_put_contents($log_file, date("d/m/y", time()) . ' ' . date("H:i:s", time()) . ' ' . $_SERVER['REMOTE_ADDR'] . "\n");
+			file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n");
 		}
 
 	}
