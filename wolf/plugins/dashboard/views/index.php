@@ -16,6 +16,7 @@
 
 	<?php
 	$avatar = '';
+	/*
 	function ExternalFileExists($location, $misc_content_type = false){
 		//echo '<!-- External File Exists Status -->';
 		$curl = curl_init($location);
@@ -37,6 +38,25 @@
 		}
 		return false;
 
+	}
+	*/
+	if(!function_exists('ExternalFileExists')){
+		  function ExternalFileExists($location,$misc_content_type = false){
+
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, $location);
+			curl_setopt($curl, CURLOPT_NOBODY, 1);
+			curl_setopt($curl, CURLOPT_FAILONERROR, 1);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($curl, CURLOPT_TIMEOUT_MS, 206);
+			
+			if(curl_exec($curl) !== FALSE){
+				return true;
+			} else {
+				return false;
+			}
+	
+		}
 	}
 	$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 
