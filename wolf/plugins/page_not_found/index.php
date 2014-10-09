@@ -77,7 +77,7 @@ function behavior_page_not_found() {
 			if(Plugin::isEnabled('searchbox') == true && (strlen($searchkey) < 30 || $page->slug == 'notfound')){
 				if(isset($_SERVER['HTTP_REFERER'])){ $referrer = $_SERVER['HTTP_REFERER']; } else { $referrer = ''; }
 				if($referrer == ''){ $referrer = 'Error'; }
-				$redirect = str_replace(URL_ABSOLUTE, URL_ABSOLUTE.'search', URL_ABSOLUTE.$_SERVER['REQUEST_URI'].'?404='.$referrer);
+				$redirect = str_replace(URL_ABSOLUTE, URL_ABSOLUTE.'search', URL_ABSOLUTE.$_SERVER['REQUEST_URI'].'?301='.$referrer);
 				//$redirect = str_replace(URL_ABSOLUTE, URL_ABSOLUTE.'search', URL_ABSOLUTE.$_SERVER['REQUEST_URI'].'?404=http://www.google.com');
 				//exit;
 

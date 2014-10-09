@@ -607,9 +607,9 @@ function setanalytics($parent){
 	
 				/* Get 404 pageviews and referring page, passed from page_not_found plugin */
 				$trackPageviewParams = '';
-				if(isset($_GET['404'])){
+				if(isset($_GET['301'])){
 					$page404 = str_replace('/search','',$_SERVER["REQUEST_URI"]);
-					$page404 = str_replace('?404=Error','',$page404);
+					$page404 = str_replace('?301=Error','',$page404);
 					//if($analyticsVersion == 'universal'){
 					//	$trackPageviewParams = ", '404', 'Visit', '404 Error Page - Visit - Page'";
 					//} else {
@@ -622,12 +622,12 @@ function setanalytics($parent){
 							Avg Time on Site
 						Segments: Page
 						*/
-						if($_GET['404'] != '' && $_GET['404'] != 'Error'){
-							$page404 = str_replace('?404=','?referrer=',$page404);
+						if($_GET['301'] != '' && $_GET['301'] != 'Error'){
+							$page404 = str_replace('?301=','?referrer=',$page404);
 						} else {
-							$page404 = str_replace('?404=','',$page404);
+							$page404 = str_replace('?301=','',$page404);
 						}
-						$trackPageviewParams = ", '/404".$page404."'";
+						$trackPageviewParams = ", '/301".$page404."'";
 					//}
 				}
 

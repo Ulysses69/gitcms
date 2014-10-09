@@ -211,8 +211,8 @@ function layout_switch_check($page) {
 	
 	/* Check for notfound page (as per invalid admin redirects) */
 	if(strpos($_SERVER["REQUEST_URI"], 'notfound'.URL_SUFFIX)){
-		header("HTTP/1.0 404 Not Found");
-		header("Status: 404 Not Found");
+		header("HTTP/1.0 401 Unauthorized");
+		header("Status: 401 Unauthorized");
 		//echo $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
 		//echo 'NOT FOUND';
 		//exit;
@@ -234,10 +234,10 @@ function layout_switch_check($page) {
 	}
 
 
-	/* Check for notfound page triggering search query (as passed via URL) */
-	if(strpos($_SERVER["REQUEST_URI"], '404=Error')){
-		header("HTTP/1.0 404 Not Found");
-		header("Status: 404 Not Found");
+	/* Check for suggested not found pages (as passed via URL) */
+	if(strpos($_SERVER["REQUEST_URI"], '301=Error')){
+		header("HTTP/1.0 301 Moved Permanently");
+		header("Status: 301 Moved Permanently");
 	}
 
 
