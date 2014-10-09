@@ -241,6 +241,15 @@ function layout_switch_check($page) {
 	}
 
 
+
+	/* Check for search results pages */
+	if(strpos($_SERVER['REQUEST_URI'], 'search/')){
+		//header("HTTP/1.0 301 Moved Permanently");
+		//header("Status: 301 Moved Permanently");
+	}
+
+
+
 	//echo 'Layout Loaded'; exit;
 	if(is_object($page)){
 		if(isset($_GET['media']) && $_GET['media'] == 'standard'){
