@@ -232,7 +232,15 @@ function layout_switch_check($page) {
 		}
 
 	}
-	
+
+
+	/* Check for notfound page triggering search query (as passed via URL) */
+	if(strpos($_SERVER["REQUEST_URI"], '404=Error')){
+		header("HTTP/1.0 404 Not Found");
+		header("Status: 404 Not Found");
+	}
+
+
 	//echo 'Layout Loaded'; exit;
 	if(is_object($page)){
 		if(isset($_GET['media']) && $_GET['media'] == 'standard'){
