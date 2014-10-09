@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.4.1'); }
+if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.0'); }
 if (!defined('CLIENTDETAILS_ID')) {			define('CLIENTDETAILS_ID', 'clientdetails'); }
 if (!defined('CLIENTDETAILS_TITLE')) {		define('CLIENTDETAILS_TITLE', 'Clientdetails'); }
 if (!defined('CLIENTDETAILS_DESC')) {		define('CLIENTDETAILS_DESC', 'Manage client details'); }
@@ -444,41 +444,68 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 			if($hournotation == '24'){
 	
 				if(!isset($mondaytoday)){ $mondaytoday = ''; }
-					if(strtolower($mondayopen) == 'closed' || strtolower($mondayclose) == 'closed') {$openhours .= "<li".$mondaytoday.">".$daytagopen."Monday".$daytagclose." Closed</li>\n";
-					} else if($mondayopen != '' && $mondayopen != '') {
-					$title = 'Mo '.$mondayopen.'-'.$mondayclose;
-					$openhours .= "<li".$mondaytoday.' itemprop="openingHours" id="Mo" title="Mo '.$mondayopen.'-'.$mondayclose.'"'.">".$daytagopen."Monday".$daytagclose." ".$mondayopen.' <span>to</span> '.$mondaylunch.$mondayclose."</li>\n"; } else { }
+					if($mondayappt == 'yes'){
+						$openhours .= "<li".$mondaytoday.">".$daytagopen."Monday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($mondayopen) == 'closed' || strtolower($mondayclose) == 'closed') {$openhours .= "<li".$mondaytoday.">".$daytagopen."Monday".$daytagclose." Closed</li>\n";
+						} else if($mondayopen != '' && $mondayopen != '') {
+						$title = 'Mo '.$mondayopen.'-'.$mondayclose;
+						$openhours .= "<li".$mondaytoday.' itemprop="openingHours" id="Mo" title="Mo '.$mondayopen.'-'.$mondayclose.'"'.">".$daytagopen."Monday".$daytagclose." ".$mondayopen.' <span>to</span> '.$mondaylunch.$mondayclose."</li>\n"; } else { }
+					}
 				if(!isset($tuesdaytoday)){ $tuesdaytoday = ''; }
-					if(strtolower($tuesdayopen) == 'closed' || strtolower($tuesdayclose) == 'closed') {$openhours .= "<li".$tuesdaytoday.">".$daytagopen."Tuesday".$daytagclose." Closed</li>\n";
-					} else if($tuesdayopen != '' && $tuesdayopen != '') {
-					$title = 'Tu '.$tuesdayopen.'-'.$tuesdayclose;
-					$openhours .= "<li".$tuesdaytoday.' itemprop="openingHours" id="Tu" title="Tu '.$tuesdayopen.'-'.$tuesdayclose.'"'.">".$daytagopen."Tuesday".$daytagclose." ".$tuesdayopen.' <span>to</span> '.$tuesdaylunch.$tuesdayclose."</li>\n"; } else { }
+					if($tuesdayappt == 'yes'){
+						$openhours .= "<li".$tuesdaytoday.">".$daytagopen."Tuesday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($tuesdayopen) == 'closed' || strtolower($tuesdayclose) == 'closed') {$openhours .= "<li".$tuesdaytoday.">".$daytagopen."Tuesday".$daytagclose." Closed</li>\n";
+						} else if($tuesdayopen != '' && $tuesdayopen != '') {
+						$title = 'Tu '.$tuesdayopen.'-'.$tuesdayclose;
+						$openhours .= "<li".$tuesdaytoday.' itemprop="openingHours" id="Tu" title="Tu '.$tuesdayopen.'-'.$tuesdayclose.'"'.">".$daytagopen."Tuesday".$daytagclose." ".$tuesdayopen.' <span>to</span> '.$tuesdaylunch.$tuesdayclose."</li>\n"; } else { }
+					}
 				if(!isset($wednesdaytoday)){ $wednesdaytoday = ''; }
-					if(strtolower($wednesdayopen) == 'closed' || strtolower($wednesdayclose) == 'closed') {$openhours .= "<li".$wednesdaytoday.">".$daytagopen."Wednesday".$daytagclose." Closed</li>\n";
-					} else if($wednesdayopen != '' && $wednesdayopen != '') {
-					$title = 'We '.$wednesdayopen.'-'.$wednesdayclose;
-					$openhours .= "<li".$wednesdaytoday.' itemprop="openingHours" id="We" title="We '.$wednesdayopen.'-'.$wednesdayclose.'"'.">".$daytagopen."Wednesday".$daytagclose." ".$wednesdayopen.' <span>to</span> '.$wednesdaylunch.$wednesdayclose."</li>\n"; } else { }
+					if($wednesdayappt == 'yes'){
+						$openhours .= "<li".$wednesdaytoday.">".$daytagopen."Wednesday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($wednesdayopen) == 'closed' || strtolower($wednesdayclose) == 'closed') {$openhours .= "<li".$wednesdaytoday.">".$daytagopen."Wednesday".$daytagclose." Closed</li>\n";
+						} else if($wednesdayopen != '' && $wednesdayopen != '') {
+						$title = 'We '.$wednesdayopen.'-'.$wednesdayclose;
+						$openhours .= "<li".$wednesdaytoday.' itemprop="openingHours" id="We" title="We '.$wednesdayopen.'-'.$wednesdayclose.'"'.">".$daytagopen."Wednesday".$daytagclose." ".$wednesdayopen.' <span>to</span> '.$wednesdaylunch.$wednesdayclose."</li>\n"; } else { }
+					}
 				if(!isset($thursdaytoday)){ $thursdaytoday = ''; }
-					if(strtolower($thursdayopen) == 'closed' || strtolower($thursdayclose) == 'closed') {$openhours .= "<li".$thursdaytoday.">".$daytagopen."Thursday".$daytagclose." Closed</li>\n";
-					} else if($thursdayopen != '' && $thursdayopen != '') {
-					$title = 'Th '.$thursdayopen.'-'.$thursdayclose;
-					$openhours .= "<li".$thursdaytoday.' itemprop="openingHours" id="Th" title="Th '.$thursdayopen.'-'.$thursdayclose.'"'.">".$daytagopen."Thursday".$daytagclose." ".$thursdayopen.' <span>to</span> '.$thursdaylunch.$thursdayclose."</li>\n";  } else { }
+					if($thursdayappt == 'yes'){
+						$openhours .= "<li".$thursdaytoday.">".$daytagopen."Thursday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($thursdayopen) == 'closed' || strtolower($thursdayclose) == 'closed') {$openhours .= "<li".$thursdaytoday.">".$daytagopen."Thursday".$daytagclose." Closed</li>\n";
+						} else if($thursdayopen != '' && $thursdayopen != '') {
+						$title = 'Th '.$thursdayopen.'-'.$thursdayclose;
+						$openhours .= "<li".$thursdaytoday.' itemprop="openingHours" id="Th" title="Th '.$thursdayopen.'-'.$thursdayclose.'"'.">".$daytagopen."Thursday".$daytagclose." ".$thursdayopen.' <span>to</span> '.$thursdaylunch.$thursdayclose."</li>\n";  } else { }
+					}
 				if(!isset($fridaytoday)){ $fridaytoday = ''; }
-					if(strtolower($fridayopen) == 'closed' || strtolower($fridayclose) == 'closed') {$openhours .= "<li".$fridaytoday.">".$daytagopen."Friday".$daytagclose." Closed</li>\n";
-					} else if($fridayopen != '' && $fridayopen != '') {
-					$title = 'Fr '.$fridayopen.'-'.$fridayclose;
-					$openhours .= "<li".$fridaytoday.' itemprop="openingHours" id="Fr" title="Fr '.$fridayopen.'-'.$fridayclose.'"'.">".$daytagopen."Friday".$daytagclose." ".$fridayopen.' <span>to</span> '.$fridaylunch.$fridayclose."</li>\n"; } else { }
+					if($fridayappt == 'yes'){
+						$openhours .= "<li".$fridaytoday.">".$daytagopen."Friday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($fridayopen) == 'closed' || strtolower($fridayclose) == 'closed') {$openhours .= "<li".$fridaytoday.">".$daytagopen."Friday".$daytagclose." Closed</li>\n";
+						} else if($fridayopen != '' && $fridayopen != '') {
+						$title = 'Fr '.$fridayopen.'-'.$fridayclose;
+						$openhours .= "<li".$fridaytoday.' itemprop="openingHours" id="Fr" title="Fr '.$fridayopen.'-'.$fridayclose.'"'.">".$daytagopen."Friday".$daytagclose." ".$fridayopen.' <span>to</span> '.$fridaylunch.$fridayclose."</li>\n"; } else { }
+					}
 				if(!isset($saturdaytoday)){ $saturdaytoday = ''; }
-					if(strtolower($saturdayopen) == 'closed' || strtolower($saturdayclose) == 'closed') {$openhours .= "<li".$saturdaytoday.">".$daytagopen."Saturday".$daytagclose." Closed</li>\n";
-					} else if($saturdayopen != '' && $saturdayclose != '') {
-					$title = 'Sa '.$saturdayopen.'-'.$saturdayclose;
-					$openhours .= "<li".$saturdaytoday.' itemprop="openingHours" id="Sa" title="Sa '.$saturdayopen.'-'.$saturdayclose.'"'.">".$daytagopen."Saturday".$daytagclose." ".$saturdayopen.' <span>to</span> '.$saturdaylunch.$saturdayclose."</li>\n";  } else { }
+					if($saturdayappt == 'yes'){
+						$openhours .= "<li".$saturdaytoday.">".$daytagopen."Saturday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($saturdayopen) == 'closed' || strtolower($saturdayclose) == 'closed') {$openhours .= "<li".$saturdaytoday.">".$daytagopen."Saturday".$daytagclose." Closed</li>\n";
+						} else if($saturdayopen != '' && $saturdayclose != '') {
+						$title = 'Sa '.$saturdayopen.'-'.$saturdayclose;
+						$openhours .= "<li".$saturdaytoday.' itemprop="openingHours" id="Sa" title="Sa '.$saturdayopen.'-'.$saturdayclose.'"'.">".$daytagopen."Saturday".$daytagclose." ".$saturdayopen.' <span>to</span> '.$saturdaylunch.$saturdayclose."</li>\n";  } else { }
+					}
 				if(!isset($sundaytoday)){ $sundaytoday = ''; }
-					if(strtolower($sundayopen) == 'closed' || strtolower($sundayclose) == 'closed') {$openhours .= "<li".$sundaytoday.">".$daytagopen."Sunday".$daytagclose." Closed</li>\n";
-					} else if($sundayopen != '' && $sundayclose != '') {
-					$title = 'Su '.$sundayopen.'-'.$sundayclose;
-					$openhours .= "<li".$sundaytoday.' itemprop="openingHours" id="Su" title="Su '.$sundayopen.'-'.$sundayclose.'"'.">".$daytagopen."Sunday".$daytagclose." ".$sundayopen.' <span>to</span> '.$sundaylunch.$sundayclose."</li>\n"; } else { }
-	
+					if($sundayappt == 'yes'){
+						$openhours .= "<li".$sundaytoday.">".$daytagopen."Sunday".$daytagclose." by appointment</li>\n";
+					} else {
+						if(strtolower($sundayopen) == 'closed' || strtolower($sundayclose) == 'closed') {$openhours .= "<li".$sundaytoday.">".$daytagopen."Sunday".$daytagclose." Closed</li>\n";
+						} else if($sundayopen != '' && $sundayclose != '') {
+						$title = 'Su '.$sundayopen.'-'.$sundayclose;
+						$openhours .= "<li".$sundaytoday.' itemprop="openingHours" id="Su" title="Su '.$sundayopen.'-'.$sundayclose.'"'.">".$daytagopen."Sunday".$daytagclose." ".$sundayopen.' <span>to</span> '.$sundaylunch.$sundayclose."</li>\n"; } else { }
+					}
 			} else {
 	
 				if(!isset($mondaytoday) || $mondayappt == 'yes'){ $mondaytoday = ''; }
