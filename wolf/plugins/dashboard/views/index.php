@@ -48,7 +48,7 @@
 			curl_setopt($curl, CURLOPT_NOBODY, 1);
 			curl_setopt($curl, CURLOPT_FAILONERROR, 1);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($curl, CURLOPT_TIMEOUT_MS, 206);
+			curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
 			
 			if(curl_exec($curl) !== FALSE){
 				return true;

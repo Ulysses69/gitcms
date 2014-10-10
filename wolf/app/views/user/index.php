@@ -52,28 +52,24 @@
   <tbody>
 <?php 
 
-function ExternalFileExists($location, $misc_content_type = false){
-	$curl = curl_init($location);
-	curl_setopt($curl,CURLOPT_NOBODY,true);
-	curl_setopt($curl,CURLOPT_HEADER,true);
-	curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($curl,CURLOPT_TIMEOUT_MS,206);
-	curl_exec($curl);
-	$info = curl_getinfo($curl);
-	curl_close($curl);
+if(!function_exists('ExternalFileExists')){
+      function ExternalFileExists($location,$misc_content_type = false){
 
-	if((int)$info['http_code'] >= 200 && (int)$info['http_code'] <= 206) {
-		if($misc_content_type !== false) {
-			return strpos($info['content_type'],$misc_content_type);
-		}
-		return true;
-	}
-	return false;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $location);
+        curl_setopt($curl, CURLOPT_NOBODY, 1);
+        curl_setopt($curl, CURLOPT_FAILONERROR, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
 
+        if(curl_exec($curl) !== FALSE){
+            return true;
+        } else {
+            return false;
+        }
 
-
+    }
 }
-
 $sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 
 foreach($users as $user): ?>
