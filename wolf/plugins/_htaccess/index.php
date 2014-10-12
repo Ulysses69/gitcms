@@ -28,12 +28,14 @@ function saveServerConfig($htaccess='',$htaccessbackup='',$htaccessfile='',$htac
 	//exit;
 
     /* Sanitize parameters */
-    $htaccess = strip_tags(trim($htaccess));
-    $htaccessbackup = strip_tags(trim($htaccessbackup));
-    $htaccessfile = strip_tags(trim($htaccessfile));
-    $htaccessbackupfile = strip_tags(trim($htaccessbackupfile));
-    
-
+    //$htaccess = strip_tags(trim($htaccess));
+    //$htaccessbackup = strip_tags(trim($htaccessbackup));
+    //$htaccessfile = strip_tags(trim($htaccessfile));
+    //$htaccessbackupfile = strip_tags(trim($htaccessbackupfile));    
+    $htaccess = strip_tags(trim($htaccess),'<IfModule>');
+    $htaccessbackup = strip_tags(trim($htaccessbackup),'<IfModule>');
+    $htaccessfile = strip_tags(trim($htaccessfile),'<IfModule>');
+    $htaccessbackupfile = strip_tags(trim($htaccessbackupfile),'<IfModule>');
 
 
 

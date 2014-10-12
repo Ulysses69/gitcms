@@ -1,4 +1,4 @@
-### CMS-Generated Update September 30, 2014, 1:31 pm ###
+### CMS-Generated Update October 12, 2014, 8:57 pm ###
 #
 # Setting Frog requirements
 #
@@ -13,23 +13,18 @@ AddType audio/webm .weba
 AddDefaultCharset UTF-8
 Options -Indexes +FollowSymLinks
 DirectoryIndex cache/index.html index.html index.php
-<IfModule mod_headers.c>
 Header always set Cache-Control "no-store, no-cache, must-revalidate" env=nocache
 Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
-</IfModule>
-<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteRule ^test2 "test2.html" [L,R=301,E=nocache:1]
-RewriteRule ^test3 "test3.html" [L,R=301,E=nocache:1]
 RewriteCond %{HTTP_HOST} !.local$ [NC]
-RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
-RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
-#RewriteCond %{HTTP_HOST} !^www\. [NC]
-#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
+#RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP_HOST} !^(www|([^.]+)\.([a-z]{2,4})$) [NC]
 RewriteRule .? http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/index.php$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/$ install/index.php?rewrite=1 [L,QSA]
@@ -146,10 +141,10 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?THISPAGE=$1 [L,QSA]
 #RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
 #RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]
-#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
-#RewriteRule ^admin/(.*)$ /notfound.html? [R,L]
+RewriteCond %{REMOTE_HOST} !^127\.0\.0\.1
+RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
+RewriteRule ^admin/(.*)$ /notfound.html?noaccess [R,L]
 Redirect 301 /assets/ /public/images/assets/
 Redirect 301 /plugins.xml /public/projects/development/software/frog/plugins.xml
 Redirect 301 /googlemap.zip /public/projects/development/software/frog/plugins/googlemap.zip
 Redirect 301 /savemysql.zip /public/projects/development/software/frog/plugins/savemysql.zip
-</IfModule>

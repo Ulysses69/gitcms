@@ -87,6 +87,7 @@
 // Restrict access to enabled whitelist IPs, when IPs have been granted authorized access.
 $settings = Plugin::getAllSettings('maintenance');
 //if(Plugin::isEnabled('maintenance') == true && $settings['maintenanceAuthorizedAccess'] == 'on'){
+/*
 if(Plugin::isEnabled('maintenance') == true){
 ?>
 <div class="boxed">
@@ -115,12 +116,13 @@ if(Plugin::isEnabled('maintenance') == true){
 
 </table>
 </div>
-<?php } ?>
+<?php } */ ?>
 
 
 <?php
 	/* Check for existence of notfound scripts tab */
-	$behavior_sql = "SELECT * FROM ".TABLE_PREFIX."page WHERE behavior_id='page_not_found'";
+	/*
+    $behavior_sql = "SELECT * FROM ".TABLE_PREFIX."page WHERE behavior_id='page_not_found'";
 	$behavior_q = Record::getConnection()->query($behavior_sql);
 	$behavior_f = $behavior_q->fetchAll(PDO::FETCH_OBJ);
 	foreach ($behavior_f as $behavior) {
@@ -137,11 +139,12 @@ if(Plugin::isEnabled('maintenance') == true){
                 $body = $script->id;
                 $body_html = $script->content_html;
                 if($body != '' || $body_html != ''){
-                    //echo '<p>Page 10 Scripts Exists: '.$name.', '.$body.'</p>';
+                    echo '<p>Page 10 Scripts Exists: '.$name.', '.$body.'</p>';
                 }
             }
         }
 	}
+    */
 
 ?>
 
