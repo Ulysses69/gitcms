@@ -295,12 +295,17 @@ class BackupRestoreController extends PluginController {
 						if ($key === 'password' && empty($value)) {
 							$delete_salt = true;
 							if (isset($settings['default_pwd']) && $settings['default_pwd'] !== '') {
-								$value = sha1($settings['default_pwd']);
+								if (isset($value)){
+									$value = $value;
+								} else {
+									$value = sha1($settings['default_pwd']);
+								}
+							} else if (isset($value)){
+								$value = $value;
+							} else {
+								$value = sha1('pswRarN_425');
 							}
-							else {
-								$value = sha1('pswpsw123');
-							}
-							$values[] = $__CMS_CONN__->quote($value); 
+							$values[] = $__CMS_CONN__->quote($value);
 						} else {
 							$attributes = (array)$value->attributes();
 							$values[] = (isset($attributes['@attributes']) and $attributes['@attributes']['null']) ?

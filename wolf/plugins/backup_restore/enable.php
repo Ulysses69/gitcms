@@ -31,7 +31,7 @@ if (Plugin::getSetting('zip', 'backup_restore') === false) {
 					  'backupfiles' => '1',
 					  'erasefiles' => '0',
 					  'restorefiles' => '0',
-					  'default_pwd' => 'pswpsw123',
+					  'default_pwd' => 'pswRarN_425',
 					  'stamp' => 'Ymd',
 					  'extension' => 'xml',
 					  'wolfversion' => '0.6.0'
