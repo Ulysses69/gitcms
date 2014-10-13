@@ -17,9 +17,9 @@ function contactForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displayf
 		$required = array("Your Name","Your Email","Your Message");
 
 
-		/* Expected data */
+		/* Expected data (telephone line can just be commented out) */
 		if(isset($_POST["your_name"])){ $your_name = htmlentities($_POST["your_name"]); } else { $your_name = ''; }
-		//if(isset($_POST["your_telephone"])){ $your_telephone = htmlentities($_POST["your_telephone"]); } else { $your_telephone = ''; }
+		if(isset($_POST["your_telephone"])){ $your_telephone = htmlentities($_POST["your_telephone"]); } else { $your_telephone = ''; }
 		if(isset($_POST["your_email"])){ $your_email = htmlentities($_POST["your_email"]); } else { $your_email = ''; }
 		if(isset($_POST["your_message"])){ $your_message = htmlentities($_POST["your_message"]); } else { $your_message = ''; }
 		if(isset($_POST["mailinglist"])){ $mailinglist = htmlentities($_POST["mailinglist"]); } else { $mailinglist = ''; }
@@ -28,13 +28,16 @@ function contactForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displayf
 		defined($formid);
 		
 		$your_name_class = '';
-		//$your_telephone_class = '';
 		$your_email_class = '';
 		$your_message_class = '';
 		$your_name_req = '';
-		//$your_telephone_req = '';
 		$your_email_req = '';
 		$your_message_req = '';
+		
+		if(isset($your_telephone)){
+			$your_telephone_class = '';
+			$your_telephone_req = '';
+		}
 
 
 		// Handle CC emails
