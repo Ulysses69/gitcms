@@ -12,6 +12,7 @@ $Options = '';
 $DirectoryIndex = '';
 $Env = '';
 $RewriteRules = '';
+$Compression = ''; /* gzip, deflate */
 
 // Domain without www (supports subdomains - domain name must be explicitly set)
 #preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $domain_name);
@@ -269,13 +270,14 @@ Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
 <?php } ?>
 
 
-<?php
-/* GZip Compression | Disabled by default */
-$gzip = true;
-if($gzip == true){ ?>
+<?php if($Compression == 'deflate'){ ?>
+/* GZip Compression */
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
 </IfModule>
+<?php } ?>
+
+<?php if($Compression == 'gzip'){ ?>
 #<ifModule mod_gzip.c>
 #mod_gzip_on Yes
 #mod_gzip_dechunk Yes
