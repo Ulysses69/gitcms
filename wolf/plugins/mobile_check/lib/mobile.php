@@ -7,7 +7,7 @@ body, #head, #content, a {
 }
 body {
 	<?php if($background_url != ''){ echo "background:url('".$background_url."') ".$color_body_bg.' '.$background_align;
-	} else { ?>background:<?php echo $color_body_bg; } ?>
+	} else { ?>background:<?php echo $color_body_bg; } ?>;
     -webkit-text-size-adjust:100%;
 }
 <?php /* NOT WORKING - Mobile admin form doesn't handle transparent color as option */ $color_head_bg = 'transparent'; if($color_head_bg != 'transparent'){ ?>
