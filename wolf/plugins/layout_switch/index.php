@@ -218,21 +218,50 @@ function layout_switch_check($page) {
 		//exit;
 		
 		$log_file = $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
-
-
-		 // Check if log file is smaller than 1MB
-		 if(filesize($log_file) < 1048576){
-		 	// TODO: Prepend or reverse the data (new to old)
-
-			// Write IP to existing file
-			file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
-		} else {
-			// Write IP to new file
-			file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n");
+		
+		// Allow valid IP addresses only
+		if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)) {
+	
+			// Check if log file exists and is smaller than 1MB
+			if(file_exists($log_file) && filesize($log_file) < 1048576){
+				// TODO: Prepend or reverse the data (new to old)
+	
+				// Write IP to existing file
+				file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
+			} else {
+				// Write IP to new file
+				file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n");
+			}
+		
 		}
 
 	}
 
+	/* Check for mockups pages */
+	if(strpos($_SERVER["REQUEST_URI"], 'mockup')){
+		//echo $_SERVER["DOCUMENT_ROOT"].'/../admin-log.txt';
+		//echo 'NOT FOUND';
+		//exit;
+
+		$log_file = $_SERVER["DOCUMENT_ROOT"].'/../mockup-log.txt';
+
+		// Allow valid IP addresses only
+		if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)) {
+
+			// Check if log file exists and is smaller than 1MB
+			if(file_exists($log_file) && filesize($log_file) < 1048576){
+				// TODO: Prepend or reverse the data (new to old)
+	
+				// Write IP to existing file
+				file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n", FILE_APPEND);
+			} else {
+				// Write IP to new file
+				file_put_contents($log_file, date("d/m/y", time()) . ', ' . date("H:i:s", time()) . ', ' . $_SERVER['REMOTE_ADDR'] . "\n");
+			}
+
+		}
+
+	}
 
 	/* Check for suggested not found pages (as passed via URL) */
 	if(strpos($_SERVER["REQUEST_URI"], '301=Error')){
