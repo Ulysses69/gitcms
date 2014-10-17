@@ -87,6 +87,7 @@ a {
 	margin:0 0 5px 0
 <?php } ?>
 	height:auto;
+	border:0;
 }
 
 
