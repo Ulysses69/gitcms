@@ -222,7 +222,7 @@ function layout_switch_check($page) {
 		// Allow valid IP addresses only
 		if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)) {
 	
-			// Check if log file exists and is smaller than 1MB
+			// Check if log file exists and is smaller than 1MB (else create new file)
 			if(file_exists($log_file) && filesize($log_file) < 1048576){
 				// TODO: Prepend or reverse the data (new to old)
 	
@@ -248,7 +248,7 @@ function layout_switch_check($page) {
 		// Allow valid IP addresses only
 		if(filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP)) {
 
-			// Check if log file exists and is smaller than 1MB
+			// Check if log file exists and is smaller than 1MB (else create new file)
 			if(file_exists($log_file) && filesize($log_file) < 1048576){
 				// TODO: Prepend or reverse the data (new to old)
 	
