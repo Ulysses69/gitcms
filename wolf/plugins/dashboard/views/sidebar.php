@@ -57,8 +57,8 @@ if (!defined('IN_CMS')) { exit(); }
 	<?php if(Plugin::isEnabled('copyright') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/copyright'); ?>"><img src="<?php echo COPYRIGHT_ROOT;?>/images/law.png" align="middle" alt="legal icon" /> <?php echo __('Legal'); ?></a></p><?php } ?>
 
 	<?php if(is_dir($_SERVER["DOCUMENT_ROOT"].'/wolf/plugins/dashboard')) { ?>
-	<?php if(Plugin::isEnabled('funky_cache') == true){ $button = 'ENABLED'; } else { $button = 'DISABLED'; }  ?>
-	<p class="button"><a href="<?php echo get_url('plugin/dashboard/save?funkycache='.$button); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/dashboard/img/cache_<?php echo $button; ?>.png" align="middle" alt="cache icon" /> Cache is <?php echo $button; ?></a></p>
+	<?php if(Plugin::isEnabled('funky_cache') == true){ $button = 'ENABLED'; $label = 'ON'; } else { $button = 'DISABLED'; $label = 'OFF'; }  ?>
+	<p class="button"><a href="<?php echo get_url('plugin/dashboard/save?funkycache='.$button); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/dashboard/img/cache_<?php echo $button; ?>.png" align="middle" alt="cache icon" /> Cache is <?php echo $label; ?></a></p>
 	<?php } ?>
 
 <?php } ?>
