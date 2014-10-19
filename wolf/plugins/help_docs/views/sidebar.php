@@ -166,6 +166,9 @@ if (!defined('IN_CMS')) { exit(); }
 	<?php if(Plugin::isEnabled('banner') == true){?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#banner'); ?>">Banner</a></li>
 	<?php } ?>
+	<?php if(Plugin::isEnabled('social') == true){?>
+	<li><a href="<?php echo get_url('plugin/help_docs/features#social'); ?>">Social Links</a></li>
+	<?php } ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#filelist'); ?>">File list</a></li>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#thumblist'); ?>">Thumbnail list / gallery</a></li>
 	<?php if(function_exists('randomsrc')) ?>

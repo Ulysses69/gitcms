@@ -1,0 +1,35 @@
+#body_plugin_social table.fieldset {
+	position: relative !important;
+	margin-top: -0.6em !important;
+}
+#body_plugin_social .fieldset td {
+	border:none;
+	background: #f3efef !important;
+}
+#body_plugin_social .fieldset td.label {
+	width: 8.5em;
+}
+#body_plugin_social .fieldset td.help {
+	width: 15em;
+}
+#body_plugin_social .fieldset td.field.display {
+	text-align: left;
+}
+#body_plugin_social .fieldset td.field.display input {
+	width: auto !important;
+}
+#body_plugin_social .checkbox {
+	width: auto;
+	position: relative;
+	top: 2px;
+}
+#body_plugin_social .fieldset input  {
+	width: 98%;
+}
+
+
+
+
+#body_plugin_social fieldset table td.field input.color-picker {
+	width: 5.2em !important;
+}

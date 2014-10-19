@@ -97,7 +97,7 @@ if (!defined('IN_CMS')) { exit(); }
 <p>Example 1 Returns page level (ie; home page or sitemap would return 1).</p>
 <code>pagelevel($this)</code>
 <?php ; ?>
-
+    
 <h2 id="randomsnippet">Random</h2>
 <p>Example 1 Returns random testimonial excerpt with read more links to content.</p>
 <code>randomsnippet($this,'/testimonials/','Read more','2');</code>
@@ -164,6 +164,13 @@ if (!defined('IN_CMS')) { exit(); }
 <p>Banner can be displayed in layout.</p>
 <p>Example 1 Displays banner in layout.</p>
 <code>setBanner()</code>
+<?php } ?>
+    
+<?php if(Plugin::isEnabled('social') == true){?>
+<h2 id="social">Social Links</h2>
+<p>Social network links can be displayed in layout. Appearance can be changed in <a href="../social">settings</a>.</p>
+<p>Example 1 Displays social links in layout.</p>
+<code>socialLinks()</code>
 <?php } ?>
 
 <h2 id="filelist">File list</h2>
