@@ -211,8 +211,8 @@ fieldset {
 	float:right;
 	width:25%;
 	margin:-1px 0 0 0;
-	text-transform:capitalize
-	border:solid 1px <?php echo $color_button_border; ?>
+	text-transform:capitalize;
+	border:solid 1px <?php echo $color_button_bg; ?>
 }
 <?php } ?>
 #content input.submit {
@@ -257,20 +257,26 @@ input[type='search'] {
 	margin:0
 }
 .mobile #nav a, .mobile #sidemenu a {
+	position:relative;
 	display:block;
-	padding:.6em .8em;
+	padding:.6em 1.8em .6em .8em;
 	margin:0 0 0.5em 0;
 	text-decoration:none;
 	font-size:110%;
-	color:<?php echo $color_button_link; ?>
+	color:<?php echo $color_button_link; ?>;
+    white-space:nowrap !important;
+    text-overflow:ellipsis;
+    overflow:hidden !important;
 }
 .mobile #nav a:after, #sidemenu a:after {
 	content:"\203A";
-	color:#cccccc;
-	float:right;
+	color:<?php echo $color_button_link; ?>;
+    position:absolute;
+    right:0.4em;
 	font-family:arial;
 	font-size:160%;
-	margin:-0.25em 0
+	margin:-0.26em 0;
+
 }
 #content img {
 	max-width:100%;
