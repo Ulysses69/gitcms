@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.2.0',
+	'version'	 			=> '6.2.1',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
