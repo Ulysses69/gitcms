@@ -307,8 +307,9 @@ function layout_switch_check($page) {
 		} else {
 
 			/* Check for proposal layouts (allow for layout on live website, not just test domain) */
+			$home_page = Page::findById(1);
 			$proposal_id = 10;
-			if($page->layout_id == $proposal_id || (($page->layout_id == 0 && $page->parent->layout_id == $proposal_id) || ($page->parent->layout_id == 0 && $page->parent->parent->layout_id == $proposal_id))){
+			if($home_page->layout_id == $proposal_id){
 				$protocol = "HTTP/1.0";
 				if("HTTP/1.1" == $_SERVER["SERVER_PROTOCOL"]){
 					$protocol = "HTTP/1.1";

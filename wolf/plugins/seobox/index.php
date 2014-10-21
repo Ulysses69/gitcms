@@ -1233,18 +1233,16 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 // Determin if bots are allowed in robots (disallow when in test site mode)
 if($_SERVER['REQUEST_URI'] == '/robots.txt'){
 	$proposal_id = 10;
-	$page = Page::findById(1); // Only need to check home page
+	$homepage = Page::findById(1); // Only need to check home page
 
 	/* Check for proposal layouts (allow for layout on live website, not just test domain) */
-	if($page->layout_id == $proposal_id){
-		if($page->layout_id == $proposal_id || (($page->layout_id == 0 && $page->parent->layout_id == $proposal_id) || ($page->parent->layout_id == 0 && $page->parent->parent->layout_id == $proposal_id))){
-			$protocol = "HTTP/1.0";
-			if("HTTP/1.1" == $_SERVER["SERVER_PROTOCOL"]){
-				$protocol = "HTTP/1.1";
-			}
-			header("$protocol 503 Service Unavailable", true, 503);
-			header("Retry-After: 2592000"); // Re-try after 30 days
+	if($homepage->layout_id == $proposal_id){
+		$protocol = "HTTP/1.0";
+		if("HTTP/1.1" == $_SERVER["SERVER_PROTOCOL"]){
+			$protocol = "HTTP/1.1";
 		}
+		header("$protocol 503 Service Unavailable", true, 503);
+		header("Retry-After: 2592000"); // Re-try after 30 days
 	}
 
 	$bots = Plugin::getSetting('bots', 'seobox');
