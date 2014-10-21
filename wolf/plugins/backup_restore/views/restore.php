@@ -36,6 +36,8 @@ if (!defined('IN_CMS')) { exit(); }
 ?>
 <!-- <h1><?php echo __('Restore a backup'); ?></h1> -->
 
+<br />
+
 <form action="<?php echo get_url('plugin/backup_restore/restore'); ?>" method="post" enctype="multipart/form-data">
 		<fieldset style="padding: 0.5em;">
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Warning!'); ?></legend>
