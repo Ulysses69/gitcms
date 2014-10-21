@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.1.0',
+	'version'	 			=> '6.2.0',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -263,6 +263,7 @@ function layout_switch_check($page) {
 
 	}
 
+
 	/* Check for suggested not found pages (as passed via URL) */
 	if(strpos($_SERVER["REQUEST_URI"], '301=Error')){
 		header("HTTP/1.0 301 Moved Permanently");
@@ -276,7 +277,7 @@ function layout_switch_check($page) {
 		//header("HTTP/1.0 301 Moved Permanently");
 		//header("Status: 301 Moved Permanently");
 	}
-
+	
 
 
 	//echo 'Layout Loaded'; exit;
@@ -304,6 +305,22 @@ function layout_switch_check($page) {
 			echo $page;
 			exit();
 		} else {
+
+			/* Check for proposal layouts (allow for layout on live website, not just test domain) */
+			$proposal_id = 10;
+			if($page->layout_id == $proposal_id || (($page->layout_id == 0 && $page->parent->layout_id == $proposal_id) || ($page->parent->layout_id == 0 && $page->parent->parent->layout_id == $proposal_id))){
+				$protocol = "HTTP/1.0";
+				if("HTTP/1.1" == $_SERVER["SERVER_PROTOCOL"]){
+					$protocol = "HTTP/1.1";
+				}
+				header("$protocol 503 Service Unavailable", true, 503);
+				header("Retry-After: 2592000"); // Re-try after 30 days
+			}
+
+			//echo 'hello: '.$page->layout_id;
+			//exit;
+
+			$page->includeSnippet('registerfunctions'); // Include custom functions snippet
 	
 			if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
 				if( Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
@@ -314,7 +331,9 @@ function layout_switch_check($page) {
 			} else {
 				define('MOBILEMODE', FALSE);
 			}
-			$page->includeSnippet('registerfunctions'); // Include custom functions snippet
+
+
+
 			if(isset($_GET['media']) && $_GET['media'] == 'flash' && $page->content('flash') != ''){
 				$page->layout_id = 13; // Force layout change
 				ob_start();
@@ -348,7 +367,7 @@ function layout_switch_check($page) {
 				echo $page;
 				exit();
 			}
-	/*
+			/*
 			if(isset($_GET['media']) && $_GET['media'] == 'pdf'){
 				define('PDFMODE', TRUE);
 				$page->layout_id = 21; // Force layout change
@@ -363,7 +382,7 @@ function layout_switch_check($page) {
 				echo $page;
 				exit();
 			}
-	*/
+			*/
 			if((isset($_GET['media']) && $_GET['media'] == 'contrast')){
 				$page->layout_id = 12; // Force layout change
 				ob_start();
