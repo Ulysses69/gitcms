@@ -12,6 +12,7 @@ $Options = '';
 $DirectoryIndex = '';
 $Env = '';
 $RewriteRules = '';
+$RedirectHome = '';
 $Compression = ''; /* gzip, deflate */
 
 // Domain without www (supports subdomains - domain name must be explicitly set)
@@ -97,9 +98,6 @@ if($RewriteRuleCache == 'no'){ $RewriteRuleCache = ',E=nocache:1'; } else { $Rew
 /* Handle domain change (retains/assumes all page structures have moved across to new domain */
 //RewriteRule ^(.*)$ http://www.newdomain.co.uk/$1 [R=301,L]
 
-$RewriteRules = '';
-$RedirectHome = '';
-
 if(Plugin::isEnabled('redirector') == true){
 
 	$redirects_sql = "SELECT * FROM ".TABLE_PREFIX."redirector_redirects ORDER BY destination, url";
@@ -169,6 +167,16 @@ if(Plugin::isEnabled('redirector') == true){
 		}
 	}
 	*/
+}
+
+
+/* Support custom URI for  */
+if(Plugin::isEnabled('social') == true){
+	$icons = Plugin::getSetting('icon_set', 'social');
+	if($icons && Plugin::getSetting('display', 'social') == 'show') {
+		/* Just pass the filename. We will re-write the rest of the URI */
+		$RewriteRules .= 'RewriteRule ^social/(.+)$ /wolf/plugins/social/icons/'.$icons.'/$1 [L]'."\n";
+	}
 }
 
 

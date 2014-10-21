@@ -50,7 +50,13 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
                     if($name != '' && $title != ''){                    
                         $url = ${$name.'_URL'};
                         if($appearance == 'image'){
-                            $open = '<img src="'.URI_PUBLIC.'wolf/plugins/social/icons/'.$icon_set.'/'.$name.'.png" alt="';
+							/* Determine path of social icon images */
+							if(Plugin::isEnabled('_htaccess') == true){
+								$src_path = '/social/';
+							} else {
+								$src_path = URI_PUBLIC.'wolf/plugins/social/icons/'.$icon_set.'/';
+							}
+                            $open = '<img src="'.$src_path.$name.'.png" alt="';
                             $close = '" />';
                         } else {
                             $open = '';

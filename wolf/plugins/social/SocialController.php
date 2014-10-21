@@ -43,6 +43,26 @@ class SocialController extends PluginController {
 				  			'instagram_URL' => $instagram_URL);
 		if (Plugin::setAllSettings($settings, 'social')) {
 			Flash::set('success', 'Social - '.__('plugin settings saved.'));
+
+			if(Plugin::isEnabled('_htaccess') == true){
+	
+				$htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
+				ob_start();
+				include($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/lib/htaccess.php');
+				$htaccesstemplate = ob_get_contents();
+				ob_end_clean();
+	
+				//$htaccess = file_get_contents($htaccesstemplate);
+				$htaccess = $htaccesstemplate;
+				$htaccess = preg_replace("/(\s\s){1,}/","\n",trim($htaccess));
+				
+				$htaccessbackupfile = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/backups/.htaccess.bak';
+				$htaccessbackup = file_get_contents($htaccessbackupfile);
+				$htaccessbackup = preg_replace("/(\s\s){1,}/","\n",trim($htaccessbackup));
+	
+				saveServerConfig($htaccess,$htaccessbackup,$htaccessfile,$htaccessbackupfile);
+			}
+
 			redirect(get_url('plugin/social/settings'));
 		} else {
 			Flash::set('error', 'Social - '.__('plugin settings not saved!'));
