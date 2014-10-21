@@ -160,11 +160,11 @@ $clientanalyticsversion = Plugin::getSetting('clientanalyticsversion', 'seobox')
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Search Engines'); ?></legend>
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 			<tr>
-				<td class="label"><label for="bots"><?php echo __('Index pages'); ?></label></td>
+				<td class="label"><label for="bots"><?php echo __('Robots'); ?></label></td>
 				<td class="field">
 				<input type="checkbox" name="bots" id="bots" value="allow" class="checkbox"<?php if($bots == "allow"){echo " checked";}?>/>
 				</td>
-				<td class="help"><?php echo __('Allow or Disallow robots. Uncheck when in test mode (default).');?></td>
+				<td class="help"><?php echo __('Allow or Disallow robots to index pages. Unchecked when in test mode (default).');?></td>
 			</tr>
 		</table>
 	</fieldset>
