@@ -14,7 +14,7 @@
 -->
 
 <div class="box">
-<h2><?php echo __('About');?></h2>
+<h2><?php echo __('Client Details').' '.Plugin::getSetting('version', 'clientdetails'); ?></h2>
 <p>Manage business details from this page. Changes to these details will be automatically reflected on pages that refer to them.</p>
 </div>
 

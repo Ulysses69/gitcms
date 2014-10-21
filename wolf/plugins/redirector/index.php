@@ -12,12 +12,14 @@
  *   http://themes.designspike.ca/redirector/help/
  *
  */
+if (!defined('REDIRECTOR_VERSION')) { define('REDIRECTOR_VERSION', '0.2.1'); }
+if (!defined('REDIRECTOR_ROOT')) { define('REDIRECTOR_ROOT', URI_PUBLIC.'wolf/plugins/redirector'); }
 
 Plugin::setInfos(array(
 	'id'		  => 'redirector',
 	'title'	   => 'Redirector',
 	'description' => 'Provides an interface to manage redirects.',
-	'version'	 => '0.1.1', 
+	'version'	 => REDIRECTOR_VERSION,
    	'license'	 => 'MIT',
 	'author'	  => 'Design Spike'
 ));

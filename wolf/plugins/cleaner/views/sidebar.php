@@ -35,7 +35,7 @@ if($debug == true){ ?>
 <?php } ?>
 
 <div class="box">
-<h2><?php echo __('Tip');?></h2>
+<h2><?php echo __('Cleaner').' '.Plugin::getSetting('version', 'cleaner'); ?></h2>
 <p>Slash characters are automatically formatted as required (when saved), even with mixed combinations of forward slashes and backward slashes, even trailing slashes.</p>
 </div>
 

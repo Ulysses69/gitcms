@@ -275,7 +275,7 @@ document.write('<style type=\"text/css\" />#<?php echo $map_id; ?>{width:100%;he
 <?php //} ?>
 
 
-<h2>Tip</h2>
+<h2><?php echo __('Google Map').' '.Plugin::getSetting('version', 'googlemap'); ?></h2>
 <p>Drag the flag for precision placement (don't forget to press 'save' at the end of the page).</p>
 
 <?php if(!AuthUser::hasPermission('client')) { ?>
