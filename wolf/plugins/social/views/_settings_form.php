@@ -43,12 +43,12 @@ $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
 			<tr>
 				<td class="label"><label for="display"><?php echo __('Display'); ?></label></td>
 				<td class="field display"><input type="checkbox" name="display" id="display" value="show" class="checkbox"<?php if($display == "show"){echo " checked";}?>/></td>
-				<td class="help">Appearance of social links</td>
+				<td class="help"><?php echo __('Appearance of social links'); ?></td>
 			</tr>
                 
 		<?php if(!empty($icon_set_array)){ ?>                
             <tr>
-				<td class="label"><label for="aicon_set">Icon Set</label></td>
+				<td class="label"><label for="aicon_set"><?php echo __('Icon Set'); ?></label></td>
 				<td class="field">
 				<select name="icon_set" id="aicon_set">
 				<?php                                                                                                               
@@ -71,7 +71,7 @@ $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
         <?php }	?>
 
 			<tr>
-				<td class="label"><label for="appearance">Appearance</label></td>
+				<td class="label"><label for="appearance"><?php echo __('Appearance'); ?></label></td>
 				<td class="field">
 				<select name="appearance" id="appearance">
 				<?php                                                                                                               
@@ -144,8 +144,8 @@ $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
 	</fieldset>
 
 	<p class="buttons">
-		<input class="button" id="site-save-page" name="commit" title="Save then close" type="submit" accesskey="s" value="<?php echo __('Save');?>" />
-		<a href="<?php echo get_url('plugin/product'); ?>"  id="site-cancel-page" class="button" title="Close without saving"><?php echo __('Cancel'); ?></a>
+		<input class="button" id="site-save-page" name="commit" title="<?php echo __('Save then close');?>" type="submit" accesskey="s" value="<?php echo __('Save');?>" />
+		<a href="<?php echo get_url('plugin/product'); ?>"  id="site-cancel-page" class="button" title="<?php echo __('Close without saving');?>"><?php echo __('Cancel'); ?></a>
 	</p>
 
 </form>

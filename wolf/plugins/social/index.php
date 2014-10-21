@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.0.2'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.1.0'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',
@@ -77,11 +77,13 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
                 $data .= sociallink($data, 'vimeo', 'Vimeo'); 
                 $data .= sociallink($data, 'instagram', 'Instagram'); 
 
-                if($appearance == 'image'){
-                    echo '<div class="social">'."\n".$data.'</div>';
-                } else {
-                    echo '<ul class="social">'."\n".$data.'</ul>';
-                }
+                if($data != ''){
+					if($appearance == 'image'){
+	                    echo "\n".'<div class="social">'."\n".$data.'</div>'."\n";
+	                } else {
+	                    echo "\n".'<ul class="social">'."\n".$data.'</ul>'."\n";
+	                }
+				}
 
             }
 
