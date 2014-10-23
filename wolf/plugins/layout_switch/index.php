@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.2.1',
+	'version'	 			=> '6.3.0',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -207,6 +207,33 @@ function layoutScreenCss($content,$get='ob_get_contents'){
 }
 
 
+function edit_page_link($page) {
+	$styling = '';
+	$output = '';
+
+	// Check if there's a user session
+    AuthUser::load();
+
+    // Check if the user is logged in and has page_edit permission.
+    if (AuthUser::isLoggedIn() && (AuthUser::hasPermission('administrator') || AuthUser::hasPermission('page_edit'))) {
+		$styling .= 'position:fixed !important;';
+		$styling .= 'right:0 !important;';
+		$styling .= 'z-index:999 !important;';
+		$styling .= 'font-size:70% !important;';
+		$styling .= 'font-weight:bold !important;';
+		$styling .= 'background:#00cc00 !important;';
+		$styling .= 'color:#ffffff !important;';
+		$styling .= 'padding:5px 6px !important;';
+		$styling .= 'margin:0 !important;';
+		$output = '<a href="'. URL_PUBLIC . ADMIN_DIR . '/page/edit/' . $page->id .'" style="'.$styling.'">Edit page</a>';
+		//exit;
+	}
+	
+	return $output;
+}
+
+
+
 function layout_switch_check($page) {
 	
 	/* Check for notfound page (as per invalid admin redirects) */
@@ -236,6 +263,8 @@ function layout_switch_check($page) {
 		}
 
 	}
+
+
 
 	/* Check for mockups pages */
 	if(strpos($_SERVER["REQUEST_URI"], 'mockup')){
@@ -401,9 +430,9 @@ function layout_switch_check($page) {
 	
 			//$mobile_redirect = true; // true/false
 			if(Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
-	
+
 				if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
-	
+
 					/* UNDER CONSTRUCTION - Funky Cache Support */
 					if(Plugin::isEnabled('funky_cache') == true){
 						funky_cache_create($page);
@@ -443,10 +472,11 @@ function layout_switch_check($page) {
 					exit();
 	
 				} else {
-	
-	
+
+
 					//echo 'hello: '.$page->slug; exit;
 					$newpage = '';
+					$edit_page_link = '';
 
 
 					// For some reason, forms with string parameters require update
@@ -457,9 +487,14 @@ function layout_switch_check($page) {
 	
 					// This page requires post-rebuilding as it isn't built via funky cache
 					if(Plugin::isEnabled('funky_cache') == false || (Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 0)){
+						
+						// Dispaly edit page link
+						$edit_page_link = edit_page_link($page);
+
 						ob_start();
 						$page->_executeLayout();
 						$newpage = ob_get_contents();
+						$newpage = $edit_page_link . $newpage;
 					}
 	
 					// Funky cache calls these changes via direct functions if required. Run here only if funky cache is disabled, or enabled but this page is not cached
@@ -485,14 +520,11 @@ function layout_switch_check($page) {
 						//echo $page;
 						//exit;
 					}
-	
-	
-	
-	
+					
 					// For some reason, cached pages (when cache is disabled) return blank pages if ob_end_clean is used here
 					if(Plugin::isEnabled('funky_cache') == false || (Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 0)){
 					//if(Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 1){
-	
+
 						if($newpage != ''){
 							ob_end_clean();
 							echo $newpage;
@@ -526,10 +558,7 @@ function layout_switch_check($page) {
 					echo $page;
 					//exit;
 					*/
-	
-	
-	
-	
+
 	
 				}
 			} else {
