@@ -236,6 +236,7 @@ function edit_page_link($page) {
 
 function layout_switch_check($page) {
 	
+
 	/* Check for notfound page (as per invalid admin redirects) */
 	if(strpos($_SERVER["REQUEST_URI"], 'notfound'.URL_SUFFIX)){
 		header("HTTP/1.0 401 Unauthorized");
@@ -293,6 +294,7 @@ function layout_switch_check($page) {
 	}
 
 
+
 	/* Check for suggested not found pages (as passed via URL) */
 	if(strpos($_SERVER["REQUEST_URI"], '301=Error')){
 		header("HTTP/1.0 301 Moved Permanently");
@@ -301,12 +303,26 @@ function layout_switch_check($page) {
 
 
 
+
+
+
+
 	/* Check for search results pages */
 	if(strpos($_SERVER['REQUEST_URI'], 'search/')){
+		
+		/* TO DO: In Maintenance mode, search page returns no page object (should return page object id 8) */
+		$page = Page::findById(8);
+
+		//echo $page->id;
+		//exit;
+
 		//header("HTTP/1.0 301 Moved Permanently");
 		//header("Status: 301 Moved Permanently");
 	}
 	
+	
+	
+
 
 
 	//echo 'Layout Loaded'; exit;
@@ -354,12 +370,18 @@ function layout_switch_check($page) {
 	
 			if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
 				if( Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
-					define('MOBILEMODE', TRUE);
+					if(!defined('MOBILEMODE')){
+						define('MOBILEMODE', TRUE);
+					}
 				} else {
-					define('MOBILEMODE', FALSE);
+					if(!defined('MOBILEMODE')){
+						define('MOBILEMODE', FALSE);
+					}
 				}
 			} else {
-				define('MOBILEMODE', FALSE);
+				if(!defined('MOBILEMODE')){
+					define('MOBILEMODE', FALSE);
+				}
 			}
 
 

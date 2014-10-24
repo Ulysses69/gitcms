@@ -93,6 +93,10 @@ if(defined('CMS_BACKEND')) {
 }
 
 function maintenance_check($uri=NULL) {
+	
+	//echo $page->id;
+	//exit;
+
 	AuthUser::load();
 	$settings = Plugin::getAllSettings('maintenance');
 

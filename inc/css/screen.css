@@ -571,8 +571,29 @@ h2#reply {
 #sitelinks a {
 	margin-left: -5px;
 	margin-right: -5px;
+	position: relative !important;
+	overflow: hidden !important;
 }
-
+.social {
+	position: relative;
+	clear: both;
+	overflow: hidden;
+}
+.social a {
+	margin-left: -5px;
+	margin-right: -5px;
+	position: relative;
+	overflow: hidden;
+	float: left;
+}
+.social a img {
+	margin: 0 !important;
+	padding: 0 !important;
+	position: relative !important;
+	float: left;
+	width: 30px;
+	height: 30px;
+}
 
 
 

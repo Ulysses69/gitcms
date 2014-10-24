@@ -75,6 +75,25 @@ class MaintenancePage extends Record {
 
 	public function updateSettings($my_POST) {
 		foreach($my_POST as $key=>$value) {
+
+			/* Check Funky cache status */
+			if($key == 'maintenanceMode') {
+
+				if($value == 'on'){
+					if(Plugin::isEnabled('funky_cache') == true){
+						funky_cache_delete_all();
+						Flash::set('success', 'Funky Cache now Disabled');
+						Plugin::deactivate('funky_cache');
+					}
+				} else {
+					if(Plugin::isEnabled('funky_cache') == false){
+						Flash::set('success', 'Funky Cache now Enabled');
+						Plugin::activate('funky_cache');
+					}
+				}
+
+			}
+
 			if($key != 'customHTML') {
 				$value = filter_var($value, FILTER_SANITIZE_STRING);
 				Plugin::setAllSettings(array($key => $value), 'maintenance');
