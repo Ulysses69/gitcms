@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.2.0'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.2.1'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',

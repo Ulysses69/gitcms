@@ -15,11 +15,41 @@
 </div>
 
 <div class="box sets">
+
+		<!--
+		<?php
+        $icon_set_array = array();
+        if ($handle = opendir($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/social/icons/')) {
+            $blacklist = array('.', '..','.DS_Store','Thumbs.db');
+            while (false !== ($folder = readdir($handle))) {
+                if (!in_array($folder, $blacklist)) {
+                    //echo $folder;
+                    
+                        if ($filehandle = opendir($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/social/icons/'.$folder.'/')) {
+							echo '<h2>'.ucfirst($folder).'</h2>';
+				            echo '<div>';
+				            while (false !== ($file = readdir($filehandle))) {
+				                if (!in_array($file, $blacklist)) {
+									/* Determine path of social icon images */
+									$src_path = URI_PUBLIC.'wolf/plugins/social/icons/'.$folder.'/'.$file;
+									echo '<img src="'.$src_path.'" />';
+				                }
+				            }
+				            echo '</div>';
+						}
+
+                }
+            }
+            closedir($handle);
+        }?>
+        -->
+
+
 		<?php
 		$icon_set = Plugin::getSetting('icon_set', 'social');
         if ($handle = opendir($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/social/icons/'.$icon_set.'/')) {
             $blacklist = array('.', '..','.DS_Store','Thumbs.db');
-            echo '<h2>'.ucfirst($icon_set).'</h2>';
+            echo '<h2>'.ucfirst($icon_set).' Icon Set</h2>';
             echo '<div>';
             while (false !== ($file = readdir($handle))) {
                 if (!in_array($file, $blacklist)) {
@@ -31,4 +61,5 @@
             echo '</div>';
 		}
         ?>
+
 </div>
