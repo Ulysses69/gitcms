@@ -332,17 +332,17 @@ RewriteRule ^<?php echo $adminDir; ?>(.*)$ <?php echo $adminDir; ?>/index.php?$1
 
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{DOCUMENT_ROOT}/cache/mobile/index.html -f
-RewriteRule ^mobile/$ %{DOCUMENT_ROOT}/cache/mobile/index.html [L,QSA]
+RewriteRule ^mobile/$ <?php echo URL_PUBLIC; ?>cache/mobile/index.html [L,QSA]
 <?php //} ?>
 
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{DOCUMENT_ROOT}/cache/index.html -f
-RewriteRule ^$ %{DOCUMENT_ROOT}/cache/index.html [L,QSA]
+RewriteRule ^$ <?php echo URL_PUBLIC; ?>cache/index.html [L,QSA]
 
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{DOCUMENT_ROOT}/cache%{REQUEST_URI} -f
 RewriteCond %{THE_REQUEST} !success.html
-RewriteRule (.*) %{DOCUMENT_ROOT}/cache%{REQUEST_URI} [L,QSA]
+RewriteRule (.*) <?php echo URL_PUBLIC; ?>cache%{REQUEST_URI} [L,QSA]
 #RewriteRule ^%{REQUEST_URI} /cache/$1 [L,QSA]
 <?php //} ?>
 
