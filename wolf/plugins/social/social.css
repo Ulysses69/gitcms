@@ -33,3 +33,11 @@
 #body_plugin_social fieldset table td.field input.color-picker {
 	width: 5.2em !important;
 }
+#body_plugin_social .sets div {
+	margin: 0 0 10px 0;
+}
+#body_plugin_social .sets img {
+	width: 26px;
+	height: 26px;
+	margin: 10px 10px 0 0;
+}
