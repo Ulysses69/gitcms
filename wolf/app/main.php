@@ -131,6 +131,7 @@ function url_start_with($url) {
 }
 
 function main() {
+
 	// get the uri string from the query
 	$uri = $_SERVER['QUERY_STRING'];
 
@@ -231,7 +232,6 @@ function main() {
 	//}
 //}
 //echo $requested_uri;
-
 
 ob_start();
 main();

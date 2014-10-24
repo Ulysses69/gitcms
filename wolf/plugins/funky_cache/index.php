@@ -112,7 +112,7 @@ if (defined('CMS_BACKEND'))  {
 	//  }
 
 	function funky_cache_create($page,$mobile=false) {
-
+		
 		if ($page->funky_cache_enabled) {
 
 			funky_cache_suffix();

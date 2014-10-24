@@ -648,39 +648,46 @@ function setanalytics($parent){
 					$analytics .= $gacode;
 	
 				} else {
-
-					$analytics .= '<script'.$script_type.'>'.$br;
-					if($analyticsVersion == 'universal'){
-					/* Universal Analytics */
-						$analytics .= "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;".$br;
-						$analytics .= 'i[r]=i[r]||function(){'.$br;
-						$analytics .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'.$br;
-						$analytics .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;'.$br;
-						$analytics .= "m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');".$br;
-						$analytics .= "ga('create', '".$gacode."');".$br;
-						$analytics .= "ga('send', 'pageview'".$trackPageviewParams.");".$br;
-					} else {
-					/* Classic Analytics (default) */
-						$analytics .= 'var _gaq = _gaq || [];'.$br;
-						$analytics .= '_gaq.push([\'_setAccount\', \''.$gacode.'\']);'.$br;
-		
-						if($subdomain == 'yes'){
-						$analytics .= '_gaq.push([\'_setDomainName\', \''.$_SERVER["SERVER_NAME"].'\']);'.$br;
-						}
-		
-						$analytics .= '_gaq.push([\'_trackPageview\''.$trackPageviewParams.']);'.$br;
-						$analytics .= '(function(){'.$br;
-						$analytics .= 'var ga = document.createElement(\'script\');'.$br;
-						$analytics .= 'ga.type = \'text/javascript\';'.$br;
-						$analytics .= 'ga.async = true;'.$br;
-						$analytics .= 'ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'.$br;
-						$analytics .= 'var s = document.getElementsByTagName(\'script\')[0];'.$br;
-						$analytics .= 's.parentNode.insertBefore(ga, s);'.$br;
-						$analytics .= '})();'.$br;
-					}
-					$analytics .= '</script>'.$br;
+					
+					// Check if there's a user session
+				    //AuthUser::load();
+				
+				    // Ensure the user is not logged in.
+				    //if (!AuthUser::isLoggedIn() || (Plugin::isEnabled('funky_cache') == true && $parent->funky_cache_enabled == 1)) {
 	
-					//echo $analytics;
+						$analytics .= '<script'.$script_type.'>'.$br;
+						if($analyticsVersion == 'universal'){
+						/* Universal Analytics */
+							$analytics .= "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;".$br;
+							$analytics .= 'i[r]=i[r]||function(){'.$br;
+							$analytics .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'.$br;
+							$analytics .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;'.$br;
+							$analytics .= "m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');".$br;
+							$analytics .= "ga('create', '".$gacode."');".$br;
+							$analytics .= "ga('send', 'pageview'".$trackPageviewParams.");".$br;
+						} else {
+						/* Classic Analytics (default) */
+							$analytics .= 'var _gaq = _gaq || [];'.$br;
+							$analytics .= '_gaq.push([\'_setAccount\', \''.$gacode.'\']);'.$br;
+			
+							if($subdomain == 'yes'){
+							$analytics .= '_gaq.push([\'_setDomainName\', \''.$_SERVER["SERVER_NAME"].'\']);'.$br;
+							}
+			
+							$analytics .= '_gaq.push([\'_trackPageview\''.$trackPageviewParams.']);'.$br;
+							$analytics .= '(function(){'.$br;
+							$analytics .= 'var ga = document.createElement(\'script\');'.$br;
+							$analytics .= 'ga.type = \'text/javascript\';'.$br;
+							$analytics .= 'ga.async = true;'.$br;
+							$analytics .= 'ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'.$br;
+							$analytics .= 'var s = document.getElementsByTagName(\'script\')[0];'.$br;
+							$analytics .= 's.parentNode.insertBefore(ga, s);'.$br;
+							$analytics .= '})();'.$br;
+						}
+						$analytics .= '</script>'.$br;
+	
+						//echo $analytics;
+					//}
 	
 	
 					/* Track links */
@@ -1088,17 +1095,27 @@ function setanalytics($parent){
 					}
 	
 				}
+
+
+
+				// Check if there's a user session
+			    //AuthUser::load();
+			
+			    // Ensure the user is not logged in.
+				//if (!AuthUser::isLoggedIn() || (Plugin::isEnabled('funky_cache') == true && $parent->funky_cache_enabled == 1)) {
 				
-				$gc = googleAnalytics($parent);
-				/* Track pages on mobile, without requiring client-side javascript */
-				if((!stristr($gc, 'UA-XXXXX-X') && !stristr($gc, 'MO-XXXXX-X')) || DEBUG == true){
-					if($noscript == 'on'){
-						$analytics .= '<noscript>';
-						$analytics .= '<img src="'.$gc.'" class="tracker" alt="" />';
-						$analytics .= '</noscript>';
+					$gc = googleAnalytics($parent);
+					/* Track pages on mobile, without requiring client-side javascript */
+					if((!stristr($gc, 'UA-XXXXX-X') && !stristr($gc, 'MO-XXXXX-X')) || DEBUG == true){
+						if($noscript == 'on'){
+							$analytics .= '<noscript>';
+							$analytics .= '<img src="'.$gc.'" class="tracker" alt="" />';
+							$analytics .= '</noscript>';
+						}
+						$analytics .= $br;
 					}
-					$analytics .= $br;
-				}
+
+				//}
 
 
 
@@ -1211,16 +1228,26 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 				//return $opentag."alert('".$action."');".$closetag;
 				return $opentag."alert('Pathname: ' + \"\\t\" + window.location.pathname + \"\\n\" + 'Event: '  + \"\\t\\t\" + '".$track."' + \"\\n\" + 'Category: '  + \"\\t\" + ".$category." + \"\\n\" + 'Action:		' + ".$action." + \"\\n\" + 'Label: ' + \"\\t\\t\" + ".$label." + \"\\n\" + 'Value: ' + \"\\t\\t\" + ".$value." + \"\\n\" + 'No Bounce: ' + \"\\t\" + ".$noninteraction.");".$closetag."\n";
 			} else {
-				if($analyticsVersion == 'universal'){
-					if($noninteraction == 'true'){
-						$noninteraction = '';
+
+				// Check if there's a user session
+			    //AuthUser::load();
+			
+			    // Ensure the user is not logged in.
+			    //if (!AuthUser::isLoggedIn()) {
+				//if (!AuthUser::isLoggedIn() || (Plugin::isEnabled('funky_cache') == true && $parent->funky_cache_enabled == 1)) {
+
+					if($analyticsVersion == 'universal'){
+						if($noninteraction == 'true'){
+							$noninteraction = '';
+						} else {
+							$noninteraction = ", {'nonInteraction': 1}";
+						}
+						return $opentag.$setinteraction."ga('send', ".$track.", ".$category.", ".$action.", ".$label.", ".$value.$noninteraction.");".$closetag."\n";
 					} else {
-						$noninteraction = ", {'nonInteraction': 1}";
+						return $opentag."_gaq.push(['".$track."', ".$category.", ".$action.", ".$label.", ".$value.", ".$noninteraction."]);".$closetag."\n";
 					}
-					return $opentag.$setinteraction."ga('send', ".$track.", ".$category.", ".$action.", ".$label.", ".$value.$noninteraction.");".$closetag."\n";
-				} else {
-					return $opentag."_gaq.push(['".$track."', ".$category.", ".$action.", ".$label.", ".$value.", ".$noninteraction."]);".$closetag."\n";
-				}
+					
+				//}
 			}
 	
 		}
