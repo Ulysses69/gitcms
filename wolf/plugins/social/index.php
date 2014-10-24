@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.1.0'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.1.1'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',
@@ -34,45 +34,47 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
             $appearance = Plugin::getSetting('appearance', 'social');
             if($display == 'show'){
 
-                function sociallink($data, $name='', $title=''){                
-                    $appearance = Plugin::getSetting('appearance', 'social'); 
-                    $icon_set = Plugin::getSetting('icon_set', 'social');                
-                    $facebook_URL = Plugin::getSetting('facebook_URL', 'social');
-                    $twitter_URL = Plugin::getSetting('twitter_URL', 'social');
-                    $linkedin_URL = Plugin::getSetting('linkedin_URL', 'social');
-                    $pinterest_URL = Plugin::getSetting('pinterest_URL', 'social');
-                    $youtube_URL = Plugin::getSetting('youtube_URL', 'social');
-                    $googleplus_URL = Plugin::getSetting('googleplus_URL', 'social');
-                    $vimeo_URL = Plugin::getSetting('vimeo_URL', 'social');
-                    $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
-
-                    $output = '';
-                    if($name != '' && $title != ''){                    
-                        $url = ${$name.'_URL'};
-                        if($appearance == 'image'){
-							/* Determine path of social icon images */
-							if(Plugin::isEnabled('_htaccess') == true){
-								$src_path = '/social/';
-							} else {
-								$src_path = URI_PUBLIC.'wolf/plugins/social/icons/'.$icon_set.'/';
-							}
-                            $open = '<img src="'.$src_path.$name.'.png" alt="';
-                            $close = '" />';
-                        } else {
-                            $open = '';
-                            $close = '';
-                        }
-                        if(${$name.'_URL'} != ''){ 
-                            if($appearance == 'image'){
-                                $output .= '<span class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></span> ';
-                            } else {
-                                $output .= '<li class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></li>'."\n";
-                            }
-                        }
-                    }
-
-                    return $output;
-                }
+                if(!function_exists('sociallink')){
+					function sociallink($data, $name='', $title=''){
+	                    $appearance = Plugin::getSetting('appearance', 'social'); 
+	                    $icon_set = Plugin::getSetting('icon_set', 'social');                
+	                    $facebook_URL = Plugin::getSetting('facebook_URL', 'social');
+	                    $twitter_URL = Plugin::getSetting('twitter_URL', 'social');
+	                    $linkedin_URL = Plugin::getSetting('linkedin_URL', 'social');
+	                    $pinterest_URL = Plugin::getSetting('pinterest_URL', 'social');
+	                    $youtube_URL = Plugin::getSetting('youtube_URL', 'social');
+	                    $googleplus_URL = Plugin::getSetting('googleplus_URL', 'social');
+	                    $vimeo_URL = Plugin::getSetting('vimeo_URL', 'social');
+	                    $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
+	
+	                    $output = '';
+	                    if($name != '' && $title != ''){                    
+	                        $url = ${$name.'_URL'};
+	                        if($appearance == 'image'){
+								/* Determine path of social icon images */
+								if(Plugin::isEnabled('_htaccess') == true){
+									$src_path = '/social/';
+								} else {
+									$src_path = URI_PUBLIC.'wolf/plugins/social/icons/'.$icon_set.'/';
+								}
+	                            $open = '<img src="'.$src_path.$name.'.png" alt="';
+	                            $close = '" />';
+	                        } else {
+	                            $open = '';
+	                            $close = '';
+	                        }
+	                        if(${$name.'_URL'} != ''){ 
+	                            if($appearance == 'image'){
+	                                $output .= '<span class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></span> ';
+	                            } else {
+	                                $output .= '<li class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></li>'."\n";
+	                            }
+	                        }
+	                    }
+	
+	                    return $output;
+	                }
+				}
 
                 $data .= sociallink($data, 'facebook', 'Facebook'); 
                 $data .= sociallink($data, 'twitter', 'Twitter'); 
