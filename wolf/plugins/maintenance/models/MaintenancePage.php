@@ -86,10 +86,13 @@ class MaintenancePage extends Record {
 						Plugin::deactivate('funky_cache');
 					}
 				} else {
+					/* Can't assume Funky Cache needs to be turned on */
+					/*
 					if(Plugin::isEnabled('funky_cache') == false){
 						Flash::set('success', 'Funky Cache now Enabled');
 						Plugin::activate('funky_cache');
 					}
+					*/
 				}
 
 			}
