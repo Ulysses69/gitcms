@@ -57,12 +57,12 @@ $mockup_file = $_SERVER["DOCUMENT_ROOT"].'/../mockup-log.txt';
 <div class="box warning logins">
 <h2><?php echo __('Logged IPs');?></h2>
 
-<?php if(filesize($log_file) > 0){ ?>
+<?php if(file_exists($log_file) && filesize($log_file) > 0){ ?>
 <p>Failed attempts at admin access.</p>
 <?php logList($log_file); ?>
 <?php } ?>
 
-<?php if(filesize($mockup_file) > 0){ ?>
+<?php if(file_exists($mockup_file) && filesize($mockup_file) > 0){ ?>
 <p>Access to mockups.</p>
 <?php logList($mockup_file); ?>
 <?php } ?>

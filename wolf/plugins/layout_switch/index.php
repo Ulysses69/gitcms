@@ -235,6 +235,20 @@ function edit_page_link($page) {
 
 
 function layout_switch_check($page) {
+
+	$uri = str_replace(URL_SUFFIX, '', $_SERVER['REQUEST_URI']);
+	if(isset($_GET['media'])){
+		//echo $_GET['media'];
+		$uri = ltrim(str_replace($_GET['media'].'/', '', $uri),'/');
+		$home = Page::findById(1);
+		$page = $home->find($uri);
+	}
+
+	//echo $uri;
+	//$page = Page::findById(1);
+	//$page = $this->find($uri)->id;
+	//echo $page->id;
+	//exit;
 	
 
 	/* Check for notfound page (as per invalid admin redirects) */
