@@ -140,7 +140,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 		
 		
 		
-				if(MOBILEMODE == TRUE){
+				if(defined('MOBILEMODE') && 'MOBILEMODE' == TRUE){
 					$actionOpen = '<div class="action">';
 					$actionClose = '</div>';
 					$action2Open = '<div class="action even">';
@@ -182,7 +182,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 		
 		
 		
-				if(MOBILEMODE == TRUE){
+				if(defined('MOBILEMODE') && 'MOBILEMODE' == TRUE){
 					$theactions = str_replace('Telephone','Call',$theactions);
 					$theactions = str_replace($clientphone,telephone('','','true','',false),$theactions);
 					$theactions = str_replace($clientemail,'<span id="trackemail"><a href="mailto:'.$clientemail.'">'.$clientemail.'</a></span>',$theactions);
@@ -209,7 +209,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 				//$clientaddress .= "\n</div>\n";
 		
 		
-				if(MOBILEMODE == TRUE){
+				if(defined('MOBILEMODE') && 'MOBILEMODE' == TRUE){
 					if(!stristr($_SERVER['REQUEST_URI'], '/privacy')){
 						$clientaddress .= '<div class="column even">'."\n";
 						//$clientaddress .= "<h2>Open hours</h2>\n";
@@ -652,7 +652,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 				//}
 				//$display .= '</div>'."\n";
 			}
-			if(MOBILEMODE == TRUE){
+			if(defined('MOBILEMODE') && 'MOBILEMODE' == TRUE){
 				$display = str_replace('Monday','Mon',$display);
 				$display = str_replace('Tuesday','Tue',$display);
 				$display = str_replace('Wednesday','Wed',$display);
