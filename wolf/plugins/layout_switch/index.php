@@ -310,9 +310,9 @@ function layout_switch_check($page) {
 
 
 	/* Check for suggested not found pages (as passed via URL) */
-	if(strpos($_SERVER["REQUEST_URI"], '301=Error')){
-		header("HTTP/1.0 301 Moved Permanently");
-		header("Status: 301 Moved Permanently");
+	if(strpos($_SERVER["REQUEST_URI"], '404=Error')){
+		header("HTTP/1.0 404 Not Found");
+		header("Status: 404 Not Found");
 	}
 
 
