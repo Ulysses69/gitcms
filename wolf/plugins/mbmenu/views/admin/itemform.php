@@ -50,10 +50,32 @@ if(!defined("CMS_ROOT"))
 				<td><strong>Item Text</strong></td>
 				<td><input type='text' name='item[linktext]' size='40' value="<?php echo (isset($item->linktext)) ? $item->linktext : ''; ?>" /></td>
 			</tr>
+
+			<!--
 			<tr>
 				<td><strong>Item URL</strong></td>
 				<td><input type='text' name='item[linkurl]' size='40' value="<?php echo (isset($item->linkurl)) ? $item->linkurl : ''; ?>" /></td>
 			</tr>
+			-->
+			<tr>
+				<td><strong>Menu</strong></td>
+				<td><select name='item[linkurl]' onchange="getMenuItems(this);">
+					<option>Select Menu</option>
+				<?php 
+					foreach($menus as $k => $menu)
+					{
+						$sel = '';
+						if(isset($item->menuid) && ($menu->id == $item->menuid))
+						{
+							$sel = ' selected="selected"';
+						}
+						
+						echo "<option value='".$menu->id."'".$sel.">".$menu->menutitle."</option>";
+					}
+				?>				
+				</select></td>
+			</tr>
+
 			<tr>
 				<td><strong>Item Options</strong> (Class, id, onlick etc...)</td>
 				<td><input type='text' name='item[linkoptions]' size='40' value="<?php echo (isset($item->linkoptions)) ? $item->linkoptions : ''; ?>" /></td>

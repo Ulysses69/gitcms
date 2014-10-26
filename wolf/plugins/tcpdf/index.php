@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('TCPDF_VERSION')) { define('TCPDF_VERSION', '1.2.1'); }
+if (!defined('TCPDF_VERSION')) { define('TCPDF_VERSION', '1.2.2'); }
 Plugin::setInfos(array(
 	'id'		  			=> 'tcpdf',
 	'title'	   			=> __('PDF Classes (TCPDF)'),
@@ -566,7 +566,14 @@ EOS;
 						$filename = 'search-results-for-'.$filename;
 					}
 
-					//Close and output PDF document
+					// Coanonical header
+					if($thepage->url != '' && URL_SUFFIX != ''){ $link = URL_ABSOLUTE.$thepage->url.URL_SUFFIX; } else { $link = URL_ABSOLUTE.$thepage->url; }
+					//$rel = get_headers($link); $ur = $rel[0];
+					//if(strpos($ur,"200")){ 
+						header('Link:<'.$link.'>; rel="canonical"'); 
+					//}
+
+					// Close and output PDF document
 					$pdf->Output($filename.'.pdf', 'D');
 		
 				} else {
