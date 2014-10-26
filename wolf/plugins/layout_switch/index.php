@@ -476,7 +476,7 @@ function layout_switch_check($page) {
 	
 					if(mobiledevice() == TRUE && stristr($_SERVER['REQUEST_URI'],'mobile/') === FALSE){ // Force mobile page redirect
 						$_SESSION['mobilemode'] = 'set'; /* Mobile has been detected, or chosen. */
-						header("HTTP/1.1 307 Temporary Redirect");
+						header("HTTP/1.1 301 Temporary Redirect");
 						header("location: /mobile".$page->url());
 					}
 					if(stristr($page->behavior_id, 'Form')){
