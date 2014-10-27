@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.3.0',
+	'version'	 			=> '6.3.1',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -217,6 +217,7 @@ function edit_page_link($page) {
     // Check if the user is logged in and has page_edit permission.
     if (AuthUser::isLoggedIn() && (AuthUser::hasPermission('administrator') || AuthUser::hasPermission('page_edit'))) {
 		$styling .= 'position:fixed !important;';
+		$styling .= 'top:0 !important;';
 		$styling .= 'right:0 !important;';
 		$styling .= 'z-index:999 !important;';
 		$styling .= 'font-size:70% !important;';
