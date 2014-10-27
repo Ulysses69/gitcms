@@ -83,6 +83,8 @@ function behavior_page_not_found() {
 
 				//header("HTTP/1.0 404 Not Found");
 				//header("Status: 404 Not Found");
+				//echo 'PAGE NOT FOUND 1';
+				//exit;
 
 				header("Location: ".$redirect);
 				//echo "site search for: ".$redirect;
@@ -91,7 +93,6 @@ function behavior_page_not_found() {
 
 			header("HTTP/1.0 404 Not Found");
 			header("Status: 404 Not Found");
-
 
 			$page->includeSnippet('registerfunctions'); // Include custom functions snippet
 			if((isset($_GET['media']) && $_GET['media'] == 'contrast')){
@@ -129,6 +130,6 @@ function behavior_page_not_found() {
 
 			$page->_executeLayout();
 			exit(); // need to exit otherwise true error page will be sent
-		}
+		} 
 	}
 }
