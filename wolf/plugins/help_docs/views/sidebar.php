@@ -152,6 +152,9 @@ if (!defined('IN_CMS')) { exit(); }
 	<li><a href="<?php echo get_url('plugin/help_docs/features#pagelevel'); ?>">Page level</a></li>
 	<?php ; ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#randomsnippet'); ?>">Random</a></li>
+	<?php if(!function_exists('announcements')) ?>
+	<li><a href="<?php echo get_url('plugin/help_docs/features#announcements'); ?>">Announcements</a></li>
+	<?php ; ?>
 	<?php if(!function_exists('testimonials')) ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#testimonials'); ?>">Testimonials</a></li>
 	<?php ; ?>

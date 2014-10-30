@@ -104,6 +104,13 @@ if (!defined('IN_CMS')) { exit(); }
 <p>Example 2 Returns random testimonial content.</p>
 <code>randomsnippet($this,'/testimonials/','');</code>
 
+<?php if(function_exists('announcements')) ?>
+<h2 id="announcements">Announcements</h2>
+<p>Unlike other pages, the announcements page can can display an announcement on pages when the excerpt tab is populated and the page is set to published or hidden. If the page is set to hidden, the excerpt can be used to link to any other pages than itself (the page will be returned by on-site search though).</p>
+<p>Example 1 Returns announcements (if page is available and excerpt is set).</p>
+<code>announcements();</code>
+<?php ; ?>
+
 <?php if(function_exists('testimonials')) ?>
 <h2 id="testimonials">Testimonials</h2>
 <p>Example 1 Returns random testimonial excerpts grouped into 3s.</p>
