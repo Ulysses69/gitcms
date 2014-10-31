@@ -1,6 +1,11 @@
 /error_log
 /error.log
+/readme.txt
+/security.php
+/test1234.php
 /admin/error_log
+/docs
+/install
 /inc/flash
 /inc/font
 /public/videos/sample.ogv
