@@ -15,6 +15,8 @@ if(!Plugin::getSetting('cleanlist', 'cleaner')){
 	$clist = strip_tags(file_get_contents($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/cleanlist.txt', true));
 	// If clean list fails or is empty, set to empty
 	if($clist === false) $clist = '';
+	// Ensure custom admin dir is supported
+	$clist = str_replace('/admin/error_log', '/'.ADMIN_DIR.'/error_log', $clist);
 	$settings['cleanlist'] = $clist;
 }
 if(!Plugin::getSetting('protectlist', 'cleaner')){
@@ -22,6 +24,9 @@ if(!Plugin::getSetting('protectlist', 'cleaner')){
 	$plist = strip_tags(file_get_contents($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/protectlist.txt', true));
 	// If protect list fails or is empty, set to empty
 	if($plist === false) $plist = '';
+	// Ensure custom admin dir is supported
+	$plist = str_replace('/admin/', '/'.ADMIN_DIR.'/', $plist);
+	$plist = str_replace("/admin\r", "/".ADMIN_DIR."\r", $plist);
 	$settings['protectlist'] = $plist;
 }
 if(!Plugin::getSetting('customconditions', 'cleaner')) $settings['customconditions'] = '';

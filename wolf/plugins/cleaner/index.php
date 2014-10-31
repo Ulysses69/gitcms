@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.3'); }
+if (!defined('CLEANER_VERSION')) { define('CLEANER_VERSION', '0.1.4'); }
 if (!defined('CLEANER_ROOT')) { define('CLEANER_ROOT', URI_PUBLIC.'wolf/plugins/cleaner'); }
 Plugin::setInfos(array(
 	'id'					=> 'cleaner',

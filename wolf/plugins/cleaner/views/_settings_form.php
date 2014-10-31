@@ -12,6 +12,9 @@
 
 	<h2>Protected List</h2>
 	<?php $protectlist = Plugin::getSetting('protectlist', 'cleaner'); ?>
+
+	<?php //$protectlist = str_replace("/admin\r", "/admin_renamed\r", $protectlist); ?>
+
 	<textarea name="protectlist" id="protectlist"><?php echo $protectlist; ?></textarea></td>
 
 	<!--

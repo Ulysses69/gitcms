@@ -45,6 +45,11 @@ class CleanerController extends PluginController {
 		$cleanlist = str_replace(" ", '', $cleanlist);
 		$protectlist = str_replace(" ", '', $protectlist);
 
+		// Ensure custom admin dir is supported
+		$cleanlist = str_replace('/admin/error_log', '/'.ADMIN_DIR.'/error_log', $cleanlist);
+		$protectlist = str_replace('/admin/', '/'.ADMIN_DIR.'/', $protectlist);
+		$protectlist = str_replace("/admin\r", "/".ADMIN_DIR."\r", $protectlist);
+
 		$settings = array('cleanlist' => $cleanlist, 'protectlist' => $protectlist, 'debugmode' => $debugmode);
 		if (Plugin::setAllSettings($settings, 'cleaner')) {
 			Flash::set('success', 'Cleaner - '.__('plugin settings saved.'));
