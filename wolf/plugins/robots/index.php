@@ -274,7 +274,8 @@ function robots($page,$returnstatus='echo'){
 	if(Plugin::getSetting('viewport', 'mobile_check')){
 		$viewport = '';
 		$mobilecheck = true; if(Plugin::getSetting('enable', 'mobile_check') == false){ $mobilecheck = false;  }
-		if(Plugin::getSetting('viewport', 'mobile_check') != '' && $mobilecheck == true){
+		//if(Plugin::getSetting('viewport', 'mobile_check') != '' && $mobilecheck == true){
+		if(Plugin::getSetting('viewport', 'mobile_check') != '' || $mobilecheck == true){
 			$content = Plugin::getSetting('viewport', 'mobile_check');
 			/* See if screen_width set for mobiles */
 			if(stristr($content, 'width=set-width') && Plugin::getSetting('website_width', 'mobile_check') != ''){

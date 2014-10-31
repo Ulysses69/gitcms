@@ -121,9 +121,9 @@ onload = function() {
 				<?php
 				$viewport_array = array(
 				array ('Default', ''),
-				//array ('Fit to Website Width', 'width=set-width, initial-scale=1.0, user-scalable=yes'),
 				array ('Fit to Website Width', 'width=set-width'),
-				array ('Fit to Device Width', 'width=device-width, initial-scale=1.0, user-scalable=yes'));
+				array ('Fit to Device Width', 'width=device-width, initial-scale=1.0, user-scalable=yes'),
+				array ('Fit to Device Width (Strict)', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'));
 				foreach($viewport_array as $subarray) {
 					list($text, $val) = $subarray;
 					if($val == $viewport){
