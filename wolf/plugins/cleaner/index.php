@@ -92,7 +92,7 @@ if(!function_exists('plugin_check')){
 if(!function_exists('delete_directory')){
 		function delete_directory($debug = true, $dirname, $wolfpath, $data = '', &$filesizes, $safelist, $protected = '', $start = 0, $end = 3, $cssdata = ''){
 
-			if((time() - $start) < $end){
+			if((time() - $start) < $end){				
 
 				$removeplugin = false;
 				
@@ -105,8 +105,14 @@ if(!function_exists('delete_directory')){
 				// Relative URL
 				$relname = str_replace($_SERVER{'DOCUMENT_ROOT'}, '', $dirname);
 
+				//$data .= 'Relname: ' . $relname;
+
 				// Ensure files/folders exist within root (to protect server critical files/folders)
-				if($relname != '' && stristr($relname, $_SERVER{'DOCUMENT_ROOT'})){
+				//if($relname != '' && stristr($relname, $_SERVER{'DOCUMENT_ROOT'})){
+				if($relname != '' && substr($relname, 0, 1) == '/'){
+
+					//$data .= 'Checking Files. ';
+
 					$info = new SplFileInfo($dirname);
 					if (($info->getExtension() == '' || is_dir($dirname)) && !stristr($dirname,'error_log') && !stristr($dirname,'error.log') && !stristr($dirname,'README')){
 						//$data .= '<li><b>FOLDER: '.$dirname."</b></li>";
@@ -338,6 +344,8 @@ if(!function_exists('delete_directory')){
 					
 				}
 
+				//$data .= 'Test Finished. ';
+
 
 			} 
 
@@ -355,8 +363,7 @@ function cleanCMS($mode='test'){
 	$protectlist = Plugin::getSetting('protectlist', 'cleaner');
 	$debug = Plugin::getSetting('debugmode', 'cleaner');
 
-	if($cleanlist != ''){
-		
+	if($cleanlist != ''){		
 		//$debug = true;
 		
 		// Set size of minimum clean (1000 = 1KB)
@@ -418,11 +425,18 @@ function cleanCMS($mode='test'){
 		// Server time out
 		$maxtime = ini_get('max_execution_time');
 		// Seconds for timeout (set a second or two lower than server)
-		$end = 10;
+		$end = (time() + 10);
 		foreach ($deletelist as $value) {
+
+			//echo '<b>Mode:</b> ' . $mode . '<br/>';
+			//echo '<b>Time:</b> ' . (time() - $start) . ' <b>Start:</b> ' . $start . ' <b>End:</b> ' . $end . ' <br/>';
+
 			// Ensure script finishes executing before server time out (or check if anything needs cleaning)
 			//if((time() - $start) < $end){
 			if(($mode != 'check' && (time() - $start) < $end) || ($mode == 'check' && $datalist == '')){
+
+				//echo '<b>Deletelist Value:</b> ' . $value . '<br/>';
+
 				//$datalist .= file_path($value).'<br/>';
 				$datalist .= delete_directory($debug, file_path($value), $wolfpath, '', $filesizes, $safelist, '', $start, $end, $cssdata);
 			}
@@ -430,7 +444,12 @@ function cleanCMS($mode='test'){
 
 		foreach ($filesizes as $value) {
 			$spacesaved = $spacesaved + $value;
-		}		
+		}
+
+
+		//echo '<b>Datalist:</b> ' . $datalist . '<br/>';		
+		//exit;	
+
 
 		if($datalist != ''){
 

@@ -9,7 +9,6 @@
 /inc
 /index.php
 /public
-/security.php
 /wolf
 /admin/images
 /admin/index.php
