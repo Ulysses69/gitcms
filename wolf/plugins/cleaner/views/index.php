@@ -11,3 +11,8 @@
 	<p>No cleaning is required.</p>
 
 <?php } ?>
+
+
+<?php
+//echo strip_tags(file_get_contents($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/cleaner/lib/cleanlist.txt', true));
+?> 
