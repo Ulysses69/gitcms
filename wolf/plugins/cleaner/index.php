@@ -109,7 +109,7 @@ if(!function_exists('delete_directory')){
 
 				// Ensure files/folders exist within root (to protect server critical files/folders)
 				//if($relname != '' && stristr($relname, $_SERVER{'DOCUMENT_ROOT'})){
-				if($relname != '' && (substr($relname, 0, 1) == '/' && !stristr($relname, './')){
+				if($relname != '' && (substr($relname, 0, 1) == '/' && !stristr($relname, './'))){
 
 					//$data .= 'Checking Files. ';
 

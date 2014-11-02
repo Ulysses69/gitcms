@@ -184,8 +184,11 @@ function init(){ document.getElementsByTagName('body')[0].className+=' js'; } wi
 
 <?php if (defined('DEBUG')): ?>
 		<p class="stats">
-			<b><?php echo __('Page render:'); ?></b> <?php echo execution_time(); ?> <?php echo __('seconds'); ?>
-			| <b><?php echo __('Memory usage:'); ?></b> <?php echo memory_usage(); ?> | <b><?php echo __('Test mode:'); ?></b> <?php if(defined('CMS_TEST_MODE') && CMS_TEST_MODE == true){ echo 'On'; } else { echo 'Off'; } ?> | <b><?php echo __('Mobile check:'); ?></b> <?php echo MOBILE_CHECK; ?>
+			<b><?php echo __('Page render:'); ?></b> <?php echo execution_time(); ?> <?php echo __('seconds'); ?> | 
+			<b><?php echo __('Memory usage:'); ?></b> <?php echo memory_usage(); ?> | 
+			<b><?php echo __('Test mode:'); ?></b> <?php if(defined('CMS_TEST_MODE') && CMS_TEST_MODE == true){ echo 'On'; } else { echo 'Off'; } ?> | 
+			<b><?php echo __('Mobile check:'); ?></b> <?php echo MOBILE_CHECK; ?>
+			<?php include_once('../../.RegisterFunctions'); if(isset($version)){ echo __(' | <b>Functions Version:</b> ').$version; } ?>
 		</p>
 <?php endif; ?>
 
