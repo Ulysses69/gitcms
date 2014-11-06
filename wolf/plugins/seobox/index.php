@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.8.0'); }
+if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.9.0'); }
 if (!defined('SEOBOX_ROOT')) { define('SEOBOX_ROOT', URI_PUBLIC.'wolf/plugins/seobox'); }
 Plugin::setInfos(array(
 	'id'					=> 'seobox',
@@ -561,8 +561,8 @@ function setanalytics($parent){
 	//if($checkPage != 'success'.URL_SUFFIX || ($checkPage == 'success'.URL_SUFFIX && isset($_POST['submit']))){
 
 
-		/* Determine script type (remove for HTML5) */
-		if($parent->layout_id == '17' || ($parent->parent && $parent->parent->layout_id == '17')){
+		/* Determine script type (remove for HTML5 or Responsive) */
+		if(($parent->layout_id == '17' || ($parent->parent && $parent->parent->layout_id == '17')) || $parent->layout_id == '25' || ($parent->parent && $parent->parent->layout_id == '25')){
 			$script_type = '';
 		} else {
 			$script_type = ' type="text/javascript"';
@@ -1196,12 +1196,12 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 			}
 
 
-			/* Determine script type (remove for HTML5) */
-			if($parent->layout_id == '17' || $parent->parent->layout_id == '17'){
+			/* Determine script type (remove for HTML5 or Responsive) */
+			if(($parent->layout_id == '17' || ($parent->parent && $parent->parent->layout_id == '17')) || ($parent->layout_id == '25' || ($parent->parent && $parent->parent->layout_id == '25'))){
 				$script_type = '';
 			} else {
 				$script_type = " type='text/javascript'";
-			}
+							}
 
 
 			/* Determine if script tags are needed */
