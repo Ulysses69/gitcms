@@ -119,7 +119,8 @@ if(isset($form_attachments) && $form_attachments == true && $FILES != null){
 
 /* Check for required fields */
 if($errors != "") {
-
+	
+	
 	//echo 'Errors Check 3';
 
 	$errorsresult = '';
@@ -236,12 +237,12 @@ if($errors != "") {
 
 } else {
 
-	//echo 'No Errors Check 3';
+	//echo 'No Errors Check 3'; exit;
 
 	//if(isset($_SESSION[$sessionid]) && $_SESSION[$sessionid] != "success"){
 	if(!isset($_SESSION[$sessionid]) || $_SESSION[$sessionid] != "success"){
 		
-		//echo 'Session ID Success';
+		//echo 'Session ID Success'; exit;
 
 		$_SESSION[$sessionid] = "success";
 		$formsuccess = true;
@@ -251,8 +252,14 @@ if($errors != "") {
 
 		/* 1. If email is not required (but telephone or other contact method is provided) then use client email address */
 		if(!isset($formconfirmation)) $email = null;
+		/* Email is admin test */
 		if($email == null || validEmail($email) == false){
 			$email = $emailOut;
+			if(!isset($name)){
+				//$name = '';
+				/* destined to be sent from client name via website@domain (automated on live website) */
+				$name = 'Website Form Test';
+			}
 		}
 
 
@@ -398,12 +405,13 @@ if($errors != "") {
 
 	
 			/* Standard Form */
-			//echo 'Standard Form: '.$emailOut;
-			//exit;
+			//echo 'Standard Form: '.$emailOut; exit;
 			/* TO DO: Check hosting environment to determine sender domain */
 
 			$head_from = "website@".str_replace($unwanted,'',URL_ABSOLUTE);
-			if(!isset($name)) $name = '';
+			//echo 'From: '.$head_from; exit;
+
+			//if(!isset($name)) $name = '';
 			//if(AMIN_THEME == 'poppy_media') $head_from = "website@poppymedia.co.uk";
 			if($formid == "friend-form"){
 				$headers = "Return-Path: ".$head_from."\r\n";
@@ -416,18 +424,21 @@ if($errors != "") {
 				$headers = "Return-Path: ".$head_from."\r\n";
 				$headers .= "Reply-To: \"".$name."\" <".$email.">\r\n";
 				$headers .= "From: ".$email."\r\n";
+				//$headers .= "From: ".$formsEmail."\r\n";
 				$headers .= "To: \"".$nameOut."\" <".$emailOut.">\r\n";
 				if(isset($emailCC) && $emailCC != ''){$headers .= "Cc: ".$emailCC."\r\n";}
 				//$headers .= "To: \"".$nameOut."\" <".$emailOut.">, Steven <steven@bluehorizonsmedia.co.uk>\r\n";
 				//$headers .= "CC: steven@bluehorizonsmedia.co.uk\r\n";
 			}
-	
+
+
 			//$headers .= "BCC: steven@bluehorizonsmedia.co.uk\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/plain; charset=iso-8859-1\r\n";
 
 	
 			mail($emailOut,$subject,$message,$headers,'-f '.$head_from);
+			//echo "\n Headers: \n".$headers; exit;
 
 
 			/* NOT WORKING. TO BE USED WITH ATTACH MAILER as per http://www.phpmagicbook.com/upload-file-attach-send-html-format-email/
