@@ -231,6 +231,22 @@ if(Plugin::isEnabled('maintenance') == true){
             $AdminAccess .= "RewriteCond %{REMOTE_HOST} !^".str_replace('.', '\.', $allow->ip)."\n";
         }
 	}
+
+	// Check if logged in user has forgotten to add their IP to the whitelist
+	$emergency_ip = $_SERVER['REMOTE_ADDR'];
+	if(!stristr($AdminAccess, str_replace('.', '\.', $emergency_ip))){
+		AuthUser::load();
+		AuthUser::isLoggedIn();
+		$ip_data = array(
+			'ip' => $emergency_ip,
+			'name' => 'Admin (auto-added)',
+			'notes' => 'Added to keep '.AuthUser::getRecord()->username.' logged in',
+			'enabled' => 'yes'
+		);
+		MaintenanceAccessControl::addAccess($ip_data);
+		$AdminAccess .= "RewriteCond %{REMOTE_HOST} !^".str_replace('.', '\.', $emergency_ip)."\n";
+	}
+
 	if($allowed_ips > 0){
         //$AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
         $AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html?noaccess [R,L]\n";
