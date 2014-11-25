@@ -190,6 +190,28 @@ class MaintenanceController extends PluginController {
 	}
 
 	public function settings($page=NULL) {
+
+        if(Plugin::isEnabled('maintenance') == true){
+            if(Plugin::isEnabled('_htaccess') == true){
+
+                $htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
+                ob_start();
+                include($_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/lib/htaccess.php');
+                $htaccesstemplate = ob_get_contents();
+                ob_end_clean();
+
+                //$htaccess = file_get_contents($htaccesstemplate);
+                $htaccess = $htaccesstemplate;
+                $htaccess = preg_replace("/(\s\s){1,}/","\n",trim($htaccess));
+
+                $htaccessbackupfile = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/_htaccess/backups/.htaccess.bak';
+                $htaccessbackup = file_get_contents($htaccessbackupfile);
+                $htaccessbackup = preg_replace("/(\s\s){1,}/","\n",trim($htaccessbackup));
+
+                saveServerConfig($htaccess,$htaccessbackup,$htaccessfile,$htaccessbackupfile);
+            }
+        }
+
 		if($page) {
 			MaintenancePage::updateSettings($_POST);
 			Flash::set('success', __('Your settings have been updated'));

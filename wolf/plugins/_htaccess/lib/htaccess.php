@@ -251,6 +251,12 @@ if(Plugin::isEnabled('maintenance') == true){
         //$AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html? [R,L]\n";
         $AdminAccess .= "RewriteRule ^".$adminDir."/(.*)$ /notfound.html?noaccess [R,L]\n";
     }
+
+	// Allow admin access if user access does not require IP in whitelist
+	if($maintenance['maintenanceAuthorizedAccess'] == 'on'){
+		$AdminAccess = '';
+	}
+
 }
 
 

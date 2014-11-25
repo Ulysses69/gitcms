@@ -577,6 +577,12 @@ thead td, th {
 }
 
 
+/* Handle announcements */
+#announcements {
+    text-overflow: ellipsis;
+}
+
+
 /* Handle images that need caching */
 #cache {
 	position: absolute;
