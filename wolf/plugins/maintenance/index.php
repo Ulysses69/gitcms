@@ -44,7 +44,7 @@ Plugin::setInfos(array(
 	'author'		=>	'Andrew Waters',
 	'website'		=>	'http://www.band-x.org/',
 	'update_url'	=>	'http://www.band-x.org/update.xml',
-	'version'		=>	'1.2.2',
+	'version'		=>	'1.2.3',
 	'type'			=>	'both'
 ));
 
@@ -94,21 +94,25 @@ if(defined('CMS_BACKEND')) {
 
 function maintenance_check($uri=NULL) {
 	
-	//echo $page->id;
-	//exit;
+	//echo $page->id; exit;
 
 	AuthUser::load();
 	$settings = Plugin::getAllSettings('maintenance');
 
 	if($settings['maintenanceMode'] == 'on') {
+		
+		//echo 'Maintenance mode is on'; exit;
 
 		$ip = $_SERVER['REMOTE_ADDR'];
 		Observer::notify('maintenance_page_requested', $uri);
 		if($settings['maintenanceBackdoorStatus'] == 'on' && isset($_GET['backdoorkey']) && ($_GET['backdoorkey'] == $settings['maintenanceBackdoorKey'])) {
+
 			//echo 'Logged In 1'; exit;
 			Observer::notify('maintenance_page_bypassed', $ip, $uri);
+
 		//} elseif(MaintenanceAccessControl::isAllowed($ip) == FALSE) {
 		} elseif(MaintenanceAccessControl::isAllowed($ip) == FALSE && ($settings['maintenanceAuthorizedAccess'] == 'on' && !AuthUser::isLoggedIn())) {
+
 			//echo 'Not Allowed'; exit;
 			$uriSlug = trim($uri, '/');
 			$maintenancePage = MaintenancePage::getMaintenanceURI();
@@ -119,15 +123,23 @@ function maintenance_check($uri=NULL) {
 			}
 
 		} else {
-			//echo 'Logged In 2'; exit;
-			//Observer::notify('maintenance_page_bypassed', $ip, $uri);
-			Observer::notify('maintenance_page_bypassed', $ip, $uri);
 
+			if(!AuthUser::isLoggedIn()){
+				//echo 'Not Logged In'; exit;
+				Observer::notify('maintenance_page_displayed', $uri);
+				MaintenanceController::displayMaintenancePage($uri, $settings);
+			} else {
+				//echo 'Logged In'; exit;
+			}
+			//Observer::notify('maintenance_page_bypassed', $ip, $uri);
+
+			/*
 			// Pass page to layout switch, otherwise layout switch is bypassed
 			if(function_exists('layout_switch_check')){
 				$page = Page::findByUri(str_replace(URL_SUFFIX,'',$_SERVER['REQUEST_URI']));
 				layout_switch_check($page);
 			}
+			*/
 
 		}
 

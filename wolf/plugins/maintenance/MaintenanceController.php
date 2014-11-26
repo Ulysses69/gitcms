@@ -55,7 +55,8 @@ class MaintenanceController extends PluginController {
 		redirect(get_url('maintenance/access'));
 	}
 
-	function displayMaintenancePage($uri, $settings) {
+	//function displayMaintenancePage($uri, $settings) {
+	public static function displayMaintenancePage($uri, $settings) {
 		switch($settings['maintenanceView']) {
 			case 'static':		echo MaintenancePage::retrieveContent();
 								break;

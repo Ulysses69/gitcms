@@ -1,4 +1,4 @@
-### CMS-Generated Update November 14, 2014, 3:32 pm ###
+### CMS-Generated Update November 26, 2014, 2:39 pm ###
 #
 # Setting Frog requirements
 #
@@ -144,12 +144,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?THISPAGE=$1 [L,QSA]
-#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
-#RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]
-RewriteCond %{REMOTE_HOST} !^92\.238\.202\.28
-RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125
-RewriteCond %{REMOTE_HOST} !^127\.0\.0\.1
-RewriteRule ^admin/(.*)$ /notfound.html?noaccess [R,L]
 Redirect 301 /assets/ /public/images/assets/
 Redirect 301 /plugins.xml /public/projects/development/software/frog/plugins.xml
 Redirect 301 /googlemap.zip /public/projects/development/software/frog/plugins/googlemap.zip

@@ -202,7 +202,8 @@ $AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125\n";
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^77\.99\.231\.221\n";
 /* My iPhone IP */
 //$AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^213\.205\.231\.157\n";
-$AdminAccess .= "#RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]\n";
+/* Always put wordpress in folder. Wordpress can use it's own htaccess */
+//$AdminAccess .= "#RewriteRule ^blog/wp-admin/(.*)$ /notfound.html? [R,L]\n";
 
 
 /* Handle admin access */

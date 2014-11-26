@@ -91,6 +91,27 @@ a {
 }
 
 
+
+/* Handle iframes */
+.embed {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	/* 4x3 Aspect Ratio */
+	padding-bottom: 75%;
+	/* 16x9 Aspect Ratio */
+	padding-bottom: 56.25%;
+}
+.embed iframe {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+
 <?php if(($homelogo != 'small' && $logo != 'text') || $homelogo == 'large'){ ?>
 #home-page #logo {
 	padding:.7em 0 0 0;
