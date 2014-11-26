@@ -100,7 +100,7 @@ $clientanalyticsversion = Plugin::getSetting('clientanalyticsversion', 'seobox')
 				<td class="field">
 				<input name="clientanalytics" id="clientanalytics" value="<?php echo $clientanalytics; ?>" />
 				</td>
-				<td class="help"><?php echo __('Google <a href="https://www.google.com/analytics/settings/home" target="_blank">code or script</a>. Leave blank to disable.');?></td>
+				<td class="help"><?php echo __('Google <a href="https://www.google.com/analytics/settings/home" target="_blank">code or script</a>.');?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="clientlocation"><?php echo __('Location'); ?></label></td>
