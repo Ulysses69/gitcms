@@ -177,7 +177,7 @@ if(Plugin::isEnabled('redirector') == true){
 }
 
 
-/* Support custom URI for  */
+/* Support custom URI for social icons  */
 if(Plugin::isEnabled('social') == true){
 	$icons = Plugin::getSetting('icon_set', 'social');
 	if($icons && Plugin::getSetting('display', 'social') == 'show') {
@@ -185,6 +185,10 @@ if(Plugin::isEnabled('social') == true){
 		$RewriteRules .= 'RewriteRule ^social/(.+)$ /wolf/plugins/social/icons/'.$icons.'/$1 [L]'."\n";
 	}
 }
+
+/* Support custom URI for favicon */
+$RewriteRules .= 'RewriteRule ^logo.ico$ /public/images/favicon/logo.ico [L]'."\n";
+$RewriteRules .= 'RewriteRule ^logo.png$ /public/images/favicon/logo.png [L]'."\n";
 
 
 /* Handle Subdomains */

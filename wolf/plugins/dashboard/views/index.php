@@ -203,13 +203,13 @@
 			$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/page/edit/1"><b>Proposal Layout Mode</b></a><br />Specify different layout when approved.<br /><br /></li>';
 		}
 
-		$favicon = $_SERVER{'DOCUMENT_ROOT'}.'/inc/img/icon.ico';
+		$favicon = $_SERVER{'DOCUMENT_ROOT'}.'/public/images/favicon/logo.ico';
 		if (file_exists($favicon)) {
 			$iconsize = filesize($favicon);
 			//$icondate = filemtime($favicon);
 			//if($iconsize == '17062' && $icondate == '1240157004'){
 			if($iconsize == '17062'){
-				$warnings .= '<li class="warning"><a href="/inc/img/icon.ico" target="_blank"><b>Check Favicon</b></a><br />Do you want to use the current/default icon? <img src="/inc/img/icon.ico" class="helper" width="16" height="16" /><br /><br /></li>';
+				$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/plugin/file_manager/browse/images/favicon"><b>Check Favicon</b></a><br />Do you want to use the current/default icon? <img src="/logo.ico" class="helper" width="16" height="16" /><br /><br /></li>';
 			}
 		}
 
