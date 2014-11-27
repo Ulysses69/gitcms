@@ -18,6 +18,7 @@ $noticelivecheck = Plugin::getSetting('noticelivecheck', 'seobox');
 $bots = Plugin::getSetting('bots', 'seobox');
 $clientanalyticsscreenstats = Plugin::getSetting('clientanalyticsscreenstats', 'seobox');
 $clientanalyticsversion = Plugin::getSetting('clientanalyticsversion', 'seobox');
+$hometabindex = Plugin::getSetting('hometabindex', 'seobox');
 
 ?>
 
@@ -159,6 +160,13 @@ $clientanalyticsversion = Plugin::getSetting('clientanalyticsversion', 'seobox')
 				</select>
 				</td>
 				<td class="help"><?php echo __('Describe page which links point to.');?></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="hometabindex"><?php echo __('Home tabindex'); ?></label></td>
+				<td class="field">
+				<input type="checkbox" name="hometabindex" id="hometabindex" value="on" class="checkbox"<?php if($hometabindex == "on"){echo " checked";}?>/>
+				</td>
+				<td class="help"><?php echo __('Enable to disallow tab access.');?></td>
 			</tr>
 		</table>
 		<!--

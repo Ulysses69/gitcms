@@ -36,6 +36,7 @@ class SeoboxController extends PluginController {
 		$noticelivecheck = $_POST['noticelivecheck'];
 		$bots = $_POST['bots']; if($bots == '') $bots = 'disallow';
 		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];  
+		$hometabindex = $_POST['hometabindex'];
 		
         $clientanalytics = $_POST['clientanalytics'];
 		if(stristr($clientanalytics, 'analytics.js')){
@@ -63,7 +64,8 @@ class SeoboxController extends PluginController {
 						  'noticelivecheck' => $noticelivecheck,
 						  'bots' => $bots,
 						  'clientanalyticsscreenstats' => $clientanalyticsscreenstats,
-						  'clientanalyticsversion' => $clientanalyticsversion);
+						  'clientanalyticsversion' => $clientanalyticsversion,
+						  'hometabindex' => $hometabindex);
 
 		if (Plugin::setAllSettings($settings, 'seobox')) {
 

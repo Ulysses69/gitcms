@@ -2,6 +2,8 @@
 form{padding:0 0 1em 0}
 .checkbox{left:-1.7em;position:absolute;top:0.1em;line-height:0;height:0.8em;width:0.8em;padding:0}
 .checkgroups{margin-left:1.7em}
+.checkgroups fieldset{margin-left:-2em}
+.checkgroups p{margin-left:0.4em}
 .submitholder{margin:.5em 0 0;padding:1em 0}
 fieldset{border:none;padding:0}
 fieldset fieldset label{margin-left:1.6em}

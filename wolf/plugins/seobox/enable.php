@@ -28,6 +28,7 @@ if(!Plugin::getSetting('noticelivecheck', 'seobox')) $settings['noticelivecheck'
 if(!Plugin::getSetting('bots', 'seobox')) $settings['bots'] = 'disallow';
 if(!Plugin::getSetting('clientanalyticsscreenstats', 'seobox')) $settings['clientanalyticsscreenstats'] = '';
 if(!Plugin::getSetting('clientanalyticsversion', 'seobox')) $settings['clientanalyticsversion'] = 'classic';
+if(!Plugin::getSetting('hometabindex', 'seobox')) $settings['hometabindex'] = '';
 
 
 // Check existing plugin settings

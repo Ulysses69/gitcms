@@ -21,8 +21,9 @@ Header always set Expires "Thu, 01 Jan 1970 00:00:00 GMT" env=nocache
 RewriteEngine On
 RewriteBase /
 RewriteRule ^test2 "/test.html" [L,R=301,E=nocache:1]
-RewriteRule ^logo.ico$ /public/images/favicon/logo.ico [L]
-RewriteRule ^logo.png$ /public/images/favicon/logo.png [L]
+#RewriteRule ^logo.ico$ /public/images/favicon/logo.ico [L]
+#RewriteRule ^logo.png$ /public/images/favicon/logo.png [L]
+RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]
 RewriteRule ^social/(.+)$ /wolf/plugins/social/icons/circles/$1 [L]
 RewriteCond %{HTTP_HOST} !.local$ [NC]
 #RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]

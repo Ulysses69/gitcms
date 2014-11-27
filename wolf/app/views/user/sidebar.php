@@ -39,7 +39,7 @@
 <?php if(AuthUser::hasPermission('administrator')){ ?>
 
 
-<?php if(!AuthUser::hasPermission('client') && Plugin::isEnabled('dashboard') == true) { ?>
+<?php if(!AuthUser::hasPermission('client') && Plugin::isEnabled('dashboard') == true && Plugin::isEnabled('maintenance')) { ?>
 <p class="button"><a href="/admin/plugin/maintenance"><img src="/wolf/plugins/dashboard/img/keys.png" align="middle" alt="maintenance icon" /><?php echo __('Access'); ?></a></p>
 <?php } ?>
 
