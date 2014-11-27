@@ -187,8 +187,9 @@ if(Plugin::isEnabled('social') == true){
 }
 
 /* Support custom URI for favicon */
-$RewriteRules .= 'RewriteRule ^logo.ico$ /public/images/favicon/logo.ico [L]'."\n";
-$RewriteRules .= 'RewriteRule ^logo.png$ /public/images/favicon/logo.png [L]'."\n";
+//$RewriteRules .= 'RewriteRule ^logo.ico$ /public/images/favicon/logo.ico [L]'."\n";
+//$RewriteRules .= 'RewriteRule ^logo.png$ /public/images/favicon/logo.png [L]'."\n";
+$RewriteRules .= 'RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]'."\n";
 
 
 /* Handle Subdomains */
