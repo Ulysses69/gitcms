@@ -1,6 +1,7 @@
 #content form{margin-bottom:1em;overflow:hidden}
 form{padding:0 0 1em 0}
-.checkbox{height:1.2em;left:-1.7em;position:absolute;top:0;width:1.2em}
+.checkbox{left:-1.7em;position:absolute;top:0.1em;line-height:0;height:0.8em;width:0.8em;padding:0}
+.checkgroups{margin-left:1.7em}
 .submitholder{margin:.5em 0 0;padding:1em 0}
 fieldset{border:none;padding:0}
 fieldset fieldset label{margin-left:1.6em}
@@ -10,6 +11,7 @@ label select{width:100%}
 label,label span,#home-page #navigation li{display:block}
 legend,#mailinglist span span{display:none}
 #mailinglist{margin:.4em 0 0 1.6em;padding:.2em;position:relative}
+#mailinglist .checkbox{top:0.2em}
 .contact-form .note,#mailinglist span{display:none}
 #postedmessage h3,#postedmessage h4 {position: relative;padding: 0.5em 0.5em;margin-left: 1px}
 #postedmessage h4:after{content:':'}
