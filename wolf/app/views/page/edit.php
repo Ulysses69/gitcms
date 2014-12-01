@@ -116,7 +116,9 @@ if ($pagetmp != null && !empty($pagetmp) && $parttmp != null && !empty($parttmp)
 				  <td class="field">
 					  <select id="page_layout_id" name="page[layout_id]">
 						<option value="0">&#8212; <?php echo __('inherit'); ?> &#8212;</option>
+						<!-- Newly created pages (not yet saved) list layouts in wrong order -->
 					  <?php foreach ($layouts as $layout): ?><?php if (DEV_AUTH != 2){ $exclude = array(5,7,12,13,15);}else{ $exclude = array(); } ?>
+					  <?php //foreach ($layouts as $layout): ?><?php $exclude = array(5,7,12,13,15); ?>
 						<?php if(!in_array($layout->id,$exclude)){ ?><option value="<?php echo $layout->id; ?>"<?php echo $layout->id == $page->layout_id ? ' selected="selected"': ''; ?>><?php echo $layout->name; ?></option><?php } ?>
 					  <?php endforeach; ?>
 					</select>
