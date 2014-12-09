@@ -144,7 +144,7 @@ class RedirectorController extends PluginController {
 			$entry = new RedirectorRedirects($data);
 
 			if ( ! $entry->save()){
-				Flash::set('error', __('There was a problem adding your redirect.'));
+				Flash::set('error', __('There was a problem adding your redirect. Possible outdated database schema'));
 			} else {
 				if ($error = Record::findOneFrom('Redirector404s', 'url = \''.($dataURL.'\''))){
 					$error->delete();
