@@ -617,6 +617,69 @@ thead td, th {
 }
 
 
+/* Contact page buttons */
+.mobile .group .phone,
+.mobile .group .email {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	width: 49%;
+	padding: 0;
+	margin: 0 1% 1em 0;
+	font-size: 0.5em;
+	height: 5em;
+	line-height: 0;
+	word-break: break-all;
+	word-wrap: break-word;
+	border-radius:.5em;
+	-moz-border-radius:.5em;
+	-webkit-border-radius:.5em;
+}
+.mobile .group .email {
+	margin: 0 0 1em0 1%;
+}
+.mobile .group .phone a,
+.mobile .group .email a {
+	position: absolute;
+	top: 0 !important;
+	left: 0;
+	z-index: 2;
+	background: <?php echo $color_button_bg; ?>;
+	color: #fff !important;
+	margin: 0 0 0 0 !important;
+	padding: 1.5em 0 !important;
+	line-height: 0;
+	width: 100%;
+	overflow: hidden;
+	height: 2em;
+}
+.mobile .group .phone a:before {
+	content: 'Call';
+	display: block;
+	margin: 0 0 1.5em 0 !important;
+	padding: 0.3em 0.5em;
+	font-size: 3em;
+	line-height: 0;
+}
+.mobile .group .email a:before {
+	content: 'Email';
+	display: block;
+	margin: 0 0 1.5em 0 !important;
+	padding: 0.3em 0.5em;
+	font-size: 3em;
+	line-height: 0;
+}
+.mobile .group .phone a:after,
+.mobile .group .email a:after {
+	content: "\203A";
+	position: absolute;
+	top: 0.47em;
+	left: 85%;
+	font-size: 4em;
+	line-height: 0;
+}
+
+
 /* Landscape Mobile */
 @media only screen and (min-width: 510px) and (max-width: 629px) {
 .mobile #content ul.boxesx3,
