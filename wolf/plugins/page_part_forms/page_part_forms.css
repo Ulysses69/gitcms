@@ -127,17 +127,23 @@
 	width: 100% !important;
 }
 
+#Page-metadata-container {
+	padding: 10px 10px 15px 10px;
+	border: solid 1px #C7C7C7;
+	background: #EEEEEE;
+}
+
+
+/*
 .pages .profile-container {
 	padding: 16px;
 	border: solid 1px #C7C7C7;
 	background-color: #EEEEEE;
 	display: block;
 	margin: -20px 0 0 0;
-	/*
-	position: relative;
-	overflow: hidden;
-	*/
 }
+*/
+
 
 #body_page_add #Page-part-forms-Form .honorific input,
 #body_page_edit #Page-part-forms-Form .honorific input {
@@ -159,6 +165,11 @@
 	float: left;
 	text-align: right;
 }
+
+
+
+
+
 
 
 
