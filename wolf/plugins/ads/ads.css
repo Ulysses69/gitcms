@@ -1,0 +1,298 @@
+#box_form {
+	background-color: #fff;
+	padding: 10px;
+	overflow: hidden;
+	position: relative;
+	margin: 0 0 20px 0;
+	border-bottom: solid 1px #cacaca;
+}
+#body_plugin_ads table {
+	position: relative;
+	margin: 0 0 20px 0;
+}
+#body_plugin_ads select {
+	padding: 5px;
+}
+#box_form p {
+	margin: 15px 0 10px 0;
+}
+#box_form_table {
+	width: 100%;
+}
+#box_form_table td {
+	padding: 0 10px 10px 0;
+}
+.status {
+	width: 50px !important;
+}
+
+#box_boxlabel, #box_boxcontent, #box_boxlinkurl, #box_boxstatus {
+	width: 100%;
+}
+
+	#requests .boxlabel, #requests .boxlinkurl {
+		width: 50%;
+		left: 0;
+	}
+	#requests .boxlinkurl {
+		width: 48%;
+		left: 0;
+	}
+
+#body_plugin_ads h2 {
+	clear: both;
+}
+
+
+#body_plugin_ads .boxed {
+	overflow: hidden;
+	position: relative;
+	border: solid 1px #cccccc;
+	padding: 10px;
+	margin: 0 0 20px 0;
+}
+#body_plugin_ads .boxed table {
+	margin-bottom: 0;
+	margin-top: 20px;
+}
+#body_plugin_ads .boxed th {
+	font-weight: bold !important;
+}
+#body_plugin_ads .boxed td {
+	background: #f3efef;
+}
+#body_plugin_ads .boxed h2 {
+	font-size: 110%;
+	margin: 0 0 -8px 0;
+}
+
+
+
+#body_plugin_ads #sidebar label span {
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: 1em 0 0.2em 0;
+}
+#body_plugin_ads #sidebar label input {
+	width: 85%;
+	padding: 5px;
+}
+#body_plugin_ads #sidebar label,
+#body_plugin_ads #sidebar label input {
+	font-size: 1em;
+}
+#body_plugin_ads #sidebar .buttons {
+	position: relative;
+	padding: 0;
+	margin: 0 0 0.5em 0;
+	overflow: hidden;
+}
+
+
+
+
+#body_plugin_ads td.box {
+	width: 5em;
+}
+
+
+
+
+#body_plugin_ads .boxlabel a {
+	top: 0;
+}
+#body_plugin_ads .action {
+	width: 10px;
+}
+#body_plugin_ads .action a {
+	position: relative;
+	top: 0;
+}
+
+
+
+#body_plugin_ads #boxes .boxlabel {
+	width: 10em !important;
+}
+
+
+
+#body_plugin_ads #boxes .btn {
+	border: 0 !important;
+	cursor: pointer;
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 0 !important;
+	overflow: hidden !important;
+	height: 13px;
+	width: 17px;
+	float: left;
+}
+
+
+
+
+#body_plugin_ads #boxes .btn img {
+	float: left;
+	border: 0 !important;
+	margin: -1px 0 0 -2px !important;
+	padding: 0 !important;
+}
+#body_plugin_ads #boxes .boxlinkurl {
+	width: 8em !important;
+}
+#body_plugin_ads #boxes .boxstatus {
+	width: 3em !important;
+	padding: 0 !important;
+}
+#body_plugin_ads #boxes .boxstatus .checkbox {
+	padding: 0 !important;
+	margin: 0 0 0 2px !important;
+	width: auto !important;
+}
+#body_plugin_ads #boxes .boxstatus input {
+	width: auto !important;
+}
+#body_plugin_ads #boxes td.itemtoken {
+	font-size: 80%;
+	color: #666;
+}
+
+
+
+#body_plugin_ads #boxes .boxlabel input,
+#body_plugin_ads #boxes .boxcontent input {
+	width: 98% !important;
+}
+
+
+
+#body_plugin_ads #boxes .boxstatus input {
+	width: 5em !important;
+}
+
+
+
+#body_plugin_ads #boxes .boxlabel input,
+#body_plugin_ads #boxes .boxcontent input,
+#body_plugin_ads #boxes .boxlinkurl input,
+#body_plugin_ads #boxes .boxstatus input,
+#body_plugin_ads #boxes .boxlinkurl_suff input,
+#body_plugin_ads #boxes .boxlinkurl_pref input {
+	background: #f3efef;
+	border: 0;
+	padding: 2px 2px !important;
+	margin: 0;
+	float: left;
+	line-height: 0.8em;
+	height: 1.4em;
+}
+#body_plugin_ads #boxes .boxlinkurl_suff,
+#body_plugin_ads #boxes .boxlinkurl_pref {
+	position: relative !important;
+	overflow: hidden;
+	width: 2em;
+}
+#body_plugin_ads #boxes .boxlinkurl_suff input,
+#body_plugin_ads #boxes .boxlinkurl_pref input {
+	width: 4em;
+}
+/*
+#body_plugin_ads #boxes .boxlinkurl_pref select {
+	padding: 0;
+	position: relative;
+	z-index: 98;
+	margin: 0;
+}
+#body_plugin_ads #boxes .boxlinkurl_pref:before {
+	content:' ';
+	position: absolute;
+	width: 1.5em;
+	margin-left: 2.5em;
+	height: 1.3em;
+	background: #f3efef;
+	z-index: 99;
+}
+#body_plugin_ads #boxes tr:hover .boxlinkurl_pref:before {
+	background: #fff;
+}
+#body_plugin_ads #boxes tr:hover .boxlinkurl_pref:hover:before {
+	display: none
+}
+*/
+#body_plugin_ads #boxes tr:hover .boxlabel input,
+#body_plugin_ads #boxes tr:hover .boxcontent input,
+#body_plugin_ads #boxes tr:hover .boxlinkurl input,
+#body_plugin_ads #boxes tr:hover .boxstatus input,
+#body_plugin_ads #boxes tr:hover .boxlinkurl_pref input,
+#body_plugin_ads #boxes tr:hover .boxlinkurl_suff input {
+	background: #fff;
+}
+
+
+#body_plugin_ads #boxes .action {
+	width: 2em !important;
+	line-height: 0;
+}
+
+
+#body_plugin_ads #box_form_table td {
+	vertical-align: top;
+}
+#body_plugin_ads #box_form_table .boxcontent textarea {
+	height: 5.8em;
+	margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ads-container {
+	padding: 10px 10px 15px 10px;
+	border: solid 1px #C7C7C7;
+}
+#ads-container td {
+	background: transparent;
+}
+#ads-container input,
+#ads-container span {
+	width: auto;
+	display: inline;
+}
+#ads-container span {
+	position: relative;
+	margin: 0 0 0 5px;
+	top: -1px;
+}
+#ads-container td li {
+	display: block;
+}
+#ads-container .notes {
+	margin: 10px;
+	padding: 10px 0 0 0;
+	border-top: solid 1px #c7c7c7;
+}
+#ads-container .notes h2 {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: 90%;
+	font-weight: bold;
+}
+#ads-container .notes p {
+	font-size: 80%;
+}
