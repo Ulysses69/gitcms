@@ -143,6 +143,10 @@ if (!defined('IN_CMS')) { exit(); }
 <code>teamitems($this, 'team', 'ascend', 'name', 'basic', 'background', 'jobtitle');</code>
 <p>Example 5 Returns team as list (name, position, qualifications) manually ordered by page position.</p>
 <code>teamitems($this, 'team', 'descend', 'position', 'list');</code>
+<p>Example 6 Returns team as full page with symantic commas turned off manually ordered by page position.</p>
+<code>teamitems($this, 'team', 'descend', 'position', 'full', null, 'off', 'off');</code>
+$commas
+
 <?php ; ?>
 
 <h2 id="pageoptions">Page options</h2>
