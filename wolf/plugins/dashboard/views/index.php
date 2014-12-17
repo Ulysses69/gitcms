@@ -289,16 +289,19 @@
 	<?php
 	if($warnings != ''){ ?>
 		What would you like to do <?php echo $avatarName; ?>?</h2>
-	<?php } else { ?>
-		Hello <?php echo $avatarName; ?></h2>
-	<?php } ?>
 
 	<ul class="warnings"><?php echo $warnings; ?>
-
 	<?php if (AuthUser::hasPermission('client')) { ?>
 	<li><a href="/<?php echo ADMIN_DIR; ?>/page"><b>Manage pages</b></a><br />Add, delete, organize and update pages.<br /><br /></li>
 	<?php } ?>
 	</ul>
+
+	<?php } else { ?>
+		Hello <?php echo $avatarName; ?></h2>
+		<p style="border:solid 1px #cccccc;padding:0.6em">There are no outstanding tasks.</p>
+	<?php } ?>
+
+
 
 
 	<?php
