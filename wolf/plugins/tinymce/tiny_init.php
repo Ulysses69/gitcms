@@ -86,7 +86,7 @@ tinyMCE.init({
 
 	// Dropdown lists for link/image/media/template dialogs
 	external_image_list_url : "<?php echo $pluginDir; ?>/lists/image_list.php",
-	external_link_list_url : "<?php echo $pluginDir; ?>/lists/pages_list.php",
+	external_link_list_url : "/pages_list.php",
 
 	extended_valid_elements : "blockquote[cite|class|id],q[cite|class|id|title],header,footer,section,article,nav,aside,a[href|class|id|name|title|style|rel],img[class|id|src|name|alt=|title|width|height|type],hr[class|width|size|noshade|style],font[face|size|color|style],span[class|id|style],p[class|id|style],div[class|id|style],param[name|value],embed[id|style|width|height|type|src|*],video[*],audio[*],source[*]",
 	//valid_elements : "*[*]",
