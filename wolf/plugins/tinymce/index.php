@@ -89,9 +89,14 @@ function listChildren($listhidden = 1, $parent_title = '', $root = 1, $slug = ''
 	$stmt->execute();
 
 	while ($result = $stmt->fetchObject()) {
-		if ($root > 1)
+		if ($root > 1){
 			echo ',';
-		echo '["'.($result->breadcrumb == '' ? '' : $parent_title.$result->breadcrumb).'", "'.URL_PUBLIC.($result->slug == '' ? '' : $slug.$result->slug.URL_SUFFIX).'"]';
+		}
+		$out = '["'.($result->breadcrumb == '' ? '' : $parent_title.$result->breadcrumb).'", "'.URL_PUBLIC.($result->slug == '' ? '' : $slug.$result->slug.URL_SUFFIX).'"]';
+		if ($root > 1){
+			$out = str_replace('Home/','',$out);
+		}
+		echo $out;
 		$slug = $slug.$result->slug;
 		$parent_title = $parent_title.$result->breadcrumb;
 	}
@@ -109,7 +114,7 @@ function listChildren($listhidden = 1, $parent_title = '', $root = 1, $slug = ''
 }
 
 function tinymce_update_pages_list($page) {
-	$listhidden = 0;
+	$listhidden = 1;
 	$jscriptsfile = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/tinymce/pages_list.js';
 	//chmod($jscriptsfile, 0777);
 	$data = 'var tinyMCELinkList = new Array(';
