@@ -32,7 +32,7 @@ Plugin::setInfos(array(
 	'id'		  		=> 'tinymce',
 	'title'	   		=> 'TinyMCE Editor',
 	'description' 		=> 'Allows you to use the TinyMCE text editor. 2.0.0_RC1 updated with TinyBrowser and TinyMCE 3.2.5',
-	'version'	 		=> '2.0.1',
+	'version'	 		=> '2.0.2',
 	'license'	 		=> 'GPLv3',
 	'author'	  		=> 'Martijn van der Kleijn and Hypermedia',
 	'website'	 		=> 'http://www.madebyfrog.com',
@@ -63,3 +63,66 @@ Plugin::addJavascript('tinymce', 'tinymce/jscripts/tiny_mce/tiny_mce.js');
 //Commented out file_exists check at line 270 in core Plugin model to allow file parameters as per below
 Plugin::addJavascript('tinymce', 'tiny_init.php'.$styles);
 Plugin::addJavascript('tinymce', 'tinymce/jscripts/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php');
+
+Observer::observe('page_edit_after_save', 'tinymce_update_pages_list');
+Observer::observe('page_add_after_save', 'tinymce_update_pages_list');
+Observer::observe('page_delete', 'tinymce_update_pages_list');
+
+function listChildren($listhidden = 1, $parent_title = '', $root = 1, $slug = '') {
+	$tablename = TABLE_PREFIX.'page';
+	if ($slug != '')
+		$slug = $slug.'/';
+
+	if ($parent_title != '')
+		$parent_title = $parent_title.'/';
+
+	$sql = "SELECT breadcrumb,slug FROM $tablename WHERE id='$root' AND ".
+		   ($listhidden ? "(status_id='100' OR (status_id='101' AND is_protected='0'))" : "status_id='100'").
+		   ' ORDER BY breadcrumb ASC';
+
+	$PDO = Record::getConnection();
+	$PDO->exec("set names 'utf8'");
+
+	$settings = array();
+
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+
+	while ($result = $stmt->fetchObject()) {
+		if ($root > 1)
+			echo ',';
+		echo '["'.($result->breadcrumb == '' ? '' : $parent_title.$result->breadcrumb).'", "'.URL_PUBLIC.($result->slug == '' ? '' : $slug.$result->slug.URL_SUFFIX).'"]';
+		$slug = $slug.$result->slug;
+		$parent_title = $parent_title.$result->breadcrumb;
+	}
+
+	$query = "SELECT id FROM $tablename WHERE parent_id='$root' AND ".
+		   ($listhidden ? "(status_id='100' OR (status_id='101' AND is_protected='0'))" : "status_id='100'").
+		   ' ORDER BY breadcrumb ASC';
+
+	$stmt = $PDO->prepare($query);
+	$stmt->execute();
+
+	while ($result = $stmt->fetchObject()) {
+		listChildren($listhidden, $parent_title, $result->id, $slug);
+	}
+}
+
+function tinymce_update_pages_list($page) {
+	$listhidden = 0;
+	$jscriptsfile = $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/tinymce/pages_list.js';
+	//chmod($jscriptsfile, 0777);
+	$data = 'var tinyMCELinkList = new Array(';
+	ob_start();
+	listChildren($listhidden);
+	$data .= ob_get_contents();
+  	ob_end_clean();
+	$data .= ');';
+	$myfile = fopen($jscriptsfile, "w") or die("Unable to open file!");
+	fwrite($myfile,$data);
+	fwrite($myfile, $data);
+	fclose($myfile);
+
+	//chmod($jscriptsfile, 0644);
+	//exit;
+}
