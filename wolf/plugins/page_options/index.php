@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('PAGEOPTIONS_VERSION')) { define('PAGEOPTIONS_VERSION', '1.5.0'); }
+if (!defined('PAGEOPTIONS_VERSION')) { define('PAGEOPTIONS_VERSION', '1.5.1'); }
 if (!defined('PAGEOPTIONS_ROOT')) { define('PAGEOPTIONS_ROOT', URI_PUBLIC.'wolf/plugins/page_options'); }
 Plugin::setInfos(array(
 	'id'					=> 'page_options',
@@ -73,7 +73,7 @@ if(Plugin::isEnabled('page_options')){
 			$pdf_link_color = Plugin::getSetting('pdf_link_color', 'page_options');
 			//$pdf_mobile_enabled = Plugin::getSetting('pdf_mobile_enabled', 'page_options');
 			$pdf_enabled = Plugin::getSetting('pdf_enabled', 'page_options');
-			$top_of_page_title = Plugin::getSetting('top_of_page_title', 'page_options');
+			$top_of_page_title = Plugin::getSetting('top_of_page_title', 'page_options'); if($top_of_page_title == ''){ $top_of_page_title = 'Top of page'; }
 			$top_of_page_icon = Plugin::getSetting('top_of_page_icon', 'page_options');
 			//$top_of_page_mobile_enabled = Plugin::getSetting('top_of_page_mobile_enabled', 'page_options');
 			$top_of_page_enabled = Plugin::getSetting('top_of_page_enabled', 'page_options');
@@ -92,7 +92,8 @@ if(Plugin::isEnabled('page_options')){
 				// Hide dynamic page options for temporary template pages (such as database error pages etc)
 				if($parent->slug == 'template'){
 					
-					if(!isset($title)) $title = ''; echo '<li id="top-option"><a href="#top"'.$title.'>Top of page</a></li>';
+					if(!isset($title)) $title = '';
+					echo '<li id="top-option"><a href="#top"'.$title.'>'.$top_of_page_title.'</a></li>';
 
 				// Show page options for working pages
 				} else {
@@ -142,7 +143,7 @@ if(Plugin::isEnabled('page_options')){
 							}
 						} else if($class == 'top'){
 							/* Check that PDF function exists */
-							echo '<li id="top-option"><a href="#top"'.$title.'>Top of page</a></li>';
+							echo '<li id="top-option"><a href="#top"'.$title.'>'.$top_of_page_title.'</a></li>';
 						} else if($class == 'mobile'){
 							/* Check that mobile function exists */
 
