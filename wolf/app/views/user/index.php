@@ -53,22 +53,35 @@
 <?php 
 
 if(!function_exists('ExternalFileExists')){
-      function ExternalFileExists($location,$misc_content_type = false){
+	  function ExternalFileExists($location,$misc_content_type = false){
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $location);
-        curl_setopt($curl, CURLOPT_NOBODY, 1);
-        curl_setopt($curl, CURLOPT_FAILONERROR, 1);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
+		$fileType = mb_strtolower(pathinfo($location, PATHINFO_EXTENSION));
+		// Set external file extension to mime type standard
+		if($fileType == 'jpg'){ $fileType = 'jpeg'; }
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $location);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
+		curl_setopt($curl, CURLOPT_HEADER, TRUE);
+		curl_setopt($curl, CURLOPT_NOBODY, TRUE);
+		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
+		curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
+		curl_setopt($curl, CURLOPT_FAILONERROR, TRUE);
 
-        if(curl_exec($curl) !== FALSE){
-            return true;
-        } else {
-            return false;
-        }
+		if(curl_exec($curl) !== FALSE){
+			$statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+			$contentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
+			if($statusCode == 404 || !stristr($contentType, $fileType)){
+				return FALSE;
+			} else {
+				return TRUE;
+			}
+		} else {
+			return FALSE;
+		}
 
-    }
+	}
 }
 $sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 
@@ -84,7 +97,30 @@ foreach($users as $user): ?>
 		$png = $sourceurl.$user->username.'.png';
 		$jpg = $sourceurl.$user->username.'.jpg';
 		$gif = $sourceurl.$user->username.'.gif';
+		
+		/* Always use source URL first for non-clients */
+		if(!in_array('client', $user->getPermissions())){
+			if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
+				/* Check external images exist */
+				if(stristr($png,'.png')){ $avatar = $png; } else
+				if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
+				if(stristr($gif,'.gif')){ $avatar = $gif; }
+			} else {
+			  	/* Check local images exist */
+				if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.jpg')){
+					$avatar = '/public/images/users/'.$user->username.'.jpg';
+				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.png')){
+					$avatar = '/public/images/users/'.$user->username.'.png';
+				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.gif')){
+					$avatar = '/public/images/users/'.$user->username.'.gif';
+				} else {
+					// The image doesn't exist
+					$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
+				}
+			}
+		}
 
+		/* Use local URL for clients */
 		if(in_array('client', $user->getPermissions())){
 			if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.jpg')){
 				$avatar = '/public/images/users/'.$user->username.'.jpg';
@@ -93,41 +129,14 @@ foreach($users as $user): ?>
 			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.gif')){
 				$avatar = '/public/images/users/'.$user->username.'.gif';
 			} else {
-				if (ExternalFileExists($png)) {
-					$avatar = $png;
-				} else if (ExternalFileExists($jpg)) {
-					$avatar = $jpg;
-				} else if (ExternalFileExists($gif)) {
-					$avatar = $gif;
+				if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
+				if(stristr($png,'.png')){ $avatar = $png; } else
+				if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
+				if(stristr($gif,'.gif')){ $avatar = $gif; }
 				} else {
 					$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
 				}
 			}
-		} else {
-
-			if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
-				// The image exists
-				if(stristr($png,'.png')){ $avatar = $png; } else
-				if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
-				if(stristr($gif,'.gif')){ $avatar = $gif; }
-			} else {
-				// The image doesn't exist
-				$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
-			}
-
-
-			/*
-			if (@fclose(@fopen($sourceurl.$user->username.'.png', 'r'))) {
-				echo $sourceurl.$user->username.'.png';
-			} else if (@fclose(@fopen($sourceurl.$user->username.'.jpg', 'r'))) {
-				echo $sourceurl.$user->username.'.jpg';
-			} else if (@fclose(@fopen($sourceurl.$user->username.'.gif', 'r'))) {
-				echo $sourceurl.$user->username.'.gif';
-			} else {
-				echo URL_PUBLIC.ADMIN_DIR.'/images/user.png';
-			} 
-			*/
-
 		}
 		
 		echo $avatar;
