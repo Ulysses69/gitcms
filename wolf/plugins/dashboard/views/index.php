@@ -16,44 +16,33 @@
 
 	<?php
 	$avatar = '';
-	/*
-	function ExternalFileExists($location, $misc_content_type = false){
-		//echo '<!-- External File Exists Status -->';
-		$curl = curl_init($location);
-		curl_setopt($curl,CURLOPT_NOBODY,true);
-		curl_setopt($curl,CURLOPT_HEADER,true);
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($curl,CURLOPT_TIMEOUT_MS,206);
-		curl_exec($curl);
-		$info = curl_getinfo($curl);
-		curl_close($curl);
-
-		if((int)$info['http_code'] >= 200 && (int)$info['http_code'] <= 206) {
-			//Response says ok.
-			if($misc_content_type !== false) {
-				//echo '<!-- Response OK -->';
-				return strpos($info['content_type'],$misc_content_type);
-			}
-			return true;
-		}
-		return false;
-
-	}
-	*/
 	if(!function_exists('ExternalFileExists')){
 		  function ExternalFileExists($location,$misc_content_type = false){
-
+	
+			$fileType = mb_strtolower(pathinfo($location, PATHINFO_EXTENSION));
+			// Set external file extension to mime type standard
+			if($fileType == 'jpg'){ $fileType = 'jpeg'; }
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $location);
-			curl_setopt($curl, CURLOPT_NOBODY, 1);
-			curl_setopt($curl, CURLOPT_FAILONERROR, 1);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
+			curl_setopt($curl, CURLOPT_HEADER, TRUE);
+			curl_setopt($curl, CURLOPT_NOBODY, TRUE);
+			curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
 			curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
-			
+			curl_setopt($curl, CURLOPT_FAILONERROR, TRUE);
+	
 			if(curl_exec($curl) !== FALSE){
-				return true;
+				$statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+				$contentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
+				if($statusCode == 404 || !stristr($contentType, $fileType)){
+					return FALSE;
+				} else {
+					return TRUE;
+				}
 			} else {
-				return false;
+				return FALSE;
 			}
 	
 		}
