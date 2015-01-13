@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('ADS_VERSION')) { define('ADS_VERSION', '0.0.4'); }
+if (!defined('ADS_VERSION')) { define('ADS_VERSION', '0.0.5'); }
 Plugin::setInfos(array(
 	'id'		  	=> 'ads',
 	'title'	   		=> 'Ads',

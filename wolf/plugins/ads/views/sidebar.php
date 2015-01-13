@@ -12,7 +12,7 @@ $version = Plugin::getSetting('version', 'ads');
 
 <div class="box">
 <h2><?php echo __('Ads').' '.ADS_VERSION; ?></h2>
-<p>Boxes can be created here and then further managed/formatted independently.</p>
+<p>Boxes can be used for adverts or call-to-actions. Similar to related pages, boxes can be added to pages using the 'ad' tab.</p>
 </div>
 
 
