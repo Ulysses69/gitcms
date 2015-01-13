@@ -103,6 +103,8 @@ if(Plugin::isEnabled('mobile_check') == true){ $mobile_plugin = '<a href="'.URL_
 <h2 id="relatedpages">related</h2>
 <p>Returns list of pages that have been selected as related to page 11.</p>
 <code>relatedmenu($this,11)</code>
+<p>Additionally show current page and reverse the order of pages returned.</p>
+<code>relatedmenu($this,11,true,true)</code>
 <?php } ?>
 
 </div>
