@@ -131,6 +131,7 @@ $rows = 9;
 						<?php
 						$marqueecontent_array = array(
 						array ('Body', 'body'),
+						array ('Excerpt', 'excerpt'),
 						array ('Title', 'title'),
 						array ('Breadcrumb', 'breadcrumb'),
 						array ('Description', 'description'));

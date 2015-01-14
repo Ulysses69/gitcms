@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.0'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.1'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -357,7 +357,11 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 						if($marqueecontent == 'title' || $marqueecontent == 'breadcrumb' || $marqueecontent == 'description'){
 							$contentid_sql = "SELECT * FROM ".TABLE_PREFIX."page WHERE id='".$childID."'";
 						} else {
-							$contentid_sql = "SELECT * FROM ".TABLE_PREFIX."page_part WHERE page_id='".$childID."' AND name='body'";
+							if($marqueecontent == 'excerpt'){
+								$contentid_sql = "SELECT * FROM ".TABLE_PREFIX."page_part WHERE page_id='".$childID."' AND name='excerpt'";
+							} else {
+								$contentid_sql = "SELECT * FROM ".TABLE_PREFIX."page_part WHERE page_id='".$childID."' AND name='body'";
+							}
 						}
 	
 						$contentid_q = Record::getConnection()->query($contentid_sql);
@@ -375,6 +379,8 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 									$content = $contents->breadcrumb;
 								} else if($marqueecontent == 'description'){
 									$content = $contents->description;
+								} else if($marqueecontent == 'excerpt'){
+									$content = $contents->content_html;
 								} else {
 									$content = $contents->content_html;
 								}
