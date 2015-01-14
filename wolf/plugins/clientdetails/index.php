@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.0'); }
+if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.1'); }
 if (!defined('CLIENTDETAILS_ID')) {			define('CLIENTDETAILS_ID', 'clientdetails'); }
 if (!defined('CLIENTDETAILS_TITLE')) {		define('CLIENTDETAILS_TITLE', 'Clientdetails'); }
 if (!defined('CLIENTDETAILS_DESC')) {		define('CLIENTDETAILS_DESC', 'Manage client details'); }
@@ -728,8 +728,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 					$daytagclose = '</'.$daytag.'>';
 				}
 			}
-		
-		
+
 			$hours = '<ul class="closed">';
 		
 			if($hournotation == '24'){
@@ -764,15 +763,14 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 		
 			$hours .= '</ul>';
 		
-		
-			$hourlist = '';
-			if(1 === preg_match('~[0-9]~', $hours)) $hourlist .= "<h2>Closed for lunch</h2>\n".$hours."\n";
+			if(1 === preg_match('~[0-9]~', $hours)) $hourlist = "<h2>Closed for lunch</h2>\n".$hours."\n";
 			if(1 === preg_match('~[0-9]~', $hours)){
-				$hours = '';
-				//$hours = '<div id="lunch">'."\n";
-				$hours .= $hourlist;
-				//$hours .= '</div>'."\n";
+				$hours = '<div id="closedHours">'."\n";
+				$hours .= $hourlist."\n";
+				$hours .= '</div>'."\n";
+
 			}
+
 		
 			if(1 === preg_match('~[0-9]~', $hours)){
 				if(MOBILEMODE == TRUE){
