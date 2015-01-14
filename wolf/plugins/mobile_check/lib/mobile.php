@@ -339,7 +339,11 @@ body {
 }
 #content ul.open, #content ul.closed {
 	list-style:none;
-	margin:0 0 1em -5px
+	margin:0 0 1em -5px;
+	line-height:1em;
+}
+#content ul.open li, #content ul.closed li {
+	margin:0 0 -0.4em 0;
 }
 .open h3, .closed h3 {
 	display:inline;
@@ -358,6 +362,7 @@ body {
 	content:" - ";
 	text-align:center
 }
+/*
 #businessHours {
 	line-height:1em;
 }
@@ -367,6 +372,7 @@ body {
 #businessHours li span {
 	margin: -0.4em 0; top: -0.2em;
 }
+*/
 #top ul#sidemenu {
 	padding:0 0 1em 2em;
 	margin:0
