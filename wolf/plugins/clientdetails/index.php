@@ -773,7 +773,7 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 
 		
 			if(1 === preg_match('~[0-9]~', $hours)){
-				if(MOBILEMODE == TRUE){
+				if(defined('MOBILEMODE') && MOBILEMODE == TRUE){
 					$hours = str_replace('>Monday<','>Mon<',$hours);
 					$hours = str_replace('>Tuesday<','>Tue<',$hours);
 					$hours = str_replace('>Wednesday<','>Wed<',$hours);
