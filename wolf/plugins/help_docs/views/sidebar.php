@@ -169,6 +169,9 @@ if (!defined('IN_CMS')) { exit(); }
 	<?php if(Plugin::isEnabled('banner') == true){?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#banner'); ?>">Banner</a></li>
 	<?php } ?>
+	<?php if(function_exists('crcSrc')) ?>
+	<li><a href="<?php echo get_url('plugin/help_docs/features#crcsrc'); ?>">Parent Image</a></li>
+	<?php ; ?>
 	<?php if(Plugin::isEnabled('social') == true){?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#social'); ?>">Social Links</a></li>
 	<?php } ?>

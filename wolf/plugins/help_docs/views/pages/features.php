@@ -176,6 +176,13 @@ $commas
 <p>Example 1 Displays banner in layout.</p>
 <code>setBanner()</code>
 <?php } ?>
+
+<?php if(function_exists('crcSrc')) ?>
+<h2 id="crcsrc">Parent Image</h2>
+<p>Banner image can be displayed using URI. No image tag is returned if image does not exist.</p>
+<p>Example 1 Displays banner using parent slug to get image from banner folder.</p>
+<code>crcSrc('/public/images/banner/'.currentparent('').'.jpg');</code>
+<?php ; ?>
     
 <?php if(Plugin::isEnabled('social') == true){?>
 <h2 id="social">Social Links</h2>
