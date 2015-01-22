@@ -80,6 +80,14 @@ if (!defined('IN_CMS')) { exit(); }
 <?php } ?>
 
 
+<h2>SEO</h2>
+<p>Search Engine Optimisation is about optimising pages, not the website. SEM and SMM efforts should point to pages rather than home page. The home page should naturally rank well.</p>
+<ul>
+<li>Don't index a page if another page is already being indexed for the same content/keyword/phrase.</li>
+<li>Don't follow a page if another page is better deserving of link rank or if the page is predominantly offsite links.</li>
+<li>Think of each page as unique content per keyword/phrase. Spreading or duplicating unique content dilutes it rank value (be warned).</li>
+</ul>
+
 <h2>General guidelines</h2>
 <ul>
 <li>Not all pages have tabs pre-available.</li>
