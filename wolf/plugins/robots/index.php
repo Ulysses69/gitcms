@@ -183,12 +183,7 @@ foreach($url_array as $subarray) {
 </td>
 </tr>
 </table>
-<div class="notes">
-<h2>Notes</h2>
-<p>Don't index this page if another page is already being indexed for the same content/keyword/phrase.</p>
-<p>Don't follow this page if another page is better deserving of link rank or if this page is predominantly offsite links.</p>
-<p>Think of each page as unique content per keyword/phrase.</p>
-</div>
+
 
 <!-- Under Development -->
 <?php if(Plugin::isEnabled('redirector') == true){ ?>
