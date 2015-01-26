@@ -525,13 +525,13 @@ function layout_switch_check($page) {
 					// This page requires post-rebuilding as it isn't built via funky cache
 					if(Plugin::isEnabled('funky_cache') == false || (Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 0)){
 						
-						// Dispaly edit page link
-						$edit_page_link = edit_page_link($page);
+						// Display edit page link (if layout is not set to none)
+						if($page->layout_id != 1){ $edit_page_link = edit_page_link($page); }
 
 						ob_start();
 						$page->_executeLayout();
 						$newpage = ob_get_contents();
-						$newpage = $edit_page_link . $newpage;
+						$newpage = $newpage . $edit_page_link;
 					}
 	
 					// Funky cache calls these changes via direct functions if required. Run here only if funky cache is disabled, or enabled but this page is not cached
