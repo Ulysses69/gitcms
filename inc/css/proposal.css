@@ -50,6 +50,35 @@ blockquote[cite]:after { content: "\2014" " " attr(cite) ""; position: relative;
 strong.section { font-size: 11px; display: block; background: #eee; margin: -1.7em 0 0 0; padding: 0.5em 0.7em; color: #000 }
 #content strong.section { margin-left: -0.7em }
 
+.staff li {
+	position: relative;
+	padding: 0;
+}
+.staff span {
+	position: relative;
+	clear: both;
+	display: block;
+}
+.staff span b {
+	position: relative;
+	margin-left: -0.55em;
+	overflow: hidden;
+	background: #fff;
+}
+.staff span.name b {
+	margin-left: 0;
+}
+
+.staff div {
+	position: relative;
+	overflow: hidden;
+}
+.staff div span {
+	margin-left: -0.55em;
+}
+.staff div span.name {
+	margin-left: 0;
+}
 
 fieldset fieldset label {
 	position: relative;
@@ -116,6 +145,18 @@ ul.setThumbs li a {
 ul.setThumbs li a img {
 	float: left;
 	position: relative;
+	padding: 0;
+	margin: 0;
+}
+h2, .h2 {
+	font-size: 110%;
+	font-weight: bold;
+}
+h3 {
+	font-size: 105%;
+	font-weight: bold;
+}
+li h3 {
 	padding: 0;
 	margin: 0;
 }
