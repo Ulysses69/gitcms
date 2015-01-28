@@ -121,7 +121,7 @@ if($get_return == 'success'){
 
 		//$postmessage = $message_successful;
 		$thankyou = $parentpage->content('thankyou');
-	
+
 		//ob_start();$parentpage->includeSnippet('telephone');$thankstelephone = ob_get_clean();
 		//ob_start();$parentpage->includeSnippet('email');$thanksemail = ob_get_clean();
 		//ob_start();$parentpage->includeSnippet('address');$thanksaddress = ob_get_clean();
