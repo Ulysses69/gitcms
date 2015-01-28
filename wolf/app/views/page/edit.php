@@ -59,6 +59,17 @@ if ($pagetmp != null && !empty($pagetmp) && $parttmp != null && !empty($parttmp)
 			<div id="tab-meta-toolbar" class="tab_toolbar">&nbsp;</div>
 		</div>
 		<div id="meta-pages" class="pages">
+
+
+			<!--
+			<div id="div-test" class="title" title="<?php echo __('Test'); ?>">
+			<table cellpadding="0" cellspacing="0" border="0">
+			<tr><td><p>Test</p></td></tr>
+			</table>
+			</div>
+			-->
+
+
 			<div id="div-title" class="title" title="<?php echo __('Page'); ?>"><table cellpadding="0" cellspacing="0" border="0">
 			  <tr<?php if($page->title == ''){ ?> class="required"<?php } ?>><td class="label"><label for="page_title" title="Page title as displayed by search engines and internet browsers"><?php echo __('Title'); ?></label></td><td class="field"><input title="Page title as displayed by search engines and internet browsers" class="textbox" id="page_title" maxlength="255" name="page[title]" size="255" type="text" value="<?php echo $page->title; ?>" />
 			<!-- </div>
@@ -169,6 +180,32 @@ if ($pagetmp != null && !empty($pagetmp) && $parttmp != null && !empty($parttmp)
 				<input id="page_is_protected" name="page[is_protected]" type="hidden" value="<?php echo $page->is_protected; ?>" />
 
 			  <?php } ?>
+
+
+
+
+
+
+				<!--
+
+				<tr>
+				<td colspan="2"></td>
+				</tr>
+				<tr>
+				<td colspan="2" style="border-top: solid 1px #ccc"></td>
+				</tr>
+
+				<tr>
+				  <td class="label"><label for="page_layout_id"><?php echo __('Profile'); ?></label></td>
+				  <td class="field">
+				  </td>
+				</tr>
+
+				-->
+
+
+
+
 
 
 			  </table>
