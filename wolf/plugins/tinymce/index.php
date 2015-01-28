@@ -103,7 +103,7 @@ function listChildren($listhidden = 1, $parent_title = '', $root = 1, $slug = ''
 
 	$query = "SELECT id FROM $tablename WHERE parent_id='$root' AND ".
 		   ($listhidden ? "(status_id='100' OR (status_id='101' AND is_protected='0'))" : "status_id='100'").
-		   ' ORDER BY breadcrumb ASC';
+		   ' ORDER BY position ASC';
 
 	$stmt = $PDO->prepare($query);
 	$stmt->execute();
