@@ -15,8 +15,10 @@ for($K = 0; $K < sizeof($vouchers); $K++){
 		$thisvoucherid = $voucher[$K][3];
 		require_once(dirname(__FILE__)."/lib/fpdf/fpdf.php");
 		require_once(dirname(__FILE__)."/lib/fpdi/fpdi.php");
-		$filename = "voucher-tpl.pdf";
-		$pdf = new FPDI('L','pt','voucher');
+		//$filename = "voucher-tpl.pdf";
+		$filename = "A4landscape.pdf";
+		//$pdf = new FPDI('L','pt','voucher');
+		$pdf = new FPDI('L','pt','A4');
 		$pdf->AddPage();
 		$pdf->setSourceFile($filename);
 		$tplIdx = $pdf->importPage(1);
