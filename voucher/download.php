@@ -28,8 +28,10 @@ for($K = 0; $K < sizeof($vouchers); $K++){
 		$pdf->SetFillColor(255,255,255);
 		$pdf->SetTextColor(84,46,100);
 		$pdf->SetLineWidth(1);
-		$pdf->SetXY(280, 208);
-		$pdf->Write(0, ucwords(strtolower($thisvoucherid)));
+		//$pdf->SetXY(280, 208);
+		//$pdf->Write(0, ucwords(strtolower($thisvoucherid)));
+		$pdf->SetXY(0, 208);
+		$pdf->Cell(0,0,ucwords(strtolower($thisvoucherid)),0,0,'C');
 
 		/* Write Date */
 		$pdf->SetFont('Arial','I',8);
@@ -37,8 +39,11 @@ for($K = 0; $K < sizeof($vouchers); $K++){
 		$pdf->SetFillColor(255,255,255);
 		$pdf->SetTextColor(84,46,100);
 		$pdf->SetLineWidth(1);
-		$pdf->SetXY(260, 220);
-		$pdf->Write(0, ucwords(strtolower('29 December 2015')));
+		//$pdf->SetXY(260, 220);
+		//$pdf->Write(0, ucwords(strtolower('29 December 2015')));
+		$pdf->SetXY(0, 220);
+		$pdf->Cell(0,0,'29 December 2015',0,0,'C');
+
 
 		header("Content-Transfer-Encoding", "binary");
 		header('Cache-Control: maxage=3600');
