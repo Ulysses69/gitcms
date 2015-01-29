@@ -434,6 +434,19 @@ function layout_switch_check($page) {
 				echo $page;
 				exit();
 			}
+
+
+			if(strpos($_SERVER['REQUEST_URI'], 'private/')){
+				$page->layout_id = 1; // Force layout to none
+				ob_start();
+				$page->_executeLayout();
+				$page = ob_get_contents();
+				ob_end_clean();
+				echo $page;
+				exit();
+			}
+
+
 			/*
 			if(isset($_GET['media']) && $_GET['media'] == 'pdf'){
 				define('PDFMODE', TRUE);
