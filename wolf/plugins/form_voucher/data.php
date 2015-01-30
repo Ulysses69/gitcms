@@ -5,8 +5,8 @@ $vouchers = file("data.log");
 foreach($vouchers as $Key => $Val){
 $voucher[$Key] = explode(", ", $Val);}
 for($K = 0; $K < sizeof($vouchers); $K++){
-$thisvoucherid = $voucher[$K][2];}
-$message .= "/voucher/download.php?issue=".$thisvoucherid.")\n\n";
+$insert_name = $voucher[$K][2];}
+$message .= "/voucher/download.php?issue=".$insert_name.")\n\n";
 $message .= "Submitted from: ".$_SERVER['HTTP_HOST'];
-echo "issueid=".$thisvoucherid;
+echo "issueid=".$insert_name;
 ?>
