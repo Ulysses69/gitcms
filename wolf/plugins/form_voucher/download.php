@@ -1,4 +1,5 @@
 <?php
+
 //echo 'Start';
 //$voucherid = $_GET['issue'];
 //$vouchers = file("../frog/plugins/form_voucher/data.log");
@@ -18,7 +19,7 @@ for($K = 0; $K < sizeof($vouchers); $K++){
 		require_once(dirname(__FILE__)."/lib/fpdf/fpdf.php");
 		require_once(dirname(__FILE__)."/lib/fpdi/fpdi.php");
 		//$filename = "voucher-tpl.pdf";
-		$filename = "A4landscape.pdf";
+		$filename = "../../../voucher/A4certificate.pdf";
 		//$pdf = new FPDI('L','pt','voucher');
 		$pdf = new FPDI('L','pt','A4');
 		$pdf->AddPage();
@@ -72,4 +73,6 @@ for($K = 0; $K < sizeof($vouchers); $K++){
 	}
 }
 //echo 'End';
+
+
 ?>
