@@ -192,6 +192,10 @@ if(Plugin::isEnabled('social') == true){
 $RewriteRules .= 'RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]'."\n";
 
 
+/* Handle voucher PDF downloads */
+$RewriteRules .= 'RewriteRule ^voucher/(.+)$ /wolf/plugins/form_voucher/download.php?data=$1 [L]'."\n";
+
+
 /* Handle Subdomains */
 //$SubdomainCond = "RewriteCond %{HTTP_HOST} !([^.]+\.[^.]+)$ [NC]\n";
 //$SubdomainCond .= "RewriteCond %{REQUEST_URI} (.+)\n";
