@@ -193,7 +193,7 @@ $RewriteRules .= 'RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]'."\n"
 
 
 /* Handle voucher PDF downloads */
-$RewriteRules .= 'RewriteRule ^voucher/(.+)$ /wolf/plugins/form_voucher/download.php?data=$1 [L]'."\n";
+$RewriteRules .= 'RewriteRule ^templates/(.+)$ /wolf/plugins/form_templates/download.php?template=$1 [L]'."\n";
 
 
 /* Handle Subdomains */

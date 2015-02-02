@@ -403,54 +403,73 @@ if($errors != "") {
 
 
 
-	
-			/* Standard Form */
-			//echo 'Standard Form: '.$emailOut; exit;
-			/* TO DO: Check hosting environment to determine sender domain */
 
-			$head_from = "website@".str_replace($unwanted,'',URL_ABSOLUTE);
-			//echo 'From: '.$head_from; exit;
+			if($formid == "templates-form"){
+				
+				/* Templates Form */
+				
+				if(isset($_POST["your_name"])){ $your_name = htmlentities($_POST["your_name"]); } else { $your_name = ''; }
+				if(isset($_POST["your_gdc_number"])){ $your_gdc_number = htmlentities($_POST["your_gdc_number"]); } else { $your_gdc_number = ''; }
+				if(isset($_POST["your_completion_date"])){ $your_completion_date = htmlentities($_POST["your_completion_date"]); } else { $your_completion_date = ''; }
+				if(isset($_POST["template"])){ $template = htmlentities($_POST["template"]); } else { $template = ''; }
+				
+				$template_data = '?your_name='.$your_name.'&your_gdc_number='.$your_gdc_number.'&your_completion_date='.$your_completion_date;
+				
+				//exit;
+				header("Location: ".URL_ABSOLUTE."templates/".$template.$template_data);
+				exit;
 
-			//if(!isset($name)) $name = '';
-			//if(AMIN_THEME == 'poppy_media') $head_from = "website@poppymedia.co.uk";
-			if($formid == "friend-form"){
-				$headers = "Return-Path: ".$head_from."\r\n";
-				$headers .= "Reply-To: \"".$name."\" <".$email.">\r\n";
-				$headers .= "From: \"".$your_name."\" <".$your_email.">\r\n";
-				$headers .= "To: \"".$friends_name."\" <".$friends_email.">\r\n";
-				//$headers .= "To: \"".$nameOut."\" <".$emailOut.">, Steven <steven@bluehorizonsmedia.co.uk>\r\n";
 			} else {
-				//$emailOut = 'steven@bluehorizonsmedia.co.uk';
-				$headers = "Return-Path: ".$head_from."\r\n";
-				$headers .= "Reply-To: \"".$name."\" <".$email.">\r\n";
-				$headers .= "From: ".$email."\r\n";
-				//$headers .= "From: ".$formsEmail."\r\n";
-				$headers .= "To: \"".$nameOut."\" <".$emailOut.">\r\n";
-				if(isset($emailCC) && $emailCC != ''){$headers .= "Cc: ".$emailCC."\r\n";}
-				//$headers .= "To: \"".$nameOut."\" <".$emailOut.">, Steven <steven@bluehorizonsmedia.co.uk>\r\n";
-				//$headers .= "CC: steven@bluehorizonsmedia.co.uk\r\n";
-			}
 
-
-			//$headers .= "BCC: steven@bluehorizonsmedia.co.uk\r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/plain; charset=iso-8859-1\r\n";
-
+				/* Standard Form */
+				//echo 'Standard Form: '.$emailOut; exit;
+				/* TO DO: Check hosting environment to determine sender domain */
 	
-			mail($emailOut,$subject,$message,$headers,'-f '.$head_from);
-			//echo "\n Headers: \n".$headers; exit;
-
-
-			/* NOT WORKING. TO BE USED WITH ATTACH MAILER as per http://www.phpmagicbook.com/upload-file-attach-send-html-format-email/
-			$ok = mail($emailOut,$subject,$message,$headers,'-f '.$head_from);
-			if($ok){
-				echo "File Sent Successfully.";
-				// Delete a file after attachment sent
-				unlink($attachment);
-			} else {
-				die("Sorry but the email could not be sent. Please go back and try again!");
+				$head_from = "website@".str_replace($unwanted,'',URL_ABSOLUTE);
+				//echo 'From: '.$head_from; exit;
+	
+				//if(!isset($name)) $name = '';
+				//if(AMIN_THEME == 'poppy_media') $head_from = "website@poppymedia.co.uk";
+				if($formid == "friend-form"){
+					$headers = "Return-Path: ".$head_from."\r\n";
+					$headers .= "Reply-To: \"".$name."\" <".$email.">\r\n";
+					$headers .= "From: \"".$your_name."\" <".$your_email.">\r\n";
+					$headers .= "To: \"".$friends_name."\" <".$friends_email.">\r\n";
+					//$headers .= "To: \"".$nameOut."\" <".$emailOut.">, Steven <steven@bluehorizonsmedia.co.uk>\r\n";
+				} else {
+					//$emailOut = 'steven@bluehorizonsmedia.co.uk';
+					$headers = "Return-Path: ".$head_from."\r\n";
+					$headers .= "Reply-To: \"".$name."\" <".$email.">\r\n";
+					$headers .= "From: ".$email."\r\n";
+					//$headers .= "From: ".$formsEmail."\r\n";
+					$headers .= "To: \"".$nameOut."\" <".$emailOut.">\r\n";
+					if(isset($emailCC) && $emailCC != ''){$headers .= "Cc: ".$emailCC."\r\n";}
+					//$headers .= "To: \"".$nameOut."\" <".$emailOut.">, Steven <steven@bluehorizonsmedia.co.uk>\r\n";
+					//$headers .= "CC: steven@bluehorizonsmedia.co.uk\r\n";
+				}
+	
+	
+				//$headers .= "BCC: steven@bluehorizonsmedia.co.uk\r\n";
+				$headers .= "MIME-Version: 1.0\r\n";
+				$headers .= "Content-Type: text/plain; charset=iso-8859-1\r\n";
+	
+		
+				mail($emailOut,$subject,$message,$headers,'-f '.$head_from);
+				//echo "\n Headers: \n".$headers; exit;
+	
+	
+				/* NOT WORKING. TO BE USED WITH ATTACH MAILER as per http://www.phpmagicbook.com/upload-file-attach-send-html-format-email/
+				$ok = mail($emailOut,$subject,$message,$headers,'-f '.$head_from);
+				if($ok){
+					echo "File Sent Successfully.";
+					// Delete a file after attachment sent
+					unlink($attachment);
+				} else {
+					die("Sorry but the email could not be sent. Please go back and try again!");
+				}
+				*/
+			
 			}
-			*/
 
 
 		}
