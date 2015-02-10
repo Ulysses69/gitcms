@@ -82,48 +82,55 @@ if (file_exists($templatefile)){
 			$page_dimensions = $pdf->getTemplateSize($tplIdx);
 			$w = $page_dimensions['w'];
 			$h = $page_dimensions['h'];
-	
-			/* Write Name  */
-			$pdf->SetFont('Arial','I',28);
-			//$pdf->SetDrawColor(255,255,255);
-			//$pdf->SetFillColor(255,255,255);
-			$pdf->SetTextColor(79,80,82);
-			$pdf->SetLineWidth(1);
-			//$pdf->SetXY(280, 208);
-			//$pdf->Write(0, ucwords(strtolower($insert_name)));
-			$pdf->SetXY(0, 240);
-			$pdf->Cell($w,0,$your_name,0,0,'C',0);
-	
-			/* Write GDC */
-			$pdf->SetFont('Arial','I',12);
-			//$pdf->SetDrawColor(255,255,255);
-			//$pdf->SetFillColor(255,255,255);
-			$pdf->SetTextColor(79,80,82);
-			$pdf->SetLineWidth(1);
-			//$pdf->SetXY(260, 220);
-			//$pdf->Write(0, ucwords(strtolower('29 December 2015')));
-			$pdf->SetXY($pagemargin, 290);
-			$pdf->Cell(0,0,$your_gdc_number,0,0,'C',0);
-	
-			/* Write Date */
-			$pdf->SetFont('Arial','I',11);
-			//$pdf->SetDrawColor(255,255,255);
-			//$pdf->SetFillColor(255,255,255);
-			$pdf->SetTextColor(79,80,82);
-			$pdf->SetLineWidth(1);
-			//$pdf->SetXY(260, 220);
-			//$pdf->Write(0, ucwords(strtolower('29 December 2015')));
-			$pdf->SetXY(0, 470);
-			$pdf->Cell(($w - (70)),0,$your_completion_date,0,0,'R',0);
-	
-	
-			//header('Content-type: application/pdf');
-			//header('Content-Disposition: attachment; filename="'.$download_filename.'.pdf'.'"');
-			//header('Content-Transfer-Encoding', 'binary');
-			//header('Cache-Control: maxage=3600');
-			//header('Pragma: public');
-			$pdf->Output($download_filename.'.pdf', 'D');
-			//exit;
+
+			
+			//if($download_filename == 'training'){
+
+				/* Write Name  */
+				$pdf->SetFont('Arial','I',28);
+				//$pdf->SetDrawColor(255,255,255);
+				//$pdf->SetFillColor(255,255,255);
+				$pdf->SetTextColor(79,80,82);
+				$pdf->SetLineWidth(1);
+				//$pdf->SetXY(280, 208);
+				//$pdf->Write(0, ucwords(strtolower($insert_name)));
+				$pdf->SetXY(0, 250);
+				$pdf->Cell($w,0,$your_name,0,0,'C',0);
+		
+				/* Write GDC */
+				$pdf->SetFont('Arial','I',12);
+				//$pdf->SetDrawColor(255,255,255);
+				//$pdf->SetFillColor(255,255,255);
+				$pdf->SetTextColor(79,80,82);
+				$pdf->SetLineWidth(1);
+				//$pdf->SetXY(260, 220);
+				//$pdf->Write(0, ucwords(strtolower('29 December 2015')));
+				$pdf->SetXY($pagemargin, 290);
+				$pdf->Cell(0,0,$your_gdc_number,0,0,'C',0);
+
+				/* Write Date */
+				$pdf->SetFont('Arial','I',11);
+				//$pdf->SetDrawColor(255,255,255);
+				//$pdf->SetFillColor(255,255,255);
+				$pdf->SetTextColor(79,80,82);
+				$pdf->SetLineWidth(1);
+				//$pdf->SetXY(260, 220);
+				//$pdf->Write(0, ucwords(strtolower('29 December 2015')));
+				$pdf->SetXY($pagemargin, 390);
+				$pdf->Cell(0,0,$your_completion_date,0,0,'C',0);
+		
+		
+				//header('Content-type: application/pdf');
+				//header('Content-Disposition: attachment; filename="'.$download_filename.'.pdf'.'"');
+				//header('Content-Transfer-Encoding', 'binary');
+				//header('Cache-Control: maxage=3600');
+				//header('Pragma: public');
+				$pdf->Output($download_filename.'.pdf', 'D');
+				//exit;
+			
+			//}
+
+
 		//}
 	//}
 	//echo 'End';

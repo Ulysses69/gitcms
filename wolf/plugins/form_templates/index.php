@@ -18,8 +18,10 @@ function templatesForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displa
 
 
 
-		if($template == 'certificate.pdf' || $template == 'certificate'){
+		//if($template == 'certificate.pdf' || $template == 'certificate'){
+		if($template != ''){
 			/* Expected data (telephone line can just be commented out) */
+			if(isset($_POST["template"])){ $template = $_POST["template"]; }
 			if(isset($_POST["your_name"])){ $your_name = htmlentities($_POST["your_name"]); } else { $your_name = ''; }
 			if(isset($_POST["your_gdc_number"])){ $your_gdc_number = htmlentities($_POST["your_gdc_number"]); } else { $your_gdc_number = ''; }
 			if(isset($_POST["your_completion_date"])){ $your_completion_date = htmlentities($_POST["your_completion_date"]); } else { $your_completion_date = ''; }
@@ -163,11 +165,11 @@ function templatesForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displa
 		 	<fieldset>
 			<<?php echo $grouptag; ?>>Your details</<?php echo $grouptag; ?>>
 
-				<div class="group">
-				
+				<div class="group" style="overflow:hidden;height:auto">
+
 					<?php //$labels = array('name'); ?>
 					<?php //include('./wolf/plugins/form_core/lib/labels.php'); ?>
-	
+
 					<label for="thisname" id="your_name"<?php echo $your_name_class;?>><span>Name<?php echo $your_name_req;?></span>
 					<input id="thisname" type="text" name="your_name" value="<?php echo $your_name;?>" size="30" /></label>
 
@@ -177,7 +179,46 @@ function templatesForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displa
 					<label for="thiscompletion_date" id="your_completion_date"<?php echo $your_completion_date_class;?>><span>Completion Date<?php echo $your_completion_date_req;?></span>
 					<input id="thiscompletion_date" type="text" name="your_completion_date" value="<?php echo $your_completion_date;?>" /></label>
 					
-					<input id="thistemplate" type="hidden" name="template" value="<?php echo $template;?>" />
+
+
+					<?php
+					$templates = array();
+					if ($handle = opendir('./private/templates')) {
+					    while (false !== ($entry = readdir($handle))) {
+					        if ($entry != "." && $entry != "..") {
+					            //echo "$entry\n";
+					            $templates[] = array(ucfirst(str_replace('-',' ',str_replace('.pdf','',$entry))),$entry);
+					        }
+					    }
+					    closedir($handle);
+					}
+					if(!empty($templates)){
+					?>
+					<label for="thistemplate"<?php echo $template_class;?> id="template"><span>Template<?php echo $template_req;?></span>
+					<select id="thistemplate" name="template" style="width:auto">
+					<?php
+					
+					for($t = 0; $t < count($templates); $t++){
+						array(ucfirst(str_replace('-',' ',str_replace('.pdf','',$templates[$t]))),$templates[$t]);
+					}
+
+					$template_array = $templates;
+
+					foreach($template_array as $subarray) {
+						list($text, $val) = $subarray;
+						if($val == $template){
+							echo "<option value=\"$val\" selected>$text</option>";
+						} else {
+							echo "<option value=\"$val\">$text</option>";
+						}
+					}
+					?>
+					</select></label>
+					<?php } ?>
+
+					
+
+					<!-- <input id="thistemplate" type="hidden" name="template" value="<?php echo $template;?>" /> -->
 
 				</div>
 
