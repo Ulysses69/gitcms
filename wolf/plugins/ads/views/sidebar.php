@@ -12,13 +12,13 @@ $version = Plugin::getSetting('version', 'ads');
 
 <div class="box">
 <h2><?php echo __('Ads').' '.ADS_VERSION; ?></h2>
-<p>Boxes can be used for adverts or call-to-actions. They are added to the bottom of associated page content by default.</p>
+<p>Ads can be used for adverts or call-to-actions. They are added to the bottom of associated page content by default.</p>
 </div>
 
 <div class="box">
 <h2><?php echo __('Notes'); ?></h2>
-<p>Once created on this page, boxes are added to pages by selecting them from a list under the 'ad' tab.</p>
-<p>Boxes can either be linked via entering a <b>Link URL</b> or scattered manually within the <b>Text</b> itself.</p>
+<p>Once created on this page, ads are added to pages by selecting them from a list under the 'ad' tab.</p>
+<p>Ads can either be linked via entering a <b>Link URL</b> or scattered manually within the <b>Text</b> itself.</p>
 </div>
 
 
