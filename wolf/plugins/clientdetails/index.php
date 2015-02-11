@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.1'); }
+if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.2'); }
 if (!defined('CLIENTDETAILS_ID')) {			define('CLIENTDETAILS_ID', 'clientdetails'); }
 if (!defined('CLIENTDETAILS_TITLE')) {		define('CLIENTDETAILS_TITLE', 'Clientdetails'); }
 if (!defined('CLIENTDETAILS_DESC')) {		define('CLIENTDETAILS_DESC', 'Manage client details'); }
@@ -37,6 +37,22 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 	<?php }
 	}
 	*/
+
+
+	
+	/* TO DO: Add facility to create or delete private user folders */
+	Observer::observe('user_after_add', 'clientdetails_adduser');
+	Observer::observe('user_after_delete', 'clientdetails_deleteuser');
+	if(!function_exists('clientdetails_adduser')){
+		function clientdetails_adduser($page) {
+		      //var_dump($page);
+		}
+	}
+	if(!function_exists('clientdetails_deleteuser')){
+		function clientdetails_deleteuser($page) {
+		      //var_dump($page);
+		}
+	}
 
 
 
