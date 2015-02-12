@@ -351,7 +351,7 @@ function layout_switch_check($page) {
 			$page = ob_get_contents();
 			//$page = strtr($page, array("\t" => "", "\n" => "", "\r" => "", 'href="'.URL_PUBLIC => 'href="'.URL_PUBLIC.'mobile/', 'action="'.URL_PUBLIC.'search.html' => 'action="'.URL_PUBLIC.'mobile/search.html'));
 			//$page = str_replace('="'.URL_PUBLIC, '="'.URL_PUBLIC.'standard/', $page);
-	
+
 			/* Don't follow or index standard layout */
 			$standard_canonical = '<meta name="robots" content="nofollow,noindex" />'."\n";
 			$standard_canonical .= '<link rel="canonical" href="'.str_replace('standard/','',$_SERVER['REQUEST_URI']).'" />'."\n";
@@ -480,9 +480,12 @@ function layout_switch_check($page) {
 				exit();
 			}
 
-			//$mobile_redirect = true; // true/false
-			if(Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
 
+			// MOBILE IS ENABLED
+			//$mobile_redirect = true; // true/false
+			//if(Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
+
+				// Mobile pages
 				if((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE){
 
 					/* UNDER CONSTRUCTION - Funky Cache Support */
@@ -523,6 +526,7 @@ function layout_switch_check($page) {
 					echo $page;
 					exit();
 	
+				// Non-Mobile pages
 				} else {
 
 					//echo 'hello: '.$page->slug; exit;
@@ -616,7 +620,10 @@ function layout_switch_check($page) {
 
 	
 				}
-			} else {
+
+
+			// MOBILE IS 'NOT' ENABLED
+			//} else {
 				
 				/*
 				if(stristr($page->behavior_id, 'Form')){
@@ -631,6 +638,7 @@ function layout_switch_check($page) {
 				*/
 
 
+				/*
 				ob_start();
 				$page->_executeLayout();
 				$newpage = ob_get_contents();
@@ -650,10 +658,11 @@ function layout_switch_check($page) {
 				ob_end_clean();
 				echo $newpage;
 				exit;
+				*/
 				
 				//if($page->layout_id == '17') header('X-UA-Compatible: IE=edge,chrome=1');
 
-			}
+			//}
 		}
 	}
 }
