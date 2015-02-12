@@ -33,6 +33,12 @@ if(!Plugin::getSetting('logo_maxwidth', 'mobile_check')) $settings['logo_maxwidt
 if(!Plugin::getSetting('viewport', 'mobile_check')) $settings['viewport'] = '';
 if(!Plugin::getSetting('cachedcss', 'mobile_check')) $settings['cachedcss'] = '';
 
+if(!Plugin::getSetting('color_content_bg', 'mobile_check')) $settings['color_content_bg'] = '#FFFFFF';
+if(!Plugin::getSetting('color_content_h1', 'mobile_check')) $settings['color_content_h1'] = '#444444';
+if(!Plugin::getSetting('color_content_text', 'mobile_check')) $settings['color_content_text'] = '#666666';
+if(!Plugin::getSetting('color_content_link', 'mobile_check')) $settings['color_content_link'] = '#0689F4';
+if(!Plugin::getSetting('content_font', 'mobile_check')) $settings['content_font'] = '';
+
 if(!Plugin::getSetting('topnavhome', 'mobile_check')) $settings['topnavhome'] = 'disabled';
 if(!Plugin::getSetting('background_url', 'mobile_check')) $settings['background_url'] = '';
 if(!Plugin::getSetting('homecontent', 'mobile_check')) $settings['homecontent'] = 'disabled';

@@ -44,6 +44,12 @@ class MobileCheckController extends PluginController {
 		if(isset($_POST['logo_maxwidth'])){ $logo_maxwidth = $_POST['logo_maxwidth']; } else { $logo_maxwidth = ''; }
 		if(isset($_POST['viewport'])){ $viewport = $_POST['viewport']; } else { $viewport = ''; }
 		if(isset($_POST['cachedcss'])){ $cachedcss = $_POST['cachedcss']; } else { $cachedcss = ''; }
+		
+		if(isset($_POST['color_content_bg'])){ $color_content_bg = $_POST['color_content_bg']; } else { $color_content_bg = ''; }
+		if(isset($_POST['color_content_h1'])){ $color_content_h1 = $_POST['color_content_h1']; } else { $color_content_h1 = ''; }
+		if(isset($_POST['color_content_text'])){ $color_content_text = $_POST['color_content_text']; } else { $color_content_text = ''; }
+		if(isset($_POST['color_content_link'])){ $color_content_link = $_POST['color_content_link']; } else { $color_content_link = ''; }
+		if(isset($_POST['content_font'])){ $content_font = $_POST['content_font']; } else { $content_font = ''; }
 
 		if(isset($_POST['topnavhome'])){ $topnavhome = $_POST['topnavhome']; } else { $topnavhome = ''; }
 		if(isset($_POST['background_url'])){ $background_url = $_POST['background_url']; } else { $background_url = ''; }
@@ -75,6 +81,12 @@ class MobileCheckController extends PluginController {
 		if($screen_width == '') $screen_width = Plugin::getSetting('screen_width', 'mobile_check');
 		if($website_width == '') $website_width = Plugin::getSetting('website_width', 'mobile_check');
 		if($cachedcss == '') $cachedcss = Plugin::getSetting('cachedcss', 'mobile_check');
+
+		if($color_content_bg == '') $color_content_bg = Plugin::getSetting('color_content_bg', 'mobile_check');
+		if($color_content_h1 == '') $color_content_h1 = Plugin::getSetting('color_content_h1', 'mobile_check');
+		if($color_content_text == '') $color_content_text = Plugin::getSetting('color_content_text', 'mobile_check');
+		if($color_content_link == '') $color_content_link = Plugin::getSetting('color_content_link', 'mobile_check');
+		if($content_font == '') $content_font = Plugin::getSetting('content_font', 'mobile_check');
 
 		if($topnavhome == '') $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check');
 		if($background_url == '') $background_url = Plugin::getSetting('background_url', 'mobile_check');
@@ -317,6 +329,13 @@ class MobileCheckController extends PluginController {
 							'color_button_link' => $color_button_link,
 							'logo_maxwidth' => $logo_maxwidth,
 							'viewport' => $viewport,
+
+							'color_content_bg' => $color_content_bg,
+							'color_content_h1' => $color_content_h1,
+							'color_content_text' => $color_content_text,
+							'color_content_link' => $color_content_link,
+							'content_font' => $content_font,
+
 							'cachedcss' => $newcss,
 							'topnavhome' => $topnavhome,
 							'background_url' => $background_url,

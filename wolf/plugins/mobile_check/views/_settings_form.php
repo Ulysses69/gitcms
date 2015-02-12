@@ -20,6 +20,14 @@ $color_button_bg		= Plugin::getSetting('color_button_bg', 'mobile_check');
 $color_button_border	= Plugin::getSetting('color_button_border', 'mobile_check');
 $color_button_opacity	= Plugin::getSetting('color_button_opacity', 'mobile_check');
 
+
+$color_content_bg		= Plugin::getSetting('color_content_bg', 'mobile_check');
+$color_content_h1		= Plugin::getSetting('color_content_h1', 'mobile_check');
+$color_content_text		= Plugin::getSetting('color_content_text', 'mobile_check');
+$color_content_link		= Plugin::getSetting('color_content_link', 'mobile_check');
+$content_font			= Plugin::getSetting('content_font', 'mobile_check');
+
+
 $color_button_link		= Plugin::getSetting('color_button_link', 'mobile_check');
 $logo_maxwidth			= Plugin::getSetting('logo_maxwidth', 'mobile_check');
 $viewport				= Plugin::getSetting('viewport', 'mobile_check');
@@ -175,6 +183,7 @@ onload = function() {
 				<?php
 				$options = ''; $content_font = ''; $fonts = '';
 				$content_font_array = array(
+				array ('Default', ''),
 				array ('EB Garamond', 'EB+Garamond'),
 				array ('Fira Sans', 'Fira+Sans'),
 				array ('Lustria', 'Lustria'),
@@ -187,10 +196,11 @@ onload = function() {
 				array ('Vollkorn', 'Vollkorn'));
 				foreach($content_font_array as $subarray) {
 					list($text, $val) = $subarray;
+					if($val != ''){ $font = " style=\"font-family:'".$text."'\""; } else { $font = ''; }
 					if($val == $content_font){
-						$options .= "<option style=\"font-family:'".$text."'\" value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+						$options .= "<option".$font." value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
 					} else {
-						$options .= "<option style=\"font-family:'".$text."'\" value=\"".str_replace('"',"'",$val)."\">$text</option>";
+						$options .= "<option".$font." value=\"".str_replace('"',"'",$val)."\">$text</option>";
 					}
 					$fonts .= "<link href='http://fonts.googleapis.com/css?family=".$val."' rel='stylesheet' type='text/css'>";
 				}
@@ -200,7 +210,7 @@ onload = function() {
 				<?php echo $options; ?>
 				</select>
 				</td>
-				<td class="help"><?php echo __('Position background image');?></td>
+				<td class="help"><?php echo __('');?></td>
 			</tr>
 			<?php //<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> font-family: 'Open Sans', sans-serif; ?>
 
