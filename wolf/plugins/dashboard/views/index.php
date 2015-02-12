@@ -262,6 +262,14 @@
 				$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/plugin/cleaner"><b>Cleaning Recommended</span></b></a><br />There are files to <a href="'.get_url('plugin/cleaner').'/clean">clean</a>, according to the cleaning <a href="'.get_url('plugin/cleaner').'/settings">settings</a>.</li>';
 			}
 		}
+		
+		/* To do: Function is not detected */
+		if(function_exists('userFolder')){
+			if(userFolder('check')){
+				$files = userFolder('check'); $plurals = ''; if($file_count > 1){ $plurals = 's'; }
+				$warnings .= '<li class="warning"><a href="/private'.URL_SUFFIX.'"><b>Private Files</span></b></a><br />You have '.userFolder('check').' document'.$plurals.' available to <a href="/private'.URL_SUFFIX.'">download</a>.</li>';
+			}
+		}
 
 		if(Plugin::isEnabled('backup_restore') == true && AuthUser::hasPermission('client')){
 		$warnings .= '<li><a href="/'.ADMIN_DIR.'/plugin/backup_restore/backup"><b>Create a Backup</b></a><br />It is recommended to backup before making any other changes.<br /><br /></li>';
