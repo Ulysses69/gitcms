@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.3.1',
+	'version'	 			=> '6.3.2',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -210,6 +210,8 @@ function layoutScreenCss($content,$get='ob_get_contents'){
 function edit_page_link($page) {
 	$styling = '';
 	$output = '';
+	
+	//echo 'hello'; exit;
 
 	// Check if there's a user session
     AuthUser::load();
@@ -477,7 +479,7 @@ function layout_switch_check($page) {
 				echo $page;
 				exit();
 			}
-	
+
 			//$mobile_redirect = true; // true/false
 			if(Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('enable', 'mobile_check') == true){
 
@@ -513,7 +515,7 @@ function layout_switch_check($page) {
 					$page = str_replace("Privacy policy</a></li>", "Privacy</a></li>", $page);
 	
 					$page = preg_replace('/<!--[^[](.|\s)*?-->/', '', $page);
-	
+
 					/* Clean flattened address (minus client name) */
 					if(stristr($page,'class="popup') && stristr($page,'shadowbox')){
 						$page = str_replace('class="popup', 'rel="shadowbox', $page);
@@ -522,7 +524,6 @@ function layout_switch_check($page) {
 					exit();
 	
 				} else {
-
 
 					//echo 'hello: '.$page->slug; exit;
 					$newpage = '';
@@ -533,11 +534,15 @@ function layout_switch_check($page) {
 					if(stristr($page->behavior_id, 'Form')){
 						//echo 'hello'; exit;
 						$newpage = layoutFormCss($page,$newpage);
+
+						// Display edit page link (if layout is not set to none)
+						//if($page->layout_id != 1){ $edit_page_link = edit_page_link($page); }
+						//$newpage = $newpage . $edit_page_link;
 					}
 	
 					// This page requires post-rebuilding as it isn't built via funky cache
 					if(Plugin::isEnabled('funky_cache') == false || (Plugin::isEnabled('funky_cache') == true && $page->funky_cache_enabled == 0)){
-						
+
 						// Display edit page link (if layout is not set to none)
 						if($page->layout_id != 1){ $edit_page_link = edit_page_link($page); }
 
@@ -612,6 +617,7 @@ function layout_switch_check($page) {
 	
 				}
 			} else {
+				
 				/*
 				if(stristr($page->behavior_id, 'Form')){
 					ob_start();
@@ -623,8 +629,30 @@ function layout_switch_check($page) {
 					exit();
 				}
 				*/
+
+
+				ob_start();
+				$page->_executeLayout();
+				$newpage = ob_get_contents();
+
+				// Display edit page link (if layout is not set to none)
+				$edit_page_link = '';
+
+				// For some reason, forms with string parameters require update
+				if(stristr($page->behavior_id, 'Form')){
+					//echo 'hello'; exit;
+					$newpage = layoutFormCss($page,$newpage);
+				}
+
+				if($page->layout_id != 1){ $edit_page_link = edit_page_link($page); }
+				$newpage = $newpage . $edit_page_link;
+
+				ob_end_clean();
+				echo $newpage;
+				exit;
 				
-				if($page->layout_id == '17') header('X-UA-Compatible: IE=edge,chrome=1');
+				//if($page->layout_id == '17') header('X-UA-Compatible: IE=edge,chrome=1');
+
 			}
 		}
 	}
