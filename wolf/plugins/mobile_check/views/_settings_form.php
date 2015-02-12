@@ -77,7 +77,7 @@ onload = function() {
 
 <form action="<?php echo get_url('plugin/mobile_check/save_settings'); ?>" method="post">
 
-<h2>Design</h2>
+<h2 id="design">Design</h2>
 
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 
@@ -302,7 +302,7 @@ onload = function() {
 
 
 
-<h2>Mobile</h2>
+<h2 id="mobile">Mobile</h2>
 
 	<fieldset style="padding: 0.5em;">
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Settings'); ?></legend>

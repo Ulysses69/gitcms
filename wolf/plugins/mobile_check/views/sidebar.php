@@ -11,8 +11,8 @@
 <div class="box">
 <h2><?php echo __('Design & Mobile Tools');?></h2>
 <p>Version <?php echo Plugin::getSetting('version', 'mobile_check'); ?></p>
+<p><a href="#design">Design</a> | <a href="#mobile">Mobile</a></p>
 </div>
-
 
 
 
