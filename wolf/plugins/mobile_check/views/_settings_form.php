@@ -42,7 +42,7 @@ $header_banner			= Plugin::getSetting('header_banner', 'mobile_check');
 
 ?>
 
-<br />
+<!-- <br /> -->
 
 <script type="text/javascript" charset="utf-8" src="/wolf/plugins/mobile_check/js/jquery.miniColors.js"></script>
 <script type="text/javascript" charset="utf-8" src="/wolf/plugins/mobile_check/js/jquery.cookie.js"></script>
@@ -69,9 +69,235 @@ onload = function() {
 
 <form action="<?php echo get_url('plugin/mobile_check/save_settings'); ?>" method="post">
 
+<h2>Design</h2>
+
+		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Page'); ?></legend>
+			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
+<!-- New to 1.5.4 -->
+
+			<tr>
+				<td class="label"><label for="acolor_body_bg">Background Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_body_bg" id="acolor_body_bg" size="30" value="<?php echo $color_body_bg; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+
+
+
+
+<!-- New to 1.5.3 -->
+			<tr>
+				<td class="label"><label for="background_url">Background URL</label></td>
+				<td class="field"><input class="textbox" type="text" name="background_url" id="background_url" size="30" value="<?php echo $background_url; ?>" /></td>
+				<td class="help">URL of background image</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="background_align"><?php echo __('Background Align'); ?></label></td>
+				<td class="field">
+				<select name="background_align" id="background_align">
+				<?php
+				$background_align_array = array(
+				array ('Top Center', 'no-repeat center top'),
+				array ('Top Left', 'no-repeat left top'),
+				array ('Vertical Tile', 'repeat-y center top'),
+				array ('Horizontal Tile', 'repeat-x center top'),
+				array ('Full Tile', 'repeat center top'));
+				foreach($background_align_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $background_align){
+						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help"><?php echo __('Position background image');?></td>
+			</tr>
+
+			<tr>
+				<td class="label"><label for="acolor_body_border">Borders Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_body_border" id="acolor_body_border" size="30" value="<?php echo $color_body_border; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_main_text">Text Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_main_text" id="acolor_main_text" size="30" value="<?php echo $color_main_text; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_main_link">Links Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_main_link" id="acolor_main_link" size="30" value="<?php echo $color_main_link; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			</table>
+			</fieldset>
+			</td>
+			</tr>
+
+
+<!-- New to 1.8.1 -->
+			<tr>
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Body'); ?></legend>
+			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+				<td class="label"><label for="acolor_content_bg">Background Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_content_bg" id="acolor_content_bg" size="30" value="<?php echo $color_content_bg; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_content_h1">Heading Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_content_h1" id="acolor_content_h1" size="30" value="<?php echo $color_content_h1; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_content_text">Text Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_content_text" id="acolor_content_text" size="30" value="<?php echo $color_content_text; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_content_link">Link Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_content_link" id="acolor_content_link" size="30" value="<?php echo $color_content_link; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acontent_font"><?php echo __('Font'); ?></label></td>
+				<td class="field">
+				<?php
+				$options = ''; $content_font = ''; $fonts = '';
+				$content_font_array = array(
+				array ('EB Garamond', 'EB+Garamond'),
+				array ('Fira Sans', 'Fira+Sans'),
+				array ('Lustria', 'Lustria'),
+				array ('Merriweather Sans', 'Merriweather+Sans'),
+				array ('Open Sans', 'Open+Sans'),
+				array ('Poly', 'Poly'),
+				array ('PT Sans', 'PT+Sans'),
+				array ('Roboto', 'Roboto'),
+				array ('Ubuntu', 'Ubuntu'),
+				array ('Vollkorn', 'Vollkorn'));
+				foreach($content_font_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $content_font){
+						$options .= "<option style=\"font-family:'".$text."'\" value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						$options .= "<option style=\"font-family:'".$text."'\" value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+					$fonts .= "<link href='http://fonts.googleapis.com/css?family=".$val."' rel='stylesheet' type='text/css'>";
+				}
+				?>
+				<?php echo $fonts; ?>
+				<select name="content_font" id="content_font">
+				<?php echo $options; ?>
+				</select>
+				</td>
+				<td class="help"><?php echo __('Position background image');?></td>
+			</tr>
+			<?php //<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> font-family: 'Open Sans', sans-serif; ?>
+
+
+			</table>
+			</fieldset>
+			</td>
+			</tr>
+
+
+
+			<tr>
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Footer'); ?></legend>
+			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td class="label"><label for="acolor_footer_text">Text Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_footer_text" id="acolor_footer_text" size="30" value="<?php echo $color_footer_text; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_footer_link">Links Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_footer_link" id="acolor_footer_link" size="30" value="<?php echo $color_footer_link; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+
+			</table>
+			</fieldset>
+			</td>
+			</tr>
+
+			<tr>
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Buttons'); ?></legend>
+			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td class="label"><label for="acolor_button_bg">Background Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_bg" id="acolor_button_bg" size="30" value="<?php echo $color_button_bg; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<!--
+			<tr>
+				<td class="label"><label for="acolor_button_link_opacity">Background Opacity</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_link_opacity" id="acolor_button_link_opacity" size="30" value="<?php echo $color_button_link_opacity; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			-->
+			<tr>
+				<td class="label"><label for="acolor_button_border">Border Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_border" id="acolor_button_border" size="30" value="<?php echo $color_button_border; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="acolor_button_link">Text Colour</label></td>
+				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_link" id="acolor_button_link" size="30" value="<?php echo $color_button_link; ?>" /></td>
+				<td class="help">(#XXXXXX)</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="color_button_opacity"><?php echo __('Opacity'); ?></label></td>
+				<td class="field">
+				<select name="color_button_opacity" id="color_button_opacity">
+				<?php
+				$color_button_opacity_array = array(
+				array ("Solid", 'solid'),
+				array ("Semiopaque", 'semiopaque'));
+				foreach($color_button_opacity_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $color_button_opacity){
+						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help"><?php echo __('Style of background.');?></td>
+			</tr>
+			</table>
+			</fieldset>
+			</td>
+			</tr>
+
+		</table>
+
+
+
+
+
+<h2>Mobile</h2>
+
 	<fieldset style="padding: 0.5em;">
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Settings'); ?></legend>
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
 			<tr>
 				<td class="label"><label for="enable"><?php echo __('Detection'); ?></label></td>
 				<td class="field">
@@ -293,6 +519,58 @@ onload = function() {
 			</tr>
 
 
+<!-- New to 1.5.4 -->
+			<tr>
+				<td class="label"><label for="homecontent"><?php echo __('Home Content'); ?></label></td>
+				<td class="field">
+				<select name="homecontent" id="homecontent">
+				<?php
+				$homecontent_array = array(
+				array ('Show home content', 'enabled'),
+				array ('Hide home content', 'disabled'));
+				foreach($homecontent_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $homecontent){
+						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help"><?php echo __('Enable/disable home page content');?></td>
+			</tr>
+
+			<tr>
+				<td class="label"><label for="adesktop_text">Desktop Link</label></td>
+				<td class="field"><input class="textbox" type="text" name="desktop_text" id="adesktop_text" size="30" value="<?php echo $desktop_text; ?>" /></td>
+				<td class="help">Set text or leave empty to disable link</td>
+			</tr>
+
+			<tr>
+				<td class="label"><label for="acopyright"><?php echo __('Copyright'); ?></label></td>
+				<td class="field">
+				<select name="copyright" id="acopyright">
+				<?php
+				$copyright_array = array(
+				array ('Branded', true),
+				array ('Unbranded', false));
+				foreach($copyright_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $copyright){
+						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+					} else {
+						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help"><?php echo __('Enable/disable branded copyright in footer');?></td>
+			</tr>
+
+
 			<tr>
 			<td colspan="4">
 			<fieldset style="padding: 0.5em;">
@@ -480,202 +758,6 @@ onload = function() {
 
 
 
-
-			<tr>
-			<td colspan="4">
-			<fieldset style="padding: 0.5em;">
-			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Body'); ?></legend>
-			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
-
-<!-- New to 1.5.4 -->
-			<tr>
-				<td class="label"><label for="homecontent"><?php echo __('Home Content'); ?></label></td>
-				<td class="field">
-				<select name="homecontent" id="homecontent">
-				<?php
-				$homecontent_array = array(
-				array ('Show home content', 'enabled'),
-				array ('Hide home content', 'disabled'));
-				foreach($homecontent_array as $subarray) {
-					list($text, $val) = $subarray;
-					if($val == $homecontent){
-						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
-					} else {
-						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
-					}
-				}
-				?>
-				</select>
-				</td>
-				<td class="help"><?php echo __('Enable/disable home page content');?></td>
-			</tr>
-
-			<tr>
-				<td class="label"><label for="acolor_body_bg">Background Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_body_bg" id="acolor_body_bg" size="30" value="<?php echo $color_body_bg; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-
-
-
-
-<!-- New to 1.5.3 -->
-			<tr>
-				<td class="label"><label for="background_url">Background URL</label></td>
-				<td class="field"><input class="textbox" type="text" name="background_url" id="background_url" size="30" value="<?php echo $background_url; ?>" /></td>
-				<td class="help">URL of background image</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="background_align"><?php echo __('Background Align'); ?></label></td>
-				<td class="field">
-				<select name="background_align" id="background_align">
-				<?php
-				$background_align_array = array(
-				array ('Top Center', 'no-repeat center top'),
-				array ('Top Left', 'no-repeat left top'),
-				array ('Vertical Tile', 'repeat-y center top'),
-				array ('Horizontal Tile', 'repeat-x center top'),
-				array ('Full Tile', 'repeat center top'));
-				foreach($background_align_array as $subarray) {
-					list($text, $val) = $subarray;
-					if($val == $background_align){
-						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
-					} else {
-						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
-					}
-				}
-				?>
-				</select>
-				</td>
-				<td class="help"><?php echo __('Position background image');?></td>
-			</tr>
-
-
-
-
-			<tr>
-				<td class="label"><label for="acolor_body_border">Borders Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_body_border" id="acolor_body_border" size="30" value="<?php echo $color_body_border; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="acolor_main_text">Text Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_main_text" id="acolor_main_text" size="30" value="<?php echo $color_main_text; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="acolor_main_link">Links Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_main_link" id="acolor_main_link" size="30" value="<?php echo $color_main_link; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			</table>
-			</fieldset>
-			</td>
-			</tr>
-
-
-			<tr>
-			<td colspan="4">
-			<fieldset style="padding: 0.5em;">
-			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Footer'); ?></legend>
-			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
-			<tr>
-				<td class="label"><label for="acolor_footer_text">Text Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_footer_text" id="acolor_footer_text" size="30" value="<?php echo $color_footer_text; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="acolor_footer_link">Links Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_footer_link" id="acolor_footer_link" size="30" value="<?php echo $color_footer_link; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-
-			<tr>
-				<td class="label"><label for="adesktop_text">Desktop Link</label></td>
-				<td class="field"><input class="textbox" type="text" name="desktop_text" id="adesktop_text" size="30" value="<?php echo $desktop_text; ?>" /></td>
-				<td class="help">Set text or leave empty to disable link</td>
-			</tr>
-
-			<tr>
-				<td class="label"><label for="acopyright"><?php echo __('Copyright'); ?></label></td>
-				<td class="field">
-				<select name="copyright" id="acopyright">
-				<?php
-				$copyright_array = array(
-				array ('Branded', true),
-				array ('Unbranded', false));
-				foreach($copyright_array as $subarray) {
-					list($text, $val) = $subarray;
-					if($val == $copyright){
-						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
-					} else {
-						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
-					}
-				}
-				?>
-				</select>
-				</td>
-				<td class="help"><?php echo __('Enable/disable branded copyright in footer');?></td>
-			</tr>
-
-			</table>
-			</fieldset>
-			</td>
-			</tr>
-
-
-			<tr>
-			<td colspan="4">
-			<fieldset style="padding: 0.5em;">
-			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Buttons'); ?></legend>
-			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
-			<tr>
-				<td class="label"><label for="acolor_button_bg">Background Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_bg" id="acolor_button_bg" size="30" value="<?php echo $color_button_bg; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<!--
-			<tr>
-				<td class="label"><label for="acolor_button_link_opacity">Background Opacity</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_link_opacity" id="acolor_button_link_opacity" size="30" value="<?php echo $color_button_link_opacity; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			-->
-			<tr>
-				<td class="label"><label for="acolor_button_border">Border Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_border" id="acolor_button_border" size="30" value="<?php echo $color_button_border; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="acolor_button_link">Text Colour</label></td>
-				<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_button_link" id="acolor_button_link" size="30" value="<?php echo $color_button_link; ?>" /></td>
-				<td class="help">(#XXXXXX)</td>
-			</tr>
-			<tr>
-				<td class="label"><label for="color_button_opacity"><?php echo __('Opacity'); ?></label></td>
-				<td class="field">
-				<select name="color_button_opacity" id="color_button_opacity">
-				<?php
-				$color_button_opacity_array = array(
-				array ("Solid", 'solid'),
-				array ("Semiopaque", 'semiopaque'));
-				foreach($color_button_opacity_array as $subarray) {
-					list($text, $val) = $subarray;
-					if($val == $color_button_opacity){
-						echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
-					} else {
-						echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
-					}
-				}
-				?>
-				</select>
-				</td>
-				<td class="help"><?php echo __('Style of background.');?></td>
-			</tr>
-			</table>
-			</fieldset>
-			</td>
-			</tr>
 
 			<tr>
 			<td colspan="4">

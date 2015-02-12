@@ -39,7 +39,7 @@
 
 
 <?php if(Plugin::isEnabled('page_options') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/page_options'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/page_options/images/page_options.png" align="middle" alt="page options icon" /> <?php echo __('Page Options'); ?></a></p><?php } ?>
-<?php if(Plugin::isEnabled('mobile_check') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/mobile_check'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/mobile_check/images/mobile.png" align="middle" alt="mobile icon" /> <?php echo __('Mobile Options'); ?></a></p><?php } ?>
+<?php if(Plugin::isEnabled('mobile_check') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/mobile_check'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/mobile_check/images/mobile.png" align="middle" alt="mobile icon" /> <?php echo __('Design & Mobile'); ?></a></p><?php } ?>
 <?php if(Plugin::isEnabled('tinymce_styles') == true && AuthUser::hasPermission('administrator')){ ?><p class="button"><a href="<?php echo get_url('plugin/tinymce_styles'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/plugins/tinymce_styles/images/styles.png" align="middle" alt="styles icon" /> <?php echo __('TinyMCE Styles'); ?></a></p><?php } ?>
 
 

@@ -9,7 +9,7 @@
 ?>
 
 <div class="box">
-<h2><?php echo __('Mobile Tools');?></h2>
+<h2><?php echo __('Design & Mobile Tools');?></h2>
 <p>Version <?php echo Plugin::getSetting('version', 'mobile_check'); ?></p>
 </div>
 
