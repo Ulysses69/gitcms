@@ -24,6 +24,9 @@ em.required{font-style:normal}
 em.required:not(.legacy){float:left;position:relative;width:0.9em;height:1.1em;overflow:hidden;margin-top:-2px;margin-left:0;margin-right:2px;font-style:normal;cursor:help}
 label em.required:not(.legacy){position:absolute;margin-left:0}
 em.required:before{content:"* ";line-height:1.4em;font-size:11px;margin-left:5px}
+fieldset div input, input#thismailinglist { border: none !important; }
+#uploader{ display:none; }
 @media screen and (min-width: 360px) {
+#uploader{ display:block; }
 label input,label textarea,label select{width:96%}
 }
