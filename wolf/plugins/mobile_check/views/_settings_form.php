@@ -181,7 +181,7 @@ onload = function() {
 				<td class="label"><label for="acontent_font"><?php echo __('Font'); ?></label></td>
 				<td class="field">
 				<?php
-				$options = ''; $content_font = ''; $fonts = '';
+				$options = ''; $fonts = '';
 				$content_font_array = array(
 				array ('Default', ''),
 				array ('EB Garamond', 'EB+Garamond'),
