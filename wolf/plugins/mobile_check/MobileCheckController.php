@@ -86,7 +86,7 @@ class MobileCheckController extends PluginController {
 		if($color_content_h1 == '') $color_content_h1 = Plugin::getSetting('color_content_h1', 'mobile_check');
 		if($color_content_text == '') $color_content_text = Plugin::getSetting('color_content_text', 'mobile_check');
 		if($color_content_link == '') $color_content_link = Plugin::getSetting('color_content_link', 'mobile_check');
-		if($content_font == '') $content_font = Plugin::getSetting('content_font', 'mobile_check');
+		//if($content_font == '') $content_font = Plugin::getSetting('content_font', 'mobile_check');
 
 		if($topnavhome == '') $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check');
 		if($background_url == '') $background_url = Plugin::getSetting('background_url', 'mobile_check');

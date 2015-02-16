@@ -24,6 +24,7 @@ h1, h2, .h2, h3, h4, p, label, .itemaddress, table, th, td, #content ul, #conten
 	color:<?php echo $color_main_text; ?>
 }
 h1 {
+	<?php if($content_font != ''){ echo "font-family:'".str_replace('+', ' ', $content_font)."';"; } ?>
 	font-weight:normal;
 	padding:.5em;
 	margin-bottom:.75em;

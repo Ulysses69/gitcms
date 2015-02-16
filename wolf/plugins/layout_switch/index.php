@@ -140,7 +140,6 @@ function layoutFormCss($content,$get='ob_get_contents'){
 	$page = $content;
 	
 	//echo 'hello '.$page->slug; exit;
-
 	//if(is_object($thispage) && $thispage->behavior_id == 'Form' && function_exists('str_replace_once')){
 	if(is_object($page) && $page->behavior_id == 'Form' && function_exists('str_replace_once')){
 		if($get == 'ob_get_contents'){

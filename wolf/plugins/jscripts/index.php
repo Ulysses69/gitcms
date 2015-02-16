@@ -140,6 +140,15 @@ function buildscripts($page, $insertref, $checkup = false){
 	//if($insertref == 'head' && $checkup != true){ setglobal('SETHEADSCRIPTS','yes'); $page->setheadscripts = 'called'; }
 	//if($insertref == 'body' && $checkup != true){ setglobal('SETBODYSCRIPTS','yes'); $page->setbodyscripts = 'called'; }
 	//echo '<!-- buildscripts output: '.$scripts." -->\n";
+	
+	$content_font = Plugin::getSetting('content_font', 'mobile_check');
+	if($content_font != ''){
+		$tempscripts = $scripts;
+		$fontscript = '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family='.$content_font.'">'."\n";
+		$scripts = $fontscript.$tempscripts;
+	}
+
+
 	return $scripts;
 
 }

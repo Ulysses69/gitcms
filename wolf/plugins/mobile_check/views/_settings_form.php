@@ -196,13 +196,18 @@ onload = function() {
 				array ('Vollkorn', 'Vollkorn'));
 				foreach($content_font_array as $subarray) {
 					list($text, $val) = $subarray;
-					if($val != ''){ $font = " style=\"font-family:'".$text."'\""; } else { $font = ''; }
+					if($val != ''){
+						$font = " style=\"font-family:'".$text."'\"";
+						$fonts .= "<link href='http://fonts.googleapis.com/css?family=".$val."' rel='stylesheet' type='text/css'>";
+					} else {
+						$font = '';
+					}
 					if($val == $content_font){
 						$options .= "<option".$font." value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
 					} else {
 						$options .= "<option".$font." value=\"".str_replace('"',"'",$val)."\">$text</option>";
 					}
-					$fonts .= "<link href='http://fonts.googleapis.com/css?family=".$val."' rel='stylesheet' type='text/css'>";
+
 				}
 				?>
 				<?php echo $fonts; ?>
