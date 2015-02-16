@@ -220,6 +220,11 @@ onload = function() {
 			<?php //<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> font-family: 'Open Sans', sans-serif; ?>
 
 
+
+<!-- TO DO: Add checklist of dom elements to apply custom font to -->
+
+
+
 			</table>
 			</fieldset>
 			</td>
