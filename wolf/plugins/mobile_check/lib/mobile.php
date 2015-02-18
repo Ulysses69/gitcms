@@ -218,8 +218,9 @@ fieldset {
 <?php if($searchbox != 'false'){ ?>
 #searchbox {
 	padding:.5em;
-	margin:0 0 1em 0
+	margin:0 0 0 0
 }
+
 #searchbox input {
 	float:left;
 	font-size:115% !important;
