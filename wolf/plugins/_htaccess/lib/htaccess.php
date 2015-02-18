@@ -229,6 +229,14 @@ $AdminAccess .= "#RewriteCond %{REMOTE_HOST} !^82\.152\.147\.125\n";
 
 
 
+// Manual Maintenance Mode (to update.html page)
+#RewriteCond %{REMOTE_ADDR} !^123\.456\.789\.000
+#RewriteCond %{REQUEST_URI} !/update.html$ [NC]
+#RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
+#RewriteRule .* /update.html [R=302,L]
+
+
+
 // Restrict access to enabled whitelist IPs, when IPs have been granted authorized access.
 $maintenance = Plugin::getAllSettings('maintenance');
 //if(Plugin::isEnabled('maintenance') == true && $maintenance['maintenanceAuthorizedAccess'] == 'on'){
