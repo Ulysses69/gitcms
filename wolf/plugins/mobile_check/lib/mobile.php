@@ -93,6 +93,29 @@ a {
 
 
 
+/* Prices */
+.mobile .prices #content table {
+	margin-top:-0.7em
+}
+.mobile .prices #content tr {
+	position:relative;
+	overflow:hidden;
+}
+.mobile .prices #content tr.titles {
+	position:absolute;
+	left:-20em;
+}
+.mobile .prices #content th,
+.mobile .prices #content td {
+	position:relative;
+	display:block;
+	clear:both;
+	float:none;
+	width:100%;
+}
+
+
+
 /* Handle iframes */
 .embed {
 	position: relative;
