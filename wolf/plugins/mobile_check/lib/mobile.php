@@ -207,10 +207,13 @@ p small span {
 	overflow:hidden;
 }
 #content {
-	position:relative;
 	padding:0 1em .5em 1em;
 	background:#ffffff
 }
+#content:not(.legacy) {
+	position:relative
+}
+
 
 <?php if($homecontent == 'disabled'){ ?>
 #home-page.mobile #content {
