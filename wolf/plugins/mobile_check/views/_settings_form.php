@@ -186,6 +186,7 @@ onload = function() {
 				array ('Default', ''),
 				array ('EB Garamond', 'EB+Garamond'),
 				array ('Fira Sans', 'Fira+Sans'),
+				array ('Lato', 'Lato'),
 				array ('Lustria', 'Lustria'),
 				array ('Merriweather Sans', 'Merriweather+Sans'),
 				array ('Open Sans', 'Open+Sans'),

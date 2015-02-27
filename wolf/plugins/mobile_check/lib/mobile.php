@@ -511,11 +511,12 @@ thead td, th {
 	display:block
 }
 #content ul.setThumbs {
+	position:relative;
 	list-style:none;
 	padding:0 0 .1em 0;
 	margin:0 0 0 -1em;
 	text-align:center;
-	overflow:hidden
+	overflow:hidden;
 }
 #content ul.setThumbs li {
 	float:left;
