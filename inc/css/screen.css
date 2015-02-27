@@ -1,5 +1,6 @@
 @import url("mobile.css");
 
+
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -170,7 +171,9 @@ a:hover {
 }
 a.click,
 li.selected a,
-li.selected li.selected a {
+li.selected a.click,
+li.selected li.selected a,
+li.selected li.selected a.click {
 	color: #000 !important;
 	background: transparent !important;
 }
