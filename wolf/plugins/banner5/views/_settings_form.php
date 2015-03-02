@@ -249,14 +249,22 @@
 		$getimagesarray = '';
 		$title_array = array();
 		for ($i = 0; $i < sizeof($banner_array); $i++) {
+			$title = '';
 			$img = exif_read_data($servpath.$bannerpath.$banner_array[$i]);
-			$title = $banner_title_array[$i];
+			$src = Plugin::getSetting('bannerimages', 'banner5').'_thumbs/_'.$banner_array[$i];
+			// Check if thumb exists, otherwise scale down actual image
+			if(!file_exists($src)){
+				$src = Plugin::getSetting('bannerimages', 'banner5').$banner_array[$i].'" style="height:50px;width:auto"';
+			}
+			if(isset($banner_title_array[$i])){
+				$title = $banner_title_array[$i];
+			}
 			//$title = $img['FileSize'];
 			//array_push($title_array, $title);
 			echo '<li>';
 			//echo $banner_array[$i];
 			$imgpath = str_replace('view/public','view',ADMIN_DIR.'/plugin/file_manager/view'.$bannerimages);
-			echo '<a href="/'.$imgpath.$banner_array[$i].'" target="_blank"><img src="'.Plugin::getSetting('bannerimages', 'banner5').'_thumbs/_'.$banner_array[$i].'" alt="'.$title.'" /></a>';
+			echo '<a href="/'.$imgpath.$banner_array[$i].'" target="_blank"><img src="'.$src.'" alt="'.$title.'" /></a>';
 			echo '<textarea name="title'.$i.'" id="title'.$i.'">'.$title.'</textarea></li>';
 			/* Images array is built to measure number of images to assign title fields to */
 			$getimagesarray .= $banner_array[$i].',';
