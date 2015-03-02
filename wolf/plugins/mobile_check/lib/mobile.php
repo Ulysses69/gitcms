@@ -632,6 +632,11 @@ thead td, th {
 	width: 23%;
 }
 
+#accessibility-go,
+#cookie-go {
+	display: none;
+}
+
 
 /* Handle announcements */
 #announcements {
