@@ -4,7 +4,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_referral',
 	'title'					=> 'Form - Referral',
-	'version'				=> '13.0.0',
+	'version'				=> '13.1.0',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'  				=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
@@ -192,52 +192,68 @@ function referralForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$display
 
 				<?php //$labels = array('name'); ?>
 				<?php //include('./wolf/plugins/form_core/lib/labels.php'); ?>
+				
+				<div class="smallgroup">
 
-				<label for="thisdentist_name"<?php echo $dentist_name_class;?> id="dentist_name"><span>Dentist Name<?php echo $dentist_name_req;?></span>
-				<input id="thisdentist_name" type="text" name="dentist_name" value="<?php echo $dentist_name;?>" size="30" autocompletetype="name" /></label>
+					<label for="thisdentist_name"<?php echo $dentist_name_class;?> id="dentist_name"><span>Dentist Name<?php echo $dentist_name_req;?></span>
+					<input id="thisdentist_name" type="text" name="dentist_name" value="<?php echo $dentist_name;?>" size="30" autocompletetype="name" /></label>
 
-				<label for="thispractice_name"<?php echo $practice_name_class;?> id="practice_name"><span>Practice Name<?php echo $practice_name_req;?></span>
-				<input id="thispractice_name" type="text" name="practice_name" value="<?php echo $practice_name;?>" size="30" /></label>
+					<label for="thispractice_name"<?php echo $practice_name_class;?> id="practice_name"><span>Practice Name<?php echo $practice_name_req;?></span>
+					<input id="thispractice_name" type="text" name="practice_name" value="<?php echo $practice_name;?>" size="30" /></label>
 
-				<label for="thispractice_telephone"<?php echo $practice_telephone_class;?> id="practice_telephone"><span>Practice Telephone<?php echo $practice_telephone_req;?></span>
-				<input id="thispractice_telephone" type="tel" name="practice_telephone" value="<?php echo $practice_telephone;?>" size="30" /></label>
+					<label for="thispractice_telephone"<?php echo $practice_telephone_class;?> id="practice_telephone"><span>Practice Telephone<?php echo $practice_telephone_req;?></span>
+					<input id="thispractice_telephone" type="tel" name="practice_telephone" value="<?php echo $practice_telephone;?>" size="30" /></label>
+	
+					<label for="thispractice_email"<?php echo $practice_email_class;?> id="practice_email"><span>Practice Email<?php echo $practice_email_req;?></span>
+					<input id="thispractice_email" type="email" name="practice_email" value="<?php echo $practice_email;?>" size="30" /></label>
 
-				<label for="thispractice_email"<?php echo $practice_email_class;?> id="practice_email"><span>Practice Email<?php echo $practice_email_req;?></span>
-				<input id="thispractice_email" type="email" name="practice_email" value="<?php echo $practice_email;?>" size="30" /></label>
-
-				<label for="thispractice_address"<?php echo $practice_address_class;?> id="practice_address"><span>Practice Address<?php echo $practice_address_req;?></span>
-				<textarea id="thispractice_address" name="practice_address" cols="25" rows="5"><?php echo $practice_address;?></textarea></label>
+				</div>
+				
+				<div class="smallgroup">
+				
+					<label for="thispractice_address"<?php echo $practice_address_class;?> id="practice_address"><span>Practice Address<?php echo $practice_address_req;?></span>
+					<textarea id="thispractice_address" name="practice_address" cols="25" rows="5"><?php echo $practice_address;?></textarea></label>
+					
+				</div>
 
 			</fieldset>
-			<fieldset>
+			<fieldset class="patient-details">
 			<<?php echo $grouptag; ?>>Patient details</<?php echo $grouptag; ?>>
 
-				<label for="thispatient_name"<?php echo $patient_name_class;?> id="patient_name"><span>Patient Name<?php echo $patient_name_req;?></span>
-				<input id="thispatient_name" type="text" name="patient_name" value="<?php echo $patient_name;?>" size="30" /></label>
+				<div class="smallgroup">
+				
+					<label for="thispatient_name"<?php echo $patient_name_class;?> id="patient_name"><span>Patient Name<?php echo $patient_name_req;?></span>
+					<input id="thispatient_name" type="text" name="patient_name" value="<?php echo $patient_name;?>" size="30" /></label>
+	
+					<label for="thispatient_telephone"<?php echo $patient_telephone_class;?> id="patient_telephone"><span>Patient Telephone<?php echo $patient_telephone_req;?></span>
+					<input id="thispatient_telephone" type="tel" name="patient_telephone" value="<?php echo $patient_telephone;?>" size="30" /></label>
 
-				<label for="thispatient_telephone"<?php echo $patient_telephone_class;?> id="patient_telephone"><span>Patient Telephone<?php echo $patient_telephone_req;?></span>
-				<input id="thispatient_telephone" type="tel" name="patient_telephone" value="<?php echo $patient_telephone;?>" size="30" /></label>
+					<label for="thispatient_email"<?php echo $patient_email_class;?> id="patient_email"><span>Patient Email<?php echo $patient_email_req;?></span>
+					<input id="thispatient_email" type="email" name="patient_email" value="<?php echo $patient_email;?>" size="30" /></label>
+	
+					<label for="thisdate_of_birth"<?php echo $date_of_birth_class;?> id="date_of_birth"><span>Patient Date of Birth<?php echo $date_of_birth_req;?></span>
+					<input id="thisdate_of_birth" type="date" name="date_of_birth" value="<?php echo $date_of_birth;?>" size="30" />
+					<!-- <fieldset>
+						<label for="date_of_birth_dd" id="date_of_birth_day">DD</label>
+						<input id="date_of_birth_dd" name="date_of_birth_dd" type="text" class="w2em" value="" maxlength="2" />
+	
+						<label for="date_of_birth_mm" id="date_of_birth_mmonth">MM</label>
+						<input id="date_of_birth_mm" name="date_of_birth_mm" type="text" class="w2em" value="" maxlength="2" />
+	
+						<label for="date_of_birth_yyyy" id="date_of_birth_year">YYYY</label>
+						<input id="date_of_birth_yyyy" name="date_of_birth_yyyy" type="text" class="w4em highlight-days-67 range-low-2006-08-11 range-high-2009-09-13 disable-days-12 split-date" value="" maxlength="4" />
+					</fieldset>
+					-->
+					</label>
 
-				<label for="thispatient_email"<?php echo $patient_email_class;?> id="patient_email"><span>Patient Email<?php echo $patient_email_req;?></span>
-				<input id="thispatient_email" type="email" name="patient_email" value="<?php echo $patient_email;?>" size="30" /></label>
-
-				<label for="thisdate_of_birth"<?php echo $date_of_birth_class;?> id="date_of_birth"><span>Patient Date of Birth<?php echo $date_of_birth_req;?></span>
-				<input id="thisdate_of_birth" type="date" name="date_of_birth" value="<?php echo $date_of_birth;?>" size="30" />
-				<!-- <fieldset>
-					<label for="date_of_birth_dd" id="date_of_birth_day">DD</label>
-					<input id="date_of_birth_dd" name="date_of_birth_dd" type="text" class="w2em" value="" maxlength="2" />
-
-					<label for="date_of_birth_mm" id="date_of_birth_mmonth">MM</label>
-					<input id="date_of_birth_mm" name="date_of_birth_mm" type="text" class="w2em" value="" maxlength="2" />
-
-					<label for="date_of_birth_yyyy" id="date_of_birth_year">YYYY</label>
-					<input id="date_of_birth_yyyy" name="date_of_birth_yyyy" type="text" class="w4em highlight-days-67 range-low-2006-08-11 range-high-2009-09-13 disable-days-12 split-date" value="" maxlength="4" />
-				</fieldset>
-				-->
-				</label>
-
-				<label for="thispatient_address"<?php echo $patient_address_class;?> id="patient_address"><span>Patient Address<?php echo $patient_address_req;?></span>
-				<textarea id="thispatient_address" name="patient_address" cols="25" rows="5"><?php echo $patient_address;?></textarea></label>
+				</div>
+				
+				<div class="smallgroup">
+	
+					<label for="thispatient_address"<?php echo $patient_address_class;?> id="patient_address"><span>Patient Address<?php echo $patient_address_req;?></span>
+					<textarea id="thispatient_address" name="patient_address" cols="25" rows="5"><?php echo $patient_address;?></textarea></label>
+				
+				</div>
 
 			</fieldset>
 
