@@ -2,7 +2,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_templates',
 	'title'					=> 'Form - Download Templates',
-	'version'				=> '13.1.0',
+	'version'				=> '13.1.1',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'				=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
@@ -194,7 +194,7 @@ function templatesForm($emailOut,$nameOut,$subject="Enquiry",$heading='',$displa
 					}
 					if(!empty($templates)){
 					?>
-					<label for="thistemplate"<?php echo $template_class;?> id="template"><span>Template<?php echo $template_req;?></span>
+					<label for="thistemplate" id="template"><span>Template</span>
 					<select id="thistemplate" name="template" style="width:auto">
 					<?php
 					

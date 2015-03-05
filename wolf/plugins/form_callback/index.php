@@ -4,7 +4,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_callback',
 	'title'					=> 'Form - Callback',
-	'version'				=> '12.8.0',
+	'version'				=> '12.9.0',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'  				=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
@@ -153,16 +153,24 @@ function callbackForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$display
 			<<?php echo $grouptag; ?>>Your contact details</<?php echo $grouptag; ?>>
 
 				<div class="group">
+				
+					<div class="smallgroup">
 
-					<?php //$labels = array('name'); ?>
-					<?php //include('./wolf/plugins/form_core/lib/labels.php'); ?>
-	
-					<label for="thisname"<?php echo $name_class;?> id="name"><span>Name<?php echo $name_req;?></span>
-					<input id="thisname" type="text" name="name" value="<?php echo $name;?>" size="30" autocompletetype="name" /></label>
-	
-					<label for="thistelephone"<?php echo $telephone_class;?> id="telephone"><span>Telephone<?php echo $telephone_req;?></span>
-					<input id="thistelephone" type="tel" name="telephone" value="<?php echo $telephone;?>" size="30" autocompletetype="tel-national" /></label>
+						<?php //$labels = array('name'); ?>
+						<?php //include('./wolf/plugins/form_core/lib/labels.php'); ?>
+		
+						<label for="thisname"<?php echo $name_class;?> id="name"><span>Name<?php echo $name_req;?></span>
+						<input id="thisname" type="text" name="name" value="<?php echo $name;?>" size="30" autocompletetype="name" /></label>
+
+					</div>
+
+					<div class="smallgroup">
 					
+						<label for="thistelephone"<?php echo $telephone_class;?> id="telephone"><span>Telephone<?php echo $telephone_req;?></span>
+						<input id="thistelephone" type="tel" name="telephone" value="<?php echo $telephone;?>" size="30" autocompletetype="tel-national" /></label>
+
+					</div>
+
 					<!--
 					<label for="thisemail" id="email"<?php echo $email_class;?>><span>Email<?php echo $email_req;?></span>
 					<input id="thisemail" type="email" name="email" value="<?php echo $email;?>" size="30" autocompletetype="email" /></label>
@@ -171,30 +179,34 @@ function callbackForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$display
 				</div>
 
 			</fieldset>
-			<fieldset>
+			<fieldset class="preferences">
 			<<?php echo $grouptag; ?>>Your call back preference</<?php echo $grouptag; ?>>
 
 				<div class="group">
-
-					<label for="thiscallback_time"<?php echo $callback_time_class;?> id="callback_time"><span>Call back time<?php echo $callback_time_req;?></span>
-					<select id="thiscallback_time" name="callback_time">
-					<?php
-					$callback_time_array = array(
-					array ('No Preference', 'No preference'),
-					array ('Early Morning', 'Early morning'),
-					array ('Late Morning', 'Late morning'),
-					array ('Afternoon', 'Afternoon'));
-					foreach($callback_time_array as $subarray) {
-						list($text, $val) = $subarray;
-						if($val == $callback_time){
-							echo "<option value=\"$val\" selected>$text</option>";
-						} else {
-							echo "<option value=\"$val\">$text</option>";
+				
+					<div class="smallgroup">
+	
+						<label for="thiscallback_time"<?php echo $callback_time_class;?> id="callback_time"><span>Call back time<?php echo $callback_time_req;?></span>
+						<select id="thiscallback_time" name="callback_time">
+						<?php
+						$callback_time_array = array(
+						array ('No Preference', 'No preference'),
+						array ('Early Morning', 'Early morning'),
+						array ('Late Morning', 'Late morning'),
+						array ('Afternoon', 'Afternoon'));
+						foreach($callback_time_array as $subarray) {
+							list($text, $val) = $subarray;
+							if($val == $callback_time){
+								echo "<option value=\"$val\" selected>$text</option>";
+							} else {
+								echo "<option value=\"$val\">$text</option>";
+							}
 						}
-					}
-					?>
-					</select>
-					</label>
+						?>
+						</select>
+						</label>
+					
+					</div>
 
 				</div>
 

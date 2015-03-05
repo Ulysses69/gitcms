@@ -4,7 +4,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_preregistration',
 	'title'					=> 'Form - Child Pre-Registration',
-	'version'				=> '12.8.0',
+	'version'				=> '12.9.0',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'  				=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
@@ -156,27 +156,43 @@ function preregistrationForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$
 				<?php //$labels = array('name'); ?>
 				<?php //include('./wolf/plugins/form_core/lib/labels.php'); ?>
 
-				<label for="thisyour_name"<?php echo $your_name_class;?> id="your_name"><span>Name<?php echo $your_name_req;?></span>
-				<input id="thisyour_name" type="text" name="your_name" value="<?php echo $your_name;?>" size="30" autocompletetype="name" /></label>
+				<div class="smallgroup">
 
-				<label for="thisyour_address"<?php echo $your_address_class;?> id="your_address"><span>Address<?php echo $your_address_req;?></span>
-				<textarea id="thisyour_address" name="your_address" cols="25" rows="5"><?php echo $your_address;?></textarea></label>
-
-				<label for="thisyour_telephone"<?php echo $your_telephone_class;?> id="your_telephone"><span>Telephone<?php echo $your_telephone_req;?></span>
-				<input id="thisyour_telephone" type="tel" name="your_telephone" value="<?php echo $your_telephone;?>" size="30" autocompletetype="tel-national" /></label>
-
-				<label for="thisyour_email"<?php echo $your_email_class;?> id="your_email"><span>Email<?php echo $your_email_req;?></span>
-				<input id="thisyour_email" type="email" name="your_email" value="<?php echo $your_email;?>" size="30" autocompletetype="email" /></label>
+					<label for="thisyour_name"<?php echo $your_name_class;?> id="your_name"><span>Name<?php echo $your_name_req;?></span>
+					<input id="thisyour_name" type="text" name="your_name" value="<?php echo $your_name;?>" size="30" autocompletetype="name" /></label>
+	
+					<label for="thisyour_telephone"<?php echo $your_telephone_class;?> id="your_telephone"><span>Telephone<?php echo $your_telephone_req;?></span>
+					<input id="thisyour_telephone" type="tel" name="your_telephone" value="<?php echo $your_telephone;?>" size="30" autocompletetype="tel-national" /></label>
+	
+					<label for="thisyour_email"<?php echo $your_email_class;?> id="your_email"><span>Email<?php echo $your_email_req;?></span>
+					<input id="thisyour_email" type="email" name="your_email" value="<?php echo $your_email;?>" size="30" autocompletetype="email" /></label>
+					
+				</div>
+				
+				<div class="smallgroup">
+				
+					<label for="thisyour_address"<?php echo $your_address_class;?> id="your_address"><span>Address<?php echo $your_address_req;?></span>
+					<textarea id="thisyour_address" name="your_address" cols="25" rows="5"><?php echo $your_address;?></textarea></label>
+	
+				</div>
 
 			</fieldset>
 			<fieldset>
 			<<?php echo $grouptag; ?>>Your child's details</<?php echo $grouptag; ?>>
 
-				<label for="thischilds_name"<?php echo $childs_name_class;?> id="childs_name"><span>Child's Name<?php echo $childs_name_req;?></span>
-				<input id="thischilds_name" type="text" name="childs_name" value="<?php echo $childs_name;?>" size="30" /></label>
+				<div class="smallgroup">
+				
+					<label for="thischilds_name"<?php echo $childs_name_class;?> id="childs_name"><span>Child's Name<?php echo $childs_name_req;?></span>
+					<input id="thischilds_name" type="text" name="childs_name" value="<?php echo $childs_name;?>" size="30" /></label>
+					
+				</div>
 
-				<label for="thischilds_date_of_birth"<?php echo $childs_date_of_birth_class;?> id="childs_date_of_birth"><span>Child's date of birth<?php echo $childs_date_of_birth_req;?></span>
-				<input id="thischilds_date_of_birth" type="date" name="childs_date_of_birth" value="<?php echo $childs_date_of_birth;?>" size="30" /></label>
+				<div class="smallgroup">
+
+					<label for="thischilds_date_of_birth"<?php echo $childs_date_of_birth_class;?> id="childs_date_of_birth"><span>Child's date of birth<?php echo $childs_date_of_birth_req;?></span>
+					<input id="thischilds_date_of_birth" type="date" name="childs_date_of_birth" value="<?php echo $childs_date_of_birth;?>" size="30" /></label>
+
+				</div>
 
 				<fieldset>
 				<<?php echo $grouptag; ?>>Child's gender<?php echo $gender_req;?></<?php echo $grouptag; ?>>

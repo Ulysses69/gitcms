@@ -75,27 +75,31 @@ function mobileTopNav(){
 	$find = str_replace(array(URL_SUFFIX,'mobile/','search/'),array('','',''),$uri);
 	$parent = $page->find($find);
 
-	if($parent->url == ''){
-		/* Handle banners */
-		if($header_banner_home != ''){
-			echo $header_banner_home;
-		}
-	}
-
-	if($parent->url != ''){
-		if($topnav == 'labels'){ ?>
-
-		<ul id="menu">
-		<li id="gomenu"><a href="/" title="Go to menu">Menu</a></li>
-		</ul><?php } else if($topnav == 'icons'){ ?>
+	if(is_object($parent)){
 	
-		<ul id="menu">
-		<li id="gomenu" title="Go to menu"><a href="/"><img src='/inc/img/mobile/menu.png' /></a></li>
-		</ul><?php } else {}
-
-		/* Handle banners */
-		if($header_banner != ''){
-			echo $header_banner;
+		if($parent->url == ''){
+			/* Handle banners */
+			if($header_banner_home != ''){
+				echo $header_banner_home;
+			}
+		}
+	
+		if($parent->url != ''){
+			if($topnav == 'labels'){ ?>
+	
+			<ul id="menu">
+			<li id="gomenu"><a href="/" title="Go to menu">Menu</a></li>
+			</ul><?php } else if($topnav == 'icons'){ ?>
+		
+			<ul id="menu">
+			<li id="gomenu" title="Go to menu"><a href="/"><img src='/inc/img/mobile/menu.png' /></a></li>
+			</ul><?php } else {}
+	
+			/* Handle banners */
+			if($header_banner != ''){
+				echo $header_banner;
+			}
+	
 		}
 
 	}
@@ -120,20 +124,25 @@ function mobileHomeNav($parent){
 	$find = str_replace(array(URL_SUFFIX,'mobile/','search/'),array('','',''),$uri);
 	$parent = $page->find($find);
 
-	if($parent->url == ''){
-		$parent->includeSnippet('mobilemenu');
+	if(is_object($parent)){
+
+		if($parent && $parent->url == ''){
+			$parent->includeSnippet('mobilemenu');
+		}
+	
+		if($parent->url != '' && $topnav == 'menu'){
+			//echo '<div role="navigation" id="nav"><ul>';
+			//ob_start();
+			$parent->includeSnippet('mobilemenu');
+			//$menu = ob_get_contents();
+	  		//ob_end_clean();
+	  		//echo strip_tags($menu,'<li><a>');
+			//echo '</ul></div>';
+	
+		}
+	
 	}
 
-	if($parent->url != '' && $topnav == 'menu'){
-		//echo '<div role="navigation" id="nav"><ul>';
-		//ob_start();
-		$parent->includeSnippet('mobilemenu');
-		//$menu = ob_get_contents();
-  		//ob_end_clean();
-  		//echo strip_tags($menu,'<li><a>');
-		//echo '</ul></div>';
-
-	}
 }
 }
 
@@ -163,17 +172,19 @@ function mobileHead(){
 	//echo '<script>alert("'.$parent->url.'");</script>';
 	
 
-	if($parent->url == '' && $topnavhome != 'disabled'){
-		?>
-		<script>document.write("<link rel='stylesheet' href='/inc/css/nav.css' type='text/css'>");</script>
-		<script src='/inc/js/nav.js'></script>
-		<?php
-	}
-	
-	if($parent->url != '' && $topnav == 'menu'){ ?>
-		<script>document.write("<link rel='stylesheet' href='/inc/css/nav.css' type='text/css'>");</script>
-		<script src='/inc/js/nav.js'></script>
-		<?php
+	if(is_object($parent)){
+		if($parent->url == '' && $topnavhome != 'disabled'){
+			?>
+			<script>document.write("<link rel='stylesheet' href='/inc/css/nav.css' type='text/css'>");</script>
+			<script src='/inc/js/nav.js'></script>
+			<?php
+		}
+		
+		if($parent->url != '' && $topnav == 'menu'){ ?>
+			<script>document.write("<link rel='stylesheet' href='/inc/css/nav.css' type='text/css'>");</script>
+			<script src='/inc/js/nav.js'></script>
+			<?php
+		}
 	}
 }
 }
@@ -195,16 +206,21 @@ function mobileFoot(){
 	}
 	$find = str_replace(array(URL_SUFFIX,'mobile/','search/'),array('','',''),$uri);
 	$parent = $page->find($find);
+	
+	if(is_object($parent)){
 
-	if($parent->url == '' && $topnavhome != 'disabled'){ ?>
-		<script src="/inc/js/toggle.js"></script>
-		<?php
+		if($parent->url == '' && $topnavhome != 'disabled'){ ?>
+			<script src="/inc/js/toggle.js"></script>
+			<?php
+		}
+	
+		if($parent->url != '' && $topnav == 'menu'){ ?>
+			<script src="/inc/js/toggle.js"></script>
+			<?php
+		}
+		
 	}
 
-	if($parent->url != '' && $topnav == 'menu'){ ?>
-		<script src="/inc/js/toggle.js"></script>
-		<?php
-	}
 }
 }
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Tagger Plugin for Frog CMS <http://thehub.silentworks.co.uk/plugins/frog-cms/tagger>
@@ -86,7 +86,7 @@ class Tagger extends Tag
 	 *
 	 * Updated $value to not be required, which was causing error on Settings page.  Version 1.2.3
 	 */
-	public function sortField($value = null) {
+	public static function sortField($value = null) {
 		$fields = array('id', 'name', 'count');
 		return isset($value) ? $fields[$value] : $fields;
 	}

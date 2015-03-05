@@ -20,25 +20,25 @@ class SeoboxController extends PluginController {
 	}
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'seobox';
-		$sitemaplink = $_POST['sitemaplink'];
-		$sitemaptitle = $_POST['sitemaptitle'];
-		$sitemapdescription = $_POST['sitemapdescription'];
-		$sitemapheadings = $_POST['sitemapheadings'];
-		$sitemaparchives = $_POST['sitemaparchives'];
-		$clientlocation = $_POST['clientlocation'];
-		$clientanalyticssubdomain = $_POST['clientanalyticssubdomain'];
-		$clientanalyticsstatus = $_POST['clientanalyticsstatus'];
-		$clientanalyticslinks = $_POST['clientanalyticslinks'];
-		$clientanalyticspolicy = $_POST['clientanalyticspolicy'];
-		$clientanalyticsnoscript = $_POST['clientanalyticsnoscript'];
-		$noticestatus = $_POST['noticestatus'];
-		$noticedays = $_POST['noticedays'];
-		$noticelivecheck = $_POST['noticelivecheck'];
-		$bots = $_POST['bots']; if($bots == '') $bots = 'disallow';
-		$clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];  
-		$hometabindex = $_POST['hometabindex'];
+		if(isset($_POST['sitemaplink'])) { $sitemaplink = $_POST['sitemaplink']; } else { $sitemaplink = ''; }
+		if(isset($_POST['sitemaptitle'])) { $sitemaptitle = $_POST['sitemaptitle']; } else { $sitemaptitle = ''; }
+		if(isset($_POST['sitemapdescription'])) { $sitemapdescription = $_POST['sitemapdescription']; } else { $sitemapdescription = ''; }
+		if(isset($_POST['sitemapheadings'])) { $sitemapheadings = $_POST['sitemapheadings']; } else { $sitemapheadings = ''; }
+		if(isset($_POST['sitemaparchives'])) { $sitemaparchives = $_POST['sitemaparchives']; } else { $sitemaparchives = ''; }
+		if(isset($_POST['clientlocation'])) { $clientlocation = $_POST['clientlocation']; } else { $clientlocation = ''; }
+		if(isset($_POST['clientanalyticssubdomain'])) { $clientanalyticssubdomain = $_POST['clientanalyticssubdomain']; } else { $clientanalyticssubdomain = ''; }
+		if(isset($_POST['clientanalyticsstatus'])) { $clientanalyticsstatus = $_POST['clientanalyticsstatus']; } else { $clientanalyticsstatus = ''; }
+		if(isset($_POST['clientanalyticslinks'])) { $clientanalyticslinks = $_POST['clientanalyticslinks']; } else { $clientanalyticslinks = ''; }
+		if(isset($_POST['clientanalyticspolicy'])) { $clientanalyticspolicy = $_POST['clientanalyticspolicy']; } else { $clientanalyticspolicy = ''; }
+		if(isset($_POST['clientanalyticsnoscript'])) { $clientanalyticsnoscript = $_POST['clientanalyticsnoscript']; } else { $clientanalyticsnoscript = ''; }
+		if(isset($_POST['noticestatus'])) { $noticestatus = $_POST['noticestatus']; } else { $noticestatus = ''; }
+		if(isset($_POST['noticedays'])) { $noticedays = $_POST['noticedays']; } else { $noticedays = ''; }
+		if(isset($_POST['noticelivecheck'])) { $noticelivecheck = $_POST['noticelivecheck']; } else { $noticelivecheck = ''; }
+		if(isset($_POST['bots'])) { $bots = $_POST['bots']; } else { $bots = ''; } if($bots == '') $bots = 'disallow';
+		if(isset($_POST['clientanalyticsscreenstats'])) { $clientanalyticsscreenstats = $_POST['clientanalyticsscreenstats'];  } else { $clientanalyticsscreenstats = ''; }
+		if(isset($_POST['hometabindex'])) { $hometabindex = $_POST['hometabindex']; } else { $hometabindex = ''; }
 		
-        $clientanalytics = $_POST['clientanalytics'];
+        if(isset($_POST['clientanalytics'])) { $clientanalytics = $_POST['clientanalytics']; } else { $clientanalytics = ''; }
 		if(stristr($clientanalytics, 'analytics.js')){
             // Universal tracking code detected
             $clientanalyticsversion = 'universal';

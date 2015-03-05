@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.9.1'); }
+if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.10.0'); }
 if (!defined('SEOBOX_ROOT')) { define('SEOBOX_ROOT', URI_PUBLIC.'wolf/plugins/seobox'); }
 Plugin::setInfos(array(
 	'id'					=> 'seobox',

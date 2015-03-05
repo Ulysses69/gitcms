@@ -27,14 +27,10 @@ class Tagger
 		$this->page =& $page;
 		$this->params = $params;
 
-		switch(count($params))
-		{
+		switch(count($params)){
 			case 0: break;
-			case 1:
-				$this->pagesByTag($params);
-			break;
-			default:
-				page_not_found();
+			case 1: $this->pagesByTag($params);	break;
+			default: page_not_found();
 		}
 	}
 

@@ -23,6 +23,7 @@ RewriteBase /
 RewriteRule ^test2 "/test.html" [L,R=301,E=nocache:1]
 RewriteRule ^social/(.+)$ /wolf/plugins/social/icons/circles/$1 [L]
 RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]
+RewriteRule ^templates/(.+)$ /wolf/plugins/form_templates/download.php?template=$1 [L,QSA]
 RewriteCond %{HTTP_HOST} !.local$ [NC]
 #RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
 #RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
@@ -145,8 +146,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?THISPAGE=$1 [L,QSA]
-RewriteCond %{REQUEST_URI} ^/+$
-RewriteRule ^/*$ "/about.html" [L,R=301,E=nocache:1]
 Redirect 301 /assets/ /public/images/assets/
 Redirect 301 /plugins.xml /public/projects/development/software/frog/plugins.xml
 Redirect 301 /googlemap.zip /public/projects/development/software/frog/plugins/googlemap.zip

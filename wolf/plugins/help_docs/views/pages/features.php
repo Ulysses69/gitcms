@@ -132,7 +132,7 @@ if (!defined('IN_CMS')) { exit(); }
 <h2 id="team">Team widget</h2>
 <p>Teams can be ordered by either: group, jobtitle, name or position.</p>
 <p>Grouping teams can be by group or jobtitle, when team is ordered manually by position. Each jobtitle is displayed once, so ensure team order is correct).</p>
-<p>Available presentational layouts: list, names, basic, standard, bling, full</p>
+<p>Available presentational layouts: list, name, names, standard, basic, bling, full</p>
 <p>Example 1 Returns team ordered by name, A-Z.</p>
 <code>teamitems($this, 'team', 'descend', 'name', 'basic');</code>
 <p>Example 2 Returns team ordered by name, Z-A.</p>

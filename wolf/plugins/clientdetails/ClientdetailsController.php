@@ -142,6 +142,8 @@ class ClientdetailsController extends PluginController {
 				$stmt->execute();
 			}
 
+			$lat_lon = '';
+			
 			/* Update googlemap latitude and longitude - assumes clientname has just been updated, and that googlemap latitude and longitude have not been updated first */
 			if($clientname != '' && ($temp_clientname != $clientname) && Plugin::isEnabled('googlemap')){
 
@@ -157,7 +159,6 @@ class ClientdetailsController extends PluginController {
 					$geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$encoded_clientaddress.'&sensor=false');
 					$output = json_decode($geocode);
 
-					$lat_lon = '';
 					if(is_object($output)){
 						$latitude = $output->results[0]->geometry->location->lat;
 						$longitude = $output->results[0]->geometry->location->lng;

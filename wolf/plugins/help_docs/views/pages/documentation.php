@@ -77,6 +77,12 @@ if (!defined('IN_CMS')) { exit(); }
 <!-- <li><a href="/serverinfo.html">Server</a> | Server info.</li> -->
 </ul>
 
+<h2>Useful Pages</h2>
+<ul>
+<li><a href="/private.html">Private Files</a> | Logged in users can access content uploaded to their <b>private/users/username</b> folder.</li>
+<li><a href="/download-template.html">Custom PDF</a> | Add custom form data to PDF templates with placeholders.</li>
+</ul>
+
 <?php } ?>
 
 
@@ -136,7 +142,7 @@ if (!defined('IN_CMS')) { exit(); }
 
 <h2>Date guidelines</h2>
 <ul>
-<li><b>Created</b> is the date a page was first created and saved, regardless of status.</li>
+<li><b>Created</b> is the date a page was first created and saved, regardless of status (forever after).</li>
 <li><b>Published</b> is the date a page was first saved/updated with the Published status, as opposed to Draft or Hidden status.</li>
 <li><b>Updated</b> is the most recent date a page was altered (this includes page order).</li>
 </ul>
