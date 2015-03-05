@@ -1,6 +1,6 @@
 <?php
 
-class GoogleMapController extends PluginController {
+class GooglemapController extends PluginController {
 	public function __construct(){
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/googlemap/views/sidebar'));
@@ -20,194 +20,9 @@ class GoogleMapController extends PluginController {
 		}
 		$this->display('googlemap/views/settings', $settings);
 	}
-	public function save_settings(){
+	public function savesettings(){
 
 		$tablename = TABLE_PREFIX.'googlemap';
-
-		/*
-		$sensor = $_POST['sensor'];
-		$infowindow = $_POST['infowindow'];
-		$directions = $_POST['directions'];
-		$autodisplay = $_POST['autodisplay'];
-		$viewport_width = $_POST['viewport_width'];
-		$viewport_scale = $_POST['viewport_scale'];
-		$viewport_zoom = $_POST['viewport_zoom'];
-		$latitude = $_POST['latitude'];
-		$longitude = $_POST['longitude'];
-		$zoom = $_POST['zoom'];
-		$zoom_control = $_POST['zoom_control'];
-		$navigation_control = $_POST['navigation_control'];
-		$map_id = $_POST['map_id'];
-		$map_width = $_POST['map_width'];
-		$map_height = $_POST['map_height'];
-		$map_code = $_POST['map_code'];
-		$map_ui = $_POST['map_ui'];
-		$map_type = $_POST['map_type'];
-		$map_control = $_POST['map_control'];
-		$map_libraries = $_POST['map_libraries'];
-		$map_styling = $_POST['map_styling'];
-		$road_local_element_visibility = $_POST['road_local_element_visibility'];
-		$road_local_element_hue_status = $_POST['road_local_element_hue_status'];
-		$road_local_element_hue = $_POST['road_local_element_hue'];
-		$road_local_element_saturation = $_POST['road_local_element_saturation'];
-		$road_local_element_gamma = $_POST['road_local_element_gamma'];
-		$road_local_element_lightness = $_POST['road_local_element_lightness'];
-		$road_local_element_lightness_invert = $_POST['road_local_element_lightness_invert'];
-		$road_arterial_element_visibility = $_POST['road_arterial_element_visibility'];
-		$road_arterial_element_hue_status = $_POST['road_arterial_element_hue_status'];
-		$road_arterial_element_hue = $_POST['road_arterial_element_hue'];
-		$road_arterial_element_saturation = $_POST['road_arterial_element_saturation'];
-		$road_arterial_element_gamma = $_POST['road_arterial_element_gamma'];
-		$road_arterial_element_lightness = $_POST['road_arterial_element_lightness'];
-		$road_arterial_element_lightness_invert = $_POST['road_arterial_element_lightness_invert'];
-		$road_highway_element_visibility = $_POST['road_highway_element_visibility'];
-		$road_highway_element_hue_status = $_POST['road_highway_element_hue_status'];
-		$road_highway_element_hue = $_POST['road_highway_element_hue'];
-		$road_highway_element_saturation = $_POST['road_highway_element_saturation'];
-		$road_highway_element_gamma = $_POST['road_highway_element_gamma'];
-		$road_highway_element_lightness = $_POST['road_highway_element_lightness'];
-		$road_highway_element_lightness_invert = $_POST['road_highway_element_lightness_invert'];
-		$element_visibility = $_POST['element_visibility'];
-		$element_hue_status = $_POST['element_hue_status'];
-		$element_hue = $_POST['element_hue'];
-		$element_saturation = $_POST['element_saturation'];
-		$element_gamma = $_POST['element_gamma'];
-		$element_lightness = $_POST['element_lightness'];
-		$element_lightness_invert = $_POST['element_lightness_invert'];
-		$natural_element_visibility = $_POST['natural_element_visibility'];
-		$natural_element_hue_status = $_POST['natural_element_hue_status'];
-		$natural_element_hue = $_POST['natural_element_hue'];
-		$natural_element_saturation = $_POST['natural_element_saturation'];
-		$natural_element_gamma = $_POST['natural_element_gamma'];
-		$natural_element_lightness = $_POST['natural_element_lightness'];
-		$natural_element_lightness_invert = $_POST['natural_element_lightness_invert'];
-		$water_element_visibility = $_POST['water_element_visibility'];
-		$water_element_hue_status = $_POST['water_element_hue_status'];
-		$water_element_hue = $_POST['water_element_hue'];
-		$water_element_saturation = $_POST['water_element_saturation'];
-		$water_element_gamma = $_POST['water_element_gamma'];
-		$water_element_lightness = $_POST['water_element_lightness'];
-		$water_element_lightness_invert = $_POST['water_element_lightness_invert'];
-		$poi_visibility = $_POST['poi_visibility'];
-		$poi_hue_status = $_POST['poi_hue_status'];
-		$poi_hue = $_POST['poi_hue'];
-		$poi_saturation = $_POST['poi_saturation'];
-		$poi_gamma = $_POST['poi_gamma'];
-		$poi_lightness = $_POST['poi_lightness'];
-		$poi_lightness_invert = $_POST['poi_lightness_invert'];
-		$road_local_element_label_visibility = $_POST['road_local_element_label_visibility'];
-		$road_local_element_label_hue_status = $_POST['road_local_element_label_hue_status'];
-		$road_local_element_label_hue = $_POST['road_local_element_label_hue'];
-		$road_local_element_label_saturation = $_POST['road_local_element_label_saturation'];
-		$road_local_element_label_gamma = $_POST['road_local_element_label_gamma'];
-		$road_local_element_label_lightness = $_POST['road_local_element_label_lightness'];
-		$road_local_element_label_lightness_invert = $_POST['road_local_element_label_lightness_invert'];
-		$road_arterial_element_label_visibility = $_POST['road_arterial_element_label_visibility'];
-		$road_arterial_element_label_hue_status = $_POST['road_arterial_element_label_hue_status'];
-		$road_arterial_element_label_hue = $_POST['road_arterial_element_label_hue'];
-		$road_arterial_element_label_saturation = $_POST['road_arterial_element_label_saturation'];
-		$road_arterial_element_label_gamma = $_POST['road_arterial_element_label_gamma'];
-		$road_arterial_element_label_lightness = $_POST['road_arterial_element_label_lightness'];
-		$road_arterial_element_label_lightness_invert = $_POST['road_arterial_element_label_lightness_invert'];
-		$road_highway_element_label_visibility = $_POST['road_highway_element_label_visibility'];
-		$road_highway_element_label_hue_status = $_POST['road_highway_element_label_hue_status'];
-		$road_highway_element_label_hue = $_POST['road_highway_element_label_hue'];
-		$road_highway_element_label_saturation = $_POST['road_highway_element_label_saturation'];
-		$road_highway_element_label_gamma = $_POST['road_highway_element_label_gamma'];
-		$road_highway_element_label_lightness = $_POST['road_highway_element_label_lightness'];
-		$road_highway_element_label_lightness_invert = $_POST['road_highway_element_label_lightness_invert'];
-		$element_label_visibility = $_POST['element_label_visibility'];
-		$element_label_hue_status = $_POST['element_label_hue_status'];
-		$element_label_hue = $_POST['element_label_hue'];
-		$element_label_saturation = $_POST['element_label_saturation'];
-		$element_label_gamma = $_POST['element_label_gamma'];
-		$element_label_lightness = $_POST['element_label_lightness'];
-		$element_label_lightness_invert = $_POST['element_label_lightness_invert'];
-		$natural_element_label_visibility = $_POST['natural_element_label_visibility'];
-		$natural_element_label_hue_status = $_POST['natural_element_label_hue_status'];
-		$natural_element_label_hue = $_POST['natural_element_label_hue'];
-		$natural_element_label_saturation = $_POST['natural_element_label_saturation'];
-		$natural_element_label_gamma = $_POST['natural_element_label_gamma'];
-		$natural_element_label_lightness = $_POST['natural_element_label_lightness'];
-		$natural_element_label_lightness_invert = $_POST['natural_element_label_lightness_invert'];
-		$water_element_label_visibility = $_POST['water_element_label_visibility'];
-		$water_element_label_hue_status = $_POST['water_element_label_hue_status'];
-		$water_element_label_hue = $_POST['water_element_label_hue'];
-		$water_element_label_saturation = $_POST['water_element_label_saturation'];
-		$water_element_label_gamma = $_POST['water_element_label_gamma'];
-		$water_element_label_lightness = $_POST['water_element_label_lightness'];
-		$water_element_label_lightness_invert = $_POST['water_element_label_lightness_invert'];
-		$poi_label_visibility = $_POST['poi_label_visibility'];
-		$poi_label_hue_status = $_POST['poi_label_hue_status'];
-		$poi_label_hue = $_POST['poi_label_hue'];
-		$poi_label_saturation = $_POST['poi_label_saturation'];
-		$poi_label_gamma = $_POST['poi_label_gamma'];
-		$poi_label_lightness = $_POST['poi_label_lightness'];
-		$poi_label_lightness_invert = $_POST['poi_label_lightness_invert'];
-		$road_local_element_saturation_status_status = $_POST['road_local_element_saturation_status'];
-		$road_local_element_gamma_status_status = $_POST['road_local_element_gamma_status'];
-		$road_local_element_lightness_status = $_POST['road_local_element_lightness_status'];
-		$road_arterial_element_saturation_status = $_POST['road_arterial_element_saturation_status'];
-		$road_arterial_element_gamma_status = $_POST['road_arterial_element_gamma_status'];
-		$road_arterial_element_lightness_status = $_POST['road_arterial_element_lightness_status'];
-		$road_highway_element_saturation_status = $_POST['road_highway_element_saturation_status'];
-		$road_highway_element_gamma_status = $_POST['road_highway_element_gamma_status'];
-		$road_highway_element_lightness_status = $_POST['road_highway_element_lightness_status'];
-		$element_saturation_status = $_POST['element_saturation_status'];
-		$element_gamma_status = $_POST['element_gamma_status'];
-		$element_lightness_status = $_POST['element_lightness'];
-		$natural_element_saturation_status = $_POST['natural_element_saturation_status'];
-		$natural_element_gamma_status = $_POST['natural_element_gamma_status'];
-		$natural_element_lightness_status = $_POST['natural_element_lightness_status'];
-		$water_element_saturation_status = $_POST['water_element_saturation_status'];
-		$water_element_gamma_status = $_POST['water_element_gamma_status'];
-		$water_element_lightness_status = $_POST['water_element_lightness_status'];
-		$poi_saturation_status = $_POST['poi_saturation_status'];
-		$poi_gamma_status = $_POST['poi_gamma_status'];
-		$poi_lightness_status = $_POST['poi_lightness_status'];
-		$road_local_element_label_saturation_status = $_POST['road_local_element_label_saturation_status'];
-		$road_local_element_label_gamma_status = $_POST['road_local_element_label_gamma_status'];
-		$road_local_element_label_lightness_status = $_POST['road_local_element_label_lightness_status'];
-		$road_arterial_element_label_saturation_status = $_POST['road_arterial_element_label_saturation_status'];
-		$road_arterial_element_label_gamma_status = $_POST['road_arterial_element_label_gamma_status'];
-		$road_arterial_element_label_lightness_status = $_POST['road_arterial_element_label_lightness_status'];
-		$road_highway_element_label_saturation_status = $_POST['road_highway_element_label_saturation_status'];
-		$road_highway_element_label_gamma_status = $_POST['road_highway_element_label_gamma_status'];
-		$road_highway_element_label_lightness_status = $_POST['road_highway_element_label_lightness_status'];
-		$element_label_saturation_status = $_POST['element_label_saturation_status'];
-		$element_label_gamma_status = $_POST['element_label_gamma_status'];
-		$element_label_lightness_status = $_POST['element_label_lightness_status'];
-		$natural_element_label_saturation_status = $_POST['natural_element_label_saturation_status'];
-		$natural_element_label_gamma_status = $_POST['natural_element_label_gamma_status'];
-		$natural_element_label_lightness_status = $_POST['natural_element_label_lightness_status'];
-		$water_element_label_saturation_status = $_POST['water_element_label_saturation_status'];
-		$water_element_label_gamma_status = $_POST['water_element_label_gamma_status'];
-		$water_element_label_lightness_status = $_POST['water_element_label_lightness_status'];
-		$poi_label_saturation_status = $_POST['poi_label_saturation_status'];
-		$poi_label_gamma_status = $_POST['poi_label_gamma_status'];
-		$poi_label_lightness_status = $_POST['poi_label_lightness_status'];
-		$marker = $_POST['marker'];
-		$marker_id = $_POST['marker_id'];
-		$marker_entrance = $_POST['marker_entrance'];
-		$marker_delay = $_POST['marker_delay'];
-		$marker_scatter = $_POST['marker_scatter'];
-		$marker_img = $_POST['marker_img'];
-		$marker_img_width = $_POST['marker_img_width'];
-		$marker_img_height = $_POST['marker_img_height'];
-		$marker_img_x = $_POST['marker_img_x'];
-		$marker_img_y = $_POST['marker_img_y'];
-		$marker_img_point_x = $_POST['marker_img_point_x'];
-		$marker_img_point_y = $_POST['marker_img_point_y'];
-		$marker_shadow_img = $_POST['marker_shadow_img'];
-		$marker_shadow_img_width = $_POST['marker_shadow_img_width'];
-		$marker_shadow_img_height = $_POST['marker_shadow_img_height'];
-		$marker_shadow_img_x = $_POST['marker_shadow_img_x'];
-		$marker_shadow_img_y = $_POST['marker_shadow_img_y'];
-		$marker_shadow_img_point_x = $_POST['marker_shadow_img_point_x'];
-		$marker_shadow_img_point_y = $_POST['marker_shadow_img_point_y'];
-		*/
-
-
 		if(isset($_POST['sensor'])) { $sensor = $_POST['sensor']; } else { $sensor = ''; }
 		if(isset($_POST['infowindow'])) { $infowindow = $_POST['infowindow']; } else { $infowindow = ''; }
 		if(isset($_POST['directions'])) { $directions = $_POST['directions']; } else { $directions = ''; }
@@ -262,8 +77,8 @@ class GoogleMapController extends PluginController {
 		if(isset($_POST['natural_element_hue'])) { $natural_element_hue = $_POST['natural_element_hue']; } else { $natural_element_hue = ''; }
 		if(isset($_POST['natural_element_saturation'])) { $natural_element_saturation = $_POST['natural_element_saturation']; } else { $natural_element_saturation = ''; }
 		if(isset($_POST['natural_element_gamma'])) { $natural_element_gamma = $_POST['natural_element_gamma']; } else { $natural_element_gamma = ''; }
-		if(isset($_POST['natural_element_lightness'])) { $natural_element_lightness = $_POST['natural_element_lightness']; } else { $natural_element_lightness_invert = ''; }
-		if(isset($_POST['natural_element_lightness_invert'])) { $natural_element_lightness_invert = $_POST['natural_element_lightness_invert']; } else { $var = ''; }
+		if(isset($_POST['natural_element_lightness'])) { $natural_element_lightness = $_POST['natural_element_lightness']; } else { $natural_element_lightness = ''; }
+		if(isset($_POST['natural_element_lightness_invert'])) { $natural_element_lightness_invert = $_POST['natural_element_lightness_invert']; } else { $natural_element_lightness_invert = ''; }
 		if(isset($_POST['water_element_visibility'])) { $water_element_visibility = $_POST['water_element_visibility']; } else { $water_element_visibility = ''; }
 		if(isset($_POST['water_element_hue_status'])) { $water_element_hue_status = $_POST['water_element_hue_status']; } else { $water_element_hue_status = ''; }
 		if(isset($_POST['water_element_hue'])) { $water_element_hue = $_POST['water_element_hue']; } else { $water_element_hue = ''; }
@@ -700,7 +515,7 @@ class GoogleMapController extends PluginController {
 				funky_cache_delete_all();
 			}
 			redirect(get_url('plugin/googlemap/settings'));
-		//}
+
 	}
 
 }

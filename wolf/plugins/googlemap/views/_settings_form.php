@@ -182,6 +182,8 @@ $marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'go
 $marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 $streetview = Plugin::getSetting('streetview', 'googlemap');
 
+$googlemap_googleToHereDirections = Plugin::getSetting('googlemap_googleToHereDirections', 'googlemap');
+
 $api_version = Plugin::getSetting('api_version', 'googlemap');
 $region = Plugin::getSetting('region', 'googlemap');
 
@@ -306,7 +308,7 @@ onload = function() {
 };
 </script>
 
-<form action="<?php echo get_url('plugin/googlemap/save_settings'); ?>" method="post">
+<form action="<?php echo get_url('plugin/googlemap/savesettings'); ?>" method="post">
 
 <br />
 
@@ -413,6 +415,8 @@ onload = function() {
 				$api_version_array = array(
 				array ('Experimental', '3.exp'),
 				array ('Stable Release', '3.0'),
+				array ('Version 3.19', '3.19'),
+				array ('Version 3.18', '3.18'),
 				array ('Version 3.17', '3.17'));
 				foreach($api_version_array as $subarray) {
 					list($text, $val) = $subarray;
@@ -2040,7 +2044,7 @@ onload = function() {
 
 	<p class="buttons">
 		<input class="button" id="site-save-page" name="commit" type="submit" accesskey="s" title="Save and continue" value="<?php echo __('Save');?>" />
-		<a href="<?php echo get_url('plugin/product'); ?>" id="site-cancel-page" class="button" title="Close without saving"><?php echo __('Cancel'); ?></a>
+		<a href="<?php echo get_url('plugin/googlemap'); ?>" id="site-cancel-page" class="button" title="Close without saving"><?php echo __('Cancel'); ?></a>
 	</p>
 
 </form>
