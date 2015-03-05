@@ -308,8 +308,9 @@ class Page extends Record {
 	public function includeSnippet($name) {
 		$snippet = Snippet::findByName($name);
 
+		$eval = '?'.'>'.$snippet->content_html;
 		if (false !== $snippet) {
-			eval('?'.'>'.$snippet->content_html);
+			eval($eval);
 			return true;
 		}
 
