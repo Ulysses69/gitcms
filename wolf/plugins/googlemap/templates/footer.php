@@ -573,18 +573,54 @@ function runScripts(){
 /* Generate static map for PDF output */
 /* Perhaps also check to make sure there is no screen width query in screen.css or that explicit width and height is set (not percentage) */
 //if(isset($_GET['media']) && $_GET['media'] == 'pdf'){
+	
+
 if(!defined('CMS_BACKEND')){
+	$staticmap_scale = 2;
+	$staticmap_pixels = false;
+
+	if($staticmap_scale != 2){ $staticmap_scale = 1; }
+
 	$map_width = Plugin::getSetting('map_width', 'googlemap');
 	$map_height = Plugin::getSetting('map_height', 'googlemap');
 	$map_width = str_replace('px','',$map_width);
 	$map_height = str_replace('px','',$map_height);
 	$zoom = Plugin::getSetting('zoom', 'googlemap');
 
+	// Check if static map needs to be generated at actual size (px)
+	$staticmap_width = preg_replace("/[^0-9]/","",$map_width);
+	$staticmap_height = preg_replace("/[^0-9]/","",$map_height);
+	if(!stristr($map_width,'%') && !stristr($map_height,'%')){
+		$staticmap_pixels = true;
+
+		// Reduce size to Google maximum
+		if($map_width > 640 || $map_height > 640){
+
+			$imageWidth = $staticmap_width;
+			$imageHeight = $staticmap_height;
+			$ar = $imageWidth / $imageHeight;
+			
+			$zoom = ($zoom - 1);
+			
+			if ($ar < 1) { // "tall" crop
+			    $staticmap_height = 640;
+			    $staticmap_width = floor($staticmap_height / $ar);
+			}
+			else { // "wide" or square crop
+			    $staticmap_width = 640;
+			    $staticmap_height = floor($staticmap_width / $ar);
+			}
+
+		}
+	}
+
 	// Set reasonable dimensions for PDF page
 	if(stristr($map_width,'%')){
 	
 		// Set defaults to A4 portrait
 		$map_width = '670'; $map_height = '370';
+		$staticmap_width = $map_width;
+		$staticmap_height = $map_height;
 
 		// Check for PDF dimension settings
 		$pdf_size = ''; $pdf_orientation = '';
@@ -610,5 +646,5 @@ if(!defined('CMS_BACKEND')){
 		//$marker = '&maptype=roadmap';
 	}
 	?>
-	<img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $latitude; ?>,<?php echo $longitude; ?><?php echo $marker; ?>&zoom=<?php echo $zoom; ?>&size=<?php echo $map_width; ?>x<?php echo $map_height; ?>&scale=2&sensor=false" id="googlemap-print" />
+	<img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $latitude; ?>,<?php echo $longitude; ?><?php echo $marker; ?>&zoom=<?php echo $zoom; ?>&size=<?php echo $staticmap_width; ?>x<?php echo $staticmap_height; ?>&scale=<?php echo $staticmap_scale; ?>&sensor=false" id="googlemap-print" />
 <?php } ?>
