@@ -2,13 +2,15 @@
 $map_id = Plugin::getSetting('map_id', 'googlemap');
 $map_width = Plugin::getSetting('map_width', 'googlemap');
 $map_height = Plugin::getSetting('map_height', 'googlemap');
+$overlay_map = false; // Default is false
 
+$style = '';
 $staticmap_width = $map_width;
 $staticmap_height = $map_height;
-$style_prefix = '';
 
 // Check if static map needs to be generated at actual size (px)
 if(stristr($map_width,'px') && stristr($map_height,'px')){
+	$overlay_map = true;
 
 	$staticmap_width = preg_replace("/[^0-9]/","",$map_width);
 	$staticmap_height = preg_replace("/[^0-9]/","",$map_height);
@@ -29,13 +31,14 @@ if(stristr($map_width,'px') && stristr($map_height,'px')){
 
 
 
-$overlay_map = false; // Default is false
 // Check if javascrpt map overlaps static map, or replaces it
 if($overlay_map == true){
 	$staticmap_width = '100%';
 	$staticmap_height = '100%';
-	$style_prefix = ".js #googlemap-print{display:block;}";
+	$style = ".js #googlemap-print{display:block;}#".$map_id."{position:relative;overflow:hidden;}#".$map_id."_overlay{position:absolute;top:0;left:0;width:100%;height:100%;}";
 	// TO DO: Add support for googlemap id to be contained in wrapper, so js googlemap overlay can fill container 100%
+} else {
+	$style = '#'.$map_id.'{width:'.$staticmap_width.';height:'.$staticmap_height.';}';
 }
 
 
@@ -43,5 +46,5 @@ if($overlay_map == true){
 
 ?>
 <script>
-document.write('<style type=\"text/css\" /><?php echo $style_prefix; ?>#<?php echo $map_id; ?>{width:<?php echo $staticmap_width; ?>;height:<?php echo $staticmap_height; ?>;}</style>');
+document.write('<style type=\"text/css\" /><?php echo $style; ?></style>');
 </script>

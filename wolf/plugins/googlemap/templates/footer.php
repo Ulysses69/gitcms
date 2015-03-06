@@ -11,6 +11,52 @@
 	}
 	
 
+	$staticmap_scale = 2;
+	$staticmap_pixels = false;
+
+	$map_id = Plugin::getSetting('map_id', 'googlemap');
+	$map_code = Plugin::getSetting('map_code', 'googlemap');
+	$map_width = Plugin::getSetting('map_width', 'googlemap');
+	$map_height = Plugin::getSetting('map_height', 'googlemap');
+	$map_width = str_replace('px','',$map_width);
+	$map_height = str_replace('px','',$map_height);
+	$zoom = Plugin::getSetting('zoom', 'googlemap');
+
+	if($staticmap_scale != 2){ $staticmap_scale = 1; }
+	$map_id_overlay = $map_id;
+
+	// Check if static map needs to be generated at actual size (px)
+	$staticmap_width = preg_replace("/[^0-9]/","",$map_width);
+	$staticmap_height = preg_replace("/[^0-9]/","",$map_height);
+	if(!stristr($map_width,'%') && !stristr($map_height,'%')){
+		$staticmap_pixels = true;
+		if(!defined('CMS_BACKEND')){
+			$map_id_overlay = $map_id.'_overlay';
+		}
+
+		// Reduce size to Google maximum
+		if($map_width > 640 || $map_height > 640){
+
+			$imageWidth = $staticmap_width;
+			$imageHeight = $staticmap_height;
+			$ar = $imageWidth / $imageHeight;
+			
+			if($staticmap_scale == 2){ 
+				$zoom = ($zoom - 2);
+			}
+			
+			if ($ar < 1) { // "tall" crop
+			    $staticmap_height = 640;
+			    $staticmap_width = floor($staticmap_height / $ar);
+			}
+			else { // "wide" or square crop
+			    $staticmap_width = 640;
+			    $staticmap_height = floor($staticmap_width / $ar);
+			}
+
+		}
+	}
+
 
 
 	#Build viewport
@@ -427,7 +473,7 @@ function initialize() {
 	
 	};
 	
-	map = new google.maps.Map(document.getElementById("<?php echo $map_id; ?>"), mapOptions);
+	map = new google.maps.Map(document.getElementById("<?php echo $map_id_overlay; ?>"), mapOptions);
 	<?php if($map_styling == 'StyledMapType'){ ?>;
 	var map_styling = new google.maps.StyledMapType(setstyle, {name: "Custom"});
 	map.mapTypes.set('styleMap', map_styling);
@@ -576,51 +622,13 @@ function runScripts(){
 	
 
 if(!defined('CMS_BACKEND')){
-	$staticmap_scale = 2;
-	$staticmap_pixels = false;
-
-	if($staticmap_scale != 2){ $staticmap_scale = 1; }
-
-	$map_width = Plugin::getSetting('map_width', 'googlemap');
-	$map_height = Plugin::getSetting('map_height', 'googlemap');
-	$map_width = str_replace('px','',$map_width);
-	$map_height = str_replace('px','',$map_height);
-	$zoom = Plugin::getSetting('zoom', 'googlemap');
-
-	// Check if static map needs to be generated at actual size (px)
-	$staticmap_width = preg_replace("/[^0-9]/","",$map_width);
-	$staticmap_height = preg_replace("/[^0-9]/","",$map_height);
-	if(!stristr($map_width,'%') && !stristr($map_height,'%')){
-		$staticmap_pixels = true;
-
-		// Reduce size to Google maximum
-		if($map_width > 640 || $map_height > 640){
-
-			$imageWidth = $staticmap_width;
-			$imageHeight = $staticmap_height;
-			$ar = $imageWidth / $imageHeight;
-			
-			$zoom = ($zoom - 1);
-			
-			if ($ar < 1) { // "tall" crop
-			    $staticmap_height = 640;
-			    $staticmap_width = floor($staticmap_height / $ar);
-			}
-			else { // "wide" or square crop
-			    $staticmap_width = 640;
-			    $staticmap_height = floor($staticmap_width / $ar);
-			}
-
-		}
-	}
 
 	// Set reasonable dimensions for PDF page
 	if(stristr($map_width,'%')){
 	
 		// Set defaults to A4 portrait
 		$map_width = '670'; $map_height = '370';
-		$staticmap_width = $map_width;
-		$staticmap_height = $map_height;
+		$staticmap_width = 640;
 
 		// Check for PDF dimension settings
 		$pdf_size = ''; $pdf_orientation = '';
@@ -646,5 +654,37 @@ if(!defined('CMS_BACKEND')){
 		//$marker = '&maptype=roadmap';
 	}
 	?>
-	<img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $latitude; ?>,<?php echo $longitude; ?><?php echo $marker; ?>&zoom=<?php echo $zoom; ?>&size=<?php echo $staticmap_width; ?>x<?php echo $staticmap_height; ?>&scale=<?php echo $staticmap_scale; ?>&sensor=false" id="googlemap-print" />
+
+	<?php
+
+	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&sensor=false" id="googlemap-print" />';
+	
+	if($staticmap_pixels == true){
+
+	    if (!function_exists('str_replace_last')) {
+		    function str_replace_last($search , $replace , $str) {
+		        if(( $pos = strrpos($str , $search)) !== false) {
+		            $search_length  = strlen($search);
+		            $str = substr_replace($str , $replace , $pos , $search_length);
+		        }
+		        return $str;
+		    }
+		}
+
+		// Is there a closing div tag, insert static img before it
+		if(strripos($map_code,'</div>')){
+			echo str_replace_last('</div>', $staticmap.'<div id="'.$map_id.'_overlay"></div></div>', $map_code);
+		} else {
+			echo $staticmap;
+			echo $map_code; 
+		}
+
+	} else {
+
+		echo $staticmap;
+		echo $map_code; 
+	}
+
+	?>
+
 <?php } ?>
