@@ -484,7 +484,7 @@ EOS;
 
 					//set some language-dependent strings
 					//$pdf->setLanguageArray($l);                                      
-                    
+
 					// Setup font type/encoding
 					//$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueTypeUnicode'; $fontEnc = ''; $fontFlags = 32;
 					$fontEnc = 'ansi'; $fontFlags = 32;
@@ -497,7 +497,8 @@ EOS;
                         $fontname = $pdf->addTTFfont(realpath('inc/font/Roboto-Regular.ttf'), $fontType, $fontEnc, $fontFlags);
                     } else {
                         // Use default font
-                        $fontPath = K_PATH_FONTS; $fontFile = 'helvetica.ttf'; $fontType = 'TrueType';
+                        $fontType = 'TrueType';
+                        $fontPath = K_PATH_FONTS; $fontFile = 'helvetica.ttf';
                         $fontname = $pdf->addTTFfont($fontPath . $fontFile, $fontType, $fontEnc, $fontFlags);
                     }
 

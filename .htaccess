@@ -1,4 +1,4 @@
-### CMS-Generated Update December 9, 2014, 11:38 am ###
+### CMS-Generated Update March 3, 2015, 2:17 pm ###
 #
 # Setting Frog requirements
 #
@@ -23,7 +23,7 @@ RewriteBase /
 RewriteRule ^test2 "/test.html" [L,R=301,E=nocache:1]
 RewriteRule ^social/(.+)$ /wolf/plugins/social/icons/circles/$1 [L]
 RewriteRule ^logo(.+)$ /public/images/favicon/logo$1 [L]
-RewriteRule ^templates/(.+)$ /wolf/plugins/form_templates/download.php?template=$1 [L,QSA]
+RewriteRule ^templates/(.+)$ /wolf/plugins/form_templates/download.php?template=$1 [L]
 RewriteCond %{HTTP_HOST} !.local$ [NC]
 #RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
 #RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
