@@ -18,12 +18,14 @@ if(!Plugin::getSetting('viewport_width', 'googlemap')) $settings['viewport_width
 if(!Plugin::getSetting('viewport_scale', 'googlemap')) $settings['viewport_scale'] = '1.0';
 if(!Plugin::getSetting('viewport_zoom', 'googlemap')) $settings['viewport_zoom'] = '1.0';
 if(!Plugin::getSetting('streetview', 'googlemap')) $settings['streetview'] = 'DEFAULT';
+if(!Plugin::getSetting('streetview_position', 'googlemap')) $settings['streetview_position'] = 'LEFT_TOP';
 /*
 if(!Plugin::getSetting('latitude', 'googlemap')) $settings['latitude'] = '';
 if(!Plugin::getSetting('longitude', 'googlemap')) $settings['longitude'] = '';
 */
 if(!Plugin::getSetting('zoom', 'googlemap')) $settings['zoom'] = '16';
 if(!Plugin::getSetting('zoom_control', 'googlemap')) $settings['zoom_control'] = 'default';
+if(!Plugin::getSetting('zoom_control_position', 'googlemap')) $settings['zoom_control_position'] = 'LEFT_TOP';
 if(!Plugin::getSetting('navigation_control', 'googlemap')) $settings['navigation_control'] = 'default';
 if(!Plugin::getSetting('map_id', 'googlemap')) $settings['map_id'] = 'googlemap';
 if(!Plugin::getSetting('map_width', 'googlemap')) $settings['map_width'] = '100%';

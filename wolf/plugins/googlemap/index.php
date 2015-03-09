@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.2.0'); }
+if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.3.3'); }
 if (!defined('GMAP_ROOT')) {	define('GMAP_ROOT', URI_PUBLIC.'wolf/plugins/googlemap/images'); }
 if (!defined('GMAP_PATH')) {	define('GMAP_PATH', $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/googlemap/images'); }
 
@@ -36,6 +36,7 @@ function displayGoogleMap(){
 		$longitude = Plugin::getSetting('longitude', 'googlemap');
 		$zoom = Plugin::getSetting('zoom', 'googlemap');
 		$zoom_control = Plugin::getSetting('zoom_control', 'googlemap');
+		$zoom_control_position = Plugin::getSetting('zoom_control_position', 'googlemap');
 		$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
 		$map_id = Plugin::getSetting('map_id', 'googlemap');
 		$map_width = Plugin::getSetting('map_width', 'googlemap');
@@ -206,6 +207,7 @@ function displayGoogleMap(){
 		$marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'googlemap');
 		$marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 		$streetview = Plugin::getSetting('streetview', 'googlemap');
+		$streetview_position = Plugin::getSetting('streetview_position', 'googlemap');
 
 		$api_version = Plugin::getSetting('api_version', 'googlemap');
 		$region = Plugin::getSetting('region', 'googlemap');
@@ -266,6 +268,7 @@ if (Plugin::isEnabled('googlemap')) {
 			$longitude = Plugin::getSetting('longitude', 'googlemap');
 			$zoom = Plugin::getSetting('zoom', 'googlemap');
 			$zoom_control = Plugin::getSetting('zoom_control', 'googlemap');
+			$zoom_control_position = Plugin::getSetting('zoom_control_position', 'googlemap');
 			$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
 			$map_width = Plugin::getSetting('map_width', 'googlemap');
 			$map_height = Plugin::getSetting('map_height', 'googlemap');
@@ -434,6 +437,7 @@ if (Plugin::isEnabled('googlemap')) {
 			$marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'googlemap');
 			$marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 			$streetview = Plugin::getSetting('streetview', 'googlemap');
+			$streetview_position = Plugin::getSetting('streetview_position', 'googlemap');
 	
 			ob_start();
 			$page->includeSnippet('registerfunctions'); // Include custom functions snippet

@@ -11,6 +11,7 @@ $latitude = Plugin::getSetting('latitude', 'googlemap');
 $longitude = Plugin::getSetting('longitude', 'googlemap');
 $zoom = Plugin::getSetting('zoom', 'googlemap');
 $zoom_control = Plugin::getSetting('zoom_control', 'googlemap');
+$zoom_control_position = Plugin::getSetting('zoom_control_position', 'googlemap');
 $navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
 $map_id = Plugin::getSetting('map_id', 'googlemap');
 $map_width = Plugin::getSetting('map_width', 'googlemap');
@@ -181,6 +182,7 @@ $marker_shadow_img_y = Plugin::getSetting('marker_shadow_img_y', 'googlemap');
 $marker_shadow_img_point_x = Plugin::getSetting('marker_shadow_img_point_x', 'googlemap');
 $marker_shadow_img_point_y = Plugin::getSetting('marker_shadow_img_point_y', 'googlemap');
 $streetview = Plugin::getSetting('streetview', 'googlemap');
+$streetview_position = Plugin::getSetting('streetview_position', 'googlemap');
 
 $googlemap_googleToHereDirections = Plugin::getSetting('googlemap_googleToHereDirections', 'googlemap');
 
@@ -472,9 +474,29 @@ onload = function() {
 				}
 				?>
 				</select>
+
+				<select name="streetview_position" id="astreetview_position">
+				<?php
+				$streetview_position_array = array(
+				array ('Top Left', 'LEFT_TOP'),
+				array ('Mid Left', 'LEFT_CENTER'),
+				array ('Top Right', 'RIGHT_TOP'),
+				array ('Mid Right', 'RIGHT_CENTER'));
+				foreach($streetview_position_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $streetview_position){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
 				</td>
 				<td class="help">Display streetview pegman.</td>
 			</tr>
+			
+
 			<tr>
 				<td class="label"><label for="azoom">Zoom Level</label></td>
 				<td class="field">
@@ -530,6 +552,24 @@ onload = function() {
 				foreach($zoom_control_array as $subarray) {
 					list($text, $val) = $subarray;
 					if($val == $zoom_control){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+
+				<select name="zoom_control_position" id="azoom_control_position">
+				<?php
+				$zoom_control_position_array = array(
+				array ('Top Left', 'LEFT_TOP'),
+				array ('Mid Left', 'LEFT_CENTER'),
+				array ('Top Right', 'RIGHT_TOP'),
+				array ('Mid Right', 'RIGHT_CENTER'));
+				foreach($zoom_control_position_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $zoom_control_position){
 						echo "<option value=\"$val\" selected>$text</option>";
 					} else {
 						echo "<option value=\"$val\">$text</option>";
@@ -614,8 +654,8 @@ onload = function() {
 				<select name="map_control" id="amap_control">
 				<?php
 				$map_control_array = array(
-				array ('Enabled', 'false'),
-				array ('Disabled', 'true'));
+				array ('Enabled', 'true'),
+				array ('Disabled', 'false'));
 				foreach($map_control_array as $subarray) {
 					list($text, $val) = $subarray;
 					if($val == $map_control){

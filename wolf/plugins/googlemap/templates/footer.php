@@ -443,32 +443,38 @@ function initialize() {
 	var mapOptions = {
 		panControl: false,
 		zoom: <?php echo $zoom; ?>,
-		<?php if($streetview == 'FALSE' && !defined('CMS_BACKEND')){ /* Disable streetview pegman icon */ ?>
+<?php if($streetview == 'FALSE' && !defined('CMS_BACKEND')){ /* Disable streetview pegman icon */ ?>
 		streetViewControl: false,
-		<?php } ?>
-		<?php if($map_styling != 'StyledMapType'){ ?>
+<?php } else { ?>
+		<?php if(isset($streetview_position)){ ?>
+		streetViewControl: true,
+	    streetViewControlOptions: {
+	        position: google.maps.ControlPosition.<?php echo $streetview_position; ?>
+	    },
+	    <?php } ?>
+<?php } ?>
+<?php if($map_styling != 'StyledMapType'){ ?>
 		mapTypeId: google.maps.MapTypeId.<?php echo $map_type; ?>,
 		<?php /* Placeholder background color backgroundColor: "#ffffff", */ ?>
-		<?php } ?>
+<?php } ?>
 		center: new google.maps.LatLng(<?php echo $latitude; ?>,<?php echo $longitude; ?>)<?php if($navigation_control != 'DEFAULT' && $map_ui != 'true'){ ?>,
 		navigation_controlControlOptions: {style: google.maps.NavigationControlStyle.<?php echo $navigation_control; ?>}
 		<?php } ?><?php if($zoom_control != 'DEFAULT' && $map_ui != 'true' && $map_styling != 'StyledMapType'){ ?>,
-		zoomControlOptions: {style: google.maps.ZoomControlStyle.<?php echo $zoom_control; ?>}<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>,
-		mapTypeControl: false<?php } ?><?php if($map_ui == 'true'){ ?>,
-		scaleControl: false, /* Disable map scale element */
+		zoomControlOptions: {style: google.maps.ZoomControlStyle.<?php echo $zoom_control; ?><?php if(isset($zoom_control_position)){ ?>, position: google.maps.ControlPosition.<?php echo $zoom_control_position; ?><?php } ?>}<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>,
+		mapTypeControl: <?php if(!defined('CMS_BACKEND') || $map_control == 'true'){ echo 'false'; } else { echo 'true'; } ?><?php } ?><?php if($map_ui == 'true'){ ?>,
+		scaleControl: false,
 		disableDefaultUI: true<?php } ?><?php if($map_styling == 'StyledMapType'){ ?>,
-	<?php if (!defined('CMS_BACKEND')) {
-	if($zoom_control == 'FALSE'){ /* Disable zoom + and - options */
-	?>
+<?php if (!defined('CMS_BACKEND')) {
+		if($zoom_control == 'FALSE'){ /* Disable zoom + and - options */
+		?>
 		zoomControl: false,
-	<?php }
-	if($navigation_control == 'FALSE'){ /* Disable navigation/pan - Not working yet */
-	?>
+		<?php }
+	  if($navigation_control == 'FALSE'){ /* Disable navigation/pan - Not working yet */
+		?>
 		navigationControl: false,
 		scaleControl: false,
-
-	<?php }
-	} ?>
+		<?php }
+} ?>
 		mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.<?php echo $map_type; ?>, 'styleMap'] },
 		mapTypeId: 'styleMap'
 		<?php } ?>
