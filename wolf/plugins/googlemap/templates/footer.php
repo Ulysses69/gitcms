@@ -20,6 +20,7 @@
 	$map_height = Plugin::getSetting('map_height', 'googlemap');
 	$map_width = str_replace('px','',$map_width);
 	$map_height = str_replace('px','',$map_height);
+	$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
 	$zoom = Plugin::getSetting('zoom', 'googlemap');
 
 	if($staticmap_scale != 2){ $staticmap_scale = 1; }
@@ -92,10 +93,10 @@
 
 
 
-$api_params = '';
-$api_params .= '?sensor='.$sensor;
+$api_params = '?';
+if(isset($api_version)) $api_params .= 'v='.$api_version.'&amp;';
+$api_params .= 'sensor='.$sensor;
 $api_params .= $map_libraries;
-if(isset($api_version)) $api_params .= '&amp;v='.$api_version;
 if(isset($region)) $api_params .= '&amp;region='.$region;
 
 ?>
@@ -440,6 +441,7 @@ function initialize() {
 	<?php } ?>
 	
 	var mapOptions = {
+		panControl: false,
 		zoom: <?php echo $zoom; ?>,
 		<?php if($streetview == 'FALSE' && !defined('CMS_BACKEND')){ /* Disable streetview pegman icon */ ?>
 		streetViewControl: false,
@@ -463,7 +465,7 @@ function initialize() {
 	if($navigation_control == 'FALSE'){ /* Disable navigation/pan - Not working yet */
 	?>
 		navigationControl: false,
-		panControl: false,
+		scaleControl: false,
 
 	<?php }
 	} ?>
