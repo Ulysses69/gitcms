@@ -302,6 +302,7 @@ document.write('<style type=\"text/css\" />#<?php echo $map_id; ?>{width:100%;he
 <!--API Key now deprecated -->
 <!-- <p>For local development and testing, either a http&#58;&#47;&#47;localhost or http&#58;&#47;&#47;127.0.0.1 API Key has been provided by default.</p> -->
 <p>The Google Map Plugin uses the Map Code <a href="<?php echo $_SERVER['REQUEST_URI']; ?>#amap_code" title="help">?</a> to generate the map placeholder. The Map Code requires at least one html element with an ID attribute and valid value which also needs to be declared in the Map ID <a href="<?php echo $_SERVER['REQUEST_URI']; ?>#amap_id" title="help">?</a> field. By default, a working example is provided to best illustrate this.</p>
+<p>Map can scale at apsect ratio of static map img element, by setting max width and height in pixels.</p>
 <?php } ?>
 
 

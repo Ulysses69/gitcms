@@ -433,7 +433,6 @@ onload = function() {
 				</td>
 				<td class="help">Default stable release version is 3.17</td>
 			</tr>
-
 			<tr>
 				<td class="label"><label for="amap_id">Map ID</label></td>
 				<td class="field"><input class="textbox" type="text" name="map_id" id="amap_id" size="30" value="<?php echo $map_id; ?>" /></td>
