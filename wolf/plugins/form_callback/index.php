@@ -4,7 +4,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_callback',
 	'title'					=> 'Form - Callback',
-	'version'				=> '12.9.0',
+	'version'				=> '12.10.0',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'  				=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
@@ -20,14 +20,24 @@ function callbackForm($emailOut,$nameOut,$subject="Enquiry",$heading="",$display
 
 
 	/* Expected data */
-	$name = htmlentities($_POST["name"]);
-	$telephone = htmlentities($_POST["telephone"]);
-	//$email = htmlentities($_POST["email"]);
-	$callback_time = htmlentities($_POST["callback_time"]);
-	$mailinglist = htmlentities($_POST["mailinglist"]);
+	if(isset($_POST["name"])){ $name = htmlentities($_POST["name"]); } else { $name = ''; }
+	if(isset($_POST["telephone"])){ $telephone = htmlentities($_POST["telephone"]); } else { $telephone = ''; }
+	//if(isset($_POST["email"])){ $email = htmlentities($_POST["email"]); } else { $email = ''; }
+	if(isset($_POST["callback_time"])){ $callback_time = htmlentities($_POST["callback_time"]); } else { $callback_time = ''; }
+	if(isset($_POST["mailinglist"])){ $mailinglist = htmlentities($_POST["mailinglist"]); } else { $mailinglist = ''; }
 	$thankyouname = $name;
 	$formanchor = '#reply';
 	defined($formid);
+
+	$name_class = '';
+	$telephone_class = '';
+	//$email_class = '';
+	$callback_time_class = '';
+	$name_req = '';
+	$telephone_req = '';
+	//$email_req = '';
+	$callback_time_req = '';
+	$callback_time_req = '';
 
 	include('./wolf/plugins/form_core/lib/formSettings.php');
 	include_once('./wolf/plugins/form_core/lib/formLogic.php');
