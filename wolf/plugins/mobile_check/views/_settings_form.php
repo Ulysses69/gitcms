@@ -235,7 +235,7 @@ onload = function() {
 					<td class="field">
 					<input type="checkbox" name="content_font_h1" id="content_font_h1" value="yes" class="checkbox"<?php if($content_font_h1 == "yes"){echo " checked";}?>/>
 					</td>
-					<td class="help"><?php echo __('Main headings');?></td>
+					<td class="help"><?php echo __('Main heading font');?></td>
 				</tr>
 
 				<tr>
@@ -243,7 +243,7 @@ onload = function() {
 					<td class="field">
 					<input type="checkbox" name="content_font_h2" id="content_font_h1" value="yes" class="checkbox"<?php if($content_font_h2 == "yes"){echo " checked";}?>/>
 					</td>
-					<td class="help"><?php echo __('Sub headings');?></td>
+					<td class="help"><?php echo __('Sub heading font');?></td>
 				</tr>
 
 				<tr>
@@ -251,7 +251,7 @@ onload = function() {
 					<td class="field">
 					<input type="checkbox" name="content_font_intro" id="content_font_intro" value="yes" class="checkbox"<?php if($content_font_intro == "yes"){echo " checked";}?>/>
 					</td>
-					<td class="help"><?php echo __('Introduction paragraphs');?></td>
+					<td class="help"><?php echo __('Introduction paragraph font');?></td>
 				</tr>
 
 			</table>
