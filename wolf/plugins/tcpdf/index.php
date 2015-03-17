@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('TCPDF_VERSION')) { define('TCPDF_VERSION', '1.2.2'); }
+if (!defined('TCPDF_VERSION')) { define('TCPDF_VERSION', '1.3.0'); }
 Plugin::setInfos(array(
 	'id'		  			=> 'tcpdf',
 	'title'	   			=> __('PDF Classes (TCPDF)'),
@@ -489,18 +489,46 @@ EOS;
 					//$fontPath = K_PATH_FONTS; $fontFile = 'DejaVuSans.ttf'; $fontType = 'TrueTypeUnicode'; $fontEnc = ''; $fontFlags = 32;
 					$fontEnc = 'ansi'; $fontFlags = 32;
 
+					$mainFont = 'Roboto-Regular.ttf';
+					//$mainFont = 'Ubuntu.ttf';
+
+                    if(Plugin::isEnabled('mobile_check') == true){
+                    	$content_font = Plugin::getSetting('content_font', 'mobile_check');
+                    	if($content_font != ''){
+                    		// Google font filenames need to changing to local filenames
+							$mainFont = str_replace('+', '_', $content_font).'.ttf';
+						}
+					}
+
 					// Check if specified font exists and is ttf
-                    $custom_font = realpath('inc/font/Roboto-Regular.ttf'); 
-                    if(file_exists($custom_font) && stripos($custom_font, '.ttf')){                        
+                    $custom_font = realpath('inc/font/' . $mainFont); 
+                    if(file_exists($custom_font) && stripos($custom_font, '.ttf')){                     
                         // Add font
                         $fontType = 'TrueType';
-                        $fontname = $pdf->addTTFfont(realpath('inc/font/Roboto-Regular.ttf'), $fontType, $fontEnc, $fontFlags);
+                        $fontname = $pdf->addTTFfont(realpath('inc/font/' . $mainFont), $fontType, $fontEnc, $fontFlags);
+                        //$pdf->SetFont($fontname, '', 14, '', false);                        
                     } else {
                         // Use default font
                         $fontType = 'TrueType';
                         $fontPath = K_PATH_FONTS; $fontFile = 'helvetica.ttf';
                         $fontname = $pdf->addTTFfont($fontPath . $fontFile, $fontType, $fontEnc, $fontFlags);
+                        //$pdf->SetFont($fontname, '', 14, '', false);
                     }
+
+                    if(Plugin::isEnabled('mobile_check') == true){
+                    	if(Plugin::getSetting('content_font_h1', 'mobile_check') == 'yes'){
+		                    // Custom h1 font
+							$html = str_replace('<h1>', '<h1 style="font-family:'.$fontname.'">', $html);
+						}
+                    	if(Plugin::getSetting('content_font_h2', 'mobile_check') == 'yes'){
+		                    // Custom h1 font
+							$html = str_replace('<h2>', '<h2 style="font-family:'.$fontname.'">', $html);
+						}
+                    	if(Plugin::getSetting('content_font_intro', 'mobile_check') == 'yes'){
+		                    // Custom h1 font
+							$html = str_replace('<p class="introduction">', '<p class="introduction" style="font-family:'.$fontname.'">', $html);
+						}
+					}
 
 					//echo $fontname;
 
@@ -549,9 +577,6 @@ EOS;
 					$qrwidth_x = $pdf->getPageWidth() - $qrwidth - PDF_MARGIN_RIGHT;
 					$pdf->write2DBarcode(qrurl($thepage->url), 'QRCODE,M', $qrwidth_x, $logo_y, 30, 30, $qrstyle, 'N');
 					*/
-
-
-
 
 
 
