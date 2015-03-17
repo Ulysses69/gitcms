@@ -184,6 +184,7 @@ onload = function() {
 				$options = ''; $fonts = '';
 				$content_font_array = array(
 				array ('Default', ''),
+				array ('Arimo', 'Arimo'),
 				array ('EB Garamond', 'EB+Garamond'),
 				array ('Fira Sans', 'Fira+Sans'),
 				array ('Lato', 'Lato'),
