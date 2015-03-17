@@ -87,6 +87,7 @@ function downloadPDF($page){
 		$pdf->setPrintFooter(false);
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		//$pdf->setListIndentWidth(4);
 		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 		$pdf->setLanguageArray($l);
@@ -381,8 +382,8 @@ EOS;
 				}
 
 
-
-				$qrwidth = 20;
+				$qrwidth = Plugin::getSetting('pdf_qrcode_width', 'page_options');
+				$qrwidth = $qrwidth / 10;
 				$qrx = 'R';
 				//$qrx = 20;
 				//$qry = $logo_y;

@@ -74,6 +74,10 @@ if (!defined('IN_CMS')) { exit(); }
 						if(Plugin::isEnabled('page_options') == true && Plugin::getSetting('pdf_qrcode_enabled', 'page_options') == 'show'){
 							if($qrx == 'R') $qrx = $this->getPageWidth() - $qrwidth - PDF_MARGIN_RIGHT;
 							if($qry == 'T') $qry = $logo_y;
+
+							//$qrx = $qrx + 10;
+							//$qry = $qry - 5;
+
 							$this->write2DBarcode($qrURL, $qrtype, $qrx, $qry, $qrwidth, $qrwidth, $qrstyle, $qralign);
 							//$this->write2DBarcode('http://clientcms.local/privacy.html', 'QRCODE,M', 10, 10, 20, 20, $qrstyle, 'N');
 						}
