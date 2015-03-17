@@ -18,6 +18,7 @@
 	$map_code = Plugin::getSetting('map_code', 'googlemap');
 	$map_width = Plugin::getSetting('map_width', 'googlemap');
 	$map_height = Plugin::getSetting('map_height', 'googlemap');
+	$map_type = Plugin::getSetting('map_type', 'googlemap');
 	$map_width = str_replace('px','',$map_width);
 	$map_height = str_replace('px','',$map_height);
 	$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
@@ -663,9 +664,15 @@ if(!defined('CMS_BACKEND')){
 	}
 	?>
 
-	<?php
+    <?php if($map_styling == 'StyledMapType'){
+    // TO DO: Add custom styles to static map
+    $styles = '&style=feature:poi|visibility:simplified';
+    $styles = str_replace('|', '%7C', $styles);
+    } ?>
 
-	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&sensor=false" id="googlemap-print" />';
+    <?php
+
+	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&maptype='.$map_type.'&sensor=false" id="googlemap-print" />';
 	
 	if($staticmap_pixels == true){
 
