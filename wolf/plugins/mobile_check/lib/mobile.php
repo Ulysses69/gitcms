@@ -24,12 +24,21 @@ h1, h2, .h2, h3, h4, p, label, .itemaddress, table, th, td, #content ul, #conten
 	color:<?php echo $color_main_text; ?>
 }
 h1 {
-	<?php if($content_font != ''){ echo "font-family:'".str_replace('+', ' ', $content_font)."';"; } ?>
 	font-weight:normal;
 	padding:.5em;
 	margin-bottom:.75em;
 	border-bottom:solid 1px #ccc
 }
+<?php if($content_font != ''){ $font_elements = array(); ?>
+<?php if($content_font_h1 == 'yes'){ $font_elements[] = 'h1'; } ?>
+<?php if($content_font_h2 == 'yes'){ $font_elements[] = 'h2'; } ?>
+<?php if($content_font_intro == 'yes'){ $font_elements[] = '.introduction'; } ?>
+<?php if(sizeof($font_elements) > 0) { $elements = implode(', ', $font_elements); echo $elements.' {'; ?>
+	<?php echo "font-family:'".str_replace('+', ' ', $content_font)."';"; ?>
+	font-weight:normal;
+}
+<?php } ?>
+<?php } ?>
 h1 span {
 	display: block;
 	font-size: 50%;

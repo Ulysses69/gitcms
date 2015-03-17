@@ -39,6 +39,10 @@ if(!Plugin::getSetting('color_content_text', 'mobile_check')) $settings['color_c
 if(!Plugin::getSetting('color_content_link', 'mobile_check')) $settings['color_content_link'] = '#0689F4';
 if(!Plugin::getSetting('content_font', 'mobile_check')) $settings['content_font'] = '';
 
+if(!Plugin::getSetting('content_font_h1', 'mobile_check')) $settings['content_font_h1'] = 'yes';
+if(!Plugin::getSetting('content_font_h2', 'mobile_check')) $settings['content_font_h2'] = 'no';
+if(!Plugin::getSetting('content_font_intro', 'mobile_check')) $settings['content_font_intro'] = 'no';
+
 if(!Plugin::getSetting('topnavhome', 'mobile_check')) $settings['topnavhome'] = 'disabled';
 if(!Plugin::getSetting('background_url', 'mobile_check')) $settings['background_url'] = '';
 if(!Plugin::getSetting('homecontent', 'mobile_check')) $settings['homecontent'] = 'disabled';

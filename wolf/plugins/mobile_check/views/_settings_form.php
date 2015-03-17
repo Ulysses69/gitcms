@@ -20,12 +20,15 @@ $color_button_bg		= Plugin::getSetting('color_button_bg', 'mobile_check');
 $color_button_border	= Plugin::getSetting('color_button_border', 'mobile_check');
 $color_button_opacity	= Plugin::getSetting('color_button_opacity', 'mobile_check');
 
-
 $color_content_bg		= Plugin::getSetting('color_content_bg', 'mobile_check');
 $color_content_h1		= Plugin::getSetting('color_content_h1', 'mobile_check');
 $color_content_text		= Plugin::getSetting('color_content_text', 'mobile_check');
 $color_content_link		= Plugin::getSetting('color_content_link', 'mobile_check');
 $content_font			= Plugin::getSetting('content_font', 'mobile_check');
+
+$content_font_h1		= Plugin::getSetting('content_font_h1', 'mobile_check');
+$content_font_h2		= Plugin::getSetting('content_font_h2', 'mobile_check');
+$content_font_intro		= Plugin::getSetting('content_font_intro', 'mobile_check');
 
 
 $color_button_link		= Plugin::getSetting('color_button_link', 'mobile_check');
@@ -221,7 +224,40 @@ onload = function() {
 			</tr>
 			<?php //<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> font-family: 'Open Sans', sans-serif; ?>
 
+			<tr>
 
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<table class="fieldset options" cellpadding="0" cellspacing="0" border="0">
+
+				<tr>
+					<td class="label"><label for="content_font_h1"><?php echo __('Heading 1'); ?></label></td>
+					<td class="field">
+					<input type="checkbox" name="content_font_h1" id="content_font_h1" value="yes" class="checkbox"<?php if($content_font_h1 == "yes"){echo " checked";}?>/>
+					</td>
+					<td class="help"><?php echo __('Main headings');?></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="content_font_h2"><?php echo __('Heading 2'); ?></label></td>
+					<td class="field">
+					<input type="checkbox" name="content_font_h2" id="content_font_h1" value="yes" class="checkbox"<?php if($content_font_h2 == "yes"){echo " checked";}?>/>
+					</td>
+					<td class="help"><?php echo __('Sub headings');?></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="content_font_intro"><?php echo __('Introduction'); ?></label></td>
+					<td class="field">
+					<input type="checkbox" name="content_font_intro" id="content_font_intro" value="yes" class="checkbox"<?php if($content_font_intro == "yes"){echo " checked";}?>/>
+					</td>
+					<td class="help"><?php echo __('Introduction paragraphs');?></td>
+				</tr>
+
+			</table>
+			</fieldset>
+			</td>
+			</tr>
 
 <!-- TO DO: Add checklist of dom elements to apply custom font to -->
 

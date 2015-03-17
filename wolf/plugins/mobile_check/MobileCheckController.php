@@ -51,6 +51,10 @@ class MobileCheckController extends PluginController {
 		if(isset($_POST['color_content_link'])){ $color_content_link = $_POST['color_content_link']; } else { $color_content_link = ''; }
 		if(isset($_POST['content_font'])){ $content_font = $_POST['content_font']; } else { $content_font = ''; }
 
+		if(isset($_POST['content_font_h1'])){ $content_font_h1 = $_POST['content_font_h1']; } else { $content_font_h1 = ''; }
+		if(isset($_POST['content_font_h2'])){ $content_font_h2 = $_POST['content_font_h2']; } else { $content_font_h2 = ''; }
+		if(isset($_POST['content_font_intro'])){ $content_font_intro = $_POST['content_font_intro']; } else { $content_font_intro = ''; }
+
 		if(isset($_POST['topnavhome'])){ $topnavhome = $_POST['topnavhome']; } else { $topnavhome = ''; }
 		if(isset($_POST['background_url'])){ $background_url = $_POST['background_url']; } else { $background_url = ''; }
 		if(isset($_POST['homecontent'])){ $homecontent = $_POST['homecontent']; } else { $homecontent = ''; }
@@ -87,6 +91,10 @@ class MobileCheckController extends PluginController {
 		if($color_content_text == '') $color_content_text = Plugin::getSetting('color_content_text', 'mobile_check');
 		if($color_content_link == '') $color_content_link = Plugin::getSetting('color_content_link', 'mobile_check');
 		//if($content_font == '') $content_font = Plugin::getSetting('content_font', 'mobile_check');
+
+		//if($content_font_h1 == '') $content_font_h1 = Plugin::getSetting('content_font_h1', 'mobile_check');
+		//if($content_font_h2 == '') $content_font_h2 = Plugin::getSetting('content_font_h2', 'mobile_check');
+		//if($content_font_intro == '') $content_font_intro = Plugin::getSetting('content_font_intro', 'mobile_check');
 
 		if($topnavhome == '') $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check');
 		if($background_url == '') $background_url = Plugin::getSetting('background_url', 'mobile_check');
@@ -335,6 +343,10 @@ class MobileCheckController extends PluginController {
 							'color_content_text' => $color_content_text,
 							'color_content_link' => $color_content_link,
 							'content_font' => $content_font,
+
+							'content_font_h1' => $content_font_h1,
+							'content_font_h2' => $content_font_h2,
+							'content_font_intro' => $content_font_intro,
 
 							'cachedcss' => $newcss,
 							'topnavhome' => $topnavhome,
