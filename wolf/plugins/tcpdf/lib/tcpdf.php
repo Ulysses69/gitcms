@@ -1109,8 +1109,8 @@ class TCPDF {
 	 * @protected
 	 * @since 4.2.007 (2008-11-12)
 	 */
-	protected $customlistindent = -1;
-
+	//protected $customlistindent = -1;
+	protected $customlistindent = 4;
 	/**
 	 * Boolean flag to indicate if the border of the cell sides that cross the page should be removed.
 	 * @protected
