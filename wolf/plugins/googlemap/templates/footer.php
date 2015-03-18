@@ -3,13 +3,13 @@
 
 	$markerLat = $latitude;
 	$markerLong = $longitude;
+    $static_styles = '';
 
 	if(isset($draggable) && $draggable == 'true'){
 		$draggable = 'true';
 	} else {
 		$draggable = 'false';
 	}
-	
 
 	$staticmap_scale = 2;
 	$staticmap_pixels = false;
@@ -666,10 +666,10 @@ if(!defined('CMS_BACKEND')){
 
     <?php if($map_styling == 'StyledMapType'){
     // TO DO: Add custom styles to static map
-        $styles = '&style=feature:poi|visibility:simplified';
-        $styles = '&style=feature:administrative|element:labels|weight:3.9|visibility:on|inverse_lightness:true';
-        $styles = '&style=feature:landscape|element:geometry.fill|color:0x000000|visibility:on';
-        $styles = str_replace('|', '%7C', $styles);
+        $static_styles .= '&style=feature:poi|visibility:simplified';
+        $static_styles .= '&style=feature:administrative|element:labels|weight:3.9|visibility:on|inverse_lightness:true';
+        $static_styles .= '&style=feature:landscape|element:geometry.fill|color:0x000000|visibility:on';
+        $static_styles = str_replace('|', '%7C', $static_styles);
     } ?>
 
     <?php
