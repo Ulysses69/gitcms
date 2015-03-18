@@ -666,8 +666,10 @@ if(!defined('CMS_BACKEND')){
 
     <?php if($map_styling == 'StyledMapType'){
     // TO DO: Add custom styles to static map
-    $styles = '&style=feature:poi|visibility:simplified';
-    $styles = str_replace('|', '%7C', $styles);
+        $styles = '&style=feature:poi|visibility:simplified';
+        $styles = '&style=feature:administrative|element:labels|weight:3.9|visibility:on|inverse_lightness:true';
+        $styles = '&style=feature:landscape|element:geometry.fill|color:0x000000|visibility:on';
+        $styles = str_replace('|', '%7C', $styles);
     } ?>
 
     <?php
