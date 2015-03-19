@@ -12,7 +12,7 @@
  *   http://themes.designspike.ca/redirector/help/
  *
  */
-if (!defined('REDIRECTOR_VERSION')) { define('REDIRECTOR_VERSION', '0.2.2'); }
+if (!defined('REDIRECTOR_VERSION')) { define('REDIRECTOR_VERSION', '0.2.3'); }
 if (!defined('REDIRECTOR_ROOT')) { define('REDIRECTOR_ROOT', URI_PUBLIC.'wolf/plugins/redirector'); }
 
 Plugin::setInfos(array(

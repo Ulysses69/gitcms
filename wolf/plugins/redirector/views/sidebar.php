@@ -29,7 +29,7 @@
 <h2><?php echo __('Redirector').' '.Plugin::getSetting('version', 'redirector'); ?></h2>
 <p>Pages can be re-directed by simply specifying the page URL to be re-directed from and the page URL it is to be re-directed to.</p>
 <!-- <p>Set the duration of the re-direct using the status option. If using temporary re-direct, be sure to remove the re-direct when it is no longer needed or set to permanent if circumstances require.</p> -->
-<p>Care should be taken with format of entered URLs. Either use relative URL or absolute URL starting with http etc.</p>
+<p>Care should be taken with format of entered URLs. Either use <a href="http://en.wikipedia.org/wiki/HTTP_location#Relative_URL_example" rel="nofollow">relative URL</a> or <a href="http://en.wikipedia.org/wiki/HTTP_location#Absolute_URL_example" rel="nofollow">absolute URL</a> starting with http etc.</p>
 </div>
 
 <?php include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/_htaccess/views/sidebar.php'; ?>
