@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.2.2'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.2.3'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',
@@ -65,9 +65,9 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	                        }
 	                        if(${$name.'_URL'} != ''){ 
 	                            if($appearance == 'image'){
-	                                $output .= '<span class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></span> ';
+	                                $output .= '<span class="'.$name.'"><a href="'.$url.'" rel="nofollow">'.$open.$title.$close.'</a></span> ';
 	                            } else {
-	                                $output .= '<li class="'.$name.'"><a href="'.$url.'">'.$open.$title.$close.'</a></li>'."\n";
+	                                $output .= '<li class="'.$name.'"><a href="'.$url.'" rel="nofollow">'.$open.$title.$close.'</a></li>'."\n";
 	                            }
 	                        }
 	                    }
