@@ -458,10 +458,11 @@ function initialize() {
 		mapTypeId: google.maps.MapTypeId.<?php echo $map_type; ?>,
 		<?php /* Placeholder background color backgroundColor: "#ffffff", */ ?>
 <?php } ?>
-		center: new google.maps.LatLng(<?php echo $latitude; ?>,<?php echo $longitude; ?>)<?php if($navigation_control != 'DEFAULT' && $map_ui != 'true'){ ?>,
+		center: new google.maps.LatLng(<?php echo $latitude; ?>,<?php echo $longitude; ?>)<?php if($navigation_control != 'DEFAULT' && $map_ui != 'true'){ ?>,		
+		zoomControlOptions: {style: google.maps.ZoomControlStyle.<?php echo $zoom_control; ?><?php if(isset($zoom_control_position)){ ?>, position: google.maps.ControlPosition.<?php echo $zoom_control_position; ?><?php } ?>},
 		navigation_controlControlOptions: {style: google.maps.NavigationControlStyle.<?php echo $navigation_control; ?>}
 		<?php } ?><?php if($zoom_control != 'DEFAULT' && $map_ui != 'true' && $map_styling != 'StyledMapType'){ ?>,
-		zoomControlOptions: {style: google.maps.ZoomControlStyle.<?php echo $zoom_control; ?><?php if(isset($zoom_control_position)){ ?>, position: google.maps.ControlPosition.<?php echo $zoom_control_position; ?><?php } ?>}<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>,
+		<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>,
 		mapTypeControl: <?php if(!defined('CMS_BACKEND') || $map_control == 'true'){ echo 'false'; } else { echo 'true'; } ?><?php } ?><?php if($map_ui == 'true'){ ?>,
 		scaleControl: false,
 		disableDefaultUI: true<?php } ?><?php if($map_styling == 'StyledMapType'){ ?>,
@@ -484,7 +485,7 @@ function initialize() {
 	
 	map = new google.maps.Map(document.getElementById("<?php echo $map_id_overlay; ?>"), mapOptions);
 	<?php if($map_styling == 'StyledMapType'){ ?>;
-	var map_styling = new google.maps.StyledMapType(setstyle, {name: "Custom"});
+	var map_styling = new google.maps.StyledMapType(setstyle, {name: "Here"});
 	map.mapTypes.set('styleMap', map_styling);
 	<?php } ?>
 
