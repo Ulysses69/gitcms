@@ -3,7 +3,7 @@
 
 	$markerLat = $latitude;
 	$markerLong = $longitude;
-    $static_styles = '';
+    $static_styles = ''; $build_static_styles = '';
 
 	if(isset($draggable) && $draggable == 'true'){
 		$draggable = 'true';
@@ -667,15 +667,39 @@ if(!defined('CMS_BACKEND')){
 
     <?php if($map_styling == 'StyledMapType'){
     // TO DO: Add custom styles to static map
-        $static_styles .= '&style=feature:poi|visibility:simplified';
-        $static_styles .= '&style=feature:administrative|element:labels|weight:3.9|visibility:on|inverse_lightness:true';
-        $static_styles .= '&style=feature:landscape|element:geometry.fill|color:0x000000|visibility:on';
-        $static_styles = str_replace('|', '%7C', $static_styles);
+    	$build_static_styles = str_replace(array("\r\n", "\r"), '', $featurelist);
+    	$build_static_styles = preg_replace('/\s+/', ' ', $build_static_styles);
+    	$build_static_styles = str_replace('{ featureType: "', '&style=feature:', $build_static_styles);
+    	$build_static_styles = str_replace('elementType: "', 'element:', $build_static_styles);
+    	$build_static_styles = str_replace("stylers: [ {", '', $build_static_styles);
+
+    	$build_static_styles = str_replace('road.local', 'road', $build_static_styles);
+    	$build_static_styles = str_replace('road.arterial', 'road', $build_static_styles);    	
+    	$build_static_styles = str_replace('road.highway', 'road', $build_static_styles);
+
+    	$build_static_styles = str_replace('landscape.man_made', 'landscape', $build_static_styles);
+    	$build_static_styles = str_replace('landscape.natural', 'landscape', $build_static_styles);
+
+    	$build_static_styles = str_replace("} ]", '', $build_static_styles);
+    	$build_static_styles = str_replace("},", '', $build_static_styles);
+    	$build_static_styles = str_replace(",", '|', $build_static_styles);
+    	$build_static_styles = str_replace('"', '', $build_static_styles);
+    	$build_static_styles = preg_replace('/\s+/', '', $build_static_styles);
+    	$build_static_styles = str_replace("}", '', $build_static_styles);
+    	//$build_static_styles = '<!-- '.$build_static_styles.' -->';
+        //$build_static_styles .= '&style=feature:poi|visibility:simplified';
+        //$build_static_styles .= '&style=feature:administrative|element:labels|weight:3.9|visibility:on|inverse_lightness:true';
+        //$build_static_styles .= '&style=feature:landscape|element:geometry.fill|color:0x000000|visibility:on';
+
+		//$build_static_styles = '&style=feature:road.arterial|visibility:off';
+
+        $build_static_styles = str_replace('|', '%7C', $build_static_styles);
+        $static_styles = $build_static_styles;
     } ?>
 
     <?php
 
-	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&maptype='.$map_type.'&sensor=false" id="googlemap-print" />';
+	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&maptype='.$map_type.'&sensor=false'.$static_styles.'" id="googlemap-print" />';
 	
 	if($staticmap_pixels == true){
 
