@@ -749,6 +749,8 @@ thead td, th {
 }
 
 
+
+
 /*
 @media all and (min-width:1920px) {
 	#top {
@@ -765,15 +767,7 @@ thead td, th {
 
 
 
-/* Portrait
-@media screen and (orientation:portrait){
-}
- */
 
-/* Landscape
-@media screen and (orientation:landscape){
-}
- */
 
 /* iPhone */
 @media only screen and max-device-width 480px {
@@ -807,45 +801,114 @@ thead td, th {
 
 
 
+/* Portrait
+@media screen and (orientation: portrait){
+}
+*/
+
+/* Landscape
+@media screen and (orientation: landscape){
+}
+*/
 
 
 
 
+
+/* LARGE SCREENS
+@media only screen  and (min-width: 1824px) {
+}
+*/
+
+
+
+
+
+/* DESKTOPS and LAPTOPS
+@media only screen  and (min-width: 1224px) {
+}
+*/
+
+
+
+
+
+/* IPAD All inc Retina
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+}
+*/
 
 /* IPAD 3
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (-webkit-min-device-pixel-ratio:1.5){
 }
- */
+*/
 
 /* IPAD 2
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (-webkit-max-device-pixel-ratio:1.5){
 }
- */
+*/
 
-/* IPAD
-@media only screen and (min-device-width:768px) and (max-device-width:1024px){
+/* IPAD Retina
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
 }
- */
+*/
+
+/* IPAD Mini
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+}
+*/
+
+
+
+
+
+
+/* IPHONE 6 PLUS
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
+}
+*/
+
+/* IPHONE 6
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+}
+*/
+
+/* IPHONE 5
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+}
+*/
 
 /* IPHONE 4
-@media only screen and (-webkit-min-device-pixel-ratio:2) and (max-device-width:480px){
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 480px){
 }
- */
+*/
 
 /* IPHONE 3
-@media only screen and (min-device-width:320px) and (max-device-width:480px) and (-webkit-max-device-pixel-ratio:1.5){
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-max-device-pixel-ratio: 1.5){
 }
- */
+*/
 
 /* IPHONE
-@media only screen and (max-device-width:480px){
+@media only screen and (max-device-width: 480px){
 }
- */
+*/
 
-/* RETINA
-@media only screen and (-webkit-min-device-pixel-ratio:2){
+
+
+
+
+
+/* RETINA Device
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and ( min--moz-device-pixel-ratio: 2), only screen and ( -o-min-device-pixel-ratio: 2/1), only screen and ( min-device-pixel-ratio: 2), only screen and ( min-resolution: 192dpi), only screen and ( min-resolution: 2dppx) {
 }
- */
+*/
+
+/* Smartphones
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+}
+*/
+
+
 
 
 <?php echo $customcss; ?>
