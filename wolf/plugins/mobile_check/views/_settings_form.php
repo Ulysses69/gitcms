@@ -193,6 +193,7 @@ onload = function() {
 				array ('Lato', 'Lato'),
 				array ('Lustria', 'Lustria'),
 				array ('Merriweather Sans', 'Merriweather+Sans'),
+				array ('Nunito', 'Nunito:300'),
 				array ('Open Sans', 'Open+Sans'),
 				array ('Poly', 'Poly'),
 				array ('PT Sans', 'PT+Sans'),
