@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.3.3'); }
+if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.3.4'); }
 if (!defined('GMAP_ROOT')) {	define('GMAP_ROOT', URI_PUBLIC.'wolf/plugins/googlemap/images'); }
 if (!defined('GMAP_PATH')) {	define('GMAP_PATH', $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/googlemap/images'); }
 
@@ -248,6 +248,15 @@ if (Plugin::isEnabled('googlemap')) {
 	//Plugin::addJavascript('googlemap', 'js/jquery.miniColors.js');
 	//Plugin::addJavascript('googlemap', 'js/scripts.js');
 	//Plugin::addJavascript('googlemap', 'jquery.miniColors.css');
+}
+
+if(!function_exists('mapspolicy')){
+    function mapspolicy() {
+        if (Plugin::isEnabled('googlemap')) {
+            $policy = '<p>This website uses Google Maps. Please read the <a href="http://www.google.com/privacypolicy.html">Google privacy policy</a> for user information.</p>';
+            return $policy;
+        }
+    }
 }
 
 if (Plugin::isEnabled('googlemap')) {
