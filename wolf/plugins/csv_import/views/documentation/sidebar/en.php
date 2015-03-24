@@ -43,4 +43,5 @@ if(Plugin::isEnabled('file_manager') == true){
 </ul>
 </p>
 <p>Columns above will be treated as imported page properties. Any other columns will be converted to page parts.</p>
+<p>Remove body column line returns with br replace function:<br/> =SUBSTITUTE(SUBSTITUTE(B2,CHAR(13),""),CHAR(10),"&lt;br/&gt;")</p>
 
