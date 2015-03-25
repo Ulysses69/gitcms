@@ -28,7 +28,7 @@ Plugin::setInfos(array(
 	'id' 			=> 'dashboard',
 	'title' 			=> 'Dashboard',
 	'description' 		=> 'Keep up to date what is happening with your site.',
-	'version' 			=> '0.5.3.1',
+	'version' 			=> '0.5.3.2',
 	'license' 			=> 'MIT',
 	'author' 			=> 'Mika Tuupola',
 	'require_wolf_version' 	=> '0.5.5',
@@ -87,7 +87,7 @@ if (false !== strpos($_SERVER['PHP_SELF'], ADMIN_DIR)) {
 							  ':name' => AuthUser::getRecord()->name));
 		dashboard_log_event($message, 'core');
 		//dashboard_alert($message,AuthUser::getRecord()->name);
-		if(CMS_TEST_MODE != true){
+		if(defined('CMS_TEST_MODE') && CMS_TEST_MODE != true){
 			if(200 === ($status = dashboard_ping(URL_ABSOLUTE.'sitemap.xml')) ) {
 				$message = "Google Sitemaps notified. Status code: $status.";
 				dashboard_log_event($message, 'core');
@@ -126,7 +126,7 @@ if (false !== strpos($_SERVER['PHP_SELF'], ADMIN_DIR)) {
 							  ':name' => AuthUser::getRecord()->name));
 		dashboard_log_event($message, 'core');
 		dashboard_alert($message,AuthUser::getRecord()->name);
-		if(CMS_TEST_MODE != true){
+		if(defined('CMS_TEST_MODE') && CMS_TEST_MODE != true){
 			if(200 === ($status = dashboard_ping(URL_ABSOLUTE.'sitemap.xml')) ) {
 				$message = "Google Sitemaps notified. Status code: $status.";
 				dashboard_log_event($message, 'core');
