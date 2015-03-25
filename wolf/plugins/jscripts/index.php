@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.2'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.3'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -142,14 +142,25 @@ function buildscripts($page, $insertref, $checkup = false){
 	//echo '<!-- buildscripts output: '.$scripts." -->\n";
 	
 	$content_font = Plugin::getSetting('content_font', 'mobile_check');
+	//echo '<!-- ' . $content_font . ' -->';
+
 	// Run once, first time, in header
 	if(!defined('GOOGLEFONTS')){
 		if($content_font != ''){
 			$tempscripts = $scripts;
 			$fontscript = '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family='.$content_font.'">'."\n";
-			$scripts = $fontscript.$tempscripts;
+
 			// After first time, define so that we don't duplicate
 			define("GOOGLEFONTS", "true");
+			
+			if($checkup == true){
+				echo $fontscript;
+			} else {
+				$scripts = $fontscript.$tempscripts;
+			}
+
+			//echo '<!-- checkup: ' . $checkup . ' -->';
+			//echo '<!-- GOOGLEFONTS -->';
 		}
 	}
 
