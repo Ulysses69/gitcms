@@ -615,6 +615,7 @@ function getUserLocation() {
 	}
 }
 
+/*
 window.addEventListener ?
 window.addEventListener("load",runScripts,false) :
 window.attachEvent && window.attachEvent("onload",runScripts);
@@ -623,6 +624,10 @@ function runScripts(){
 	initialize();
 	setTimeout("initialize()", 500);
 }
+*/
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
 
 <?php
