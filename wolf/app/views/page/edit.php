@@ -85,10 +85,10 @@ if ($pagetmp != null && !empty($pagetmp) && $parttmp != null && !empty($parttmp)
 				  <td class="field"><input class="textbox" id="page_slug" maxlength="100" name="page[slug]" size="100" title="Page filename as displayed in browser address bar" type="text" value="<?php echo $page->slug; ?>" /><?php if(function_exists('robotredirect') && robotredirect($page,'return') != ''){ echo '<span class="badge" title="Page URI is redirected">!</span>'; } ?></td>
 				</tr>
 				<?php endif; ?>
-				<!-- <tr>
+				<tr>
 				  <td class="label optional"><label for="page_keywords"><?php echo __('Keywords'); ?></label></td>
 				  <td class="field"><input class="textbox" id="page_keywords" maxlength="255" name="page[keywords]" size="255" type="text" value="<?php echo $page->keywords; ?>" /></td>
-				</tr> -->
+				</tr>
 				<tr>
 				  <td class="label optional"><label for="page_description" title="Page description as used by search engines (and/or sitemap links)"><?php echo __('Description'); ?></label></td>
 				  <td class="field"><textarea class="textarea" id="page_description" name="page[description]" rows="40" title="Page description as used by search engines (and/or sitemap links)" cols="3"><?php echo $page->description; ?></textarea></td>
