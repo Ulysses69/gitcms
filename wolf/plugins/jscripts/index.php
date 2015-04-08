@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.3'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.4'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',

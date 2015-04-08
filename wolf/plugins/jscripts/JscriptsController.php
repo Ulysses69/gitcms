@@ -65,10 +65,12 @@ class JscriptsController extends PluginController {
 		$settings['marqueeorder'] = $marqueeorder;
 		$settings['marqueesort'] = $marqueesort;
 		$settings['marqueeduration'] = $marqueeduration;
-		$settings['marqueetransition'] = $marqueetransition;
+		$settings['marqueetransition'] = $marqueetransition;	
 
 		/* Write jscript file */
-		writeJScripts();
+		/* TO DO: js file does not updated first time */
+		writeJScripts($this);
+		//save_jscripts();		
 
 		if (Plugin::setAllSettings($settings, 'jscripts')){
 			
