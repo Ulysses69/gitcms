@@ -118,7 +118,7 @@
 			<tr>
 				<td class="label number"><label for="iconumber"><?php echo __('Registration Number'); ?></label></td>
 				<td class="field number"><?php $iconumber = Plugin::getSetting('iconumber', 'copyright'); ?>
-				<input name="cqcnumber" id="iconumber" value="<?php echo $iconumber; ?>" /></td>
+				<input name="iconumber" id="iconumber" value="<?php echo $iconumber; ?>" /></td>
 				<td rowspac="2" class="label url">&nbsp;</td>
 			</tr>
 			<tr>
