@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.3.2'); }
+if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.3.3'); }
 if (!defined('COPYRIGHT_ROOT')) { define('COPYRIGHT_ROOT', URI_PUBLIC.'wolf/plugins/copyright'); }
 Plugin::setInfos(array(
 	'id'					=> 'copyright',
@@ -245,13 +245,15 @@ function cqcUrl(){
 		$testurl = 'http://www.cqc.org.uk/location/'.$cqcnumber;
 		$array = get_headers($testurl);
 		$string = $array[0];
-		if(strpos($string,"200")) {
-		    $url = $testurl;
-		} else {
-		    if($name != ''){
-				$url = 'http://www.cqc.org.uk/search/site/'.urlencode($name);
+		if($url == ''){
+			if(strpos($string,"200")) {
+			    $url = $testurl;
 			} else {
-				$url = '';
+			    if($name != ''){
+					$url = 'http://www.cqc.org.uk/search/site/'.urlencode($name);
+				} else {
+					$url = '';
+				}
 			}
 		}
 	}
