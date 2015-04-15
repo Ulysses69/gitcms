@@ -31,7 +31,7 @@ h1 {
 }
 <?php if($content_font != ''){ $font_elements = array(); ?>
 <?php if($content_font_h1 == 'yes'){ $font_elements[] = 'h1'; } ?>
-<?php if($content_font_h2 == 'yes'){ $font_elements[] = 'h2'; } ?>
+<?php if($content_font_h2 == 'yes'){ $font_elements[] = 'h2, .h2'; } ?>
 <?php if($content_font_intro == 'yes'){ $font_elements[] = '.introduction'; } ?>
 <?php if(sizeof($font_elements) > 0) { $elements = implode(', ', $font_elements); echo $elements.' {'; ?>
 	<?php echo "font-family:'".str_replace('+', ' ', $content_font)."';"; ?>
