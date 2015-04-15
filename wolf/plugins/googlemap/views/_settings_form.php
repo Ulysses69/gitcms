@@ -479,6 +479,8 @@ onload = function() {
 				$streetview_position_array = array(
 				array ('Top Left', 'LEFT_TOP'),
 				array ('Mid Left', 'LEFT_CENTER'),
+				array ('Top Center', 'TOP_CENTER'),
+				array ('Bottom Center', 'BOTTOM_CENTER'),
 				array ('Top Right', 'RIGHT_TOP'),
 				array ('Mid Right', 'RIGHT_CENTER'));
 				foreach($streetview_position_array as $subarray) {
@@ -564,6 +566,8 @@ onload = function() {
 				$zoom_control_position_array = array(
 				array ('Top Left', 'LEFT_TOP'),
 				array ('Mid Left', 'LEFT_CENTER'),
+				array ('Top Center', 'TOP_CENTER'),
+				array ('Bottom Center', 'BOTTOM_CENTER'),
 				array ('Top Right', 'RIGHT_TOP'),
 				array ('Mid Right', 'RIGHT_CENTER'));
 				foreach($zoom_control_position_array as $subarray) {
