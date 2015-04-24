@@ -767,6 +767,14 @@ thead td, th {
 
 
 
+<?php 
+/* Simple Banners Support */
+if(Plugin::isEnabled('simple_banners') == true){
+	simplebannerCSS();
+}
+?>
+
+
 
 
 /* iPhone */

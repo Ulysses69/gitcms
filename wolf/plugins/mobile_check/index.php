@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '1.9.3'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '1.10.0'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
@@ -64,6 +64,14 @@ function mobileTopNav(){
 
 	$header_banner_home = Plugin::getSetting('header_banner_home', 'mobile_check');
 	$header_banner = Plugin::getSetting('header_banner', 'mobile_check');
+
+	/* Wrap banner in banner div, if not present within banner content itself */
+	if($header_banner_home != '' && !stristr($header_banner_home, 'id="banner')){
+		'<div id="banner">'.$header_banner_home.'</div>';
+	}
+	if($header_banner != '' && !stristr($header_banner, 'id="banner')){
+		'<div id="banner">'.$header_banner.'</div>';
+	}
 
 	/* Build page object, set page to home page id, 1 */
 	$page = Page::findById(1);

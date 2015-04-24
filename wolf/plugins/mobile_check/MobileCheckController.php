@@ -22,99 +22,53 @@ class MobileCheckController extends PluginController {
 		$get_enable = Plugin::getSetting('enable', 'mobile_check');
 
 		$tablename = TABLE_PREFIX.'mobile_check';
-		if(isset($_POST['enable'])){ $enable = $_POST['enable']; } else { $enable = ''; }
-		if(isset($_POST['copyright'])){ $copyright = $_POST['copyright']; } else { $copyright = ''; }
-		if(isset($_POST['screen_width'])){ $screen_width = $_POST['screen_width']; } else { $screen_width = ''; }
-		if(isset($_POST['website_width'])){ $website_width = $_POST['website_width']; } else { $website_width = ''; }
-		if(isset($_POST['logo'])){ $logo = $_POST['logo']; } else { $logo = ''; }
-		if(isset($_POST['logo_url'])){ $logo_url = $_POST['logo_url']; } else { $logo_url = ''; }
-		if(isset($_POST['desktop_text'])){ $desktop_text = $_POST['desktop_text']; } else { $desktop_text = ''; }
-		if(isset($_POST['topnav'])){ $topnav = $_POST['topnav']; } else { $topnav = ''; }
-		if(isset($_POST['theme'])){ $theme = $_POST['theme']; } else { $theme = ''; }
-		if(isset($_POST['color_body_bg'])){ $color_body_bg = $_POST['color_body_bg']; } else { $color_body_bg = ''; }
-		if(isset($_POST['color_body_border'])){ $color_body_border = $_POST['color_body_border']; } else { $color_body_border = ''; }
-		if(isset($_POST['color_main_link'])){ $color_main_link = $_POST['color_main_link']; } else { $color_main_link = ''; }
-		if(isset($_POST['color_main_text'])){ $color_main_text = $_POST['color_main_text']; } else { $color_main_text = ''; }
-		if(isset($_POST['color_footer_link'])){ $color_footer_link = $_POST['color_footer_link']; } else { $color_footer_link = ''; }
-		if(isset($_POST['color_footer_text'])){ $color_footer_text = $_POST['color_footer_text']; } else { $color_footer_text = ''; }
-		if(isset($_POST['color_button_bg'])){ $color_button_bg = $_POST['color_button_bg']; } else { $color_button_bg = ''; }
-		if(isset($_POST['color_button_border'])){ $color_button_border = $_POST['color_button_border']; } else { $color_button_border = ''; }
-		if(isset($_POST['color_button_opacity'])){ $color_button_opacity = $_POST['color_button_opacity']; } else { $color_button_opacity = ''; }
-		if(isset($_POST['color_button_link'])){ $color_button_link = $_POST['color_button_link']; } else { $color_button_link = ''; }
-		if(isset($_POST['logo_maxwidth'])){ $logo_maxwidth = $_POST['logo_maxwidth']; } else { $logo_maxwidth = ''; }
-		if(isset($_POST['viewport'])){ $viewport = $_POST['viewport']; } else { $viewport = ''; }
-		if(isset($_POST['cachedcss'])){ $cachedcss = $_POST['cachedcss']; } else { $cachedcss = ''; }
-		
-		if(isset($_POST['color_content_bg'])){ $color_content_bg = $_POST['color_content_bg']; } else { $color_content_bg = ''; }
-		if(isset($_POST['color_content_h1'])){ $color_content_h1 = $_POST['color_content_h1']; } else { $color_content_h1 = ''; }
-		if(isset($_POST['color_content_text'])){ $color_content_text = $_POST['color_content_text']; } else { $color_content_text = ''; }
-		if(isset($_POST['color_content_link'])){ $color_content_link = $_POST['color_content_link']; } else { $color_content_link = ''; }
-		if(isset($_POST['content_font'])){ $content_font = $_POST['content_font']; } else { $content_font = ''; }
+		if(isset($_POST['enable'])){ $enable = $_POST['enable']; } else { $enable = Plugin::getSetting('enable', 'mobile_check'); }
+		if(isset($_POST['copyright'])){ $copyright = $_POST['copyright']; } else { $copyright = Plugin::getSetting('copyright', 'mobile_check'); }
+		if(isset($_POST['screen_width'])){ $screen_width = $_POST['screen_width']; } else { $screen_width = Plugin::getSetting('screen_width', 'mobile_check'); }
+		if(isset($_POST['website_width'])){ $website_width = $_POST['website_width']; } else { $website_width = Plugin::getSetting('website_width', 'mobile_check'); }
+		if(isset($_POST['desktop_text'])){ $desktop_text = $_POST['desktop_text']; } else { $desktop_text = Plugin::getSetting('desktop_text', 'mobile_check'); }
+		if(isset($_POST['topnav'])){ $topnav = $_POST['topnav']; } else { $topnav = Plugin::getSetting('topnav', 'mobile_check'); }
+		if(isset($_POST['theme'])){ $theme = $_POST['theme']; } else { $theme = Plugin::getSetting('theme', 'mobile_check'); }
 
-		if(isset($_POST['content_font_h1'])){ $content_font_h1 = $_POST['content_font_h1']; } else { $content_font_h1 = ''; }
-		if(isset($_POST['content_font_h2'])){ $content_font_h2 = $_POST['content_font_h2']; } else { $content_font_h2 = ''; }
-		if(isset($_POST['content_font_intro'])){ $content_font_intro = $_POST['content_font_intro']; } else { $content_font_intro = ''; }
+		if(isset($_POST['logo'])){ $logo = $_POST['logo']; } else { $logo = Plugin::getSetting('logo', 'mobile_check'); }
+		if(isset($_POST['logo_url'])){ $logo_url = $_POST['logo_url']; } else { $logo_url = Plugin::getSetting('logo_url', 'mobile_check'); }
+		if(isset($_POST['color_body_bg'])){ $color_body_bg = $_POST['color_body_bg']; } else { $color_body_bg = Plugin::getSetting('color_body_bg', 'mobile_check'); }
+		if(isset($_POST['color_body_border'])){ $color_body_border = $_POST['color_body_border']; } else { $color_body_border = Plugin::getSetting('color_body_border', 'mobile_check'); }
+		if(isset($_POST['color_main_link'])){ $color_main_link = $_POST['color_main_link']; } else { $color_main_link = Plugin::getSetting('color_main_link', 'mobile_check'); }
+		if(isset($_POST['color_main_text'])){ $color_main_text = $_POST['color_main_text']; } else { $color_main_text = Plugin::getSetting('color_main_text', 'mobile_check'); }
+		if(isset($_POST['color_footer_link'])){ $color_footer_link = $_POST['color_footer_link']; } else { $color_footer_link = Plugin::getSetting('color_footer_link', 'mobile_check'); }
+		if(isset($_POST['color_footer_text'])){ $color_footer_text = $_POST['color_footer_text']; } else { $color_footer_text = Plugin::getSetting('color_footer_text', 'mobile_check'); }
+		if(isset($_POST['color_button_bg'])){ $color_button_bg = $_POST['color_button_bg']; } else { $color_button_bg = Plugin::getSetting('color_button_bg', 'mobile_check'); }
+		if(isset($_POST['color_button_border'])){ $color_button_border = $_POST['color_button_border']; } else { $color_button_border = Plugin::getSetting('color_button_border', 'mobile_check'); }
+		if(isset($_POST['color_button_opacity'])){ $color_button_opacity = $_POST['color_button_opacity']; } else { $color_button_opacity = Plugin::getSetting('color_button_opacity', 'mobile_check'); }
+		if(isset($_POST['color_button_link'])){ $color_button_link = $_POST['color_button_link']; } else { $color_button_link = Plugin::getSetting('color_button_link', 'mobile_check'); }
+		if(isset($_POST['logo_maxwidth'])){ $logo_maxwidth = $_POST['logo_maxwidth']; } else { $logo_maxwidth = Plugin::getSetting('logo_maxwidth', 'mobile_check'); }
+		if(isset($_POST['viewport'])){ $viewport = $_POST['viewport']; } else { $viewport = Plugin::getSetting('viewport', 'mobile_check'); }
+		if(isset($_POST['cachedcss'])){ $cachedcss = $_POST['cachedcss']; } else { $cachedcss = Plugin::getSetting('cachedcss', 'mobile_check'); }
+		if(isset($_POST['color_content_bg'])){ $color_content_bg = $_POST['color_content_bg']; } else { $color_content_bg = Plugin::getSetting('color_content_bg', 'mobile_check'); }
+		if(isset($_POST['color_content_h1'])){ $color_content_h1 = $_POST['color_content_h1']; } else { $color_content_h1 = Plugin::getSetting('color_content_h1', 'mobile_check'); }
+		if(isset($_POST['color_content_text'])){ $color_content_text = $_POST['color_content_text']; } else { $color_content_text = Plugin::getSetting('color_content_text', 'mobile_check'); }
+		if(isset($_POST['color_content_link'])){ $color_content_link = $_POST['color_content_link']; } else { $color_content_link = Plugin::getSetting('color_content_link', 'mobile_check'); }
+		if(isset($_POST['content_font'])){ $content_font = $_POST['content_font']; } else { $content_font = Plugin::getSetting('content_font', 'mobile_check'); }
+		if(isset($_POST['content_font_h1'])){ $content_font_h1 = $_POST['content_font_h1']; } else { $content_font_h1 = Plugin::getSetting('content_font_h1', 'mobile_check'); }
+		if(isset($_POST['content_font_h2'])){ $content_font_h2 = $_POST['content_font_h2']; } else { $content_font_h2 = Plugin::getSetting('content_font_h2', 'mobile_check'); }
+		if(isset($_POST['content_font_intro'])){ $content_font_intro = $_POST['content_font_intro']; } else { $content_font_intro = Plugin::getSetting('content_font_intro', 'mobile_check'); }
+		if(isset($_POST['topnavhome'])){ $topnavhome = $_POST['topnavhome']; } else { $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check'); }
+		if(isset($_POST['background_url'])){ $background_url = $_POST['background_url']; } else { $background_url = Plugin::getSetting('background_url', 'mobile_check'); }
+		if(isset($_POST['homecontent'])){ $homecontent = $_POST['homecontent']; } else { $homecontent = Plugin::getSetting('homecontent', 'mobile_check'); }
+		if(isset($_POST['color_head_bg'])){ $color_head_bg = $_POST['color_head_bg']; } else { $color_head_bg = Plugin::getSetting('color_head_bg', 'mobile_check'); }
+		if(isset($_POST['navpos'])){ $navpos = $_POST['navpos']; } else { $navpos = Plugin::getSetting('navpos', 'mobile_check'); }
+		if(isset($_POST['homelogo'])){ $homelogo = $_POST['homelogo']; } else { $homelogo = Plugin::getSetting('homelogo', 'mobile_check'); }
+		if(isset($_POST['pagelogo'])){ $pagelogo = $_POST['pagelogo']; } else { $pagelogo = Plugin::getSetting('pagelogo', 'mobile_check'); }
+		if(isset($_POST['background_align'])){ $background_align = $_POST['background_align']; } else { $background_align = Plugin::getSetting('background_align', 'mobile_check'); }
+		if(isset($_POST['searchbox'])){ $searchbox = $_POST['searchbox']; } else { $searchbox = Plugin::getSetting('searchbox', 'mobile_check'); }
+		if(isset($_POST['logo_pos'])){ $logo_pos = $_POST['logo_pos']; } else { $logo_pos = Plugin::getSetting('logo_pos', 'mobile_check'); }
+		if(isset($_POST['sidebar'])){ $sidebar = $_POST['sidebar']; } else { $sidebar = Plugin::getSetting('sidebar', 'mobile_check'); }
+		if(isset($_POST['customcss'])){ $customcss = $_POST['customcss']; } else { $customcss = Plugin::getSetting('customcss', 'mobile_check'); }
+		if(isset($_POST['header_banner_home'])){ $header_banner_home = $_POST['header_banner_home']; } else { $header_banner_home = Plugin::getSetting('header_banner_home', 'mobile_check'); }
+		if(isset($_POST['header_banner'])){ $header_banner = $_POST['header_banner']; } else { $header_banner = Plugin::getSetting('header_banner', 'mobile_check'); }
 
-		if(isset($_POST['topnavhome'])){ $topnavhome = $_POST['topnavhome']; } else { $topnavhome = ''; }
-		if(isset($_POST['background_url'])){ $background_url = $_POST['background_url']; } else { $background_url = ''; }
-		if(isset($_POST['homecontent'])){ $homecontent = $_POST['homecontent']; } else { $homecontent = ''; }
-		if(isset($_POST['color_head_bg'])){ $color_head_bg = $_POST['color_head_bg']; } else { $color_head_bg = ''; }
-		if(isset($_POST['navpos'])){ $navpos = $_POST['navpos']; } else { $navpos = ''; }
-		if(isset($_POST['homelogo'])){ $homelogo = $_POST['homelogo']; } else { $homelogo = ''; }
-		if(isset($_POST['pagelogo'])){ $pagelogo = $_POST['pagelogo']; } else { $pagelogo = ''; }
-		if(isset($_POST['background_align'])){ $background_align = $_POST['background_align']; } else { $background_align = ''; }
-		if(isset($_POST['searchbox'])){ $searchbox = $_POST['searchbox']; } else { $searchbox = ''; }
-		if(isset($_POST['logo_pos'])){ $logo_pos = $_POST['logo_pos']; } else { $logo_pos = ''; }
-		if(isset($_POST['sidebar'])){ $sidebar = $_POST['sidebar']; } else { $sidebar = ''; }
-		if(isset($_POST['customcss'])){ $customcss = $_POST['customcss']; } else { $customcss = ''; }
-		if(isset($_POST['header_banner_home'])){ $header_banner_home = $_POST['header_banner_home']; } else { $header_banner_home = ''; }
-		if(isset($_POST['header_banner'])){ $header_banner = $_POST['header_banner']; } else { $header_banner = ''; }
-
-		if($logo == '') $logo = Plugin::getSetting('logo', 'mobile_check');
-		if($logo_url == '') $logo_url = Plugin::getSetting('logo_url', 'mobile_check');
-		if($color_body_bg == '') $color_body_bg = Plugin::getSetting('color_body_bg', 'mobile_check');
-		if($color_body_border == '') $color_body_border = Plugin::getSetting('color_body_border', 'mobile_check');
-		if($color_main_link == '') $color_main_link = Plugin::getSetting('color_main_link', 'mobile_check');
-		if($color_main_text == '') $color_main_text = Plugin::getSetting('color_main_text', 'mobile_check');
-		if($color_footer_link == '') $color_footer_link = Plugin::getSetting('color_footer_link', 'mobile_check');
-		if($color_footer_text == '') $color_footer_text = Plugin::getSetting('color_footer_text', 'mobile_check');
-		if($color_button_bg == '') $color_button_bg = Plugin::getSetting('color_button_bg', 'mobile_check');
-		if($color_button_border == '') $color_button_border = Plugin::getSetting('color_button_border', 'mobile_check');
-		if($color_button_link == '') $color_button_link = Plugin::getSetting('color_button_link', 'mobile_check');
-		if($logo_maxwidth == '') $logo_maxwidth = Plugin::getSetting('logo_maxwidth', 'mobile_check');
-		if($screen_width == '') $screen_width = Plugin::getSetting('screen_width', 'mobile_check');
-		if($website_width == '') $website_width = Plugin::getSetting('website_width', 'mobile_check');
-		if($cachedcss == '') $cachedcss = Plugin::getSetting('cachedcss', 'mobile_check');
-
-		if($color_content_bg == '') $color_content_bg = Plugin::getSetting('color_content_bg', 'mobile_check');
-		if($color_content_h1 == '') $color_content_h1 = Plugin::getSetting('color_content_h1', 'mobile_check');
-		if($color_content_text == '') $color_content_text = Plugin::getSetting('color_content_text', 'mobile_check');
-		if($color_content_link == '') $color_content_link = Plugin::getSetting('color_content_link', 'mobile_check');
-		//if($content_font == '') $content_font = Plugin::getSetting('content_font', 'mobile_check');
-
-		//if($content_font_h1 == '') $content_font_h1 = Plugin::getSetting('content_font_h1', 'mobile_check');
-		//if($content_font_h2 == '') $content_font_h2 = Plugin::getSetting('content_font_h2', 'mobile_check');
-		//if($content_font_intro == '') $content_font_intro = Plugin::getSetting('content_font_intro', 'mobile_check');
-
-		if($topnavhome == '') $topnavhome = Plugin::getSetting('topnavhome', 'mobile_check');
-		if($background_url == '') $background_url = Plugin::getSetting('background_url', 'mobile_check');
-		if($homecontent == '') $homecontent = Plugin::getSetting('homecontent', 'mobile_check');
-		if($color_head_bg == '') $color_head_bg = Plugin::getSetting('color_head_bg', 'mobile_check');
-		if($navpos == '') $navpos = Plugin::getSetting('navpos', 'mobile_check');
-		if($homelogo == '') $homelogo = Plugin::getSetting('homelogo', 'mobile_check');
-		if($pagelogo == '') $pagelogo = Plugin::getSetting('pagelogo', 'mobile_check');
-		if($background_align == '') $background_align = Plugin::getSetting('background_align', 'mobile_check');
-		if($searchbox == '') $searchbox = Plugin::getSetting('searchbox', 'mobile_check');
-		if($logo_pos == '') $logo_pos = Plugin::getSetting('logo_pos', 'mobile_check');
-		if($sidebar == '') $sidebar = Plugin::getSetting('sidebar', 'mobile_check');
-		if($customcss == '') $customcss = Plugin::getSetting('customcss', 'mobile_check');
-		if($header_banner_home == '') $header_banner_home = Plugin::getSetting('header_banner_home', 'mobile_check');
-		if($header_banner == '') $header_banner = Plugin::getSetting('header_banner', 'mobile_check');
-
-		//$color_button_link = '#ffffff';
-		//$logo_maxwidth = '160px';
 		$newcss = '';
-
 
 		function html2rgb($color){
 			if ($color[0] == '#')
@@ -212,12 +166,6 @@ class MobileCheckController extends PluginController {
 			//redirect(get_url('plugin/mobile_check/settings'));
 		}
 
-
-
-
-
-
-
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/toggle.js";
 		$toggletemplate = ob_get_contents();
@@ -261,12 +209,6 @@ class MobileCheckController extends PluginController {
 			Flash::set('error', $togglefilepath.' ... does not exist.');
 		}
 
-
-
-
-
-
-
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/nav.css";
 		$navtemplate = ob_get_contents();
@@ -309,12 +251,6 @@ class MobileCheckController extends PluginController {
 		} else {
 			Flash::set('error', $navfilepath.' ... does not exist.');
 		}
-
-
-
-
-
-
 
 		$settings = array(	'enable' => $enable,
 				  			'copyright' => $copyright,
@@ -365,9 +301,7 @@ class MobileCheckController extends PluginController {
 							'header_banner' => $header_banner);
 
 
-
 		if (Plugin::setAllSettings($settings, 'mobile_check')) {
-
 
 			/* Copy nav js required files (overwrite if exists, should images be updates) */
 			if($navpos == 'header'){
