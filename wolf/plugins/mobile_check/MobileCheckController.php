@@ -69,6 +69,8 @@ class MobileCheckController extends PluginController {
 		if(isset($_POST['header_banner'])){ $header_banner = $_POST['header_banner']; } else { $header_banner = Plugin::getSetting('header_banner', 'mobile_check'); }
 
 		$newcss = '';
+		
+		// TO DO: Move these tasks to new single function after the settings are saved to the database. This function can call values directly from database, so these tasks can be called from external scripts */
 
 		function html2rgb($color){
 			if ($color[0] == '#')
