@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '1.10.0'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '1.10.1'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
@@ -134,7 +134,6 @@ if(!function_exists('html2rgb')){
 			return false;
 	
 		$r = hexdec($r); $g = hexdec($g); $b = hexdec($b);
-	
 		return array($r, $g, $b);
 	}
 }
@@ -249,7 +248,8 @@ if(!function_exists('updateMobileCSS')){
 					$csssave = fopen($mobilecssfilepath,'w+');
 					// Update mobile.css if not empty and contains no php error notices.
 					if($mobilecss != '' && !stristr($mobilecss, '<b>Notice</b>:') && !stristr($mobilecss, ' on line <b>')){
-						$newcss = compressspaces($mobilecss);
+						//$newcss = compressspaces($mobilecss);
+						$newcss = $mobilecss;
 						fwrite($csssave,$newcss);
 					} else {
 						Flash::set('error', 'Errors in css template.');
@@ -419,7 +419,7 @@ if(!function_exists('updateMobileCSS')){
 				Flash::set('error', 'Failed to copy hamburger-retina.gif');
 			}
 
-			
+
 			return $settings;
 		
 }

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.1.0'); }
+if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.1.1'); }
 if (!defined('SIMPLE_BANNERS_ROOT')) { define('SIMPLE_BANNERS_ROOT', URI_PUBLIC.'wolf/plugins/simple_banners'); }
 Plugin::setInfos(array(
 	'id'					=> 'simple_banners',
@@ -23,20 +23,30 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 }
 
 	if(!function_exists('bannerimgs')){
-		function bannerimgs($folder){
+		function bannerimgs($folder,$id=''){
 	        //$icon_set_array = array();
 	        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
-	        $output = '';
+	        $output = ''; $jsoutput = '';
 	        $folder = '/public/images/'.$folder;
 	        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
+	        $i = 1;
 	        if($handle = opendir($path)) {
 	            while (false !== ($file = readdir($handle))) {
 	                if(!in_array($file, $blacklist)) {
+						if($i == 1){
+							$output .= '<img class="blank" src="'.$folder.'/'.$file.'" alt="" />';
+							$filename = substr($file, 0 , (strrpos($file, ".")));
+							$jsoutput .= 'document.write(\'<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />\');';
+						} else {
+							$filename = substr($file, 0 , (strrpos($file, ".")));
+							$jsoutput .= 'document.write(\'<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />\');';
+						}
 	                    //$icon_set_array[] = array(ucfirst($file), $file);
-	                    $output .= '<img src="'.$folder.'/'.$file.'" alt="" />';
+	                    $i++;
 	                }
 	            }
 	            closedir($handle);
+	            $output .= "\n<script>".$jsoutput."</script>";
 	        }
             return $output;
 		}
@@ -62,20 +72,171 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
             if($display == 'show'){
                 if($images_home_FOLDER != '' && $page->slug == ''){
 					//echo 'Home Banner Folder: ' . $home_folder;
-					$home_images = bannerimgs($images_home_FOLDER);
-					echo "\n".'<div class="simplebanners">';
-					echo $home_images;
+					$home_images = bannerimgs($images_home_FOLDER,'home');
+					echo "\n".'<div class="simplebanner home">'."\n";
+					echo $home_images."\n";
 					echo '</div>'."\n";
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
 					//echo 'Main Banner Folder: ' . $main_folder;
-					$main_images = bannerimgs($images_main_FOLDER);
-					echo "\n".'<div class="simplebanners">';
-					echo $main_images;
+					$main_images = bannerimgs($images_main_FOLDER,'main');
+					echo "\n".'<div class="simplebanner main">'."\n";
+					echo $main_images."\n";
 					echo '</div>'."\n";
 				}
             }
 
 		}
+	}
+
+	/* Simple Banner CSS - Used for Mobile Styling Default */
+	if(!function_exists('simplebannerCSS')){
+		function simplebannerCSS(){
+
+			$page = Page::findById(1);
+
+			$imgs = '';
+            $display = Plugin::getSetting('display', 'simple_banners');
+            $bannerduration = Plugin::getSetting('bannerduration', 'simple_banners');
+            $images_home_FOLDER = Plugin::getSetting('images_home_FOLDER', 'simple_banners');
+	        $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners');
+
+	        $home_folder = '/public/images/'.$images_home_FOLDER;
+	        $main_folder = '/public/images/'.$images_main_FOLDER;
+
+			$output = '';
+			$keyframes = '';
+
+            if($display == 'show'){
+                if($images_home_FOLDER != '' && $page->slug == ''){
+			        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
+			        $i = 0; $homeimgs = 0;
+			        $folder = '/public/images/'.$images_home_FOLDER;
+			        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
+			        if($handle = opendir($path)) {
+			            while (false !== ($file = readdir($handle))) {
+			                if(!in_array($file, $blacklist)) {
+			                    $i++;
+			                }
+			            }
+			            closedir($handle);
+			            for ($p=1; $p <= $i; $p++){
+							$child = ($i - $p) + 2;
+							$duration = (($p - 1) * $bannerduration) + $bannerduration;
+							/*
+							if($p == 1){
+								$duration = 0;
+							}
+							*/
+							$imgs .= '.js .simplebanner.home img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
+							$homeimgs++;
+						}
+
+						$division = 1 / $p;
+						$res = ceil((round($division * 100) * $bannerduration) / $p);
+						
+						/* Match percentages to number of images */
+						$keyframes .= '@-webkit-keyframes home {'."\n";
+						$keyframes .= '  0%{opacity:0;}'."\n";
+						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
+						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
+						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
+						$keyframes .= '}'."\n";
+
+						$keyframes .= '@keyframes home {'."\n";
+						$keyframes .= '  0%{opacity:0;}'."\n";
+						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
+						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
+						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
+						$keyframes .= '}'."\n";
+
+			        }
+				}
+                if($images_main_FOLDER != '' && $page->slug != ''){
+			        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
+			        $i = 0; $mainimgs = 0;
+			        $folder = '/public/images/'.$images_main_FOLDER;
+			        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
+			        if($handle = opendir($path)) {
+			            while (false !== ($file = readdir($handle))) {
+			                if(!in_array($file, $blacklist)) {
+			                    $i++;
+			                }
+			            }
+			            closedir($handle);
+			            for ($p=1; $p <= $i; $p++){
+							$child = ($i - $p) + 2;
+							$duration = (($p - 1) * $bannerduration) + $bannerduration;
+							/*
+							if($p == 1){
+								$duration = 0;
+							}
+							*/
+							$imgs .= '.js .simplebanner.main img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
+							$mainimgs++;
+						}
+
+						$division = 1 / $p;
+						$res = ceil((round($division * 100) * $bannerduration) / $p);
+						
+						/* Match percentages to number of images */
+						$keyframes .= '@-webkit-keyframes main {'."\n";
+						$keyframes .= '  0%{opacity:0;}'."\n";
+						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
+						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
+						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
+						$keyframes .= '}'."\n";
+
+						$keyframes .= '@keyframes main {'."\n";
+						$keyframes .= '  0%{opacity:0;}'."\n";
+						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
+						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
+						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
+						$keyframes .= '}'."\n";
+
+			        }
+				}
+				
+				echo '.simplebanner {'."\n";
+				echo '	position:relative;'."\n";
+				echo '	overflow:hidden'."\n";
+				echo '}'."\n";
+				
+				echo $keyframes;
+
+				echo '.js .simplebanner img {'."\n";
+				echo '	position:absolute;'."\n";
+				echo '	left:0;'."\n";
+				echo '	top:0;'."\n";
+				/* Number of images by bannerduration */
+				echo '	opacity:0;'."\n";
+				echo '}'."\n";
+
+				if($homeimgs > 0){
+					echo '.js .simplebanner.home img {'."\n";
+					echo '	-webkit-animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
+					echo '	animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
+					echo '}'."\n";
+				}
+				if($mainimgs > 0){
+					echo '.js .simplebanner.main img {'."\n";
+					echo '	-webkit-animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
+					echo '	animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
+					echo '}'."\n";
+				}
+	
+				echo '.js .simplebanner img.blank {'."\n";
+				echo '	position:relative;'."\n";
+				echo '  -webkit-animation:none;'."\n";
+				echo '  animation:none;'."\n";
+				echo '  opacity:0 !important;'."\n";
+				echo '}'."\n";
+	
+				echo $imgs;
+
+            }
+
+		}
+
 	}
 

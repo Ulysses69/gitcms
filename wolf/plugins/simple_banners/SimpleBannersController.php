@@ -28,9 +28,12 @@ class SimpleBannersController extends PluginController {
 				  			'images_home_FOLDER' => $images_home_FOLDER,
 				  			'images_main_FOLDER' => $images_main_FOLDER);
 		if (Plugin::setAllSettings($settings, 'simple_banners')) {
+			/* Update mobile CSS */
+			if(function_exists('updateMobileCSS')){
+				updateMobileCSS();
+			}
 			Flash::set('success', 'SimpleBanners - '.__('plugin settings saved.'));
 			redirect(get_url('plugin/simple_banners/settings'));
-			/* Save mobile styles */
 		} else {
 			Flash::set('error', 'SimpleBanners - '.__('plugin settings not saved!'));
 			redirect(get_url('plugin/simple_banners/settings'));
