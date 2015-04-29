@@ -90,7 +90,7 @@ foreach($users as $user): ?>
 	  <td class="user">
 		<img src="<?php
 		
-		//$username = $user->username;
+  //$username = $user->username;
 		$username = 'user_'.str_replace(' ', '-', strtolower($user->name));
 	
 		if(AuthUser::hasPermission('client')){

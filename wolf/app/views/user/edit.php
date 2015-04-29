@@ -44,45 +44,84 @@
 <h2>
 <img src="<?php
 
-		$icon = '';
-		$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
-		$theuser = $user->username;
-		if($theuser != ''){
-			if(in_array('client', $user->getPermissions())){
-				if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$theuser.'.jpg')){
-					$icon = '/public/images/users/'.$user->username.'.jpg';
-				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$theuser.'.png')){
-					$icon = '/public/images/users/'.$user->username.'.png';
-				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$theuser.'.gif')){
-					$icon = '/public/images/users/'.$user->username.'.gif';
-				} else {
-					if (@fclose(@fopen($sourceurl.$user->username.'.png', 'r'))) {
-						$icon = $sourceurl.$user->username.'.png';
-					} else if (@fclose(@fopen($sourceurl.$user->username.'.jpg', 'r'))) {
-						$icon = $sourceurl.$user->username.'.jpg';
-					} else if (@fclose(@fopen($sourceurl.$user->username.'.gif', 'r'))) {
-						$icon = $sourceurl.$user->username.'.gif';
-					} else {
-						//echo $sourceurl.'user.png';
-						$icon = '/public/images/users/user.png';
-					} 
-				}
+if(!function_exists('ExternalFileExists')){
+	function ExternalFileExists($location,$misc_content_type = false){
+		$ch = curl_init($location);
+		curl_setopt_array($ch, [
+		CURLOPT_AUTOREFERER    => true,
+		CURLOPT_CONNECTTIMEOUT => 5,
+		CURLOPT_ENCODING       => "",
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 1,
+		CURLOPT_NOBODY         => true,
+		CURLOPT_SSL_VERIFYHOST => false,
+		CURLOPT_SSL_VERIFYPEER => false,
+		CURLOPT_TIMEOUT        => 20,
+		CURLOPT_FAILONERROR	   => true,
+		// It's very important to let other webmasters know who's probing their servers.
+		CURLOPT_USERAGENT      => "Mozilla/5.0 (compatible; StackOverflow/0.0.1; +https://codereview.stackexchange.com/)",
+		]);
+		curl_exec($ch);
+		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		if ($code !== 200) {
+			throw new LogicException("The URL '".$location."' is unreachable.");
+		}
+		return TRUE;
+	}
+}
+
+		$avatar = '';
+		//$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
+		$sourceurl = 'https://cdn.shopify.com/s/files/1/0671/3113/t/11/assets/';
+
+		//$username = $user->username;
+		$username = 'user_'.str_replace(' ', '-', strtolower($user->name));
+	
+		if(AuthUser::hasPermission('client')){
+			if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.png')){
+				$avatar = '/public/images/users/'.$username.'.png';
+			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.jpg')){
+				$avatar = '/public/images/users/'.$username.'.jpg';
+			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.gif')){
+				$avatar = '/public/images/users/'.$username.'.gif';
 			} else {
-				if (@fclose(@fopen($sourceurl.$theuser.'.png', 'r'))) {
-					$icon = $sourceurl.$user->username.'.png';
-				} else if (@fclose(@fopen($sourceurl.$theuser.'.jpg', 'r'))) {
-					$icon = $sourceurl.$user->username.'.jpg';
-				} else if (@fclose(@fopen($sourceurl.$theuser.'.gif', 'r'))) {
-					$icon = $sourceurl.$theuser.'.gif';
+				if (ExternalFileExists($sourceurl.$username.'.png')) {
+					$avatar = $sourceurl.$username.'.png';
+				} else if (ExternalFileExists($sourceurl.$username.'.jpg')) {
+					$avatar = $sourceurl.$username.'.jpg';
+				} else if (ExternalFileExists($sourceurl.$username.'.gif')) {
+					$avatar = $sourceurl.$username.'.gif';
 				} else {
-					//echo $sourceurl.'user.png';
-					$icon = '/public/images/users/user.png';
-				} 
+					$avatar = $sourceurl.'user.png';
+				}
 			}
 		} else {
-			$icon = '/public/images/users/user.png';
+			$png = $sourceurl.$username.'.png';
+			$jpg = $sourceurl.$username.'.jpg';
+			$gif = $sourceurl.$username.'.gif';
+
+			if(function_exists('file_get_contents')){
+				//echo '<!-- File Get Contents Supported -->';
+				if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
+					//echo '<!-- Get Contents -->';
+					// The image exists
+					if(stristr($png,'.png')){ $avatar = $png; } else
+					if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
+					if(stristr($gif,'.gif')){ $avatar = $gif; }
+				} else {
+					//echo '<!-- No Image Exists -->';
+					// The image doesn't exist
+					$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
+				}
+			} else {
+				 //echo '<!-- File Get Contents Not Supported -->';
+			}
+	
 		}
-		echo $icon;
+
+		echo $avatar;
+
 		?>" align="middle" alt="<?php echo $user->username; ?> icon" class="avatar" />
 <?php if($action=='edit') { echo __($user->name); } else { echo __('New user');} ?></h2>
 <form action="<?php echo $action=='edit' ? get_url('user/edit/'.$user->id): get_url('user/add'); ; ?>" method="post">
