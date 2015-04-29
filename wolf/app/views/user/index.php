@@ -53,37 +53,34 @@
 <?php 
 
 if(!function_exists('ExternalFileExists')){
-	  function ExternalFileExists($location,$misc_content_type = false){
-
-		$fileType = mb_strtolower(pathinfo($location, PATHINFO_EXTENSION));
-		// Set external file extension to mime type standard
-		if($fileType == 'jpg'){ $fileType = 'jpeg'; }
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $location);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
-		curl_setopt($curl, CURLOPT_HEADER, TRUE);
-		curl_setopt($curl, CURLOPT_NOBODY, TRUE);
-		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
-		curl_setopt($curl, CURLOPT_TIMEOUT_MS, 1000);
-		curl_setopt($curl, CURLOPT_FAILONERROR, TRUE);
-
-		if(curl_exec($curl) !== FALSE){
-			$statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-			$contentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
-			if($statusCode == 404 || !stristr($contentType, $fileType)){
-				return FALSE;
-			} else {
-				return TRUE;
-			}
-		} else {
-			return FALSE;
+	function ExternalFileExists($location,$misc_content_type = false){
+		$ch = curl_init($location);
+		curl_setopt_array($ch, [
+		CURLOPT_AUTOREFERER    => true,
+		CURLOPT_CONNECTTIMEOUT => 5,
+		CURLOPT_ENCODING       => "",
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_MAXREDIRS      => 1,
+		CURLOPT_NOBODY         => true,
+		CURLOPT_SSL_VERIFYHOST => false,
+		CURLOPT_SSL_VERIFYPEER => false,
+		CURLOPT_TIMEOUT        => 20,
+		CURLOPT_FAILONERROR	   => true,
+		// It's very important to let other webmasters know who's probing their servers.
+		CURLOPT_USERAGENT      => "Mozilla/5.0 (compatible; StackOverflow/0.0.1; +https://codereview.stackexchange.com/)",
+		]);
+		curl_exec($ch);
+		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+		if ($code !== 200) {
+			throw new LogicException("The URL '".$location."' is unreachable.");
 		}
-
+		return TRUE;
 	}
 }
-$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
+
+//$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
+$sourceurl = 'https://cdn.shopify.com/s/files/1/0671/3113/t/11/assets/';
 
 foreach($users as $user): ?>
 
@@ -91,52 +88,50 @@ foreach($users as $user): ?>
 
 	<tr class="node <?php echo odd_even(); ?>">
 	  <td class="user">
-		<img src="<?php 
-
-		$avatar = '';
-		$png = $sourceurl.$user->username.'.png';
-		$jpg = $sourceurl.$user->username.'.jpg';
-		$gif = $sourceurl.$user->username.'.gif';
+		<img src="<?php
 		
-		/* Always use source URL first for non-clients */
-		if(!in_array('client', $user->getPermissions())){
-			if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
-				/* Check external images exist */
-				if(stristr($png,'.png')){ $avatar = $png; } else
-				if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
-				if(stristr($gif,'.gif')){ $avatar = $gif; }
+		//$username = $user->username;
+		$username = 'user_'.str_replace(' ', '-', strtolower($user->name));
+	
+		if(AuthUser::hasPermission('client')){
+			if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.png')){
+				$avatar .= '/public/images/users/'.$username.'.png';
+			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.jpg')){
+				$avatar .= '/public/images/users/'.$username.'.jpg';
+			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$username.'.gif')){
+				$avatar .= '/public/images/users/'.$username.'.gif';
 			} else {
-			  	/* Check local images exist */
-				if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.jpg')){
-					$avatar = '/public/images/users/'.$user->username.'.jpg';
-				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.png')){
-					$avatar = '/public/images/users/'.$user->username.'.png';
-				} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.gif')){
-					$avatar = '/public/images/users/'.$user->username.'.gif';
+				if (ExternalFileExists($sourceurl.$username.'.png')) {
+					$avatar = $sourceurl.$username.'.png';
+				} else if (ExternalFileExists($sourceurl.$username.'.jpg')) {
+					$avatar = $sourceurl.$username.'.jpg';
+				} else if (ExternalFileExists($sourceurl.$username.'.gif')) {
+					$avatar = $sourceurl.$username.'.gif';
+				} else {
+					$avatar = $sourceurl.'user.png';
+				}
+			}
+		} else {
+			$png = $sourceurl.$username.'.png';
+			$jpg = $sourceurl.$username.'.jpg';
+			$gif = $sourceurl.$username.'.gif';
+
+			if(function_exists('file_get_contents')){
+				//echo '<!-- File Get Contents Supported -->';
+				if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
+					//echo '<!-- Get Contents -->';
+					// The image exists
+					if(stristr($png,'.png')){ $avatar = $png; } else
+					if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
+					if(stristr($gif,'.gif')){ $avatar = $gif; }
 				} else {
 					// The image doesn't exist
 					$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
 				}
-			}
-		}
-
-		/* Use local URL for clients */
-		if(in_array('client', $user->getPermissions())){
-			if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.jpg')){
-				$avatar = '/public/images/users/'.$user->username.'.jpg';
-			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.png')){
-				$avatar = '/public/images/users/'.$user->username.'.png';
-			} else if(file_exists($_SERVER{'DOCUMENT_ROOT'}.'/public/images/users/'.$user->username.'.gif')){
-				$avatar = '/public/images/users/'.$user->username.'.gif';
 			} else {
-				if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
-				if(stristr($png,'.png')){ $avatar = $png; } else
-				if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else
-				if(stristr($gif,'.gif')){ $avatar = $gif; }
-				} else {
-					$avatar = URL_PUBLIC.ADMIN_DIR.'/images/user.png';
-				}
+				 echo '<!-- File Get Contents Not Supported -->';
 			}
+	
 		}
 		
 		echo $avatar;
