@@ -52,16 +52,23 @@ if (!defined('IN_CMS')) { exit(); }
 ?>
 <div class="box help">
 <!-- <h1><?php echo __('Menus'); ?></h1> -->
+<p>Child li id values are generated from ul id. By default, ul id is suffixed to li id with <b>-</b>, unless <b>-</b> is added to the end of ul id value (consequently prefixing ul id and <b>-</b> to li id).</p>
 
 <h2 id="breadcrumbs">Breadcrumbs</h2>
 <p>Example 1 Returns breadcrumbs with custom seperator.</p>
 <code>$this->breadcrumbs('&amp;gt;')</code>
 
 <h2 id="fullmenu">Full Menu</h2>
+
 <p>Example 1 Displays full multi-level menu and excludes a dozen pages (expects slug values).</p>
 <code>fullmenu($this,'','',array('home','accessibility','terms','privacy','copyright'))</code>
-<p>Example 2 Displays full multi-level menu starting from specified level (services).</p>
+
+<p>Example 2 prefixes 'nav-'' to li id values (instead of suffixing '-nav').</p>
+<code>fullmenu($this,'','',array('home','accessibility','terms','privacy','copyright'), true,'nav-')</code>
+
+<p>Example 3 Displays full multi-level menu starting from specified level (services).</p>
 <code>fullmenu($this,'services/')</code>
+
 
 <h2 id="simplemenu">Simple Menu</h2>
 <?php if(Plugin::isEnabled('related_pages') == true){ ?>
@@ -70,10 +77,13 @@ if (!defined('IN_CMS')) { exit(); }
 <p>Example 1 Displays top single-level menu.</p>
 <code>simplemenu($this)</code>
 
-<p>Example 2 Displays menu with ul id 'nav' and excludes pages (expects slug values) .</p>
+<p>Example 2 Displays menu with ul id 'nav' and excludes pages (expects slug values).</p>
 <code>simplemenu($this,'Menu heading',array('home','accessibility','terms','privacy','copyright'),'nav')</code>
 
-<p>Example 3 Displays menu without ul.</p>
+<p>Example 3 prefixes 'nav-'' to li id values (instead of suffixing '-nav').</p>
+<code>simplemenu($this,'Menu heading',array('home','accessibility','terms','privacy','copyright'),'nav-')</code>
+
+<p>Example 4 Displays menu without ul.</p>
 <code>simplemenu($this,'Menu heading',array('home','accessibility','terms','privacy','copyright'),'',false)</code>
 
 <h2 id="sidemenu">Side Menu</h2>
