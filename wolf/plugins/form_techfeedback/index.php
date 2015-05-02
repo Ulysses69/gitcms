@@ -132,28 +132,6 @@ function techfeedbackForm($emailOut,$nameOut,$subject="Feedback",$heading="",$di
 			<fieldset>
 			<<?php echo $grouptag; ?>>Your feedback</<?php echo $grouptag; ?>>
 
-				<!--
-				<label for="thisfeedback_type"<?php echo $feedback_type_class;?> id="feedback_type"><span>Feedback Type</span>
-				<select id="thisfeedback_type" name="feedback_type">
-				<?php
-				$feedback_type_array = array(
-				array ('Comment', 'Comment'),
-				array ('Suggestion', 'Suggestion'),
-				array ('Complaint', 'Complaint'),
-				array ('Report Fault', 'Report Fault'));
-				foreach($feedback_type_array as $subarray) {
-					list($text, $val) = $subarray;
-					if($val == $feedback_type){
-						echo "<option value=\"$val\" selected>$text</option>";
-					} else {
-						echo "<option value=\"$val\">$text</option>";
-					}
-				}
-				?>
-				</select>
-				</label>
-				-->
-
 				<div class="group">
 
 					<label for="thisyour_feedback"<?php echo $your_feedback_class;?> id="your_feedback"><span>Message<?php echo $your_feedback_req;?></span>

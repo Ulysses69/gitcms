@@ -13,8 +13,7 @@
  *
  */
 
-class DashboardLogEntry extends Record 
-{
+class DashboardLogEntry extends Record {
 	const TABLE_NAME = 'dashboard_log';
 	
 	public  $log_time;
@@ -23,16 +22,16 @@ class DashboardLogEntry extends Record
 	public  $message;
 	public  $username;
 
-	public function beforeSave()
-	{  
+	public function beforeSave() {  
 		$this->created_on = date('Y-m-d H:i:s');
-		$this->username   = AuthUser::getRecord()->name;
-		$this->message	= str_replace(':username', $this->username, $this->message);
+		if(isset(AuthUser::getRecord()->name)){
+			$this->username = AuthUser::getRecord()->name;
+			$this->message	= str_replace(':username', $this->username, $this->message);
+		}
 		return true;
 	}
 	
-	public function priority($format='number') {
-		
+	public function priority($format='number') {		
 		$priority[0] = 'emerg';
 		$priority[1] = 'alert';
 		$priority[2] = 'crit';
