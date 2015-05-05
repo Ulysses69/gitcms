@@ -97,7 +97,7 @@ if (DEBUG == false && isWritable($config_file)) {
     if (substr(PHP_OS, 0, 3) != 'WIN') {
         echo '<html><head><title>Server work in progress</title></head><body>';
         echo '<h1>This website is currently being serviced</h1>';
-        echo '<p><strong>Status:</strong>it has been temporarily disabled.</p>';
+        echo '<p><strong>Status:</strong> it has been temporarily disabled.</p>';
         echo '<p><strong>Reason:</strong> the administrator needs to complete service work.</p>';
         echo '</body></html>';
         exit();

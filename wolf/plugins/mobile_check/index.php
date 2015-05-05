@@ -248,8 +248,11 @@ if(!function_exists('updateMobileCSS')){
 					$csssave = fopen($mobilecssfilepath,'w+');
 					// Update mobile.css if not empty and contains no php error notices.
 					if($mobilecss != '' && !stristr($mobilecss, '<b>Notice</b>:') && !stristr($mobilecss, ' on line <b>')){
-						//$newcss = compressspaces($mobilecss);
-						$newcss = $mobilecss;
+						if(DEBUG == true){
+							$newcss = $mobilecss;
+						} else {
+							$newcss = compressspaces($mobilecss);							
+						}
 						fwrite($csssave,$newcss);
 					} else {
 						Flash::set('error', 'Errors in css template.');

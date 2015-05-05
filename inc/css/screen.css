@@ -189,7 +189,7 @@ li.selected li.selected a.click {
 	position: static;
 }
 #content ul.setThumbs {
-	float: left;
+	float: none;
 	position: relative;
 	padding: 0;
 	margin: 0 0 0 0;

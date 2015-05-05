@@ -36,17 +36,17 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 						if($i == 1){
 							$output .= '<img class="blank" src="'.$folder.'/'.$file.'" alt="" />';
 							$filename = substr($file, 0 , (strrpos($file, ".")));
-							$jsoutput .= 'document.write(\'<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />\');';
+							$jsoutput .= '<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />';
 						} else {
 							$filename = substr($file, 0 , (strrpos($file, ".")));
-							$jsoutput .= 'document.write(\'<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />\');';
+							$jsoutput .= '<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />';
 						}
 	                    //$icon_set_array[] = array(ucfirst($file), $file);
 	                    $i++;
 	                }
 	            }
 	            closedir($handle);
-	            $output .= "\n<script>".$jsoutput."</script>";
+	            $output .= "\n<script>document.write('<div class=\"slides\">".$jsoutput."</div>');</script>";
 	        }
             return $output;
 		}
@@ -96,6 +96,9 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			$page = Page::findById(1);
 
 			$imgs = '';
+			$homeimgs = 0;
+			$mainimgs = 0;
+
             $display = Plugin::getSetting('display', 'simple_banners');
             $bannerduration = Plugin::getSetting('bannerduration', 'simple_banners');
             $images_home_FOLDER = Plugin::getSetting('images_home_FOLDER', 'simple_banners');
@@ -110,7 +113,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
             if($display == 'show'){
                 if($images_home_FOLDER != '' && $page->slug == ''){
 			        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
-			        $i = 0; $homeimgs = 0;
+			        $i = 0;
 			        $folder = '/public/images/'.$images_home_FOLDER;
 			        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
 			        if($handle = opendir($path)) {
@@ -121,14 +124,14 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			            }
 			            closedir($handle);
 			            for ($p=1; $p <= $i; $p++){
-							$child = ($i - $p) + 2;
-							$duration = (($p - 1) * $bannerduration) + $bannerduration;
+							$child = ($i - $p) + 1;
+							$duration = (($p - 2) * $bannerduration) + $bannerduration;
 							/*
 							if($p == 1){
 								$duration = 0;
 							}
 							*/
-							$imgs .= '.js .simplebanner.home img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
+							$imgs .= '.simplebanner.home .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
 							$homeimgs++;
 						}
 
@@ -154,7 +157,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
 			        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
-			        $i = 0; $mainimgs = 0;
+			        $i = 0;
 			        $folder = '/public/images/'.$images_main_FOLDER;
 			        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
 			        if($handle = opendir($path)) {
@@ -165,14 +168,14 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			            }
 			            closedir($handle);
 			            for ($p=1; $p <= $i; $p++){
-							$child = ($i - $p) + 2;
-							$duration = (($p - 1) * $bannerduration) + $bannerduration;
+							$child = ($i - $p) + 1;
+							$duration = (($p - 2) * $bannerduration) + $bannerduration;
 							/*
 							if($p == 1){
 								$duration = 0;
 							}
 							*/
-							$imgs .= '.js .simplebanner.main img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
+							$imgs .= '.simplebanner.main .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
 							$mainimgs++;
 						}
 
@@ -204,22 +207,22 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				
 				echo $keyframes;
 
-				echo '.js .simplebanner img {'."\n";
+				echo '.simplebanner .slides img {'."\n";
 				echo '	position:absolute;'."\n";
 				echo '	left:0;'."\n";
 				echo '	top:0;'."\n";
-				/* Number of images by bannerduration */
 				echo '	opacity:0;'."\n";
+				/* Number of images by bannerduration */
 				echo '}'."\n";
 
 				if($homeimgs > 0){
-					echo '.js .simplebanner.home img {'."\n";
+					echo '.simplebanner.home .slides img {'."\n";
 					echo '	-webkit-animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
 					echo '	animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
 					echo '}'."\n";
 				}
 				if($mainimgs > 0){
-					echo '.js .simplebanner.main img {'."\n";
+					echo '.simplebanner.main .slides img {'."\n";
 					echo '	-webkit-animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
 					echo '	animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
 					echo '}'."\n";
