@@ -57,15 +57,16 @@ if(!function_exists('ExternalFileExists')){
 		$ch = curl_init($location);
 		curl_setopt_array($ch, [
 		CURLOPT_AUTOREFERER    => true,
-		CURLOPT_CONNECTTIMEOUT => 5,
+		CURLOPT_CONNECTTIMEOUT => 20,
 		CURLOPT_ENCODING       => "",
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_MAXREDIRS      => 1,
 		CURLOPT_NOBODY         => true,
 		CURLOPT_SSL_VERIFYHOST => false,
 		CURLOPT_SSL_VERIFYPEER => false,
-		CURLOPT_TIMEOUT        => 20,
+		CURLOPT_TIMEOUT        => 1000,
 		CURLOPT_FAILONERROR	   => true,
+		CURLOPT_FAILONERROR    => true,
 		// It's very important to let other webmasters know who's probing their servers.
 		CURLOPT_USERAGENT      => "Mozilla/5.0 (compatible; StackOverflow/0.0.1; +https://codereview.stackexchange.com/)",
 		]);

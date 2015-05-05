@@ -58,7 +58,9 @@ $messages = array( );
 				$cell		  = trim( $cell );
 
 
-				$column_name = $structure['header'][$key];
+				//if (array_key_exists('header', $structure)) {
+					$column_name = $structure['header'][$key];
+				//}
 
 				if ( ($column_name === 'slug') && $valid_slug !== $cell ) {
 					$cell_override = CsvImportController::slugify( $cell );

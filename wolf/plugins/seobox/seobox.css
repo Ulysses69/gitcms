@@ -64,3 +64,5 @@
 #body_plugin_seobox #content fieldset fieldset legend {
 	font-size: 90%;
 }
+
+#body_page_edit #div-title span { position:absolute;z-index:300;background:yellow;color:#000; }
