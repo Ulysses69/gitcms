@@ -1,6 +1,7 @@
 <?php
 //$rows = Plugin::getSetting('rows', 'jscripts');
 $rows = 9;
+$minify = 'true';
 ?>
 <form action="<?php echo get_url('plugin/jscripts/save_settings'); ?>" method="post">
 	<input name="rows" id="rows" type="hidden" value="<?php echo $rows;?>" />

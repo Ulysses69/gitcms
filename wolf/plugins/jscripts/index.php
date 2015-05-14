@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.4'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.5'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -104,9 +104,11 @@ function buildscripts($page, $insertref, $checkup = false){
 				if($insertref == $insert){
 
 					//echo '<!-- buildscripts: insertref = '.$insertref.' and insert = '.$insert." -->\n";
+					
+					$cachedscript = $thisscript; if(function_exists('cachescript')){ $cachedscript = cachescript($thisscript); }
 	
 					if(stristr($thisscript,'.js')){
-						$scripts .= '<script'.$script_type.' src="'.cachescript($thisscript).'"'.$defer.'></script>'."\n";
+						$scripts .= '<script'.$script_type.' src="'.$cachedscript.'"'.$defer.'></script>'."\n";
 						// Serve jQuery by CDN or default to local
 						if(stristr($scripts,'ajax.googleapis.com/ajax/libs/jquery')){
 							$jq = '<script'.$script_type.'>';
@@ -120,7 +122,7 @@ function buildscripts($page, $insertref, $checkup = false){
 						//echo '<!-- buildscripts: scripts = '.$scripts." -->\n";
 	
 					} else if(stristr($thisscript,'.css')){
-						$scripts .= '<link type="text/css" href="'.cachescript($thisscript).'" rel="stylesheet" media="screen" />'."\n";
+						$scripts .= '<link type="text/css" href="'.$cachedscript.'" rel="stylesheet" media="screen" />'."\n";
 						//echo '<!-- buildscripts: scripts = '.$scripts." -->\n";
 	
 					} else {
