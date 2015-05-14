@@ -40,14 +40,14 @@
 
 
 <?php if(!AuthUser::hasPermission('client') && Plugin::isEnabled('dashboard') == true && Plugin::isEnabled('maintenance')) { ?>
-<p class="button"><a href="/admin/plugin/maintenance"><img src="/wolf/plugins/dashboard/img/keys.png" align="middle" alt="maintenance icon" /><?php echo __('Access'); ?></a></p>
+<p class="button"><a href="/<?php echo ADMIN_DIR; ?>/plugin/maintenance"><img src="/wolf/plugins/dashboard/img/keys.png" align="middle" alt="maintenance icon" /><?php echo __('Access'); ?></a></p>
 <?php } ?>
 
 
 <?php if(Plugin::isEnabled('registered_users') == true){ ?>
-<p class="button"><a href="/admin/plugin/registered_users/settings"><img src="/wolf/plugins/registered_users/images/settings.png" align="middle" alt="settings icon" /><?php echo __('Settings'); ?></a></p>
-<p class="button"><a href="/admin/plugin/registered_users/groups"><img src="/wolf/plugins/registered_users/images/groups.png" align="middle" alt="user groups icon" /><?php echo __('User Groups'); ?></a></p><?php } ?>
-<p class="button"><a href="/admin/user"><img src="/wolf/plugins/registered_users/images/users.png" align="middle" alt="users icon" /><?php echo __('Users'); ?></a></p>
+<p class="button"><a href="/<?php echo ADMIN_DIR; ?>/plugin/registered_users/settings"><img src="/wolf/plugins/registered_users/images/settings.png" align="middle" alt="settings icon" /><?php echo __('Settings'); ?></a></p>
+<p class="button"><a href="/<?php echo ADMIN_DIR; ?>/plugin/registered_users/groups"><img src="/wolf/plugins/registered_users/images/groups.png" align="middle" alt="user groups icon" /><?php echo __('User Groups'); ?></a></p><?php } ?>
+<p class="button"><a href="/<?php echo ADMIN_DIR; ?>/user"><img src="/wolf/plugins/registered_users/images/users.png" align="middle" alt="users icon" /><?php echo __('Users'); ?></a></p>
 <!-- <div class="box">
 <h3>Registered Users</h3>
 <p>This plugin allows you to manage user registrations through your Frog site.</p>
