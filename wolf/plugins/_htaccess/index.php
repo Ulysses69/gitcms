@@ -4,7 +4,7 @@ if (!defined('IN_CMS')) { exit(); }
 
 define('HTACCESS_TITLE', 'Server Configuration');
 define('HTACCESS_ID', '_htaccess');
-define('HTACCESS_VERSION', '1.6.3');
+define('HTACCESS_VERSION', '2.0.2');
 define('HTACCESS_ROOT', URI_PUBLIC.'wolf/plugins/'.HTACCESS_ID);
 
 Plugin::setInfos(array(
@@ -22,6 +22,7 @@ Plugin::setInfos(array(
 
 Plugin::addController(HTACCESS_ID, '.htaccess', 'administrator', false);
 
+if(!function_exists('saveServerConfig')){
 function saveServerConfig($htaccess='',$htaccessbackup='',$htaccessfile='',$htaccessbackupfile=''){
 
 	//echo $htaccess;
@@ -118,4 +119,5 @@ function saveServerConfig($htaccess='',$htaccessbackup='',$htaccessfile='',$htac
 	
 	}
 
+}
 }

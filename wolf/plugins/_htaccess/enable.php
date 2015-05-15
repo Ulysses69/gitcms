@@ -1,5 +1,79 @@
 <?php
 
+/* Get defined constants such as version */
+include PLUGINS_ROOT . '/'.basename(dirname(__FILE__)).'/index.php';
+
+/* Get plugin settings (if they exist) */
+$version = Plugin::getSetting('version', 'htaccess');
+
+/* Set version setting */
+$settings = array('version' => HTACCESS_VERSION);
+
+// Check for existing settings
+if(!Plugin::getSetting('wwwredirect', 'htaccess')) $settings['wwwredirect'] = 'true';
+
+// Check existing plugin settings
+if (!$version || $version == null) {
+	
+	// This is a clean install.
+
+	// Store settings.
+	if (Plugin::setAllSettings($settings, 'htaccess')) {
+		Flash::set('success', __('HTACCESS - plugin settings setup.'));
+	}
+	else
+		Flash::set('error', __('HTACCESS - unable to save plugin settings.'));
+
+
+} else {
+
+	// Upgrade from previous installation
+	if (HTACCESS_VERSION > $version) {
+		
+		// Retrieve the old settings.
+		$PDO = Record::getConnection();
+		$tablename = TABLE_PREFIX.'plugin_settings';
+
+		$sql_check = "SELECT COUNT(*) FROM $tablename WHERE plugin_id='htaccess'";
+		$sql = "SELECT * FROM $tablename WHERE plugin_id='htaccess'";
+
+		$result = $PDO->query($sql_check);
+
+		if (!$result) {
+			Flash::set('error', __('HTACCESS - unable to access plugin settings.'));
+			return;
+		}
+
+		// Fetch the old installation's records.
+		$result = $PDO->query($sql);
+
+		if ($result && $row = $result->fetchObject()) {
+
+			$result->closeCursor();
+			if(defined('HTACCESS_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugins/_htaccess'); }
+		}
+	}
+
+
+	// Store settings.
+	if (isset($settings) && Plugin::setAllSettings($settings, 'htaccess')) {
+		if (HTACCESS_VERSION > $version){
+			Flash::set('success', __('HTACCESS - plugin settings updated.'));
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 if (!defined('IN_CMS')) { exit(); }
 
 $htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
@@ -18,10 +92,10 @@ if(file_exists($htaccessfile)){
 	// Create original backup.
 	if(file_exists($htaccessdefault) == FALSE || (file_exists($htaccessdefault) && file_get_contents($htaccessfile) != file_get_contents($htaccessdefault))){
 
-		/* Read htaccess */
+		// Read htaccess
 		$defaultdata = file_get_contents($htaccessfile);
 
-		/* Backup htaccess */
+		// Backup htaccess
 		$htaccesssave = fopen($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/_htaccess/backups/.htaccess','w+');
 		if($defaultdata != ''){
 			fwrite($htaccesssave, $defaultdata);
@@ -56,7 +130,7 @@ if(file_exists($htaccessfile)){
 	
 		}
 	}
-	
+
 	
 	
 

@@ -3,6 +3,7 @@
 //$htaccess = Plugin::getSetting('htaccess', 'htaccess');
 //$htaccessbackup = Plugin::getSetting('htaccessbackup', 'htaccess');
 $htaccessdefault = Plugin::getSetting('htaccessdefault', 'htaccess');
+$wwwredirect = Plugin::getSetting('wwwredirect', 'htaccess');
 
 $htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
 $htaccess = file_get_contents($htaccessfile);
@@ -13,11 +14,45 @@ $htaccessbackup = file_get_contents($htaccessbackupfile);
 $htaccessbackup = preg_replace("/(\s\s){1,}/","\n",trim($htaccessbackup));
 
 ?>
+
 <br />
+
 <form action="<?php echo get_url('plugin/_htaccess/save_settings'); ?>" method="post">
 
+
+
 	<fieldset style="padding: 0.5em;">
-		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Server configuration'); ?></legend>
+		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Settings'); ?></legend>
+		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
+	  		<tr>
+				<td class="label"><label for="awwwredirect">WWW Redirect</label></td>
+				<td class="field">
+				<select name="wwwredirect" id="awwwredirect">
+				<?php
+				$wwwredirect_array = array(
+				array ('Enabled', 'true'),
+				array ('Disabled', 'false'));
+				foreach($wwwredirect_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $wwwredirect){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help">Should www be prefixed to pages</td>
+			</tr>
+			
+		</table>
+	</fieldset>
+
+
+	<fieldset style="padding: 0.5em;">
+		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Configuration'); ?></legend>
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 
 			<tr>

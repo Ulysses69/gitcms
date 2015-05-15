@@ -14,10 +14,10 @@ $Env = '';
 $RewriteRules = '';
 $RedirectHome = '';
 $Compression = ''; /* gzip, deflate */
-$ForceWWW = true; /* true or false */
+$ForceWWW = Plugin::getSetting('wwwredirect', 'htaccess'); /* 'true' or 'false' */
 
 
-if($ForceWWW == true){
+if($ForceWWW == '' || $ForceWWW == 'true'){
 // Domain without www (supports subdomains - domain name must be explicitly set)
 #preg_match("/[^\.\/]+\.[^\.\/]+$/", $_SERVER['HTTP_HOST'], $domain_name);
 #$SubdomainCond = '#RewriteCond %{HTTP_HOST} !^([^.]+\.)'.str_replace('.', '\.', $domain_name[0]).'$ [NC]'."\n";
@@ -351,12 +351,13 @@ RewriteEngine On
 RewriteBase /
 <?php //echo $SubdomainCond; ?>
 <?php echo $RewriteRules; ?>
-RewriteCond %{HTTP_HOST} !.local$ [NC]
+#RewriteCond %{HTTP_HOST} !.local$ [NC]
 #RewriteCond %{HTTP_HOST} !.poppymedia.co.uk$ [NC]
 #RewriteCond %{HTTP_HOST} !.bluehorizonsmedia.co.uk$ [NC]
 <?php echo $SubdomainCond; ?>
 #RewriteCond %{HTTP_HOST} !^www\. [NC]
 #RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
 RewriteRule ^install/index.html$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/index.php$ install/index.php?rewrite=1 [L,QSA]
 RewriteRule ^install/$ install/index.php?rewrite=1 [L,QSA]
