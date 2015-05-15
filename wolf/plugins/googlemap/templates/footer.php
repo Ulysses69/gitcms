@@ -641,7 +641,7 @@ function runScripts(){
 $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
 } ?>
 <?php if($screenwidth){ ?>
-//var d = document.documentElement;
+var d = document.documentElement;
 if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
 <?php }?>
 //document.getElementById('googlemap-print').style.display = 'none';
