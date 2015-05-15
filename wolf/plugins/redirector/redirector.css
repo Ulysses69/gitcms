@@ -112,3 +112,6 @@
 #body_plugin_redirector #site-save-page {
 	margin-top: -18px;
 }
+#body_plugin_redirector #sidebar .version.htaccess {
+	display: none;
+}

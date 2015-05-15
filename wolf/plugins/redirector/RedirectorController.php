@@ -155,6 +155,8 @@ class RedirectorController extends PluginController {
 		}
 
 		if(Plugin::isEnabled('_htaccess') == true){
+			
+			/* TO DO: Provide www redirect option */
 
 			$htaccessfile = $_SERVER{'DOCUMENT_ROOT'}.'/.htaccess';
 			ob_start();

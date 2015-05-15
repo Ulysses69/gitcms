@@ -8,7 +8,7 @@
 
 ?>
 
-<div class="box">
+<div class="box version htaccess">
 <h2><?php echo __('HTACCESS Plugin').' '.Plugin::getSetting('version', 'htaccess'); ?></h2>
 <p>Control website behaviour.</p>
 </div>
