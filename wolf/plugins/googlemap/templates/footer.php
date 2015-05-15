@@ -19,6 +19,7 @@
 	$map_width = Plugin::getSetting('map_width', 'googlemap');
 	$map_height = Plugin::getSetting('map_height', 'googlemap');
 	$map_type = Plugin::getSetting('map_type', 'googlemap');
+	$map_link = Plugin::getSetting('map_link', 'googlemap');
 	$map_width = str_replace('px','',$map_width);
 	$map_height = str_replace('px','',$map_height);
 	$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
@@ -90,32 +91,11 @@
 		$draggable = $draggable;
 		if(isset($marker_entrance) && $marker_entrance != '') $marker_entrance = ",\r\t\t".'animation: google.maps.Animation.'.$marker_entrance;
 	}
-	
 
 
-
-$api_params = '?';
-if(isset($api_version)) $api_params .= 'v='.$api_version.'&amp;';
-$api_params .= 'sensor='.$sensor;
-$api_params .= $map_libraries;
-if(isset($region)) $api_params .= '&amp;region='.$region;
-
-?>
-
-<script src="http://maps.googleapis.com/maps/api/js<?php echo $api_params; ?>"></script>
-<script>
-<?php if(isset($marker) && $marker != 'false'){ ?>
-var markers = [];
-var iterator = 0;
-<?php } ?>
-/* Enable new look */
-google.maps.visualRefresh = true;
-var map;
-
-
-<?php if(isset($marker) && $marker != 'false'){ ?>
-var mapmarkers = [<?php
+/* Prepare icon markers */
 $missingshadow = false;
+$temp_icons = '';
 for ($row = 0; $row < $markerCount; $row++) {
 	for ($col = 0; $col < count($markers[$row][$col]); $col++) {
 	  $id = $markers[$row][0];
@@ -137,12 +117,317 @@ for ($row = 0; $row < $markerCount; $row++) {
 	  $shadowPointY = $markers[$row][16];
 	  if($shadow == '') $missingshadow = true;
 	}
-?>[<?php echo '"'.$id.'", "'.$lat.'", "'.$long.'", "'.$icon.'", "'.$iconWidth.'", "'.$iconHeight.'", "'.$iconX.'", "'.$iconY.'", "'.$iconPointX.'", "'.$iconPointY.'", "'.$shadow.'", "'.$shadowWidth.'", "'.$shadowHeight.'", "'.$shadowX.'", "'.$shadowY.'", "'.$shadowPointX.'", "'.$shadowPointY.'"'; ?>]<?php if($row < $markerCount && $markerCount != 1){ echo ", "; }
-}?>];
+	$temp_icons .= '"'.$id.'", "'.$lat.'", "'.$long.'", "'.$icon.'", "'.$iconWidth.'", "'.$iconHeight.'", "'.$iconX.'", "'.$iconY.'", "'.$iconPointX.'", "'.$iconPointY.'", "'.$shadow.'", "'.$shadowWidth.'", "'.$shadowHeight.'", "'.$shadowX.'", "'.$shadowY.'", "'.$shadowPointX.'", "'.$shadowPointY.'"';
+	if($row < $markerCount && $markerCount != 1){ $temp_icons .= ", "; }
+}
 
 
 
+/* Setup feaures */
+$features = array();
 
+
+/*** Graphics ***/
+
+if($road_local_element_visibility != 'off'){
+$style = '';
+if($road_local_element_hue == 'on') 				$style .= '{ hue: "'.$road_local_element_hue.'" },'."\n			";
+if($road_local_element_saturation == 'on') 			$style .= '{ saturation: '.$road_local_element_saturation.' },'."\n			";
+if($road_local_element_lightness == 'on') 			$style .= '{ lightness: '.$road_local_element_lightness.' },'."\n			";
+if($road_local_element_gamma == 'on') 				$style .= '{ gamma: '.$road_local_element_gamma.' },';
+$features[] = '{ featureType: "road.local",
+	elementType: "geometry",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$road_local_element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.local",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($road_arterial_element_visibility != 'off'){
+$style = '';
+if($road_arterial_element_hue == 'on') 				$style .= '{ hue: "'.$road_arterial_element_hue.'" },'."\n			";
+if($road_arterial_element_saturation == 'on') 		$style .= '{ saturation: '.$road_arterial_element_saturation.' },'."\n			";
+if($road_arterial_element_lightness == 'on') 		$style .= '{ lightness: '.$road_arterial_element_lightness.' },'."\n			";
+if($road_local_element_hue == 'on')			 	$style .= '{ gamma: '.$road_arterial_element_gamma.' },';
+$features[] = "\t".'{ featureType: "road.arterial",
+	elementType: "geometry",
+	stylers: [ 
+	'.$style.'
+	{ visibility: "'.$road_arterial_element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.arterial",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($road_highway_element_visibility != 'off'){
+$style = '';
+if($road_highway_element_hue == 'on')				$style .= '{ hue: "'.$road_highway_element_hue.'" },'."\n			";
+if($road_highway_element_saturation == 'on')		$style .= '{ saturation: '.$road_highway_element_saturation.' },'."\n			";
+if($road_highway_element_lightness == 'on')			$style .= '{ lightness: '.$road_highway_element_lightness.' },'."\n			";
+if($road_highway_element_gamma == 'on')				$style .= '{ gamma: '.$road_highway_element_gamma.' },';
+$features[] = "\t".'{ featureType: "road.highway",
+	elementType: "geometry",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$road_highway_element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.highway",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($element_visibility != 'off'){
+$style = '';
+if($element_hue == 'on') 							$style .= '{ hue: "'.$element_hue.'" },'."\n			";
+if($element_saturation == 'on') 					$style .= '{ saturation: '.$element_saturation.' },'."\n			";
+if($element_lightness == 'on') 						$style .= '{ lightness: '.$element_lightness.' },'."\n			";
+if($element_gamma == 'on') 							$style .= '{ gamma: '.$element_gamma.' },';
+$features[] = "\t".'{ featureType: "landscape.man_made",
+	elementType: "geometry",
+	stylers: [ 
+	'.$style.'
+	{ visibility: "'.$element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "landscape.man_made",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($natural_element_visibility != 'off'){
+$style = '';
+if($natural_element_hue == 'on')					$style .= '{ hue: "'.$natural_element_hue.'" },'."\n			";
+if($natural_element_saturation == 'on')				$style .= '{ saturation: '.$natural_element_saturation.' },'."\n			";
+if($natural_element_lightness == 'on')				$style .= '{ lightness: '.$natural_element_lightness.' },'."\n			";
+if($natural_element_gamma == 'on')					$style .= '{ gamma: '.$natural_element_gamma.' },';
+$features[] = "\t".'{ featureType: "landscape.natural",
+	elementType: "geometry",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$natural_element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "landscape.natural",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($water_element_visibility != 'off'){
+$style = '';
+if($water_element_hue == 'on')						$style .= '{ hue: "'.$water_element_hue.'" },'."\n			";
+if($water_element_saturation == 'on')				$style .= '{ saturation: '.$water_element_saturation.' },'."\n			";
+if($water_element_lightness == 'on')				$style .= '{ lightness: '.$water_element_lightness.' },'."\n			";
+if($water_element_gamma == 'on')					$style .= '{ gamma: '.$water_element_gamma.' },';
+$features[] = "\t".'{ featureType: "water",
+	elementType: "geometry",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$water_element_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "water",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($poi_visibility != 'off'){
+$style = '';
+if($poi_hue == 'on')								$style .= '{ hue: "'.$poi_hue.'" },'."\n			";
+if($poi_saturation == 'on')							$style .= '{ saturation: '.$poi_saturation.' },'."\n			";
+if($poi_lightness == 'on')							$style .= '{ lightness: '.$poi_lightness.' },'."\n			";
+if($poi_gamma == 'on')								$style .= '{ gamma: '.$poi_gamma.' },';
+$features[] = "\t".'{ featureType: "poi",
+	elementType: "geometry",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$poi_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "poi",
+		elementType: "geometry",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+
+
+/*** Labels ***/
+
+if($road_local_element_label_visibility != 'off'){
+$style = '';
+if($road_local_element_label_hue == 'on')			$style .= '{ hue: "'.$road_local_element_label_hue.'" },'."\n			";
+if($road_local_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_local_element_label_saturation.' },'."\n			";
+if($road_local_element_label_lightness == 'on')		$style .= '{ lightness: '.$road_local_element_label_lightness.' },'."\n			";
+if($road_local_element_label_gamma == 'on')			$style .= '{ gamma: '.$road_local_element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "road.local",
+	elementType: "labels",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$road_local_element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.local",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($road_arterial_element_label_visibility != 'off'){
+$style = '';
+if($road_arterial_element_label_hue == 'on')		$style .= '{ hue: "'.$road_arterial_element_label_hue.'" },'."\n			";
+if($road_arterial_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_arterial_element_label_saturation.' },'."\n			";
+if($road_arterial_element_label_lightness == 'on')	$style .= '{ lightness: '.$road_arterial_element_label_lightness.' },'."\n			";
+if($road_arterial_element_label_gamma == 'on')		$style .= '{ gamma: '.$road_arterial_element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "road.arterial",
+	elementType: "labels",
+	stylers: [ 
+	'.$style.'
+	{ visibility: "'.$road_arterial_element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.arterial",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($road_highway_element_label_visibility != 'off'){
+$style = '';
+if($road_highway_element_label_hue == 'on')			$style .= '{ hue: "'.$road_highway_element_label_hue.'" },'."\n			";
+if($road_highway_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_highway_element_label_saturation.' },'."\n			";
+if($road_highway_element_label_lightness == 'on')	$style .= '{ lightness: '.$road_highway_element_label_lightness.' },'."\n			";
+if($road_highway_element_label_gamma == 'on')		$style .= '{ gamma: '.$road_highway_element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "road.highway",
+	elementType: "labels",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$road_highway_element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "road.highway",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($element_label_visibility != 'off'){
+$style = '';
+if($element_label_hue == 'on')						$style .= '{ hue: "'.$element_label_hue.'" },'."\n			";
+if($element_label_saturation == 'on')				$style .= '{ saturation: '.$element_label_saturation.' },'."\n			";
+if($element_label_lightness == 'on')				$style .= '{ lightness: '.$element_label_lightness.' },'."\n			";
+if($element_label_gamma == 'on')					$style .= '{ gamma: '.$element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "landscape.man_made",
+	elementType: "labels",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "landscape.man_made",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($natural_element_label_visibility != 'off'){
+$style = '';
+if($natural_element_label_hue == 'on')				$style .= '{ hue: "'.$natural_element_label_hue.'" },'."\n			";
+if($natural_element_label_saturation == 'on')		$style .= '{ saturation: '.$natural_element_label_saturation.' },'."\n			";
+if($natural_element_label_lightness == 'on')		$style .= '{ lightness: '.$natural_element_label_lightness.' },'."\n			";
+if($natural_element_label_gamma == 'on')			$style .= '{ gamma: '.$natural_element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "landscape.natural",
+	elementType: "labels",
+	stylers: [ 
+	'.$style.'
+	{ visibility: "'.$natural_element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "landscape.natural",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($water_element_label_visibility != 'off'){
+$style = '';
+if($water_element_label_hue == 'on')				$style .= '{ hue: "'.$water_element_label_hue.'" },'."\n			";
+if($water_element_label_saturation == 'on')			$style .= '{ saturation: '.$water_element_label_saturation.' },'."\n			";
+if($water_element_label_lightness == 'on')			$style .= '{ lightness: '.$water_element_label_lightness.' },'."\n			";
+if($water_element_label_gamma == 'on')				$style .= '{ gamma: '.$water_element_label_gamma.' },';
+$features[] = "\t".'{ featureType: "water",
+	elementType: "labels",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$water_element_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "water",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+if($poi_label_visibility != 'off'){
+$style = '';
+if($poi_label_hue == 'on')							$style .= '{ hue: "'.$poi_label_hue.'" },'."\n			";
+if($poi_label_saturation == 'on')					$style .= '{ saturation: '.$poi_label_saturation.' },'."\n			";
+if($poi_label_lightness == 'on')					$style .= '{ lightness: '.$poi_label_lightness.' },'."\n			";
+if($poi_label_gamma == 'on')						$style .= '{ gamma: '.$poi_label_gamma.' },';
+$features[] = "\t".'{ featureType: "poi",
+	elementType: "labels",
+	stylers: [
+	'.$style.'
+	{ visibility: "'.$poi_label_visibility.'" }
+	] }';
+} else {
+	$features[] = "\t".'{ featureType: "poi",
+		elementType: "labels",
+		stylers: [
+		{ visibility: "off" }
+		] }';
+	}
+$featurelist = implode(",\r", $features);
+
+
+
+$api_params = '?';
+if(isset($api_version)) $api_params .= 'v='.$api_version.'&amp;';
+$api_params .= 'sensor='.$sensor;
+$api_params .= $map_libraries;
+if(isset($region)) $api_params .= '&amp;region='.$region;
+
+// Start checking if map should linked instead of embedded */
+if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_link) && !isset($_GET['mobile'])) || defined('CMS_BACKEND')){
+
+?>
+
+<script src="http://maps.googleapis.com/maps/api/js<?php echo $api_params; ?>"></script>
+<script>
+<?php if(isset($marker) && $marker != 'false'){ ?>
+var markers = [];
+var iterator = 0;
+<?php } ?>
+/* Enable new look */
+google.maps.visualRefresh = true;
+var map;
+
+
+<?php if(isset($marker) && $marker != 'false'){ ?>
+
+var mapmarkers = [ <?php echo '[' . $temp_icons . ']'; ?> ];
 
 var maplocations = [<?php
 for ($row = 0; $row < $markerCount; $row++) {
@@ -157,287 +442,14 @@ for ($row = 0; $row < $markerCount; $row++) {
 
 
 function initialize() {
+
+	var m = document.getElementById('maplink');
+	if(m){ m.parentNode.removeChild(m); }
+
 <?php if($map_styling == 'StyledMapType'){ ?>
 
 	var setstyle = [
-	<?php
-		$features = array();
-
-
-/*** Graphics ***/
-
-		if($road_local_element_visibility != 'off'){
-		$style = '';
-		if($road_local_element_hue == 'on') 				$style .= '{ hue: "'.$road_local_element_hue.'" },'."\n			";
-		if($road_local_element_saturation == 'on') 			$style .= '{ saturation: '.$road_local_element_saturation.' },'."\n			";
-		if($road_local_element_lightness == 'on') 			$style .= '{ lightness: '.$road_local_element_lightness.' },'."\n			";
-		if($road_local_element_gamma == 'on') 				$style .= '{ gamma: '.$road_local_element_gamma.' },';
-		$features[] = '{ featureType: "road.local",
-			elementType: "geometry",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$road_local_element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.local",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($road_arterial_element_visibility != 'off'){
-		$style = '';
-		if($road_arterial_element_hue == 'on') 				$style .= '{ hue: "'.$road_arterial_element_hue.'" },'."\n			";
-		if($road_arterial_element_saturation == 'on') 		$style .= '{ saturation: '.$road_arterial_element_saturation.' },'."\n			";
-		if($road_arterial_element_lightness == 'on') 		$style .= '{ lightness: '.$road_arterial_element_lightness.' },'."\n			";
-		if($road_local_element_hue == 'on')			 	$style .= '{ gamma: '.$road_arterial_element_gamma.' },';
-		$features[] = "\t".'{ featureType: "road.arterial",
-			elementType: "geometry",
-			stylers: [ 
-			'.$style.'
-			{ visibility: "'.$road_arterial_element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.arterial",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($road_highway_element_visibility != 'off'){
-		$style = '';
-		if($road_highway_element_hue == 'on')				$style .= '{ hue: "'.$road_highway_element_hue.'" },'."\n			";
-		if($road_highway_element_saturation == 'on')		$style .= '{ saturation: '.$road_highway_element_saturation.' },'."\n			";
-		if($road_highway_element_lightness == 'on')			$style .= '{ lightness: '.$road_highway_element_lightness.' },'."\n			";
-		if($road_highway_element_gamma == 'on')				$style .= '{ gamma: '.$road_highway_element_gamma.' },';
-		$features[] = "\t".'{ featureType: "road.highway",
-			elementType: "geometry",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$road_highway_element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.highway",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($element_visibility != 'off'){
-		$style = '';
-		if($element_hue == 'on') 							$style .= '{ hue: "'.$element_hue.'" },'."\n			";
-		if($element_saturation == 'on') 					$style .= '{ saturation: '.$element_saturation.' },'."\n			";
-		if($element_lightness == 'on') 						$style .= '{ lightness: '.$element_lightness.' },'."\n			";
-		if($element_gamma == 'on') 							$style .= '{ gamma: '.$element_gamma.' },';
-		$features[] = "\t".'{ featureType: "landscape.man_made",
-			elementType: "geometry",
-			stylers: [ 
-			'.$style.'
-			{ visibility: "'.$element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "landscape.man_made",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($natural_element_visibility != 'off'){
-		$style = '';
-		if($natural_element_hue == 'on')					$style .= '{ hue: "'.$natural_element_hue.'" },'."\n			";
-		if($natural_element_saturation == 'on')				$style .= '{ saturation: '.$natural_element_saturation.' },'."\n			";
-		if($natural_element_lightness == 'on')				$style .= '{ lightness: '.$natural_element_lightness.' },'."\n			";
-		if($natural_element_gamma == 'on')					$style .= '{ gamma: '.$natural_element_gamma.' },';
-		$features[] = "\t".'{ featureType: "landscape.natural",
-			elementType: "geometry",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$natural_element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "landscape.natural",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($water_element_visibility != 'off'){
-		$style = '';
-		if($water_element_hue == 'on')						$style .= '{ hue: "'.$water_element_hue.'" },'."\n			";
-		if($water_element_saturation == 'on')				$style .= '{ saturation: '.$water_element_saturation.' },'."\n			";
-		if($water_element_lightness == 'on')				$style .= '{ lightness: '.$water_element_lightness.' },'."\n			";
-		if($water_element_gamma == 'on')					$style .= '{ gamma: '.$water_element_gamma.' },';
-		$features[] = "\t".'{ featureType: "water",
-			elementType: "geometry",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$water_element_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "water",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($poi_visibility != 'off'){
-		$style = '';
-		if($poi_hue == 'on')								$style .= '{ hue: "'.$poi_hue.'" },'."\n			";
-		if($poi_saturation == 'on')							$style .= '{ saturation: '.$poi_saturation.' },'."\n			";
-		if($poi_lightness == 'on')							$style .= '{ lightness: '.$poi_lightness.' },'."\n			";
-		if($poi_gamma == 'on')								$style .= '{ gamma: '.$poi_gamma.' },';
-		$features[] = "\t".'{ featureType: "poi",
-			elementType: "geometry",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$poi_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "poi",
-				elementType: "geometry",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-
-
-/*** Labels ***/
-
-		if($road_local_element_label_visibility != 'off'){
-		$style = '';
-		if($road_local_element_label_hue == 'on')			$style .= '{ hue: "'.$road_local_element_label_hue.'" },'."\n			";
-		if($road_local_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_local_element_label_saturation.' },'."\n			";
-		if($road_local_element_label_lightness == 'on')		$style .= '{ lightness: '.$road_local_element_label_lightness.' },'."\n			";
-		if($road_local_element_label_gamma == 'on')			$style .= '{ gamma: '.$road_local_element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "road.local",
-			elementType: "labels",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$road_local_element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.local",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($road_arterial_element_label_visibility != 'off'){
-		$style = '';
-		if($road_arterial_element_label_hue == 'on')		$style .= '{ hue: "'.$road_arterial_element_label_hue.'" },'."\n			";
-		if($road_arterial_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_arterial_element_label_saturation.' },'."\n			";
-		if($road_arterial_element_label_lightness == 'on')	$style .= '{ lightness: '.$road_arterial_element_label_lightness.' },'."\n			";
-		if($road_arterial_element_label_gamma == 'on')		$style .= '{ gamma: '.$road_arterial_element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "road.arterial",
-			elementType: "labels",
-			stylers: [ 
-			'.$style.'
-			{ visibility: "'.$road_arterial_element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.arterial",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($road_highway_element_label_visibility != 'off'){
-		$style = '';
-		if($road_highway_element_label_hue == 'on')			$style .= '{ hue: "'.$road_highway_element_label_hue.'" },'."\n			";
-		if($road_highway_element_label_saturation == 'on')	$style .= '{ saturation: '.$road_highway_element_label_saturation.' },'."\n			";
-		if($road_highway_element_label_lightness == 'on')	$style .= '{ lightness: '.$road_highway_element_label_lightness.' },'."\n			";
-		if($road_highway_element_label_gamma == 'on')		$style .= '{ gamma: '.$road_highway_element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "road.highway",
-			elementType: "labels",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$road_highway_element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "road.highway",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($element_label_visibility != 'off'){
-		$style = '';
-		if($element_label_hue == 'on')						$style .= '{ hue: "'.$element_label_hue.'" },'."\n			";
-		if($element_label_saturation == 'on')				$style .= '{ saturation: '.$element_label_saturation.' },'."\n			";
-		if($element_label_lightness == 'on')				$style .= '{ lightness: '.$element_label_lightness.' },'."\n			";
-		if($element_label_gamma == 'on')					$style .= '{ gamma: '.$element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "landscape.man_made",
-			elementType: "labels",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "landscape.man_made",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($natural_element_label_visibility != 'off'){
-		$style = '';
-		if($natural_element_label_hue == 'on')				$style .= '{ hue: "'.$natural_element_label_hue.'" },'."\n			";
-		if($natural_element_label_saturation == 'on')		$style .= '{ saturation: '.$natural_element_label_saturation.' },'."\n			";
-		if($natural_element_label_lightness == 'on')		$style .= '{ lightness: '.$natural_element_label_lightness.' },'."\n			";
-		if($natural_element_label_gamma == 'on')			$style .= '{ gamma: '.$natural_element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "landscape.natural",
-			elementType: "labels",
-			stylers: [ 
-			'.$style.'
-			{ visibility: "'.$natural_element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "landscape.natural",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($water_element_label_visibility != 'off'){
-		$style = '';
-		if($water_element_label_hue == 'on')				$style .= '{ hue: "'.$water_element_label_hue.'" },'."\n			";
-		if($water_element_label_saturation == 'on')			$style .= '{ saturation: '.$water_element_label_saturation.' },'."\n			";
-		if($water_element_label_lightness == 'on')			$style .= '{ lightness: '.$water_element_label_lightness.' },'."\n			";
-		if($water_element_label_gamma == 'on')				$style .= '{ gamma: '.$water_element_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "water",
-			elementType: "labels",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$water_element_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "water",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		if($poi_label_visibility != 'off'){
-		$style = '';
-		if($poi_label_hue == 'on')							$style .= '{ hue: "'.$poi_label_hue.'" },'."\n			";
-		if($poi_label_saturation == 'on')					$style .= '{ saturation: '.$poi_label_saturation.' },'."\n			";
-		if($poi_label_lightness == 'on')					$style .= '{ lightness: '.$poi_label_lightness.' },'."\n			";
-		if($poi_label_gamma == 'on')						$style .= '{ gamma: '.$poi_label_gamma.' },';
-		$features[] = "\t".'{ featureType: "poi",
-			elementType: "labels",
-			stylers: [
-			'.$style.'
-			{ visibility: "'.$poi_label_visibility.'" }
-			] }';
-		} else {
-			$features[] = "\t".'{ featureType: "poi",
-				elementType: "labels",
-				stylers: [
-				{ visibility: "off" }
-				] }';
-			}
-		$featurelist = implode(",\r", $features);
-		echo $featurelist; ?>
+	<?php echo $featurelist; ?>
 	];
 	<?php } ?>
 	
@@ -625,12 +637,26 @@ function runScripts(){
 	setTimeout("initialize()", 500);
 }
 */
-
+<?php if(Plugin::isEnabled('mobile_check')){
+$screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
+} ?>
+<?php if($screenwidth){ ?>
+//var d = document.documentElement;
+if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
+<?php }?>
+//document.getElementById('googlemap-print').style.display = 'none';
 google.maps.event.addDomListener(window, 'load', initialize);
+<?php if($screenwidth){ ?>
+}
+<?php }?>
 
 </script>
 
 <?php
+
+// End checking if map should linked instead of embedded */
+}
+
 /* Generate static map for PDF output */
 /* Perhaps also check to make sure there is no screen width query in screen.css or that explicit width and height is set (not percentage) */
 //if(isset($_GET['media']) && $_GET['media'] == 'pdf'){
@@ -706,30 +732,46 @@ if(!defined('CMS_BACKEND')){
 
 	$staticmap = '<img src="http://maps.googleapis.com/maps/api/staticmap?center='.$latitude.','.$longitude.$marker.'&zoom='.$zoom.'&size='.$staticmap_width.'x'.$staticmap_height.'&scale='.$staticmap_scale.'&maptype='.$map_type.'&sensor=false'.$static_styles.'" id="googlemap-print" />';
 	
-	if($staticmap_pixels == true){
+	if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_link) && !isset($_GET['mobile'])) || defined('CMS_BACKEND')){
 
-	    if (!function_exists('str_replace_last')) {
-		    function str_replace_last($search , $replace , $str) {
-		        if(( $pos = strrpos($str , $search)) !== false) {
-		            $search_length  = strlen($search);
-		            $str = substr_replace($str , $replace , $pos , $search_length);
-		        }
-		        return $str;
-		    }
-		}
+		if($staticmap_pixels == true){
+	
+		    if (!function_exists('str_replace_last')) {
+			    function str_replace_last($search , $replace , $str) {
+			        if(( $pos = strrpos($str , $search)) !== false) {
+			            $search_length  = strlen($search);
+			            $str = substr_replace($str , $replace , $pos , $search_length);
+			        }
+			        return $str;
+			    }
+			}
 
-		// Is there a closing div tag, insert static img before it
-		if(strripos($map_code,'</div>')){
-			echo str_replace_last('</div>', $staticmap.'<div id="'.$map_id.'_overlay"></div></div>', $map_code);
+			// Is there a closing div tag, insert static img before it
+			if(strripos($map_code,'</div>')){
+				echo str_replace_last('</div>', $staticmap.'<div id="'.$map_id.'_overlay"></div></div>', $map_code);
+			} else {
+				if(isset($map_link)){ 
+					echo '<a href="' . googlemapURL() . '" id="maplink">' . $staticmap . '</a>';
+				} else {
+					echo $staticmap;
+				}
+				echo $map_code; 
+			}
+	
 		} else {
-			echo $staticmap;
-			echo $map_code; 
+	
+			if(isset($map_link)){ 
+				echo '<a href="' . googlemapURL() . '" id="maplink">' . $staticmap . '</a>';
+			} else {
+				echo $staticmap;
+			}
+			echo $map_code;
 		}
-
+	
 	} else {
 
-		echo $staticmap;
-		echo $map_code; 
+		echo '<a href="' . googlemapURL() . '" id="maplink">' . str_replace(' id="googlemap-print"', '', $staticmap) . '</a>';
+
 	}
 
 	?>

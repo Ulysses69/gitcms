@@ -6,6 +6,8 @@ define('GMAP_INCLUDE',1);
 include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/googlemap/enable.php";
 }
 
+$map_id = Plugin::getSetting('map_id', 'googlemap');
+
 $sensor = Plugin::getSetting('sensor', 'googlemap');
 $infowindow = Plugin::getSetting('infowindow', 'googlemap');
 $directions = Plugin::getSetting('directions', 'googlemap');
@@ -18,7 +20,6 @@ $longitude = Plugin::getSetting('longitude', 'googlemap');
 $zoom = Plugin::getSetting('zoom', 'googlemap');
 $zoom_control = Plugin::getSetting('zoom_control', 'googlemap');
 $navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
-$map_id = Plugin::getSetting('map_id', 'googlemap');
 $map_width = Plugin::getSetting('map_width', 'googlemap');
 $map_height = Plugin::getSetting('map_height', 'googlemap');
 $map_code = Plugin::getSetting('map_code', 'googlemap');
@@ -150,7 +151,7 @@ $api_version = Plugin::getSetting('api_version', 'googlemap');
 $region = Plugin::getSetting('region', 'googlemap');
 
 
-//if($latitude == null || $longitude == null){
+/*
 	if(Plugin::isEnabled('clientdetails') == true){
 		if(Plugin::getSetting('clientaddress_county', 'clientdetails')){
 			$address = ''; $spacer = "";
@@ -185,15 +186,6 @@ $region = Plugin::getSetting('region', 'googlemap');
 
 		$geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$encoded_clientaddress.'&sensor=false');
 		$output = json_decode($geocode);
-
-		/*
-		if(is_object($output)){
-			if($latitude == null || $longitude == null){
-				$latitude = $output->results[0]->geometry->location->lat;
-				$longitude = $output->results[0]->geometry->location->lng;
-			}
-		}
-		*/
 
 		if($latitude == null || $longitude == null || $latitude == '' || $longitude == ''){
 			if(is_object($output)){
@@ -230,8 +222,8 @@ $region = Plugin::getSetting('region', 'googlemap');
 		}
 
 	}
+*/
 
-//}
 ?>
 
 <!--
@@ -268,7 +260,7 @@ document.write('<style type=\"text/css\" />#<?php echo $map_id; ?>{width:100%;he
 </div>
 
 <br />
-<a href="<?php echo $googleurl; ?>" target="_blank"><small>Large map</small></a>
+<a href="<?php echo googlemapURL(); ?>" target="_blank"><small>Large map</small></a>
 
 <br />
 <br />

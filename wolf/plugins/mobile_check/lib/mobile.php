@@ -744,10 +744,14 @@ thead td, th {
 }
 }
 
+
+/* TO DO: Check if responsive non-mobile map will use link instead of embed */
+/* Handled from googlemap plugin */ 
+/*
 .js #googlemap-print {
 	display: none;
 }
-
+*/
 
 
 

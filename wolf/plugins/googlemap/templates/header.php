@@ -2,6 +2,7 @@
 $map_id = Plugin::getSetting('map_id', 'googlemap');
 $map_width = Plugin::getSetting('map_width', 'googlemap');
 $map_height = Plugin::getSetting('map_height', 'googlemap');
+$map_link = Plugin::getSetting('map_link', 'googlemap');
 $overlay_map = false; // Default is false
 
 $style = '';
@@ -45,6 +46,19 @@ if($overlay_map == true){
 
 
 ?>
+
+<?php if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_link) && !isset($_GET['mobile'])) || defined('CMS_BACKEND')){ ?>
+<?php if(Plugin::isEnabled('mobile_check')){
+$screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
+} ?>
 <script>
+<?php if($screenwidth){ ?>
+//var d = document.documentElement;
+if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
+<?php }?>
 document.write('<style type=\"text/css\" /><?php echo $style; ?></style>');
+<?php if($screenwidth){ ?>
+}
+<?php }?>
 </script>
+<?php } ?>

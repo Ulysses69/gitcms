@@ -45,6 +45,7 @@ class GooglemapController extends PluginController {
 		if(isset($_POST['map_control'])) { $map_control = $_POST['map_control']; } else { $map_control = ''; }
 		if(isset($_POST['map_libraries'])) { $map_libraries = $_POST['map_libraries']; } else { $map_libraries = ''; }
 		if(isset($_POST['map_styling'])) { $map_styling = $_POST['map_styling']; } else { $map_styling = ''; }
+		if(isset($_POST['map_link'])) { $map_link = $_POST['map_link']; } else { $map_link = ''; }
 		if(isset($_POST['road_local_element_visibility'])) { $road_local_element_visibility = $_POST['road_local_element_visibility']; } else { $road_local_element_visibility = ''; }
 		if(isset($_POST['road_local_element_hue_status'])) { $road_local_element_hue_status = $_POST['road_local_element_hue_status']; } else { $road_local_element_hue_status = ''; }
 		if(isset($_POST['road_local_element_hue'])) { $road_local_element_hue = $_POST['road_local_element_hue']; } else { $road_local_element_hue = ''; }
@@ -342,6 +343,7 @@ class GooglemapController extends PluginController {
 						'map_control' => $map_control,
 						'map_libraries' => $map_libraries,
 						'map_styling' => $map_styling,
+						'map_link' => $map_link,
 						'road_local_element_visibility' => $road_local_element_visibility,
 						'road_local_element_hue_status' => $road_local_element_hue_status,
 						'road_local_element_hue' => $road_local_element_hue,

@@ -22,6 +22,7 @@ $map_type = Plugin::getSetting('map_type', 'googlemap');
 $map_control = Plugin::getSetting('map_control', 'googlemap');
 $map_libraries = Plugin::getSetting('map_libraries', 'googlemap');
 $map_styling = Plugin::getSetting('map_styling', 'googlemap');
+$map_link = Plugin::getSetting('map_link', 'googlemap');
 $road_local_element_visibility = Plugin::getSetting('road_local_element_visibility', 'googlemap');
 $road_local_element_hue_status = Plugin::getSetting('road_local_element_hue_status', 'googlemap');
 $road_local_element_hue = Plugin::getSetting('road_local_element_hue', 'googlemap');
@@ -454,6 +455,29 @@ onload = function() {
 				<td class="help">Customize element(s) you wish to replace with a Google Map. If you wish to replace the ID of your map element here, be sure to update the <a href="/admin/plugin/googlemap#amap_id">Map ID</a> too.</td>
 			</tr>
 			<?php } ?>
+
+			<tr>
+				<td class="label"><label for="amap_link">Mobile Map</label></td>
+				<td class="field">
+				<select name="map_link" id="amap_link">
+				<?php
+				$map_link_array = array(
+				array ("Embed Map", ""),
+				array ('Link to Google Map', 'google'),
+				array ('Link to Map Page', 'page'));
+				foreach($map_link_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $map_link){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help">Mobile map behaviour.</td>
+			</tr>
 
 			<tr>
 				<td class="label"><label for="astreetview">Streetview</label></td>
