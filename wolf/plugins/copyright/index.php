@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.3.4'); }
+if (!defined('COPYRIGHT_VERSION')) { define('COPYRIGHT_VERSION', '1.3.5'); }
 if (!defined('COPYRIGHT_ROOT')) { define('COPYRIGHT_ROOT', URI_PUBLIC.'wolf/plugins/copyright'); }
 Plugin::setInfos(array(
 	'id'					=> 'copyright',
@@ -20,6 +20,7 @@ function displayCopyright($format='',$location=''){
 	$done = '';
 	$linkcustom = Plugin::getSetting('linkcustom', 'copyright');
 	$livedate = Plugin::getSetting('livedate', 'copyright');
+	$owner = 'Blue Horizons';
 	if($linkcustom == ''){
 		if($location == 'footer'){
 			if(((isset($_GET['media']) && $_GET['media'] == 'mobile') || mobiledevice() == TRUE) && (Plugin::isEnabled('mobile_check') == true && Plugin::getSetting('copyright', 'mobile_check') == true)){
@@ -36,6 +37,8 @@ function displayCopyright($format='',$location=''){
 					if(!isset($match[0])) $match[0] = '';
 					if(stristr($match[0],'dental')){
 						$copyright = str_replace('Dental Marketing','dental marketing agency',$match[0]);
+					} else if(stristr($match[0],$owner)){
+						$copyright = '';
 					} else {
 						$copyright = str_replace('Marketing Agency','marketing agency',$match[0]);
 					}
