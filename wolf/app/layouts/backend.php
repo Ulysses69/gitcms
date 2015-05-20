@@ -62,7 +62,7 @@ if (isset($this->vars['content_for_layout']->vars['action'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title><?php if(defined('CMS_TEST_MODE') && CMS_TEST_MODE == true){$local=' (Stage)';}else{$local='';} ?><?php use_helper('Kses');echo kses(Setting::get('admin_title'), array()) .$local . ' / ' . $title; ?></title>
 
-	<link rel="favourites icon" href="<?php echo URL_PUBLIC; ?>inc/img/icon.ico" />
+	<link rel="favourites icon" href="<?php echo URL_PUBLIC; ?>logo.ico" />
 	<link href="<?php echo URI_PUBLIC . ADMIN_DIR; ?>/stylesheets/admin.css" media="screen" rel="Stylesheet" type="text/css" />
 	<link href="<?php echo URI_PUBLIC . ADMIN_DIR; ?>/stylesheets/toolbar.css" media="screen" rel="Stylesheet" type="text/css" />
 	<link href="<?php echo URI_PUBLIC . ADMIN_DIR; ?>/themes/<?php echo AMIN_THEME; ?>/styles.css" id="css_theme" media="screen" rel="Stylesheet" type="text/css" />
