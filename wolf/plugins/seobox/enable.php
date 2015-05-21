@@ -70,7 +70,8 @@ if (!$version || $version == null) {
 		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-			if(defined('SEOBOX_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/seobox'); }
+			/* TO DO: Gets stuck in loop */
+			//if(defined('SEOBOX_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/seobox'); }
 		}
 	}
 

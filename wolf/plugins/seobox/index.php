@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.10.1'); }
+if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.10.0'); }
 if (!defined('SEOBOX_ROOT')) { define('SEOBOX_ROOT', URI_PUBLIC.'wolf/plugins/seobox'); }
 Plugin::setInfos(array(
 	'id'					=> 'seobox',
@@ -18,16 +18,6 @@ if(!defined('CLIENTDETAILS_ROOT')){
 if (false !== strpos($_SERVER['PHP_SELF'], ADMIN_DIR)) {
 	if(!AuthUser::hasPermission('client')) Plugin::addController('seobox', 'SEO', 'administrator', true);
 }
-
-
-Observer::observe('view_backend_layout_head', 'seometa_page_edit');
-//Plugin::addJavascript('myplugin', 'seometa');
-if(!function_exists('seometa_page_edit')){
-	function seometa_page_edit() {		
-		echo "<script src='/wolf/plugins/seobox/seo.js'></script>";
-	}
-}
-
 
 //Observer::notify('page_found', 'check_robots');
 
