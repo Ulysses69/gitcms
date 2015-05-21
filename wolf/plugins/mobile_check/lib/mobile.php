@@ -27,7 +27,10 @@ h1 {
 	font-weight:normal;
 	padding:.5em;
 	margin-bottom:.75em;
-	border-bottom:solid 1px #ccc
+	border-bottom:solid 1px <?php echo $color_body_border; ?>
+}
+h1, h2, .h2 {
+	color: <?php echo $color_content_h1; ?>
 }
 <?php if($content_font != ''){ $font_elements = array(); ?>
 <?php if($content_font_h1 == 'yes'){ $font_elements[] = 'h1'; } ?>
@@ -217,7 +220,7 @@ p small span {
 }
 #content {
 	padding:0 1em .5em 1em;
-	background:#ffffff
+	background:<?php echo $color_content_bg; ?>
 }
 #content:not(.legacy) {
 	position:relative

@@ -4,11 +4,24 @@ class MobileCheckController extends PluginController {
 		$this->setLayout('backend');
 		$this->assignToLayout('sidebar', new View('../../plugins/mobile_check/views/sidebar'));
 	}
+
+	/*
 	public function index() {
 		//$settings = array('enable' => $enable);
 		$settings = array();
 		$this->display('mobile_check/views/settings', $settings);
 	}
+	*/
+	public function index(){
+		$this->generate();
+	}
+	public function generate(){
+		$this->display('mobile_check/views/settings');
+	}
+	public function update(){
+		$this->display('mobile_check/views/update');
+	}
+
 	public function settings(){
 		$settings = Plugin::getAllSettings('mobile_check');
 			if (!$settings) {
@@ -41,11 +54,11 @@ class MobileCheckController extends PluginController {
 			//}
 
 			Flash::set('success', 'Mobile Check - '.__('plugin settings saved.'));
-			redirect(get_url('plugin/mobile_check/settings'));
+			//redirect(get_url('plugin/mobile_check/settings'));
 		} else {
 			Flash::set('error', 'Mobile Check - '.__('plugin settings not saved!').$enable);
-			redirect(get_url('plugin/mobile_check/settings'));
 		}
+		redirect(get_url('plugin/mobile_check/settings'));
 
 	}
 }

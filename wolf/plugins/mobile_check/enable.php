@@ -1,5 +1,8 @@
 <?php
 
+//echo 'MOBILE_VERSION (enable): ' . MOBILE_VERSION . '<br/>';
+//exit;
+
 /* Get defined constants such as version */
 include PLUGINS_ROOT . '/'.basename(dirname(__FILE__)).'/index.php';
 
@@ -10,6 +13,7 @@ $version = Plugin::getSetting('version', 'mobile_check');
 $settings = array('version' => MOBILE_VERSION);
 
 // Check for existing settings
+//if(!Plugin::getSetting('version', 'mobile_check')) $settings['version'] = MOBILE_VERSION;
 if(!Plugin::getSetting('enable', 'mobile_check')) $settings['enable'] = true;
 if(!Plugin::getSetting('copyright', 'mobile_check')) $settings['copyright'] = true;
 if(!Plugin::getSetting('screen_width', 'mobile_check')) $settings['screen_width'] = 640;
@@ -78,7 +82,11 @@ if (!$version || $version == null) {
 
 	// Upgrade from previous installation
 	if (MOBILE_VERSION > $version) {
+		
+		//echo 'HEY UPDATE MOBILE_VERSION' . '<br/>';
+		//exit;
 
+		/*
 		$navcss = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/nav.css';
 		$navjs = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/nav.js';
 		$toglejs = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/toggle.js';
@@ -95,19 +103,19 @@ if (!$version || $version == null) {
 			Flash::set('error', 'Failed to copy toggle.js');
 		}
 
-		/* Get nav JS Template */
+		// Get nav JS Template
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/nav.js";
 		$jstemplate = ob_get_contents();
 		ob_end_clean();
   
-		/* Get toggle JS Template */
+		// Get toggle JS Template
 		ob_start();
 		include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/lib/toggle.js";
 		$toggletemplate = ob_get_contents();
 		ob_end_clean();
 
-		/* Remove comments array */
+		// Remove comments array
 		$regex = array(
 		"`^([\t\s]+)`ism"=>'',
 		"`^\/\*(.+?)\*\/`ism"=>"",
@@ -120,20 +128,20 @@ if (!$version || $version == null) {
 			return preg_replace("/\s+/", " ", $js);
 		}
 
-		/* Remove comments from nav JS Template */
+		// Remove comments from nav JS Template
 		//$navjstemplate = preg_replace(array_keys($regex),$regex,$jstemplate);
 
-		/* Compress nav js */
+		// Compress nav js
 		require_once($_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/elements/lib/class.JavaScriptPacker.php');
 		$pack = new JavaScriptPacker($jstemplate, 'Normal', true, false);
 		$navjstemplate = $pack->pack();
 
-		/* Get public nav js */
+		// Get public nav js
 		$navjspath = '/inc/js/';
 		$navjsfile = 'nav.js';
 		$navjsfilepath = $_SERVER{'DOCUMENT_ROOT'}.$navjspath.$navjsfile;
 
-		/* Try updating nav js */
+		// Try updating nav js
 		if (file_exists($navjsfilepath)) {
 			chmod($navjsfilepath, 0777);
 			if(is_writable($navjsfilepath)){
@@ -164,15 +172,15 @@ if (!$version || $version == null) {
 			Flash::set('error', $navjsfilepath.' ... does not exist.');
 		}
 
-		/* Get public toggle js */
+		// Get public toggle js
 		$togglejspath = '/inc/js/';
 		$togglejsfile = 'toggle.js';
 		$togglejsfilepath = $_SERVER{'DOCUMENT_ROOT'}.$togglejspath.$togglejsfile;
 
-		/* Remove comments from toggle JS Template */
+		// Remove comments from toggle JS Template
 		$togglejstemplate = preg_replace(array_keys($regex),$regex,$toggletemplate);
 
-		/* Try updating toggle js */
+		// Try updating toggle js
 		if (file_exists($togglejsfilepath)) {
 			chmod($togglejsfilepath, 0777);
 			if(is_writable($togglejsfilepath)){
@@ -206,7 +214,7 @@ if (!$version || $version == null) {
 		//echo $jstemplate;
 		//exit;
 		
-		/* Copy nav js required files (overwrite if exists, should images be updates) */
+		// Copy nav js required files (overwrite if exists, should images be updates)
 		$hamburger = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/hamburger.gif';
 		$hamburger_retina = $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC.'wolf/plugins/mobile_check/lib/hamburger-retina.gif';
 		$new_hamburger = $_SERVER{'DOCUMENT_ROOT'}.'/inc/img/hamburger.gif';
@@ -218,6 +226,15 @@ if (!$version || $version == null) {
 		if (!copy($hamburger_retina, $new_hamburger_retina)) {
 			Flash::set('error', 'Failed to copy hamburger-retina.gif');
 		}
+		*/
+		
+		
+
+		
+		// TO DO: This causes re-direct problem
+		updateMobileCSS();
+		//echo 'SETTINGS: ' . $settings . '<br/>';
+		//exit;
 
 
 
@@ -256,16 +273,20 @@ if (!$version || $version == null) {
 		if ($result && $row = $result->fetchObject()) {
 
 			$result->closeCursor();
-			if(defined('MOBILE_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'plugin/mobile_check'); }
+			/* TO DO: Reload page to reflect mobile version */
+			//if(defined('MOBILE_CHECK_INCLUDE')){ header('Location: '.URL_PUBLIC.ADMIN_DIR.'/plugin/mobile_check'); }
+			if (MOBILE_VERSION == $version) {
+				redirect(get_url('plugin/mobile_check/update'));
+			}
 		}
 	}
 
 
 	// Store settings.
 	if (isset($settings) && Plugin::setAllSettings($settings, 'mobile_check')) {
-		if (MOBILE_VERSION > $version){
-			Flash::set('success', __('MobileCheck - plugin settings updated.'));
-		}
+		//if (MOBILE_VERSION > $version){
+		//	Flash::set('success', __('MobileCheck - plugin settings updated.'));
+		//}
 	}
 
 }

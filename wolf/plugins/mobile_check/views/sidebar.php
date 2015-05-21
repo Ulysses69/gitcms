@@ -1,8 +1,14 @@
 <?php
 
+//echo 'MOBILE_VERSION (sidebar): ' . MOBILE_VERSION . '<br/>';
+//echo Plugin::getSetting('version', 'mobile_check') . '<br/>';
+//exit;
+
   /* Ensure plugin update is enabled ONLY when new version */
   if (MOBILE_VERSION > Plugin::getSetting('version', 'mobile_check')){
-	  define('MOBILE_INCLUDE',1);
+  	  //echo 'INCLUDE (sidebar)' . '<br/>';
+	  //exit;
+	  define('MOBILE_CHECK_INCLUDE',1);
 	  include $_SERVER{'DOCUMENT_ROOT'}.URL_PUBLIC."wolf/plugins/mobile_check/enable.php";
   }
 

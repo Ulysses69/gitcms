@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '1.10.1'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.1.9'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
@@ -138,9 +138,16 @@ if(!function_exists('html2rgb')){
 	}
 }
 
+if(!function_exists('compressspaces')){
+	function compressspaces($css){
+		return preg_replace("/\s+/", " ", $css);
+	}
+}
+
 if(!function_exists('updateMobileCSS')){
 	function updateMobileCSS(){
-		
+
+  		if(isset($_POST['version'])){ $version = $_POST['version']; } else { $version = Plugin::getSetting('version', 'mobile_check'); }
 		if(isset($_POST['enable'])){ $enable = $_POST['enable']; } else { $enable = Plugin::getSetting('enable', 'mobile_check'); }
 		if(isset($_POST['copyright'])){ $copyright = $_POST['copyright']; } else { $copyright = Plugin::getSetting('copyright', 'mobile_check'); }
 		if(isset($_POST['screen_width'])){ $screen_width = $_POST['screen_width']; } else { $screen_width = Plugin::getSetting('screen_width', 'mobile_check'); }
@@ -188,6 +195,7 @@ if(!function_exists('updateMobileCSS')){
 		if(isset($_POST['header_banner'])){ $header_banner = $_POST['header_banner']; } else { $header_banner = Plugin::getSetting('header_banner', 'mobile_check'); }
 
 		$color_button_bg_rgb = html2rgb($color_button_bg);
+		$newcss = $cachedcss;
 		
 		if($color_button_opacity == 'solid'){
 			$color_button_bg_rgb = $color_button_bg;
@@ -222,9 +230,6 @@ if(!function_exists('updateMobileCSS')){
 		if (file_exists($mobilecssfilepath)) {
 			chmod($mobilecssfilepath, 0777);
 			if(is_writable($mobilecssfilepath)){
-				function compressspaces($css){
-					return preg_replace("/\s+/", " ", $css);
-				}
 				$csssave = fopen($mobilecssfilepath,'rb');
 				$csscontents = fread($csssave, filesize($mobilecssfilepath));
 				/* Check to make sure no changes have been made directly to mobile.css since last save. */
@@ -355,7 +360,8 @@ if(!function_exists('updateMobileCSS')){
 			Flash::set('error', $navfilepath.' ... does not exist.');
 		}
 		
-		$settings = array(	'enable' => $enable,
+		$settings = array(	'version' => $version,
+				  			'enable' => $enable,
 				  			'copyright' => $copyright,
 							'screen_width' => $screen_width,
 							'website_width' => $website_width,
