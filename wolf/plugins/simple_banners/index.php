@@ -26,7 +26,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 		function bannerimgs($folder,$id=''){
 	        //$icon_set_array = array();
 	        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
-	        $output = ''; $jsoutput = '';
+	        $output = ''; $jsoutput = ''; $blank = '';
 	        $folder = '/public/images/'.$folder;
 	        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
 	        $i = 1;
@@ -34,7 +34,8 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	            while (false !== ($file = readdir($handle))) {
 	                if(!in_array($file, $blacklist)) {
 						if($i == 1){
-							$output .= '<img class="blank" src="'.$folder.'/'.$file.'" alt="" />';
+							$blank = '<img class="blank" src="'.$folder.'/'.$file.'" alt="" />';
+							$output .= $blank;
 							$filename = substr($file, 0 , (strrpos($file, ".")));
 							$jsoutput .= '<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />';
 						} else {
@@ -45,8 +46,22 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	                    $i++;
 	                }
 	            }
+
+	            if($i == 2){
+					$output = str_replace(' class="blank"', '', $output);
+					//$jsoutput = $jsoutput;
+					//$output .= $jsoutput;
+					//$output .= ' ' . $blank;
+					//$output .= $output . $output;
+
+				} else {
+					$output .= "\n<script>document.write('<div class=\"slides\">".$jsoutput."</div>');</script>";
+				}
+				
+
 	            closedir($handle);
-	            $output .= "\n<script>document.write('<div class=\"slides\">".$jsoutput."</div>');</script>";
+
+
 	        }
             return $output;
 		}
@@ -71,18 +86,32 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 
             if($display == 'show'){
                 if($images_home_FOLDER != '' && $page->slug == ''){
+
 					//echo 'Home Banner Folder: ' . $home_folder;
 					$home_images = bannerimgs($images_home_FOLDER,'home');
-					echo "\n".'<div class="simplebanner home">'."\n";
-					echo $home_images."\n";
-					echo '</div>'."\n";
+					
+					//if(substr_count($home_images, '<img') > 1){
+						echo "\n".'<div class="simplebanner home">'."\n";
+						echo $home_images."\n";
+						echo '</div>'."\n";
+					//} else {
+						//echo $home_images."\n";
+					//}
+
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
+
 					//echo 'Main Banner Folder: ' . $main_folder;
 					$main_images = bannerimgs($images_main_FOLDER,'main');
-					echo "\n".'<div class="simplebanner main">'."\n";
-					echo $main_images."\n";
-					echo '</div>'."\n";
+					
+					//if(substr_count($main_images, '<img') > 1){
+						echo "\n".'<div class="simplebanner main">'."\n";
+						echo $main_images."\n";
+						echo '</div>'."\n";
+					//} else {
+						//echo $main_images."\n";
+					//}
+
 				}
             }
 
@@ -126,19 +155,14 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			            for ($p=1; $p <= $i; $p++){
 							$child = ($i - $p) + 1;
 							$duration = (($p - 2) * $bannerduration) + $bannerduration;
-							/*
-							if($p == 1){
-								$duration = 0;
-							}
-							*/
 							$imgs .= '.simplebanner.home .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
 							$homeimgs++;
 						}
 
 						$division = 1 / $p;
 						$res = ceil((round($division * 100) * $bannerduration) / $p);
-						
-						/* Match percentages to number of images */
+
+						// Match percentages to number of images
 						$keyframes .= '@-webkit-keyframes home {'."\n";
 						$keyframes .= '  0%{opacity:0;}'."\n";
 						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
@@ -170,11 +194,6 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			            for ($p=1; $p <= $i; $p++){
 							$child = ($i - $p) + 1;
 							$duration = (($p - 2) * $bannerduration) + $bannerduration;
-							/*
-							if($p == 1){
-								$duration = 0;
-							}
-							*/
 							$imgs .= '.simplebanner.main .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
 							$mainimgs++;
 						}
@@ -182,7 +201,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 						$division = 1 / $p;
 						$res = ceil((round($division * 100) * $bannerduration) / $p);
 						
-						/* Match percentages to number of images */
+						// Match percentages to number of images
 						$keyframes .= '@-webkit-keyframes main {'."\n";
 						$keyframes .= '  0%{opacity:0;}'."\n";
 						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
@@ -200,44 +219,51 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			        }
 				}
 				
-				echo '.simplebanner {'."\n";
-				echo '	position:relative;'."\n";
-				echo '	overflow:hidden'."\n";
-				echo '}'."\n";
-				
-				echo $keyframes;
+				if($homeimgs > 1 || $mainimgs > 1){
 
-				echo '.simplebanner .slides img {'."\n";
-				echo '	position:absolute;'."\n";
-				echo '	left:0;'."\n";
-				echo '	top:0;'."\n";
-				echo '	opacity:0;'."\n";
-				/* Number of images by bannerduration */
-				echo '}'."\n";
+					echo '.simplebanner {'."\n";
+					echo '	position:relative;'."\n";
+					echo '	overflow:hidden'."\n";
+					echo '}'."\n";
+	
+					echo $keyframes;
 
-				if($homeimgs > 0){
-					echo '.simplebanner.home .slides img {'."\n";
-					echo '	-webkit-animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
-					echo '	animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
+					echo '.simplebanner .slides img {'."\n";
+					echo '	position:absolute;'."\n";
+					echo '	left:0;'."\n";
+					echo '	top:0;'."\n";
+					echo '	opacity:0;'."\n";
+					// Number of images by bannerduration
 					echo '}'."\n";
-				}
-				if($mainimgs > 0){
-					echo '.simplebanner.main .slides img {'."\n";
-					echo '	-webkit-animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
-					echo '	animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
+	
+					if($homeimgs > 0){
+						echo '.simplebanner.home .slides img {'."\n";
+						echo '	-webkit-animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
+						echo '	animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
+						echo '}'."\n";
+					}
+					if($mainimgs > 0){
+						echo '.simplebanner.main .slides img {'."\n";
+						echo '	-webkit-animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
+						echo '	animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
+						echo '}'."\n";
+					}
+	
+					echo '.js .simplebanner img.blank {'."\n";
+					echo '	position:relative;'."\n";
+					echo '  -webkit-animation:none;'."\n";
+					echo '  animation:none;'."\n";
+					echo '  opacity:0 !important;'."\n";
 					echo '}'."\n";
+	
+	    			echo $imgs;
+    			
 				}
-	
-				echo '.js .simplebanner img.blank {'."\n";
-				echo '	position:relative;'."\n";
-				echo '  -webkit-animation:none;'."\n";
-				echo '  animation:none;'."\n";
-				echo '  opacity:0 !important;'."\n";
-				echo '}'."\n";
-	
-				echo $imgs;
 
             }
+            
+            // TO DO:
+            // writeJScripts($page);
 
 		}
 
