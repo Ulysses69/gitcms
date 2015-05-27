@@ -11,6 +11,7 @@ $settings = array('version' => SIMPLE_BANNERS_VERSION);
 
 /* Set new settings */
 if(!Plugin::getSetting('display', 'simple_banners')) $settings['display'] = 'show';
+if(!Plugin::getSetting('bannercontainer', 'simple_banners')) $settings['bannercontainer'] = '';
 if(!Plugin::getSetting('bannerduration', 'simple_banners')) $settings['bannerduration'] = '3';
 if(!Plugin::getSetting('images_home_FOLDER', 'simple_banners')) $settings['images_home_FOLDER'] = '';
 if(!Plugin::getSetting('images_main_FOLDER', 'simple_banners')) $settings['images_main_FOLDER'] = '';

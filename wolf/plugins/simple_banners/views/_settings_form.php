@@ -2,6 +2,7 @@
 
 <?php
 $display = Plugin::getSetting('display', 'simple_banners');
+$bannercontainer = Plugin::getSetting('bannercontainer', 'simple_banners');
 $bannerduration = Plugin::getSetting('bannerduration', 'simple_banners');
 $images_home_FOLDER = Plugin::getSetting('images_home_FOLDER', 'simple_banners');
 $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners');
@@ -28,6 +29,12 @@ $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners')
 			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 
 				<tr>
+					<td class="label"><label for="bannercontainer"><?php echo __('Container'); ?></label></td>
+					<td class="field bannercontainer"><input type="checkbox" name="bannercontainer" id="bannercontainer" value="show" class="checkbox"<?php if($bannercontainer == "show"){echo " checked";}?>/></td>
+					<td class="help"><?php echo __('Add container with <strong>banner</strong> id'); ?></td>
+				</tr>
+
+			   	<tr>
 					<td class="label"><label for="display"><?php echo __('Display'); ?></label></td>
 					<td class="field display"><input type="checkbox" name="display" id="display" value="show" class="checkbox"<?php if($display == "show"){echo " checked";}?>/></td>
 					<td class="help"><?php echo __('Appearance of banners'); ?></td>

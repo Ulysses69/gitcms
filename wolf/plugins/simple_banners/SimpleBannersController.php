@@ -20,10 +20,12 @@ class SimpleBannersController extends PluginController {
 	public function save_settings(){
 		$tablename = TABLE_PREFIX.'simple_banners';
 		$display = $_POST['display'];
+		$bannercontainer = $_POST['bannercontainer'];
 		$bannerduration = $_POST['bannerduration'];
 		$images_home_FOLDER = $_POST['images_home_FOLDER'];
 		$images_main_FOLDER = $_POST['images_main_FOLDER'];
 		$settings = array(	'display' => $display,
+				  			'bannercontainer' => $bannercontainer,
 				  			'bannerduration' => $bannerduration,
 				  			'images_home_FOLDER' => $images_home_FOLDER,
 				  			'images_main_FOLDER' => $images_main_FOLDER);

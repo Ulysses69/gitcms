@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.1.1'); }
+if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.2.0'); }
 if (!defined('SIMPLE_BANNERS_ROOT')) { define('SIMPLE_BANNERS_ROOT', URI_PUBLIC.'wolf/plugins/simple_banners'); }
 Plugin::setInfos(array(
 	'id'					=> 'simple_banners',
@@ -54,7 +54,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 					//$output .= ' ' . $blank;
 					//$output .= $output . $output;
 
-				} else {
+				} else if($i > 2) {
 					$output .= "\n<script>document.write('<div class=\"slides\">".$jsoutput."</div>');</script>";
 				}
 				
@@ -75,8 +75,9 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				$page = Page::findById(1);
 			}
 
-			$data = '';
+			$output = '';
             $display = Plugin::getSetting('display', 'simple_banners');
+            $bannercontainer = Plugin::getSetting('bannercontainer', 'simple_banners');
             $bannerduration = Plugin::getSetting('bannerduration', 'simple_banners');
             $images_home_FOLDER = Plugin::getSetting('images_home_FOLDER', 'simple_banners');
 	        $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners');
@@ -90,13 +91,18 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 					//echo 'Home Banner Folder: ' . $home_folder;
 					$home_images = bannerimgs($images_home_FOLDER,'home');
 					
-					//if(substr_count($home_images, '<img') > 1){
-						echo "\n".'<div class="simplebanner home">'."\n";
-						echo $home_images."\n";
-						echo '</div>'."\n";
+					if(substr_count($home_images, '<img') >= 1){
+						$output .= "\n".'<div class="simplebanner home">'."\n";
+						$output .= $home_images."\n";
+						$output .= '</div>'."\n";
 					//} else {
 						//echo $home_images."\n";
-					//}
+						
+						if($bannercontainer == 'show'){
+							$output = '<div id="banner">' . $output . '</div>';
+						}
+		
+					}
 
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
@@ -104,15 +110,23 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 					//echo 'Main Banner Folder: ' . $main_folder;
 					$main_images = bannerimgs($images_main_FOLDER,'main');
 					
-					//if(substr_count($main_images, '<img') > 1){
-						echo "\n".'<div class="simplebanner main">'."\n";
-						echo $main_images."\n";
-						echo '</div>'."\n";
+					if(substr_count($main_images, '<img') >= 1){
+						$output .= "\n".'<div class="simplebanner main">'."\n";
+						$output .= $main_images."\n";
+						$output .= '</div>'."\n";
 					//} else {
 						//echo $main_images."\n";
-					//}
 
+						if($bannercontainer == 'show'){
+							$output = '<div id="banner">' . $output . '</div>';
+						}
+
+					}
+				
 				}
+
+				echo $output;
+
             }
 
 		}
