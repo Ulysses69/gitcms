@@ -212,7 +212,7 @@ $commas
 <?php ; ?>
 
 <?php if(function_exists('simplebanner')) ?>
-<h2 id="simplebanner">Random image</h2>
+<h2 id="simplebanner">Simple Banner</h2>
 <p>Example Displays simple banner as per <a href="../simple_banners">settings</a>.</p>
 <code>simplebanner($this)</code>
 <?php ; ?>
