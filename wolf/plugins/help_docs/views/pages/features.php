@@ -211,6 +211,12 @@ $commas
 <code>randomsrc($this, '/public/images/banner/')</code>
 <?php ; ?>
 
+<?php if(function_exists('simplebanner')) ?>
+<h2 id="simplebanner">Random image</h2>
+<p>Example Displays simple banner as per <a href="../simple_banners">settings</a>.</p>
+<code>simplebanner($this)</code>
+<?php ; ?>
+
 <h2 id="newsitems">News Items</h2>
 <p>News or article archives can be displayed in varying ways. By default, excerpts are displayed with links to full article (if excerpt contains content).</p>
 <p>Example 1 Displays all articles using 0 limit and setting excerpt display to false.</p>
