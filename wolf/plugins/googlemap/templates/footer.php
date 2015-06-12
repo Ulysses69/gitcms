@@ -521,14 +521,10 @@ function initialize() {
 			//echo "alert(category + ', ' + action);";
 			//echo analyticsPush(false, '_trackEvent', category, action, 'thisRef', '0', 'true');
 		} else {
-		?>
-		pageTracker._trackEvent(
-			category,
-			action
-		);
-		<?php } ?>
+			echo "pageTracker._trackEvent(category,action);";
+		} ?>
 	};
-	
+
 	google.maps.event.addListener(map, 'click', function(){trackmap('Google Map','Clicked');});
 	google.maps.event.addListener(map, 'dragend', function(){trackmap('Google Map','Dragged');});
 	google.maps.event.addListener(map, 'zoom_changed', function(){trackmap('Google Map','Zoomed');});
@@ -627,16 +623,6 @@ function getUserLocation() {
 	}
 }
 
-/*
-window.addEventListener ?
-window.addEventListener("load",runScripts,false) :
-window.attachEvent && window.attachEvent("onload",runScripts);
-
-function runScripts(){
-	initialize();
-	setTimeout("initialize()", 500);
-}
-*/
 <?php if(Plugin::isEnabled('mobile_check')){
 $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
 } ?>
@@ -644,10 +630,9 @@ $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
 var d = document.documentElement;
 if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
 <?php }?>
-//document.getElementById('googlemap-print').style.display = 'none';
 google.maps.event.addDomListener(window, 'load', initialize);
 <?php if($screenwidth){ ?>
-}
+};
 <?php }?>
 
 </script>

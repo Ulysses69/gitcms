@@ -52,8 +52,7 @@ if($overlay_map == true){
 $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
 } ?>
 <script>
-<?php if($screenwidth){ ?>
-//var d = document.documentElement;
+<?php if($screenwidth){ // var d = document.documentElement; ?>
 if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
 <?php }?>
 document.write('<style type=\"text/css\" /><?php echo $style; ?></style>');
