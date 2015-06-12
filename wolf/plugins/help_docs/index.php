@@ -54,7 +54,7 @@ Plugin::setInfos(array(
 	'id'		  => 'help_docs',
 	'title'	   => __('Help docs'),
 	'description' => __('Quick help documentation'),
-	'version'	 => '1.1.6',
+	'version'	 => '1.1.7',
    'license'	 => 'GPL',
 	'website'	 => '',
 	'update_url'  => '',

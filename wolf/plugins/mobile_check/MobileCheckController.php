@@ -39,9 +39,19 @@ class MobileCheckController extends PluginController {
 
 		$newcss = '';
 		//$settings = '';
-		
+
+
+
 		// TO DO: Move these tasks to new single function after the settings are saved to the database. This function can call values directly from database, so these tasks can be called from external scripts */
-		$settings = updateMobileCSS();
+		if(function_exists('updateMobileCSS')){
+			$settings = updateMobileCSS();
+		}
+
+		// TO DO: Update javascript
+		if(function_exists('writeJScripts')){
+			writeJScripts();
+		}
+
 
 
 		if (Plugin::setAllSettings($settings, 'mobile_check')) {

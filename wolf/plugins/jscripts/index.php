@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.5'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.7'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -439,7 +439,6 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		ob_start();
 
 
-
 			?>
 	
 			var marquee = new Array(<?php echo $marquee; ?>);
@@ -564,8 +563,9 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		<?php
 		}
 		?>
-	
-	
+
+
+
 			/* TO DO: Banner settings (to add to the end of scripts.js) */
 			/*
 			var container = 'banner';
@@ -625,7 +625,9 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		$pushed_javascript .= $testimonials_script;
 
 	}
-	
+
+
+
 
 	// Work with tempalte if contents available
 	if($defaultdata){

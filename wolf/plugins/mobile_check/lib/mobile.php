@@ -147,7 +147,6 @@ a {
 }
 
 
-
 <?php if(($homelogo != 'small' && $logo != 'text') || $homelogo == 'large'){ ?>
 #home-page #logo {
 	padding:.7em 0 0 0;
@@ -589,6 +588,7 @@ thead td, th {
 
 
 /* Support for li box classes */
+/*
 #content ul.boxes,
 #content ul.boxesx2,
 #content ul.boxesx3,
@@ -643,6 +643,8 @@ thead td, th {
 	margin: 0 0 2% 2%;
 	width: 23%;
 }
+*/
+
 
 #accessibility-go,
 #cookie-go {
@@ -732,7 +734,108 @@ thead td, th {
 }
 
 
+
+
+
+
+/* Slider (before and after) support */
+.slider {
+	position: relative;
+}
+.slider img {
+	float: left;
+	width: 49%;
+	position: relative;
+	padding: 0;
+	margin: 0 0 1% 1%;
+}
+.slider {
+	position: relative;
+	padding: 0;
+	margin: 0 0 1em -1%;
+	width: 101%;
+}
+.slider div {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+.js .slider div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.js .slider span {
+	position: absolute;
+	top: 50%;
+	background: yellow;
+	padding: 0.1em;
+	cursor: pointer;
+	font-size: 10px;
+	font-size: 2em;	
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	line-height: 0.85em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    font-family: verdana;
+    color: #fff;
+    background: #666;
+    font-weight: normal;
+}
+.js .slider .prev {
+	left: 1%;
+}
+.js .slider .next {
+    right: 0;
+}
+.js .slider span {
+	top: 50%;
+	margin-top: -0.55em;
+}
+/* Mobile size support */
+<?php if($screen_width){ ?>
+@media only screen and (max-width: <?php echo $screen_width; ?>px) {
+	.js .slider {
+		overflow: hidden;
+	}
+	.js .slider span {
+		top: 0;
+		background: transparent;
+		padding: 0;
+		margin-top: -1em;
+		width: 49%;
+		height: 150%;
+	}
+	.js .slider span.prev  {
+	    left: 1% !important;
+	}
+	.js .slider span.next  {
+		right: 0 !important;
+	}	
+}
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
 /* Landscape Mobile */
+/*
 @media only screen and (min-width: 510px) and (max-width: 629px) {
 .mobile #content ul.boxesx3,
 .mobile #content ul.boxesx4 {
@@ -746,6 +849,7 @@ thead td, th {
 	width: 30%;
 }
 }
+*/
 
 
 /* TO DO: Check if responsive non-mobile map will use link instead of embed */

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.1.9'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.1.10'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
