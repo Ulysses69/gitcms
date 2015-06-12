@@ -423,7 +423,7 @@ var iterator = 0;
 /* Enable new look */
 google.maps.visualRefresh = true;
 var map;
-
+var d = document.documentElement;
 
 <?php if(isset($marker) && $marker != 'false'){ ?>
 
@@ -443,8 +443,10 @@ for ($row = 0; $row < $markerCount; $row++) {
 
 function initialize() {
 
+	// TO DO: Do not remove from print pages
 	var m = document.getElementById('maplink');
 	if(m){ m.parentNode.removeChild(m); }
+
 
 <?php if($map_styling == 'StyledMapType'){ ?>
 
@@ -627,7 +629,6 @@ function getUserLocation() {
 $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
 } ?>
 <?php if($screenwidth){ ?>
-var d = document.documentElement;
 if(d.clientWidth><?php echo $screenwidth; ?> || d.clientHeight><?php echo $screenwidth; ?>){
 <?php }?>
 google.maps.event.addDomListener(window, 'load', initialize);
