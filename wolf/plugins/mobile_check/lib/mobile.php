@@ -134,9 +134,9 @@ a {
 	height: 0;
 	overflow: hidden;
 	/* 4x3 Aspect Ratio */
-	padding-bottom: 75%;
+	padding: 0 0 75% 0;
 	/* 16x9 Aspect Ratio */
-	padding-bottom: 56.25%;
+	padding: 0 0 56.25% -;
 }
 .embed iframe {
 	position: absolute;
