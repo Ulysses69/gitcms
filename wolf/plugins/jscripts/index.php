@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.7'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.8'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -667,26 +667,9 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		}
 		*/
 
-
-
-		// Remove comments
-		$regex = array(
-		"`^([\t\s]+)`ism"=>'',
-		"`^\/\*(.+?)\*\/`ism"=>"",
-		"`([\n\A;]+)\/\*(.+?)\*\/`ism"=>"$1",
-		"`([\n\A;\s]+)//(.+?)[\n\r]`ism"=>"$1\n",
-		"`(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+`ism"=>"\n"
-		);
-
-		// Remove whitespace
-		if(!function_exists('compress')){
-			function compress($css){
-				return preg_replace("/\s+/", " ", $css);
-			}
-		}
 	
 		// Remove comments from jscripts Template
-		$defaultdata = preg_replace(array_keys($regex),$regex,$defaultdata);
+		$defaultdata = removecomments($defaultdata);
 
 		// Remove unwanted whitespace from jscripts Template
 		$defaultdata = compress($defaultdata);
@@ -711,7 +694,7 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 					//$pushed_javascript = " alert('Saved by ".$page->slug." page in admin');";
 
 					// Remove comments from jscripts Template
-					$pushed_javascript = preg_replace(array_keys($regex),$regex,$pushed_javascript);
+					$pushed_javascript = removecomments($pushed_javascript);
 
 					// Remove unwanted whitespace from jscripts Template
 					$pushed_javascript = compress($pushed_javascript);
