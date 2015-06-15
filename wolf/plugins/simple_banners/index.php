@@ -144,6 +144,8 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				if($images_main_FOLDER == ''){
 					$main_folder = $home_folder;
 				}
+				
+				
 
 
 				$output .= "
@@ -153,10 +155,12 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				    var bannerTransition = 0.5;
 				    var banner = document.getElementById(bannerHolder);
 				    var banners = '';
+				    
+				    if (banner){
 				
-					function hasClass(el, cls) {
-						return el.className && new RegExp('(\\s|^)' + cls + '(\\s|$)').test(el.className);
-					}
+						function hasClass(el = '', cls = '') {
+							return el.className && new RegExp('(\\s|^)' + cls + '(\\s|$)').test(el.className);
+						};
 				
 					";
 
@@ -165,45 +169,53 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				if($main_banners != ''){ $output .= $main_banners; }
 
 				if($main_banners != ''){ $output .= "
-				    banners = mainBanners;
+					    banners = mainBanners;
 				    ";
 				}
 
 
 				if($home_banners != ''){ $output .= "
-					if (hasClass(banner, 'home')) { banners = homeBanners; bannerPath = '".$home_folder."/'; }
+								 if (hasClass(banner, 'home')) { banners = homeBanners; bannerPath = '".$home_folder."/'; };
 					";
 				}
 
 
 				$output .= "
-				    banner.getElementsByTagName('img')[0].style.position = 'relative';
-				    var j = banners.length;
-				    var current = 0;
-				    var imgs = [];
-				
-					for (var i = 0; i < j; i++){
-					    var img = document.createElement('img');
-					    img.src = bannerPath + banners[i];
-					    banner.appendChild(img);
-					    imgs.push(img);
-				      	imgs[i].style.position = 'absolute';
-					  	imgs[i].style.transition = 'opacity ' + bannerTransition + 's ease-in';
-					    imgs[i].style.opacity = 0;
-					}
-				
-					setInterval(function(){
-					  for (var i = 0; i < j; i++) {
-					    imgs[i].style.opacity = 0;
-					  }
-					  current = (current != j - 1) ? current + 1 : 0;
-					  imgs[current].style.opacity = 1;
-					}, (bannerSpeed * 1000));
-				
-					setTimeout(function(){
-					    banner.getElementsByTagName('img')[0].style.opacity = 0;
-					}, ((bannerSpeed * 2) * 1000));
+					    banner.getElementsByTagName('img')[0].style.position = 'relative';
+					    var j = banners.length;
+					    var current = 0;
+					    var imgs = [];
+					
+						for (var i = 0; i < j; i++){
+						    var img = document.createElement('img');
+						    img.src = bannerPath + banners[i];
+						    banner.appendChild(img);
+						    imgs.push(img);
+					      	imgs[i].style.position = 'absolute';
+						  	imgs[i].style.transition = 'opacity ' + bannerTransition + 's ease-in';
+						    imgs[i].style.opacity = 0;
+						};
+					
+						setInterval(function(){
+						  for (var i = 0; i < j; i++) {
+						    imgs[i].style.opacity = 0;
+						  }
+						  current = (current != j - 1) ? current + 1 : 0;
+						  imgs[current].style.opacity = 1;
+						}, (bannerSpeed * 1000));
+
+						setTimeout(function(){
+						    banner.getElementsByTagName('img')[0].style.opacity = 0;
+						}, ((bannerSpeed * 2) * 1000));
+						
+					};
 				";
+
+
+				// Close wrapper
+				$output .= "};";
+
+
 
             }
             

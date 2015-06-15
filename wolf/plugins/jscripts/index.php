@@ -685,7 +685,8 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 					// Wrap script in 
 					$prefix = "/* Check if browser is DOM and HTML5 Savvy */ \n";
 					$prefix .= "if ('querySelectorAll' in document && 'addEventListener' in window) { ";
-					$suffix = "} ";
+					// Close wrapper handler for simple banner support
+					if(!stristr($defaultdata,'bannerHolder')){ $suffix = "} "; }
 					
 					$defaultdata = $prefix.$defaultdata.$suffix;
 
