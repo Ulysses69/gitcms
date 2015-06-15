@@ -228,7 +228,8 @@ function jscripts($page = null, $insertref = '', $checkup = false){
 
 if(!function_exists('writeJScripts')){
 function writeJScripts($page='', $pushed_javascript='', $position='after'){
-	$thispage = Page::findById($page->id);
+	if($page){ $pageid = $page->id; } else { $pageid = 0; }
+	$thispage = Page::findById($pageid);
 
 	if(!defined('REGISTER_FUNCTIONS')){
 		include('../../.RegisterFunctions');
@@ -668,11 +669,13 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		*/
 
 	
-		// Remove comments from jscripts Template
-		$defaultdata = removecomments($defaultdata);
-
-		// Remove unwanted whitespace from jscripts Template
-		$defaultdata = compress($defaultdata);
+		if(DEBUG == false){
+			// Remove comments from jscripts Template
+			if(function_exists('removecomments')) $defaultdata = removecomments($defaultdata);
+	
+			// Remove unwanted whitespace from jscripts Template
+			if(function_exists('compress')) $defaultdata = compress($defaultdata);
+		}
 
 		// Allow jscripts file to be editable
 		chmod($jscriptsfile, 0777);
