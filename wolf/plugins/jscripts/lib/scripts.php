@@ -1,5 +1,4 @@
-/* Check if browser is DOM and HTML5 Savvy */
-if ('querySelectorAll' in document && 'addEventListener' in window) {
+
 
 	/* Add js class to document */
 	document.getElementsByTagName('body')[0].className+=' js';
@@ -14,7 +13,7 @@ if ('querySelectorAll' in document && 'addEventListener' in window) {
 	function addClass(ele,cls) {
 		if (!this.hasClass(ele,cls)) ele.className += " "+cls;
 	};
-	
+
 	function removeClass(ele,cls){
 		if (hasClass(ele,cls)) {
 			var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
@@ -119,9 +118,3 @@ if ('querySelectorAll' in document && 'addEventListener' in window) {
 	};
 	
 
-
-
-
-
-
-}

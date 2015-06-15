@@ -252,6 +252,24 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		// Build up number of matches (not including duplicates per part matched)
 		$shadowbox_used++;
 	}
+	
+
+
+
+
+
+	/* Simple Banner JS */
+	if(function_exists('simplebannerJS')){
+		$pushed_javascript .= simplebannerJS($thispage);
+	}
+
+
+
+
+
+
+
+
 
 	// Check pages for gallery or shadowbox references
 	if($shadowbox_used > 0){
@@ -567,58 +585,6 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 
 
 
-			/* TO DO: Banner settings (to add to the end of scripts.js) */
-			/*
-			var container = 'banner';
-			var path = '/public/images/banner/';
-	
-			document.write('<style type="text/css" media="screen">#' + container + ' img{position:absolute;z-index:1;display:none}#' + container + ' img.active{z-index:3;}</style>');
-			$(function() {
-	
-				var imgs = [
-					'banner2.jpg',
-					'banner3.jpg',
-					'banner4.jpg',
-					'banner5.jpg',
-					'banner6.jpg',
-					'banner7.jpg',
-					'banner8.jpg',
-					'banner-home.jpg'];
-	
-				var cnt = imgs.length;
-	
-				$('#' + container + ' img').remove();
-				var z = 3;
-				for (var i = 0; i < cnt; i = i + 1 ) {
-					if(i == 0){ active = ' class="active"'; } else { active = ''; }
-					$('#' + container).append('<img src="' + path + imgs[i] + '" ' + active + ' />');
-				};
-				$('#' + container + ' .active').css({'z-index':z,'display':'block'});
-	
-				var cycleImages = function(){
-					  z = z + 1;
-					  var $container = $('#' + container);
-					  var $containerwidth = $container.width();
-					  var $active = $('#' + container + ' .active');
-					  var $next = ($active.next().length > 0) ? $active.next() : $('#' + container + ' img:first');
-					  $next.css('z-index',2);
-					  $next.css('display','block');
-					  $active.fadeOut(0,function(){
-						  $active.css('z-index',1).show().removeClass('active').animate({marginLeft:'-='+$containerwidth+'px'},1500);
-						  $next.css('z-index',3).css('marginLeft',$containerwidth+'px').addClass('active').animate({marginLeft:'-='+$containerwidth+'px'},1500);
-					  });
-				};
-	
-				$(document).ready(function(){
-	
-					// run every 3s
-					var init = setInterval(cycleImages, 4000);
-				});
-	
-			});
-			*/
-
-
 
 
 		<?php 
@@ -668,7 +634,7 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 		}
 		*/
 
-	
+
 		if(DEBUG == false){
 			// Remove comments from jscripts Template
 			if(function_exists('removecomments')) $defaultdata = removecomments($defaultdata);
@@ -696,11 +662,13 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 
 					//$pushed_javascript = " alert('Saved by ".$page->slug." page in admin');";
 
-					// Remove comments from jscripts Template
-					$pushed_javascript = removecomments($pushed_javascript);
-
-					// Remove unwanted whitespace from jscripts Template
-					$pushed_javascript = compress($pushed_javascript);
+					if(DEBUG == false){
+						// Remove comments from jscripts Template
+						$pushed_javascript = removecomments($pushed_javascript);
+	
+						// Remove unwanted whitespace from jscripts Template
+						$pushed_javascript = compress($pushed_javascript);
+					}
 
 					if($position == 'before'){
 
@@ -713,6 +681,13 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 						$defaultdata = $defaultdata.$pushed_javascript;
 
 					}
+					
+					// Wrap script in 
+					$prefix = "/* Check if browser is DOM and HTML5 Savvy */ \n";
+					$prefix .= "if ('querySelectorAll' in document && 'addEventListener' in window) { ";
+					$suffix = "} ";
+					
+					$defaultdata = $prefix.$defaultdata.$suffix;
 
 					//echo $defaultdata."\n\n";
 					//echo $defaultfile."\n\n";

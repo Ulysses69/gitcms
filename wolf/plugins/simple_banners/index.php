@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.2.0'); }
+if (!defined('SIMPLE_BANNERS_VERSION')) { define('SIMPLE_BANNERS_VERSION', '0.2.1'); }
 if (!defined('SIMPLE_BANNERS_ROOT')) { define('SIMPLE_BANNERS_ROOT', URI_PUBLIC.'wolf/plugins/simple_banners'); }
 Plugin::setInfos(array(
 	'id'					=> 'simple_banners',
@@ -23,7 +23,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 }
 
 	if(!function_exists('bannerimgs')){
-		function bannerimgs($folder,$id=''){
+		function bannerimgs($folder,$id='',$output_type='html'){
 	        //$icon_set_array = array();
 	        $blacklist = array('.', '..', '.DS_Store', 'Thumbs.db', '_thumbs');
 	        $output = ''; $jsoutput = ''; $blank = '';
@@ -31,36 +31,28 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	        $path = $_SERVER{'DOCUMENT_ROOT'}.$folder;
 	        $i = 1;
 	        if($handle = opendir($path)) {
-	            while (false !== ($file = readdir($handle))) {
-	                if(!in_array($file, $blacklist)) {
-						if($i == 1){
-							$blank = '<img class="blank" src="'.$folder.'/'.$file.'" alt="" />';
-							$output .= $blank;
-							$filename = substr($file, 0 , (strrpos($file, ".")));
-							$jsoutput .= '<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />';
-						} else {
-							$filename = substr($file, 0 , (strrpos($file, ".")));
-							$jsoutput .= '<img class="'.$id.$filename.'" src="'.$folder.'/'.$file.'" alt="" />';
+
+				if($output_type == 'js'){
+					while (false !== ($file = readdir($handle))) {
+		                if(!in_array($file, $blacklist)) {
+							//$filename = substr($file, 0 , (strrpos($file, ".")));
+							$output .= "'".$file."',";
 						}
-	                    //$icon_set_array[] = array(ucfirst($file), $file);
-	                    $i++;
-	                }
-	            }
-
-	            if($i == 2){
-					$output = str_replace(' class="blank"', '', $output);
-					//$jsoutput = $jsoutput;
-					//$output .= $jsoutput;
-					//$output .= ' ' . $blank;
-					//$output .= $output . $output;
-
-				} else if($i > 2) {
-					$output .= "\n<script>document.write('<div class=\"slides\">".$jsoutput."</div>');</script>";
+					}
 				}
-				
+
+	            if($output_type == 'html'){
+					while (false !== ($file = readdir($handle))) {
+		                if(!in_array($file, $blacklist)) {
+							if($i == 1){
+								$first = '<img src="'.$folder.'/'.$file.'" alt="" />';
+								$output .= $first;
+							}
+		                }
+		            }
+				}
 
 	            closedir($handle);
-
 
 	        }
             return $output;
@@ -87,47 +79,141 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 
             if($display == 'show'){
                 if($images_home_FOLDER != '' && $page->slug == ''){
-
-					//echo 'Home Banner Folder: ' . $home_folder;
-					$home_images = bannerimgs($images_home_FOLDER,'home');
-					
+					$home_images = bannerimgs($images_home_FOLDER,'home','html');
 					if(substr_count($home_images, '<img') >= 1){
-						$output .= "\n".'<div class="simplebanner home">'."\n";
-						$output .= $home_images."\n";
-						$output .= '</div>'."\n";
-					//} else {
-						//echo $home_images."\n";
-						
 						if($bannercontainer == 'show'){
-							$output = '<div id="banner">' . $output . '</div>';
+							$output = '<div id="banner" class="home">' . $home_images . '</div>';
+						} else {
+							$output = $home_images;
 						}
-		
 					}
-
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
-
-					//echo 'Main Banner Folder: ' . $main_folder;
-					$main_images = bannerimgs($images_main_FOLDER,'main');
-					
+					$main_images = bannerimgs($images_main_FOLDER,'main','html');
 					if(substr_count($main_images, '<img') >= 1){
-						$output .= "\n".'<div class="simplebanner main">'."\n";
-						$output .= $main_images."\n";
-						$output .= '</div>'."\n";
-					//} else {
-						//echo $main_images."\n";
-
 						if($bannercontainer == 'show'){
-							$output = '<div id="banner">' . $output . '</div>';
+							$output = '<div id="banner" class="main">' . $home_images . '</div>';
+						} else {
+							$output = $home_images;
 						}
-
 					}
+				}
+				echo $output;
+            }
+
+		}
+
+	}
+
+	/* Page options - new */
+	if(!function_exists('simplebannerJS')){
+		function simplebannerJS($page){
+
+			if(!is_object($page)){
+				$page = Page::findById(1);
+			}
+
+			$output = '';
+			$home_banners = '';
+			$main_banners = '';
+            $display = Plugin::getSetting('display', 'simple_banners');
+
+            if($display == 'show'){
+
+	            $bannercontainer = Plugin::getSetting('bannercontainer', 'simple_banners');
+	            $bannerduration = Plugin::getSetting('bannerduration', 'simple_banners');
+	            $images_home_FOLDER = Plugin::getSetting('images_home_FOLDER', 'simple_banners');
+		        $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners');
+	
+		        $home_folder = '/public/images/'.$images_home_FOLDER;
+		        $main_folder = '/public/images/'.$images_main_FOLDER;
+
+                if($images_home_FOLDER != ''){
+					$home_images = bannerimgs($images_home_FOLDER,'home','js');
+					if(substr_count($home_images, ',') >= 1){
+						$home_banners = 'var homeBanners = [' . rtrim($home_images,',') . '];';
+					}
+				}
+                if($images_main_FOLDER != ''){
+					$main_images = bannerimgs($images_main_FOLDER,'main','js');
+					if(substr_count($main_images, ',') >= 1){
+						$main_banners = 'var mainBanners = [' . rtrim($main_images,',') . '];';
+					}
+				}
 				
+				if($images_main_FOLDER == ''){
+					$main_folder = $home_folder;
 				}
 
-				echo $output;
+
+				$output .= "
+					// Set global banner vars
+				    var bannerHolder = 'banner';
+				    var bannerPath = '".$main_folder."/';
+				    var bannerSpeed = 3; // Seconds
+				    var bannerTransition = 0.5; // Seconds
+				    var banner = document.getElementById(bannerHolder);
+				    var banners = '';
+				
+					// hasClass: element and classname
+					function hasClass(el, cls) {
+						return el.className && new RegExp('(\\s|^)' + cls + '(\\s|$)').test(el.className);
+					}
+				
+					// Static img will display as first slide, so should be added to end of js banners
+					";
+
+
+				if($home_banners != ''){ $output .= $home_banners; }
+				if($main_banners != ''){ $output .= $main_banners; }
+
+				if($main_banners != ''){ $output .= "
+					// Determine which banner to run
+				    banners = mainBanners;
+				    ";
+				}
+
+
+				if($home_banners != ''){ $output .= "
+					if (hasClass(banner, 'home')) { banners = homeBanners; bannerPath = '".$home_folder."/'; }
+					";
+				}
+
+
+				$output .= "
+				    banner.getElementsByTagName('img')[0].style.position = 'relative';
+				    var j = banners.length;
+				    var current = 0;
+				    var imgs = [];
+				
+					for (var i = 0; i < j; i++){
+					    var img = document.createElement('img');
+					    img.src = bannerPath + banners[i];
+					    banner.appendChild(img);
+					    imgs.push(img);
+				      	imgs[i].style.position = 'absolute';
+					  	imgs[i].style.transition = 'opacity ' + bannerTransition + 's ease-in';
+					    imgs[i].style.opacity = 0;
+					}
+				
+					// Slides
+					setInterval(function(){
+					  for (var i = 0; i < j; i++) {
+					    imgs[i].style.opacity = 0;
+					  }
+					  current = (current != j - 1) ? current + 1 : 0;
+					  imgs[current].style.opacity = 1;
+					}, (bannerSpeed * 1000));
+				
+					// Hide static img after first slide transition
+					setTimeout(function(){
+					    banner.getElementsByTagName('img')[0].style.opacity = 0;
+					}, ((bannerSpeed * 2) * 1000));
+				";
 
             }
+            
+            return $output;
 
 		}
 	}
@@ -165,32 +251,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			                    $i++;
 			                }
 			            }
-			            closedir($handle);
-			            for ($p=1; $p <= $i; $p++){
-							$child = ($i - $p) + 1;
-							$duration = (($p - 2) * $bannerduration) + $bannerduration;
-							$imgs .= '.simplebanner.home .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
-							$homeimgs++;
-						}
-
-						$division = 1 / $p;
-						$res = ceil((round($division * 100) * $bannerduration) / $p);
-
-						// Match percentages to number of images
-						$keyframes .= '@-webkit-keyframes home {'."\n";
-						$keyframes .= '  0%{opacity:0;}'."\n";
-						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
-						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
-						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
-						$keyframes .= '}'."\n";
-
-						$keyframes .= '@keyframes home {'."\n";
-						$keyframes .= '  0%{opacity:0;}'."\n";
-						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
-						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
-						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
-						$keyframes .= '}'."\n";
-
+			            $homeimgs = $i;
 			        }
 				}
                 if($images_main_FOLDER != '' && $page->slug != ''){
@@ -204,74 +265,21 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 			                    $i++;
 			                }
 			            }
-			            closedir($handle);
-			            for ($p=1; $p <= $i; $p++){
-							$child = ($i - $p) + 1;
-							$duration = (($p - 2) * $bannerduration) + $bannerduration;
-							$imgs .= '.simplebanner.main .slides img:nth-child('.$child.'){-webkit-animation-delay:'.$duration.'s; animation-delay:'.$duration.'s;}'."\n";
-							$mainimgs++;
-						}
-
-						$division = 1 / $p;
-						$res = ceil((round($division * 100) * $bannerduration) / $p);
-						
-						// Match percentages to number of images
-						$keyframes .= '@-webkit-keyframes main {'."\n";
-						$keyframes .= '  0%{opacity:0;}'."\n";
-						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
-						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
-						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
-						$keyframes .= '}'."\n";
-
-						$keyframes .= '@keyframes main {'."\n";
-						$keyframes .= '  0%{opacity:0;}'."\n";
-						$keyframes .= '  '.$res.'%{opacity:1;}'."\n";
-						$keyframes .= '  '.($res * 4).'%{opacity:1;}'."\n";
-						$keyframes .= '  '.(($res * 4) + $res).'%{opacity:0;}'."\n";
-						$keyframes .= '}'."\n";
-
+			            $mainimgs = $i;
 			        }
 				}
 				
 				if($homeimgs > 1 || $mainimgs > 1){
 
-					echo '.simplebanner {'."\n";
-					echo '	position:relative;'."\n";
-					echo '	overflow:hidden'."\n";
+	    			echo '#banner {'."\n";
+					echo '	position: relative;'."\n";
 					echo '}'."\n";
-	
-					echo $keyframes;
+					echo '#banner img {'."\n";
+					echo '	max-width: 100% !important;'."\n";
+					echo '	left: 0;'."\n";
+					echo '	top: 0;'."\n";
+					echo '}'."\n";
 
-					echo '.simplebanner .slides img {'."\n";
-					echo '	position:absolute;'."\n";
-					echo '	left:0;'."\n";
-					echo '	top:0;'."\n";
-					echo '	opacity:0;'."\n";
-					// Number of images by bannerduration
-					echo '}'."\n";
-	
-					if($homeimgs > 0){
-						echo '.simplebanner.home .slides img {'."\n";
-						echo '	-webkit-animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
-						echo '	animation:home '.(($homeimgs * $bannerduration)).'s infinite;'."\n";
-						echo '}'."\n";
-					}
-					if($mainimgs > 0){
-						echo '.simplebanner.main .slides img {'."\n";
-						echo '	-webkit-animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
-						echo '	animation:main '.(($mainimgs * $bannerduration)).'s infinite;'."\n";
-						echo '}'."\n";
-					}
-	
-					echo '.js .simplebanner img.blank {'."\n";
-					echo '	position:relative;'."\n";
-					echo '  -webkit-animation:none;'."\n";
-					echo '  animation:none;'."\n";
-					echo '  opacity:0 !important;'."\n";
-					echo '}'."\n";
-	
-	    			echo $imgs;
-    			
 				}
 
             }

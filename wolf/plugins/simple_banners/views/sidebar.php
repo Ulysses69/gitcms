@@ -9,7 +9,7 @@
 ?>
 
 <div class="box">
-<h2><?php echo __('SimpleBanners').' '.Plugin::getSetting('version', 'simple_banners'); ?></h2>
+<h2><?php echo __('Simple Banners').' '.Plugin::getSetting('version', 'simple_banners'); ?></h2>
 <p>Manage simple image banners. By default, banners are set to display, but only if a folder has been selected.</p>
 </div>
 
