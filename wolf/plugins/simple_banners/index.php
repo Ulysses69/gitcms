@@ -147,20 +147,17 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 
 
 				$output .= "
-					// Set global banner vars
 				    var bannerHolder = 'banner';
 				    var bannerPath = '".$main_folder."/';
-				    var bannerSpeed = 3; // Seconds
-				    var bannerTransition = 0.5; // Seconds
+				    var bannerSpeed = 3;
+				    var bannerTransition = 0.5;
 				    var banner = document.getElementById(bannerHolder);
 				    var banners = '';
 				
-					// hasClass: element and classname
 					function hasClass(el, cls) {
 						return el.className && new RegExp('(\\s|^)' + cls + '(\\s|$)').test(el.className);
 					}
 				
-					// Static img will display as first slide, so should be added to end of js banners
 					";
 
 
@@ -168,7 +165,6 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 				if($main_banners != ''){ $output .= $main_banners; }
 
 				if($main_banners != ''){ $output .= "
-					// Determine which banner to run
 				    banners = mainBanners;
 				    ";
 				}
@@ -196,7 +192,6 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 					    imgs[i].style.opacity = 0;
 					}
 				
-					// Slides
 					setInterval(function(){
 					  for (var i = 0; i < j; i++) {
 					    imgs[i].style.opacity = 0;
@@ -205,7 +200,6 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 					  imgs[current].style.opacity = 1;
 					}, (bannerSpeed * 1000));
 				
-					// Hide static img after first slide transition
 					setTimeout(function(){
 					    banner.getElementsByTagName('img')[0].style.opacity = 0;
 					}, ((bannerSpeed * 2) * 1000));

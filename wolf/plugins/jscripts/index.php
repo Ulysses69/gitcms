@@ -596,7 +596,7 @@ function writeJScripts($page='', $pushed_javascript='', $position='after'){
 
 
 
-	// Work with tempalte if contents available
+	// Work with template if contents available
 	if($defaultdata){
 
 
