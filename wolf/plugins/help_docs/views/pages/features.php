@@ -213,8 +213,8 @@ $commas
 
 <?php if(function_exists('setBeforeAfter')) ?>
 <h2 id="beforeafter">Before & After Slider</h2>
-<p>Example 1 Displays before and after slider from before-after folder, sorted by name in ascending order and class (gallery-group) name applied.</p>
-<code>setBeforeAfter('/public/images/before-after/','name','ascend','gallery-group')</code>
+<p>Example 1 Displays before and after slider from before-after folder, sorted by name in ascending order.</p>
+<code>setBeforeAfter('/public/images/before-after/','name','ascend')</code>
 <?php ; ?>
 
 <?php if(function_exists('simplebanner')) ?>
