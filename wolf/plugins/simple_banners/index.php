@@ -48,7 +48,8 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 								$first = '<img src="'.$folder.'/'.$file.'" alt="" />';
 								$output .= $first;
 							}
-		                }
+							$i++;
+		                }		                
 		            }
 				}
 
