@@ -42,6 +42,9 @@
 
 <div class="boxed">
 <h2>
+
+
+<?php if($action=='edit') { ?>
 <img src="<?php
 
 if(!function_exists('ExternalFileExists')){
@@ -123,12 +126,15 @@ if(!function_exists('ExternalFileExists')){
 		echo $avatar;
 
 		?>" align="middle" alt="<?php echo $user->username; ?> icon" class="avatar" />
-<?php if($action=='edit') { echo __($user->name); } else { echo __('New user');} ?></h2>
+<?php if($action=='edit') { echo __($user->name); } else { echo __('New user');} ?>
+<?php } else { $avatar = ''; echo 'New User'; } ?>
+
+</h2>
 <form action="<?php echo $action=='edit' ? get_url('user/edit/'.$user->id): get_url('user/add'); ; ?>" method="post">
 	<input id="csrf_token" name="csrf_token" type="hidden" value="<?php echo $csrf_token; ?>" />
 	<?php $iconpath = '';
-	if($icon != ''){
-		if(stristr($icon,'/public/images/users') || stristr($icon,'images/user.png')){ $iconpath = '/users'; }
+	if($avatar != ''){
+		if(stristr($avatar,'/public/images/users') || stristr($avatar,'images/user.png')){ $iconpath = '/users'; }
 		echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images'.$iconpath.'" style="font-size:80%;position:relative;top:2px">Edit Pic</a>';
 	} ?>
   <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
