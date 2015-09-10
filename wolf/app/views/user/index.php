@@ -73,7 +73,8 @@ if(!function_exists('ExternalFileExists')){
 		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
 		if ($code !== 200) {
-			throw new LogicException("The URL '".$location."' is unreachable.");
+			return FALSE;
+			//throw new LogicException("The URL '".$location."' is unreachable.");
 		}
 		return TRUE;
 	}
