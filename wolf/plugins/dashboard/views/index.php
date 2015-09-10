@@ -74,6 +74,9 @@
 
 		if(function_exists('file_get_contents')){
 			//echo '<!-- File Get Contents Supported -->';
+			echo "\n".'<!-- Checking for ' . $png . ' -->';
+			echo "\n".'<!-- Checking for ' . $jpg . ' -->';
+			echo "\n".'<!-- Checking for ' . $gif . ' -->';
 			if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
 				//echo '<!-- Get Contents -->';
 				// The image exists
