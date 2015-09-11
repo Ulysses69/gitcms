@@ -15,7 +15,7 @@
 	?>
 
 	<?php
-	$avatar = '';
+
 	if(!function_exists('ExternalFileExists')){
 		function ExternalFileExists($location,$misc_content_type = false){
 			$ch = curl_init($location);
@@ -43,6 +43,8 @@
 			return TRUE;
 		}
 	}
+
+	$avatar = '';
 	//$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 	$sourceurl = 'https://cdn.shopify.com/s/files/1/0671/3113/t/11/assets/';
 

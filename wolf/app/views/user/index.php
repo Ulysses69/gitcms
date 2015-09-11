@@ -80,6 +80,7 @@ if(!function_exists('ExternalFileExists')){
 	}
 }
 
+$avatar = '';
 //$sourceurl = 'http://www.bluehorizonsmarketing.co.uk/public/users/';
 $sourceurl = 'https://cdn.shopify.com/s/files/1/0671/3113/t/11/assets/';
 
