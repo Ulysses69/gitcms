@@ -20,6 +20,7 @@
 	$map_height = Plugin::getSetting('map_height', 'googlemap');
 	$map_type = Plugin::getSetting('map_type', 'googlemap');
 	$map_link = Plugin::getSetting('map_link', 'googlemap');
+	$map_output_type = Plugin::getSetting('map_output_type', 'googlemap');
 	$map_width = str_replace('px','',$map_width);
 	$map_height = str_replace('px','',$map_height);
 	$navigation_control = Plugin::getSetting('navigation_control', 'googlemap');
@@ -412,6 +413,9 @@ if(isset($region)) $api_params .= '&amp;region='.$region;
 // Start checking if map should linked instead of embedded */
 if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_link) && !isset($_GET['mobile'])) || defined('CMS_BACKEND')){
 
+// Check Map Type: Start	
+if(($map_output_type != 'static' && !defined('CMS_BACKEND')) || defined('CMS_BACKEND')){
+
 ?>
 
 <script src="http://maps.googleapis.com/maps/api/js<?php echo $api_params; ?>"></script>
@@ -420,7 +424,6 @@ if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_lin
 var markers = [];
 var iterator = 0;
 <?php } ?>
-/* Enable new look */
 google.maps.visualRefresh = true;
 var map;
 var d = document.documentElement;
@@ -443,7 +446,6 @@ for ($row = 0; $row < $markerCount; $row++) {
 
 function initialize() {
 
-	// TO DO: Do not remove from print pages
 	var m = document.getElementById('maplink');
 	if(m){ m.parentNode.removeChild(m); }
 
@@ -498,7 +500,7 @@ function initialize() {
 	};
 	
 	map = new google.maps.Map(document.getElementById("<?php echo $map_id_overlay; ?>"), mapOptions);
-	<?php if($map_styling == 'StyledMapType'){ ?>;
+	<?php if($map_styling == 'StyledMapType'){ ?>
 	var map_styling = new google.maps.StyledMapType(setstyle, {name: "Here"});
 	map.mapTypes.set('styleMap', map_styling);
 	<?php } ?>
@@ -549,7 +551,7 @@ function drop() {
 	setTimeout(function(){
 	  addMarker(maplocations.length)
 	}, <?php echo $marker_delay; ?>000 + (i * <?php echo $marker_scatter; ?> + 1000))
-	}
+	};
 }
 
 function addMarker(lastid) {
@@ -600,7 +602,7 @@ function addMarker(lastid) {
 
 
 	markers.push(marker);
-	iterator++
+	iterator++;
 }
 
 <?php } ?>
@@ -640,7 +642,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <?php
 
-// End checking if map should linked instead of embedded */
+// Check Map Type: End
+}
+
+// End checking if map should be linked instead of embedded */
 }
 
 /* Generate static map for PDF output */
@@ -721,7 +726,7 @@ if(!defined('CMS_BACKEND')){
 	if(!isset($map_link) || (isset($map_link) && $map_link == '') || (isset($map_link) && !isset($_GET['mobile'])) || defined('CMS_BACKEND')){
 
 		if($staticmap_pixels == true){
-	
+
 		    if (!function_exists('str_replace_last')) {
 			    function str_replace_last($search , $replace , $str) {
 			        if(( $pos = strrpos($str , $search)) !== false) {
@@ -734,7 +739,15 @@ if(!defined('CMS_BACKEND')){
 
 			// Is there a closing div tag, insert static img before it
 			if(strripos($map_code,'</div>')){
-				echo str_replace_last('</div>', $staticmap.'<div id="'.$map_id.'_overlay"></div></div>', $map_code);
+				
+				$map_code = str_replace_last('</div>', $staticmap.'<div id="'.$map_id.'_overlay"></div></div>', $map_code);
+				if($map_output_type == 'static' && !defined('CMS_BACKEND')){
+					// Strip javascript wrappers and img id from static-served map
+					$map_code = strip_tags($map_code, '<img>');
+					$map_code = str_replace_last(' id="googlemap-print"', '', $map_code);
+				}
+				echo $map_code;
+
 			} else {
 				if(isset($map_link)){ 
 					echo '<a href="' . googlemapURL() . '" id="maplink">' . $staticmap . '</a>';

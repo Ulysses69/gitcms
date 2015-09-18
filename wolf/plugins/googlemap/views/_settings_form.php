@@ -23,6 +23,7 @@ $map_control = Plugin::getSetting('map_control', 'googlemap');
 $map_libraries = Plugin::getSetting('map_libraries', 'googlemap');
 $map_styling = Plugin::getSetting('map_styling', 'googlemap');
 $map_link = Plugin::getSetting('map_link', 'googlemap');
+$map_output_type = Plugin::getSetting('map_output_type', 'googlemap');
 $road_local_element_visibility = Plugin::getSetting('road_local_element_visibility', 'googlemap');
 $road_local_element_hue_status = Plugin::getSetting('road_local_element_hue_status', 'googlemap');
 $road_local_element_hue = Plugin::getSetting('road_local_element_hue', 'googlemap');
@@ -456,6 +457,27 @@ onload = function() {
 			</tr>
 			<?php } ?>
 
+			<tr>
+				<td class="label"><label for="amap_output_type">Map Type</label></td>
+				<td class="field">
+				<select name="map_output_type" id="amap_output_type">
+				<?php
+				$map_output_type_array = array(
+				array ('Interactive', 'interactive'),
+				array ('Static', 'static'));
+				foreach($map_output_type_array as $subarray) {
+					list($text, $val) = $subarray;
+					if($val == $map_output_type){
+						echo "<option value=\"$val\" selected>$text</option>";
+					} else {
+						echo "<option value=\"$val\">$text</option>";
+					}
+				}
+				?>
+				</select>
+				</td>
+				<td class="help"></td>
+			</tr>
 			<tr>
 				<td class="label"><label for="amap_link">Mobile Map</label></td>
 				<td class="field">

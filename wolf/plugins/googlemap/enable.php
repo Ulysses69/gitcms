@@ -37,6 +37,7 @@ if(!Plugin::getSetting('map_control', 'googlemap')) $settings['map_control'] = '
 if(!Plugin::getSetting('map_libraries', 'googlemap')) $settings['map_libraries'] = '';
 if(!Plugin::getSetting('map_styling', 'googlemap')) $settings['map_styling'] = 'false';
 if(!Plugin::getSetting('map_link', 'googlemap')) $settings['map_link'] = '';
+if(!Plugin::getSetting('map_output_type', 'googlemap')) $settings['map_output_type'] = '';
 if(!Plugin::getSetting('road_local_element_visibility', 'googlemap')) $settings['road_local_element_visibility'] = 'on';
 if(!Plugin::getSetting('road_local_element_hue_status', 'googlemap')) $settings['road_local_element_hue_status'] = 'false';
 if(!Plugin::getSetting('road_local_element_hue', 'googlemap')) $settings['road_local_element_hue'] = '#ffffff';

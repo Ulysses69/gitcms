@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.4.0'); }
+if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.4.3'); }
 if (!defined('GMAP_ROOT')) {	define('GMAP_ROOT', URI_PUBLIC.'wolf/plugins/googlemap/images'); }
 if (!defined('GMAP_PATH')) {	define('GMAP_PATH', $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/googlemap/images'); }
 
@@ -47,6 +47,7 @@ function displayGoogleMap(){
 		$map_control = Plugin::getSetting('map_control', 'googlemap');
 		$map_libraries = Plugin::getSetting('map_libraries', 'googlemap');
 		$map_styling = Plugin::getSetting('map_styling', 'googlemap');
+		$map_type = Plugin::getSetting('map_type', 'googlemap');
 		$road_local_element_visibility = Plugin::getSetting('road_local_element_visibility', 'googlemap');
 		$road_local_element_hue_status = Plugin::getSetting('road_local_element_hue_status', 'googlemap');
 		$road_local_element_hue = Plugin::getSetting('road_local_element_hue', 'googlemap');
