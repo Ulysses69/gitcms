@@ -660,7 +660,22 @@ if(!defined('CMS_BACKEND')){
 	
 		// Set defaults to A4 portrait
 		$map_width = '670'; $map_height = '370';
+		// Set maximum size for free Google Map account
 		$staticmap_width = 640;
+		// Set maximum size for Business Google API account
+		// Maxiumum size for Business Maps accounts is 2048 at scale 1
+		// Maxiumum size for Business Maps accounts is 1024 at scale 2 (multiplied by scale to 2048)
+		// Maxiumum size for Business Maps accounts is 512 at scale 4 (multiplied by scale to 2048)
+		// TO DO: staticmap_api_code support has not been created yet
+		if(isset($staticmap_api_code)){
+			$staticmap_width = 2048;
+			if($staticmap_scale == 2){
+				$staticmap_width = '1024';
+			}
+			if($staticmap_scale == 4){
+				$staticmap_width = '512';
+			}
+		}
 
 		// Check for PDF dimension settings
 		$pdf_size = ''; $pdf_orientation = '';
