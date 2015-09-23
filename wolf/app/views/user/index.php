@@ -55,7 +55,7 @@
 if(!function_exists('ExternalFileExists')){
 	function ExternalFileExists($location,$misc_content_type = false){
 		$ch = curl_init($location);
-		curl_setopt_array($ch, [
+		$ch_opt = array(
 		CURLOPT_AUTOREFERER    => true,
 		CURLOPT_CONNECTTIMEOUT => 5,
 		CURLOPT_ENCODING       => "",
@@ -66,9 +66,9 @@ if(!function_exists('ExternalFileExists')){
 		CURLOPT_SSL_VERIFYPEER => false,
 		CURLOPT_TIMEOUT        => 20,
 		CURLOPT_FAILONERROR	   => true,
-		// It's very important to let other webmasters know who's probing their servers.
-		CURLOPT_USERAGENT      => "Mozilla/5.0 (compatible; StackOverflow/0.0.1; +https://codereview.stackexchange.com/)",
-		]);
+		CURLOPT_USERAGENT      => "Mozilla/5.0 (compatible; StackOverflow/0.0.1; +https://codereview.stackexchange.com/)"
+		);
+		curl_setopt_array($ch, $ch_opt);
 		curl_exec($ch);
 		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
@@ -120,11 +120,11 @@ foreach($users as $user): ?>
 
 			if(function_exists('file_get_contents')){
 				//echo '<!-- File Get Contents Supported -->';
-				echo "\n".'<!-- Checking for ' . $png . ' -->';
-				echo "\n".'<!-- Checking for ' . $jpg . ' -->';
-				echo "\n".'<!-- Checking for ' . $gif . ' -->';
+				//echo "\n".'<!-- Checking for ' . $png . ' -->';
+				//echo "\n".'<!-- Checking for ' . $jpg . ' -->';
+				//echo "\n".'<!-- Checking for ' . $gif . ' -->';
 				if(ExternalFileExists($png) || ExternalFileExists($jpg) || ExternalFileExists($gif)){
-					echo '<!-- Get Image Contents -->';
+					//echo '<!-- Get Image Contents -->';
 					// The image exists
 					if(stristr($png,'.png')){ $avatar = $png; } else
 					if(stristr($jpg,'.jpg')){ $avatar = $jpg; } else

@@ -7,7 +7,7 @@ define('DB_PASS', '');
 define('TABLE_PREFIX', '');
 
 // Produce PHP error messages for debugging?
-define('DEBUG', false);
+define('DEBUG', true);
 
 // Check for updates on system and installed plugins?
 define('CHECK_UPDATES', false);
