@@ -683,6 +683,10 @@ if(!defined('CMS_BACKEND')){
 	} else {
 		// Test site: absolute marker
 		$marker = '&markers=icon:http://maps.gstatic.com/mapfiles/markers2/marker.png|'.$latitude.','.$longitude;
+		if($staticmap_scale >= 2){
+			$marker = '&markers=color:red|label:%E2%80%A2|'.$latitude.','.$longitude;
+			//$marker = "&markers=icon:https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-b.png&ax=44&ay=48&scale=".$staticmap_scale."&text=%E2%80%A2".'|'.$latitude.','.$longitude;
+		}
 		//$marker = '&maptype=roadmap';
 	}
 	?>
