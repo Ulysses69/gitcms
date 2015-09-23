@@ -10,6 +10,7 @@ $version = Plugin::getSetting('version', 'googlemap');
 $settings = array('version' => GMAP_VERSION);
 
 // Check for existing settings
+// TO DO: if(!Plugin::getSetting('$api_code', 'googlemap')) $settings['$api_code'] = '';
 if(!Plugin::getSetting('sensor', 'googlemap')) $settings['sensor'] = 'false';
 if(!Plugin::getSetting('infowindow', 'googlemap')) $settings['infowindow'] = '';
 if(!Plugin::getSetting('directions', 'googlemap')) $settings['directions'] = 'false';

@@ -666,8 +666,8 @@ if(!defined('CMS_BACKEND')){
 		// Maxiumum size for Business Maps accounts is 2048 at scale 1
 		// Maxiumum size for Business Maps accounts is 1024 at scale 2 (multiplied by scale to 2048)
 		// Maxiumum size for Business Maps accounts is 512 at scale 4 (multiplied by scale to 2048)
-		// TO DO: staticmap_api_code support has not been created yet
-		if(isset($staticmap_api_code)){
+		// TO DO: api_code support has not been created yet
+		if(isset($api_code)){
 			$staticmap_width = 2048;
 			if($staticmap_scale == 2){
 				$staticmap_width = '1024';
