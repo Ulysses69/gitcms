@@ -447,7 +447,7 @@ for ($row = 0; $row < $markerCount; $row++) {
 function initialize() {
 
 	var m = document.getElementById('maplink');
-	if(m){ m.parentNode.removeChild(m); }
+	if(m){ m.parentNode.removeChild(m); };
 
 
 <?php if($map_styling == 'StyledMapType'){ ?>
@@ -533,7 +533,7 @@ function initialize() {
 	google.maps.event.addListener(map, 'dragend', function(){trackmap('Google Map','Dragged');});
 	google.maps.event.addListener(map, 'zoom_changed', function(){trackmap('Google Map','Zoomed');});
 	google.maps.event.addListener(map, 'maptypeid_changed', function(){var maptype = map.getMapTypeId(); trackmap('Google Map',maptype[0].toUpperCase() + maptype.substring(1) + ' Type');});
-	google.maps.event.addListener(map.getStreetView(), 'visible_changed', function(){if(this.getVisible() == true){trackmap('Google Map','Streetview');}});
+	google.maps.event.addListener(map.getStreetView(), 'visible_changed', function(){if(this.getVisible() == true){trackmap('Google Map','Streetview');};});
 
 	<?php
 	}
@@ -773,7 +773,7 @@ if(!defined('CMS_BACKEND')){
 				} else {
 					echo $staticmap;
 				}
-				echo $map_code; 
+				echo $map_code;
 			}
 	
 		} else {
