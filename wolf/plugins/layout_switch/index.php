@@ -6,7 +6,7 @@ Plugin::setInfos(array(
 	'id'		  			=> 'layout_switch',
 	'title'	   			=> __('Layout Switch'),
 	'description' 			=> __('Currently conflicts with Page Metadata plugin.'),
-	'version'	 			=> '6.3.2',
+	'version'	 			=> '6.4.0',
 	'license'	 			=> 'GPL',
 	'require_wolf_version' 		=> '0.5.5'
 ));
@@ -219,18 +219,21 @@ function edit_page_link($page) {
 
     // Check if the user is logged in and has page_edit permission.
     if (AuthUser::isLoggedIn() && (AuthUser::hasPermission('administrator') || AuthUser::hasPermission('page_edit'))) {
-		$styling .= 'position:fixed !important;';
-		$styling .= 'top:0 !important;';
-		$styling .= 'right:0 !important;';
-		$styling .= 'z-index:999 !important;';
-		$styling .= 'font-size:70% !important;';
-		$styling .= 'font-weight:bold !important;';
-		$styling .= 'background:#00cc00 !important;';
-		$styling .= 'color:#ffffff !important;';
-		$styling .= 'padding:5px 6px !important;';
-		$styling .= 'margin:0 !important;';
-		$output = '<a href="'. URL_PUBLIC . ADMIN_DIR . '/page/edit/' . $page->id .'" style="'.$styling.'">Edit page</a>';
-		//exit;
+		// Do not apply to pages that feature an explicit extension in slug value
+		if(strpos($page->slug, ".") === false){
+			$styling .= 'position:fixed !important;';
+			$styling .= 'top:0 !important;';
+			$styling .= 'right:0 !important;';
+			$styling .= 'z-index:999 !important;';
+			$styling .= 'font-size:70% !important;';
+			$styling .= 'font-weight:bold !important;';
+			$styling .= 'background:#00cc00 !important;';
+			$styling .= 'color:#ffffff !important;';
+			$styling .= 'padding:5px 6px !important;';
+			$styling .= 'margin:0 !important;';
+			$output = '<a href="'. URL_PUBLIC . ADMIN_DIR . '/page/edit/' . $page->id .'" style="'.$styling.'">Edit page</a>';
+			//exit;
+		}
 	}
 	
 	return $output;
