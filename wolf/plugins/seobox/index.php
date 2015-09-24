@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.10.0'); }
+if (!defined('SEOBOX_VERSION')) { define('SEOBOX_VERSION', '3.11.0'); }
 if (!defined('SEOBOX_ROOT')) { define('SEOBOX_ROOT', URI_PUBLIC.'wolf/plugins/seobox'); }
 Plugin::setInfos(array(
 	'id'					=> 'seobox',
@@ -1259,10 +1259,11 @@ function analyticsPush($script=true,$track='_trackEvent',$category='',$action=''
 
 // Determin if bots are allowed in robots (disallow when in test site mode)
 if($_SERVER['REQUEST_URI'] == '/robots.txt'){
+	// Check home page for propsal layout
 	$proposal_id = 10;
-	$homepage = Page::findById(1); // Only need to check home page
+	$homepage = Page::findById(1);
 
-	/* Check for proposal layouts (allow for layout on live website, not just test domain) */
+	// If proposal layout is set, ignore robots
 	if($homepage->layout_id == $proposal_id){
 		$protocol = "HTTP/1.0";
 		if("HTTP/1.1" == $_SERVER["SERVER_PROTOCOL"]){
@@ -1270,9 +1271,17 @@ if($_SERVER['REQUEST_URI'] == '/robots.txt'){
 		}
 		header("$protocol 503 Service Unavailable", true, 503);
 		header("Retry-After: 2592000"); // Re-try after 30 days
+	} else {
+		// Create robots.txt (overwrites robots page)
+		header("Content-Type:text/plain"); ?>
+Sitemap: <?php echo URL_ABSOLUTE; ?>sitemap.xml
+<?php if(Plugin::getSetting('enable', 'mobile_check') == true){ ?>Sitemap: <?php echo URL_ABSOLUTE; ?>mobilesitemap.xml<?php } ?>
+<?php
+		exit;
 	}
 
 	$bots = Plugin::getSetting('bots', 'seobox');
+	// Disallow robots.txt
 	if($bots == 'disallow'){ header("Content-Type:text/plain"); ?>
 User-agent: *
 Disallow: /
