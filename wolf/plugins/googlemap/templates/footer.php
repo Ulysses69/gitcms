@@ -402,8 +402,6 @@ $features[] = "\t".'{ featureType: "poi",
 	}
 $featurelist = implode(",\r", $features);
 
-
-
 $api_params = '?';
 if(isset($api_version)) $api_params .= 'v='.$api_version.'&amp;';
 $api_params .= 'sensor='.$sensor;
@@ -477,9 +475,9 @@ function initialize() {
 		center: new google.maps.LatLng(<?php echo $latitude; ?>,<?php echo $longitude; ?>)<?php if($navigation_control != 'DEFAULT' && $map_ui != 'true'){ ?>,		
 		zoomControlOptions: {style: google.maps.ZoomControlStyle.<?php echo $zoom_control; ?><?php if(isset($zoom_control_position)){ ?>, position: google.maps.ControlPosition.<?php echo $zoom_control_position; ?><?php } ?>},
 		navigation_controlControlOptions: {style: google.maps.NavigationControlStyle.<?php echo $navigation_control; ?>}
-		<?php } ?><?php if($zoom_control != 'DEFAULT' && $map_ui != 'true' && $map_styling != 'StyledMapType'){ ?>,
-		<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>,
-		mapTypeControl: <?php if(!defined('CMS_BACKEND') || $map_control == 'true'){ echo 'false'; } else { echo 'true'; } ?><?php } ?><?php if($map_ui == 'true'){ ?>,
+		<?php } ?><?php if($zoom_control != 'DEFAULT' && $map_ui != 'true' && $map_styling != 'StyledMapType'){ ?>
+		<?php } ?><?php if($map_control == 'false' && $map_styling != 'StyledMapType'){ ?>
+		,mapTypeControl: <?php if(!defined('CMS_BACKEND') || $map_control == 'true'){ echo 'false'; } else { echo 'true'; } ?><?php } ?><?php if($map_ui == 'true'){ ?>,
 		scaleControl: false,
 		disableDefaultUI: true<?php } ?><?php if($map_styling == 'StyledMapType'){ ?>,
 <?php if (!defined('CMS_BACKEND')) {
@@ -496,7 +494,7 @@ function initialize() {
 		mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.<?php echo $map_type; ?>, 'styleMap'] },
 		mapTypeId: 'styleMap'
 		<?php } ?>
-	
+
 	};
 	
 	map = new google.maps.Map(document.getElementById("<?php echo $map_id_overlay; ?>"), mapOptions);
@@ -515,9 +513,9 @@ function initialize() {
 		if(action == 'Zoomed'){
 			var getzoom = map.getZoom();
 			var setzoom = <?php echo $zoom; ?>;
-			if(getzoom > setzoom){ action = 'Zoomed In'; }
-			if(getzoom < setzoom){ action = 'Zoomed Out'; }
-		}
+			if(getzoom > setzoom){ action = 'Zoomed In'; };
+			if(getzoom < setzoom){ action = 'Zoomed Out'; };
+		};
 		<?php
 		/* Push or debug */
 		if(DEBUG == true){
@@ -542,7 +540,7 @@ function initialize() {
 
 	<?php if($marker != 'false'){ ?>drop();<?php } ?>
 
-}
+};
 
 <?php if(count($markers) > 0 && $marker != 'false'){ ?>
 
@@ -552,7 +550,7 @@ function drop() {
 	  addMarker(maplocations.length)
 	}, <?php echo $marker_delay; ?>000 + (i * <?php echo $marker_scatter; ?> + 1000))
 	};
-}
+};
 
 function addMarker(lastid) {
 	var image = new google.maps.MarkerImage( mapmarkers[iterator][3],
@@ -603,7 +601,7 @@ function addMarker(lastid) {
 
 	markers.push(marker);
 	iterator++;
-}
+};
 
 <?php } ?>
 
@@ -624,8 +622,8 @@ function getUserLocation() {
 	} else {
 	  marker.setPosition(new google.maps.LatLng(14.597466, 121.0092));
 	  marker.setMap(map);
-	}
-}
+	};
+};
 
 <?php if(Plugin::isEnabled('mobile_check')){
 $screenwidth = Plugin::getSetting('screen_width', 'mobile_check');
