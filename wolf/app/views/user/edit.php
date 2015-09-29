@@ -145,7 +145,7 @@ if(!function_exists('ExternalFileExists')){
 
 		} else {
 
-			// Check if avatar file is on another domain
+			// NOT REASON TO CHECK YET: Check if avatar file is on another domain
 			/*
 			if(stristr($avatar,$_SERVER['SERVER_NAME']) || $avatar[0] == '/'){
 				if(stristr($avatar,'/public/images/users') || stristr($avatar,'images/user.png')){ $iconpath = '/users'; }
