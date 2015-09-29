@@ -67,7 +67,8 @@ class RedirectorController extends PluginController {
 		$dataURL = addslashes($dataURL);
 		$dataDestination = addslashes($dataDestination);
 		
-		if(function_exists('slugify','none')){
+		//if(function_exists('slugify','none')){
+		if(function_exists('slugify')){
 			$dataURL = slugify($dataURL);
 			$dataDestination = slugify($dataDestination);
 		}
