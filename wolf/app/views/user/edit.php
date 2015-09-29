@@ -138,13 +138,9 @@ if(!function_exists('ExternalFileExists')){
 	<input id="csrf_token" name="csrf_token" type="hidden" value="<?php echo $csrf_token; ?>" />
 	<?php $iconpath = '';
 	if($avatar != ''){
-		
 		if(stristr($avatar,'user.')) {
-
 			echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images/users" style="font-size:70%;position:relative;top:5px">Add Pic</a>';
-
 		} else {
-
 			// NOT REASON TO CHECK YET: Check if avatar file is on another domain
 			/*
 			if(stristr($avatar,$_SERVER['SERVER_NAME']) || $avatar[0] == '/'){
@@ -153,13 +149,11 @@ if(!function_exists('ExternalFileExists')){
 			}
 			*/
 			echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images/users" style="font-size:70%;position:relative;top:5px">Edit Pic</a>';
-		
 		}
 	}
 	?>
   <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 	<tr>
-
 	  <td class="label"><label for="user_name"><?php echo __('Name'); ?></label></td>
 	  <td class="field"><input class="textbox" id="user_name" maxlength="100" name="user[name]" size="100" type="text" value="<?php echo $user->name; ?>" /></td>
 	  <td class="help"><?php echo __('Required.'); ?></td>
