@@ -138,9 +138,25 @@ if(!function_exists('ExternalFileExists')){
 	<input id="csrf_token" name="csrf_token" type="hidden" value="<?php echo $csrf_token; ?>" />
 	<?php $iconpath = '';
 	if($avatar != ''){
-		if(stristr($avatar,'/public/images/users') || stristr($avatar,'images/user.png')){ $iconpath = '/users'; }
-		echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images'.$iconpath.'" style="font-size:80%;position:relative;top:2px">Edit Pic</a>';
-	} ?>
+		
+		if(stristr($avatar,'user.')) {
+
+			echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images/users" style="font-size:70%;position:relative;top:5px">Add Pic</a>';
+
+		} else {
+
+			// Check if avatar file is on another domain
+			/*
+			if(stristr($avatar,$_SERVER['SERVER_NAME']) || $avatar[0] == '/'){
+				if(stristr($avatar,'/public/images/users') || stristr($avatar,'images/user.png')){ $iconpath = '/users'; }
+				echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images'.$iconpath.'" style="font-size:70%;position:relative;top:5px">Edit Pic</a>';
+			}
+			*/
+			echo '<a href="'.URL_PUBLIC.ADMIN_DIR.'/plugin/file_manager/browse/images/users" style="font-size:70%;position:relative;top:5px">Edit Pic</a>';
+		
+		}
+	}
+	?>
   <table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 	<tr>
 
