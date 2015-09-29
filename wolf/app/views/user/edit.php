@@ -156,7 +156,7 @@ if(!function_exists('ExternalFileExists')){
 	<tr>
 	  <td class="label"><label for="user_name"><?php echo __('Name'); ?></label></td>
 	  <td class="field"><input class="textbox" id="user_name" maxlength="100" name="user[name]" size="100" type="text" value="<?php echo $user->name; ?>" /></td>
-	  <td class="help"><?php echo "<span style='color:red'>" . __('Required.') . "</span>."; ?></td>
+	  <td class="help"><?php echo "<span style='color:red'>" . __('Required') . "</span>."; ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_username"><?php echo __('Username'); ?></label></td>
@@ -170,12 +170,12 @@ if(!function_exists('ExternalFileExists')){
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_password"><?php echo __('Password'); ?></label></td>
-	  <td class="field"><input class="textbox" id="user_password" maxlength="40" name="user[password]" size="40" type="password" value="" /></td>
+	  <td class="field"><input class="textbox" id="user_password" maxlength="40" name="user[password]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="******"'; } ?> value="" /></td>
 	  <td class="help" rowspan="2"><?php if($action=='edit') { echo __('Leave blank if unchanged.'); } else { echo __('Must be over ') . "<span style='color:red'>" .  __('5 characters') . "</span>."; } ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_confirm"><?php echo __('Confirm Password'); ?></label></td>
-	  <td class="field"><input class="textbox" id="user_confirm" maxlength="40" name="user[confirm]" size="40" type="password" value="" /></td>
+	  <td class="field"><input class="textbox" id="user_confirm" maxlength="40" name="user[confirm]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="******"'; } ?> value="" /></td>
 	</tr>
 <?php if (AuthUser::hasPermission('administrator')): ?> 
 	<tr>
