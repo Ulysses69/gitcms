@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.2'); }
+if (!defined('CLIENTDETAILS_VERSION')) {	define('CLIENTDETAILS_VERSION', '2.5.4'); }
 if (!defined('CLIENTDETAILS_ID')) {			define('CLIENTDETAILS_ID', 'clientdetails'); }
 if (!defined('CLIENTDETAILS_TITLE')) {		define('CLIENTDETAILS_TITLE', 'Clientdetails'); }
 if (!defined('CLIENTDETAILS_DESC')) {		define('CLIENTDETAILS_DESC', 'Manage client details'); }
@@ -58,7 +58,13 @@ if(Plugin::isEnabled(CLIENTDETAILS_ID)){
 
 	if(!function_exists('clientdetails_name')){
 		function clientdetails_name() {
-			return Plugin::getSetting('clientname', 'clientdetails');
+			$copyright_page_check = '<!-- ' . $_SERVER["REQUEST_URI"] . ' -->';
+			if(stristr($copyright_page_check, '/copyright' . URL_SUFFIX)){
+				$copyright_page_check = '';
+			} else {
+				$copyright_page_check = Plugin::getSetting('clientname', 'clientdetails');
+			}
+			return $copyright_page_check;
 		}
 	}
 	if(!function_exists('clientdetails_slogan')){
