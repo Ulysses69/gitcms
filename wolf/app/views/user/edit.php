@@ -156,12 +156,12 @@ if(!function_exists('ExternalFileExists')){
 	<tr>
 	  <td class="label"><label for="user_name"><?php echo __('Name'); ?></label></td>
 	  <td class="field"><input class="textbox" id="user_name" maxlength="100" name="user[name]" size="100" type="text" value="<?php echo $user->name; ?>" /></td>
-	  <td class="help"><?php echo __('Required.'); ?></td>
+	  <td class="help"><?php echo "<span style='color:red'>" . __('Required.') . "</span>."; ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_username"><?php echo __('Username'); ?></label></td>
 	  <td class="field"><input class="textbox" id="user_username" maxlength="40" name="user[username]" size="40" type="text" value="<?php echo $user->username; ?>" <?php echo $action == 'edit' ? 'disabled="disabled" ': ''; ?>/></td>
-	  <td class="help"><?php if($action!='edit') { echo __('Must be unique.'); } else { echo __('Cannot be changed.'); } ?></td>
+	  <td class="help"><?php if($action!='edit') { echo __('Must be ') . "<span style='color:red'>" . __('unique') . "</span>."; } else { echo __('Cannot be changed.'); } ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label class="optional" for="user_email"><?php echo __('E-mail'); ?></label></td>
@@ -171,7 +171,7 @@ if(!function_exists('ExternalFileExists')){
 	<tr>
 	  <td class="label"><label for="user_password"><?php echo __('Password'); ?></label></td>
 	  <td class="field"><input class="textbox" id="user_password" maxlength="40" name="user[password]" size="40" type="password" value="" /></td>
-	  <td class="help" rowspan="2"><?php if($action=='edit') { echo __('Leave blank if unchanged.'); } else { echo __('At least 5 characters.');} ?></td>
+	  <td class="help" rowspan="2"><?php if($action=='edit') { echo __('Leave blank if unchanged.'); } else { echo __('Must be over ') . "<span style='color:red'>" .  __('5 characters') . "</span>."; } ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_confirm"><?php echo __('Confirm Password'); ?></label></td>
