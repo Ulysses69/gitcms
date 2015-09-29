@@ -122,6 +122,46 @@ if ($pagetmp != null && !empty($pagetmp) && $parttmp != null && !empty($parttmp)
 
 
 
+
+				<?php
+				// Check for Children Profile (rather than Page Profile)
+				$profilepages = false;
+				$profiletype = '';
+				$profile_sql = "SELECT * FROM ".TABLE_PREFIX."page_metadata WHERE page_id=".$page->id;
+				$profile_q = Record::getConnection()->query($profile_sql);
+				if($profile_q){
+					$profile_f = $profile_q->fetchAll(PDO::FETCH_OBJ);
+					foreach ($profile_f as $profile){
+						if($profile->keyword == 'page_part_forms_children'){
+							if($profile->value == 4){
+								$profiletype = 'Case Study';
+								$profilepages = true;
+							}
+							if($profile->value == 3){
+								$profiletype = 'Dental Team';
+								$profilepages = true;
+							}
+							if($profile->value == 2){
+								$profiletype = 'Consultant';
+								$profilepages = true;
+							}
+						}
+					}
+				}
+				// TO DO: Overwrite teamitems() function in scripts tab, with GUI here.
+				?>
+				<!--
+				<?php if($profilepages == true){ ?>
+				<tr>
+				<td colspan="2">Children Profiles: <?php echo $profiletype; ?></td>
+				</tr>
+				<?php } ?>
+				-->
+
+
+
+
+
 				<tr>
 				  <td class="label"><label for="page_layout_id"><?php echo __('Layout'); ?></label></td>
 				  <td class="field">
