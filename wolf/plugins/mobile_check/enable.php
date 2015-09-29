@@ -246,7 +246,7 @@ if (!$version || $version == null) {
 
 
 
-		if($layoutcontent != ''){
+		if(isset($layoutcontent) && $layoutcontent != ''){
 			//global $__FROG_CONN__;
 			//$sql = "UPDATE ".TABLE_PREFIX."layout SET content='".$layoutcontent."' WHERE name='Mobilefriendly'";
 			//$stmt = $__FROG_CONN__->prepare($sql);

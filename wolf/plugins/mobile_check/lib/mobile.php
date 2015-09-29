@@ -363,6 +363,9 @@ input[type='search'] {
 #content li {
 	padding:.3em
 }
+#content ol h2 {
+	line-height: 130%
+}
 #top > h2, #top > h3 {
 	margin-top:.5em
 }

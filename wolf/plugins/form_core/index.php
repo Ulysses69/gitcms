@@ -4,7 +4,7 @@
 Plugin::setInfos(array(
 	'id'					=> 'form_core',
 	'title'					=> 'Form - Core',
-	'version'				=> '13.1.0',
+	'version'				=> '13.2.0',
 	'license'				=> 'GPLv3',
 	'website'				=> 'http://www.bluehorizonsmarketing.co.uk/',
 	'update_url'			=> 'http://www.bluehorizonsmarketing.co.uk/plugins.xml',
