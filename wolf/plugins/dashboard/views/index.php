@@ -198,6 +198,12 @@
 			$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/page/edit/1"><b>Proposal Layout Mode</b></a><br />Specify different layout when approved.<br /><br /></li>';
 		}
 
+		
+		if(stristr($avatarSrc,'user.')){
+			$warnings .= '<li class="warning"><a href="/'.ADMIN_DIR.'/plugin/file_manager/browse/images/users"><b>Change Pic</b></a><br />Change your admin photo (ideally square).<br /><br /></li>';
+		}
+
+
 		$favicon = $_SERVER{'DOCUMENT_ROOT'}.'/public/images/favicon/logo.ico';
 		if (file_exists($favicon)) {
 			$iconsize = filesize($favicon);
