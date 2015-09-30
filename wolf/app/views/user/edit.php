@@ -170,12 +170,12 @@ if(!function_exists('ExternalFileExists')){
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_password"><?php echo __('Password'); ?></label></td>
-	  <td class="field"><input class="textbox" id="user_password" maxlength="40" name="user[password]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="******"'; } ?> value="" /></td>
+	  <td class="field"><input class="textbox" id="user_password" maxlength="40" name="user[password]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"'; } ?> value="" /></td>
 	  <td class="help" rowspan="2"><?php if($action=='edit') { echo __('Leave blank if unchanged.'); } else { echo __('Must be over ') . "<span style='color:red'>" .  __('5 characters') . "</span>."; } ?></td>
 	</tr>
 	<tr>
 	  <td class="label"><label for="user_confirm"><?php echo __('Confirm Password'); ?></label></td>
-	  <td class="field"><input class="textbox" id="user_confirm" maxlength="40" name="user[confirm]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="******"'; } ?> value="" /></td>
+	  <td class="field"><input class="textbox" id="user_confirm" maxlength="40" name="user[confirm]" size="40" type="password"<?php if($action=='edit'){ echo ' placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"'; } ?> value="" /></td>
 	</tr>
 <?php if (AuthUser::hasPermission('administrator')): ?> 
 	<tr>
