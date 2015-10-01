@@ -295,7 +295,7 @@ onload = function() {
 			<tr>
 			<td colspan="4">
 			<fieldset style="padding: 0.5em;">
-			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Buttons'); ?></legend>
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Buttons and Mobile Menus'); ?></legend>
 			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="label"><label for="acolor_button_bg">Background Colour</label></td>
