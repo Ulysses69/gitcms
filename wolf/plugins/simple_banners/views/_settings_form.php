@@ -31,7 +31,7 @@ $images_main_FOLDER = Plugin::getSetting('images_main_FOLDER', 'simple_banners')
 				<tr>
 					<td class="label"><label for="bannercontainer"><?php echo __('Container'); ?></label></td>
 					<td class="field bannercontainer"><input type="checkbox" name="bannercontainer" id="bannercontainer" value="show" class="checkbox"<?php if($bannercontainer == "show"){echo " checked";}?>/></td>
-					<td class="help"><?php echo __('Add container with <strong>banner</strong> id'); ?></td>
+					<td class="help"><?php echo __('Add container with <strong>banner</strong> as id'); ?></td>
 				</tr>
 
 			   	<tr>
