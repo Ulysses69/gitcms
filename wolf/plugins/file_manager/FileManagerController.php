@@ -359,7 +359,12 @@ class FileManagerController extends PluginController {
 					$object->is_file = true;
 					// Determine if file opens directly in media browser, or links directly
 					if(stristr($file,'.txt') || stristr($file,'.jpg') || stristr($file,'.gif') || stristr($file,'.png') || stristr($file,'.ico')){
-						$object->link = '<a href="'.get_url('plugin/file_manager/view/'.$this->path.$file).'">'.$file.'</a>';
+						$bg_class = '';
+						$bg_thumb = '';
+						// Check if thumb exists or use full image
+						if(file_exists($this->fullpath.'_thumbs/_'.$file)){ $bg_thumb = '_thumbs/_'; }
+						$bg_class = '<span style="float:left;position:relative;z-index:8;width:16px;height:16px;margin-right:-14px;margin-left:0;background-size:cover;background-position:center;background-image:url(/public/'.$this->path.$bg_thumb.$file.')"></span>';
+						$object->link = '<a href="'.get_url('plugin/file_manager/view/'.$this->path.$file).'">'.$bg_class.$file.'</a>';
 					} else {
 						$object->link = '<a href="/public/'.$this->path.$file.'">'.$file.'</a>';
 					}
