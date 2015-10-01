@@ -358,7 +358,7 @@ class FileManagerController extends PluginController {
 					$object->is_dir = false;
 					$object->is_file = true;
 					// Determine if file opens directly in media browser, or links directly
-					if(stristr($file,'.txt') || stristr($file,'.jpg') || stristr($file,'.gif') || stristr($file,'.png')){
+					if(stristr($file,'.txt') || stristr($file,'.jpg') || stristr($file,'.gif') || stristr($file,'.png') || stristr($file,'.ico')){
 						$object->link = '<a href="'.get_url('plugin/file_manager/view/'.$this->path.$file).'">'.$file.'</a>';
 					} else {
 						$object->link = '<a href="/public/'.$this->path.$file.'">'.$file.'</a>';
@@ -442,7 +442,7 @@ class FileManagerController extends PluginController {
 	{
 		if ( ! @is_file($file))
 			return false;
-		else if ( ! preg_match('/^(.*).(jpe?g|gif|png)$/i', $file))
+		else if ( ! preg_match('/^(.*).(jpe?g|gif|png|ico)$/i', $file))
 			return false;
 		
 		return true;

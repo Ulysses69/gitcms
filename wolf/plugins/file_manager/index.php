@@ -61,7 +61,7 @@ Plugin::setInfos(array(
 	'id'		  => 'file_manager',
 	'title'	   => __('File Manager'),
 	'description' => __('Provides interface to manage files from the administration.'),
-	'version'	 => '1.0.0', 
+	'version'	 => '1.0.1', 
 	'website'	 => 'http://www.wolfcms.org/',
 	'update_url'  => 'http://www.wolfcms.org/plugin-versions.xml'
 ));
