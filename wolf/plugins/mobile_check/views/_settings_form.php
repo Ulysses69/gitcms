@@ -3,6 +3,7 @@
 $enable					= Plugin::getSetting('enable', 'mobile_check');
 $copyright				= Plugin::getSetting('copyright', 'mobile_check');
 $screen_width			= Plugin::getSetting('screen_width', 'mobile_check');
+$tablet_width			= Plugin::getSetting('tablet_width', 'mobile_check');
 $website_width			= Plugin::getSetting('website_width', 'mobile_check');
 $logo					= Plugin::getSetting('logo', 'mobile_check');
 $logo_url				= Plugin::getSetting('logo_url', 'mobile_check');
@@ -345,6 +346,47 @@ onload = function() {
 			</td>
 			</tr>
 
+
+
+
+			<tr>
+			<td colspan="4">
+			<fieldset style="padding: 0.5em;">
+			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Breakpoints'); ?></legend>
+			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
+
+			<tr>
+				<td class="label"><label for="screen_width"><?php echo __('Phone Width'); ?></label></td>
+				<td class="field">
+				<input name="screen_width" id="screen_width" value="<?php echo $screen_width; ?>" type="number" />
+				</td>
+				<td class="help"><?php echo __('Pixel width associated with phones');?></td>
+			</tr>
+
+			<tr>
+				<td class="label"><label for="tablet_width"><?php echo __('Tablet Width'); ?></label></td>
+				<td class="field">
+				<input name="tablet_width" id="tablet_width" value="<?php echo $tablet_width; ?>" type="number" />
+				</td>
+				<td class="help"><?php echo __('Pixel width associated with tablets');?></td>
+			</tr>
+
+			<tr>
+				<td class="label"><label for="website_width"><?php echo __('Desktop Width'); ?></label></td>
+				<td class="field">
+				<input name="website_width" id="website_width" value="<?php echo $website_width; ?>" type="number" />
+				</td>
+				<td class="help"><?php echo __('Pixel width associated with laptops & computers');?></td>
+			</tr>
+
+			</table>
+			</fieldset>
+			</td>
+			</tr>
+
+
+
+
 		</table>
 
 
@@ -377,22 +419,6 @@ onload = function() {
 				</select>
 				</td>
 				<td class="help"><?php echo __('Enable/disable mobile detection');?></td>
-			</tr>
-
-			<tr>
-				<td class="label"><label for="screen_width"><?php echo __('Mobile Width'); ?></label></td>
-				<td class="field">
-				<input name="screen_width" id="screen_width" value="<?php echo $screen_width; ?>" />
-				</td>
-				<td class="help"><?php echo __('Pixel width of devices');?></td>
-			</tr>
-
-			<tr>
-				<td class="label"><label for="website_width"><?php echo __('Website Width'); ?></label></td>
-				<td class="field">
-				<input name="website_width" id="website_width" value="<?php echo $website_width; ?>" />
-				</td>
-				<td class="help"><?php echo __('Pixel width of website');?></td>
 			</tr>
 
 			<tr>

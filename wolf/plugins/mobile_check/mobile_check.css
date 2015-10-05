@@ -3,8 +3,9 @@
 	background: #f3efef !important;
 }
 #body_plugin_mobile_check .fieldset td #screen_width,
+#body_plugin_mobile_check .fieldset td #tablet_width,
 #body_plugin_mobile_check .fieldset td #website_width {
-	width: 3em;
+	width: 4.5em;
 }
 #body_plugin_mobile_check #linkcustom {
 	width: 100%;

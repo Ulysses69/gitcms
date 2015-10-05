@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.2.1'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.2.2'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
@@ -151,6 +151,7 @@ if(!function_exists('updateMobileCSS')){
 		if(isset($_POST['enable'])){ $enable = $_POST['enable']; } else { $enable = Plugin::getSetting('enable', 'mobile_check'); }
 		if(isset($_POST['copyright'])){ $copyright = $_POST['copyright']; } else { $copyright = Plugin::getSetting('copyright', 'mobile_check'); }
 		if(isset($_POST['screen_width'])){ $screen_width = $_POST['screen_width']; } else { $screen_width = Plugin::getSetting('screen_width', 'mobile_check'); }
+		if(isset($_POST['tablet_width'])){ $tablet_width = $_POST['tablet_width']; } else { $tablet_width = Plugin::getSetting('tablet_width', 'mobile_check'); }
 		if(isset($_POST['website_width'])){ $website_width = $_POST['website_width']; } else { $website_width = Plugin::getSetting('website_width', 'mobile_check'); }
 		if(isset($_POST['desktop_text'])){ $desktop_text = $_POST['desktop_text']; } else { $desktop_text = Plugin::getSetting('desktop_text', 'mobile_check'); }
 		if(isset($_POST['topnav'])){ $topnav = $_POST['topnav']; } else { $topnav = Plugin::getSetting('topnav', 'mobile_check'); }
@@ -364,6 +365,7 @@ if(!function_exists('updateMobileCSS')){
 				  			'enable' => $enable,
 				  			'copyright' => $copyright,
 							'screen_width' => $screen_width,
+							'tablet_width' => $tablet_width,
 							'website_width' => $website_width,
 							'logo' => $logo, 
 							'logo_url' => $logo_url,

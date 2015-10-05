@@ -17,6 +17,7 @@ $settings = array('version' => MOBILE_VERSION);
 if(!Plugin::getSetting('enable', 'mobile_check')) $settings['enable'] = true;
 if(!Plugin::getSetting('copyright', 'mobile_check')) $settings['copyright'] = true;
 if(!Plugin::getSetting('screen_width', 'mobile_check')) $settings['screen_width'] = 640;
+if(!Plugin::getSetting('tablet_width', 'mobile_check')) $settings['tablet_width'] = 768;
 if(!Plugin::getSetting('website_width', 'mobile_check')) $settings['website_width'] = 960;
 if(!Plugin::getSetting('logo', 'mobile_check')) $settings['logo'] = false;
 if(!Plugin::getSetting('logo_url', 'mobile_check')) $settings['logo_url'] = '/inc/img/logo.png';
