@@ -791,8 +791,8 @@ thead td, th {
     user-select: none;
     overflow: hidden;
     font-family: verdana;
-    color: #fff;
-    background: #666;
+	color:<?php echo $color_button_link; ?>;
+	background:<?php echo $color_button_bg; ?>;
     font-weight: normal;
 }
 .js .slider .prev {
