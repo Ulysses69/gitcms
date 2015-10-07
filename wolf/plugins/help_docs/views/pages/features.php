@@ -211,17 +211,19 @@ $commas
 <code>randomsrc($this, '/public/images/banner/')</code>
 <?php ; ?>
 
-<?php if(function_exists('setBeforeAfter')) ?>
+<?php //if(function_exists('setBeforeAfter')) ?>
 <h2 id="beforeafter">Before & After Slider</h2>
 <p>Example 1 Displays before and after slider from before-after folder, sorted by name in ascending order.</p>
 <code>setBeforeAfter('/public/images/before-after/','name','ascend')</code>
-<?php ; ?>
+<p>Example 2 Displays before and after slider from before-after folder, using polaroid appearance.</p>
+<code>setBeforeAfter('/public/images/before-after/','name','ascend','polaroids')</code>
+<?php //; ?>
 
-<?php if(function_exists('simplebanner')) ?>
+<?php //if(function_exists('simplebanner')) ?>
 <h2 id="simplebanner">Simple Banner</h2>
 <p>Example Displays simple banner as per <a href="../simple_banners">settings</a>.</p>
 <code>simplebanner($this)</code>
-<?php ; ?>
+<?php //; ?>
 
 <h2 id="newsitems">News Items</h2>
 <p>News or article archives can be displayed in varying ways. By default, excerpts are displayed with links to full article (if excerpt contains content).</p>

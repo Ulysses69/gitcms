@@ -798,6 +798,31 @@ thead td, th {
 	margin: 0;
 }
 
+.js .polaroids {
+	padding-top: 5%;
+}
+
+.js .polaroids img {
+	display: none;
+}
+.js .polaroids .active img {
+	display: block;
+	-webkit-box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
+	-moz-box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
+	box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
+}
+.js .polaroids img:nth-child(odd) {
+    -ms-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+	margin: -2% -6% 0 2%;
+}
+.js .polaroids img:nth-child(even) {
+    -ms-transform: rotate(-7deg);
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+	margin: 0 0 0 5%;
+}
 
 
 .js .slider div {
@@ -839,11 +864,26 @@ thead td, th {
 	top: 50%;
 	margin-top: -0.55em;
 }
+.js .polaroids span {
+	top: 41%;
+}
 /* Mobile size support */
 <?php if($screen_width){ ?>
 @media only screen and (max-width: <?php echo $screen_width; ?>px) {
-	.js .slider {
+	.js .slider,
+	.js .polaroids {
 		overflow: hidden;
+		padding-top: 0;
+	}
+	.js .polaroids {
+		margin-bottom: -1%;
+	}
+	.js .polaroids img:nth-child(odd),
+	.js .polaroids img:nth-child(even) {
+	    -ms-transform: none;
+	    -webkit-transform: none;
+	    transform: none;
+		margin: 0 0 1% 1%;
 	}
 	.js .slider span {
 		top: 0;

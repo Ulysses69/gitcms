@@ -180,12 +180,12 @@ if (!defined('IN_CMS')) { exit(); }
 	<?php if(function_exists('randomsrc')) ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#randomsrc'); ?>">Random image</a></li>
 	<?php ; ?>
-	<?php if(function_exists('setBeforeAfter')) ?>
+	<?php //if(function_exists('setBeforeAfter')) ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#beforeafter'); ?>">Before & After Slider</a></li>
-	<?php ; ?>
-	<?php if(function_exists('simplebanner')) ?>
+	<?php //; ?>
+	<?php //if(function_exists('simplebanner')) ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#simplebanner'); ?>">Simple Banner</a></li>
-	<?php ; ?>
+	<?php //; ?>
 	<li><a href="<?php echo get_url('plugin/help_docs/features#newsitems'); ?>">News Items</a></li>
 	</ul>
 </li>

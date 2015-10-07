@@ -50,6 +50,7 @@
 	window.slidecount = 0;
 	window.sliders;
 	window.slidesHolder;
+	window.polaroids;
 	window.slides;
 	window.spandepth;
 	window.spans;
@@ -58,7 +59,7 @@
 	function setSlide(){
 		if(this.text == '&lsaquo;'){
 			activeslide--;
-		} else {		
+		} else {
 			activeslide++;
 		}
 		if(activeslide < 0){
@@ -66,9 +67,12 @@
 		}
 		if(activeslide == slidecount){
 			activeslide = 0;
+		}	
+		for(var p = 0; p < slidecount; p++){
+			slides[p].className = '';
 		}
-	
-		// Increase selected div item depth
+		// Set selected div class to active and increase depth
+		slides[activeslide].className = 'active';		
 		slides[activeslide].style.zIndex = spandepth;
 		setSpans();
 	};
@@ -84,11 +88,16 @@
 		// Convert ratio to percentage and divide height by number of images side by side
 		var percent = Math.floor((img.height / img.width) * 100) / 2;
 
-		// Add padding to slidesHolder using percentage
+		// Add padding to slidesHolder using percentage, adding extra for polaroids
 		slidesHolder.style.paddingBottom = percent + "%";
-	
+		polaroids = document.getElementsByClassName('slider polaroids');
+		if(polaroids[0]){
+			polaroids[0].style.paddingBottom = (percent + 5) + "%";
+		}
+
 		// Number of div items
 		slides = slidesHolder.getElementsByTagName('div');
+		slides[0].className = 'active';
 		slidecount = slides.length;
 
 		// Create spans
