@@ -807,9 +807,9 @@ thead td, th {
 }
 .js .polaroids .active img {
 	display: block;
-	-webkit-box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
-	-moz-box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
-	box-shadow: 0px 1px 6px 3px rgba(50, 50, 50, 0.22);
+-webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+-moz-box-shadow:    0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+box-shadow:         0px 3px 12px 0px rgba(50, 50, 50, 0.35);
 }
 .js .polaroids img:nth-child(odd) {
     -ms-transform: rotate(5deg);
