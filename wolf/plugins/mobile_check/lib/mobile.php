@@ -656,8 +656,42 @@ thead td, th {
 
 
 /* Handle announcements */
+@keyframes movedown {
+    0% { top:-2em; }
+    100% { top:0; }
+}
+@-webkit-keyframes movedown {
+    0% { top:-2em; }
+    100% { top:0; }
+}
+@-moz-keyframes movedown {
+    0% { top:-2em; }
+    100% { top:0; }
+}
+@-ms-keyframes movedown {
+    0% { top:-2em; }
+    100% { top:0; }
+}
+@-o-keyframes movedown {
+    0% { top:-2em; }
+    100% { top:0; }
+}
 #announcements {
     text-overflow: ellipsis;
+	position: relative;
+	width: 90%;
+	top: 0;
+	text-align: center;
+	background: #222;
+	padding: 0.3em 5% 0.5em 5%;
+	margin: 0;
+	z-index: 900;
+	overflow: hidden;
+	-webkit-animation: movedown 0.3s linear forwards;
+	-moz-animation: movedown 0.3s linear forwards;
+	-ms-animation: movedown 0.3s linear forwards;
+	-o-animation: movedown 0.3s linear forwards;
+	animation: movedown 0.3s linear forwards;
 }
 
 

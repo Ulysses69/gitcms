@@ -80,8 +80,10 @@ body#home-page {
 
 /* Navigation */
 #help {
-	position: relative;
+	position: absolute;
 	left: -99em;
+	top: 0;
+	z-index: 901;
 }
 #help:focus,
 #help:active {
