@@ -781,16 +781,16 @@ thead td, th {
 }
 .slider img {
 	float: left;
-	width: 49%;
+	width: 48%;
 	position: relative;
 	padding: 0;
-	margin: 0 0 1% 1%;
+	margin: 0 0 2% 2%;
 }
 .slider {
 	position: relative;
 	padding: 0;
-	margin: 0 0 1em -1%;
-	width: 101%;
+	margin: 0 0 2em -2%;
+	width: 102%;
 }
 .slider div {
 	position: relative;
@@ -798,7 +798,13 @@ thead td, th {
 	margin: 0;
 }
 
-.js .polaroids {
+.polaroids img {
+	margin-bottom: 5% !important;
+}
+.s .polaroids img {
+	margin-bottom: 0 !important;
+}
+.polaroids {
 	padding-top: 5%;
 }
 
@@ -807,21 +813,21 @@ thead td, th {
 }
 .js .polaroids .active img {
 	display: block;
--webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
--moz-box-shadow:    0px 3px 12px 0px rgba(50, 50, 50, 0.35);
-box-shadow:         0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+	-webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+	-moz-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+	box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
 }
-.js .polaroids img:nth-child(odd) {
+.polaroids img:nth-child(odd) {
     -ms-transform: rotate(5deg);
     -webkit-transform: rotate(5deg);
     transform: rotate(5deg);
-	margin: -2% -6% 0 2%;
+	margin: -2% -4% 0 3.5%;
 }
-.js .polaroids img:nth-child(even) {
+.polaroids img:nth-child(even) {
     -ms-transform: rotate(-7deg);
     -webkit-transform: rotate(-7deg);
     transform: rotate(-7deg);
-	margin: 0 0 0 5%;
+	margin: 0 0 0 3%;
 }
 
 
@@ -855,7 +861,7 @@ box-shadow:         0px 3px 12px 0px rgba(50, 50, 50, 0.35);
     font-weight: normal;
 }
 .js .slider .prev {
-	left: 1%;
+	left: 2%;
 }
 .js .slider .next {
     right: 0;
@@ -883,7 +889,7 @@ box-shadow:         0px 3px 12px 0px rgba(50, 50, 50, 0.35);
 	    -ms-transform: none;
 	    -webkit-transform: none;
 	    transform: none;
-		margin: 0 0 1% 1%;
+		margin: 0 0 2% 2%;
 	}
 	.js .slider span {
 		top: 0;

@@ -47,7 +47,7 @@ class MobileCheckController extends PluginController {
 			$settings = updateMobileCSS();
 		}
 
-		// TO DO: Update javascript
+		// Update javascript
 		if(function_exists('writeJScripts')){
 			writeJScripts();
 		}

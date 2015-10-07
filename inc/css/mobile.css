@@ -18,8 +18,9 @@ h1 {
 font-weight:normal;
 padding:.5em;
 margin-bottom:.75em;
-border-bottom:solid 1px #ccc
-}
+border-bottom:solid 1px #4E4E4E}
+h1, h2, .h2 {
+color: #444444}
 h1 span {
 display: block;
 font-size: 50%;
@@ -90,8 +91,8 @@ width:100%;
 position: relative;
 height: 0;
 overflow: hidden;
-padding-bottom: 75%;
-padding-bottom: 56.25%;
+padding: 0 0 75% 0;
+padding: 0 0 56.25% -;
 }
 .embed iframe {
 position: absolute;
@@ -166,8 +167,7 @@ overflow:hidden;
 }
 #content {
 padding:0 1em .5em 1em;
-background:#ffffff
-}
+background:#FFFFFF}
 #content:not(.legacy) {
 position:relative
 }
@@ -285,6 +285,9 @@ padding:0.5em 0 0 0
 }
 #content li {
 padding:.3em
+}
+#content ol h2 {
+line-height: 130%
 }
 #top > h2, #top > h3 {
 margin-top:.5em
@@ -493,66 +496,46 @@ margin-bottom:0;
 .regulations #content p.address {
 margin-top:0.5em !important;
 }
-#content ul.boxes,
-#content ul.boxesx2,
-#content ul.boxesx3,
-#content ul.boxesx4 {
-list-style: none;
-padding: 0;
-position: relative;
-overflow: hidden;
-}
-#content ul.boxes li,
-#content ul.boxesx2 li,
-#content ul.boxesx3 li,
-#content ul.boxesx4 li {
-box-sizing: border-box;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-border: solid 1px #ccc;
-padding: 1em;
-margin: 0 0 2% 0;
-float: left;
-}
-#content ul.boxesx3 > li:nth-child(3n+1),
-#content ul.boxesx4 > li:nth-child(4n+1) {
-clear: both;
-}
-.mobile #content ul.boxesx3 > li:nth-child(3n+1),
-.mobile #content ul.boxesx4 > li:nth-child(4n+1) {
-clear: none;
-}
-#content ul.boxesx2,
-#content ul.boxesx4,
-.mobile #content ul.boxesx3,
-.mobile #content ul.boxesx4 {
-margin: 0 0 0 -2%;
-width: 102%;
-}
-#content ul.boxesx2 li,
-.mobile #content ul.boxesx3 li,
-.mobile #content ul.boxesx4 li {
-margin: 0 0 2% 2%;
-width: 48%;
-}
-#content ul.boxesx3 {
-margin: 0 0 3.3% -3.3%;
-width: 103%;
-}
-#content ul.boxesx3 li {
-margin: 0 0 3.3% 3.3%;
-width: 30%;
-}
-#content ul.boxesx4 li {
-margin: 0 0 2% 2%;
-width: 23%;
-}
 #accessibility-go,
 #cookie-go {
 display: none;
 }
+@keyframes movedown {
+0% { top:-2em; }
+100% { top:0; }
+}
+@-webkit-keyframes movedown {
+0% { top:-2em; }
+100% { top:0; }
+}
+@-moz-keyframes movedown {
+0% { top:-2em; }
+100% { top:0; }
+}
+@-ms-keyframes movedown {
+0% { top:-2em; }
+100% { top:0; }
+}
+@-o-keyframes movedown {
+0% { top:-2em; }
+100% { top:0; }
+}
 #announcements {
 text-overflow: ellipsis;
+position: relative;
+width: 90%;
+top: 0;
+text-align: center;
+background: #222;
+padding: 0.3em 5% 0.5em 5%;
+margin: 0;
+z-index: 900;
+overflow: hidden;
+-webkit-animation: movedown 0.3s linear forwards;
+-moz-animation: movedown 0.3s linear forwards;
+-ms-animation: movedown 0.3s linear forwards;
+-o-animation: movedown 0.3s linear forwards;
+animation: movedown 0.3s linear forwards;
 }
 #cache {
 position: absolute;
@@ -624,64 +607,138 @@ left: 85%;
 font-size: 4em;
 line-height: 0;
 }
-@media only screen and (min-width: 510px) and (max-width: 629px) {
-.mobile #content ul.boxesx3,
-.mobile #content ul.boxesx4 {
-margin: 0 0 3.3% -3.3%;
-width: 103%;
+.slider {
+position: relative;
 }
-#content ul.boxesx2 li,
-.mobile #content ul.boxesx3 li,
-.mobile #content ul.boxesx4 li {
-margin: 0 0 3.3% 3.3%;
-width: 30%;
+.slider img {
+float: left;
+width: 48%;
+position: relative;
+padding: 0;
+margin: 0 0 2% 2%;
 }
+.slider {
+position: relative;
+padding: 0;
+margin: 0 0 2em -2%;
+width: 102%;
 }
-.js #googlemap-print {
+.slider div {
+position: relative;
+padding: 0;
+margin: 0;
+}
+.polaroids img {
+margin-bottom: 5% !important;
+}
+.s .polaroids img {
+margin-bottom: 0 !important;
+}
+.polaroids {
+padding-top: 5%;
+}
+.js .polaroids img {
 display: none;
 }
-.simplebanner {
-position:relative;
-overflow:hidden
+.js .polaroids .active img {
+display: block;
+-webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+-moz-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
 }
-@-webkit-keyframes home {
-0%{opacity:0;}
-3%{opacity:1;}
-12%{opacity:1;}
-15%{opacity:0;}
+.polaroids img:nth-child(odd) {
+-ms-transform: rotate(5deg);
+-webkit-transform: rotate(5deg);
+transform: rotate(5deg);
+margin: -2% -4% 0 3.5%;
 }
-@keyframes home {
-0%{opacity:0;}
-3%{opacity:1;}
-12%{opacity:1;}
-15%{opacity:0;}
+.polaroids img:nth-child(even) {
+-ms-transform: rotate(-7deg);
+-webkit-transform: rotate(-7deg);
+transform: rotate(-7deg);
+margin: 0 0 0 3%;
 }
-.js .simplebanner img {
-position:absolute;
-left:0;
-top:0;
-opacity:0;
+.js .slider div {
+position: absolute;
+width: 100%;
+height: 100%;
 }
-.js .simplebanner.home img {
--webkit-animation:home 30s infinite;
-animation:home 30s infinite;
+.js .slider span {
+position: absolute;
+top: 50%;
+background: yellow;
+padding: 0.1em;
+cursor: pointer;
+font-size: 10px;
+font-size: 2em;	
+width: 1em;
+height: 1em;
+text-align: center;
+line-height: 0.85em;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+overflow: hidden;
+font-family: verdana;
+color:#FFFFFF;
+background:#262728;
+font-weight: normal;
 }
-.js .simplebanner img.blank {
-position:relative;
--webkit-animation:none;
-animation:none;
-opacity:0 !important;
+.js .slider .prev {
+left: 2%;
 }
-.js .simplebanner.home img:nth-child(11){-webkit-animation-delay:3s; animation-delay:3s;}
-.js .simplebanner.home img:nth-child(10){-webkit-animation-delay:6s; animation-delay:6s;}
-.js .simplebanner.home img:nth-child(9){-webkit-animation-delay:9s; animation-delay:9s;}
-.js .simplebanner.home img:nth-child(8){-webkit-animation-delay:12s; animation-delay:12s;}
-.js .simplebanner.home img:nth-child(7){-webkit-animation-delay:15s; animation-delay:15s;}
-.js .simplebanner.home img:nth-child(6){-webkit-animation-delay:18s; animation-delay:18s;}
-.js .simplebanner.home img:nth-child(5){-webkit-animation-delay:21s; animation-delay:21s;}
-.js .simplebanner.home img:nth-child(4){-webkit-animation-delay:24s; animation-delay:24s;}
-.js .simplebanner.home img:nth-child(3){-webkit-animation-delay:27s; animation-delay:27s;}
-.js .simplebanner.home img:nth-child(2){-webkit-animation-delay:30s; animation-delay:30s;}
+.js .slider .next {
+right: 0;
+}
+.js .slider span {
+top: 50%;
+margin-top: -0.55em;
+}
+.js .polaroids span {
+top: 41%;
+}
+@media only screen and (max-width: 640px) {
+.js .slider,
+.js .polaroids {
+overflow: hidden;
+padding-top: 0;
+}
+.js .polaroids {
+margin-bottom: -1%;
+}
+.js .polaroids img:nth-child(odd),
+.js .polaroids img:nth-child(even) {
+-ms-transform: none;
+-webkit-transform: none;
+transform: none;
+margin: 0 0 2% 2%;
+}
+.js .slider span {
+top: 0;
+background: transparent;
+padding: 0;
+margin-top: -1em;
+width: 49%;
+height: 150%;
+}
+.js .slider span.prev  {
+left: 1% !important;
+}
+.js .slider span.next  {
+right: 0 !important;
+}	
+}
+#banner {
+position: relative;
+}
+#banner img {
+max-width: 100% !important;
+left: 0;
+top: 0;
+}
 @media only screen and max-device-width 480px {
 #menu img {
 width:15px;

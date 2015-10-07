@@ -28,6 +28,12 @@ Observer::observe('snippet_after_edit', 'save_jscripts');
 /* Call jscripts whenever page, snippet or layout is saved */
 if(!function_exists('save_jscripts')){
 function save_jscripts($page){
+
+	// Update mobile css, to ensure any dependancies are up-to-date on all page updates
+	if(function_exists('updateMobileCSS')){
+		updateMobileCSS();
+	}
+
 	// Call jscripts (page, javascript to add, place before or after jscripts template content)
 	writeJScripts($page);
 }
