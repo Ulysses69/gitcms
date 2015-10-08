@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.3.0'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.3.1'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',
@@ -66,7 +66,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	                        }
 	                        if(${$name.'_URL'} != ''){ 
 	                            if($appearance == 'image'){
-	                                $output .= '<span class="'.$name.'"><a href="'.$url.'" rel="nofollow">'.$open.$title.$close.'</a></span> ';
+	                                $output .= '<a href="'.$url.'" rel="nofollow" class="'.$name.'">'.$open.$title.$close.'</a> ';
 	                            } else {
 	                                $output .= '<li class="'.$name.'"><a href="'.$url.'" rel="nofollow">'.$open.$title.$close.'</a></li>'."\n";
 	                            }
@@ -85,6 +85,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
                 $data .= sociallink($data, 'googleplus', 'Google Plus'); 
                 $data .= sociallink($data, 'vimeo', 'Vimeo'); 
                 $data .= sociallink($data, 'instagram', 'Instagram'); 
+                $data .= sociallink($data, 'yelp', 'Yelp'); 
 
                 if($data != ''){
 					if($appearance == 'image'){
