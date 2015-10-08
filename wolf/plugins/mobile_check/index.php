@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.3.0'); }
+if (!defined('MOBILE_VERSION')) { define('MOBILE_VERSION', '2.4.0'); }
 if (!defined('MOBILE_ROOT')) { define('MOBILE_ROOT', URI_PUBLIC.'wolf/plugins/mobile_check'); }
 Plugin::setInfos(array(
 	'id'					=> 'mobile_check',
@@ -155,8 +155,9 @@ if(!function_exists('updateMobileCSS')){
 		if(isset($_POST['website_width'])){ $website_width = $_POST['website_width']; } else { $website_width = Plugin::getSetting('website_width', 'mobile_check'); }
 		if(isset($_POST['desktop_text'])){ $desktop_text = $_POST['desktop_text']; } else { $desktop_text = Plugin::getSetting('desktop_text', 'mobile_check'); }
 		if(isset($_POST['topnav'])){ $topnav = $_POST['topnav']; } else { $topnav = Plugin::getSetting('topnav', 'mobile_check'); }
-		if(isset($_POST['theme'])){ $theme = $_POST['theme']; } else { $theme = Plugin::getSetting('theme', 'mobile_check'); }
-
+		if(isset($_POST['theme'])){ $theme = $_POST['theme']; } else { $theme = Plugin::getSetting('theme', 'mobile_check'); }		
+		if(isset($_POST['img_border'])){ $img_border = $_POST['img_border']; } else { $img_border = Plugin::getSetting('img_border', 'mobile_check'); }
+		if(isset($_POST['color_img_border'])){ $color_img_border = $_POST['color_img_border']; } else { $color_img_border = Plugin::getSetting('color_img_border', 'mobile_check'); }
 		if(isset($_POST['logo'])){ $logo = $_POST['logo']; } else { $logo = Plugin::getSetting('logo', 'mobile_check'); }
 		if(isset($_POST['logo_url'])){ $logo_url = $_POST['logo_url']; } else { $logo_url = Plugin::getSetting('logo_url', 'mobile_check'); }
 		if(isset($_POST['color_body_bg'])){ $color_body_bg = $_POST['color_body_bg']; } else { $color_body_bg = Plugin::getSetting('color_body_bg', 'mobile_check'); }
@@ -383,18 +384,17 @@ if(!function_exists('updateMobileCSS')){
 							'color_button_opacity' => $color_button_opacity,
 							'color_button_link' => $color_button_link,
 							'logo_maxwidth' => $logo_maxwidth,
-							'viewport' => $viewport,
-
+							'viewport' => $viewport,							
+							'img_border' => $img_border,
+							'color_img_border' => $color_img_border,
 							'color_content_bg' => $color_content_bg,
 							'color_content_h1' => $color_content_h1,
 							'color_content_text' => $color_content_text,
 							'color_content_link' => $color_content_link,
 							'content_font' => $content_font,
-
 							'content_font_h1' => $content_font_h1,
 							'content_font_h2' => $content_font_h2,
 							'content_font_intro' => $content_font_intro,
-
 							'cachedcss' => $newcss,
 							'topnavhome' => $topnavhome,
 							'background_url' => $background_url,

@@ -10,7 +10,8 @@ $logo_url				= Plugin::getSetting('logo_url', 'mobile_check');
 $desktop_text			= Plugin::getSetting('desktop_text', 'mobile_check');
 $topnav					= Plugin::getSetting('topnav', 'mobile_check');
 $theme					= Plugin::getSetting('theme', 'mobile_check');
-
+$img_border				= Plugin::getSetting('img_border', 'mobile_check');
+$color_img_border		= Plugin::getSetting('color_img_border', 'mobile_check');
 $color_body_bg			= Plugin::getSetting('color_body_bg', 'mobile_check');
 $color_body_border		= Plugin::getSetting('color_body_border', 'mobile_check');
 $color_main_link		= Plugin::getSetting('color_main_link', 'mobile_check');
@@ -20,22 +21,17 @@ $color_footer_text		= Plugin::getSetting('color_footer_text', 'mobile_check');
 $color_button_bg		= Plugin::getSetting('color_button_bg', 'mobile_check');
 $color_button_border	= Plugin::getSetting('color_button_border', 'mobile_check');
 $color_button_opacity	= Plugin::getSetting('color_button_opacity', 'mobile_check');
-
 $color_content_bg		= Plugin::getSetting('color_content_bg', 'mobile_check');
 $color_content_h1		= Plugin::getSetting('color_content_h1', 'mobile_check');
 $color_content_text		= Plugin::getSetting('color_content_text', 'mobile_check');
 $color_content_link		= Plugin::getSetting('color_content_link', 'mobile_check');
 $content_font			= Plugin::getSetting('content_font', 'mobile_check');
-
 $content_font_h1		= Plugin::getSetting('content_font_h1', 'mobile_check');
 $content_font_h2		= Plugin::getSetting('content_font_h2', 'mobile_check');
 $content_font_intro		= Plugin::getSetting('content_font_intro', 'mobile_check');
-
-
 $color_button_link		= Plugin::getSetting('color_button_link', 'mobile_check');
 $logo_maxwidth			= Plugin::getSetting('logo_maxwidth', 'mobile_check');
 $viewport				= Plugin::getSetting('viewport', 'mobile_check');
-
 $topnavhome				= Plugin::getSetting('topnavhome', 'mobile_check');
 $background_url			= Plugin::getSetting('background_url', 'mobile_check');
 $homecontent			= Plugin::getSetting('homecontent', 'mobile_check');
@@ -50,7 +46,6 @@ $sidebar				= Plugin::getSetting('sidebar', 'mobile_check');
 $customcss				= Plugin::getSetting('customcss', 'mobile_check');
 $header_banner_home		= Plugin::getSetting('header_banner_home', 'mobile_check');
 $header_banner			= Plugin::getSetting('header_banner', 'mobile_check');
-
 
 ?>
 
@@ -260,6 +255,39 @@ onload = function() {
 			</fieldset>
 			</td>
 			</tr>
+
+<!-- New to 2.4.0 -->
+				<tr>
+					<td class="label"><label for="img_border"><?php echo __('Image Borders'); ?></label></td>
+					<td class="field">
+					<select name="img_border" id="img_border">
+					<?php
+					$img_border_array = array(
+					array ('None', 'none'),
+					array ('1px', '1'),
+					array ('2px', '2'),
+					array ('3px', '3'),
+					array ('5px', '5'),
+					array ('10px', '10'));
+					foreach($img_border_array as $subarray) {
+						list($text, $val) = $subarray;
+						if($val == $img_border){
+							echo "<option value=\"".str_replace('"',"'",$val)."\" selected>$text</option>";
+						} else {
+							echo "<option value=\"".str_replace('"',"'",$val)."\">$text</option>";
+						}
+					}
+					?>
+					</select>
+					</td>
+					<td class="help"><?php echo __('Set borders for images');?></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="acolor_img_border">Image Borders Colour</label></td>
+					<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="color_img_border" id="acolor_img_border" size="30" value="<?php echo $color_img_border; ?>" /></td>
+					<td class="help">(#XXXXXX)</td>
+				</tr>
 
 <!-- TO DO: Add checklist of dom elements to apply custom font to -->
 

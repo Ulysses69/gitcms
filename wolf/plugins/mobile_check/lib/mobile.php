@@ -341,7 +341,14 @@ input[type='search'] {
 #content img {
 	max-width:100%;
 	height:auto;
+<?php if($img_border > 0){ ?>
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	border:solid <?php echo $img_border; ?>px <?php echo $color_img_border; ?>;
+<?php } else { ?>
 	border:none
+<?php } ?>
 }
 #content .more {
 	clear:both

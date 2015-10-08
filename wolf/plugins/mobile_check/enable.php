@@ -24,6 +24,8 @@ if(!Plugin::getSetting('logo_url', 'mobile_check')) $settings['logo_url'] = '/in
 if(!Plugin::getSetting('desktop_text', 'mobile_check')) $settings['desktop_text'] = 'Full Website';
 if(!Plugin::getSetting('topnav', 'mobile_check')) $settings['topnav'] = 'labels';
 if(!Plugin::getSetting('theme', 'mobile_check')) $settings['theme'] = 'light';
+if(!Plugin::getSetting('img_border', 'mobile_check')) $settings['img_border'] = 'none';
+if(!Plugin::getSetting('color_img_border', 'mobile_check')) $settings['color_img_border'] = '#DEDEDE';
 if(!Plugin::getSetting('color_body_bg', 'mobile_check')) $settings['color_body_bg'] = '#5D5D5D';
 if(!Plugin::getSetting('color_body_border', 'mobile_check')) $settings['color_body_border'] = '#4E4E4E';
 if(!Plugin::getSetting('color_main_link', 'mobile_check')) $settings['color_main_link'] = '#0689F4';
@@ -37,17 +39,14 @@ if(!Plugin::getSetting('color_button_link', 'mobile_check')) $settings['color_bu
 if(!Plugin::getSetting('logo_maxwidth', 'mobile_check')) $settings['logo_maxwidth'] = '160px';
 if(!Plugin::getSetting('viewport', 'mobile_check')) $settings['viewport'] = '';
 if(!Plugin::getSetting('cachedcss', 'mobile_check')) $settings['cachedcss'] = '';
-
 if(!Plugin::getSetting('color_content_bg', 'mobile_check')) $settings['color_content_bg'] = '#FFFFFF';
 if(!Plugin::getSetting('color_content_h1', 'mobile_check')) $settings['color_content_h1'] = '#444444';
 if(!Plugin::getSetting('color_content_text', 'mobile_check')) $settings['color_content_text'] = '#666666';
 if(!Plugin::getSetting('color_content_link', 'mobile_check')) $settings['color_content_link'] = '#0689F4';
 if(!Plugin::getSetting('content_font', 'mobile_check')) $settings['content_font'] = '';
-
 if(!Plugin::getSetting('content_font_h1', 'mobile_check')) $settings['content_font_h1'] = 'yes';
 if(!Plugin::getSetting('content_font_h2', 'mobile_check')) $settings['content_font_h2'] = 'no';
 if(!Plugin::getSetting('content_font_intro', 'mobile_check')) $settings['content_font_intro'] = 'no';
-
 if(!Plugin::getSetting('topnavhome', 'mobile_check')) $settings['topnavhome'] = 'disabled';
 if(!Plugin::getSetting('background_url', 'mobile_check')) $settings['background_url'] = '';
 if(!Plugin::getSetting('homecontent', 'mobile_check')) $settings['homecontent'] = 'disabled';
