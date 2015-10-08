@@ -801,7 +801,7 @@ thead td, th {
 .polaroids img {
 	margin-bottom: 5% !important;
 }
-.s .polaroids img {
+.js .polaroids img {
 	margin-bottom: 0 !important;
 }
 .polaroids {
@@ -813,9 +813,9 @@ thead td, th {
 }
 .js .polaroids .active img {
 	display: block;
-	-webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
-	-moz-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
-	box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.35);
+	-webkit-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.4);
+	box-shadow: 0px 3px 12px 0px rgba(50, 50, 50, 0.4);
 }
 .polaroids img:nth-child(odd) {
     -ms-transform: rotate(5deg);
