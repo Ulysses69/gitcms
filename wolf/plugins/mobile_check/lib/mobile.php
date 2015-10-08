@@ -580,6 +580,13 @@ thead td, th {
 	border-left:solid 1px #ccc;
 	padding-left:1em;
 }
+#content li .address {
+	margin-top: 0.75em !important;
+}
+#content li .address .group .address,
+#content li .address .group p > .h2 {
+	margin-top: 0 !important;
+}
 #content .address .address {
 	border-left:none;
 	padding-left:0;
