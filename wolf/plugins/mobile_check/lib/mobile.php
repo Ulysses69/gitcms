@@ -346,6 +346,7 @@ input[type='search'] {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	border:solid <?php echo $img_border; ?>px <?php echo $color_img_border; ?>;
+	background: <?php echo $color_content_bg; ?>;
 <?php } else { ?>
 	border:none
 <?php } ?>
