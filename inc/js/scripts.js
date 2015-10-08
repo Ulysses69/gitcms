@@ -1,4 +1,4 @@
-/* CMS-Generated Update October 7, 2015, 8:55 pm */
+/* CMS-Generated Update October 8, 2015, 7:48 am */
 
 /* Check if browser is DOM and HTML5 Savvy */ 
 if ('querySelectorAll' in document && 'addEventListener' in window) { 
@@ -44,9 +44,13 @@ if ('querySelectorAll' in document && 'addEventListener' in window) {
 	
 	assignClickEvent();
 
-
-
-
+	// Wrap element with new element
+	/*
+	function wrap(el, wrapper) {
+	    el.parentNode.insertBefore(wrapper, el);
+	    wrapper.appendChild(el);
+	}
+	*/
 
 	// Set global vars
 	window.activeslide = 0;
@@ -95,7 +99,7 @@ if ('querySelectorAll' in document && 'addEventListener' in window) {
 		slidesHolder.style.paddingBottom = percent + "%";
 		polaroids = document.getElementsByClassName('slider polaroids');
 		if(polaroids[0]){
-			polaroids[0].style.paddingBottom = (percent + 5) + "%";
+			polaroids[0].style.paddingBottom = (percent + 3) + "%";
 		}
 
 		// Number of div items
@@ -114,6 +118,9 @@ if ('querySelectorAll' in document && 'addEventListener' in window) {
 			spans = slidesHolder.getElementsByTagName('span');
 			setSpans();	
 		}
+
+		//wrap(slidesHolder.getElementsByTagName('img'), document.createElement('span'));
+
 	};
 
 	// Get image ratio from loading first slide image

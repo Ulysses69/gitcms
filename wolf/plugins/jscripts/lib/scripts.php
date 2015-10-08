@@ -41,9 +41,13 @@
 	
 	assignClickEvent();
 
-
-
-
+	// Wrap element with new element
+	/*
+	function wrap(el, wrapper) {
+	    el.parentNode.insertBefore(wrapper, el);
+	    wrapper.appendChild(el);
+	}
+	*/
 
 	// Set global vars
 	window.activeslide = 0;
@@ -92,7 +96,7 @@
 		slidesHolder.style.paddingBottom = percent + "%";
 		polaroids = document.getElementsByClassName('slider polaroids');
 		if(polaroids[0]){
-			polaroids[0].style.paddingBottom = (percent + 5) + "%";
+			polaroids[0].style.paddingBottom = (percent + 3) + "%";
 		}
 
 		// Number of div items
@@ -111,6 +115,9 @@
 			spans = slidesHolder.getElementsByTagName('span');
 			setSpans();	
 		}
+
+		//wrap(slidesHolder.getElementsByTagName('img'), document.createElement('span'));
+
 	};
 
 	// Get image ratio from loading first slide image

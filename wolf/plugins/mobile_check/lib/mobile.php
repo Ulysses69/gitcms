@@ -136,7 +136,7 @@ a {
 	/* 4x3 Aspect Ratio */
 	padding: 0 0 75% 0;
 	/* 16x9 Aspect Ratio */
-	padding: 0 0 56.25% -;
+	padding: 0 0 56.25% 0;
 }
 .embed iframe {
 	position: absolute;
