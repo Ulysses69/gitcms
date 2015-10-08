@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.2.3'); }
+if (!defined('SOCIAL_VERSION')) { define('SOCIAL_VERSION', '1.3.0'); }
 if (!defined('SOCIAL_ROOT')) { define('SOCIAL_ROOT', URI_PUBLIC.'wolf/plugins/social'); }
 Plugin::setInfos(array(
 	'id'					=> 'social',
@@ -46,6 +46,7 @@ if (strpos($_SERVER['PHP_SELF'], ADMIN_DIR . '/index.php')) {
 	                    $googleplus_URL = Plugin::getSetting('googleplus_URL', 'social');
 	                    $vimeo_URL = Plugin::getSetting('vimeo_URL', 'social');
 	                    $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
+	                    $yelp_URL = Plugin::getSetting('yelp_URL', 'social');
 	
 	                    $output = '';
 	                    if($name != '' && $title != ''){                    

@@ -12,6 +12,7 @@ $youtube_URL = Plugin::getSetting('youtube_URL', 'social');
 $googleplus_URL = Plugin::getSetting('googleplus_URL', 'social');
 $vimeo_URL = Plugin::getSetting('vimeo_URL', 'social');
 $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
+$yelp_URL = Plugin::getSetting('yelp_URL', 'social');
 ?>
 
 <script type="text/javascript" charset="utf-8" src="/wolf/plugins/mobile_check/js/jquery.miniColors.js"></script>
@@ -135,6 +136,11 @@ $instagram_URL = Plugin::getSetting('instagram_URL', 'social');
 				<tr>
 					<td class="label"><label for="instagram_URL"><?php echo __('Instagram URL'); ?></label></td>
 					<td class="field"><input name="instagram_URL" id="instagram_URL" value="<?php echo htmlentities($instagram_URL); ?>" /></td>
+					<td class="help"></td>
+			   </tr>
+				<tr>
+					<td class="label"><label for="yelp_URL"><?php echo __('Yelp URL'); ?></label></td>
+					<td class="field"><input name="yelp_URL" id="yelp_URL" value="<?php echo htmlentities($yelp_URL); ?>" /></td>
 					<td class="help"></td>
 			   </tr>
 			</table>

@@ -30,6 +30,7 @@ class SocialController extends PluginController {
 		$googleplus_URL = $_POST['googleplus_URL'];
 		$vimeo_URL = $_POST['vimeo_URL'];
 		$instagram_URL = $_POST['instagram_URL'];
+		$yelp_URL = $_POST['yelp_URL'];
 		$settings = array(	'display' => $display,
 				  			'icon_set' => $icon_set,
 				  			'appearance' => $appearance,
@@ -40,7 +41,8 @@ class SocialController extends PluginController {
 				  			'youtube_URL' => $youtube_URL,
 				  			'googleplus_URL' => $googleplus_URL,
 				  			'vimeo_URL' => $vimeo_URL,
-				  			'instagram_URL' => $instagram_URL);
+				  			'instagram_URL' => $instagram_URL,
+				  			'yelp_URL' => $yelp_URL);
 		if (Plugin::setAllSettings($settings, 'social')) {
 			Flash::set('success', 'Social - '.__('plugin settings saved.'));
 

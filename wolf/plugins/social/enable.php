@@ -21,6 +21,7 @@ if(!Plugin::getSetting('youtube_URL', 'social')) $settings['youtube_URL'] = '';
 if(!Plugin::getSetting('googleplus_URL', 'social')) $settings['googleplus_URL'] = '';
 if(!Plugin::getSetting('vimeo_URL', 'social')) $settings['vimeo_URL'] = '';
 if(!Plugin::getSetting('instagram_URL', 'social')) $settings['instagram_URL'] = '';
+if(!Plugin::getSetting('yelp_URL', 'social')) $settings['yelp_URL'] = '';
 
 // Check existing plugin settings
 if (!$version || $version == null) {

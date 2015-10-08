@@ -336,7 +336,6 @@ input[type='search'] {
 	font-family:arial;
 	font-size:160%;
 	margin:-0.26em 0;
-
 }
 #content img {
 	max-width:100%;
