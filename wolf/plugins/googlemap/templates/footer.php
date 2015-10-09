@@ -573,6 +573,11 @@ function addMarker(lastid) {
 		map: map,
 		<?php if(isset($marker) && $marker == 'true'){ ?><?php if($missingshadow != true){ ?>shadow: shadow,<?php } ?>
 		icon: image,<?php } ?>
+		<?php // http://gmapsmarkergenerator.eu01.aws.af.cm
+		if(isset($marker) && $marker == 'coloured' && isset($marker_color)){
+		$markercolor = str_replace('#', '', $marker_color);
+		$markers = 'http://gmapsmarkergenerator.eu01.aws.af.cm/getmarker?scale=1&color='.$markercolor;
+		echo "icon: '".$markers."',"; } ?>
 		draggable: <?php echo $draggable; ?>
 		<?php echo $marker_entrance; ?>
 	});

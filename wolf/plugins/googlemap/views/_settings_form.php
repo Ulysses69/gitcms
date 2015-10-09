@@ -1894,9 +1894,10 @@ onload = function() {
 					<select name="marker" id="amarker">
 					<?php
 					$marker_array = array(
-					array ('Default', 'default'),
-					array ('Custom', 'true'),
-					array ('No', 'false'));
+					array ('Default Marker', 'default'),
+					array ('Colour Marker', 'coloured'),
+					array ('Custom Icon', 'true'),
+					array ('No Marker', 'false'));
 					foreach($marker_array as $subarray) {
 						list($text, $val) = $subarray;
 						if($val == $marker){
