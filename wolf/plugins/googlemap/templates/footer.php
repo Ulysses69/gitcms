@@ -14,6 +14,7 @@
 	$staticmap_scale = 2;
 	$staticmap_pixels = false;
 
+	$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 	$map_id = Plugin::getSetting('map_id', 'googlemap');
 	$map_code = Plugin::getSetting('map_code', 'googlemap');
 	$map_width = Plugin::getSetting('map_width', 'googlemap');
@@ -697,7 +698,16 @@ if(!defined('CMS_BACKEND')){
 		// Test site: absolute marker
 		$marker = '&markers=icon:http://maps.gstatic.com/mapfiles/markers2/marker.png|'.$latitude.','.$longitude;
 		if($staticmap_scale >= 2){
-			$marker = '&markers=color:red|label:%E2%80%A2|'.$latitude.','.$longitude;
+
+
+			// Check for default marker and colour
+			$markercolor = 'red';
+			if(isset($marker) && $marker != 'false' && isset($marker_color)){
+				$markercolor = str_replace('#', '0x', $marker_color);
+			}
+
+
+			$marker = '&markers=color:'.$markercolor.'|label:%E2%80%A2|'.$latitude.','.$longitude;
 			//$marker = "&markers=icon:https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-b.png&ax=44&ay=48&scale=".$staticmap_scale."&text=%E2%80%A2".'|'.$latitude.','.$longitude;
 		}
 		//$marker = '&maptype=roadmap';

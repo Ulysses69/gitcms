@@ -127,6 +127,7 @@ $poi_label_gamma = Plugin::getSetting('poi_label_gamma', 'googlemap');
 $poi_label_lightness = Plugin::getSetting('poi_label_lightness', 'googlemap');
 $poi_label_lightness_invert = Plugin::getSetting('poi_label_lightness_invert', 'googlemap');
 $marker = Plugin::getSetting('marker', 'googlemap');
+$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 $marker_id = Plugin::getSetting('marker_id', 'googlemap');
 $marker_entrance = Plugin::getSetting('marker_entrance', 'googlemap');
 $marker_delay = Plugin::getSetting('marker_delay', 'googlemap');

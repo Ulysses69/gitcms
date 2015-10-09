@@ -180,6 +180,7 @@ if(!Plugin::getSetting('poi_label_saturation_status', 'googlemap')) $settings['p
 if(!Plugin::getSetting('poi_label_gamma_status', 'googlemap')) $settings['poi_label_gamma_status'] = 'false';
 if(!Plugin::getSetting('poi_label_lightness_status', 'googlemap')) $settings['poi_label_lightness_status'] = 'false';
 if(!Plugin::getSetting('marker', 'googlemap')) $settings['marker'] = 'true';
+if(!Plugin::getSetting('marker_color', 'googlemap')) $settings['marker_color'] = '#e51d1d';
 if(!Plugin::getSetting('marker_id', 'googlemap')) $settings['marker_id'] = 'default';
 if(!Plugin::getSetting('marker_entrance', 'googlemap')) $settings['marker_entrance'] = 'DROP';
 if(!Plugin::getSetting('marker_delay', 'googlemap')) $settings['marker_delay'] = '3';

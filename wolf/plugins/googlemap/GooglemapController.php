@@ -188,6 +188,7 @@ class GooglemapController extends PluginController {
 		if(isset($_POST['poi_label_gamma_status'])) { $poi_label_gamma_status = $_POST['poi_label_gamma_status']; } else { $poi_label_gamma_status = ''; }
 		if(isset($_POST['poi_label_lightness_status'])) { $poi_label_lightness_status = $_POST['poi_label_lightness_status']; } else { $poi_label_lightness_status = ''; }
 		if(isset($_POST['marker'])) { $marker = $_POST['marker']; } else { $marker = ''; }
+		if(isset($_POST['marker_color'])) { $marker_color = $_POST['marker_color']; } else { $marker_color = ''; }
 		if(isset($_POST['marker_id'])) { $marker_id = $_POST['marker_id']; } else { $marker_id = ''; }
 		if(isset($_POST['marker_entrance'])) { $marker_entrance = $_POST['marker_entrance']; } else { $marker_entrance = ''; }
 		if(isset($_POST['marker_delay'])) { $marker_delay = $_POST['marker_delay']; } else { $marker_delay = ''; }
@@ -487,6 +488,7 @@ class GooglemapController extends PluginController {
 						'poi_label_gamma_status' => $poi_label_gamma_status,
 						'poi_label_lightness_status' => $poi_label_lightness_status,
 						'marker' => $marker,
+						'marker_color' => $marker_color,
 						'marker_id' => $marker_id,
 						'marker_entrance' => $marker_entrance,
 						'marker_delay' => $marker_delay,

@@ -165,6 +165,7 @@ $poi_label_saturation_status = Plugin::getSetting('poi_label_saturation_status',
 $poi_label_gamma_status = Plugin::getSetting('poi_label_gamma_status', 'googlemap');
 $poi_label_lightness_status = Plugin::getSetting('poi_label_lightness_status', 'googlemap');
 $marker = Plugin::getSetting('marker', 'googlemap');
+$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 $marker_id = Plugin::getSetting('marker_id', 'googlemap');
 $marker_entrance = Plugin::getSetting('marker_entrance', 'googlemap');
 $marker_delay = Plugin::getSetting('marker_delay', 'googlemap');
@@ -1909,6 +1910,13 @@ onload = function() {
 					</td>
 					<td class="help">Show/hide marker.</td>
 				</tr>
+
+				<tr>
+					<td class="label"><label for="amarker_color">Marker Colour</label></td>
+					<td class="field"><input class="textbox color-picker" autocomplete="on" type="text" name="marker_color" id="amarker_color" size="30" value="<?php echo $marker_color; ?>" /></td>
+					<td class="help">(#XXXXXX)</td>
+				</tr>
+
 				<tr>
 					<td class="label"><label for="amarker_id">Name</label></td>
 					<td class="field"><input class="textbox" type="text" name="marker_id" id="amarker_id" size="90" value="<?php echo $marker_id; ?>" /></td>

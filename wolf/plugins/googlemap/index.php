@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.4.5'); }
+if (!defined('GMAP_VERSION')) {	define('GMAP_VERSION', '4.5.1'); }
 if (!defined('GMAP_ROOT')) {	define('GMAP_ROOT', URI_PUBLIC.'wolf/plugins/googlemap/images'); }
 if (!defined('GMAP_PATH')) {	define('GMAP_PATH', $_SERVER{'DOCUMENT_ROOT'}.'/wolf/plugins/googlemap/images'); }
 
@@ -186,9 +186,10 @@ function displayGoogleMap(){
 		$water_element_label_gamma_status = Plugin::getSetting('water_element_label_gamma_status', 'googlemap');
 		$water_element_label_lightness_status = Plugin::getSetting('water_element_label_lightness_status', 'googlemap');
 		$poi_label_saturation_status = Plugin::getSetting('poi_label_saturation_status', 'googlemap');
-		$poi_label_gamma_status = Plugin::getSetting('poi_label_gamma_status', 'googlemap');
+		$poi_label_gamma_status = Plugin::getSetting('poi_label_gamma_status', 'googlemap');		
 		$poi_label_lightness_status = Plugin::getSetting('poi_label_lightness_status', 'googlemap');
 		$marker = Plugin::getSetting('marker', 'googlemap');
+		$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 		$marker_id = Plugin::getSetting('marker_id', 'googlemap');
 		$marker_entrance = Plugin::getSetting('marker_entrance', 'googlemap');
 		$marker_delay = Plugin::getSetting('marker_delay', 'googlemap');
@@ -384,6 +385,7 @@ if(!function_exists('googlemapURL')){
 			$poi_label_lightness = Plugin::getSetting('poi_label_lightness', 'googlemap');
 			$poi_label_lightness_invert = Plugin::getSetting('poi_label_lightness_invert', 'googlemap');
 			$marker = Plugin::getSetting('marker', 'googlemap');
+			$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 			$marker_id = Plugin::getSetting('marker_id', 'googlemap');
 			$marker_entrance = Plugin::getSetting('marker_entrance', 'googlemap');
 			$marker_delay = Plugin::getSetting('marker_delay', 'googlemap');
@@ -658,6 +660,7 @@ if (Plugin::isEnabled('googlemap')) {
 			$poi_label_gamma_status = Plugin::getSetting('poi_label_gamma_status', 'googlemap');
 			$poi_label_lightness_status = Plugin::getSetting('poi_label_lightness_status', 'googlemap');
 			$marker = Plugin::getSetting('marker', 'googlemap');
+			$marker_color = Plugin::getSetting('marker_color', 'googlemap');
 			$marker_id = Plugin::getSetting('marker_id', 'googlemap');
 			$marker_entrance = Plugin::getSetting('marker_entrance', 'googlemap');
 			$marker_delay = Plugin::getSetting('marker_delay', 'googlemap');
