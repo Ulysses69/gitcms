@@ -31,3 +31,6 @@
 #body_plugin_mobile_check .fieldset table.options .checkbox  {
 	margin-top: 0;
 }
+#body_plugin_mobile_check #group_header textarea {
+	height: 5.8em;
+}

@@ -853,7 +853,7 @@ onload = function() {
 
 			<tr>
 			<td colspan="4">
-			<fieldset style="padding: 0.5em;">
+			<fieldset style="padding: 0.5em;" id="group_header">
 			<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Header'); ?></legend>
 			<p>Content is inserted into banner container, if no banner id is present (default).</p>
 			<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
