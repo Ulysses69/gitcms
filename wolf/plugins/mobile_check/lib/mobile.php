@@ -887,6 +887,19 @@ thead td, th {
 .js .polaroids span {
 	top: 41%;
 }
+
+/* Portable (tablet/mobile) size support */
+<?php if($tablet_width){ ?>
+@media only screen and (max-width: <?php echo $tablet_width; ?>px) {
+	/* Set border to percentage of viewport (vm) */
+	<?php if($img_border > 0){ ?>
+	.js .polaroids img {
+		border:solid <?php echo ($img_border / 5); ?>vw <?php echo $color_img_border; ?>;
+	}
+	<?php } ?>
+}
+<?php } ?>
+
 /* Mobile size support */
 <?php if($screen_width){ ?>
 @media only screen and (max-width: <?php echo $screen_width; ?>px) {
