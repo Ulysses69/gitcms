@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.6.8'); }
+if (!defined('JSCRIPTS_VERSION')) { define('JSCRIPTS_VERSION', '3.7.0'); }
 Plugin::setInfos(array(
 	'id'		  => 'jscripts',
 	'title'	   => 'jScripts',
@@ -140,6 +140,39 @@ function buildscripts($page, $insertref, $checkup = false){
 	
 		}
 
+
+		$content_font = Plugin::getSetting('content_font', 'mobile_check');
+		//$scripts .= '<!-- Content font: ' . $content_font . ' -->';
+
+		// Run once, first time, in header
+		//if($insertref == 'head' && $checkup != true){ 
+		if($page->setheadfonts != 'called'){
+		//if(!defined('GOOGLEFONTS')){
+			//$scripts .= '<!-- GOOGLEFONTS not defined -->'."\n";
+			if($content_font != ''){
+				$tempscripts = $scripts;
+				$fontscript = '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family='.$content_font.'">'."\n";
+
+				// After first time, define so that we don't duplicate
+				//define("GOOGLEFONTS", "true");
+				setglobal('SETHEADFONTS','yes');
+				$page->setheadfonts = 'called';
+				
+				if($checkup == true){
+					echo $fontscript;
+				} else {
+					$scripts = $fontscript.$tempscripts;
+				}
+
+				//echo '<!-- checkup: ' . $checkup . ' -->';
+				//echo '<!-- GOOGLEFONTS -->';
+			}
+		//} else {
+			//$scripts .= '<!-- GOOGLEFONTS already defined -->'."\n";
+		//}
+		}
+
+
 		if($insertref == 'head' && $checkup != true){ setglobal('SETHEADSCRIPTS','yes'); $page->setheadscripts = 'called'; }
 		if($insertref == 'body' && $checkup != true){ setglobal('SETBODYSCRIPTS','yes'); $page->setbodyscripts = 'called'; }
 
@@ -149,28 +182,7 @@ function buildscripts($page, $insertref, $checkup = false){
 	//if($insertref == 'body' && $checkup != true){ setglobal('SETBODYSCRIPTS','yes'); $page->setbodyscripts = 'called'; }
 	//echo '<!-- buildscripts output: '.$scripts." -->\n";
 	
-	$content_font = Plugin::getSetting('content_font', 'mobile_check');
-	//echo '<!-- ' . $content_font . ' -->';
 
-	// Run once, first time, in header
-	if(!defined('GOOGLEFONTS')){
-		if($content_font != ''){
-			$tempscripts = $scripts;
-			$fontscript = '<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family='.$content_font.'">'."\n";
-
-			// After first time, define so that we don't duplicate
-			define("GOOGLEFONTS", "true");
-			
-			if($checkup == true){
-				echo $fontscript;
-			} else {
-				$scripts = $fontscript.$tempscripts;
-			}
-
-			//echo '<!-- checkup: ' . $checkup . ' -->';
-			//echo '<!-- GOOGLEFONTS -->';
-		}
-	}
 
 
 	return $scripts;
