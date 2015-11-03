@@ -49,6 +49,7 @@ function buildscripts($page, $insertref, $checkup = false){
 	//if(($page->funky_cache_enabled && ($insertref == 'head' && $page->setheadscripts != 'called') || ($insertref == 'body' && $page->setbodyscripts != 'called')) || ($insertref == 'head' && (!defined('SETHEADSCRIPTS') || SETHEADSCRIPTS != 'yes' || (isset($page->setheadscripts) && $page->setheadscripts != 'called'))) || ($insertref == 'body' && (!defined('SETBODYSCRIPTS') || SETBODYSCRIPTS != 'yes' || (isset($page->setbodyscripts) && $page->setbodyscripts != 'called')))){
 	if(isset($page->setheadscripts)){ $setheadscripts = $page->setheadscripts; } else { $setheadscripts = ''; }
 	if(isset($page->setbodyscripts)){ $setbodyscripts = $page->setbodyscripts; } else { $setbodyscripts = ''; }
+	if(isset($page->setheadfonts)){ $setheadfonts = $page->setheadfonts; } else { $setheadfonts = ''; }
 	if(($insertref == 'head' && $setheadscripts != 'called') || ($insertref == 'body' && $setbodyscripts != 'called')){
 
 		//echo '<!-- buildscripts running: pagetitle = '.$page->title.' and insertref = '.$insertref." -->\n";
@@ -146,7 +147,7 @@ function buildscripts($page, $insertref, $checkup = false){
 
 		// Run once, first time, in header
 		//if($insertref == 'head' && $checkup != true){ 
-		if($page->setheadfonts != 'called'){
+		if($setheadfonts != 'called'){
 		//if(!defined('GOOGLEFONTS')){
 			//$scripts .= '<!-- GOOGLEFONTS not defined -->'."\n";
 			if($content_font != ''){
