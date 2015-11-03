@@ -111,7 +111,7 @@ if (isset($this->vars['content_for_layout']->vars['action'])) {
 <?php endif; ?>
 <?php 
 // Load plugin css file directly associated with active plugin page
-if (stristr($_SERVER['REQUEST_URI'], $plugin_id)): ?>
+if (stristr($_SERVER['REQUEST_URI'], $plugin_id) || $plugin_id == 'dashboard'): ?>
 <?php if (file_exists(CORE_ROOT . '/plugins/' . $plugin_id . '/' . $plugin_id . '.css')): ?>
 	<link href="<?php echo URI_PUBLIC; ?>wolf/plugins/<?php echo $plugin_id.'/'.$plugin_id; ?>.css" media="screen" rel="Stylesheet" type="text/css" />
 <?php endif; ?>
